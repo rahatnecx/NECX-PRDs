@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NECX Communities · NECX PRD</title>
+<meta name="description" content="Moderated agency-run peer-support community spaces for victims and survivors">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="prd-page">
+<header class="topbar">
+  <button class="hamburger" aria-label="Menu" onclick="toggleNav()">&#9776;</button>
+  <a class="brand" href="../index.html"><svg class="logo" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 L35 10 V22 C35 31 28 37 20 39 C12 37 5 31 5 22 V10 Z" fill="var(--brand)"/><path d="M13 27 V14 L20 22 V14 M27 14 V27 L20 19" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="brand-text">NECX<span class="brand-sub">Product Requirements</span></span></a>
+  <div class="topbar-spacer"></div>
+  <a class="top-link" href="../index.html">Home</a>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><span class="ic-sun">☀</span><span class="ic-moon">☾</span></button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-search"><input type="search" id="navSearch" placeholder="Filter documents…" oninput="filterNav(this.value)"></div>
+    <nav class="nav"><div class="nav-group"><div class="nav-group-title">Platform &amp; Applications</div><a class="nav-item " href="P01.html" data-search="necx platform — core system whole-platform prd: unified backend, four clients, multi-tenancy, identity/rbac, and the end-to-end case lifecycle."><span class="nav-num">01</span><span class="nav-text">Platform — Core System</span></a>
+<a class="nav-item " href="P02.html" data-search="necx workspace — staff mobile app agency staff mobile app (flutter/riverpod) — the on-the-go companion to the vs360 web dashboard."><span class="nav-num">02</span><span class="nav-text">Workspace — Staff Mobile App</span></a>
+<a class="nav-item " href="P03.html" data-search="necx victim app — survivor mobile app victim / survivor mobile app (flutter/getx) — discover services, request help, chat, find shelter, e-sign."><span class="nav-num">03</span><span class="nav-text">Victim App — Survivor Mobile App</span></a>
+<a class="nav-item " href="P04.html" data-search="vs360 — agency web dashboard vs360 — the agency staff web dashboard (react/vite) and primary caseworker workspace."><span class="nav-num">04</span><span class="nav-text">VS360 — Agency Web Dashboard</span></a>
+</div>
+<div class="nav-group"><div class="nav-group-title">VS360 Feature Modules</div><a class="nav-item " href="P05.html" data-search="necx case management service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes."><span class="nav-num">05</span><span class="nav-text">Case Management</span></a>
+<a class="nav-item " href="P06.html" data-search="necx shelter management shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search."><span class="nav-num">06</span><span class="nav-text">Shelter Management</span></a>
+<a class="nav-item " href="P07.html" data-search="necx hotline management twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights."><span class="nav-num">07</span><span class="nav-text">Hotline Management</span></a>
+<a class="nav-item " href="P08.html" data-search="necx calendar &amp; appointments reminders, tasks and case-linked appointments in the vs360 tools calendar."><span class="nav-num">08</span><span class="nav-text">Calendar &amp; Appointments</span></a>
+<a class="nav-item " href="P09.html" data-search="necx staff time tracking staff time tracking: clock in/out, timesheets, and grant/pmt time attribution."><span class="nav-num">09</span><span class="nav-text">Staff Time Tracking</span></a>
+<a class="nav-item " href="P10.html" data-search="necx agency chat real-time advocate↔victim messaging tied to service threads and cases."><span class="nav-num">10</span><span class="nav-text">Agency Chat</span></a>
+<a class="nav-item " href="P11.html" data-search="necx internal chat staff-to-staff messaging within an agency, real-time over socket.io."><span class="nav-num">11</span><span class="nav-text">Internal Chat</span></a>
+<a class="nav-item " href="P12.html" data-search="necx rbac &amp; user management roles, the module/action permission matrix, plan seats, and multi-layer enforcement."><span class="nav-num">12</span><span class="nav-text">RBAC &amp; User Management</span></a>
+<a class="nav-item " href="P13.html" data-search="necx notes center agency-scoped, cross-case view over internal (caseworker-only) case notes."><span class="nav-num">13</span><span class="nav-text">Notes Center</span></a>
+<a class="nav-item " href="P14.html" data-search="necx drive google-drive-style cloud file storage backed by azure blob, with quotas and analytics."><span class="nav-num">14</span><span class="nav-text">Drive</span></a>
+<a class="nav-item " href="P15.html" data-search="necx ai report builder pmt/grant reporting plus ai-assisted custom report generation with accuracy validation."><span class="nav-num">15</span><span class="nav-text">AI Report Builder</span></a>
+<a class="nav-item " href="P16.html" data-search="necx e-sign &amp; document center prepare, request, sign and pdf-stamp case documents with an audit trail."><span class="nav-num">16</span><span class="nav-text">E-Sign &amp; Document Center</span></a>
+<a class="nav-item " href="P17.html" data-search="necx referrals &amp; partnerships inter-agency network: partnerships, invitations, and consent-based case referrals."><span class="nav-num">17</span><span class="nav-text">Referrals &amp; Partnerships</span></a>
+<a class="nav-item " href="P18.html" data-search="necx inquiries management intake and triage of inquiries / requests-to-connect before they become cases."><span class="nav-num">18</span><span class="nav-text">Inquiries Management</span></a>
+<a class="nav-item active" href="P19.html" data-search="necx communities agency-run community spaces: joining questions, membership, posts and moderation."><span class="nav-num">19</span><span class="nav-text">Communities</span></a>
+<a class="nav-item " href="P20.html" data-search="necx service management service catalog, categories, and the per-service claim-question (intake) builder."><span class="nav-num">20</span><span class="nav-text">Service Management</span></a>
+</div>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim" onclick="toggleNav()"></div>
+  
+  <main class="content">
+    <article class="doc">
+      <div class="doc-eyebrow">Product Requirements Document · NECX Inc — Confidential</div>
+      <h1 class="doc-title">NECX Communities</h1>
+      <p class="doc-subtitle">Moderated agency-run peer-support community spaces for victims and survivors</p>
+      <div class="doc-meta"><span class="chip">Version: <b>1.0</b></span><span class="chip">Status: <b>Baseline</b></span><span class="chip">Owner: <b>NECX Product Management</b></span><a class="dl-btn" href="../downloads/19_VS360_Feature_Communities.docx" download>⬇ Download DOCX</a></div>
+      <hr class="doc-rule">
+      <div class="doc-body">
+      <h2 id="1-document-control">1. Document Control</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td>NECX — Coordinated Victim Services Platform</td></tr>
+<tr><td>Module</td><td>Communities (agency-run community spaces: posts, group chat, membership, moderation)</td></tr>
+<tr><td>Version</td><td>1.0</td></tr>
+<tr><td>Status</td><td>Baseline</td></tr>
+<tr><td>Author</td><td>NECX Product Management</td></tr>
+<tr><td>Reviewers</td><td>Head of Product, Engineering Lead (Backend), VS360 Web Lead, Victim App Lead, Trust &amp; Safety / Victim Advocacy</td></tr>
+<tr><td>Last Updated</td><td>2026-07-05</td></tr>
+<tr><td>Related Documents</td><td>NECX Chat PRD, NECX Shelter Management PRD, NECX Notifications &amp; RBAC platform specs, VS360 Ops overview, Victim App overview</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>1.0</td><td>2026-07-05</td><td>NECX Product Management</td><td>Initial baseline PRD for the Communities module — VS360 staff management/moderation surface, unified backend model, and the victim-app member experience (currently hidden).</td></tr>
+</tbody></table></div>
+<h2 id="2-executive-summary">2. Executive Summary</h2>
+<p>NECX Communities are moderated, agency-run community spaces where victims and survivors of crime (app users) can connect with peers and with agency staff in a safe, supervised environment. An agency creates a community, sets its membership rules (open or private, with optional mandatory joining questions), and staff act as administrators and moderators. Members participate either through a real-time group chat (<code>GROUP_CHAT</code>) or through a feed of posts and comments (<code>POST</code>), depending on the community type.</p>
+<p>The module serves two distinct audiences from a single unified backend. Agency staff use the VS360 web application to create and configure communities, review and approve join requests, manage membership and moderators, and moderate content through a report-and-warning workflow. Victims use the NECX mobile app to discover communities, request to join, and participate by posting, commenting, and messaging. Every message, post, and comment passes through automatic text moderation, and any participant can file a report against content or a member, which staff then triage.</p>
+<p>Communities matters because peer support is a recognized element of trauma recovery, but unmoderated peer spaces can expose vulnerable people to re-victimization, harassment, and privacy loss. NECX Communities is built around safety first: mandatory content sanitization, staff-only moderation controls, banning and warning workflows, and cross-platform notifications that keep both staff and members informed of moderation actions.</p>
+<p>This document specifies the module as implemented in the NECX backend (<code>/web/communities*</code> and <code>/mobile/communities*</code>), the VS360 CommunitiesManagement web surface, and the victim-app community screens. It is important to note that the victim-facing community experience is fully built on both backend and mobile but is currently hidden in production — the community tab and routes are commented out in the mobile app. This PRD documents the intended end-to-end behavior and explicitly flags the hidden status in Scope and Risks so that the module can be safely enabled.</p>
+<h2 id="3-product-overview-vision">3. Product Overview &amp; Vision</h2>
+<h3 id="31-problem-statement">3.1 Problem Statement</h3>
+<p>Victims and survivors are often isolated. Peer connection helps recovery, but generic social platforms are unsafe for this population: they lack trauma-informed moderation, expose identity and location, and offer no bridge to the agencies providing services. Agencies need a way to run supervised support spaces where staff retain control over who joins, what is said, and how harmful content is handled — without standing up separate tooling outside the victim-services platform.</p>
+<h3 id="32-product-vision">3.2 Product Vision</h3>
+<p>NECX Communities gives every agency a turnkey, safety-first community capability inside the platform victims already use. Staff spin up a community in minutes, gate entry with screening questions, and moderate with one-click controls. Victims find a curated, agency-backed space to share and support one another, with automatic content protection working invisibly in the background. The result is peer support that is coordinated with — not disconnected from — the agency&#x27;s broader service delivery.</p>
+<h3 id="33-position-in-the-necx-ecosystem">3.3 Position in the NECX Ecosystem</h3>
+<p>Communities is one module of the unified NECX platform, which comprises the Victim App (mobile, for survivors), the Workspace App, the VS360 web app (agency staff / VSMS), NECX Admin (platform super-admin), and a single Express + Objection/Knex (PostgreSQL) backend with Socket.IO, Redis, and FCM. Communities reuses the platform&#x27;s shared primitives: the <code>app_users</code> (victim) and <code>vsms_users</code> (staff) identity model, agency (service center) multi-tenancy, the text-moderation tool shared with Chat, the notification delivery pipeline (DB row + Socket.IO + FCM), and the RBAC permission model. It sits alongside Chat (1:1 and agency messaging), Shelter, and Hotline as an agency-operated, victim-facing service surface.</p>
+<h2 id="4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</h2>
+<h3 id="41-goals-objectives">4.1 Goals &amp; Objectives</h3>
+<ul>
+<li>Provide agencies a safe, moderated space to host peer-support communities for victims, with full control over membership and content.</li>
+<li>Support two interaction models — real-time group chat and a posts-and-comments feed — under one community abstraction.</li>
+<li>Enforce trauma-informed safety by default: automatic text sanitization on all user content, staff-only moderation, and clear ban/warning workflows.</li>
+<li>Give victims a low-friction path to discover, request to join, and participate in communities from the mobile app.</li>
+<li>Screen entrants where needed via private communities with mandatory joining questions and staff approval.</li>
+<li>Keep both staff and members informed through cross-platform notifications for posts, comments, messages, approvals, bans, and content removals.</li>
+<li>Preserve agency multi-tenancy: staff only see and manage communities within their own agency.</li>
+</ul>
+<h3 id="42-success-metrics">4.2 Success Metrics</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Definition</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>Active communities per agency</td><td>Communities with status active and at least one member action in 30 days</td><td>≥ 2 per participating agency within 2 quarters of enablement</td></tr>
+<tr><td>Member participation rate</td><td>Share of community members who post/comment/message in 30 days</td><td>≥ 30%</td></tr>
+<tr><td>Join-request turnaround</td><td>Median time from a private-community join request to staff approval/decline</td><td>&lt; 24 hours</td></tr>
+<tr><td>Moderation responsiveness</td><td>Median time from a report being filed to staff action (deactivate/warn/dismiss)</td><td>&lt; 12 hours</td></tr>
+<tr><td>Auto-sanitization coverage</td><td>Share of member messages/posts passed through <code>textModerator</code> before persistence</td><td>100%</td></tr>
+<tr><td>Unsafe-content escape rate</td><td>Reported items later confirmed as policy-violating that reached members unsanitized</td><td>&lt; 1%</td></tr>
+<tr><td>Notification delivery</td><td>Share of moderation/membership events delivered to the target user (in-app + FCM)</td><td>≥ 99%</td></tr>
+</tbody></table></div>
+<h2 id="5-scope">5. Scope</h2>
+<h3 id="51-in-scope">5.1 In Scope</h3>
+<ul>
+<li><strong>Community lifecycle (VS360)</strong>: create a community (type <code>GROUP_CHAT</code> or <code>POST</code>), configure open vs private, member limit, mandatory-questions flag, joining questions, and initial admin/moderator staff assignments; edit; toggle active/inactive status.</li>
+<li><strong>Membership</strong>: victim join (open = immediate, private = request + approval), joining questions and answers, join-request review, member listing, member banning, leaving a community.</li>
+<li><strong>Moderator management</strong>: staff join a community as moderator, and staff moderator removal.</li>
+<li><strong>Posts &amp; comments (POST-type communities)</strong>: create/list posts, create/list comments, edit posts/comments, toggle post/comment status, and moderation (deactivate, deactivate-and-ban) of posts and comments.</li>
+<li><strong>Group chat (GROUP_CHAT-type communities)</strong>: paginated message listing with reported-content flagging, send message (with mobile file attachments), and moderation (deactivate message, deactivate-and-ban sender).</li>
+<li><strong>Content moderation</strong>: automatic text sanitization on member content via the shared <code>text-moderator</code> tool; a report workflow (file a report against a post/comment/message/member) and staff triage (deactivate content, deactivate-and-ban author, issue warning).</li>
+<li><strong>Notifications</strong>: app notifications and FCM to victims for posts, comments, group-chat messages, join approval, bans, and content removals; report-warning notifications.</li>
+<li><strong>Victim-app experience</strong>: discover/list communities, view a community, join (answer questions), view/create posts and comments, participate in group chat, file reports, and leave. Documented here even though currently hidden (see 5.2).</li>
+</ul>
+<h3 id="52-out-of-scope-not-yet-enabled">5.2 Out of Scope / Not Yet Enabled</h3>
+<div class="callout warn"><div class="callout-title">⚠ Victim community experience is currently hidden</div><div class="callout-body">The mobile app&#x27;s community tab and routes are commented out in production (<code>community/community_page.dart</code> is hidden; the Shelter tab is shown in its place). The victim-side screens (community detail, join, group chat, post create, post detail) and the <code>/mobile/communities/*</code> endpoints exist and are documented here, but the feature is not exposed to victims until the tab and routes are re-enabled. Enabling it is a product decision, not new development.</div></div>
+<ul>
+<li>Direct 1:1 messaging between members (that is Chat, not Communities).</li>
+<li>Media/file attachments on posts and comments (only mobile group-chat messages support files in the current implementation).</li>
+<li>Community discovery ranking, recommendations, or search beyond the basic list/filter provided.</li>
+<li>Rich reactions (likes, emoji), threaded/nested comment replies, or read receipts within communities.</li>
+<li>Cross-agency shared communities (each community belongs to one agency / service center).</li>
+<li>Voice/video within communities.</li>
+<li>Member-initiated community creation (only staff create communities).</li>
+</ul>
+<h2 id="6-personas-user-roles">6. Personas &amp; User Roles</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Role</th><th>Description</th><th>Key permissions</th></tr></thead>
+<tbody>
+<tr><td>Agency Admin / Manager (VS360)</td><td>Senior agency staff who create and configure communities and oversee moderation</td><td><code>communities.view</code>, <code>communities.add</code>, <code>communities.edit</code>, <code>communities.delete</code></td></tr>
+<tr><td>Community Moderator (VS360 staff)</td><td>Staff assigned to a community to moderate content, review join requests, and manage members</td><td><code>communities.view</code>, <code>communities.edit</code> (moderation actions); <code>communities.add</code> to create; joins a community as <code>MODERATOR</code></td></tr>
+<tr><td>VSMS staff (general)</td><td>Agency staff who may act within communities per their role&#x27;s permission map</td><td>Gated per role&#x27;s <code>communities</code> action flags</td></tr>
+<tr><td>NECX Super Admin</td><td>Platform-level administrator; bypasses fine-grained permission checks</td><td>All (permission-middleware bypass)</td></tr>
+<tr><td>Victim / Survivor (app user)</td><td>Registered mobile app user who joins communities and participates as a <code>MEMBER</code></td><td>No RBAC flags; authenticated app-user routes; scoped to own membership</td></tr>
+</tbody></table></div>
+<h3 id="61-persona-narratives">6.1 Persona Narratives</h3>
+<p><strong>Dana — Agency Program Manager (VS360).</strong> Dana wants to launch a private survivors&#x27; support group. She creates a POST-type community, marks it private, adds two mandatory joining questions to screen applicants, and assigns a colleague as a moderator. She reviews each join request and its answers before approving.</p>
+<p><strong>Marcus — Community Moderator (VS360).</strong> Marcus joins the community as a moderator. He monitors the feed and group chat, reviews reports as they come in, deactivates a harassing comment, issues a warning to the author, and — for a repeat offender — deactivates content and bans the member in one action.</p>
+<p><strong>Ana — Survivor (Victim App).</strong> Ana discovers a community in the app, answers the joining questions, and (for a private community) waits for approval. Once in, she reads posts, shares her own experience in a post, comments on others, and — in a group-chat community — messages in real time. If she sees something harmful, she reports it. Her content is automatically sanitized before anyone else sees it.</p>
+<h2 id="7-system-context-architecture">7. System Context &amp; Architecture</h2>
+<h3 id="71-tech-stack">7.1 Tech Stack</h3>
+<p>Communities is delivered by the unified NECX backend: Express (ESM) with Objection/Knex over PostgreSQL, Socket.IO for real-time, Redis for scaling/caching, and FCM for push. The VS360 web client is a React app (<code>src/pages/CommunitiesManagement/</code>) calling <code>/web/communities*</code>. The victim client is a Flutter (GetX) mobile app whose <code>CommunityController</code> and community screens call <code>/mobile/communities*</code> (currently hidden). All routes are mounted under the global API prefix <code>/v2</code>.</p>
+<h3 id="72-client-to-backend-contract">7.2 Client-to-Backend Contract</h3>
+<p>The backend follows a tri-router pattern: <code>webRouter</code> (<code>/web/communities*</code>, guarded by <code>allowOnly(&#x27;VS360&#x27;)</code>) for staff management/moderation, and <code>mobileRouter</code> (<code>/mobile/communities*</code>, auth-only) for victims. Services return <code>{ status, msg?, data? }</code>; controllers relay via <code>res.status(response.status).json(response)</code>. Business keys are <code>uid</code> strings; DB primary keys are integer <code>id</code>. Rate limiting uses the <code>standard</code> limiter for community/report routes and the <code>chatApi</code> limiter for group-chat and posts/comments routes.</p>
+<h3 id="73-identity-authorship-tenancy">7.3 Identity, Authorship &amp; Tenancy</h3>
+<p>Two identity tables underpin authorship: <code>app_users</code> (victims, referenced by <code>member_id</code>) and <code>vsms_users</code> (agency staff, referenced by <code>staff_id</code> / <code>created_by</code>). Community membership rows (<code>community_members</code>) carry exactly one of <code>member_id</code> (victim) or <code>staff_id</code> (staff) plus a <code>role</code> of <code>ADMIN</code>, <code>MODERATOR</code>, or <code>MEMBER</code>. Multi-tenancy is enforced by scoping community data to the staff member&#x27;s agency via <code>issuer.serviceCenterInfo.id</code> — a VS360 user only ever sees and manages their own agency&#x27;s communities (relation <code>serviceCenterInfo</code> on <code>communities</code>).</p>
+<h3 id="74-real-time-notifications">7.4 Real-Time &amp; Notifications</h3>
+<p>Content and moderation events are delivered to victims through the platform notification pipeline: a DB notification row plus a Socket.IO emit to the victim room (<code>app-notification-room</code>) plus an FCM push. The Socket.IO <code>io</code> instance is threaded through the send and moderation service calls so open clients update live. App notification types come from <code>appNotificationEvents.js</code>; report-warning delivery writes <code>VictimNotifications</code> and pushes via <code>notificationServices</code>. (Notifications are wrapped defensively — a delivery failure is logged and never breaks the main transaction.)</p>
+<h3 id="75-content-safety-pipeline">7.5 Content Safety Pipeline</h3>
+<p>All member-authored text (group-chat messages, and by extension posts/comments) is passed through the shared <code>text-moderator</code> tool (<code>src/tools/text-moderator</code>, also used by Chat). <code>textModerator.moderateText</code> detects unsafe content and returns a sanitized version, which is what gets persisted — sanitization happens before content is visible to other members.</p>
+<h2 id="8-functional-requirements">8. Functional Requirements</h2>
+<h3 id="81-community-lifecycle-configuration-vs360">8.1 Community Lifecycle &amp; Configuration (VS360)</h3>
+<p>Staff create and configure communities from the VS360 CommunitiesManagement surface. A community has a <code>title</code>, a <code>type</code> (<code>GROUP_CHAT</code> for real-time group messaging or <code>POST</code> for a feed of posts and comments), an <code>isPrivate</code> flag (private communities require join approval), a <code>memberLimit</code>, an <code>areQuestionsMandatory</code> flag, an optional set of joining questions, and an optional set of moderators. On create, the backend (<code>createCommunity</code>) runs a transaction that inserts the community with <code>created_by</code> set to the staff <code>vsms_users</code> id, inserts any joining questions, inserts an <code>ADMIN</code> <code>community_members</code> row for the creator, and inserts <code>MODERATOR</code> rows for any assigned moderators; an ActionLog entry is written. Communities can be edited (<code>update</code>), and their active/inactive state toggled (<code>change-status</code>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-COMM-01</td><td>Staff with <code>communities.add</code> shall create a community with title, type (<code>GROUP_CHAT</code>/<code>POST</code>), <code>isPrivate</code>, <code>memberLimit</code>, <code>areQuestionsMandatory</code>, joining questions, and moderators.</td><td>Must</td></tr>
+<tr><td>FR-COMM-02</td><td>On create, the system shall insert the community (<code>created_by</code> = staff id), joining questions, an <code>ADMIN</code> member row for the creator, and <code>MODERATOR</code> rows for assigned staff, within one transaction, and write an ActionLog.</td><td>Must</td></tr>
+<tr><td>FR-COMM-03</td><td>Staff with <code>communities.edit</code> shall update a community&#x27;s configuration via <code>PATCH /communities/update/:uid</code>.</td><td>Must</td></tr>
+<tr><td>FR-COMM-04</td><td>Staff shall toggle a community&#x27;s active/inactive status via <code>PATCH /communities/:uid/change-status</code>.</td><td>Must</td></tr>
+<tr><td>FR-COMM-05</td><td>The community list (<code>GET /communities</code>) shall support pagination and filters: search key, active/inactive, private/public, and type.</td><td>Must</td></tr>
+<tr><td>FR-COMM-06</td><td>Community detail (<code>GET /communities/:uid</code>) shall render appropriate sub-surfaces by type (feed for <code>POST</code>, message thread for <code>GROUP_CHAT</code>) with member, join-request, and report side panels.</td><td>Must</td></tr>
+<tr><td>FR-COMM-07</td><td>All community data shall be scoped to the staff member&#x27;s agency (service center); staff shall not see other agencies&#x27; communities.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="82-joining-questions-answers">8.2 Joining Questions &amp; Answers</h3>
+<p>A community may define joining questions to screen applicants. When <code>areQuestionsMandatory</code> is true, a victim must answer all questions to join. Answers are captured at join time and linked to either the join request (private communities) or the membership (open communities). Staff reviewing a private community&#x27;s join requests see the applicant&#x27;s answers before deciding.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CJQ-01</td><td>Staff shall define joining questions when creating (or updating) a community.</td><td>Must</td></tr>
+<tr><td>FR-CJQ-02</td><td>When <code>areQuestionsMandatory</code> is true, the join flow shall require all questions to be answered, rejecting incomplete submissions.</td><td>Must</td></tr>
+<tr><td>FR-CJQ-03</td><td>Submitted answers shall be persisted (<code>community_joining_question_answers</code>) and linked to the join request or the resulting membership.</td><td>Must</td></tr>
+<tr><td>FR-CJQ-04</td><td>Staff reviewing join requests shall be able to view the applicant&#x27;s answers before approving.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="83-membership-join-flow">8.3 Membership &amp; Join Flow</h3>
+<p>Membership behavior depends on whether the community is private. For an <strong>open</strong> community, a victim join (<code>joinCommunity</code>, <code>POST /join/:communityId</code>) inserts a <code>community_members</code> row (plus answers) immediately. For a <strong>private</strong> community, the same call inserts a <code>community_joining_requests</code> row (plus answers) and returns &quot;submitted for approval&quot;; a member is added only when staff approve. In both cases the backend dedupes existing membership and enforces <code>memberLimit</code>. Staff approve requests (<code>approveJoiningRequest</code>, <code>PATCH /:communityId/:memberId/approve-joining</code>), ban members (<code>banMember</code>, <code>PATCH /:communityId/ban-member/:memberId</code>), and either side can leave (<code>DELETE /:communityUid/leave</code>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-MEM-01</td><td>A victim joining an open community shall be added immediately as a <code>MEMBER</code> (with answers persisted).</td><td>Must</td></tr>
+<tr><td>FR-MEM-02</td><td>A victim joining a private community shall create a pending join request (with answers), not an immediate membership.</td><td>Must</td></tr>
+<tr><td>FR-MEM-03</td><td>The join flow shall dedupe existing membership and enforce <code>memberLimit</code>.</td><td>Must</td></tr>
+<tr><td>FR-MEM-04</td><td>Staff shall approve a pending join request (<code>approve-joining</code>), converting it into a membership, and the applicant shall receive an <code>APPROVE_COMMUNITY_JOINING</code> notification.</td><td>Must</td></tr>
+<tr><td>FR-MEM-05</td><td>Staff shall ban a member (<code>ban-member</code>), removing/flagging the membership, and the member shall receive a <code>BAN_MEMBER</code> notification.</td><td>Must</td></tr>
+<tr><td>FR-MEM-06</td><td>Staff shall list a community&#x27;s members (<code>GET /:uid/members</code>) and pending join requests (<code>GET /:uid/joining-requests</code>).</td><td>Must</td></tr>
+<tr><td>FR-MEM-07</td><td>A member (or moderator) shall leave a community via <code>DELETE /:communityUid/leave</code>.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="84-moderator-management">8.4 Moderator Management</h3>
+<p>Staff can attach themselves to a community as a moderator and can remove other staff moderators. Community detail on VS360 shows a &quot;Join as Moderator&quot; action when the viewing staff member is not yet a participant.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-MOD-01</td><td>Staff shall join a community as a moderator via <code>POST /:uid/join-as-moderator</code>, creating a <code>MODERATOR</code> <code>community_members</code> row.</td><td>Must</td></tr>
+<tr><td>FR-MOD-02</td><td>Staff shall remove a moderator via <code>PATCH /:communityId/:staffId/remove-moderator</code>.</td><td>Must</td></tr>
+<tr><td>FR-MOD-03</td><td>The VS360 community-detail view shall offer &quot;Join as Moderator&quot; when the viewer is not a participant, and &quot;Leave&quot; otherwise.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="85-posts-comments-post-type-communities">8.5 Posts &amp; Comments (POST-type communities)</h3>
+<p>POST-type communities present a feed. Members and staff create posts (<code>POST /communities/posts/:uid/create</code>) and comments on posts (<code>POST /communities/posts/:postUid/create-comment</code>), both validated. Posts and comments can be listed (<code>GET /communities/posts/:uid</code>, <code>GET /communities/posts/:postUid/comments</code>), edited (<code>.../update</code>), and have their status toggled (<code>.../change-status</code>). Post/comment creation notifies members (<code>COMMUNITY_POST</code> / <code>COMMUNITY_POST_COMMENT</code>). Authorship is by <code>member_id</code> (victim) or <code>staff_id</code> (staff); records carry status/<code>isActive</code> for moderation.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-POST-01</td><td>Members and staff shall create posts and comments in POST-type communities (validated input).</td><td>Must</td></tr>
+<tr><td>FR-POST-02</td><td>Posts and comments shall be listable (posts of a community; comments of a post) with authorship attribution.</td><td>Must</td></tr>
+<tr><td>FR-POST-03</td><td>Authors/staff shall edit posts and comments (<code>.../update</code>) and toggle their status (<code>.../change-status</code>).</td><td>Must</td></tr>
+<tr><td>FR-POST-04</td><td>Post creation shall notify community members (<code>COMMUNITY_POST</code>); comment creation shall notify (<code>COMMUNITY_POST_COMMENT</code>).</td><td>Must</td></tr>
+<tr><td>FR-POST-05</td><td>Member-authored post/comment text shall be passed through the text-moderator before persistence.</td><td>Must</td></tr>
+<tr><td>FR-POST-06</td><td>Staff shall deactivate a post/comment, and optionally deactivate-and-ban the author, via the moderation endpoints.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="86-group-chat-groupchat-type-communities">8.6 Group Chat (GROUP_CHAT-type communities)</h3>
+<p>GROUP_CHAT-type communities are real-time group messaging spaces. Members send messages (<code>POST /communities/group-chats/:uid/send-message</code>; mobile allows file attachments), and staff can send from the web. <code>sendMessage</code> validates that the community exists and is not POST-type, runs <code>textModerator.moderateText</code> (replacing unsafe content with a sanitized version), inserts a <code>group_chat_messages</code> row keyed by <code>memberId</code> (mobile) or <code>staffId</code> (web), writes an ActionLog, and fires <code>sendGroupChatMessageNotification</code> (<code>GROUP_CHAT_MESSAGE</code>). The message list (<code>GET /communities/group-chats/:uid</code>) is paginated and flags reported messages/senders via correlated subqueries.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-GC-01</td><td>Members and staff shall send group-chat messages; the system shall reject sends to POST-type communities.</td><td>Must</td></tr>
+<tr><td>FR-GC-02</td><td>Every group-chat message shall be sanitized via <code>textModerator.moderateText</code> before persistence.</td><td>Must</td></tr>
+<tr><td>FR-GC-03</td><td>Messages shall be stored with the correct author key (<code>memberId</code> for mobile, <code>staffId</code> for web) and an <code>isActive</code> flag.</td><td>Must</td></tr>
+<tr><td>FR-GC-04</td><td>Sending a message shall trigger a <code>GROUP_CHAT_MESSAGE</code> app notification to members.</td><td>Must</td></tr>
+<tr><td>FR-GC-05</td><td>The paginated message list shall flag messages/senders that are the subject of reports.</td><td>Should</td></tr>
+<tr><td>FR-GC-06</td><td>Mobile clients shall be able to attach files to group-chat messages.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="87-reports-moderation-workflow">8.7 Reports &amp; Moderation Workflow</h3>
+<p>Any member or staff can file a report (<code>POST /communities/reports/create/:uid</code>) against a post, comment, message, or member; reports are deduped per reporter + target. Staff review the report list for a community (<code>GET /communities/reports/:uid</code>) and act: <strong>deactivate</strong> the reported content (<code>deactivate/:reportId/:messageId</code> for messages, and the post/comment equivalents) which marks the report <code>REVIEWED</code> and sends a <code>DELETE_*</code> notification; <strong>deactivate-and-ban</strong> the author in one action (<code>deactivate-and-ban-user/...</code>); deactivate content without a report; or <strong>issue a warning</strong> (<code>issueWarning</code>, <code>PATCH /communities/reports/:reportUid/issue-warning</code>) which notifies the member without removing them.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-REP-01</td><td>Any member or staff shall file a report against a post, comment, message, or member, capturing the target and context.</td><td>Must</td></tr>
+<tr><td>FR-REP-02</td><td>Reports shall be deduped per (reporter, target) to prevent duplicates.</td><td>Must</td></tr>
+<tr><td>FR-REP-03</td><td>Staff shall list a community&#x27;s reports and see their status (<code>PENDING</code>/<code>REVIEWED</code>).</td><td>Must</td></tr>
+<tr><td>FR-REP-04</td><td>Deactivating reported content shall mark the report <code>REVIEWED</code> and notify the author (<code>DELETE_MESSAGE</code>/<code>DELETE_POST</code>/<code>DELETE_COMMENT</code>).</td><td>Must</td></tr>
+<tr><td>FR-REP-05</td><td>Staff shall optionally deactivate-and-ban the author in one action (<code>DELETE_*_AND_BAN_MEMBER</code> notification).</td><td>Must</td></tr>
+<tr><td>FR-REP-06</td><td>Staff shall issue a warning to a reported member (writes <code>VictimNotifications</code> + FCM) without removing them.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="88-victim-app-experience-currently-hidden">8.8 Victim-App Experience (currently hidden)</h3>
+<p>The mobile app&#x27;s <code>CommunityController</code> and community screens implement the full member experience against <code>/mobile/communities/*</code>: list communities (<code>getCommunitiesForApp</code>), view a community, join (answering questions), leave, view/create posts and comments, participate in group chat, and file reports. Community post/comment/group-chat notifications route the member to the right screen via <code>NotificationNavigator</code>.</p>
+<div class="callout note"><div class="callout-title">ℹ Hidden by feature toggle, not missing</div><div class="callout-body">The victim community tab and routes are commented out (<code>community/community_page.dart</code> hidden; screens <code>/communityDetails</code>, <code>/communityJoin</code>, <code>/communityChat</code>, <code>/postCreate</code>, <code>/postDetails</code> exist). Backend endpoints are live. Enabling requires re-instating the tab/routes — see Risks.</div></div>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-VIC-01</td><td>Victims shall list/discover communities (<code>GET /mobile/communities</code>) and view community detail.</td><td>Must (on enable)</td></tr>
+<tr><td>FR-VIC-02</td><td>Victims shall join a community by answering required questions (<code>POST /mobile/communities/join/:communityId</code>), immediate for open, request-based for private.</td><td>Must (on enable)</td></tr>
+<tr><td>FR-VIC-03</td><td>Victims shall view and create posts and comments in POST-type communities.</td><td>Must (on enable)</td></tr>
+<tr><td>FR-VIC-04</td><td>Victims shall view and send messages in GROUP_CHAT-type communities (with file attachments).</td><td>Must (on enable)</td></tr>
+<tr><td>FR-VIC-05</td><td>Victims shall file reports and leave communities.</td><td>Must (on enable)</td></tr>
+<tr><td>FR-VIC-06</td><td>Community notifications shall deep-link the victim to the relevant community/post/chat screen.</td><td>Must (on enable)</td></tr>
+</tbody></table></div>
+<h2 id="9-detailed-user-system-flows">9. Detailed User &amp; System Flows</h2>
+<h3 id="91-create-a-community-with-joining-questions-staff-vs360">9.1 Create a Community with Joining Questions (Staff, VS360)</h3>
+<ol class="flow">
+<li>A staff member with <code>communities.add</code> opens CommunitiesManagement and clicks Create Community (<code>CreateCommunity.jsx</code> → <code>CommunityForm.jsx</code>).</li>
+<li>They enter a title, choose a type (Post feed or Group chat), and choose visibility (Public/open or Private).</li>
+<li>They set a <code>memberLimit</code> and decide whether joining questions are mandatory (<code>areQuestionsMandatory</code>).</li>
+<li>They add one or more joining questions (<code>JoiningQuestions.jsx</code>) — used to screen applicants.</li>
+<li>They optionally select staff (VSMS users) to assign as moderators, and confirm.</li>
+<li>The client calls <code>POST /communities/create</code> (<code>newCommunityValidator</code>).</li>
+<li>The backend <code>createCommunity</code> opens a transaction: inserts the <code>communities</code> row with <code>created_by</code> = the staff <code>vsms_users</code> id and <code>serviceCenterId</code> = the staff&#x27;s agency; inserts each joining question; inserts an <code>ADMIN</code> <code>community_members</code> row for the creator; inserts <code>MODERATOR</code> rows for each assigned staff member.</li>
+<li>An ActionLog entry is written and the transaction commits.</li>
+<li>The new community appears in the agency&#x27;s &quot;My Communities&quot; list; the staff member can open it, and (if not already a participant) may &quot;Join as Moderator.&quot;</li>
+<li><strong>Edge case</strong> — validation failure (missing title/type, or invalid questions): the service returns a non-2xx <code>{ status, msg }</code> and no rows are inserted (transaction rolls back).</li>
+</ol>
+<h3 id="92-victim-requests-to-join-a-private-community-and-is-approved">9.2 Victim Requests to Join a Private Community and Is Approved</h3>
+<ol class="flow">
+<li>A victim opens the community list in the app (<code>getCommunitiesForApp</code>) and taps a private community, then &quot;Join&quot; (<code>/communityJoin</code>).</li>
+<li>The app shows the joining questions; because <code>areQuestionsMandatory</code> is true, all must be answered.</li>
+<li>The app calls <code>POST /mobile/communities/join/:communityId</code> with the <code>answers[]</code>.</li>
+<li>The backend <code>joinCommunity</code> dedupes any existing membership/request and checks <code>memberLimit</code>.</li>
+<li>If mandatory, it validates that all questions are answered; incomplete submissions are rejected.</li>
+<li>Because the community is <strong>private</strong>, it inserts a <code>community_joining_requests</code> row plus <code>community_joining_question_answers</code>, and returns &quot;submitted for approval.&quot; No membership is created yet. An ActionLog is written.</li>
+<li>On VS360, a staff member opens the community&#x27;s join requests (<code>GET /communities/:uid/joining-requests</code>, <code>PendingJoinRequests.jsx</code>) and reviews the applicant&#x27;s answers.</li>
+<li>Staff click Approve → <code>PATCH /communities/:communityId/:memberId/approve-joining</code>.</li>
+<li>The backend <code>approveJoiningRequest</code> adds the applicant as a <code>MEMBER</code> (<code>community_members</code>) and sends an <code>APPROVE_COMMUNITY_JOINING</code> app notification (DB row + socket to <code>app-notification-room</code> + FCM).</li>
+<li>The victim&#x27;s app receives the notification; the community now appears in their joined list and they can participate.</li>
+<li><strong>Branch — open community</strong>: at step 6 the backend instead inserts the <code>community_members</code> row immediately and the victim is a member without staff approval.</li>
+<li><strong>Branch — decline / no action</strong>: if staff do not approve, the request remains pending; staff may effectively deny by not approving (or by banning if later added). <strong>Edge case</strong> — member limit reached before approval: approval is blocked by the <code>memberLimit</code> enforcement.</li>
+</ol>
+<h3 id="93-post-and-comment-in-a-post-type-community">9.3 Post and Comment in a POST-type Community</h3>
+<ol class="flow">
+<li>A member opens a POST-type community; the feed loads via <code>GET /communities/posts/:uid</code> (<code>CommunityPostDisplay</code>).</li>
+<li>The member creates a post (<code>/postCreate</code>) → <code>POST /communities/posts/:uid/create</code> (validated).</li>
+<li>The backend sanitizes the post text via the text-moderator, inserts a <code>posts</code> row keyed by the author (<code>member_id</code> for a victim, <code>staff_id</code> for staff) with <code>isActive</code>/status, and notifies members with <code>COMMUNITY_POST</code>.</li>
+<li>Members see the post; another member opens it (<code>/postDetails</code>) and adds a comment → <code>POST /communities/posts/:postUid/create-comment</code>.</li>
+<li>The backend sanitizes and inserts a <code>post_comments</code> row and notifies with <code>COMMUNITY_POST_COMMENT</code>.</li>
+<li>The author (or staff) may edit (<code>.../update</code>) or toggle status (<code>.../change-status</code>).</li>
+<li><strong>Edge case</strong> — content flagged by the moderator: the persisted text is the sanitized version, so members only ever see sanitized content.</li>
+<li><strong>Edge case</strong> — group-chat community: post endpoints do not apply; the community renders as a message thread instead (see 9.4).</li>
+</ol>
+<h3 id="94-send-a-message-in-a-groupchat-community">9.4 Send a Message in a GROUP_CHAT Community</h3>
+<ol class="flow">
+<li>A member opens a GROUP_CHAT community (<code>/communityChat</code>); the client loads messages via <code>GET /communities/group-chats/:uid</code> (paginated; reported messages/senders are flagged).</li>
+<li>The member sends a message → <code>POST /communities/group-chats/:uid/send-message</code> (mobile may attach files).</li>
+<li>The backend <code>sendMessage</code> validates the community exists and is not POST-type; runs <code>textModerator.moderateText</code> (unsafe content replaced with a sanitized version).</li>
+<li>It inserts a <code>group_chat_messages</code> row with <code>memberId</code> (mobile) or <code>staffId</code> (web) and <code>isActive=true</code>, writes an ActionLog.</li>
+<li>It fires <code>sendGroupChatMessageNotification</code> (<code>GROUP_CHAT_MESSAGE</code>) to members (socket + FCM).</li>
+<li>Open clients update live; recipients get a push that deep-links to the group chat.</li>
+<li><strong>Edge case</strong> — send to a POST-type community: rejected with a non-2xx response.</li>
+</ol>
+<h3 id="95-report-and-moderate-content-report-deactivate-ban-warn">9.5 Report and Moderate Content (Report → Deactivate / Ban / Warn)</h3>
+<ol class="flow">
+<li>A member (or staff) sees objectionable content and files a report → <code>POST /communities/reports/create/:uid</code>, identifying the target (post, comment, message, or member) and context.</li>
+<li>The backend dedupes per (reporter, target) and inserts a <code>community_reports</code> row with status <code>PENDING</code>.</li>
+<li>On VS360, staff open the community&#x27;s Reports panel (<code>GET /communities/reports/:uid</code>, <code>ReportsData.jsx</code>/<code>ReportCard.jsx</code>).</li>
+<li>Staff choose an action:</li>
+<li><strong>Deactivate content</strong> — for a reported message <code>PATCH /communities/group-chats/deactivate/:reportId/:messageId</code> (post/comment equivalents exist): the content&#x27;s <code>isActive</code> is set false, the report is marked <code>REVIEWED</code>, and the author is notified (<code>DELETE_MESSAGE</code>/<code>DELETE_POST</code>/<code>DELETE_COMMENT</code>).</li>
+<li><strong>Deactivate and ban</strong> — <code>deactivate-and-ban-user/...</code>: as above plus the author&#x27;s membership is removed/flagged; the author is notified (<code>DELETE_*_AND_BAN_MEMBER</code> / <code>BAN_MEMBER</code>).</li>
+<li><strong>Issue a warning</strong> — <code>PATCH /communities/reports/:reportUid/issue-warning</code>: <code>issueWarning</code> writes a <code>VictimNotifications</code> row and pushes via FCM, warning the member without removing them.</li>
+<li><strong>Dismiss / no violation</strong> — staff may deactivate content without a report (<code>deactivate/:messageId</code>) or leave the report as-is if no action is warranted.</li>
+<li>The reporter and other members see the content disappear from feeds/threads once deactivated.</li>
+<li><strong>Edge case</strong> — content already deactivated: subsequent reports/actions on the same item are idempotent (the item stays inactive).</li>
+</ol>
+<h3 id="96-ban-a-member-and-leave-a-community">9.6 Ban a Member and Leave a Community</h3>
+<ol class="flow">
+<li>Staff open a community&#x27;s member list (<code>GET /communities/:uid/members</code>).</li>
+<li>Staff ban a member → <code>PATCH /communities/:communityId/ban-member/:memberId</code> (<code>banMember</code>): the membership is removed/flagged and a <code>BAN_MEMBER</code> notification is sent.</li>
+<li>The banned member&#x27;s app reflects loss of access; they can no longer post/comment/message in that community.</li>
+<li><strong>Voluntary leave</strong>: a member or moderator calls <code>DELETE /communities/:communityUid/leave</code> to remove their own membership.</li>
+<li><strong>Moderator lifecycle</strong>: staff join as moderator (<code>POST /:uid/join-as-moderator</code>) and are removed by another staff member via <code>PATCH /:communityId/:staffId/remove-moderator</code>.</li>
+</ol>
+<h2 id="10-data-model">10. Data Model</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Key Fields</th><th>Relationships</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td><code>communities</code> (Communities)</td><td>id, uid, title, type (<code>GROUP_CHAT</code>/<code>POST</code>), isPrivate, memberLimit, areQuestionsMandatory, status, createdBy (→ vsms_users), serviceCenterId</td><td>createdByInfo (VSMSUsers), memberInfo (CommunityMembers), groupChatMessages, posts, serviceCenterInfo, reports</td><td>The community space and its configuration; owned by one agency.</td></tr>
+<tr><td><code>community_members</code> (CommunityMembers)</td><td>id, uid, communityId, member_id (→ app_users, victim), staff_id (→ vsms_users, staff), role (<code>ADMIN</code>/<code>MODERATOR</code>/<code>MEMBER</code>), timestamps</td><td>communityMemberInfo (AppUsers), staffInfo (VSMSUsers), communityInfo</td><td>Membership rows; exactly one of member_id/staff_id set, with a role.</td></tr>
+<tr><td><code>community_joining_questions</code> (CommunityJoiningQuestions)</td><td>id, uid, communityId, question text</td><td>communityInfo; answers</td><td>Screening questions defined for a community.</td></tr>
+<tr><td><code>community_joining_question_answers</code> (CommunityJoiningQuestionAnswers)</td><td>id, uid, questionId, answer, link to joining request or member</td><td>question; joining request / member</td><td>Applicant answers, linked to a join request (private) or membership (open).</td></tr>
+<tr><td><code>community_joining_requests</code> (CommunityJoiningRequests)</td><td>uid, member_id (→ app_users), community_id</td><td>communityInfo, memberInfo, answers</td><td>Pending join requests for private communities awaiting approval.</td></tr>
+<tr><td><code>group_chat_messages</code> (GroupChatMessages)</td><td>id, uid, communityId, memberId (→ app_users) / staffId (→ vsms_users), message, isActive</td><td>communityInfo, memberInfo, staffInfo</td><td>Messages in GROUP_CHAT-type communities; sanitized before persistence.</td></tr>
+<tr><td><code>posts</code> (Posts)</td><td>id, uid, communityId, author (member/staff), content, status, isActive</td><td>communityInfo, comments, author</td><td>Feed posts in POST-type communities.</td></tr>
+<tr><td><code>post_comments</code> (PostComments)</td><td>id, uid, postId, author (member/staff), content, status, isActive</td><td>postInfo, author</td><td>Comments on posts.</td></tr>
+<tr><td><code>community_reports</code> (CommunityReports)</td><td>communityId, reportedByMemberId / reportedByStaffId, reportedMemberId, reportedPostId, reportedCommentId, reportedMessageId, context, status (<code>PENDING</code>/<code>REVIEWED</code>)</td><td>communityInfo; target post/comment/message/member</td><td>Reports filed against content or members; drive the moderation workflow.</td></tr>
+</tbody></table></div>
+<p>Notes: business keys are <code>uid</code> strings; DB PKs are integer <code>id</code>; timestamps <code>created_at</code>/<code>updated_at</code> are standard. Victim identity is <code>app_users</code>; staff identity is <code>vsms_users</code>. Community ownership/tenancy is via <code>serviceCenterId</code>.</p>
+<h2 id="11-api-integration-surface">11. API &amp; Integration Surface</h2>
+<h3 id="111-communities-base-webcommunities-vs360-and-mobilecommunities-">11.1 Communities — base <code>/web/communities</code> (VS360) and <code>/mobile/communities</code> (victim)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td>``</td><td>List communities (web <code>getCommunities</code> with page/pageSize/searchKey/isActive/isPrivate/type; mobile <code>getCommunitiesForApp</code>)</td><td>web: <code>allowOnly(&#x27;VS360&#x27;)</code>; mobile: auth</td></tr>
+<tr><td>GET</td><td><code>/:uid</code></td><td>Community detail</td><td>web/mobile</td></tr>
+<tr><td>GET</td><td><code>/:uid/joining-requests</code></td><td>Pending join requests</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+<tr><td>GET</td><td><code>/:uid/members</code></td><td>Member list</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+<tr><td>POST</td><td><code>/create</code></td><td>Create community (<code>newCommunityValidator</code>)</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>communities.add</code></td></tr>
+<tr><td>POST</td><td><code>/:communityUid/join-as-moderator</code></td><td>Staff joins as moderator</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+<tr><td>POST</td><td><code>/join/:communityId</code></td><td>Member joins (answers[])</td><td>mobile auth</td></tr>
+<tr><td>PATCH</td><td><code>/update/:uid</code></td><td>Update community</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>communities.edit</code></td></tr>
+<tr><td>PATCH</td><td><code>/:communityId/:memberId/approve-joining</code></td><td>Approve a join request</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>communities.edit</code></td></tr>
+<tr><td>PATCH</td><td><code>/:communityId/ban-member/:memberId</code></td><td>Ban a member</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>communities.edit</code></td></tr>
+<tr><td>PATCH</td><td><code>/:uid/change-status</code></td><td>Toggle community active/inactive</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>communities.edit</code></td></tr>
+<tr><td>PATCH</td><td><code>/:communityId/:staffId/remove-moderator</code></td><td>Remove a moderator</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>communities.edit</code></td></tr>
+<tr><td>DELETE</td><td><code>/:communityUid/leave</code></td><td>Leave community</td><td>web / mobile</td></tr>
+</tbody></table></div>
+<h3 id="112-group-chat-base-webcommunitiesgroup-chats-mobile-chatapi">11.2 Group Chat — base <code>/web/communities/group-chats</code> &amp; <code>/mobile/...</code> (<code>chatApi</code>)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/uids</code></td><td>Community UIDs the user has joined (GROUP_CHAT)</td><td>auth</td></tr>
+<tr><td>GET</td><td><code>/:uid</code></td><td>Group chat messages (paginated; flags reported msgs/members)</td><td>auth</td></tr>
+<tr><td>POST</td><td><code>/:uid/send-message</code></td><td>Send message (mobile allows files); auto text-moderation</td><td>auth</td></tr>
+<tr><td>PATCH</td><td><code>/deactivate/:reportId/:messageId</code></td><td>Deactivate a reported message (mark report REVIEWED)</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+<tr><td>PATCH</td><td><code>/deactivate/:messageId</code></td><td>Deactivate a message without a report</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+<tr><td>PATCH</td><td><code>/deactivate-and-ban-user/:communityId/:messageId/:memberId</code></td><td>Deactivate + ban sender</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+</tbody></table></div>
+<h3 id="113-posts-comments-base-webcommunitiesposts-mobile-chatapi">11.3 Posts &amp; Comments — base <code>/web/communities/posts</code> &amp; <code>/mobile/...</code> (<code>chatApi</code>)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/:uid</code></td><td>Posts of a community</td><td>auth</td></tr>
+<tr><td>GET</td><td><code>/:uid/comments</code> (post uid)</td><td>Comments of a post</td><td>auth</td></tr>
+<tr><td>POST</td><td><code>/:uid/create</code></td><td>Create post (validated)</td><td>auth</td></tr>
+<tr><td>POST</td><td><code>/:uid/create-comment</code> (post uid)</td><td>Create comment (validated)</td><td>auth</td></tr>
+<tr><td>PATCH</td><td><code>/:uid/update</code> / <code>/comments/:uid/update</code></td><td>Edit post / comment</td><td>author / staff</td></tr>
+<tr><td>PATCH</td><td><code>/:uid/change-status</code> / <code>/comments/:uid/change-status</code></td><td>Toggle post / comment status</td><td>staff</td></tr>
+<tr><td>PATCH</td><td><code>/deactivate/:reportId/:postId</code>, <code>/deactivate-and-ban-user/...</code>, <code>/comments/deactivate/...</code>, <code>/comments/deactivate-and-ban-user/...</code></td><td>Moderate: deactivate (+ban) posts/comments</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+</tbody></table></div>
+<h3 id="114-reports-base-webcommunitiesreports-mobile-standard">11.4 Reports — base <code>/web/communities/reports</code> &amp; <code>/mobile/...</code> (<code>standard</code>)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/:uid</code></td><td>Reports for a community</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+<tr><td>POST</td><td><code>/create/:uid</code></td><td>File a report against a post/comment/message/member</td><td>web + mobile</td></tr>
+<tr><td>PATCH</td><td><code>/:uid/issue-warning</code></td><td>Issue a warning to a reported member</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+</tbody></table></div>
+<h3 id="115-external-integrations">11.5 External Integrations</h3>
+<ul>
+<li><strong>Text moderation</strong> — <code>src/tools/text-moderator</code> (<code>textModerator.moderateText</code>): sanitizes all member-authored content prior to persistence; shared with Chat. Also provides PII/toxicity detection and anonymization utilities.</li>
+<li><strong>FCM (push)</strong> — <code>notificationServices</code> / <code>AppNotificationService</code>: pushes community notifications to victims; report warnings push via <code>notificationServices</code>.</li>
+<li><strong>Socket.IO</strong> — the <code>io</code> instance is threaded through send/moderation calls to emit real-time updates to the victim room (<code>app-notification-room</code>).</li>
+<li><strong>Azure Blob / file service</strong> — mobile group-chat message attachments (uploads handled by the platform file middleware/service).</li>
+</ul>
+<h2 id="12-rbac-permissions">12. RBAC &amp; Permissions</h2>
+<p>Communities is an agency (VS360) module with the fine-grained action map <code>communities</code> = {view, add, edit, delete}, defined in <code>role-permissions.js</code> (<code>vs360Modules</code>). The context gate <code>allowOnly(&#x27;VS360&#x27;)</code> restricts management/moderation routes to agency staff; the fine-grained <code>checkPermission(&#x27;communities&#x27;, action)</code> gate enforces the specific action. <code>SUPER_ADMIN</code> bypasses fine-grained checks. Victim (mobile) routes are auth-only (no RBAC flags) and are further constrained by community membership and privacy rules.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Action / Route area</th><th>Required permission</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>View communities, members, join requests, reports (<code>GET /communities*</code>, <code>/reports/:uid</code>)</td><td><code>communities.view</code> (+ <code>allowOnly(&#x27;VS360&#x27;)</code>)</td><td>Agency-scoped to <code>serviceCenterInfo.id</code>.</td></tr>
+<tr><td>Create community (<code>POST /communities/create</code>)</td><td><code>communities.add</code></td><td>Creator becomes <code>ADMIN</code> member.</td></tr>
+<tr><td>Edit community, approve join, ban member, change status, remove moderator, issue warning, moderate content</td><td><code>communities.edit</code></td><td>Covers membership management and moderation actions.</td></tr>
+<tr><td>Delete community (where exposed)</td><td><code>communities.delete</code></td><td>Destructive; agency admins only.</td></tr>
+<tr><td>Join as moderator (<code>POST /:uid/join-as-moderator</code>)</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> (staff)</td><td>Creates a <code>MODERATOR</code> member row.</td></tr>
+<tr><td>Victim join / leave / post / comment / message / report</td><td>Auth only (app user)</td><td>Gated by membership + community privacy; no RBAC flags.</td></tr>
+</tbody></table></div>
+<h2 id="13-non-functional-requirements">13. Non-Functional Requirements</h2>
+<h3 id="131-safety-content-moderation">13.1 Safety &amp; Content Moderation</h3>
+<ul>
+<li><strong>Automatic sanitization</strong>: 100% of member-authored text (group-chat messages, posts, comments) must pass through <code>textModerator.moderateText</code> before it is persisted or visible to other members. The sanitized version is what is stored.</li>
+<li><strong>Staff-only moderation controls</strong>: deactivation, banning, and warning are restricted to VS360 staff with <code>communities.edit</code>; victims can only report.</li>
+<li><strong>Report-driven review</strong>: reports create an auditable <code>PENDING</code>→<code>REVIEWED</code> trail; deactivation/ban notify the affected author.</li>
+<li><strong>Escalation</strong>: repeat or severe violations support a single deactivate-and-ban action to remove content and the offender together.</li>
+</ul>
+<h3 id="132-privacy-victim-safety">13.2 Privacy &amp; Victim Safety</h3>
+<ul>
+<li>Communities are agency-scoped; staff cannot view or manage another agency&#x27;s communities.</li>
+<li>Private communities gate entry behind staff approval and screening questions, protecting members from unvetted entrants.</li>
+<li>Member content and identity are exposed only within the community; there is no cross-community or cross-agency leakage.</li>
+<li>The victim app&#x27;s global safety features (NECX PIN app-lock, emergency-exit button, encrypted responses, secure storage) apply to community screens once enabled.</li>
+</ul>
+<h3 id="133-performance">13.3 Performance</h3>
+<ul>
+<li>Message, post, and comment lists are paginated; group-chat listing uses correlated subqueries to flag reported items without additional round-trips.</li>
+<li>Community/report routes use the <code>standard</code> rate limiter; group-chat and posts/comments routes use the <code>chatApi</code> limiter to protect high-volume messaging paths.</li>
+</ul>
+<h3 id="134-availability-reliability">13.4 Availability &amp; Reliability</h3>
+<ul>
+<li>Notification delivery is wrapped defensively: a failure to emit a socket event or send FCM is logged and never breaks the primary content/moderation transaction.</li>
+<li>Create-community is transactional (community + questions + admin/moderator rows commit atomically or roll back).</li>
+</ul>
+<h3 id="135-auditability">13.5 Auditability</h3>
+<ul>
+<li>Community create, join, message, and moderation actions write ActionLog entries.</li>
+<li>Reports persist reporter, target, context, and status, providing a moderation audit trail.</li>
+</ul>
+<h3 id="136-localization-accessibility">13.6 Localization &amp; Accessibility</h3>
+<ul>
+<li>The victim app supports multiple languages platform-wide; community screens should respect the user&#x27;s preferred language and translation utilities as with Chat.</li>
+<li>Client UIs should meet the platform&#x27;s accessibility standards (readable feeds, keyboard/screen-reader support on VS360).</li>
+</ul>
+<h3 id="137-compliance">13.7 Compliance</h3>
+<ul>
+<li>Content moderation and audit trails support the agency&#x27;s duty of care and any grant/reporting obligations around victim safety.</li>
+</ul>
+<h2 id="14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</h2>
+<h3 id="141-notifications">14.1 Notifications</h3>
+<p>App notifications to victims (via <code>AppNotificationService</code> / <code>appNotificationEvents.js</code>):</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Event type</th><th>Trigger</th><th>Recipient</th></tr></thead>
+<tbody>
+<tr><td><code>GROUP_CHAT_MESSAGE</code></td><td>New group-chat message</td><td>Community members</td></tr>
+<tr><td><code>COMMUNITY_POST</code></td><td>New post in a POST-type community</td><td>Community members</td></tr>
+<tr><td><code>COMMUNITY_POST_COMMENT</code></td><td>New comment on a post</td><td>Relevant members</td></tr>
+<tr><td><code>APPROVE_COMMUNITY_JOINING</code></td><td>Staff approve a join request</td><td>The applicant</td></tr>
+<tr><td><code>BAN_MEMBER</code></td><td>Staff ban a member</td><td>The banned member</td></tr>
+<tr><td><code>DELETE_MESSAGE</code> / <code>DELETE_MESSAGE_AND_BAN_MEMBER</code></td><td>Message deactivated (+ ban)</td><td>The message author</td></tr>
+<tr><td><code>DELETE_POST</code> / <code>DELETE_POST_AND_BAN_MEMBER</code></td><td>Post deactivated (+ ban)</td><td>The post author</td></tr>
+<tr><td><code>DELETE_COMMENT</code> / <code>DELETE_COMMENT_AND_BAN_MEMBER</code></td><td>Comment deactivated (+ ban)</td><td>The comment author</td></tr>
+<tr><td>Report warning</td><td>Staff issue a warning (<code>issueWarning</code>)</td><td>Reported member (writes <code>VictimNotifications</code> + FCM)</td></tr>
+</tbody></table></div>
+<p>Delivery combines a DB notification row, a Socket.IO emit to <code>app-notification-room</code>, and an FCM push. On the mobile side, <code>NotificationNavigator</code> routes community post/comment/group-chat notifications to the corresponding community screen.</p>
+<h3 id="142-reporting-kpis">14.2 Reporting &amp; KPIs</h3>
+<ul>
+<li><strong>Moderation dashboard signals</strong>: count of <code>PENDING</code> vs <code>REVIEWED</code> reports per community, time-to-action, and warnings/bans issued (from <code>community_reports</code> + moderation actions).</li>
+<li><strong>Engagement</strong>: active communities, members per community, posts/comments/messages per period, join-request approval rate and turnaround.</li>
+<li><strong>Safety</strong>: share of content auto-sanitized, and reported-content escape rate.</li>
+</ul>
+<h2 id="15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Type</th><th>Impact</th><th>Mitigation / Owner</th></tr></thead>
+<tbody>
+<tr><td>Victim community experience is hidden (tab/routes commented out)</td><td>Open Question</td><td>Members cannot access communities in production despite full backend + mobile implementation</td><td>Product decision to re-enable the tab/routes after a safety review; Victim App Lead + Product</td></tr>
+<tr><td>Reliance on <code>textModerator</code> accuracy for safety</td><td>Risk</td><td>Missed unsafe content could reach vulnerable members</td><td>Combine auto-sanitization with human report workflow; monitor escape rate; Trust &amp; Safety</td></tr>
+<tr><td>No media moderation on group-chat file attachments</td><td>Risk</td><td>Harmful images/files could be shared where files are allowed</td><td>Restrict/scan attachments; consider disabling files until image moderation exists; Engineering</td></tr>
+<tr><td>Ban semantics (&quot;removed/flagged&quot;) not fully specified</td><td>Open Question</td><td>Ambiguity on whether banned users can rejoin or are permanently blocked</td><td>Confirm ban model (soft-remove vs block) and enforce on join; Backend Lead</td></tr>
+<tr><td>Moderator capacity vs. volume</td><td>Risk</td><td>Slow report turnaround if communities grow faster than staffing</td><td>Set SLAs, surface report queues prominently, alerting; Agency Admin</td></tr>
+<tr><td>Posts/comments not passed through moderator in some paths</td><td>Open Question</td><td>Inconsistent sanitization coverage across content types</td><td>Verify sanitization is applied uniformly to posts/comments as it is to group chat; Engineering</td></tr>
+<tr><td>Deletion (<code>communities.delete</code>) behavior/exposure</td><td>Open Question</td><td>Unclear if hard-delete cascades to members/posts/reports</td><td>Define delete semantics (soft vs hard, cascade) before exposing; Backend Lead</td></tr>
+<tr><td>Single-agency ownership limits cross-agency communities</td><td>Assumption</td><td>Communities cannot span agencies</td><td>Accepted for v1; revisit if multi-agency demand emerges; Product</td></tr>
+<tr><td>Assumption: victims are authenticated app users only</td><td>Assumption</td><td>No anonymous participation</td><td>Accepted — aligns with safety model; Product</td></tr>
+</tbody></table></div>
+<h2 id="16-glossary">16. Glossary</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Community</td><td>An agency-run, moderated space for victims to connect; type <code>GROUP_CHAT</code> or <code>POST</code>.</td></tr>
+<tr><td>GROUP_CHAT community</td><td>A community whose interaction model is a real-time group message thread.</td></tr>
+<tr><td>POST community</td><td>A community whose interaction model is a feed of posts and comments.</td></tr>
+<tr><td>Member</td><td>A victim (app user) who has joined a community, role <code>MEMBER</code>.</td></tr>
+<tr><td>Moderator</td><td>Agency staff assigned to moderate a community, role <code>MODERATOR</code>.</td></tr>
+<tr><td>Admin (community)</td><td>The staff creator of a community, role <code>ADMIN</code> in <code>community_members</code>.</td></tr>
+<tr><td>Open / Public community</td><td>A community anyone (eligible) can join immediately (no approval).</td></tr>
+<tr><td>Private community</td><td>A community that requires staff approval of a join request before membership.</td></tr>
+<tr><td>Joining questions</td><td>Screening questions applicants answer when joining; may be mandatory.</td></tr>
+<tr><td>Join request</td><td>A pending application to join a private community (<code>community_joining_requests</code>).</td></tr>
+<tr><td>Report</td><td>A flag filed against a post, comment, message, or member for staff review (<code>community_reports</code>).</td></tr>
+<tr><td>Deactivate</td><td>Set content <code>isActive=false</code> so it is hidden from members (moderation).</td></tr>
+<tr><td>Ban</td><td>Remove/flag a member&#x27;s community membership, blocking further participation.</td></tr>
+<tr><td>Warning</td><td>A moderation notice sent to a reported member without removing them.</td></tr>
+<tr><td>Text moderator</td><td>The shared <code>text-moderator</code> tool that sanitizes/flags user content.</td></tr>
+<tr><td>VS360 / VSMS</td><td>The agency-staff web application and its staff identity (<code>vsms_users</code>).</td></tr>
+<tr><td>App user / Victim</td><td>A registered mobile-app user (survivor of crime), identity <code>app_users</code>.</td></tr>
+<tr><td>Service center / Agency</td><td>The tenant that owns a community; scopes all staff access.</td></tr>
+<tr><td>ActionLog</td><td>Audit record written for community create/join/message/moderation actions.</td></tr>
+<tr><td>FCM</td><td>Firebase Cloud Messaging, used for push notifications to victims.</td></tr>
+</tbody></table></div>
+      </div>
+      <nav class="prevnext"><a class="pn prev" href="P18.html"><span>← Previous</span><b>Inquiries Management</b></a><a class="pn next" href="P20.html"><span>Next →</span><b>Service Management</b></a></nav>
+      <footer class="doc-foot">NECX Inc — Confidential · Generated 2026-07-05 · NECX Communities</footer>
+    </article>
+  </main>
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav class="toc-nav"><a class="toc-1" href="#1-document-control">1. Document Control</a>
+<a class="toc-1" href="#2-executive-summary">2. Executive Summary</a>
+<a class="toc-1" href="#3-product-overview-vision">3. Product Overview &amp; Vision</a>
+<a class="toc-2" href="#31-problem-statement">3.1 Problem Statement</a>
+<a class="toc-2" href="#32-product-vision">3.2 Product Vision</a>
+<a class="toc-2" href="#33-position-in-the-necx-ecosystem">3.3 Position in the NECX Ecosystem</a>
+<a class="toc-1" href="#4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</a>
+<a class="toc-2" href="#41-goals-objectives">4.1 Goals &amp; Objectives</a>
+<a class="toc-2" href="#42-success-metrics">4.2 Success Metrics</a>
+<a class="toc-1" href="#5-scope">5. Scope</a>
+<a class="toc-2" href="#51-in-scope">5.1 In Scope</a>
+<a class="toc-2" href="#52-out-of-scope-not-yet-enabled">5.2 Out of Scope / Not Yet Enabled</a>
+<a class="toc-1" href="#6-personas-user-roles">6. Personas &amp; User Roles</a>
+<a class="toc-2" href="#61-persona-narratives">6.1 Persona Narratives</a>
+<a class="toc-1" href="#7-system-context-architecture">7. System Context &amp; Architecture</a>
+<a class="toc-2" href="#71-tech-stack">7.1 Tech Stack</a>
+<a class="toc-2" href="#72-client-to-backend-contract">7.2 Client-to-Backend Contract</a>
+<a class="toc-2" href="#73-identity-authorship-tenancy">7.3 Identity, Authorship &amp; Tenancy</a>
+<a class="toc-2" href="#74-real-time-notifications">7.4 Real-Time &amp; Notifications</a>
+<a class="toc-2" href="#75-content-safety-pipeline">7.5 Content Safety Pipeline</a>
+<a class="toc-1" href="#8-functional-requirements">8. Functional Requirements</a>
+<a class="toc-2" href="#81-community-lifecycle-configuration-vs360">8.1 Community Lifecycle &amp; Configuration (VS360)</a>
+<a class="toc-2" href="#82-joining-questions-answers">8.2 Joining Questions &amp; Answers</a>
+<a class="toc-2" href="#83-membership-join-flow">8.3 Membership &amp; Join Flow</a>
+<a class="toc-2" href="#84-moderator-management">8.4 Moderator Management</a>
+<a class="toc-2" href="#85-posts-comments-post-type-communities">8.5 Posts &amp; Comments (POST-type communities)</a>
+<a class="toc-2" href="#86-group-chat-groupchat-type-communities">8.6 Group Chat (GROUP_CHAT-type communities)</a>
+<a class="toc-2" href="#87-reports-moderation-workflow">8.7 Reports &amp; Moderation Workflow</a>
+<a class="toc-2" href="#88-victim-app-experience-currently-hidden">8.8 Victim-App Experience (currently hidden)</a>
+<a class="toc-1" href="#9-detailed-user-system-flows">9. Detailed User &amp; System Flows</a>
+<a class="toc-2" href="#91-create-a-community-with-joining-questions-staff-vs360">9.1 Create a Community with Joining Questions (Staff, VS360)</a>
+<a class="toc-2" href="#92-victim-requests-to-join-a-private-community-and-is-approved">9.2 Victim Requests to Join a Private Community and Is Approved</a>
+<a class="toc-2" href="#93-post-and-comment-in-a-post-type-community">9.3 Post and Comment in a POST-type Community</a>
+<a class="toc-2" href="#94-send-a-message-in-a-groupchat-community">9.4 Send a Message in a GROUP_CHAT Community</a>
+<a class="toc-2" href="#95-report-and-moderate-content-report-deactivate-ban-warn">9.5 Report and Moderate Content (Report → Deactivate / Ban / Warn)</a>
+<a class="toc-2" href="#96-ban-a-member-and-leave-a-community">9.6 Ban a Member and Leave a Community</a>
+<a class="toc-1" href="#10-data-model">10. Data Model</a>
+<a class="toc-1" href="#11-api-integration-surface">11. API &amp; Integration Surface</a>
+<a class="toc-2" href="#111-communities-base-webcommunities-vs360-and-mobilecommunities-">11.1 Communities — base `/web/communities` (VS360) and `/mobile/communities` (victim)</a>
+<a class="toc-2" href="#112-group-chat-base-webcommunitiesgroup-chats-mobile-chatapi">11.2 Group Chat — base `/web/communities/group-chats` &amp; `/mobile/...` (`chatApi`)</a>
+<a class="toc-2" href="#113-posts-comments-base-webcommunitiesposts-mobile-chatapi">11.3 Posts &amp; Comments — base `/web/communities/posts` &amp; `/mobile/...` (`chatApi`)</a>
+<a class="toc-2" href="#114-reports-base-webcommunitiesreports-mobile-standard">11.4 Reports — base `/web/communities/reports` &amp; `/mobile/...` (`standard`)</a>
+<a class="toc-2" href="#115-external-integrations">11.5 External Integrations</a>
+<a class="toc-1" href="#12-rbac-permissions">12. RBAC &amp; Permissions</a>
+<a class="toc-1" href="#13-non-functional-requirements">13. Non-Functional Requirements</a>
+<a class="toc-2" href="#131-safety-content-moderation">13.1 Safety &amp; Content Moderation</a>
+<a class="toc-2" href="#132-privacy-victim-safety">13.2 Privacy &amp; Victim Safety</a>
+<a class="toc-2" href="#133-performance">13.3 Performance</a>
+<a class="toc-2" href="#134-availability-reliability">13.4 Availability &amp; Reliability</a>
+<a class="toc-2" href="#135-auditability">13.5 Auditability</a>
+<a class="toc-2" href="#136-localization-accessibility">13.6 Localization &amp; Accessibility</a>
+<a class="toc-2" href="#137-compliance">13.7 Compliance</a>
+<a class="toc-1" href="#14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</a>
+<a class="toc-2" href="#141-notifications">14.1 Notifications</a>
+<a class="toc-2" href="#142-reporting-kpis">14.2 Reporting &amp; KPIs</a>
+<a class="toc-1" href="#15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</a>
+<a class="toc-1" href="#16-glossary">16. Glossary</a>
+</nav>
+  </aside>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

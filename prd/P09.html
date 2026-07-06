@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NECX Staff Time Tracking · NECX PRD</title>
+<meta name="description" content="Staff Timer — per-staff time capture against cases, projects and PMT grants">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="prd-page">
+<header class="topbar">
+  <button class="hamburger" aria-label="Menu" onclick="toggleNav()">&#9776;</button>
+  <a class="brand" href="../index.html"><svg class="logo" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 L35 10 V22 C35 31 28 37 20 39 C12 37 5 31 5 22 V10 Z" fill="var(--brand)"/><path d="M13 27 V14 L20 22 V14 M27 14 V27 L20 19" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="brand-text">NECX<span class="brand-sub">Product Requirements</span></span></a>
+  <div class="topbar-spacer"></div>
+  <a class="top-link" href="../index.html">Home</a>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><span class="ic-sun">☀</span><span class="ic-moon">☾</span></button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-search"><input type="search" id="navSearch" placeholder="Filter documents…" oninput="filterNav(this.value)"></div>
+    <nav class="nav"><div class="nav-group"><div class="nav-group-title">Platform &amp; Applications</div><a class="nav-item " href="P01.html" data-search="necx platform — core system whole-platform prd: unified backend, four clients, multi-tenancy, identity/rbac, and the end-to-end case lifecycle."><span class="nav-num">01</span><span class="nav-text">Platform — Core System</span></a>
+<a class="nav-item " href="P02.html" data-search="necx workspace — staff mobile app agency staff mobile app (flutter/riverpod) — the on-the-go companion to the vs360 web dashboard."><span class="nav-num">02</span><span class="nav-text">Workspace — Staff Mobile App</span></a>
+<a class="nav-item " href="P03.html" data-search="necx victim app — survivor mobile app victim / survivor mobile app (flutter/getx) — discover services, request help, chat, find shelter, e-sign."><span class="nav-num">03</span><span class="nav-text">Victim App — Survivor Mobile App</span></a>
+<a class="nav-item " href="P04.html" data-search="vs360 — agency web dashboard vs360 — the agency staff web dashboard (react/vite) and primary caseworker workspace."><span class="nav-num">04</span><span class="nav-text">VS360 — Agency Web Dashboard</span></a>
+</div>
+<div class="nav-group"><div class="nav-group-title">VS360 Feature Modules</div><a class="nav-item " href="P05.html" data-search="necx case management service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes."><span class="nav-num">05</span><span class="nav-text">Case Management</span></a>
+<a class="nav-item " href="P06.html" data-search="necx shelter management shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search."><span class="nav-num">06</span><span class="nav-text">Shelter Management</span></a>
+<a class="nav-item " href="P07.html" data-search="necx hotline management twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights."><span class="nav-num">07</span><span class="nav-text">Hotline Management</span></a>
+<a class="nav-item " href="P08.html" data-search="necx calendar &amp; appointments reminders, tasks and case-linked appointments in the vs360 tools calendar."><span class="nav-num">08</span><span class="nav-text">Calendar &amp; Appointments</span></a>
+<a class="nav-item active" href="P09.html" data-search="necx staff time tracking staff time tracking: clock in/out, timesheets, and grant/pmt time attribution."><span class="nav-num">09</span><span class="nav-text">Staff Time Tracking</span></a>
+<a class="nav-item " href="P10.html" data-search="necx agency chat real-time advocate↔victim messaging tied to service threads and cases."><span class="nav-num">10</span><span class="nav-text">Agency Chat</span></a>
+<a class="nav-item " href="P11.html" data-search="necx internal chat staff-to-staff messaging within an agency, real-time over socket.io."><span class="nav-num">11</span><span class="nav-text">Internal Chat</span></a>
+<a class="nav-item " href="P12.html" data-search="necx rbac &amp; user management roles, the module/action permission matrix, plan seats, and multi-layer enforcement."><span class="nav-num">12</span><span class="nav-text">RBAC &amp; User Management</span></a>
+<a class="nav-item " href="P13.html" data-search="necx notes center agency-scoped, cross-case view over internal (caseworker-only) case notes."><span class="nav-num">13</span><span class="nav-text">Notes Center</span></a>
+<a class="nav-item " href="P14.html" data-search="necx drive google-drive-style cloud file storage backed by azure blob, with quotas and analytics."><span class="nav-num">14</span><span class="nav-text">Drive</span></a>
+<a class="nav-item " href="P15.html" data-search="necx ai report builder pmt/grant reporting plus ai-assisted custom report generation with accuracy validation."><span class="nav-num">15</span><span class="nav-text">AI Report Builder</span></a>
+<a class="nav-item " href="P16.html" data-search="necx e-sign &amp; document center prepare, request, sign and pdf-stamp case documents with an audit trail."><span class="nav-num">16</span><span class="nav-text">E-Sign &amp; Document Center</span></a>
+<a class="nav-item " href="P17.html" data-search="necx referrals &amp; partnerships inter-agency network: partnerships, invitations, and consent-based case referrals."><span class="nav-num">17</span><span class="nav-text">Referrals &amp; Partnerships</span></a>
+<a class="nav-item " href="P18.html" data-search="necx inquiries management intake and triage of inquiries / requests-to-connect before they become cases."><span class="nav-num">18</span><span class="nav-text">Inquiries Management</span></a>
+<a class="nav-item " href="P19.html" data-search="necx communities agency-run community spaces: joining questions, membership, posts and moderation."><span class="nav-num">19</span><span class="nav-text">Communities</span></a>
+<a class="nav-item " href="P20.html" data-search="necx service management service catalog, categories, and the per-service claim-question (intake) builder."><span class="nav-num">20</span><span class="nav-text">Service Management</span></a>
+</div>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim" onclick="toggleNav()"></div>
+  
+  <main class="content">
+    <article class="doc">
+      <div class="doc-eyebrow">Product Requirements Document · NECX Inc — Confidential</div>
+      <h1 class="doc-title">NECX Staff Time Tracking</h1>
+      <p class="doc-subtitle">Staff Timer — per-staff time capture against cases, projects and PMT grants</p>
+      <div class="doc-meta"><span class="chip">Version: <b>1.0</b></span><span class="chip">Status: <b>Baseline</b></span><span class="chip">Owner: <b>NECX Product Management</b></span><a class="dl-btn" href="../downloads/09_VS360_Feature_Staff_Time_Tracking.docx" download>⬇ Download DOCX</a></div>
+      <hr class="doc-rule">
+      <div class="doc-body">
+      <h2 id="1-document-control">1. Document Control</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td>NECX — Coordinated Victim Services Platform</td></tr>
+<tr><td>Module</td><td>Staff Time Tracking (Staff Timer)</td></tr>
+<tr><td>Version</td><td>1.0</td></tr>
+<tr><td>Status</td><td>Baseline</td></tr>
+<tr><td>Author</td><td>NECX Product Management</td></tr>
+<tr><td>Reviewers</td><td>Backend Engineering, VS360 Web Engineering, Grants/PMT Reporting, Security &amp; Privacy</td></tr>
+<tr><td>Last Updated</td><td>2026-07-05</td></tr>
+<tr><td>Related Documents</td><td>NECX Backend Platform Core &amp; RBAC Catalog; VS360 Ops Frontend Reference; PMT Grants &amp; Reporting PRD; Reminders/Tasks PRD</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>1.0</td><td>2026-07-05</td><td>NECX Product Management</td><td>Baseline PRD for Staff Time Tracking, derived from the <code>staff-time</code> backend module and the VS360 web Staff Timer / Time Tracking surfaces on the analyzed <code>develop</code> branch.</td></tr>
+</tbody></table></div>
+<h2 id="2-executive-summary">2. Executive Summary</h2>
+<p>Staff Time Tracking (branded internally as the <strong>Staff Timer</strong>) is the NECX capability that lets agency staff record the hours they spend on their work and attribute those hours to a specific project, case, or grant. It exists so that agencies can demonstrate how their people&#x27;s time is deployed — a foundational requirement for grant compliance (particularly PMT-funded grants) and for general program and project accounting.</p>
+<p>NECX serves victims and survivors of crime and the agencies, advocates and caseworkers who assist them. Much of that assistance is funded by grants that require the funded agency to report the effort expended against each award. The Staff Timer gives advocates and caseworkers two low-friction ways to capture that effort: a live start/stop timer that lives in the application header and follows them through their workday, and a manual timesheet where they can add or correct entries after the fact. Every entry is attributed to a project — which may be a case/claim or any other selectable project — and, when the work is grant-funded, to a specific PMT grant.</p>
+<p>The module is deliberately simple. It enforces exactly one active timer per user, computes duration automatically on clock-out, scopes all data to the staff member and their agency (service center), and exposes completed entries for date-ranged reporting and export. It has no approval workflow, no payroll disbursement, and no cross-agency visibility on the analyzed branch; it is a time-capture and reporting instrument, not a payroll engine.</p>
+<p>This document specifies the Staff Timer as it exists in the unified NECX backend (<code>staff-time</code> module) and the VS360 web client (Staff Timer widget and Time Tracking page), and it flags — in Scope and Risks — the capabilities that are commonly expected of time-tracking systems but are not present on the analyzed branch.</p>
+<h2 id="3-product-overview-vision">3. Product Overview &amp; Vision</h2>
+<h3 id="31-problem-statement">3.1 Problem Statement</h3>
+<p>Agencies funded by grants must account for how staff time is spent, both to satisfy funder reporting (e.g., PMT grant reports) and to manage their own programs. Without an integrated tool, staff resort to spreadsheets or memory, producing inaccurate, hard-to-aggregate records that are difficult to defend in a grant audit. Advocates also work across many cases in a single day, so any tool that demands heavy data entry will not be used consistently. The problem is therefore twofold: capture must be effortless in the moment, and the resulting data must be clean enough to roll up for grant and project reporting.</p>
+<h3 id="32-product-vision">3.2 Product Vision</h3>
+<p>Staff Time Tracking makes recording effort a background activity: a single click starts a timer attributed to whatever the staff member is working on, the timer persists across page loads and follows them in the app header, and a single click stops it and records the duration. For work that was not timed live, a manual timesheet lets staff add or correct entries. The captured hours become a defensible, agency-scoped record that can be filtered by date range, summarized (today / this week / this month), exported to CSV/XLS, and attributed to PMT grants for grant reporting.</p>
+<h3 id="33-position-in-the-necx-ecosystem">3.3 Position in the NECX Ecosystem</h3>
+<p>NECX is a single unified backend serving four clients: the Victim mobile app, the Workspace mobile app, the VS360 web staff application, and NECX Admin. Staff Time Tracking is a <strong>VS360 web</strong> capability. Its backend module (<code>staff-time</code>) exposes a web router guarded by <code>allowOnly(&#x27;VS360&#x27;)</code>, so only agency staff (VSMS identities operating in the <code>VS360</code> context) interact with it. It relates outward to two other parts of the ecosystem:</p>
+<ul>
+<li><strong>Cases/Claims</strong> — a time entry&#x27;s &quot;project&quot; can be a service claim (case), letting an agency see effort by case.</li>
+<li><strong>PMT Grants &amp; Reporting</strong> — when a project is grant-funded, the entry carries a <code>grantId</code> linking it to a <code>pmt_grants</code> record, feeding grant/PMT reporting.</li>
+</ul>
+<p>There is no direct payroll integration on the analyzed branch (see Scope and Risks).</p>
+<h2 id="4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</h2>
+<h3 id="41-goals-objectives">4.1 Goals &amp; Objectives</h3>
+<ul>
+<li>Provide effortless, in-the-moment time capture via a persistent header timer with one active timer per user.</li>
+<li>Allow after-the-fact capture and correction through a manual timesheet with edit and delete.</li>
+<li>Attribute every hour to a project, and — where applicable — to a case/claim or a specific PMT grant.</li>
+<li>Produce clean, agency-scoped, date-rangeable time data suitable for grant/PMT and general project reporting.</li>
+<li>Enforce strict tenancy and per-user data ownership so staff see only their own agency&#x27;s, and their own, time.</li>
+<li>Offer at-a-glance summaries (today / this week / this month) and export (CSV/XLS) for offline reporting.</li>
+</ul>
+<h3 id="42-success-metrics">4.2 Success Metrics</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Definition</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>Timer adoption</td><td>% of active VS360 staff who record at least one timed or manual entry per working week</td><td>≥ 80%</td></tr>
+<tr><td>Attribution completeness</td><td>% of completed entries with a valid project (and grantId where grant-funded)</td><td>≥ 95%</td></tr>
+<tr><td>Grant-attributed hours</td><td>% of grant-program staff hours captured against a PMT grant vs. estimated total</td><td>≥ 90%</td></tr>
+<tr><td>Capture friction</td><td>Median clicks to start a timer from idle state</td><td>≤ 3</td></tr>
+<tr><td>Timer resilience</td><td>% of running timers correctly restored after a page reload / re-login</td><td>100%</td></tr>
+<tr><td>Data integrity</td><td>% of completed entries with <code>durationMinutes ≥ 1</code> and consistent start/end</td><td>100%</td></tr>
+<tr><td>Export success</td><td>% of timesheet export attempts that produce a valid CSV/XLS file</td><td>≥ 99%</td></tr>
+</tbody></table></div>
+<h2 id="5-scope">5. Scope</h2>
+<h3 id="51-in-scope">5.1 In Scope</h3>
+<ul>
+<li><strong>Live start/stop timer</strong> in the VS360 header: start against a selected project, running badge (HH:MM:SS), restore on mount, stop with optional notes.</li>
+<li><strong>One active timer per user</strong>: starting a new timer auto-completes any existing active timer for that user.</li>
+<li><strong>Manual timesheet entries</strong>: add a completed entry for a chosen date with hours/minutes and notes.</li>
+<li><strong>Entry management</strong>: edit and delete existing entries.</li>
+<li><strong>Project attribution</strong>: <code>projectType</code>, <code>projectId</code>, <code>projectName</code>; when <code>projectType=&#x27;PMT_GRANT&#x27;</code>, the entry records a <code>grantId</code> → <code>pmt_grants</code>.</li>
+<li><strong>Reporting surface</strong>: list completed entries filtered by date range; client-side summary cards (today / this week / this month); CSV/XLS export.</li>
+<li><strong>Automatic duration</strong>: computed on clock-out as <code>max(round(now − startTime in minutes), 1)</code>.</li>
+<li><strong>Tenancy &amp; ownership</strong>: all entries scoped to the acting user and their service center (agency).</li>
+<li><strong>RBAC</strong>: gated by <code>allowOnly(&#x27;VS360&#x27;)</code> context and the <code>time.view</code> fine-grained permission.</li>
+</ul>
+<h3 id="52-out-of-scope">5.2 Out of Scope</h3>
+<p>The following are either explicitly not built on the analyzed branch or belong to adjacent modules. They are called out so the reader does not assume them.</p>
+<ul>
+<li><strong>Payroll disbursement / pay calculation.</strong> The module records duration only; it does not compute pay, apply pay rates, or integrate with any payroll system. Feeding payroll is a potential downstream use of the exported data, not a built feature.</li>
+<li><strong>Approval / timesheet sign-off workflow.</strong> There is no supervisor review, submission, lock, or approval state — entries are <code>ACTIVE</code> or <code>COMPLETED</code> only, and staff can edit/delete their own completed entries freely.</li>
+<li><strong>Overtime, breaks, leave, holidays, or scheduling rules.</strong> No shift definitions, break tracking, or rounding policies beyond the minimum-one-minute floor.</li>
+<li><strong>Cross-agency or manager roll-up views.</strong> Reporting is scoped to the acting user + their service center; there is no built-in supervisor view of other staff members&#x27; timesheets on the analyzed branch.</li>
+<li><strong>Automatic association of a timer to task/case status changes.</strong> Association to a case is via selecting it as the &quot;project&quot;; the timer does not auto-attach based on which case screen the user is viewing.</li>
+<li><strong>Real-time collaboration events.</strong> The module is standard REST with client-side query invalidation; there are no socket events for time entries.</li>
+<li><strong>Idle detection / auto-stop on inactivity.</strong> A running timer continues until explicitly stopped or superseded by a new timer.</li>
+</ul>
+<div class="callout warn"><div class="callout-title">⚠ Analyzed-branch caveat</div><div class="callout-body">Several time-tracking capabilities that stakeholders may expect — payroll integration, approval workflows, and manager roll-up dashboards — are absent on the analyzed branch. Treat them as future work; see Section 15 (Risks &amp; Open Questions).</div></div>
+<h2 id="6-personas-user-roles">6. Personas &amp; User Roles</h2>
+<h3 id="61-roles">6.1 Roles</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Role</th><th>Description</th><th>Key permissions</th></tr></thead>
+<tbody>
+<tr><td>Agency Staff / Advocate / Caseworker (VSMS)</td><td>Front-line staff who deliver services and must record effort against cases, projects and grants</td><td><code>time.view</code> under <code>VS360</code> context; can create/read/update/delete their own entries</td></tr>
+<tr><td>Agency Administrator / Program Manager (VSMS)</td><td>Senior agency staff overseeing programs and grant reporting; may configure roles and pull reports</td><td><code>time.view</code>; <code>reports.pmt_reports</code> for PMT reporting; role management for their agency</td></tr>
+<tr><td>NECX Super Admin</td><td>Platform-level administrator</td><td>Bypasses fine-grained permission checks (<code>SUPER_ADMIN</code>); the <code>staff-time</code> routes themselves are <code>VS360</code>-context and not exposed to the ADMIN client on the analyzed branch</td></tr>
+</tbody></table></div>
+<h3 id="62-persona-narratives">6.2 Persona Narratives</h3>
+<p><strong>Dana, Victim Advocate.</strong> Dana works across six cases in a typical day. Each morning she starts the header timer against her first case, and when she switches cases she starts a new timer — NECX automatically closes the previous one. At the end of the day she reviews her Time Tracking page, corrects one entry she forgot to stop, and moves on. She never opens a spreadsheet.</p>
+<p><strong>Marcus, Program Manager.</strong> Marcus is responsible for a PMT-funded program. He needs to show the funder how many staff hours went to the grant this quarter. Because advocates attribute grant work to the PMT grant, Marcus can filter completed entries by date range and export them, then reconcile hours against the grant report.</p>
+<p><strong>Priya, Agency Administrator.</strong> Priya provisions staff roles for her agency. She grants the <code>time.view</code> permission to the roles that should use the timer, and confirms that the timer only surfaces for those staff.</p>
+<h2 id="7-system-context-architecture">7. System Context &amp; Architecture</h2>
+<h3 id="71-technology-stack">7.1 Technology Stack</h3>
+<p>The Staff Timer is part of the unified <code>necx-backend_v2</code> API: Node.js + Express (ESM), Objection/Knex over PostgreSQL, with the standard cross-cutting middleware chain. The consuming client is the VS360 web staff application (React + TanStack Query).</p>
+<ul>
+<li><strong>Backend module</strong>: <code>src/apps/staff-time/staff-time.{routes,controller,services}.js</code>; model <code>StaffTimeEntries</code> over table <code>staff_time_entries</code>.</li>
+<li><strong>Frontend</strong>: page <code>src/pages/StaffTime/StaffTimeManagement.jsx</code> (the Time Tracking route); global header widget <code>src/components/global/StaffTimer.jsx</code>; project options hook <code>src/hooks/useProjectOptions.js</code>; API client <code>src/services/staffTime.js</code> (base <code>/staff-time</code>).</li>
+</ul>
+<h3 id="72-how-it-talks-to-the-backend">7.2 How It Talks to the Backend</h3>
+<p>The frontend calls the web router mounted at <code>/web/staff-time</code> (versioned <code>v2</code>), guarded by <code>allowOnly(&#x27;VS360&#x27;)</code>. Requests traverse the typical middleware chain: rate-limiter → auth (populates <code>req.issuer</code>) → context-middleware → <code>allowOnly(&#x27;VS360&#x27;)</code> → permission-middleware (<code>time.view</code>) → validator (Joi) → controller → service → model. Responses may be AES-encrypted by the encryption middleware and decrypted client-side, consistent with the rest of the platform.</p>
+<p>The acting identity is a VSMS user; <code>req.issuer</code> carries the user id/uid, <code>roleInfo</code> (context + permission map) and <code>serviceCenterInfo</code> (the agency). The service uses these to stamp <code>userId</code> and <code>serviceCenterId</code> on every entry and to scope all reads.</p>
+<h3 id="73-real-time-notifications">7.3 Real-Time &amp; Notifications</h3>
+<p>The module is standard REST with <strong>no socket events</strong>. The header widget keeps the running timer visually live by ticking every second on the client, seeded from the server-provided <code>startTime</code>. After mutations, the client invalidates the relevant TanStack Query caches (active timer, timesheet list) to refresh. There are no in-app, socket, FCM, or email notifications tied to time entries on the analyzed branch.</p>
+<h3 id="74-tenancy">7.4 Tenancy</h3>
+<p>Multi-tenancy is enforced at the service layer: entries are always filtered and stamped by <code>issuer.serviceCenterInfo.id</code> (agency) and by the acting <code>userId</code>. A VS360 user only ever sees and edits their own time within their own agency. There is no cross-tenant or cross-user access path in the module.</p>
+<h2 id="8-functional-requirements">8. Functional Requirements</h2>
+<h3 id="81-live-timer-clock-in-clock-out">8.1 Live Timer (Clock In / Clock Out)</h3>
+<p>The header widget (<code>StaffTimer.jsx</code>) is the primary capture path. On mount it calls <code>GET /staff-time/active</code> to restore any running timer and, if one exists, ticks a running badge (HH:MM:SS) computed from <code>startTime</code>. From an idle state the user opens a &quot;Start Timer&quot; popover, selects a project (via <code>useProjectOptions</code>), and starts the timer. Stopping opens a modal showing the project and elapsed duration, accepts optional notes, and completes the entry.</p>
+<p>Server behavior: <strong>start</strong> (<code>startTimer</code>) first patches any existing <code>ACTIVE</code> entry for the user to <code>COMPLETED</code>, then inserts a new <code>ACTIVE</code> row with <code>startTime = now</code>; <code>grantId</code> is populated when <code>projectType=&#x27;PMT_GRANT&#x27;</code>. <strong>Stop</strong> (<code>stopTimer</code>) finds the user&#x27;s active row by <code>uid</code>, computes <code>durationMinutes = max(round(now − startTime in minutes), 1)</code>, sets <code>endTime</code>, saves <code>notes</code>, and marks status <code>COMPLETED</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-TIMER-01</td><td>On widget mount, <code>GET /staff-time/active</code> shall return the user&#x27;s single running timer or null; if present, the client shall display a live HH:MM:SS badge seeded from <code>startTime</code>.</td><td>Must</td></tr>
+<tr><td>FR-TIMER-02</td><td>Starting a timer (<code>POST /staff-time/start</code>) shall accept <code>projectType</code>, <code>projectId</code>, <code>projectName</code> and create an <code>ACTIVE</code> entry with <code>startTime = now</code>.</td><td>Must</td></tr>
+<tr><td>FR-TIMER-03</td><td>Starting a timer shall first auto-complete any existing <code>ACTIVE</code> entry for the same user (enforcing one active timer per user).</td><td>Must</td></tr>
+<tr><td>FR-TIMER-04</td><td>When <code>projectType=&#x27;PMT_GRANT&#x27;</code>, the entry shall record the associated <code>grantId</code> (→ <code>pmt_grants</code>).</td><td>Must</td></tr>
+<tr><td>FR-TIMER-05</td><td>Stopping a timer (<code>PATCH /staff-time/stop/:uid</code>) shall compute <code>durationMinutes = max(round(now − startTime), 1)</code>, set <code>endTime</code>, save optional <code>notes</code>, and set status <code>COMPLETED</code>.</td><td>Must</td></tr>
+<tr><td>FR-TIMER-06</td><td>The timer shall persist across page reloads and re-login by virtue of server-side <code>ACTIVE</code> state (no reliance on client storage).</td><td>Must</td></tr>
+<tr><td>FR-TIMER-07</td><td>The minimum recorded duration for any stopped timer shall be 1 minute.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="82-associating-time-to-cases-projects-grants">8.2 Associating Time to Cases, Projects &amp; Grants</h3>
+<p>Every entry is attributed to a &quot;project,&quot; which the client resolves via <code>useProjectOptions</code>. A project may be a case/claim or another selectable project type. The trio <code>projectType</code> / <code>projectId</code> / <code>projectName</code> is stored on the entry; grant-funded work additionally sets <code>grantId</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-ASSOC-01</td><td>The client shall let the user choose a project from available options (cases/claims and other project types) when starting a timer or creating a manual entry.</td><td>Must</td></tr>
+<tr><td>FR-ASSOC-02</td><td>The entry shall persist <code>projectType</code>, <code>projectId</code>, and <code>projectName</code>.</td><td>Must</td></tr>
+<tr><td>FR-ASSOC-03</td><td>Switching work shall be modeled as starting a new timer against the new project, which auto-completes the prior entry (see FR-TIMER-03).</td><td>Must</td></tr>
+<tr><td>FR-ASSOC-04</td><td>For <code>projectType=&#x27;PMT_GRANT&#x27;</code>, <code>grantId</code> shall be set so the hours feed PMT grant reporting.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="83-manual-timesheet-entries">8.3 Manual Timesheet Entries</h3>
+<p>For work not timed live, staff add completed entries. The server (<code>manual</code>) builds a <code>startTime</code> at 09:00 on the given date and <code>endTime = startTime + durationMinutes</code>, storing the entry as <code>COMPLETED</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-MANUAL-01</td><td><code>POST /staff-time/manual</code> shall accept <code>projectType</code>, <code>projectId</code>, <code>projectName</code>, <code>date</code>, <code>durationMinutes</code>, <code>notes</code> and create a <code>COMPLETED</code> entry.</td><td>Must</td></tr>
+<tr><td>FR-MANUAL-02</td><td>The manual entry&#x27;s <code>startTime</code> shall be set to 09:00 on the given date and <code>endTime = startTime + durationMinutes</code>.</td><td>Must</td></tr>
+<tr><td>FR-MANUAL-03</td><td>The manual-entry form shall let staff input duration as hours + minutes and convert to <code>durationMinutes</code>.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="84-editing-deleting-entries">8.4 Editing &amp; Deleting Entries</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-EDIT-01</td><td><code>PATCH /staff-time/:uid</code> shall update an existing entry (same fields as manual entry).</td><td>Must</td></tr>
+<tr><td>FR-EDIT-02</td><td><code>DELETE /staff-time/:uid</code> shall delete an entry.</td><td>Must</td></tr>
+<tr><td>FR-EDIT-03</td><td>Edit and delete shall be restricted to entries owned by the acting user within their agency.</td><td>Must</td></tr>
+<tr><td>FR-EDIT-04</td><td>After any create/update/delete/stop, the client shall invalidate and refresh the timesheet list and summaries.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="85-timesheet-summaries-export">8.5 Timesheet, Summaries &amp; Export</h3>
+<p>The Time Tracking page (<code>StaffTimeManagement.jsx</code>) lists completed entries and provides summaries and export.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SHEET-01</td><td><code>GET /staff-time?startDate&amp;endDate</code> shall return the user&#x27;s <code>COMPLETED</code> entries within the range, scoped to user + service center.</td><td>Must</td></tr>
+<tr><td>FR-SHEET-02</td><td>The page shall present a date-range filter and a paginated table (Date, Project, Duration, Notes, Actions).</td><td>Must</td></tr>
+<tr><td>FR-SHEET-03</td><td>The page shall display summary cards for Today / This Week / This Month, computed client-side from returned entries.</td><td>Should</td></tr>
+<tr><td>FR-SHEET-04</td><td>The page shall support export of the timesheet to CSV/XLS (<code>ExportCsvXls</code>).</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="86-reporting-aggregation-grantpmt-feed">8.6 Reporting Aggregation &amp; Grant/PMT Feed</h3>
+<p>The service <code>getTimeEntries</code> returns completed entries scoped to the user and their service center, optionally filtered by date range. Because grant-funded entries carry <code>grantId</code>, the captured hours can be attributed by project and by PMT grant, supporting PMT grant reporting and general project accounting.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-RPT-01</td><td>Completed entries shall be retrievable by date range for reporting, always scoped to the acting user + agency.</td><td>Must</td></tr>
+<tr><td>FR-RPT-02</td><td>Hours attributed to a PMT grant (<code>grantId</code> set) shall be attributable to that grant for PMT grant reporting.</td><td>Must</td></tr>
+<tr><td>FR-RPT-03</td><td>The system shall record enough attribution (project + grant) to support general project accounting.</td><td>Must</td></tr>
+<tr><td>FR-RPT-04</td><td>Payroll consumption, if desired, shall be achieved via export of completed entries; no in-product payroll calculation is provided.</td><td>Could</td></tr>
+</tbody></table></div>
+<h2 id="9-detailed-user-system-flows">9. Detailed User &amp; System Flows</h2>
+<h3 id="91-clock-in-start-a-live-timer">9.1 Clock In (Start a Live Timer)</h3>
+<ol class="flow">
+<li>Staff member opens VS360; the Staff Timer widget mounts in the header.</li>
+<li>The widget calls <code>GET /staff-time/active</code>; the server returns null (no running timer).</li>
+<li>The badge shows an idle state with a &quot;Start Timer&quot; control.</li>
+<li>The user opens the &quot;Start Timer&quot; popover and selects a project via <code>useProjectOptions</code> (a case/claim, a PMT grant, or another project type).</li>
+<li>The client calls <code>POST /staff-time/start</code> with <code>projectType</code>, <code>projectId</code>, <code>projectName</code>.</li>
+<li>The server checks for any existing <code>ACTIVE</code> entry for this user; finding none, it inserts a new <code>ACTIVE</code> row with <code>startTime = now</code>, stamping <code>userId</code> and <code>serviceCenterId</code>. If <code>projectType=&#x27;PMT_GRANT&#x27;</code>, it sets <code>grantId</code>.</li>
+<li>The client begins ticking the running badge (HH:MM:SS) from <code>startTime</code>.</li>
+</ol>
+<h3 id="92-switch-associate-work-to-another-case-superseding-timer">9.2 Switch / Associate Work to Another Case (Superseding Timer)</h3>
+<ol class="flow">
+<li>While a timer is running against Case A, the staff member begins work on Case B.</li>
+<li>The user opens the &quot;Start Timer&quot; popover and selects Case B (or another project).</li>
+<li>The client calls <code>POST /staff-time/start</code> for the new project.</li>
+<li>The server finds the existing <code>ACTIVE</code> entry (Case A), patches it to <code>COMPLETED</code> (computing its duration), then inserts a new <code>ACTIVE</code> entry for Case B with <code>startTime = now</code>.</li>
+<li>The badge continues, now attributed to Case B; the Case A entry appears in the timesheet as completed.</li>
+<li>Edge case — associating grant work: if Case B&#x27;s project is a PMT grant, the new entry records <code>grantId</code>, so its hours feed PMT reporting.</li>
+</ol>
+<h3 id="93-clock-out-stop-the-timer">9.3 Clock Out (Stop the Timer)</h3>
+<ol class="flow">
+<li>The staff member clicks Stop on the running badge.</li>
+<li>A modal displays the current project and the elapsed duration; the user optionally enters notes.</li>
+<li>The client calls <code>PATCH /staff-time/stop/:uid</code> with the running entry&#x27;s <code>uid</code> and <code>notes</code>.</li>
+<li>The server finds the user&#x27;s active row by <code>uid</code>, computes <code>durationMinutes = max(round(now − startTime), 1)</code>, sets <code>endTime</code>, saves <code>notes</code>, and marks status <code>COMPLETED</code>.</li>
+<li>The client invalidates the active-timer and timesheet queries; the badge returns to idle and the completed entry appears in the timesheet.</li>
+<li>Edge case — very short sessions: any timer stopped in under a minute is recorded as 1 minute.</li>
+</ol>
+<h3 id="94-add-a-manual-timesheet-entry">9.4 Add a Manual Timesheet Entry</h3>
+<ol class="flow">
+<li>The staff member opens the Time Tracking page and clicks Manual Entry.</li>
+<li>In the modal they select a project, pick a date, enter hours + minutes, and add notes.</li>
+<li>The client converts hours + minutes to <code>durationMinutes</code> and calls <code>POST /staff-time/manual</code> with <code>projectType</code>, <code>projectId</code>, <code>projectName</code>, <code>date</code>, <code>durationMinutes</code>, <code>notes</code>.</li>
+<li>The server builds <code>startTime = 09:00</code> on the given date and <code>endTime = startTime + durationMinutes</code>, stores the entry as <code>COMPLETED</code>, stamped with <code>userId</code> and <code>serviceCenterId</code> (and <code>grantId</code> if a PMT grant).</li>
+<li>The client invalidates the timesheet query; the new entry appears in the list and updates the summary cards.</li>
+</ol>
+<h3 id="95-edit-an-existing-entry">9.5 Edit an Existing Entry</h3>
+<ol class="flow">
+<li>From the timesheet table, the staff member clicks Edit on a row.</li>
+<li>The Edit modal preloads the entry&#x27;s project, date, hours/minutes and notes.</li>
+<li>The user changes one or more fields and saves.</li>
+<li>The client calls <code>PATCH /staff-time/:uid</code> with the updated fields.</li>
+<li>The server updates the entry (validated and scoped to the acting user + agency) and returns the result.</li>
+<li>The client invalidates the timesheet query and refreshes the table and summaries.</li>
+<li>Edge case — delete: from the same row the user may click Delete, which calls <code>DELETE /staff-time/:uid</code>; the entry is removed and the list refreshed.</li>
+</ol>
+<h3 id="96-view-export-a-timesheet">9.6 View &amp; Export a Timesheet</h3>
+<ol class="flow">
+<li>The staff member opens the Time Tracking page.</li>
+<li>The page loads <code>GET /staff-time?startDate&amp;endDate</code> for the current range and renders the paginated table (Date, Project, Duration, Notes, Actions).</li>
+<li>Summary cards for Today / This Week / This Month are computed client-side from the returned entries.</li>
+<li>The user adjusts the date-range filter; the client re-queries and re-renders.</li>
+<li>The user clicks Export; the client generates a CSV/XLS file (<code>ExportCsvXls</code>) from the current entries for offline reporting or grant reconciliation.</li>
+</ol>
+<h3 id="97-restore-a-running-timer-after-reload-re-login">9.7 Restore a Running Timer After Reload / Re-login</h3>
+<ol class="flow">
+<li>The staff member reloads the page or logs back in.</li>
+<li>The Staff Timer widget mounts and calls <code>GET /staff-time/active</code>.</li>
+<li>Because the running timer&#x27;s state lives server-side (an <code>ACTIVE</code> row), the server returns it.</li>
+<li>The client resumes the running badge from <code>startTime</code> with no loss of elapsed time.</li>
+</ol>
+<h2 id="10-data-model">10. Data Model</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Key Fields</th><th>Relationships</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>StaffTimeEntries (<code>staff_time_entries</code>)</td><td>id, uid, userId, serviceCenterId, grantId, projectType, projectName, startTime, endTime, durationMinutes, notes, status (<code>ACTIVE</code>/<code>COMPLETED</code>), created_at, updated_at</td><td>user (→ users), serviceCenter (→ service_centers), grant (→ pmt_grants, set only when <code>projectType=&#x27;PMT_GRANT&#x27;</code>)</td><td>The single time-tracking record — one <code>ACTIVE</code> per user at a time; <code>COMPLETED</code> rows form the timesheet and reporting corpus</td></tr>
+<tr><td>Users (<code>users</code>)</td><td>id, uid, identity/profile fields</td><td>Owns many StaffTimeEntries (<code>userId</code>)</td><td>The staff member (VSMS identity) who recorded the time</td></tr>
+<tr><td>ServiceCenters (<code>service_centers</code>)</td><td>id, agency profile fields</td><td>Scopes StaffTimeEntries (<code>serviceCenterId</code>)</td><td>The agency tenant; all time data is agency-scoped</td></tr>
+<tr><td>PmtGrants (<code>pmt_grants</code>)</td><td>id, grant identity/award fields</td><td>Referenced by StaffTimeEntries (<code>grantId</code>) when grant-funded</td><td>The PMT grant to which grant-funded hours are attributed for reporting</td></tr>
+<tr><td>ServiceClaims (<code>service_claims</code>)</td><td>id, uid, case fields</td><td>Referenced logically as a &quot;project&quot; (<code>projectId</code>/<code>projectName</code>) when time is tracked against a case</td><td>The case/claim a staff member&#x27;s time may be attributed to</td></tr>
+</tbody></table></div>
+<div class="callout note"><div class="callout-title">ℹ Project attribution</div><div class="callout-body"><code>projectId</code>/<code>projectName</code> are stored on the entry to identify the &quot;project&quot; (which may be a case/claim). A dedicated foreign key exists only for grants (<code>grantId</code> → <code>pmt_grants</code>); case attribution is carried by the generic project fields.</div></div>
+<h2 id="11-api-integration-surface">11. API &amp; Integration Surface</h2>
+<h3 id="111-endpoints">11.1 Endpoints</h3>
+<p>Base path: <code>/web/staff-time</code> (versioned <code>v2</code>), guarded by <code>allowOnly(&#x27;VS360&#x27;)</code> and the <code>time.view</code> permission. Client base in <code>src/services/staffTime.js</code> is <code>/staff-time</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/</code></td><td>List the user&#x27;s <code>COMPLETED</code> entries (filter <code>startDate</code>/<code>endDate</code>); scoped to user + service center</td><td><code>allowOnly(&#x27;VS360&#x27;)</code>, <code>time.view</code></td></tr>
+<tr><td>GET</td><td><code>/active</code></td><td>Return the user&#x27;s current running timer, or null</td><td><code>allowOnly(&#x27;VS360&#x27;)</code>, <code>time.view</code></td></tr>
+<tr><td>POST</td><td><code>/start</code></td><td>Start a timer (<code>projectType</code>, <code>projectId</code>, <code>projectName</code>); auto-completes any existing active timer</td><td><code>allowOnly(&#x27;VS360&#x27;)</code>, <code>time.view</code></td></tr>
+<tr><td>PATCH</td><td><code>/stop/:uid</code></td><td>Stop the running timer → <code>COMPLETED</code>; compute <code>durationMinutes</code>; save <code>notes</code></td><td><code>allowOnly(&#x27;VS360&#x27;)</code>, <code>time.view</code></td></tr>
+<tr><td>POST</td><td><code>/manual</code></td><td>Add a manual <code>COMPLETED</code> entry (<code>projectType</code>, <code>projectId</code>, <code>projectName</code>, <code>date</code>, <code>durationMinutes</code>, <code>notes</code>)</td><td><code>allowOnly(&#x27;VS360&#x27;)</code>, <code>time.view</code></td></tr>
+<tr><td>PATCH</td><td><code>/:uid</code></td><td>Edit an entry (same fields as manual)</td><td><code>allowOnly(&#x27;VS360&#x27;)</code>, <code>time.view</code></td></tr>
+<tr><td>DELETE</td><td><code>/:uid</code></td><td>Delete an entry</td><td><code>allowOnly(&#x27;VS360&#x27;)</code>, <code>time.view</code></td></tr>
+</tbody></table></div>
+<h3 id="112-external-integrations">11.2 External Integrations</h3>
+<p>The Staff Timer has no direct third-party integrations. It does not use Twilio, FCM, Azure Blob, or OpenAI/Anthropic. Its only outbound integration is data attribution to <strong>PMT Grants</strong> (via <code>grantId</code>) for grant reporting. Export to CSV/XLS is a client-side capability (<code>ExportCsvXls</code>); any downstream payroll consumption is external and manual (via export). There are no socket events and no email notifications tied to this module.</p>
+<h2 id="12-rbac-permissions">12. RBAC &amp; Permissions</h2>
+<p>Access is enforced by two layers, consistent with the platform RBAC model.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Value</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td>Context gate (<code>allowOnly</code>)</td><td><code>VS360</code></td><td>Only agency staff operating in the VS360 context may call the module; ADMIN and mobile clients are not served these routes on the analyzed branch</td></tr>
+<tr><td>Fine-grained permission</td><td><code>time.view</code></td><td>Role&#x27;s <code>permission</code> map must grant the <code>time</code> module <code>view</code> action for the Staff Timer/Time Tracking surfaces to be usable</td></tr>
+<tr><td>Tenancy scope</td><td><code>serviceCenterId</code></td><td>All reads/writes are filtered and stamped by the acting user&#x27;s agency; no cross-agency access</td></tr>
+<tr><td>Ownership scope</td><td><code>userId</code></td><td>Entries are stamped to and operated on by the acting user; there is no cross-user access or manager roll-up on the analyzed branch</td></tr>
+<tr><td>Super Admin</td><td><code>SUPER_ADMIN</code></td><td>Bypasses fine-grained checks platform-wide; note the routes are <code>VS360</code>-context, so this pertains to platform administration rather than a manager view of agency timesheets</td></tr>
+</tbody></table></div>
+<div class="callout warn"><div class="callout-title">⚠ Single permission granularity</div><div class="callout-body">The module exposes only <code>time.view</code>. There is no separate add/edit/delete permission — any role with <code>time.view</code> in the <code>VS360</code> context can create, edit and delete its own entries. Agencies wanting read-only or approval-style separation of duties do not have it on the analyzed branch (see Risks).</div></div>
+<h2 id="13-non-functional-requirements">13. Non-Functional Requirements</h2>
+<h3 id="131-security-privacy">13.1 Security &amp; Privacy</h3>
+<ul>
+<li>All routes require an authenticated VSMS identity, the <code>VS360</code> context, and <code>time.view</code>. Responses may be AES-encrypted by the platform encryption middleware.</li>
+<li>Time data is agency- and user-scoped; there is no path for a user to read another user&#x27;s or another agency&#x27;s entries.</li>
+<li>Notes fields may reference case work; because attribution can point at a case/claim, entries should be treated as sensitive and handled with the same care as other case-adjacent data, honoring NECX&#x27;s victim-safety and dignity commitments (no victim PII should be entered into free-text notes).</li>
+</ul>
+<h3 id="132-performance">13.2 Performance</h3>
+<ul>
+<li>The header widget must restore the active timer quickly on mount (<code>GET /active</code>) and tick smoothly (1 Hz) without server round-trips.</li>
+<li>Timesheet reads must be date-range bounded and paginated to keep payloads small; summaries are computed client-side.</li>
+</ul>
+<h3 id="133-availability-resilience">13.3 Availability &amp; Resilience</h3>
+<ul>
+<li>Running-timer state is authoritative server-side, so timers survive client reloads, navigation and re-login with no loss of elapsed time.</li>
+<li>The one-active-timer invariant is enforced on <code>start</code> (prior active row auto-completed), preventing orphaned concurrent timers.</li>
+</ul>
+<h3 id="134-data-integrity">13.4 Data Integrity</h3>
+<ul>
+<li>Duration is computed server-side on stop with a 1-minute floor; manual entries derive <code>endTime</code> from <code>startTime + durationMinutes</code>, keeping start/end/duration consistent.</li>
+<li>Every entry is stamped with <code>userId</code> and <code>serviceCenterId</code> at write time.</li>
+</ul>
+<h3 id="135-auditability">13.5 Auditability</h3>
+<ul>
+<li>Entries carry <code>created_at</code>/<code>updated_at</code> timestamps. Platform-level <code>ActionLogs</code> provide the general audit trail. Note that because staff may freely edit/delete their own completed entries, the module itself does not retain an immutable per-edit history (see Risks) — an important consideration for grant-audit defensibility.</li>
+</ul>
+<h3 id="136-localization-accessibility">13.6 Localization &amp; Accessibility</h3>
+<ul>
+<li>The VS360 web client follows platform localization and accessibility standards; durations render as HH:MM:SS (live) and hours/minutes (manual), and dates respect the user&#x27;s locale.</li>
+</ul>
+<h3 id="137-compliance-grant-pmt">13.7 Compliance (Grant / PMT)</h3>
+<ul>
+<li>Grant-funded hours must be attributable to a specific PMT grant via <code>grantId</code> to support PMT grant reporting. Date-range export supports reconciliation against funder reporting periods.</li>
+</ul>
+<h2 id="14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</h2>
+<h3 id="141-dashboards-kpis">14.1 Dashboards &amp; KPIs</h3>
+<ul>
+<li><strong>Client-side summaries</strong>: the Time Tracking page renders Today / This Week / This Month totals computed from the returned entries.</li>
+<li><strong>Timesheet table</strong>: Date, Project, Duration, Notes with date-range filtering and pagination.</li>
+<li><strong>Grant/project attribution</strong>: because entries carry project fields and <code>grantId</code>, hours can be rolled up by project and by PMT grant to support PMT grant reporting and general project accounting.</li>
+</ul>
+<h3 id="142-reporting-export">14.2 Reporting &amp; Export</h3>
+<ul>
+<li><code>GET /staff-time?startDate&amp;endDate</code> returns the completed-entry corpus for a range (user + agency scoped).</li>
+<li>CSV/XLS export (<code>ExportCsvXls</code>) enables offline reporting, grant reconciliation, and any manual downstream payroll processing.</li>
+</ul>
+<h3 id="143-notifications">14.3 Notifications</h3>
+<ul>
+<li>None. The module has no in-app, socket, FCM, or email notifications; the live badge is kept current purely client-side, and lists refresh via TanStack Query invalidation after mutations.</li>
+</ul>
+<h2 id="15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Type</th><th>Impact</th><th>Mitigation / Owner</th></tr></thead>
+<tbody>
+<tr><td>No approval / sign-off workflow; staff can edit/delete their own completed entries</td><td>Risk</td><td>Grant-audit defensibility is weakened; recorded hours can change without review</td><td>Product/Backend — evaluate an approval + lock state and immutable edit history for grant-funded entries</td></tr>
+<tr><td>No immutable per-edit audit history within the module</td><td>Risk</td><td>Difficult to prove hours were not altered after reporting</td><td>Rely on <code>ActionLogs</code> in the interim; consider append-only revision tracking</td></tr>
+<tr><td>Single <code>time.view</code> permission (no add/edit/delete separation)</td><td>Risk</td><td>No separation of duties or read-only role for the module</td><td>RBAC owner — assess finer-grained <code>time</code> actions if agencies require it</td></tr>
+<tr><td>No payroll integration or pay calculation</td><td>Assumption/Gap</td><td>Payroll must be handled externally via export</td><td>Confirm whether payroll feed is required; if so, scope an integration or standardized export</td></tr>
+<tr><td>No manager / cross-user roll-up view</td><td>Gap</td><td>Program managers cannot view staff timesheets in-product; must rely on export or DB reporting</td><td>Product — consider a supervisor reporting view scoped to the agency</td></tr>
+<tr><td>Case attribution uses generic <code>projectId</code>/<code>projectName</code>, not a case FK (only grants have <code>grantId</code>)</td><td>Risk</td><td>Referential integrity to cases is not enforced; renamed/deleted cases may leave stale project labels</td><td>Backend — consider a typed reference for case-attributed entries</td></tr>
+<tr><td>No idle detection / auto-stop</td><td>Risk</td><td>Forgotten running timers overstate hours until stopped or superseded</td><td>Staff training; consider optional idle prompts or max-duration warnings</td></tr>
+<tr><td>Manual entries default <code>startTime</code> to 09:00</td><td>Assumption</td><td>Manual entries do not reflect true clock times, only duration on a date</td><td>Acceptable for duration-based reporting; document for report consumers</td></tr>
+<tr><td>Minimum duration floored at 1 minute</td><td>Assumption</td><td>Sub-minute sessions are rounded up</td><td>Acceptable; document in reporting notes</td></tr>
+<tr><td>Module is <code>VS360</code>-context only</td><td>Assumption</td><td>No ADMIN or mobile time tracking on the analyzed branch</td><td>Confirm no mobile time-capture requirement exists</td></tr>
+</tbody></table></div>
+<div class="callout note"><div class="callout-title">ℹ Open Question</div><div class="callout-body">Should grant-funded time entries become immutable (with an approval/lock step) once included in a submitted PMT report, and should a manager roll-up view be added? Both are absent on the analyzed branch and are the most significant gaps for grant compliance.</div></div>
+<h2 id="16-glossary">16. Glossary</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Staff Timer</td><td>The live start/stop time-tracking widget in the VS360 header</td></tr>
+<tr><td>Time Tracking (page)</td><td>The VS360 route (<code>StaffTimeManagement.jsx</code>) listing timesheet entries with summaries and export</td></tr>
+<tr><td>Time Entry</td><td>A <code>staff_time_entries</code> record; <code>ACTIVE</code> (running) or <code>COMPLETED</code></td></tr>
+<tr><td>Project</td><td>The unit a time entry is attributed to (<code>projectType</code>/<code>projectId</code>/<code>projectName</code>) — may be a case/claim, a PMT grant, or another type</td></tr>
+<tr><td>PMT Grant</td><td>A grant tracked in <code>pmt_grants</code>; grant-funded time entries reference it via <code>grantId</code> for PMT reporting</td></tr>
+<tr><td>PMT</td><td>Performance Measurement Tool — grant performance/reporting framework used for funder reporting</td></tr>
+<tr><td>Grant</td><td>A funding award; drives the requirement to account for staff effort</td></tr>
+<tr><td>Claim / Case</td><td>A service claim (<code>service_claims</code>) representing a victim&#x27;s case; can be a time entry&#x27;s project</td></tr>
+<tr><td>VS360</td><td>The NECX web application for agency staff; the context gate value for staff routes</td></tr>
+<tr><td>VSMS</td><td>Victim Services Management System — the agency staff identity type in NECX</td></tr>
+<tr><td>Service Center / Agency</td><td>The tenant organization (<code>service_centers</code>); scopes all time data</td></tr>
+<tr><td>Advocate / Caseworker</td><td>Front-line agency staff who record time against their work</td></tr>
+<tr><td><code>time.view</code></td><td>The fine-grained RBAC permission (module <code>time</code>, action <code>view</code>) gating the Staff Timer</td></tr>
+<tr><td><code>allowOnly</code></td><td>Context-gate middleware; here restricts the module to the <code>VS360</code> context</td></tr>
+<tr><td>durationMinutes</td><td>The computed/entered length of a time entry in minutes (1-minute floor on stop)</td></tr>
+</tbody></table></div>
+      </div>
+      <nav class="prevnext"><a class="pn prev" href="P08.html"><span>← Previous</span><b>Calendar &amp; Appointments</b></a><a class="pn next" href="P10.html"><span>Next →</span><b>Agency Chat</b></a></nav>
+      <footer class="doc-foot">NECX Inc — Confidential · Generated 2026-07-05 · NECX Staff Time Tracking</footer>
+    </article>
+  </main>
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav class="toc-nav"><a class="toc-1" href="#1-document-control">1. Document Control</a>
+<a class="toc-1" href="#2-executive-summary">2. Executive Summary</a>
+<a class="toc-1" href="#3-product-overview-vision">3. Product Overview &amp; Vision</a>
+<a class="toc-2" href="#31-problem-statement">3.1 Problem Statement</a>
+<a class="toc-2" href="#32-product-vision">3.2 Product Vision</a>
+<a class="toc-2" href="#33-position-in-the-necx-ecosystem">3.3 Position in the NECX Ecosystem</a>
+<a class="toc-1" href="#4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</a>
+<a class="toc-2" href="#41-goals-objectives">4.1 Goals &amp; Objectives</a>
+<a class="toc-2" href="#42-success-metrics">4.2 Success Metrics</a>
+<a class="toc-1" href="#5-scope">5. Scope</a>
+<a class="toc-2" href="#51-in-scope">5.1 In Scope</a>
+<a class="toc-2" href="#52-out-of-scope">5.2 Out of Scope</a>
+<a class="toc-1" href="#6-personas-user-roles">6. Personas &amp; User Roles</a>
+<a class="toc-2" href="#61-roles">6.1 Roles</a>
+<a class="toc-2" href="#62-persona-narratives">6.2 Persona Narratives</a>
+<a class="toc-1" href="#7-system-context-architecture">7. System Context &amp; Architecture</a>
+<a class="toc-2" href="#71-technology-stack">7.1 Technology Stack</a>
+<a class="toc-2" href="#72-how-it-talks-to-the-backend">7.2 How It Talks to the Backend</a>
+<a class="toc-2" href="#73-real-time-notifications">7.3 Real-Time &amp; Notifications</a>
+<a class="toc-2" href="#74-tenancy">7.4 Tenancy</a>
+<a class="toc-1" href="#8-functional-requirements">8. Functional Requirements</a>
+<a class="toc-2" href="#81-live-timer-clock-in-clock-out">8.1 Live Timer (Clock In / Clock Out)</a>
+<a class="toc-2" href="#82-associating-time-to-cases-projects-grants">8.2 Associating Time to Cases, Projects &amp; Grants</a>
+<a class="toc-2" href="#83-manual-timesheet-entries">8.3 Manual Timesheet Entries</a>
+<a class="toc-2" href="#84-editing-deleting-entries">8.4 Editing &amp; Deleting Entries</a>
+<a class="toc-2" href="#85-timesheet-summaries-export">8.5 Timesheet, Summaries &amp; Export</a>
+<a class="toc-2" href="#86-reporting-aggregation-grantpmt-feed">8.6 Reporting Aggregation &amp; Grant/PMT Feed</a>
+<a class="toc-1" href="#9-detailed-user-system-flows">9. Detailed User &amp; System Flows</a>
+<a class="toc-2" href="#91-clock-in-start-a-live-timer">9.1 Clock In (Start a Live Timer)</a>
+<a class="toc-2" href="#92-switch-associate-work-to-another-case-superseding-timer">9.2 Switch / Associate Work to Another Case (Superseding Timer)</a>
+<a class="toc-2" href="#93-clock-out-stop-the-timer">9.3 Clock Out (Stop the Timer)</a>
+<a class="toc-2" href="#94-add-a-manual-timesheet-entry">9.4 Add a Manual Timesheet Entry</a>
+<a class="toc-2" href="#95-edit-an-existing-entry">9.5 Edit an Existing Entry</a>
+<a class="toc-2" href="#96-view-export-a-timesheet">9.6 View &amp; Export a Timesheet</a>
+<a class="toc-2" href="#97-restore-a-running-timer-after-reload-re-login">9.7 Restore a Running Timer After Reload / Re-login</a>
+<a class="toc-1" href="#10-data-model">10. Data Model</a>
+<a class="toc-1" href="#11-api-integration-surface">11. API &amp; Integration Surface</a>
+<a class="toc-2" href="#111-endpoints">11.1 Endpoints</a>
+<a class="toc-2" href="#112-external-integrations">11.2 External Integrations</a>
+<a class="toc-1" href="#12-rbac-permissions">12. RBAC &amp; Permissions</a>
+<a class="toc-1" href="#13-non-functional-requirements">13. Non-Functional Requirements</a>
+<a class="toc-2" href="#131-security-privacy">13.1 Security &amp; Privacy</a>
+<a class="toc-2" href="#132-performance">13.2 Performance</a>
+<a class="toc-2" href="#133-availability-resilience">13.3 Availability &amp; Resilience</a>
+<a class="toc-2" href="#134-data-integrity">13.4 Data Integrity</a>
+<a class="toc-2" href="#135-auditability">13.5 Auditability</a>
+<a class="toc-2" href="#136-localization-accessibility">13.6 Localization &amp; Accessibility</a>
+<a class="toc-2" href="#137-compliance-grant-pmt">13.7 Compliance (Grant / PMT)</a>
+<a class="toc-1" href="#14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</a>
+<a class="toc-2" href="#141-dashboards-kpis">14.1 Dashboards &amp; KPIs</a>
+<a class="toc-2" href="#142-reporting-export">14.2 Reporting &amp; Export</a>
+<a class="toc-2" href="#143-notifications">14.3 Notifications</a>
+<a class="toc-1" href="#15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</a>
+<a class="toc-1" href="#16-glossary">16. Glossary</a>
+</nav>
+  </aside>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

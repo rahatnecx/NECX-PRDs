@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NECX Victim App — Survivor Mobile App · NECX PRD</title>
+<meta name="description" content="Flutter + GetX mobile client for victims/survivors of crime to find help, request services, communicate with agencies, and stay safe">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="prd-page">
+<header class="topbar">
+  <button class="hamburger" aria-label="Menu" onclick="toggleNav()">&#9776;</button>
+  <a class="brand" href="../index.html"><svg class="logo" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 L35 10 V22 C35 31 28 37 20 39 C12 37 5 31 5 22 V10 Z" fill="var(--brand)"/><path d="M13 27 V14 L20 22 V14 M27 14 V27 L20 19" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="brand-text">NECX<span class="brand-sub">Product Requirements</span></span></a>
+  <div class="topbar-spacer"></div>
+  <a class="top-link" href="../index.html">Home</a>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><span class="ic-sun">☀</span><span class="ic-moon">☾</span></button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-search"><input type="search" id="navSearch" placeholder="Filter documents…" oninput="filterNav(this.value)"></div>
+    <nav class="nav"><div class="nav-group"><div class="nav-group-title">Platform &amp; Applications</div><a class="nav-item " href="P01.html" data-search="necx platform — core system whole-platform prd: unified backend, four clients, multi-tenancy, identity/rbac, and the end-to-end case lifecycle."><span class="nav-num">01</span><span class="nav-text">Platform — Core System</span></a>
+<a class="nav-item " href="P02.html" data-search="necx workspace — staff mobile app agency staff mobile app (flutter/riverpod) — the on-the-go companion to the vs360 web dashboard."><span class="nav-num">02</span><span class="nav-text">Workspace — Staff Mobile App</span></a>
+<a class="nav-item active" href="P03.html" data-search="necx victim app — survivor mobile app victim / survivor mobile app (flutter/getx) — discover services, request help, chat, find shelter, e-sign."><span class="nav-num">03</span><span class="nav-text">Victim App — Survivor Mobile App</span></a>
+<a class="nav-item " href="P04.html" data-search="vs360 — agency web dashboard vs360 — the agency staff web dashboard (react/vite) and primary caseworker workspace."><span class="nav-num">04</span><span class="nav-text">VS360 — Agency Web Dashboard</span></a>
+</div>
+<div class="nav-group"><div class="nav-group-title">VS360 Feature Modules</div><a class="nav-item " href="P05.html" data-search="necx case management service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes."><span class="nav-num">05</span><span class="nav-text">Case Management</span></a>
+<a class="nav-item " href="P06.html" data-search="necx shelter management shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search."><span class="nav-num">06</span><span class="nav-text">Shelter Management</span></a>
+<a class="nav-item " href="P07.html" data-search="necx hotline management twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights."><span class="nav-num">07</span><span class="nav-text">Hotline Management</span></a>
+<a class="nav-item " href="P08.html" data-search="necx calendar &amp; appointments reminders, tasks and case-linked appointments in the vs360 tools calendar."><span class="nav-num">08</span><span class="nav-text">Calendar &amp; Appointments</span></a>
+<a class="nav-item " href="P09.html" data-search="necx staff time tracking staff time tracking: clock in/out, timesheets, and grant/pmt time attribution."><span class="nav-num">09</span><span class="nav-text">Staff Time Tracking</span></a>
+<a class="nav-item " href="P10.html" data-search="necx agency chat real-time advocate↔victim messaging tied to service threads and cases."><span class="nav-num">10</span><span class="nav-text">Agency Chat</span></a>
+<a class="nav-item " href="P11.html" data-search="necx internal chat staff-to-staff messaging within an agency, real-time over socket.io."><span class="nav-num">11</span><span class="nav-text">Internal Chat</span></a>
+<a class="nav-item " href="P12.html" data-search="necx rbac &amp; user management roles, the module/action permission matrix, plan seats, and multi-layer enforcement."><span class="nav-num">12</span><span class="nav-text">RBAC &amp; User Management</span></a>
+<a class="nav-item " href="P13.html" data-search="necx notes center agency-scoped, cross-case view over internal (caseworker-only) case notes."><span class="nav-num">13</span><span class="nav-text">Notes Center</span></a>
+<a class="nav-item " href="P14.html" data-search="necx drive google-drive-style cloud file storage backed by azure blob, with quotas and analytics."><span class="nav-num">14</span><span class="nav-text">Drive</span></a>
+<a class="nav-item " href="P15.html" data-search="necx ai report builder pmt/grant reporting plus ai-assisted custom report generation with accuracy validation."><span class="nav-num">15</span><span class="nav-text">AI Report Builder</span></a>
+<a class="nav-item " href="P16.html" data-search="necx e-sign &amp; document center prepare, request, sign and pdf-stamp case documents with an audit trail."><span class="nav-num">16</span><span class="nav-text">E-Sign &amp; Document Center</span></a>
+<a class="nav-item " href="P17.html" data-search="necx referrals &amp; partnerships inter-agency network: partnerships, invitations, and consent-based case referrals."><span class="nav-num">17</span><span class="nav-text">Referrals &amp; Partnerships</span></a>
+<a class="nav-item " href="P18.html" data-search="necx inquiries management intake and triage of inquiries / requests-to-connect before they become cases."><span class="nav-num">18</span><span class="nav-text">Inquiries Management</span></a>
+<a class="nav-item " href="P19.html" data-search="necx communities agency-run community spaces: joining questions, membership, posts and moderation."><span class="nav-num">19</span><span class="nav-text">Communities</span></a>
+<a class="nav-item " href="P20.html" data-search="necx service management service catalog, categories, and the per-service claim-question (intake) builder."><span class="nav-num">20</span><span class="nav-text">Service Management</span></a>
+</div>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim" onclick="toggleNav()"></div>
+  
+  <main class="content">
+    <article class="doc">
+      <div class="doc-eyebrow">Product Requirements Document · NECX Inc — Confidential</div>
+      <h1 class="doc-title">NECX Victim App — Survivor Mobile App</h1>
+      <p class="doc-subtitle">Flutter + GetX mobile client for victims/survivors of crime to find help, request services, communicate with agencies, and stay safe</p>
+      <div class="doc-meta"><span class="chip">Version: <b>1.0</b></span><span class="chip">Status: <b>Baseline</b></span><span class="chip">Owner: <b>NECX Product Management</b></span><a class="dl-btn" href="../downloads/03_NECX_Victim_App.docx" download>⬇ Download DOCX</a></div>
+      <hr class="doc-rule">
+      <div class="doc-body">
+      <h2 id="1-document-control">1. Document Control</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td>NECX Coordinated Victim Services Platform</td></tr>
+<tr><td>Module</td><td>NECX Victim App (Survivor Mobile App) — <code>necx-app_v2</code></td></tr>
+<tr><td>Version</td><td>1.0 (app build <code>2.0.98+98</code>)</td></tr>
+<tr><td>Status</td><td>Baseline</td></tr>
+<tr><td>Author</td><td>NECX Product Management</td></tr>
+<tr><td>Reviewers</td><td>Engineering (Mobile), Backend Platform, Security &amp; Privacy, Victim Services Program</td></tr>
+<tr><td>Last Updated</td><td>2026-07-05</td></tr>
+<tr><td>Related Documents</td><td>P01 Backend Core &amp; Platform PRD; P02 VS360 Workspace/Web PRD; P04 NECX Admin PRD; Victim App Knowledgebase (<code>kb_victim_app.md</code>); Backend Core, Victim Services, Feature Modules, and Drive/E-Sign knowledgebases</td></tr>
+</tbody></table></div>
+<p>Revision history:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>1.0</td><td>2026-07-05</td><td>NECX Product Management</td><td>Baseline PRD authored from the <code>develop</code>-branch state of <code>necx-app_v2</code> with all six feature branches (realtime chat, PIN, biometric, shelter, e-sign, all-my-cases) merged.</td></tr>
+</tbody></table></div>
+<h2 id="2-executive-summary">2. Executive Summary</h2>
+<p>The NECX Victim App is the survivor-facing mobile client of the NECX Coordinated Victim Services Platform. It is used directly by victims and survivors of crime to discover and request victim services from partner agencies, track the progress of their cases, communicate in real time with agency caseworkers and with a guidance-oriented NECX AI assistant, find emergency shelter and request a bed, complete agency-assigned intake assessments, electronically sign case documents, and manage a private, secure account — all from a phone.</p>
+<p>The app serves people who are often in crisis and at elevated personal risk. Its design therefore treats safety, privacy, and dignity as first-class product requirements rather than afterthoughts. It ships with a second-factor NECX PIN lock, biometric unlock, an always-available emergency exit button, encrypted API traffic, secure on-device storage of tokens and keys, and data-minimization guardrails that verify a case belongs to the current user before any detail is rendered.</p>
+<p>The app is a client of a single unified NECX backend (Node.js/Express, PostgreSQL, Socket.IO, Redis, Twilio, FCM, and AI providers) shared by four clients: the Victim App, the VS360 web/Workspace app for agency staff, and the NECX Admin console. All survivor-facing endpoints are served under the <code>/mobile/*</code> router prefix and authenticated as an <code>APP</code> (victim) principal. A distinctive workflow lets an advocate or caseworker create a case on a victim&#x27;s behalf (including at shelter check-in) and hand the victim a one-time login code; the victim then activates that account and claims the case from the app.</p>
+<p>This document specifies the app&#x27;s architecture, its authentication and multi-step onboarding in detail, the full screen inventory, and every feature — service catalog and pre-assessment/service requests, my cases, AI and agency chat, shelter search and bed requests, intake assessments, e-sign, communities, resources, notifications, and profile/settings — with functional requirements, step-by-step flows, and safety/privacy non-functional requirements.</p>
+<h2 id="3-product-overview-vision">3. Product Overview &amp; Vision</h2>
+<h3 id="31-problem-statement">3.1 Problem Statement</h3>
+<p>Victims and survivors of crime frequently struggle to find and access the services they are eligible for. Help is fragmented across many agencies; intake is repetitive; there is no single, private place to track what has been requested, what has been approved, and who to talk to. People in crisis need to find shelter quickly, communicate safely, and complete paperwork without exposing themselves to further risk. Existing tools rarely account for the safety realities of a survivor holding the device.</p>
+<h3 id="32-product-vision">3.2 Product Vision</h3>
+<p>The NECX Victim App gives every survivor a single, private, safety-first mobile front door to coordinated victim services: discover the right service, request it with a guided pre-assessment, track the resulting case, chat with the agency and an AI assistant, find shelter and request a bed in real time, sign documents in-app, and do all of it behind a PIN and biometric lock with an instant escape hatch.</p>
+<h3 id="33-position-in-the-necx-ecosystem">3.3 Position in the NECX Ecosystem</h3>
+<p>The NECX platform is a single unified backend serving four coordinated clients:</p>
+<ul>
+<li><strong>NECX Victim App</strong> (this product) — survivor-facing mobile client (Flutter + GetX), issuer type <code>APP</code>.</li>
+<li><strong>VS360 Web / Workspace App</strong> — agency staff/caseworkers (issuer type <code>VSMS</code>, context <code>VS360</code>) who publish services, triage inquiries, manage cases, run shelters and hotlines, and moderate communities.</li>
+<li><strong>NECX Admin console</strong> — NECX Inc platform super-admins/staff (issuer type <code>NECX</code>, context <code>ADMIN</code>).</li>
+<li><strong>Unified backend</strong> — Node.js/Express (ESM), Objection/Knex over PostgreSQL, Socket.IO, Redis, BullMQ, Azure Blob Storage, Twilio, FCM, and OpenAI/Anthropic providers.</li>
+</ul>
+<p>Actions taken in the Victim App are mirrored to agency staff on VS360 and vice versa: a service claim created in the app appears in the caseworker&#x27;s queue; a caseworker approving a claim, publishing an update, assigning a shelter bed, or requesting a signature triggers real-time and push notifications back to the survivor&#x27;s phone.</p>
+<h2 id="4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</h2>
+<h3 id="41-goals-objectives">4.1 Goals &amp; Objectives</h3>
+<ul>
+<li>Give survivors a private, safety-first mobile experience with second-factor PIN + biometric lock and an emergency exit.</li>
+<li>Make discovering and requesting victim services fast, guided (pre-assessment claim questions), and geographically relevant (state/city filtering).</li>
+<li>Provide a single &quot;My connections&quot; view of every case the survivor has with any agency, with live status and updates.</li>
+<li>Enable low-friction, real-time communication: AI assistant for guidance/triage plus human agency chat for inquiries and cases.</li>
+<li>Deliver emergency shelter discovery, live bed availability, and in-app bed requests with real-time status.</li>
+<li>Let survivors complete agency-assigned intake forms and electronically sign case documents from the phone.</li>
+<li>Support advocate-created and shelter-check-in cases via a one-time login-code activation flow.</li>
+<li>Preserve privacy and dignity through data minimization, encrypted transport, and ownership checks on all case data.</li>
+</ul>
+<h3 id="42-success-metrics">4.2 Success Metrics</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Definition</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>Registration completion</td><td>Users who finish all 4 registration steps and verify OTP / total who start</td><td>≥ 70%</td></tr>
+<tr><td>Login-code activation rate</td><td>Advocate-created/shelter cases where the victim activates via login code / total codes issued</td><td>≥ 55%</td></tr>
+<tr><td>Time to first service request</td><td>Median time from first login to first submitted service claim</td><td>≤ 3 days</td></tr>
+<tr><td>Case chat responsiveness</td><td>Median time to first survivor message read receipt in an active case thread</td><td>Tracked; downward trend</td></tr>
+<tr><td>Shelter request turnaround</td><td>Median time from bed request submission to staff decision (accept/waitlist/reject)</td><td>≤ 24 h</td></tr>
+<tr><td>PIN/biometric adoption</td><td>Active users with a NECX PIN set / total active users</td><td>≥ 80%</td></tr>
+<tr><td>E-sign completion</td><td>Documents fully signed by the victim within 72h of request / total signature requests</td><td>≥ 65%</td></tr>
+<tr><td>Crash-free sessions</td><td>Sessions without a fatal crash (Crashlytics)</td><td>≥ 99.5%</td></tr>
+</tbody></table></div>
+<h2 id="5-scope">5. Scope</h2>
+<h3 id="51-in-scope">5.1 In Scope</h3>
+<ul>
+<li>Onboarding: intro slides, connectivity check, Terms &amp; Conditions and Privacy Policy screens.</li>
+<li>Authentication: multi-step registration (personal, location, demographics, password), OTP verification (email/SMS), login, auto-login on relaunch, password reset, login-with-code activation and first-time password set, logout, delete account.</li>
+<li>App security: NECX PIN (set/change/delete/toggle/verify), biometric unlock (per-type), session lock (423) and lockout (403) handling, emergency exit button.</li>
+<li>Service catalog: browse/search/filter services by category/state/city; service detail with pre-assessment claim questions; submit service claim; request-to-connect; rate; mark visit duration; referral consent.</li>
+<li>My cases: &quot;All my connections&quot; list with status filters/sort; claimed-case detail with appointments, published updates, documents, chat availability, and rating.</li>
+<li>Chat: NECX AI assistant (REST session, recommendations) and real-time agency chat (service inquiry threads + case/inbox threads over Socket.IO) with attachments, translation, read receipts, and media browsing.</li>
+<li>Shelter: search/list/map with filters and distance, shelter detail with live layout, directions, bed request (with room/bed preference and max-stay), my shelters/requests, cancel, real-time status.</li>
+<li>Intake assessments: view and submit agency-assigned intake forms; pending-count surfacing.</li>
+<li>E-sign / documents: view case documents, sign (drawn/typed/saved), manage saved signature.</li>
+<li>Notifications: in-app list + pull-down overlay, FCM push (foreground/background/cold-start), type-based deep-link routing.</li>
+<li>Profile &amp; settings: view/edit profile, change email/phone (OTP), language switcher, self-help videos, feedback, security section.</li>
+<li>Localization (en, es, bn, fr, ar) with dynamically fetched translations.</li>
+</ul>
+<h3 id="52-out-of-scope">5.2 Out of Scope</h3>
+<ul>
+<li>All agency staff/caseworker functionality (service publishing, inquiry/case triage, notes, shelter administration, hotline operation, community moderation, PMT/grant reporting) — delivered by the VS360 Workspace/Web app.</li>
+<li>NECX platform administration (agency/user/role/plan/category management) — delivered by the NECX Admin console.</li>
+<li>NECX Drive (agency cloud file storage) — VS360 web only; no victim surface.</li>
+<li>Hotline softphone / call handling — staff-side only (the survivor is the external caller).</li>
+<li><strong>Communities</strong> are implemented in the app but currently <strong>hidden</strong> (tab and routes commented out); treated as present-but-disabled (see Risks).</li>
+<li>The legacy simulated e-sign agreement flow (<code>e_sign_controller.dart</code>, dummy data) is superseded by the live <code>CaseDocumentsController</code> path and is not a shipped feature.</li>
+<li>Tutorial video route is present but currently disabled.</li>
+</ul>
+<h2 id="6-personas-user-roles">6. Personas &amp; User Roles</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Role</th><th>Description</th><th>Key permissions / capabilities</th></tr></thead>
+<tbody>
+<tr><td>Survivor (self-registered)</td><td>A victim/survivor who downloads the app and creates their own account</td><td>Full app: register, request services, chat, shelter, intake, e-sign, profile</td></tr>
+<tr><td>Survivor (advocate-created)</td><td>A victim whose case/account was created by an agency advocate or caseworker on their behalf</td><td>Activates account via one-time login code + first-time password, then full app access to their linked case(s)</td></tr>
+<tr><td>Survivor (shelter check-in)</td><td>A victim checked into a shelter bed by staff; an app_user + approved shelter case is auto-created</td><td>Receives a login code at check-in (if unverified); activates and tracks the shelter case in-app</td></tr>
+<tr><td>Anonymous/temporary victim</td><td>A placeholder <code>app_users</code> row (<code>isVerified=false</code>) created behind an advocate case before contact info is linked</td><td>Not yet an app user until a channel/contact is attached and a code issued</td></tr>
+</tbody></table></div>
+<p>Every survivor in the app authenticates as backend issuer type <code>APP</code>, scoped to <code>issuer.id</code> (their own <code>app_users</code> row). Mobile routes carry no <code>allowOnly</code> context gate — they are auth-only — but every read is scoped to the authenticated victim.</p>
+<h3 id="61-persona-narratives">6.1 Persona Narratives</h3>
+<p><strong>Maria (self-registered survivor).</strong> Maria installs the app, registers over four short steps (including her city/state and a few demographic/eligibility questions), verifies an SMS OTP, and sets a NECX PIN. She browses services in her city, answers a short pre-assessment, and submits a service claim. She tracks it under &quot;My connections,&quot; chats with the assigned caseworker, and keeps the app locked behind Face ID.</p>
+<p><strong>James (advocate-created case).</strong> A caseworker meets James in person, creates a case for him in VS360, and gives him a login code. James opens the app, enters the code, verifies an OTP, sets his first password, and immediately sees his already-approved case, its chat thread, and any documents awaiting his signature.</p>
+<p><strong>Aisha (shelter check-in).</strong> Aisha is checked into an emergency shelter by staff. The system creates her account and an approved shelter case and hands her a login code. She activates the app, sees her active bed assignment and check-in window under &quot;My Shelters,&quot; and gets real-time notifications if her status changes.</p>
+<h2 id="7-system-context-architecture">7. System Context &amp; Architecture</h2>
+<h3 id="71-tech-stack">7.1 Tech Stack</h3>
+<ul>
+<li><strong>Framework:</strong> Flutter (Dart SDK <code>&gt;=2.17.6 &lt;4.0.0</code>).</li>
+<li><strong>State / DI / routing:</strong> GetX (<code>get: ^4.6.5</code>) — <code>GetMaterialApp</code>, <code>GetxController</code>, <code>Bindings</code>, named routes, <code>GetMiddleware</code>.</li>
+<li><strong>HTTP:</strong> <code>dio: ^5.7.0</code> (single <code>DioModule</code> client with interceptors).</li>
+<li><strong>Realtime:</strong> <code>socket_io_client: ^3.0.1</code>.</li>
+<li><strong>Push / notifications:</strong> <code>firebase_core</code>, <code>firebase_messaging</code>, <code>flutter_local_notifications</code>.</li>
+<li><strong>Crash / analytics:</strong> <code>firebase_crashlytics</code>, <code>posthog_flutter</code>.</li>
+<li><strong>Storage:</strong> <code>get_storage</code> (non-sensitive) + <code>flutter_secure_storage</code> (tokens, user JSON, private key, PIN/biometric flags).</li>
+<li><strong>Auth extras:</strong> <code>local_auth</code> (biometric), <code>pin_code_fields</code>, <code>sms_autofill</code> (OTP autofill).</li>
+<li><strong>Maps / location:</strong> <code>google_maps_flutter</code>, <code>geolocator</code>, <code>flutter_polyline_points</code> (shelter directions).</li>
+<li><strong>Media / docs:</strong> <code>syncfusion_flutter_pdfviewer</code>, <code>flutter_html</code>, <code>image_picker</code>, <code>file_picker</code>, <code>photo_manager</code>, <code>video_player</code>, <code>youtube_player_flutter</code>, <code>cached_network_image</code>.</li>
+<li><strong>Responsive / UI:</strong> <code>flutter_screenutil</code> (design size 390×850), <code>flutter_zoom_drawer</code>, <code>shimmer</code>, <code>lottie</code>, <code>carousel_slider</code>, <code>flutter_svg</code>.</li>
+<li><strong>Encryption:</strong> <code>encrypt</code> (decrypts encrypted API responses).</li>
+<li><strong>Deep links:</strong> <code>app_links</code> (<code>necxapp://config?api=...&amp;socket=...</code>).</li>
+</ul>
+<h3 id="72-application-structure-initialization">7.2 Application Structure &amp; Initialization</h3>
+<p>The app uses a flat layout: <code>lib/screens</code>, <code>lib/controller</code>, <code>lib/widgets</code>, <code>lib/models</code>, <code>lib/services</code>, <code>lib/bindings</code>, <code>lib/utils</code>, <code>lib/config</code>, <code>lib/middleware</code>.</p>
+<ul>
+<li><strong><code>lib/main.dart</code></strong> binds Flutter, eagerly <code>Get.put</code>s <code>AuthController</code>, <code>NECXPinController</code>, and <code>NECXAuthService</code> (permanent), installs <code>FlutterError.onError</code>, runs <code>AppInitializer.initialize(...)</code>, starts <code>DeepLinkService</code>, then <code>runApp(NECX())</code>. A root <code>Listener</code> unfocuses inputs on tap.</li>
+<li><strong><code>lib/app_initializer.dart</code></strong> performs ordered startup: environment + logger + response decrypter → <code>Firebase.initializeApp</code> → Crashlytics → <code>NECXStorage.init()</code> (critical for auth) → deep-link API override → system UI (edge-to-edge, portrait only) → non-blocking PostHog / version info / FCM setup → deferred (microtask) notification init, socket init, cold-start FCM handling → GetX DI → translations (<code>TranslationService.init()</code> via isolate JSON parsing).</li>
+<li><strong><code>lib/screens/root_screen.dart</code></strong> wraps <code>ScreenUtilInit</code> → <code>GetMaterialApp</code> with <code>translations: AppTranslations()</code>, <code>getPages: NECXRoutes.pages</code>, <code>initialRoute: &#x27;/&#x27;</code>, <code>theme: AppTheme.lightTheme</code>, <code>initialBinding: RootBindings()</code>. The global <code>builder</code> overlays the <code>EmergencyExitButton</code> (when enabled and not on splash/onboarding/no-internet) and an optional dev <code>NetworkInspector</code> FAB.</li>
+</ul>
+<h3 id="73-getx-architecture-pattern">7.3 GetX Architecture Pattern</h3>
+<ul>
+<li><strong>Controllers</strong> (<code>lib/controller/*</code>) hold reactive <code>.obs</code> state and orchestrate service calls. Singletons include <code>AuthController</code>, <code>NECXPinController</code>, <code>HomeController</code>, <code>ShelterController</code>, <code>InboxController</code>, <code>InquiryChatController</code>, <code>AiController</code>, <code>IntakeController</code>, <code>CaseDocumentsController</code>, <code>CommunityController</code>, <code>ProfileController</code>, <code>SettingsController</code>.</li>
+<li><strong>Services</strong> (<code>lib/services/*</code>): <code>NECXAuthService</code> (GetxService holding session state), per-domain API service classes (<code>lib/services/api_services/victim/*</code>), <code>SocketService</code>, <code>ShelterSocketService</code>, <code>NotificationService</code>, <code>TranslationService</code>, <code>BiometricService</code>, <code>DeepLinkService</code>, and upload/download/maps helpers.</li>
+<li><strong>Bindings</strong> (<code>lib/bindings/*</code>): <code>RootBindings</code> (global) plus per-route bindings attached to <code>GetPage</code>s.</li>
+<li><strong>Endpoints</strong> are centralized in <code>lib/services/api_services/endpoints/*</code>.</li>
+</ul>
+<h3 id="74-backend-communication-dio-client">7.4 Backend Communication (Dio client)</h3>
+<ul>
+<li>Base URL from <code>Environment.baseUrl</code>; default header <code>X-Netlify-Secret: &lt;mobileAppSecretKey&gt;</code> gates all API access.</li>
+<li><strong>Request interceptor</strong> injects <code>Authorization: Bearer &lt;accessToken&gt;</code> and <code>x-refresh-token</code> from secure storage.</li>
+<li><strong>Response interceptor</strong> decrypts encrypted payloads via <code>responseDecrypter.decryptAsync</code> (isolate for large payloads); skips HTML.</li>
+<li><strong>401 handling:</strong> reads a rotated <code>token</code> from response headers and silently retries with the new access + refresh token.</li>
+<li><strong>423 (session locked)</strong> and <strong>403 (PIN/LOCKOUT)</strong> are surfaced to callers; PIN screens handle them.</li>
+<li><code>Options(extra: {&#x27;suppressErrors&#x27;: true})</code> lets a caller opt out of the auto error toast (used by PIN/device-token/sign-in flows).</li>
+</ul>
+<h3 id="75-environments">7.5 Environments</h3>
+<p><code>local</code> / <code>development</code> / <code>staging</code> / <code>production</code> (<code>lib/config/env.dart</code>), each with base + socket URLs (e.g. prod <code>https://necx-prod-proxy.eastus2.cloudapp.azure.com/v2</code>, dev <code>https://necx-backend-v4.onrender.com/v2</code>). Values are overridable at build via <code>--dart-define</code> and at runtime via the <code>necxapp://config?api=...&amp;socket=...</code> deep link, which <code>DeepLinkService</code> persists.</p>
+<h3 id="76-real-time-notifications">7.6 Real-Time &amp; Notifications</h3>
+<ul>
+<li><strong><code>SocketService</code></strong> (singleton) connects to <code>Environment.socketUrl</code> with an <code>x-mobile-app-secret</code> header and <code>auth: {token, refreshToken}</code>; websocket-first with polling fallback, auto-reconnect, and room re-join on reconnect. It exposes an <code>onNewMessage</code> stream dispatched from a catch-all <code>onAny</code> handler for <code>new-message-*</code> events. Inbox/inquiry chat join per-thread rooms <code>thread-{threadUid}-{userUid}</code> (matching the web client).</li>
+<li><strong><code>ShelterSocketService</code></strong> plus a dedicated <code>/me</code> namespace carry shelter events (<code>request.status_changed</code>, <code>bed.status_changed</code>, <code>availability.changed</code>, <code>layout.changed</code>, <code>shelter.directory_changed</code>).</li>
+<li><strong>FCM push</strong> via <code>NotificationService</code> (high-importance Android channel; iOS permission request). The device token is obtained by <code>AuthController.getDeviceFcmToken()</code>, sent on login (<code>deviceToken</code> in the verify payload), and refreshed via <code>PATCH /mobile/account/device-token</code>. <code>NotificationNavigator</code> routes taps by <code>type</code> to the correct screen.</li>
+</ul>
+<h3 id="77-tenancy-identity">7.7 Tenancy &amp; Identity</h3>
+<p>The app is single-tenant from the survivor&#x27;s perspective: one authenticated victim (<code>issuer.type=APP</code>, scoped to <code>issuer.id</code>) who may hold cases across many agencies. There is no agency/context gate on mobile routes; isolation is enforced by scoping every query to the authenticated victim and by client-side ownership checks on case-detail screens.</p>
+<h2 id="8-functional-requirements">8. Functional Requirements</h2>
+<h3 id="81-onboarding-app-launch">8.1 Onboarding &amp; App Launch</h3>
+<p>The splash screen (<code>splash_screen.dart</code>, route <code>/</code>) boots the app, checks connectivity, restores the session, and routes to onboarding, login, PIN, or home. First-run intro slides (<code>/onboarding</code>), an offline fallback (<code>/noInternet</code>), and Terms &amp; Conditions (<code>/t&amp;c</code>) and Privacy Policy (<code>/p&amp;p</code>) HTML screens complete the pre-auth surface.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-ONB-01</td><td>On launch, show <code>NECXLoaderScreen</code> with progress and check internet via <code>ConnectivityController</code>; route to <code>/noInternet</code> when offline</td><td>Must</td></tr>
+<tr><td>FR-ONB-02</td><td>Await <code>authService.ensureInitialized()</code> to load tokens/user from secure storage before routing</td><td>Must</td></tr>
+<tr><td>FR-ONB-03</td><td>Route first-time users (onboarding not completed) to <code>/onboarding</code>; persist the completion flag in <code>get_storage</code></td><td>Must</td></tr>
+<tr><td>FR-ONB-04</td><td>Provide an offline fallback screen and continuous network monitoring (<code>connectivity_plus</code>)</td><td>Must</td></tr>
+<tr><td>FR-ONB-05</td><td>Present Terms &amp; Conditions and Privacy Policy as rendered HTML screens, reachable from onboarding, registration, and settings</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="82-authentication-session-management">8.2 Authentication &amp; Session Management</h3>
+<p>Session state lives in <code>NECXAuthService</code> (<code>isLoggedIn</code>, <code>isAuthInitialized</code>, <code>currentUser</code>, <code>accessToken</code>, <code>refreshToken</code>, <code>privateKey</code>). Sensitive data is stored in <code>NECXSecuredStorage</code> (flutter_secure_storage); the onboarding flag and non-sensitive prefs in <code>get_storage</code>. Auth logic lives in <code>AuthController</code>; the auth API in <code>VictimAuth</code>. All auth endpoints are shared platform endpoints under the <code>/mobile/*</code> variant, rate-limited (<code>auth</code>, <code>authStrict</code>, <code>passwordReset</code>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-AUTH-01</td><td>Support auto-login on relaunch: when <code>isLoggedIn</code> and user data are present, preload critical home data and enforce PIN via <code>NECXPinController.navigateAfterAuth(userData, allowSkipPinValidation:false)</code></td><td>Must</td></tr>
+<tr><td>FR-AUTH-02</td><td>Login (<code>login_screen_new.dart</code>): identifier (email/phone) + password + OTP channel → <code>POST /mobile/auth/sign-in</code> (errors suppressed, handled inline) → OTP screen with <code>actionType:&#x27;loginVerify&#x27;</code></td><td>Must</td></tr>
+<tr><td>FR-AUTH-03</td><td>OTP verify (<code>otp_screen.dart</code>): <code>POST /mobile/auth/verify-profile</code> with <code>{otp, privateKey, type:&#x27;APP&#x27;, deviceToken}</code>; on success persist tokens/user/privateKey, identify PostHog/Crashlytics, reset+init socket, save autofill credentials, preload home, then route through PIN</td><td>Must</td></tr>
+<tr><td>FR-AUTH-04</td><td>Support SMS OTP autofill (<code>sms_autofill</code>) and resend on the OTP screen</td><td>Should</td></tr>
+<tr><td>FR-AUTH-05</td><td>Password reset: <code>check-reset-channels</code> → <code>reset-password-trigger</code> → <code>verify-reset-password</code> → <code>PATCH reset-password</code> → return to <code>/login</code></td><td>Must</td></tr>
+<tr><td>FR-AUTH-06</td><td>Silent token refresh: on 401 with a rotated header <code>token</code>, retry the request transparently; on PIN unlock, store the fresh access/refresh tokens returned by the backend</td><td>Must</td></tr>
+<tr><td>FR-AUTH-07</td><td>Logout (<code>POST /mobile/auth/sign-out</code>): clear chat/home/intake session state, reset socket, clear secure storage + PIN/biometric flags, reset PostHog/Crashlytics, <code>offAllNamed(&#x27;/login&#x27;)</code></td><td>Must</td></tr>
+<tr><td>FR-AUTH-08</td><td>Delete account (<code>DELETE /mobile/users/{uid}</code>) → <code>/login</code></td><td>Must</td></tr>
+<tr><td>FR-AUTH-09</td><td>Register the FCM device token on login and refresh it via <code>PATCH /mobile/account/device-token</code></td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="83-multi-step-registration">8.3 Multi-Step Registration</h3>
+<p>Registration (<code>registration_screen_new.dart</code> + <code>widgets/victim_registration/*</code>) is a 4-step wizard with a progress bar; each step validates via a <code>GlobalKey</code> before advancing. States/cities are preloaded (<code>AuthController.statesList()</code> → <code>GET /mobile/states?pageLess=true</code>, isolate-parsed, 3× retry) to drive the cascading location dropdowns.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-REG-01</td><td>Step 1 — Personal Information: first/last name, email, phone (with country code), preferred OTP channel (EMAIL/SMS)</td><td>Must</td></tr>
+<tr><td>FR-REG-02</td><td>Step 2 — Location Details: address, cascading state → city dropdown (from preloaded states/cities), zip code</td><td>Must</td></tr>
+<tr><td>FR-REG-03</td><td>Step 3 — Additional Information: race/ethnicity, gender (+ &quot;other&quot;), age, special classification (+ &quot;other&quot;) — feeding victim eligibility/pre-assessment and PMT demographics</td><td>Must</td></tr>
+<tr><td>FR-REG-04</td><td>Step 4 — Set Password: password + confirm (regex-validated) and Terms &amp; Conditions checkbox; enable Register only when a channel is chosen, T&amp;C is checked, and passwords match and are valid</td><td>Must</td></tr>
+<tr><td>FR-REG-05</td><td>On submit, call <code>AuthController.registeruser(...)</code> → <code>POST /mobile/users</code>; on success reset registration data and auto-log-in (<code>victimLogin</code>) proceeding to OTP</td><td>Must</td></tr>
+<tr><td>FR-REG-06</td><td>Preserve entered data across step navigation and validate per-step before allowing advance</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="84-login-with-code-advocate-created-shelter-cases">8.4 Login-with-Code (Advocate-Created / Shelter Cases)</h3>
+<p>When an advocate creates a case for a victim (or staff checks a victim into a shelter bed), the backend mints a one-time login code and delivers it via the victim&#x27;s channel. Screens: <code>code_login_screen.dart</code>, <code>first_time_password_set_screen.dart</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CODE-01</td><td><code>loginWithCode(code)</code> → <code>POST /mobile/auth/login-with-code</code> → OTP screen with <code>actionType:&#x27;activateAccount&#x27;</code></td><td>Must</td></tr>
+<tr><td>FR-CODE-02</td><td><code>verifyOtpAndActivate()</code> → <code>POST /mobile/auth/verify-otp-for-login-code</code>; if verified but no password → first-time password set; if already fully verified → log in and route through PIN</td><td>Must</td></tr>
+<tr><td>FR-CODE-03</td><td><code>setPasswordFirstLogin()</code> → <code>POST /mobile/auth/set-password-first-login</code> (with <code>preAuthToken</code>) → log in and route through PIN</td><td>Must</td></tr>
+<tr><td>FR-CODE-04</td><td><code>sendOtpForCode()</code> → <code>POST /mobile/auth/send-otp-for-code</code> to resend the activation OTP</td><td>Should</td></tr>
+<tr><td>FR-CODE-05</td><td>On successful activation, link the previously anonymous/advocate case to the real victim account so it appears in &quot;My connections&quot;</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="85-necx-pin-biometric-security">8.5 NECX PIN &amp; Biometric Security</h3>
+<p>A 4–6 digit NECX PIN adds a second lock on top of the login session. Logic lives in <code>necx_pin_controller.dart</code> / <code>necx_pin_service.dart</code>; screens under <code>screens/auth/necx_pin_*</code>. Biometric unlock is handled by <code>biometric_service.dart</code> wrapping <code>local_auth</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-PIN-01</td><td>Set PIN: <code>POST /mobile/account/pin/setup</code>; after creation set <code>skipPinValidation</code> so the user is not immediately re-prompted</td><td>Must</td></tr>
+<tr><td>FR-PIN-02</td><td>Change PIN: <code>PUT /mobile/account/pin/change</code> (requires current + new; enforce new ≠ current)</td><td>Must</td></tr>
+<tr><td>FR-PIN-03</td><td>Delete PIN: <code>DELETE /mobile/account/pin</code>; toggle active: <code>POST /mobile/settings/pin/toggle</code>; status via <code>GET /mobile/settings</code> (<code>isPinEnabled</code>)</td><td>Must</td></tr>
+<tr><td>FR-PIN-04</td><td>Verify/unlock: <code>POST /mobile/auth/pin/unlock</code>; on success store the fresh access/refresh tokens the backend returns</td><td>Must</td></tr>
+<tr><td>FR-PIN-05</td><td>Handle 401 (session expired → logout), 403 <code>PIN/LOCKOUT</code> (too many attempts → notify + force logout to reset), and inline wrong-PIN messages (errors suppressed to avoid double toasts)</td><td>Must</td></tr>
+<tr><td>FR-PIN-06</td><td>Gate logic (<code>navigateAfterAuth</code>): session locked → PIN verify; PIN not enabled → home; just-created PIN (skip flag) → home; else → PIN verify. On relaunch force verification (<code>allowSkipPinValidation:false</code>)</td><td>Must</td></tr>
+<tr><td>FR-PIN-07</td><td>Biometric unlock: detect capability and enrolled types (Face ID / Face Unlock / Fingerprint / Iris); persist per-type enable/disable per-uid; show biometric toggles in Settings only when a PIN is set and the device supports biometrics</td><td>Must</td></tr>
+<tr><td>FR-PIN-08</td><td>On the PIN verification screen, <code>authenticateWithBiometric()</code> unlocks equivalently to a correct PIN</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="86-service-catalog-pre-assessment-requesting-services">8.6 Service Catalog, Pre-Assessment &amp; Requesting Services</h3>
+<p>Controller <code>HomeController</code>; API <code>VictimService</code>. Services are concrete offerings published by agencies under categories; each service owns per-service claim questions (the pre-assessment). A service claim is the case.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SVC-01</td><td>Preload categories (<code>GET /mobile/services/categories?pageLess=true</code>) and the user&#x27;s claimed services on home</td><td>Must</td></tr>
+<tr><td>FR-SVC-02</td><td>Services tab: list with filters (category, state, city), free-text search (500 ms debounce), pagination (<code>pageSize=15</code>) via <code>GET /mobile/victim-services?page&amp;pageSize&amp;categoryId&amp;searchKey&amp;stateId&amp;cityId</code></td><td>Must</td></tr>
+<tr><td>FR-SVC-03</td><td>Service detail: <code>GET /mobile/victim-services/{uid}</code> (adds <code>language</code> param when non-English); increments view count; returns <code>claimQuestions</code> (the pre-assessment) and the current claim state for the user</td><td>Must</td></tr>
+<tr><td>FR-SVC-04</td><td>Claim/request a service: collect answers on <code>ServiceClaimScreen</code> → <code>POST /mobile/service-claims {victimId, serviceId, questionAnswers}</code>; on success refresh detail + claimed list</td><td>Must</td></tr>
+<tr><td>FR-SVC-05</td><td>Enforce one ongoing (pending/approved) claim per (service, victim); surface duplicate attempts gracefully</td><td>Must</td></tr>
+<tr><td>FR-SVC-06</td><td>Alternative request-to-connect: <code>PUT /mobile/victim-services/{uid}/request-to-connect</code> (dedupes; emails the center; 409 if already requested)</td><td>Must</td></tr>
+<tr><td>FR-SVC-07</td><td>Post-service: rate via <code>PATCH /mobile/service-claims/rating/{uid}</code>; mark visit duration via <code>PATCH /mobile/victim-services/{uid}/mark-visit-duration</code></td><td>Should</td></tr>
+<tr><td>FR-SVC-08</td><td>Referral consent: approve/reject referred cases via <code>POST /mobile/partnerships/referrals/{uid}/decision {action}</code></td><td>Must</td></tr>
+<tr><td>FR-SVC-09</td><td>Support claim question types fill-in-the-blank, multiple-choice, and true-false, honoring <code>isRequired</code> and <code>options</code></td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="87-my-cases-all-my-connections">8.7 My Cases (&quot;All My Connections&quot;)</h3>
+<p>Screens <code>all_connections_screen.dart</code> + <code>claimed_service_details_screen.dart</code> (and <code>requested_details_screen.dart</code>); API <code>VictimService</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CASE-01</td><td><code>fetchClaimedServices(limit?)</code> → <code>GET /mobile/service-claims</code> returns <code>serviceClaims</code> + <code>requestsToConnect</code>, merged and isolate-parsed into <code>ClaimedServiceModel</code>s</td><td>Must</td></tr>
+<tr><td>FR-CASE-02</td><td>&quot;My connections&quot; screen offers status filter chips and sort</td><td>Must</td></tr>
+<tr><td>FR-CASE-03</td><td>Case detail (<code>/claimedDetails</code>) <code>GET /mobile/service-claims/{uid}</code> shows status, appointments, published updates, documents, rating, and referral consent state</td><td>Must</td></tr>
+<tr><td>FR-CASE-04</td><td>Chat availability rule: referred cases require consent granted + agency accepted; non-referred require an existing thread</td><td>Must</td></tr>
+<tr><td>FR-CASE-05</td><td>Surface only published claim updates (<code>isPublished=true</code>); mark update seen via <code>PATCH /mobile/service-claims/claim-update/seen/{uid}</code></td><td>Must</td></tr>
+<tr><td>FR-CASE-06</td><td>Statuses reflected: pending, approved, rejected, resolved, and synthetic <code>requested</code> (for request-to-connect)</td><td>Must</td></tr>
+<tr><td>FR-CASE-07</td><td>Verify a case belongs to the current user before rendering its detail (privacy guard)</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="88-necx-ai-assistant">8.8 NECX AI Assistant</h3>
+<p>Screen <code>ask_ai_screen.dart</code>; controller <code>AiController</code>; API <code>AiService</code> (REST, not socket). The assistant is a guidance/triage chatbot, separate from human agency chat.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-AI-01</td><td>On open, ensure a session: <code>POST /mobile/tool/ai/create-session</code> (session id cached in <code>get_storage</code>); load history <code>GET /mobile/tool/ai/get-messages/{sessionId}</code></td><td>Must</td></tr>
+<tr><td>FR-AI-02</td><td>Send messages queued and processed serially: <code>POST /mobile/tool/ai/send-message/{sessionId} {message}</code> with retry (exponential backoff + jitter, 15→30 s timeouts) and optimistic bubbles (<code>sending/sent/failed</code>)</td><td>Must</td></tr>
+<tr><td>FR-AI-03</td><td>Render AI responses that include recommended videos and recommended services as cards; recommended videos feed the self-services grid</td><td>Should</td></tr>
+<tr><td>FR-AI-04</td><td>End session: <code>DELETE /mobile/tool/ai/end-session/{sessionId}</code> → return to home</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="89-agency-chat-service-inquiry-case-inbox-real-time">8.9 Agency Chat (Service Inquiry + Case Inbox, Real-Time)</h3>
+<p>Controllers <code>InquiryChatController</code>, <code>InboxController</code>; API <code>VictimService</code> chat-services + <code>SocketService</code>. Thread types relevant to the survivor: INQUIRY (pre-claim conversation about a service) and SERVICE (an approved case).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CHAT-01</td><td>Start inquiry: <code>POST /mobile/chat-services/start-inquiry {inquiryData:{serviceCenterId, serviceId}}</code> returns a thread; open <code>/serviceInquiryChat</code></td><td>Must</td></tr>
+<tr><td>FR-CHAT-02</td><td>Inbox threads: <code>GET /mobile/chat-services/get-all-threads</code>; after load, once the socket connects, join room <code>thread-{threadUid}-{userUid}</code> per thread</td><td>Must</td></tr>
+<tr><td>FR-CHAT-03</td><td>Real-time delivery: <code>SocketService.onNewMessage</code> (from <code>new-message-*</code> events, payload <code>additionalData.threadUid</code>) updates the matching thread/messages live</td><td>Must</td></tr>
+<tr><td>FR-CHAT-04</td><td>Send message: <code>POST /mobile/chat-services/send-message/{threadUid}</code> as <code>multipart/form-data</code> (content + up to 5 file attachments); replace the optimistic bubble with the server message; carry <code>translatedContent</code></td><td>Must</td></tr>
+<tr><td>FR-CHAT-05</td><td>History: <code>GET /mobile/chat-services/get-all-chats/{threadUid}?page&amp;pageSize=20</code> (paginated, reversed); media: <code>GET .../get-all-files/{threadUid}</code>; mark read: <code>PATCH .../read/{threadUid}</code></td><td>Must</td></tr>
+<tr><td>FR-CHAT-06</td><td>Media browsing: view files-in-thread and preview/download chat media</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="810-shelter-search-bed-request">8.10 Shelter Search &amp; Bed Request</h3>
+<p>Controller <code>ShelterController</code> (Google Maps + geolocation + sockets); API <code>Shelters</code>. Confidential shelters hide coordinates/address until after intake.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SHL-01</td><td>List/search: <code>GET /mobile/shelters</code> with filters (q, zipcode, type, open_24_7, accessible, accepts_pets/families, bed_type, min_open_beds, sort, page, per_page, lat, lng, radius_km); compute distance from GPS</td><td>Must</td></tr>
+<tr><td>FR-SHL-02</td><td>Recent searches: <code>GET /mobile/me/shelter-searches/recent</code>; record via <code>POST /mobile/me/shelter-searches</code></td><td>Should</td></tr>
+<tr><td>FR-SHL-03</td><td>Detail: <code>GET /mobile/shelters/{uid}</code>; layout <code>GET /mobile/shelters/{uid}/layout</code> (ETag/304); directions <code>GET /mobile/shelters/{uid}/directions</code> (403 for confidential) with Google Directions polyline</td><td>Must</td></tr>
+<tr><td>FR-SHL-04</td><td>Connect <code>ShelterSocketService</code> on detail for live bed/availability/layout updates (<code>bed.status_changed</code>, <code>availability.changed</code>, <code>layout.changed</code>)</td><td>Must</td></tr>
+<tr><td>FR-SHL-05</td><td>Request a bed: <code>POST /mobile/shelter-requests</code> with party_size, urgency, bed_type_preference, needs, contact, notes, bed_preference (floors→rooms→bed_ids), <code>max_stay_nights</code>; status <code>waiting</code> if beds free else <code>waitlisted</code>; optional room/bed picker</td><td>Must</td></tr>
+<tr><td>FR-SHL-06</td><td>My shelters/requests: <code>GET /mobile/me/shelters</code>, <code>GET /mobile/me/shelter-requests[/{uid}]</code>; cancel <code>POST /mobile/me/shelter-requests/{uid}/cancel</code> (blocked once <code>assigned</code>)</td><td>Must</td></tr>
+<tr><td>FR-SHL-07</td><td>Real-time status: <code>/me</code> namespace <code>request.status_changed</code> (+ main socket) updates request status live and fires notifications; <code>shelter.directory_changed</code> refreshes the list</td><td>Must</td></tr>
+<tr><td>FR-SHL-08</td><td>Reflect staff decisions with mapped statuses: <code>waiting</code>→pending, <code>assigned</code>→accepted, plus <code>waitlisted</code>/<code>cancelled</code>/<code>rejected</code>, with assigned-bed labels, days remaining, and history</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="811-intake-assessments">8.11 Intake Assessments</h3>
+<p>Controller <code>IntakeController</code>; API <code>IntakeSubmissions</code>. Agency-assigned forms; the pending count is surfaced on home and in the drawer.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-INT-01</td><td>List: <code>GET /mobile/intake-submissions</code> (pending + submitted); surface the pending count on home + drawer badge</td><td>Must</td></tr>
+<tr><td>FR-INT-02</td><td>Open a form: <code>GET /mobile/intake-submissions/{uid}</code> (questions + service-center name)</td><td>Must</td></tr>
+<tr><td>FR-INT-03</td><td>Submit: <code>POST /mobile/intake-submissions/{uid}/submit {responses}</code> → flip local status to submitted, success toast, background refresh; 400 = already completed</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="812-e-sign-case-documents">8.12 E-Sign / Case Documents</h3>
+<p>Controllers <code>CaseDocumentsController</code>, <code>UserSignatureController</code>; API <code>CaseDocumentsService</code>, <code>UserSignatureService</code>. Consolidated under the &quot;Documents &amp; Forms&quot; screen (tabs: Case Documents + Intake Forms) with a home e-sign pending banner.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-ESN-01</td><td>List documents: <code>GET /mobile/case-documents</code> (docs awaiting my signature, with <code>needsMySignature</code>, <code>claimUid</code>)</td><td>Must</td></tr>
+<tr><td>FR-ESN-02</td><td>View: <code>GET /mobile/case-documents/{uid}</code> → PDF viewer (<code>syncfusion</code>); stream file bytes via <code>.../{uid}/file</code> (prefers the signed copy)</td><td>Must</td></tr>
+<tr><td>FR-ESN-03</td><td>Sign: <code>POST /mobile/case-documents/{uid}/sign</code> with a drawn/typed signature image (`signatureType:&#x27;drawn&#x27;</td><td>&#x27;typed&#x27;<code>, </code>signerName<code>) or </code>useSaved:true` to reuse the stored signature</td></tr>
+<tr><td>FR-ESN-04</td><td>Saved signature: <code>GET/POST/DELETE /mobile/user-signature</code> (base64 data-URL image), managed in <code>signature_settings_screen</code></td><td>Should</td></tr>
+<tr><td>FR-ESN-05</td><td>Only the assigned victim signer may sign (<code>signerAppUserId === issuer.id</code>); render typed-signature styles using the app&#x27;s cursive font family</td><td>Must</td></tr>
+<tr><td>FR-ESN-06</td><td>Reflect document statuses (<code>pending_signature</code>, <code>partially_signed</code>, <code>signed</code>, <code>declined</code>, <code>cancelled</code>) and remove cancelled/withdrawn documents from the list on <code>DOCUMENT_REMOVED</code></td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="813-communities-present-but-hidden">8.13 Communities (Present but Hidden)</h3>
+<p>Screens under <code>community/*</code>; controller <code>CommunityController</code>; API <code>communities_endpoints</code>. The Community tab and routes are currently commented out; the following requirements describe the implemented-but-disabled feature.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-COM-01</td><td>List communities (<code>GET /mobile/communities</code>) and view community detail</td><td>Could</td></tr>
+<tr><td>FR-COM-02</td><td>Join a community (<code>POST /mobile/communities/join/{communityId}</code> with answers[]); private communities await staff approval, open communities join immediately</td><td>Could</td></tr>
+<tr><td>FR-COM-03</td><td>Group chat (send/receive with attachments), posts feed, and comments, subject to auto text-moderation and staff moderation</td><td>Could</td></tr>
+<tr><td>FR-COM-04</td><td>File reports against a post/comment/message/member (<code>POST /mobile/communities/reports/create/{uid}</code>)</td><td>Could</td></tr>
+</tbody></table></div>
+<div class="callout warn"><div class="callout-title">⚠ Feature disabled</div><div class="callout-body">Communities ship in the binary but are hidden (tab + routes commented out). Treat as not user-visible until explicitly re-enabled; see Risks.</div></div>
+<h3 id="814-notifications">8.14 Notifications</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-NOT-01</td><td>Load in-app notifications on home (<code>GET /mobile/users/notifications</code>); pull-down overlay lists them</td><td>Must</td></tr>
+<tr><td>FR-NOT-02</td><td>Tap → <code>NotificationNavigator</code> routes by <code>type</code> (service-claim/appointment/document → claimed-case detail; document-signature-request → document sign; inquiry/service new-message → inbox chat; community types → community screens)</td><td>Must</td></tr>
+<tr><td>FR-NOT-03</td><td>Mark read: <code>PATCH /mobile/users/notifications/read/{uid}</code></td><td>Must</td></tr>
+<tr><td>FR-NOT-04</td><td>FCM foreground → local notification; background/cold-start → <code>NotificationNavigator.navigateFromFCMData(data)</code></td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="815-profile-settings-self-help-resources">8.15 Profile, Settings &amp; Self-Help Resources</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-PRF-01</td><td>Profile: view/edit via <code>GET/PATCH /mobile/users/{uid}</code></td><td>Must</td></tr>
+<tr><td>FR-PRF-02</td><td>Change email (<code>/changeEmail</code>) and phone (<code>/changePhone</code>), each OTP-verified</td><td>Must</td></tr>
+<tr><td>FR-SET-01</td><td>Settings hub: reset password, emergency exit toggle, e-signature settings, delete account, contact support, language switcher, app version, T&amp;C, privacy policy, and an expandable &quot;NECX Security&quot; section with the PIN tile and biometric toggles</td><td>Must</td></tr>
+<tr><td>FR-SET-02</td><td>Language switcher supports en, es, bn, fr, ar; fetch and merge dynamic translations from backend</td><td>Must</td></tr>
+<tr><td>FR-RES-01</td><td>Self-help videos grid (<code>/selfService</code> / <code>/recomendedVideos</code>): recommended videos, including those surfaced by the AI assistant</td><td>Should</td></tr>
+<tr><td>FR-RES-02</td><td>Send feedback from the drawer</td><td>Should</td></tr>
+</tbody></table></div>
+<h2 id="9-detailed-user-system-flows">9. Detailed User &amp; System Flows</h2>
+<h3 id="91-register-a-new-account-self-registration">9.1 Register a New Account (Self-Registration)</h3>
+<ol class="flow">
+<li>From <code>/login</code>, the survivor taps &quot;Register&quot; → <code>/registration</code>.</li>
+<li><code>AuthController.statesList()</code> preloads states/cities (<code>GET /mobile/states?pageLess=true</code>, isolate-parsed, 3× retry) for the location step.</li>
+<li>Step 1 — Personal Information: enter first/last name, email, phone (with country code), and choose OTP channel (EMAIL/SMS); validate via the step&#x27;s <code>GlobalKey</code> before advancing.</li>
+<li>Step 2 — Location Details: enter address; select state, then city from the cascading dropdown; enter zip; validate.</li>
+<li>Step 3 — Additional Information: select race/ethnicity, gender (+ optional &quot;other&quot;), age, and special classification (+ optional &quot;other&quot;); validate.</li>
+<li>Step 4 — Set Password: enter password + confirm (regex-validated) and check the Terms &amp; Conditions box; Register enables only when a channel is chosen, T&amp;C checked, and passwords match.</li>
+<li>Submit → <code>AuthController.registeruser(...)</code> → <code>POST /mobile/users</code>.</li>
+<li>On success, reset registration data and auto-log-in (<code>victimLogin</code> → <code>POST /mobile/auth/sign-in</code>), then navigate to the OTP screen (<code>actionType:&#x27;loginVerify&#x27;</code>).</li>
+<li>The survivor enters the OTP (SMS autofill supported) → <code>POST /mobile/auth/verify-profile {otp, privateKey, type:&#x27;APP&#x27;, deviceToken}</code>.</li>
+<li>On success, persist tokens/user/privateKey, identify analytics, reset+init the socket, preload critical home data behind <code>NECXLoaderScreen</code>, then route through PIN setup/verification (<code>navigateAfterAuth</code>).</li>
+<li>Edge cases: duplicate email/phone → inline error on Step 1; network failure during states preload → retry (3×) then a soft error; invalid/expired OTP → inline error with resend; back navigation preserves entered data.</li>
+</ol>
+<h3 id="92-log-in-and-auto-login-on-relaunch">9.2 Log In and Auto-Login on Relaunch</h3>
+<ol class="flow">
+<li>On <code>/login</code>, enter identifier (email/phone) + password + OTP channel → <code>victimLogin()</code> → <code>POST /mobile/auth/sign-in</code> (errors suppressed, handled inline).</li>
+<li>On 200, navigate to the OTP screen with <code>{privateKey, identifier, password, otp_channel, actionType:&#x27;loginVerify&#x27;}</code>.</li>
+<li>Enter OTP → <code>victimProfileVerify()</code> → <code>POST /mobile/auth/verify-profile</code>; establish the session as in 9.1 (tokens, socket, analytics, home preload).</li>
+<li><code>navigateAfterAuth(user, allowSkipPinValidation:false)</code> decides home vs PIN-set vs PIN-verify.</li>
+<li>Auto-login (relaunch, <code>splash_screen.dart</code>): connectivity check → <code>authService.ensureInitialized()</code> → if onboarding incomplete <code>/onboarding</code>; else if <code>isLoggedIn</code> with user data, preload home + init <code>ShelterController</code> → <code>navigateAfterAuth(userData, allowSkipPinValidation:false)</code> (PIN enforced on relaunch); else <code>/login</code>. Any error → <code>/login</code>.</li>
+<li>Edge cases: expired access token → silent refresh via rotated header <code>token</code>; session locked (423) → PIN verify; lockout (403 PIN/LOCKOUT) → notify + logout.</li>
+</ol>
+<h3 id="93-request-a-service-pre-assessment-service-claim">9.3 Request a Service (Pre-Assessment → Service Claim)</h3>
+<ol class="flow">
+<li>Home preloads categories and the user&#x27;s claimed services; the survivor opens the Services tab.</li>
+<li>The list loads with filters (category, state, city) and debounced search: <code>GET /mobile/victim-services?page&amp;pageSize=15&amp;categoryId&amp;searchKey&amp;stateId&amp;cityId</code>.</li>
+<li>Tap a service → <code>getServiceDetails</code> <code>GET /mobile/victim-services/{uid}</code> (with <code>language</code> when non-English); the detail returns <code>claimQuestions</code> (the pre-assessment) and the current claim state.</li>
+<li>Tap &quot;Request / Claim&quot; → <code>ServiceClaimScreen</code> renders the claim questions (fill-in-the-blank / multiple-choice / true-false), enforcing <code>isRequired</code>.</li>
+<li>Submit → <code>claimService()</code> <code>POST /mobile/service-claims {victimId, serviceId, questionAnswers}</code>.</li>
+<li>Backend creates the claim (<code>uid=CL&lt;yy&gt;&lt;month&gt;&lt;uuid6&gt;</code>, status <code>pending</code> for a self-service victim), stores answers, creates a stats row and a PMT report snapshot, and emits <code>claim-request</code> to category-assigned caseworkers.</li>
+<li>On success, the app refreshes the service detail and the claimed list; the new case appears under &quot;My connections&quot; as <code>pending</code>.</li>
+<li>Alternative — request-to-connect: <code>PUT /mobile/victim-services/{uid}/request-to-connect</code> (dedupes; emails the center; 409 if already requested).</li>
+<li>Edge cases: an existing ongoing (pending/approved) claim for the same service is blocked (duplicate guard) and surfaced gracefully; referred cases prompt for referral consent (<code>POST /mobile/partnerships/referrals/{uid}/decision</code>).</li>
+<li>When the caseworker approves the claim, the app receives <code>service-claim-action-for-&lt;victimUid&gt;</code> + FCM; the case flips to <code>approved</code>, a published &quot;Approved&quot; update appears, and a SERVICE chat thread opens.</li>
+</ol>
+<h3 id="94-claim-an-advocate-created-case-via-login-code">9.4 Claim an Advocate-Created Case via Login Code</h3>
+<ol class="flow">
+<li>An advocate creates a case in VS360 (or staff checks the victim into a shelter bed); the backend mints a one-time login code and delivers it via SMS/email.</li>
+<li>The survivor opens the app → <code>/codeLogin</code> and enters the code → <code>loginWithCode(code)</code> <code>POST /mobile/auth/login-with-code</code>.</li>
+<li>The app navigates to the OTP screen with <code>actionType:&#x27;activateAccount&#x27;</code>; if needed, <code>sendOtpForCode()</code> <code>POST /mobile/auth/send-otp-for-code</code> resends the OTP.</li>
+<li>Enter OTP → <code>verifyOtpAndActivate()</code> <code>POST /mobile/auth/verify-otp-for-login-code</code>.</li>
+<li>Branch A — verified but no password: navigate to <code>first_time_password_set_screen</code> → <code>setPasswordFirstLogin()</code> <code>POST /mobile/auth/set-password-first-login</code> (with <code>preAuthToken</code>) → log in and route through PIN.</li>
+<li>Branch B — already fully verified: log in directly (tokens established) and route through PIN.</li>
+<li>The previously anonymous/advocate case is now linked to the real victim account and appears in &quot;My connections&quot; (advocate-created cases are auto-approved), along with any pending intake forms or documents awaiting signature.</li>
+<li>Edge cases: invalid/expired code → inline error with retry; code already used → guidance to use normal login; shelter check-in case surfaces under &quot;My Shelters&quot; with the active bed assignment and check-in window.</li>
+</ol>
+<h3 id="95-chat-with-a-caseworker-real-time-agency-chat">9.5 Chat with a Caseworker (Real-Time Agency Chat)</h3>
+<ol class="flow">
+<li>From a service detail or an approved case, start an inquiry: <code>handleChat()</code> <code>POST /mobile/chat-services/start-inquiry {inquiryData:{serviceCenterId, serviceId}}</code> returns a thread; open <code>/serviceInquiryChat</code>. (For approved cases, a SERVICE thread already exists.)</li>
+<li>The Inbox tab loads threads: <code>getAllChatThreads(type?)</code> <code>GET /mobile/chat-services/get-all-threads</code>; once the socket is connected, join room <code>thread-{threadUid}-{userUid}</code> per thread.</li>
+<li>Load history: <code>GET /mobile/chat-services/get-all-chats/{threadUid}?page&amp;pageSize=20</code> (paginated, reversed).</li>
+<li>Send a message: <code>POST /mobile/chat-services/send-message/{threadUid}</code> as <code>multipart/form-data</code> (content + up to 5 attachments); show an optimistic bubble, then replace it with the server message (carrying <code>translatedContent</code>).</li>
+<li>Real-time receipt: <code>SocketService.onNewMessage</code> (from <code>new-message-*</code>, payload <code>additionalData.threadUid</code>) appends incoming messages to the matching thread live; caseworker replies arrive without refresh.</li>
+<li>Mark read on open/scroll: <code>PATCH /mobile/chat-services/read/{threadUid}</code>; browse attachments via <code>GET .../get-all-files/{threadUid}</code> and preview/download media.</li>
+<li>Edge cases: socket disconnect → auto-reconnect and room re-join; chat availability rule enforced (referred cases need consent + agency acceptance; non-referred need an existing thread); an inquiry approved by staff emits <code>inquiry-approve-for-&lt;victimUid&gt;</code> and notifies the survivor.</li>
+</ol>
+<h3 id="96-sign-a-case-document">9.6 Sign a Case Document</h3>
+<ol class="flow">
+<li>A caseworker sends a document for signature in VS360; the backend creates a victim signature row and notifies the survivor (socket + in-app + FCM + email <code>DOCUMENT_SIGNATURE_REQUEST</code>).</li>
+<li>The survivor sees the e-sign pending banner on home (or a notification) and opens &quot;Documents &amp; Forms&quot; (<code>signed_documents_screen</code>) → Documents tab, which lists docs via <code>GET /mobile/case-documents</code> (<code>needsMySignature</code>, <code>claimUid</code>).</li>
+<li>Tap a document → <code>GET /mobile/case-documents/{uid}</code> → open the PDF viewer (<code>document_pdf_viewer_screen</code>, syncfusion), streaming bytes from <code>.../{uid}/file</code> (signed copy preferred; the preview shows dashed placeholders where signatures go).</li>
+<li>Tap &quot;Sign&quot; → choose to draw a signature, type one (rendered in a cursive font style), or reuse the saved signature (<code>useSaved:true</code>).</li>
+<li>Submit → <code>POST /mobile/case-documents/{uid}/sign</code> with either the signature image (<code>signatureType:&#x27;drawn&#x27;|&#x27;typed&#x27;</code>, <code>signerName</code>) or <code>useSaved:true</code>.</li>
+<li>Backend authorizes (<code>signerAppUserId === issuer.id</code>), stores the signature image, records the IP + timestamp, and re-stamps the signed PDF from the pristine original; document status advances (<code>partially_signed</code> → <code>signed</code> when all required signatures are collected).</li>
+<li>On completion the survivor receives <code>DOCUMENT_SIGNED</code>; a partially signed doc where staff signed first shows a <code>DOCUMENT_SIGNATURE_REQUEST</code> reminding the victim their signature is still needed.</li>
+<li>Edge cases: <code>useSaved</code> with no saved signature → 400 handled inline (prompt to draw/type); a withdrawn document emits <code>DOCUMENT_REMOVED</code> and drops from the list; stamping failures are non-fatal server-side and do not block recording the signature.</li>
+</ol>
+<h3 id="97-find-a-shelter-and-request-a-bed">9.7 Find a Shelter and Request a Bed</h3>
+<ol class="flow">
+<li>Open the Shelter tab → <code>GET /mobile/shelters</code> with filters and GPS (<code>lat/lng/radius_km</code>); results show distance and availability; recent searches load via <code>GET /mobile/me/shelter-searches/recent</code>.</li>
+<li>Optionally search by query/zip; record the term via <code>POST /mobile/me/shelter-searches</code>.</li>
+<li>Tap a shelter → <code>GET /mobile/shelters/{uid}</code> + layout <code>GET /mobile/shelters/{uid}/layout</code>; connect <code>ShelterSocketService</code> for live bed/availability updates; view directions <code>GET /mobile/shelters/{uid}/directions</code> (confidential shelters return 403 and hide address until intake).</li>
+<li>Tap &quot;Request a bed&quot; → optionally pick room/bed from the live layout (<code>shelter_room_picker_screen</code>), then <code>shelter_request_bed_screen</code> collects party_size, urgency, bed_type_preference, needs, contact, notes, and <code>max_stay_nights</code>.</li>
+<li>Submit → <code>POST /mobile/shelter-requests</code>; status is <code>waiting</code> if beds are free else <code>waitlisted</code>; the response includes waitlist position + check-in window; web staff are notified (<code>SHELTER_REQUEST</code>).</li>
+<li>Track via &quot;My Shelters&quot; (<code>GET /mobile/me/shelters</code>) and &quot;My shelter requests&quot; (<code>GET /mobile/me/shelter-requests[/{uid}]</code>), showing mapped status, assigned-bed labels, days remaining, and history.</li>
+<li>Real-time: <code>/me</code> <code>request.status_changed</code> updates status live and fires notifications when staff accept (<code>SHELTER_BED_ASSIGNED</code>/<code>SHELTER_REQUEST_ACCEPTED</code>), reject (<code>SHELTER_REQUEST_REJECTED</code>), waitlist (<code>SHELTER_WAITLISTED</code>), transfer (<code>SHELTER_BED_TRANSFERRED</code>), or check out (<code>SHELTER_CHECKED_OUT</code>).</li>
+<li>Cancel: <code>POST /mobile/me/shelter-requests/{uid}/cancel</code> (blocked once <code>assigned</code>).</li>
+</ol>
+<h3 id="98-complete-an-intake-assessment">9.8 Complete an Intake Assessment</h3>
+<ol class="flow">
+<li>Home/drawer surface the pending intake count; open &quot;Documents &amp; Forms&quot; → Forms tab or the intake screen.</li>
+<li><code>fetchSubmissions()</code> <code>GET /mobile/intake-submissions</code> lists pending + submitted forms.</li>
+<li>Tap a form → <code>GET /mobile/intake-submissions/{uid}</code> (questions + service-center name).</li>
+<li>Answer and submit → <code>POST /mobile/intake-submissions/{uid}/submit {responses}</code>; local status flips to submitted with a success toast and a background refresh.</li>
+<li>Edge case: a 400 indicates the form was already completed.</li>
+</ol>
+<h3 id="99-set-unlock-with-necx-pin-and-biometrics">9.9 Set / Unlock with NECX PIN and Biometrics</h3>
+<ol class="flow">
+<li>First-time (post-auth): if PIN not set, <code>navigateAfterAuth</code> routes to <code>NecxPinSetScreen</code> → <code>POST /mobile/account/pin/setup</code>; after creation <code>skipPinValidation</code> prevents an immediate re-prompt and the survivor lands on home.</li>
+<li>Relaunch/lock: <code>navigateAfterAuth(..., allowSkipPinValidation:false)</code> routes to <code>NecxPinVerificationScreen</code>.</li>
+<li>Unlock via PIN: <code>POST /mobile/auth/pin/unlock</code> → on success store the fresh access/refresh tokens and enter home.</li>
+<li>Unlock via biometric: <code>authenticateWithBiometric()</code> prompts the OS; success unlocks equivalently.</li>
+<li>Manage in Settings → NECX Security → PIN tile (<code>/necx-pin</code>): change (<code>PUT /mobile/account/pin/change</code>, new ≠ current), delete (<code>DELETE /mobile/account/pin</code>), toggle active (<code>POST /mobile/settings/pin/toggle</code>), and per-type biometric toggles (only when a PIN is set and the device supports biometrics).</li>
+<li>Edge cases: too many wrong PIN attempts → 403 <code>PIN/LOCKOUT</code> → notify + force logout to reset; expired session → 401 → logout; wrong PIN → inline message (no double toast).</li>
+</ol>
+<h3 id="910-chat-with-the-necx-ai-assistant">9.10 Chat with the NECX AI Assistant</h3>
+<ol class="flow">
+<li>From home, open <code>ask_ai_screen</code> → ensure a session <code>POST /mobile/tool/ai/create-session</code> (session id cached); load history <code>GET /mobile/tool/ai/get-messages/{sessionId}</code>.</li>
+<li>Send a message → queued and processed serially → <code>POST /mobile/tool/ai/send-message/{sessionId} {message}</code> with backoff retries and optimistic <code>sending/sent/failed</code> bubbles.</li>
+<li>The assistant replies with guidance and may include recommended services and videos rendered as cards; recommended videos also feed the self-services grid.</li>
+<li>End the session → <code>DELETE /mobile/tool/ai/end-session/{sessionId}</code> → return to home.</li>
+</ol>
+<h3 id="911-reset-a-forgotten-password">9.11 Reset a Forgotten Password</h3>
+<ol class="flow">
+<li>From <code>/login</code> → <code>/forgotPassword</code>: enter identifier → <code>checkResetChannels()</code> <code>POST /mobile/auth/check-reset-channels</code> returns masked available channels (EMAIL/SMS).</li>
+<li>Choose a channel → <code>passwordResetTrigger()</code> <code>POST /mobile/auth/reset-password-trigger</code> sends a code.</li>
+<li>Enter the code → <code>verifyOtp()</code> <code>POST /mobile/auth/verify-reset-password</code> → navigate to <code>new_password_set_screen</code>.</li>
+<li>Set the new password → <code>setNewPassword()</code> <code>PATCH /mobile/auth/reset-password</code> → return to <code>/login</code>.</li>
+</ol>
+<h2 id="10-data-model">10. Data Model</h2>
+<p>The app consumes backend entities (PostgreSQL via Objection/Knex); the app-side models mirror the payloads it renders. Victim identity lives in <code>app_users</code> (distinct from staff <code>users</code>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Key Fields</th><th>Relationships</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>App User (<code>app_users</code>)</td><td>id, uid, name, email, phone, otpChannel, isVerified, preferredLanguage, signature image, race/gender/age/classification, state/city/zip</td><td>1—N ServiceClaims, ShelterAssignments, ChatThreads, CommunityMembers</td><td>The survivor&#x27;s account/profile</td></tr>
+<tr><td>Service (<code>services</code>)</td><td>uid, title, shortDescription, description, videoUrl, categoryId, isNational, isActive, isVerified, visitDuration</td><td>belongsTo ServiceCategory + ServiceCenter; owns ClaimQuestions</td><td>An offering the survivor can request</td></tr>
+<tr><td>Service Category (<code>service_categories</code>)</td><td>uid, name, description</td><td>1—N Services</td><td>Taxonomy + notification routing</td></tr>
+<tr><td>Service Claim / Case (<code>service_claims</code>)</td><td>uid (<code>CL…</code>), serviceId, victimId, status, rating, hasUnseenUpdates, loginCode fields</td><td>belongsTo Service + AppUser; 1—N ClaimQuestionAnswers, ClaimUpdates, CaseDocuments; 1 ChatThread</td><td>The survivor&#x27;s case</td></tr>
+<tr><td>Claim Question / Answer</td><td>question, questionType, isRequired, options / claimId, questionId, answer</td><td>belongsTo Service / Claim</td><td>Pre-assessment intake</td></tr>
+<tr><td>Claim Update (<code>claim_updates</code>)</td><td>message, isPublished</td><td>belongsTo Claim</td><td>Victim-visible progress updates</td></tr>
+<tr><td>Request To Connect</td><td>serviceId, victimId, status (synthetic <code>requested</code>)</td><td>belongsTo Service + AppUser</td><td>Lightweight interest signal</td></tr>
+<tr><td>Chat Thread (<code>chat_threads</code>)</td><td>uid, type (INQUIRY/SERVICE), victimId, vsmsId, serviceId, status</td><td>1—N ChatMessages, FileUploads</td><td>Survivor↔agency conversation</td></tr>
+<tr><td>Chat Message (<code>chat_messages</code>)</td><td>uid, threadId, victimSenderId/vsmsSenderId, content, translatedContent, isRead</td><td>belongsTo Thread; hasMany files</td><td>Individual message</td></tr>
+<tr><td>Shelter Location (<code>shelter_locations</code>)</td><td>uid, name, address, type, lat/lng, totalBeds, open_24_7, accepts*, accessible, confidentialLocation, policies (max_stay_nights)</td><td>1—N floors/rooms/beds/assignments/waitlist</td><td>Discoverable shelter</td></tr>
+<tr><td>Shelter Bed (<code>shelter_beds</code>)</td><td>uid, roomId, bedNumber, type, status</td><td>belongsTo room/location</td><td>Requestable bed</td></tr>
+<tr><td>Shelter Assignment (<code>shelter_assignments</code>)</td><td>uid, bedId, appUserId, checkInDate, expectedCheckOutDate, status</td><td>belongsTo bed/location/AppUser</td><td>Active/completed stay</td></tr>
+<tr><td>Shelter Waitlist / Request (<code>shelter_waitlist</code>)</td><td>uid, locationId, appUserId, bedTypePreference, urgency, bedPreference, status</td><td>belongsTo location</td><td>Mobile bed request</td></tr>
+<tr><td>Intake Submission (<code>intake_submissions</code>)</td><td>uid, questions, responses, status, serviceCenter</td><td>belongsTo AppUser + ServiceCenter</td><td>Agency-assigned form</td></tr>
+<tr><td>Case Document (<code>case_documents</code>)</td><td>uid, claimId, title, fileUrl, signedFileUrl, requiresVictimSignature, status</td><td>belongsTo Claim; 1—N DocumentSignatures</td><td>Document to sign</td></tr>
+<tr><td>Document Signature (<code>document_signatures</code>)</td><td>uid, documentId, signerRole, signerAppUserId, signatureType, status, page/pos_*, signed_at, ip_address</td><td>belongsTo Document + AppUser</td><td>A required/collected signature</td></tr>
+<tr><td>Saved Signature</td><td>signature_image_url on app_users</td><td>1—1 AppUser</td><td>Reusable signature image</td></tr>
+<tr><td>Victim Notification (<code>victim_notifications</code>)</td><td>uid, type, additionalData (claimUid/threadUid), isRead</td><td>belongsTo AppUser</td><td>In-app/push notification</td></tr>
+<tr><td>Community (<code>communities</code>)</td><td>uid, title, type, isPrivate, memberLimit</td><td>1—N members/posts/messages</td><td>Peer-support community (hidden)</td></tr>
+<tr><td>State / City (<code>states</code>,<code>cities</code>)</td><td>id, name</td><td>City belongsTo State</td><td>Location reference for registration/filtering</td></tr>
+</tbody></table></div>
+<h2 id="11-api-integration-surface">11. API &amp; Integration Surface</h2>
+<p>All paths carry the env <code>/v2</code> prefix and the <code>/mobile/*</code> router; access is gated by the <code>X-Netlify-Secret</code> / <code>x-mobile-app-secret</code> header and (post-auth) a Bearer token. Sockets attach the same secret + <code>auth: {token, refreshToken}</code>.</p>
+<h3 id="111-auth-account">11.1 Auth &amp; Account</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>POST</td><td><code>/mobile/users</code></td><td>Register (signup)</td><td>Public + app secret</td></tr>
+<tr><td>POST</td><td><code>/mobile/auth/sign-in</code></td><td>Login (generate OTP)</td><td>App secret</td></tr>
+<tr><td>POST</td><td><code>/mobile/auth/verify-profile</code></td><td>Verify OTP → tokens</td><td>App secret</td></tr>
+<tr><td>POST</td><td><code>/mobile/auth/sign-out</code></td><td>Logout</td><td>Bearer</td></tr>
+<tr><td>DELETE</td><td><code>/mobile/users/{uid}</code></td><td>Delete account</td><td>Bearer</td></tr>
+<tr><td>POST</td><td><code>/mobile/auth/check-reset-channels</code></td><td>Password-reset channels</td><td>App secret</td></tr>
+<tr><td>POST</td><td><code>/mobile/auth/reset-password-trigger</code></td><td>Send reset code</td><td>App secret</td></tr>
+<tr><td>POST</td><td><code>/mobile/auth/verify-reset-password</code></td><td>Verify reset OTP</td><td>App secret</td></tr>
+<tr><td>PATCH</td><td><code>/mobile/auth/reset-password</code></td><td>Set new password</td><td>App secret</td></tr>
+<tr><td>POST</td><td><code>/mobile/auth/login-with-code</code></td><td>Code login (activation)</td><td>App secret</td></tr>
+<tr><td>POST</td><td><code>/mobile/auth/send-otp-for-code</code></td><td>Resend activation OTP</td><td>App secret</td></tr>
+<tr><td>POST</td><td><code>/mobile/auth/verify-otp-for-login-code</code></td><td>Verify activation OTP</td><td>App secret</td></tr>
+<tr><td>POST</td><td><code>/mobile/auth/set-password-first-login</code></td><td>First-time password</td><td>preAuthToken</td></tr>
+<tr><td>PATCH</td><td><code>/mobile/account/device-token</code></td><td>Register/refresh FCM token</td><td>Bearer</td></tr>
+<tr><td>GET</td><td><code>/mobile/states</code></td><td>States/cities reference</td><td>App secret</td></tr>
+</tbody></table></div>
+<h3 id="112-pin-settings">11.2 PIN &amp; Settings</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>POST</td><td><code>/mobile/account/pin/setup</code></td><td>Set PIN</td><td>Bearer</td></tr>
+<tr><td>PUT</td><td><code>/mobile/account/pin/change</code></td><td>Change PIN</td><td>Bearer</td></tr>
+<tr><td>DELETE</td><td><code>/mobile/account/pin</code></td><td>Delete PIN</td><td>Bearer</td></tr>
+<tr><td>POST</td><td><code>/mobile/settings/pin/toggle</code></td><td>Toggle PIN active</td><td>Bearer</td></tr>
+<tr><td>POST</td><td><code>/mobile/auth/pin/unlock</code></td><td>Verify/unlock (rotates tokens)</td><td>Bearer</td></tr>
+<tr><td>GET</td><td><code>/mobile/settings</code></td><td>PIN status (<code>isPinEnabled</code>); may return 423</td><td>Bearer</td></tr>
+</tbody></table></div>
+<h3 id="113-services-cases-chat">11.3 Services, Cases &amp; Chat</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/mobile/services/categories</code></td><td>Category list</td><td>Bearer</td></tr>
+<tr><td>GET</td><td><code>/mobile/victim-services[/{uid}]</code></td><td>Service list/detail (+claimQuestions)</td><td>Bearer</td></tr>
+<tr><td>POST</td><td><code>/mobile/service-claims</code></td><td>Create claim</td><td>Bearer</td></tr>
+<tr><td>GET</td><td><code>/mobile/service-claims[/{uid}]</code></td><td>List/detail cases</td><td>Bearer</td></tr>
+<tr><td>PATCH</td><td><code>/mobile/service-claims/rating/{uid}</code></td><td>Rate case</td><td>Bearer</td></tr>
+<tr><td>PATCH</td><td><code>/mobile/service-claims/claim-update/seen/{uid}</code></td><td>Mark update seen</td><td>Bearer</td></tr>
+<tr><td>PUT</td><td><code>/mobile/victim-services/{uid}/request-to-connect</code></td><td>Request to connect</td><td>Bearer</td></tr>
+<tr><td>PATCH</td><td><code>/mobile/victim-services/{uid}/mark-visit-duration</code></td><td>Mark visit duration</td><td>Bearer</td></tr>
+<tr><td>POST</td><td><code>/mobile/partnerships/referrals/{uid}/decision</code></td><td>Referral consent</td><td>Bearer</td></tr>
+<tr><td>POST</td><td><code>/mobile/chat-services/start-inquiry</code></td><td>Start inquiry thread</td><td>Bearer</td></tr>
+<tr><td>POST</td><td><code>/mobile/chat-services/send-message/{threadUid}</code></td><td>Send message (multipart)</td><td>Bearer</td></tr>
+<tr><td>GET</td><td><code>/mobile/chat-services/get-all-chats/{threadUid}</code></td><td>Message history</td><td>Bearer</td></tr>
+<tr><td>GET</td><td><code>/mobile/chat-services/get-all-threads</code></td><td>Thread list</td><td>Bearer</td></tr>
+<tr><td>GET</td><td><code>/mobile/chat-services/get-all-files/{threadUid}</code></td><td>Thread media</td><td>Bearer</td></tr>
+<tr><td>PATCH</td><td><code>/mobile/chat-services/read/{threadUid}</code></td><td>Mark thread read</td><td>Bearer</td></tr>
+</tbody></table></div>
+<h3 id="114-ai-shelter-intake-documents-notifications-localization">11.4 AI, Shelter, Intake, Documents, Notifications, Localization</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>POST/GET/DELETE</td><td>`/mobile/tool/ai/{create-session</td><td>send-message</td><td>get-messages</td></tr>
+<tr><td>POST</td><td><code>/mobile/tool/translate</code></td><td>Translate text</td><td>Bearer</td></tr>
+<tr><td>GET</td><td>`/mobile/shelters[/{uid}</td><td>/layout</td><td>/directions]`</td></tr>
+<tr><td>POST</td><td><code>/mobile/shelter-requests</code></td><td>Submit bed request</td><td>Bearer</td></tr>
+<tr><td>GET</td><td><code>/mobile/me/shelters</code></td><td>My active stays + waitlist</td><td>Bearer</td></tr>
+<tr><td>GET</td><td><code>/mobile/me/shelter-requests[/{uid}]</code></td><td>My requests</td><td>Bearer</td></tr>
+<tr><td>POST</td><td><code>/mobile/me/shelter-requests/{uid}/cancel</code></td><td>Cancel request</td><td>Bearer</td></tr>
+<tr><td>GET/POST</td><td><code>/mobile/me/shelter-searches[/recent]</code></td><td>Recent searches</td><td>Bearer</td></tr>
+<tr><td>GET/POST</td><td>`/mobile/intake-submissions[/{uid}</td><td>/submit]`</td><td>Intake forms</td></tr>
+<tr><td>GET/POST</td><td>`/mobile/case-documents[/{uid}</td><td>/{uid}/file</td><td>/{uid}/sign]`</td></tr>
+<tr><td>GET/POST/DELETE</td><td><code>/mobile/user-signature</code></td><td>Saved signature</td><td>Bearer</td></tr>
+<tr><td>GET/PATCH</td><td><code>/mobile/users/notifications[/read/{uid}]</code></td><td>Notifications</td><td>Bearer</td></tr>
+<tr><td>GET</td><td><code>/mobile/localization/app-language</code>, <code>/mobile/platform-settings/supported-languages</code></td><td>Dynamic translations</td><td>Bearer</td></tr>
+<tr><td>—</td><td>Communities <code>/mobile/communities/*</code></td><td>List/join/posts/comments/group-chats/reports (hidden)</td><td>Bearer</td></tr>
+</tbody></table></div>
+<h3 id="115-external-integrations">11.5 External Integrations</h3>
+<ul>
+<li><strong>Twilio</strong> — SMS OTP delivery and login-code SMS (backend-side; the app is the recipient&#x27;s channel).</li>
+<li><strong>FCM</strong> — push notifications; device token registered on login and refreshed via <code>PATCH /mobile/account/device-token</code>.</li>
+<li><strong>Firebase</strong> — Crashlytics (crash reporting; disabled in debug) and Core.</li>
+<li><strong>PostHog</strong> — product analytics; identifies by user uid, reset on logout.</li>
+<li><strong>Google Maps / Directions API</strong> — shelter map, distance, and directions polyline (<code>mapsApiKey</code>).</li>
+<li><strong>Azure Blob Storage / MinIO</strong> — backend storage for chat attachments, case documents, signature images (accessed via backend-issued URLs/streams).</li>
+<li><strong>OpenAI / Anthropic</strong> — power the NECX AI assistant and translation via backend tool endpoints.</li>
+<li><strong>Encryption</strong> — AES response decryption (<code>response_decrypter</code>) with key/IV in env.</li>
+</ul>
+<h2 id="12-rbac-permissions">12. RBAC &amp; Permissions</h2>
+<p>The Victim App authenticates a single role: the survivor (issuer type <code>APP</code>). Mobile routes carry no <code>allowOnly</code> context gate; access control is auth-only plus per-victim scoping and client-side ownership checks. There are no in-app role/permission flags for the survivor; capability differences arise from account/case state rather than roles.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Action</th><th>Gate</th></tr></thead>
+<tbody>
+<tr><td>Any <code>/mobile/*</code> API or socket connection</td><td>Valid <code>X-Netlify-Secret</code>/<code>x-mobile-app-secret</code> header</td></tr>
+<tr><td>Any authenticated action</td><td>Valid Bearer access token (+ <code>x-refresh-token</code>); silent refresh on 401</td></tr>
+<tr><td>App entry after login/relaunch</td><td>NECX PIN verification (unless PIN disabled or just-created), or biometric equivalent</td></tr>
+<tr><td>Reading a case detail</td><td>Case must belong to <code>issuer.id</code> (client ownership guard + backend scoping)</td></tr>
+<tr><td>Case chat</td><td>Referred: consent granted + agency accepted; non-referred: an existing thread</td></tr>
+<tr><td>Signing a document</td><td>Signature row <code>signerAppUserId === issuer.id</code> (else 403 backend)</td></tr>
+<tr><td>Shelter directions for confidential shelters</td><td>Denied (403) until intake</td></tr>
+<tr><td>Sensitive re-auth</td><td>423 session-lock → PIN verify; 403 PIN/LOCKOUT → forced logout/reset</td></tr>
+</tbody></table></div>
+<p>By contrast, staff-side actions (approving claims, publishing updates, assigning beds, sending documents, moderating communities) are governed by VS360 <code>vs360Modules</code> permissions and are out of scope for this app.</p>
+<h2 id="13-non-functional-requirements">13. Non-Functional Requirements</h2>
+<h3 id="131-security">13.1 Security</h3>
+<ul>
+<li><strong>Transport &amp; access:</strong> all API and socket access gated by the mobile app secret header; Bearer access token + refresh token with silent rotation on 401.</li>
+<li><strong>Encrypted payloads:</strong> encrypted API responses decrypted client-side via <code>response_decrypter</code> (AES key/IV in env; large payloads decrypted in an isolate).</li>
+<li><strong>Secure storage:</strong> all tokens, user JSON, private key, and PIN/biometric flags stored in <code>flutter_secure_storage</code>; only non-sensitive prefs in <code>get_storage</code>.</li>
+<li><strong>Second factor:</strong> NECX PIN (4–6 digit) verified via <code>POST /mobile/auth/pin/unlock</code>, which rotates tokens; biometric unlock via <code>local_auth</code> (per-type toggles).</li>
+<li><strong>Session hardening:</strong> 423 session-lock (inactivity) and 403 PIN/LOCKOUT (too many attempts) force PIN re-verification or a full re-auth/reset.</li>
+</ul>
+<h3 id="132-privacy-victim-safety">13.2 Privacy &amp; Victim Safety</h3>
+<ul>
+<li><strong>Emergency exit button:</strong> <code>EmergencyExitButton</code> (toggle in Settings) overlaid on all authenticated screens for instant escape.</li>
+<li><strong>Data minimization:</strong> the app requests and stores only what each flow needs; case-detail screens verify ownership before rendering to guard against data leakage; referral chats are gated on explicit consent.</li>
+<li><strong>Confidential shelters:</strong> address/coordinates hidden and directions denied (403) until after an intake interview.</li>
+<li><strong>Analytics discipline:</strong> PostHog and Crashlytics identify by user uid and are reset on logout; Crashlytics is disabled in debug.</li>
+<li><strong>No signing links in email:</strong> document-signature emails direct the survivor into the app; signing happens in-app only.</li>
+</ul>
+<h3 id="133-performance">13.3 Performance</h3>
+<ul>
+<li>Critical home data preloaded behind <code>NECXLoaderScreen</code>; heavy JSON parsing (states, claimed services) offloaded to isolates.</li>
+<li>Lists paginated and debounced (services <code>pageSize=15</code>, 500 ms search debounce; chat <code>pageSize=20</code>); shelter layout supports ETag/304.</li>
+<li>AI send uses queuing + exponential backoff with jitter and 15→30 s timeouts; states preload retries 3×.</li>
+<li>Responsive layout via <code>flutter_screenutil</code> (390×850 design size); images via <code>cached_network_image</code>; shimmer placeholders during load.</li>
+</ul>
+<h3 id="134-availability-offline">13.4 Availability &amp; Offline</h3>
+<ul>
+<li>Splash connectivity check routes offline users to <code>/noInternet</code>; <code>ConnectivityController</code> (connectivity_plus) monitors the network continuously.</li>
+<li>Socket auto-reconnects and re-joins rooms; network-sensitive calls (states, AI, shelter) retry/timeout to degrade gracefully.</li>
+</ul>
+<h3 id="135-auditability">13.5 Auditability</h3>
+<ul>
+<li>Backend writes <code>ActionLogs</code> for create/update/delete operations and records IP + timestamp per document signature.</li>
+<li>The app surfaces case updates, shelter request history, and document status transitions so the survivor has a visible trail.</li>
+</ul>
+<h3 id="136-localization-accessibility">13.6 Localization &amp; Accessibility</h3>
+<ul>
+<li>Locales: en, es, bn, fr, ar (Arabic in the supported list for RTL). Base <code>en</code> shipped; dynamic translations fetched from backend and merged at runtime; service details re-fetched with a <code>language</code> param when non-English; chat messages carry <code>translatedContent</code>.</li>
+<li>Typed e-signature uses a dedicated cursive font family; portrait-only, edge-to-edge system UI.</li>
+</ul>
+<h3 id="137-compliance">13.7 Compliance</h3>
+<ul>
+<li>The pre-assessment/demographics captured at registration and claim time feed the backend PMT (Performance Measurement Tool) report snapshot used for federal/grant reporting; the app must collect these fields accurately and consistently.</li>
+</ul>
+<h2 id="14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</h2>
+<h3 id="141-analytics">14.1 Analytics</h3>
+<ul>
+<li><strong>PostHog</strong> captures product events and identifies the survivor by uid (reset on logout).</li>
+<li><strong>Crashlytics</strong> captures crashes/non-fatals (disabled in debug), keyed to the user uid; target crash-free sessions ≥ 99.5%.</li>
+</ul>
+<h3 id="142-notifications">14.2 Notifications</h3>
+<p>The app delivers notifications through three channels that mirror backend events:</p>
+<ul>
+<li><strong>In-app list + pull-down overlay:</strong> <code>GET /mobile/users/notifications</code>; mark read <code>PATCH /mobile/users/notifications/read/{uid}</code>.</li>
+<li><strong>Socket (real-time):</strong> chat <code>new-message-*</code> / <code>message-service</code> / <code>message-inquiry</code>; case <code>service-claim-action-for-&lt;victimUid&gt;</code>, <code>update-&lt;receiverUid&gt;</code>; inquiry <code>inquiry-approve-for-&lt;victimUid&gt;</code>; shelter <code>request.status_changed</code>, <code>availability.changed</code>, <code>bed.status_changed</code>, <code>layout.changed</code>, <code>shelter.directory_changed</code>; document <code>case-document-signed-*</code> and signature-request events.</li>
+<li><strong>FCM push:</strong> foreground → local notification; background/cold-start → <code>NotificationNavigator.navigateFromFCMData(data)</code>.</li>
+</ul>
+<p>Notification types routed by <code>NotificationNavigator</code>: service-claim / appointment / document → claimed-case detail; document-signature-request → document sign; inquiry / service new-message → inbox chat; community post/comment/group-chat → community screens. Shelter notification types include <code>SHELTER_BED_ASSIGNED</code>, <code>SHELTER_BED_TRANSFERRED</code>, <code>SHELTER_REQUEST_REJECTED</code>, <code>SHELTER_WAITLISTED</code>, <code>SHELTER_CHECKED_OUT</code>, <code>SHELTER_REQUEST_ACCEPTED</code>; document types include <code>DOCUMENT_SIGNATURE_REQUEST</code>, <code>DOCUMENT_SIGNED</code>, <code>DOCUMENT_REMOVED</code>.</p>
+<h3 id="143-survivor-facing-dashboards">14.3 Survivor-Facing Dashboards</h3>
+<p>The app has no reporting dashboards (reporting is staff/admin-side). The survivor&#x27;s equivalent surfaces are: home (categories, cases, intake pending count, e-sign banner, recommended content), &quot;All my connections&quot; (case list with status filters/sort), &quot;My Shelters&quot;/&quot;My shelter requests,&quot; and &quot;Documents &amp; Forms&quot; (pending badge).</p>
+<h2 id="15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Type</th><th>Impact</th><th>Mitigation / Owner</th></tr></thead>
+<tbody>
+<tr><td>Communities are implemented but hidden (tab + routes commented out)</td><td>Open Question</td><td>Feature investment unused; unclear go-live intent</td><td>Product to decide enable/remove; keep out of user-facing scope until then</td></tr>
+<tr><td>Legacy simulated e-sign flow (<code>e_sign_controller.dart</code>, dummy data, <code>TODO(api)</code>) coexists with the live <code>CaseDocumentsController</code></td><td>Risk</td><td>Confusion / dead code</td><td>Engineering to remove or clearly quarantine the simulated path</td></tr>
+<tr><td><code>main.dart</code> currently builds with <code>EnvironmentType.local</code></td><td>Risk</td><td>Wrong environment shipped if not overridden at build</td><td>Enforce env via <code>--dart-define</code> in CI; verify release config; Mobile Eng</td></tr>
+<tr><td>Case-document read paths rely thin on tenant/claim re-check server-side (backend note)</td><td>Risk</td><td>Potential cross-tenant document access</td><td>Backend security review; app relies on <code>signerAppUserId===issuer.id</code> for signing</td></tr>
+<tr><td>No hard quota on backend Drive (not victim-facing)</td><td>Assumption</td><td>None for app</td><td>N/A — Drive is VS360-only</td></tr>
+<tr><td>Tutorial video route present but disabled</td><td>Open Question</td><td>Onboarding completeness</td><td>Product to decide whether to ship tutorial</td></tr>
+<tr><td>Emergency exit destination/behavior must be validated for real-world safety</td><td>Risk</td><td>Survivor safety if exit is slow/incomplete</td><td>Security &amp; Privacy + Product to define and test exit target</td></tr>
+<tr><td>Runtime API override via <code>necxapp://config</code> deep link</td><td>Risk</td><td>Could be abused to point the app at a rogue backend</td><td>Restrict/disable in production builds; Mobile Eng</td></tr>
+<tr><td>Advocate/anonymous case linking depends on correct channel/contact and code delivery</td><td>Assumption</td><td>Failed activation if channel is NONE or contact wrong</td><td>Backend validates channel; app provides resend; Program to train advocates</td></tr>
+</tbody></table></div>
+<p>Assumptions: the survivor&#x27;s device has network connectivity for most flows; the backend enforces per-victim scoping on all <code>/mobile/*</code> reads; SMS/email OTP delivery is reliable via Twilio/email providers; the six feature branches (realtime chat, PIN, biometric, shelter, e-sign, all-my-cases) are merged into <code>develop</code> and live.</p>
+<h2 id="16-glossary">16. Glossary</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Victim / Survivor</td><td>A person who experienced crime and uses the app (backend <code>app_users</code>, issuer type <code>APP</code>)</td></tr>
+<tr><td>Advocate / Caseworker</td><td>Agency staff (issuer <code>VSMS</code>, context <code>VS360</code>) who help survivors and may create cases on their behalf</td></tr>
+<tr><td>Service</td><td>A concrete offering published by an agency under a category (<code>services</code>)</td></tr>
+<tr><td>Service Category</td><td>Taxonomy grouping services; also routes notifications to assigned caseworkers</td></tr>
+<tr><td>Service Claim / Case</td><td>A survivor&#x27;s request for a service; the central case entity (<code>service_claims</code>, uid <code>CL…</code>)</td></tr>
+<tr><td>Claim Question / Pre-Assessment</td><td>Per-service intake questions answered when requesting a service</td></tr>
+<tr><td>Claim Update</td><td>A progress message on a case; only published updates are visible to the survivor</td></tr>
+<tr><td>Request to Connect</td><td>A lightweight interest signal on a service (synthetic status <code>requested</code>)</td></tr>
+<tr><td>Referral</td><td>An inter-agency hand-off of a case; requires the survivor&#x27;s consent to proceed</td></tr>
+<tr><td>Partnership</td><td>An accepted relationship between two agencies (enables referrals/agency chat)</td></tr>
+<tr><td>Login Code</td><td>A one-time code minted for advocate-created or shelter-check-in cases to activate a victim account</td></tr>
+<tr><td>NECX PIN</td><td>A 4–6 digit second-factor app lock verified via <code>pin/unlock</code> (rotates tokens)</td></tr>
+<tr><td>Biometric Unlock</td><td>Face/Fingerprint/Iris unlock (via <code>local_auth</code>) equivalent to the PIN</td></tr>
+<tr><td>Emergency Exit</td><td>An always-available button to quickly leave the app for safety</td></tr>
+<tr><td>Inquiry (thread)</td><td>A pre-claim conversation between a survivor and an agency about a service</td></tr>
+<tr><td>SERVICE thread</td><td>The case chat thread opened when a claim is approved</td></tr>
+<tr><td>Intake Submission</td><td>An agency-assigned form the survivor completes in-app</td></tr>
+<tr><td>Case Document</td><td>A document tied to a case that the survivor may need to e-sign</td></tr>
+<tr><td>Saved Signature</td><td>A reusable signature image stored per user for one-tap signing</td></tr>
+<tr><td>Shelter / Bed / Assignment</td><td>Emergency shelter, a requestable bed, and an active/completed stay</td></tr>
+<tr><td>Waitlist / Shelter Request</td><td>A mobile-originated bed request tracked through staff triage</td></tr>
+<tr><td>VSMS</td><td>Victim Services Management System (agency staff identity/context)</td></tr>
+<tr><td>VS360</td><td>The agency web/Workspace client for staff</td></tr>
+<tr><td>PMT</td><td>Performance Measurement Tool — federal/grant reporting snapshot fed by demographics/claims</td></tr>
+<tr><td>FCM</td><td>Firebase Cloud Messaging — push notification delivery</td></tr>
+<tr><td>App Secret</td><td>The <code>X-Netlify-Secret</code> / <code>x-mobile-app-secret</code> header gating API + socket access</td></tr>
+</tbody></table></div>
+      </div>
+      <nav class="prevnext"><a class="pn prev" href="P02.html"><span>← Previous</span><b>Workspace — Staff Mobile App</b></a><a class="pn next" href="P04.html"><span>Next →</span><b>VS360 — Agency Web Dashboard</b></a></nav>
+      <footer class="doc-foot">NECX Inc — Confidential · Generated 2026-07-05 · NECX Victim App — Survivor Mobile App</footer>
+    </article>
+  </main>
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav class="toc-nav"><a class="toc-1" href="#1-document-control">1. Document Control</a>
+<a class="toc-1" href="#2-executive-summary">2. Executive Summary</a>
+<a class="toc-1" href="#3-product-overview-vision">3. Product Overview &amp; Vision</a>
+<a class="toc-2" href="#31-problem-statement">3.1 Problem Statement</a>
+<a class="toc-2" href="#32-product-vision">3.2 Product Vision</a>
+<a class="toc-2" href="#33-position-in-the-necx-ecosystem">3.3 Position in the NECX Ecosystem</a>
+<a class="toc-1" href="#4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</a>
+<a class="toc-2" href="#41-goals-objectives">4.1 Goals &amp; Objectives</a>
+<a class="toc-2" href="#42-success-metrics">4.2 Success Metrics</a>
+<a class="toc-1" href="#5-scope">5. Scope</a>
+<a class="toc-2" href="#51-in-scope">5.1 In Scope</a>
+<a class="toc-2" href="#52-out-of-scope">5.2 Out of Scope</a>
+<a class="toc-1" href="#6-personas-user-roles">6. Personas &amp; User Roles</a>
+<a class="toc-2" href="#61-persona-narratives">6.1 Persona Narratives</a>
+<a class="toc-1" href="#7-system-context-architecture">7. System Context &amp; Architecture</a>
+<a class="toc-2" href="#71-tech-stack">7.1 Tech Stack</a>
+<a class="toc-2" href="#72-application-structure-initialization">7.2 Application Structure &amp; Initialization</a>
+<a class="toc-2" href="#73-getx-architecture-pattern">7.3 GetX Architecture Pattern</a>
+<a class="toc-2" href="#74-backend-communication-dio-client">7.4 Backend Communication (Dio client)</a>
+<a class="toc-2" href="#75-environments">7.5 Environments</a>
+<a class="toc-2" href="#76-real-time-notifications">7.6 Real-Time &amp; Notifications</a>
+<a class="toc-2" href="#77-tenancy-identity">7.7 Tenancy &amp; Identity</a>
+<a class="toc-1" href="#8-functional-requirements">8. Functional Requirements</a>
+<a class="toc-2" href="#81-onboarding-app-launch">8.1 Onboarding &amp; App Launch</a>
+<a class="toc-2" href="#82-authentication-session-management">8.2 Authentication &amp; Session Management</a>
+<a class="toc-2" href="#83-multi-step-registration">8.3 Multi-Step Registration</a>
+<a class="toc-2" href="#84-login-with-code-advocate-created-shelter-cases">8.4 Login-with-Code (Advocate-Created / Shelter Cases)</a>
+<a class="toc-2" href="#85-necx-pin-biometric-security">8.5 NECX PIN &amp; Biometric Security</a>
+<a class="toc-2" href="#86-service-catalog-pre-assessment-requesting-services">8.6 Service Catalog, Pre-Assessment &amp; Requesting Services</a>
+<a class="toc-2" href="#87-my-cases-all-my-connections">8.7 My Cases (&quot;All My Connections&quot;)</a>
+<a class="toc-2" href="#88-necx-ai-assistant">8.8 NECX AI Assistant</a>
+<a class="toc-2" href="#89-agency-chat-service-inquiry-case-inbox-real-time">8.9 Agency Chat (Service Inquiry + Case Inbox, Real-Time)</a>
+<a class="toc-2" href="#810-shelter-search-bed-request">8.10 Shelter Search &amp; Bed Request</a>
+<a class="toc-2" href="#811-intake-assessments">8.11 Intake Assessments</a>
+<a class="toc-2" href="#812-e-sign-case-documents">8.12 E-Sign / Case Documents</a>
+<a class="toc-2" href="#813-communities-present-but-hidden">8.13 Communities (Present but Hidden)</a>
+<a class="toc-2" href="#814-notifications">8.14 Notifications</a>
+<a class="toc-2" href="#815-profile-settings-self-help-resources">8.15 Profile, Settings &amp; Self-Help Resources</a>
+<a class="toc-1" href="#9-detailed-user-system-flows">9. Detailed User &amp; System Flows</a>
+<a class="toc-2" href="#91-register-a-new-account-self-registration">9.1 Register a New Account (Self-Registration)</a>
+<a class="toc-2" href="#92-log-in-and-auto-login-on-relaunch">9.2 Log In and Auto-Login on Relaunch</a>
+<a class="toc-2" href="#93-request-a-service-pre-assessment-service-claim">9.3 Request a Service (Pre-Assessment → Service Claim)</a>
+<a class="toc-2" href="#94-claim-an-advocate-created-case-via-login-code">9.4 Claim an Advocate-Created Case via Login Code</a>
+<a class="toc-2" href="#95-chat-with-a-caseworker-real-time-agency-chat">9.5 Chat with a Caseworker (Real-Time Agency Chat)</a>
+<a class="toc-2" href="#96-sign-a-case-document">9.6 Sign a Case Document</a>
+<a class="toc-2" href="#97-find-a-shelter-and-request-a-bed">9.7 Find a Shelter and Request a Bed</a>
+<a class="toc-2" href="#98-complete-an-intake-assessment">9.8 Complete an Intake Assessment</a>
+<a class="toc-2" href="#99-set-unlock-with-necx-pin-and-biometrics">9.9 Set / Unlock with NECX PIN and Biometrics</a>
+<a class="toc-2" href="#910-chat-with-the-necx-ai-assistant">9.10 Chat with the NECX AI Assistant</a>
+<a class="toc-2" href="#911-reset-a-forgotten-password">9.11 Reset a Forgotten Password</a>
+<a class="toc-1" href="#10-data-model">10. Data Model</a>
+<a class="toc-1" href="#11-api-integration-surface">11. API &amp; Integration Surface</a>
+<a class="toc-2" href="#111-auth-account">11.1 Auth &amp; Account</a>
+<a class="toc-2" href="#112-pin-settings">11.2 PIN &amp; Settings</a>
+<a class="toc-2" href="#113-services-cases-chat">11.3 Services, Cases &amp; Chat</a>
+<a class="toc-2" href="#114-ai-shelter-intake-documents-notifications-localization">11.4 AI, Shelter, Intake, Documents, Notifications, Localization</a>
+<a class="toc-2" href="#115-external-integrations">11.5 External Integrations</a>
+<a class="toc-1" href="#12-rbac-permissions">12. RBAC &amp; Permissions</a>
+<a class="toc-1" href="#13-non-functional-requirements">13. Non-Functional Requirements</a>
+<a class="toc-2" href="#131-security">13.1 Security</a>
+<a class="toc-2" href="#132-privacy-victim-safety">13.2 Privacy &amp; Victim Safety</a>
+<a class="toc-2" href="#133-performance">13.3 Performance</a>
+<a class="toc-2" href="#134-availability-offline">13.4 Availability &amp; Offline</a>
+<a class="toc-2" href="#135-auditability">13.5 Auditability</a>
+<a class="toc-2" href="#136-localization-accessibility">13.6 Localization &amp; Accessibility</a>
+<a class="toc-2" href="#137-compliance">13.7 Compliance</a>
+<a class="toc-1" href="#14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</a>
+<a class="toc-2" href="#141-analytics">14.1 Analytics</a>
+<a class="toc-2" href="#142-notifications">14.2 Notifications</a>
+<a class="toc-2" href="#143-survivor-facing-dashboards">14.3 Survivor-Facing Dashboards</a>
+<a class="toc-1" href="#15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</a>
+<a class="toc-1" href="#16-glossary">16. Glossary</a>
+</nav>
+  </aside>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

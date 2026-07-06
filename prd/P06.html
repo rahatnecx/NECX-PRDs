@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NECX Shelter Management · NECX PRD</title>
+<meta name="description" content="Emergency shelter capacity, bed assignment, waitlist, transfers &amp; victim-facing shelter discovery">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="prd-page">
+<header class="topbar">
+  <button class="hamburger" aria-label="Menu" onclick="toggleNav()">&#9776;</button>
+  <a class="brand" href="../index.html"><svg class="logo" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 L35 10 V22 C35 31 28 37 20 39 C12 37 5 31 5 22 V10 Z" fill="var(--brand)"/><path d="M13 27 V14 L20 22 V14 M27 14 V27 L20 19" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="brand-text">NECX<span class="brand-sub">Product Requirements</span></span></a>
+  <div class="topbar-spacer"></div>
+  <a class="top-link" href="../index.html">Home</a>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><span class="ic-sun">☀</span><span class="ic-moon">☾</span></button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-search"><input type="search" id="navSearch" placeholder="Filter documents…" oninput="filterNav(this.value)"></div>
+    <nav class="nav"><div class="nav-group"><div class="nav-group-title">Platform &amp; Applications</div><a class="nav-item " href="P01.html" data-search="necx platform — core system whole-platform prd: unified backend, four clients, multi-tenancy, identity/rbac, and the end-to-end case lifecycle."><span class="nav-num">01</span><span class="nav-text">Platform — Core System</span></a>
+<a class="nav-item " href="P02.html" data-search="necx workspace — staff mobile app agency staff mobile app (flutter/riverpod) — the on-the-go companion to the vs360 web dashboard."><span class="nav-num">02</span><span class="nav-text">Workspace — Staff Mobile App</span></a>
+<a class="nav-item " href="P03.html" data-search="necx victim app — survivor mobile app victim / survivor mobile app (flutter/getx) — discover services, request help, chat, find shelter, e-sign."><span class="nav-num">03</span><span class="nav-text">Victim App — Survivor Mobile App</span></a>
+<a class="nav-item " href="P04.html" data-search="vs360 — agency web dashboard vs360 — the agency staff web dashboard (react/vite) and primary caseworker workspace."><span class="nav-num">04</span><span class="nav-text">VS360 — Agency Web Dashboard</span></a>
+</div>
+<div class="nav-group"><div class="nav-group-title">VS360 Feature Modules</div><a class="nav-item " href="P05.html" data-search="necx case management service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes."><span class="nav-num">05</span><span class="nav-text">Case Management</span></a>
+<a class="nav-item active" href="P06.html" data-search="necx shelter management shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search."><span class="nav-num">06</span><span class="nav-text">Shelter Management</span></a>
+<a class="nav-item " href="P07.html" data-search="necx hotline management twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights."><span class="nav-num">07</span><span class="nav-text">Hotline Management</span></a>
+<a class="nav-item " href="P08.html" data-search="necx calendar &amp; appointments reminders, tasks and case-linked appointments in the vs360 tools calendar."><span class="nav-num">08</span><span class="nav-text">Calendar &amp; Appointments</span></a>
+<a class="nav-item " href="P09.html" data-search="necx staff time tracking staff time tracking: clock in/out, timesheets, and grant/pmt time attribution."><span class="nav-num">09</span><span class="nav-text">Staff Time Tracking</span></a>
+<a class="nav-item " href="P10.html" data-search="necx agency chat real-time advocate↔victim messaging tied to service threads and cases."><span class="nav-num">10</span><span class="nav-text">Agency Chat</span></a>
+<a class="nav-item " href="P11.html" data-search="necx internal chat staff-to-staff messaging within an agency, real-time over socket.io."><span class="nav-num">11</span><span class="nav-text">Internal Chat</span></a>
+<a class="nav-item " href="P12.html" data-search="necx rbac &amp; user management roles, the module/action permission matrix, plan seats, and multi-layer enforcement."><span class="nav-num">12</span><span class="nav-text">RBAC &amp; User Management</span></a>
+<a class="nav-item " href="P13.html" data-search="necx notes center agency-scoped, cross-case view over internal (caseworker-only) case notes."><span class="nav-num">13</span><span class="nav-text">Notes Center</span></a>
+<a class="nav-item " href="P14.html" data-search="necx drive google-drive-style cloud file storage backed by azure blob, with quotas and analytics."><span class="nav-num">14</span><span class="nav-text">Drive</span></a>
+<a class="nav-item " href="P15.html" data-search="necx ai report builder pmt/grant reporting plus ai-assisted custom report generation with accuracy validation."><span class="nav-num">15</span><span class="nav-text">AI Report Builder</span></a>
+<a class="nav-item " href="P16.html" data-search="necx e-sign &amp; document center prepare, request, sign and pdf-stamp case documents with an audit trail."><span class="nav-num">16</span><span class="nav-text">E-Sign &amp; Document Center</span></a>
+<a class="nav-item " href="P17.html" data-search="necx referrals &amp; partnerships inter-agency network: partnerships, invitations, and consent-based case referrals."><span class="nav-num">17</span><span class="nav-text">Referrals &amp; Partnerships</span></a>
+<a class="nav-item " href="P18.html" data-search="necx inquiries management intake and triage of inquiries / requests-to-connect before they become cases."><span class="nav-num">18</span><span class="nav-text">Inquiries Management</span></a>
+<a class="nav-item " href="P19.html" data-search="necx communities agency-run community spaces: joining questions, membership, posts and moderation."><span class="nav-num">19</span><span class="nav-text">Communities</span></a>
+<a class="nav-item " href="P20.html" data-search="necx service management service catalog, categories, and the per-service claim-question (intake) builder."><span class="nav-num">20</span><span class="nav-text">Service Management</span></a>
+</div>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim" onclick="toggleNav()"></div>
+  
+  <main class="content">
+    <article class="doc">
+      <div class="doc-eyebrow">Product Requirements Document · NECX Inc — Confidential</div>
+      <h1 class="doc-title">NECX Shelter Management</h1>
+      <p class="doc-subtitle">Emergency shelter capacity, bed assignment, waitlist, transfers &amp; victim-facing shelter discovery</p>
+      <div class="doc-meta"><span class="chip">Version: <b>1.0</b></span><span class="chip">Status: <b>Baseline</b></span><span class="chip">Owner: <b>NECX Product Management</b></span><a class="dl-btn" href="../downloads/06_VS360_Feature_Shelter_Management.docx" download>⬇ Download DOCX</a></div>
+      <hr class="doc-rule">
+      <div class="doc-body">
+      <h2 id="1-document-control">1. Document Control</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td>NECX — Coordinated Victim Services Platform</td></tr>
+<tr><td>Module</td><td>Shelter Management</td></tr>
+<tr><td>Version</td><td>1.0</td></tr>
+<tr><td>Status</td><td>Baseline</td></tr>
+<tr><td>Author</td><td>NECX Product Management</td></tr>
+<tr><td>Reviewers</td><td>Engineering (Backend, VS360 Web, Mobile), Victim Services Operations, Security &amp; Privacy</td></tr>
+<tr><td>Last Updated</td><td>2026-07-05</td></tr>
+<tr><td>Related Documents</td><td>NECX Backend Feature Knowledgebase (Shelter Management); VS360 Web Operations Knowledgebase (Shelter Management); NECX Victim App Knowledgebase (Shelter search &amp; bed request); NECX Backend Core (Auth, RBAC, Data-Model Catalog); NECX Hotline Management PRD; NECX Chat &amp; Inquiries PRD</td></tr>
+</tbody></table></div>
+<p>Revision history:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>1.0</td><td>2026-07-05</td><td>NECX Product Management</td><td>Baseline PRD covering shelter hierarchy, bed availability/occupancy, client-to-bed assignment with login-code issuance, waitlist, inter-agency transfers, maintenance, history, and victim-facing shelter discovery/simulation.</td></tr>
+</tbody></table></div>
+<h2 id="2-executive-summary">2. Executive Summary</h2>
+<p>NECX Shelter Management is the module through which victim-services agencies model, operate, and share their emergency-shelter capacity, and through which victims/survivors of crime discover shelters and request a bed. It serves two distinct audiences from a single unified backend: agency staff (VSMS caseworkers and shelter coordinators) working in the VS360 web application, and victims/survivors working in the NECX mobile app.</p>
+<p>For agency staff the module provides a complete physical model of shelter inventory — a hierarchy of shelter location → floor → room → bed — plus the operational tooling to keep that inventory accurate in real time: checking clients in and out of beds, running a prioritized waitlist, handling inter-agency bed-transfer requests, triaging bed requests submitted from the mobile app, tracking maintenance, and recording an auditable history of every event (check-in, check-out, transfer, incident, note). Because shelter is frequently the most time-critical service a victim needs, the module is engineered around live availability: every structural or occupancy change re-computes availability and is pushed over Socket.IO to open staff and mobile clients, and mobile-facing events are additionally delivered by FCM push.</p>
+<p>A defining behavior of the module is that assigning a walk-in client to a bed can create that client&#x27;s NECX account and issue a one-time login code, immediately connecting a person in crisis to the platform (their case, chat with the agency, documents, and future services) without requiring them to self-register. This is the same advocate-created login-code pattern used elsewhere in NECX, applied at the shelter intake point.</p>
+<p>For victims the module exposes a safe, privacy-aware discovery surface: search and filter shelters, view them on a map with directions, inspect live room/bed layout, submit a bed request or join a waitlist, and track request status live. Because the physical safety of survivors depends on it, shelters may be marked confidential, in which case their exact address and coordinates are withheld from the mobile surface until after an intake interview.</p>
+<h2 id="3-product-overview-vision">3. Product Overview &amp; Vision</h2>
+<h3 id="31-problem-statement">3.1 Problem Statement</h3>
+<p>Emergency shelter is scarce, time-sensitive, and safety-critical. Agencies typically track beds in spreadsheets or on paper, which cannot represent real-time occupancy, cannot be safely shared with partner agencies, and give victims no self-service way to find an open bed. The result is wasted capacity (empty beds while people wait), unsafe disclosure of shelter locations, duplicated intake effort, and no auditable record of who was where and when. Victims in crisis — often at night, often on a phone — have no reliable way to find a shelter that fits their needs (family, pets, accessibility, LGBTQ-affirming) and confirm a bed is available before travelling to it.</p>
+<h3 id="32-product-vision">3.2 Product Vision</h3>
+<p>Shelter Management makes every bed in the NECX network visible, assignable, and safely shareable in real time. Staff maintain an accurate physical model of their shelters and move clients through it (waitlist → assigned → checked-in → checked-out) with a single source of truth. Victims discover appropriate shelters and request beds directly from their phone, with confidential locations protected until intake. Availability is always live: a bed freed in one place, a request submitted from a phone, or a transfer accepted between agencies is reflected across every connected surface within moments, and the entire lifecycle is auditable for compliance and grant reporting.</p>
+<h3 id="33-position-in-the-necx-ecosystem">3.3 Position in the NECX Ecosystem</h3>
+<p>Shelter Management is one feature module of the unified NECX platform, which serves four clients from one backend (Express + Objection/Knex over PostgreSQL, Socket.IO, Redis, Twilio, FCM):</p>
+<ul>
+<li><strong>VS360 web</strong> (agency staff) — the primary management surface for shelter inventory and operations, mounted under <code>/web/shelters/*</code> and guarded by <code>allowOnly(&#x27;VS360&#x27;)</code>.</li>
+<li><strong>NECX mobile app</strong> (victims/survivors) — the discovery and request surface, mounted under <code>/mobile/*</code> (auth-only, no context guard).</li>
+<li><strong>Unified backend</strong> — hosts the shelter data model, business logic, real-time emitters, and notification fan-out; ties shelter check-in into the platform&#x27;s identity (<code>app_users</code>), case (<code>service_claims</code>), login-code, and notification subsystems.</li>
+<li><strong>NECX Admin</strong> — the platform super-admin console does not directly operate shelters, but platform-level RBAC, plan limits, and reference data (states/cities, service categories) apply.</li>
+</ul>
+<p>Shelter Management shares cross-cutting platform machinery documented in the NECX Backend Core: identity and <code>issuer</code>, RBAC (<code>allowOnly</code> + <code>checkPermission</code>), the login-code service, the notification delivery pipeline (DB row + Socket.IO + FCM + optional email), and the <code>ActionLogs</code> audit trail.</p>
+<h2 id="4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</h2>
+<h3 id="41-goals-objectives">4.1 Goals &amp; Objectives</h3>
+<ul>
+<li>Provide agencies an accurate, real-time physical model of shelter capacity (location → floor → room → bed) whose true capacity is governed by actual bed rows, not a static number.</li>
+<li>Make bed assignment fast enough for crisis intake, including one-step creation of a victim account and login code for walk-ins.</li>
+<li>Reduce unused capacity by matching waiting clients to freed beds via a prioritized waitlist and available-bed detection.</li>
+<li>Enable safe inter-agency collaboration by sharing bed availability (not bed-level detail) with accepted partner agencies and supporting bed-transfer requests.</li>
+<li>Give victims a safe, self-service way to find shelters and request beds, while protecting confidential shelter locations until intake.</li>
+<li>Keep every surface live via Socket.IO + FCM, and keep every action auditable for compliance and grant reporting.</li>
+</ul>
+<h3 id="42-success-metrics">4.2 Success Metrics</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Definition</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>Real-time availability accuracy</td><td>Share of availability views matching true bed status at read time</td><td>≥ 99%</td></tr>
+<tr><td>Availability propagation latency</td><td>Time from a bed/occupancy change to <code>availability.changed</code>/<code>bed.status_changed</code> reaching subscribed clients</td><td>&lt; 2s p95</td></tr>
+<tr><td>Walk-in intake time</td><td>Median time to complete check-in of a new walk-in (incl. account + login-code issuance)</td><td>&lt; 3 min</td></tr>
+<tr><td>Bed utilization</td><td>Occupied beds ÷ total active beds across agency (excluding maintenance/out-of-service)</td><td>Agency-configurable target; trend upward</td></tr>
+<tr><td>Waitlist promotion rate</td><td>Waitlisted clients promoted to a bed within 24h when capacity exists</td><td>≥ 90%</td></tr>
+<tr><td>Mobile request triage time</td><td>Median time from mobile bed request to staff decision (accept/reject/waitlist)</td><td>&lt; 30 min during staffed hours</td></tr>
+<tr><td>Confidential-location protection</td><td>Confidential shelters that never expose address/coordinates on mobile pre-intake</td><td>100%</td></tr>
+<tr><td>Transfer response rate</td><td>Inter-agency transfer requests answered (accept/decline) within 24h</td><td>≥ 85%</td></tr>
+</tbody></table></div>
+<h2 id="5-scope">5. Scope</h2>
+<h3 id="51-in-scope">5.1 In Scope</h3>
+<ul>
+<li>Shelter physical hierarchy CRUD: locations, floors, rooms, beds — with structural constraints (room capacity, location-unique bed numbers, delete guards for occupied/active children).</li>
+<li>Bed availability and occupancy computation and real-time propagation.</li>
+<li>Client-to-bed assignment (check-in) including optional creation of an <code>app_user</code>, an approved shelter <code>service_claim</code>, and issuance of a one-time login code to the victim.</li>
+<li>Check-out and bed-to-bed transfer of active assignments.</li>
+<li>Waitlist: staff walk-in add, update/cancel, and promotion to a bed (with auto bed selection).</li>
+<li>Mobile bed-request lifecycle (submit → triage: accept/reject/cancel/waitlist) with cross-notification.</li>
+<li>Inter-agency transfer requests (outgoing/incoming), accept (auto check-in) and decline, gated by <code>shelters.manage_transfers</code>.</li>
+<li>Maintenance items CRUD and a server-rendered maintenance PDF/report.</li>
+<li>Shelter history/event log and incident logging.</li>
+<li>Stats/rollups: system-wide and per-location bed/occupancy/waitlist.</li>
+<li>Partner-agency shelter availability visibility (accepted partnerships only).</li>
+<li>Client search over <code>app_users</code> for assignment.</li>
+<li>Victim-facing shelter discovery: search/filter/sort/distance, detail, layout, directions (with confidential-location protection), join-waitlist, submit request, &quot;My Shelters&quot;/&quot;My requests&quot; tracking, recent searches.</li>
+<li>Real-time delivery via the <code>/shelters</code> and <code>/me</code> Socket.IO namespaces and the <code>service-center-&lt;id&gt;</code> room; mobile FCM + in-app notifications.</li>
+</ul>
+<h3 id="52-out-of-scope">5.2 Out of Scope</h3>
+<ul>
+<li>Billing, funding, or bed-night cost accounting (grant/PMT reporting is handled by the Reports module; time tracking by Staff Time).</li>
+<li>Case management beyond the automatic shelter <code>service_claim</code> created at check-in (full casework lives in the Claims/Cases module).</li>
+<li>Chat/messaging with the client (handled by the Chat &amp; Inquiries module; shelter check-in only creates the account/claim that those modules can then use).</li>
+<li>In-app payments, reservations with holds/deposits, or occupancy forecasting/analytics beyond the stats rollups described here.</li>
+<li>Hotline call handling, communities, referrals, and partnership management workflows (own modules; this PRD consumes only partnership acceptance state and partner shelter availability).</li>
+<li>Native map rendering internals of the mobile client (Google Maps/Directions integration is the app&#x27;s concern; the backend supplies coordinates and a directions payload).</li>
+</ul>
+<h2 id="6-personas-user-roles">6. Personas &amp; User Roles</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Role</th><th>Description</th><th>Key permissions</th></tr></thead>
+<tbody>
+<tr><td>Shelter Coordinator (VSMS staff)</td><td>Agency staff who build and maintain shelter structure, assign/check-out clients, run the waitlist, and triage mobile requests</td><td><code>shelters.view</code>, <code>shelters.add</code>, <code>shelters.edit</code>, <code>shelters.delete</code></td></tr>
+<tr><td>Intake Advocate (VSMS staff)</td><td>Front-line staff who check walk-ins into beds and hand over login codes</td><td><code>shelters.view</code>, <code>shelters.edit</code> (assignment/waitlist actions)</td></tr>
+<tr><td>Transfer Liaison (VSMS staff)</td><td>Staff authorized to send/accept/decline inter-agency bed transfers</td><td><code>shelters.manage_transfers</code> (plus <code>shelters.view</code>)</td></tr>
+<tr><td>Agency Super Admin</td><td>Agency administrator; bypasses fine-grained permission checks within the agency</td><td>All <code>shelters.*</code> (via SUPER_ADMIN bypass)</td></tr>
+<tr><td>Victim / Survivor (app user)</td><td>Person seeking shelter; searches, requests a bed, joins waitlists, tracks requests</td><td>None (mobile routes are auth-only, scoped to self)</td></tr>
+<tr><td>NECX Platform Admin</td><td>Platform super-admin; governs plans, RBAC catalog, and reference data</td><td>Platform-level only (does not operate shelters directly)</td></tr>
+</tbody></table></div>
+<h3 id="61-persona-narratives">6.1 Persona Narratives</h3>
+<p><strong>Dana — Shelter Coordinator.</strong> Dana sets up a new emergency shelter in VS360: she creates the location, adds two floors, several rooms with capacities, and the beds within them. Throughout the day she watches the bed board update live as walk-ins arrive and clients leave, promotes waitlisted families when family rooms open, and answers bed requests coming in from the mobile app.</p>
+<p><strong>Miguel — Intake Advocate.</strong> A survivor arrives at the shelter at 11 p.m. with no NECX account. Miguel opens the assign-client modal, enters the person&#x27;s name and phone, sets the expected stay, and checks them into an available bed. The system creates the person&#x27;s account and a shelter case, then returns a one-time login code that Miguel reads aloud (and that is also texted to the survivor), so they can sign into the app and continue their journey.</p>
+<p><strong>Priya — Transfer Liaison.</strong> Priya&#x27;s agency is full. She views a partner agency&#x27;s availability, sends a bed-transfer request for a client with a family of three, and the partner accepts — auto-checking the client into a bed at the partner&#x27;s shelter.</p>
+<p><strong>Sam — Survivor (app user).</strong> Sam, fleeing an unsafe home late at night, opens the NECX app, filters for a shelter that accepts pets and is accessible, sees which have open beds nearby, and submits a bed request. Sam gets a push notification when staff accept and assign a bed, with the check-in window and (for non-confidential shelters) directions.</p>
+<h2 id="7-system-context-architecture">7. System Context &amp; Architecture</h2>
+<h3 id="71-technology-placement">7.1 Technology &amp; Placement</h3>
+<p>Shelter Management is implemented in the NECX backend (<code>necx-backend_v2</code>, Express ESM + Objection/Knex over PostgreSQL, Socket.IO, Redis, Twilio, FCM). Web endpoints live in <code>shelter-management/shelter.{routes,controller,services,validators}.js</code>; mobile endpoints in <code>shelter-mobile.{routes,controller,services,validators}.js</code>. All routers register in <code>src/apps/index.js</code> under the global <code>/v2</code> API prefix. Data lives in the <code>Shelter*</code> Objection models under <code>src/model/v2/</code>.</p>
+<ul>
+<li><strong>VS360 web client</strong> (<code>vs360-webapp</code>, React + Vite + Mantine + TanStack Query + Redux) calls the web endpoints via <code>src/services/shelters.js</code> (all under <code>/shelters/...</code>). Screens: <code>ShelterLocations.jsx</code> (route <code>/shelter</code>) and <code>BedManagement.jsx</code> (route <code>/shelter/{locationId}</code>).</li>
+<li><strong>Mobile client</strong> (<code>necx-app_v2</code>, Flutter + GetX) calls the mobile endpoints via the <code>Shelters</code> API service and <code>ShelterController</code>; realtime via <code>ShelterSocketService</code>.</li>
+</ul>
+<h3 id="72-backend-communication">7.2 Backend Communication</h3>
+<p>Every request flows through the platform middleware chain: rate-limiter → auth (populates <code>req.issuer</code>) → context gate (<code>allowOnly</code>) → permission gate (<code>checkPermission</code>) → validator (Joi) → controller → service → repository/model. Web shelter routes are guarded by <code>allowOnly(&#x27;VS360&#x27;)</code> and rate-limited with the dedicated <code>rateLimiters.shelter</code> bucket; mobile shelter routes are auth-only (app user) and use <code>rateLimiters.standard</code>. Services return <code>{ status, msg?, data? }</code>; controllers echo the status. Agency data is multi-tenant: web reads/writes are scoped to <code>issuer.serviceCenterInfo.id</code> so an agency only ever sees/edits its own shelters.</p>
+<h3 id="73-real-time-notifications">7.3 Real-Time &amp; Notifications</h3>
+<p>Two dedicated Socket.IO namespaces (both authenticated by <code>socketAuthentication</code>) carry shelter events:</p>
+<ul>
+<li><strong><code>/shelters</code></strong> — clients <code>emit(&#x27;subscribe&#x27;, { shelter_uid, channels:[&#x27;layout&#x27;,&#x27;availability&#x27;] })</code>; the server joins rooms <code>shelter:&lt;uid&gt;:layout</code> and <code>shelter:&lt;uid&gt;:availability</code> and replies <code>subscribed</code>.</li>
+<li><strong><code>/me</code></strong> — auto-joins <code>user:&lt;appUserId&gt;</code>; carries per-user request updates and directory broadcasts.</li>
+</ul>
+<p>Internal service emits funnel through <code>_emitShelterRealtime(io, locationRef, { bed?, structural? })</code>, which recomputes availability totals and fires <code>availability.changed</code> plus <code>bed.status_changed</code> and/or <code>layout.changed</code>. Web-staff notifications about mobile-originated activity go to the agency room <code>service-center-&lt;id&gt;</code> (event <code>shelter-request</code>). Mobile users receive both Socket.IO events (on <code>/me</code> and <code>shelter-status-&lt;uid&gt;</code>) and FCM + in-app notifications for status changes.</p>
+<h3 id="74-tenancy-identity">7.4 Tenancy &amp; Identity</h3>
+<p>Staff callers carry <code>issuer.type=&#x27;VSMS&#x27;</code>, <code>issuer.serviceCenterInfo.{id,uid}</code>, and <code>issuer.vsmsUserInfo[0].id</code>. App users carry <code>issuer.id = app_users.id</code>. Shelter data is owned by a service center via <code>shelter_locations.serviceCenterId</code>; all agency-scoped reads filter on the caller&#x27;s service center. Waitlist rows distinguish origin by <code>appUserId</code> (NULL = staff walk-in; non-null = mobile request). Assignments record <code>assignedBy</code>/<code>performedBy</code> as the <code>vsms_users</code> row id for audit.</p>
+<h2 id="8-functional-requirements">8. Functional Requirements</h2>
+<p>The heart of the module. Each sub-section covers one capability with a requirements table (IDs <code>FR-SHL-&lt;AREA&gt;-nn</code>), endpoints, and behavior. All web routes below are relative to base <code>/web/shelters</code> under <code>allowOnly(&#x27;VS360&#x27;)</code> + <code>rateLimiters.shelter</code>; all mobile routes are relative to base <code>/mobile</code> (auth = app user).</p>
+<h3 id="81-shelter-hierarchy-location-floor-room-bed">8.1 Shelter Hierarchy (Location → Floor → Room → Bed)</h3>
+<p>Agencies model physical inventory as a four-level hierarchy. True capacity is governed by actual <code>shelter_beds</code> rows, not a location&#x27;s initial <code>totalBeds</code> figure. Structural constraints are enforced server-side, and every structural change emits realtime updates.</p>
+<p>Web endpoints:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/locations</code></td><td>List agency shelters + per-shelter bed/occupancy/waitlist stats (scoped to <code>issuer.serviceCenterInfo.id</code>)</td></tr>
+<tr><td>GET</td><td><code>/locations/:uid</code></td><td>Single location</td></tr>
+<tr><td>POST</td><td><code>/locations/create</code></td><td>Create shelter location</td></tr>
+<tr><td>PATCH</td><td><code>/locations/:uid</code></td><td>Update location (partial)</td></tr>
+<tr><td>DELETE</td><td><code>/locations/:uid</code></td><td>Soft-delete (<code>isActive=false</code>)</td></tr>
+<tr><td>POST</td><td><code>/locations/:locationUid/upload-images</code></td><td>Upload up to 5 images (multer <code>images</code>), merged into <code>imageUrls</code></td></tr>
+<tr><td>GET</td><td><code>/locations/:locationUid/floors</code></td><td>Floors of a location, each with rooms + bed counts</td></tr>
+<tr><td>POST</td><td><code>/floors/create</code></td><td>Create floor (auto <code>floor_number</code> if omitted)</td></tr>
+<tr><td>PATCH / DELETE</td><td><code>/floors/:uid</code></td><td>Update / soft-delete floor (delete blocked if active beds exist)</td></tr>
+<tr><td>GET</td><td><code>/floors/:floorUid/rooms</code></td><td>Rooms of a floor + bed lists/counts</td></tr>
+<tr><td>POST</td><td><code>/rooms/create</code></td><td>Create room (type default <code>standard</code>, capacity, notes)</td></tr>
+<tr><td>PATCH / DELETE</td><td><code>/rooms/:uid</code></td><td>Update (capacity cannot drop below bed count) / soft-delete (blocked if active beds)</td></tr>
+<tr><td>GET</td><td><code>/locations/:locationUid/beds</code></td><td>All active beds with room + floor</td></tr>
+<tr><td>GET</td><td><code>/locations/:locationUid/beds/available</code></td><td>Only <code>status=&#x27;available&#x27;</code> beds</td></tr>
+<tr><td>POST</td><td><code>/beds/create</code></td><td>Create bed (enforces room capacity + location-unique <code>bedNumber</code>)</td></tr>
+<tr><td>PATCH / DELETE</td><td><code>/beds/:uid</code></td><td>Update bed / soft-delete (blocked if <code>occupied</code>)</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SHL-HIER-01</td><td>Staff with <code>shelters.add</code> shall create a shelter location capturing name, address, contact (phone/email/website with <code>showPhone</code>/<code>showEmail</code> mobile-visibility toggles), <code>neighborhood</code>, <code>zipCode</code>, <code>type</code>, <code>lat</code>/<code>lng</code>, <code>totalBeds</code>, <code>totalFamilyRooms</code>, <code>open_24_7</code>, <code>acceptsFamilies</code>/<code>acceptsLgbtq</code>/<code>acceptsPets</code>, <code>accessible</code>, <code>confidentialLocation</code>, <code>imageUrls</code>, <code>languages</code>, <code>services</code>, and <code>policies</code> (e.g. <code>max_stay_nights</code>, <code>id_required</code>, <code>minimum_age</code>).</td><td>Must</td></tr>
+<tr><td>FR-SHL-HIER-02</td><td>Locations shall be soft-deleted (<code>isActive=false</code>), never hard-deleted, to preserve history and audit.</td><td>Must</td></tr>
+<tr><td>FR-SHL-HIER-03</td><td>Staff shall create floors under a location; <code>floorNumber</code> shall auto-increment when omitted.</td><td>Must</td></tr>
+<tr><td>FR-SHL-HIER-04</td><td>Staff shall create rooms under a floor with a <code>type</code> (<code>standard</code>/<code>family</code>/<code>single</code>/etc.), <code>capacity</code>, and notes. Room capacity shall not be reduced below the number of beds currently in the room.</td><td>Must</td></tr>
+<tr><td>FR-SHL-HIER-05</td><td>Staff shall create beds under a room; bed creation shall enforce the room&#x27;s <code>capacity</code> and a location-unique <code>bedNumber</code>.</td><td>Must</td></tr>
+<tr><td>FR-SHL-HIER-06</td><td>Floor/room deletion shall be blocked while active beds exist beneath them; bed deletion shall be blocked while the bed is <code>occupied</code>.</td><td>Must</td></tr>
+<tr><td>FR-SHL-HIER-07</td><td>Every create/update/delete of a location/floor/room/bed shall call <code>_emitShelterRealtime(..., { structural:true })</code>, recomputing availability and firing <code>availability.changed</code> + <code>layout.changed</code>; location-level directory changes shall also fire <code>shelter.directory_changed</code>.</td><td>Must</td></tr>
+<tr><td>FR-SHL-HIER-08</td><td>Staff shall upload up to 5 images per location (multipart <code>images</code>), merged into <code>imageUrls</code> via the file service. The web client permits up to 10 images (5 MB each) across uploads.</td><td>Should</td></tr>
+<tr><td>FR-SHL-HIER-09</td><td>Bed capacity shall never be entered at the location level; effective capacity is derived from actual bed rows (the location <code>totalBeds</code> is a declared/reference figure only).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="82-bed-availability-occupancy">8.2 Bed Availability &amp; Occupancy</h3>
+<p>Availability is derived, live, and pushed to subscribers.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/stats</code></td><td>System-wide bed/occupancy/waitlist rollup (agency)</td></tr>
+<tr><td>GET</td><td><code>/locations/:locationUid/stats</code></td><td>Per-location stats</td></tr>
+<tr><td>GET</td><td><code>/locations/:locationUid/beds/available</code></td><td>Available beds only</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SHL-AVL-01</td><td>Availability shall be computed by grouping <code>shelter_beds</code> by <code>status</code> (<code>available</code>/<code>occupied</code>/<code>reserved</code>/<code>maintenance</code>/<code>out_of_service</code>).</td><td>Must</td></tr>
+<tr><td>FR-SHL-AVL-02</td><td>Occupancy rate shall be <code>occupied ÷ total</code>; waitlist count shall be rows in <code>waitlisted</code> OR (<code>waiting</code> AND <code>appUserId IS NULL</code>).</td><td>Must</td></tr>
+<tr><td>FR-SHL-AVL-03</td><td><code>/stats</code> and <code>/locations/:uid/stats</code> shall return bed counts by status, occupancy rate, and waitlist totals for KPI cards.</td><td>Must</td></tr>
+<tr><td>FR-SHL-AVL-04</td><td>Any change affecting availability shall fire <code>availability.changed</code> with <code>{ shelterUid, availableBeds, totalBeds, waitlistCount }</code> to the <code>/shelters</code> availability room.</td><td>Must</td></tr>
+<tr><td>FR-SHL-AVL-05</td><td>Individual bed status changes shall fire <code>bed.status_changed</code> with <code>{ bedUid, roomUid, status, shelterUid }</code> to the <code>/shelters</code> layout room.</td><td>Must</td></tr>
+<tr><td>FR-SHL-AVL-06</td><td>Staff shall set a bed to <code>maintenance</code> or <code>out_of_service</code> (and clear back to <code>available</code>) via <code>PATCH /beds/:uid</code>, accompanied by a history log entry.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="83-client-to-bed-assignment-check-in-login-code-issuance">8.3 Client-to-Bed Assignment (Check-In) &amp; Login-Code Issuance</h3>
+<p>Check-in is the module&#x27;s most sensitive flow: it can create a victim account, an approved shelter case, and a one-time login code, all in one transaction.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/locations/:locationUid/assignments</code></td><td>All assignments (history)</td></tr>
+<tr><td>GET</td><td><code>/locations/:locationUid/assignments/active</code></td><td>Active assignments + bed</td></tr>
+<tr><td>POST</td><td><code>/assignments/check-in</code></td><td>Check a client into a bed</td></tr>
+<tr><td>PATCH</td><td><code>/assignments/:uid/check-out</code></td><td>Check out an active assignment</td></tr>
+<tr><td>PATCH</td><td><code>/assignments/:uid/transfer</code></td><td>Move an active assignment to another bed</td></tr>
+<tr><td>GET</td><td><code>/clients/search?q=</code></td><td>Search <code>app_users</code> by name/phone/email/username (min 2 chars)</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SHL-ASN-01</td><td>Staff shall check a client into an <code>available</code> bed via <code>POST /assignments/check-in</code> with <code>bedUid</code>, <code>clientName</code>, contact (<code>clientPhone</code>/<code>email</code>), optional <code>appUserId</code>, <code>expectedStayDays</code>, <code>familyMembers</code>, and notes.</td><td>Must</td></tr>
+<tr><td>FR-SHL-ASN-02</td><td>Check-in shall run inside a transaction (<code>_createAssignmentInTrx</code>): verify the location&#x27;s <code>policies.max_stay_nights</code>; load the bed and require <code>status=&#x27;available&#x27;</code>.</td><td>Must</td></tr>
+<tr><td>FR-SHL-ASN-03</td><td>For a walk-in with no linked app user, the backend shall set <code>createLoginCode = !appUserId</code>, normalize phone (last 10 digits)/email, and find-or-create an <code>app_users</code> row (<code>isVerified=false</code>, temp bcrypt password, <code>otpChannel</code> SMS/EMAIL/NONE).</td><td>Must</td></tr>
+<tr><td>FR-SHL-ASN-04</td><td>Check-in shall resolve the location&#x27;s <code>serviceCenterId</code>, find-or-create a shelter <code>Services</code> row (category 15 &quot;Shelter Services&quot;), and create an <strong>approved</strong> <code>service_claims</code> row for the user plus claim stats.</td><td>Must</td></tr>
+<tr><td>FR-SHL-ASN-05</td><td>If the app user is still unverified, check-in shall generate a <strong>one-time login code</strong> (<code>loginCodeService.generateUniqueCode</code>), store it on the claim, and deliver it via SMS/EMAIL (<code>loginCodeService.sendCodeNotification</code>). Already-verified users shall receive no code (they use regular login).</td><td>Must</td></tr>
+<tr><td>FR-SHL-ASN-06</td><td>Check-in shall insert a <code>shelter_assignments</code> row (status <code>active</code>, `expectedCheckOutDate = now + (expectedStayDays</td><td></td></tr>
+<tr><td>FR-SHL-ASN-07</td><td>After commit, check-in shall emit realtime (bed=occupied) and return <code>{ assignment, loginCode }</code> so staff can hand the code to the client.</td><td>Must</td></tr>
+<tr><td>FR-SHL-ASN-08</td><td>Family rooms shall accept <code>familyMembers</code> (name/relationship/age) up to the room/bed family capacity.</td><td>Should</td></tr>
+<tr><td>FR-SHL-ASN-09</td><td>Staff shall search existing clients (<code>/clients/search?q=</code>, min 2 chars) to link an assignment to an existing <code>app_user</code> instead of creating one.</td><td>Must</td></tr>
+<tr><td>FR-SHL-ASN-10</td><td>Expected length of stay shall be capped at the location&#x27;s <code>policies.max_stay_nights</code>.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="84-check-out">8.4 Check-Out</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SHL-OUT-01</td><td>Staff shall check out an active assignment via <code>PATCH /assignments/:uid/check-out</code> with <code>checkOutReason</code> and notes.</td><td>Must</td></tr>
+<tr><td>FR-SHL-OUT-02</td><td>Check-out (<code>completeAssignment</code>) shall, in a transaction, set the assignment <code>completed</code> + <code>actualCheckOutDate</code> + <code>checkOutReason</code>, flip the bed to <code>available</code>, write history <code>check_out</code>, and emit realtime (bed=available).</td><td>Must</td></tr>
+<tr><td>FR-SHL-OUT-03</td><td>Check-out reasons shall include Completed program, Transferred, Left voluntarily, Safety relocation, Emergency removal, and Other.</td><td>Should</td></tr>
+<tr><td>FR-SHL-OUT-04</td><td>If the assignment has a linked app user, the check-out shall be reflected on the user&#x27;s mobile surface (<code>SHELTER_CHECKED_OUT</code>).</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="85-bed-to-bed-transfer-withinacross-the-agencys-locations">8.5 Bed-to-Bed Transfer (within/across the agency&#x27;s locations)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SHL-TRB-01</td><td>Staff shall transfer an active assignment to another bed via <code>PATCH /assignments/:uid/transfer</code> with <code>bedUid</code> and <code>reason</code>.</td><td>Must</td></tr>
+<tr><td>FR-SHL-TRB-02</td><td>Transfer (<code>transferAssignment</code>) shall validate the destination bed is <code>available</code> and different from the current bed; in a transaction free the old bed, repoint <code>bedId</code>+<code>locationId</code>, occupy the new bed, and write history <code>transfer</code>.</td><td>Must</td></tr>
+<tr><td>FR-SHL-TRB-03</td><td>Transfer shall emit realtime for both source and destination, and notify the linked app user (<code>SHELTER_BED_TRANSFERRED</code>).</td><td>Must</td></tr>
+<tr><td>FR-SHL-TRB-04</td><td>The destination bed dropdown shall aggregate available beds across all of the agency&#x27;s locations.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="86-waitlist">8.6 Waitlist</h3>
+<p>The waitlist prioritizes clients waiting for a bed and promotes them when capacity exists.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/waitlist</code></td><td>All agency waitlist (waitlisted + walk-in waiting)</td></tr>
+<tr><td>GET</td><td><code>/locations/:locationUid/waitlist</code></td><td>Location waitlist</td></tr>
+<tr><td>POST</td><td><code>/waitlist/add</code></td><td>Add a walk-in to the waitlist</td></tr>
+<tr><td>PATCH</td><td><code>/waitlist/:uid</code></td><td>Update waitlist entry</td></tr>
+<tr><td>DELETE</td><td><code>/waitlist/:uid</code></td><td>Cancel waitlist entry</td></tr>
+<tr><td>POST</td><td><code>/waitlist/:uid/promote</code></td><td>Promote to a bed (auto-selects a bed if none given)</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SHL-WL-01</td><td>Staff shall add a walk-in to the waitlist via <code>POST /waitlist/add</code> with location, client name/contact, <code>bedTypePreference</code>, <code>familySize</code>, <code>priority</code> (<code>normal</code>/<code>high</code>/<code>urgent</code>), <code>urgency</code> (<code>immediate</code>/<code>within_24h</code>/<code>within_48h</code>/<code>planning</code>), <code>partyAdults</code>/<code>partyChildren</code>, <code>needs</code>, <code>preferredLanguages</code>, <code>referralSource</code>, and notes. Walk-in rows have <code>appUserId=null</code>.</td><td>Must</td></tr>
+<tr><td>FR-SHL-WL-02</td><td>Staff shall update an entry (<code>PATCH /waitlist/:uid</code>) — priority/status/notes — and cancel an entry (<code>DELETE /waitlist/:uid</code>).</td><td>Must</td></tr>
+<tr><td>FR-SHL-WL-03</td><td>Updating/removing a waitlist entry shall notify the linked app user only when the row is mobile-originated (has <code>appUserId</code>) and transitions to a terminal state (<code>cancelled</code>/<code>rejected</code>).</td><td>Must</td></tr>
+<tr><td>FR-SHL-WL-04</td><td>Staff shall promote an entry to a bed via <code>POST /waitlist/:uid/promote</code>; if <code>bedUid</code> is omitted, the system shall auto-resolve a matching available bed by <code>bedTypePreference</code>.</td><td>Must</td></tr>
+<tr><td>FR-SHL-WL-05</td><td>Promotion shall check <code>max_stay_nights</code>, set the entry <code>assigned</code>, run <code>_createAssignmentInTrx</code> (creating account/claim/login code as in §8.3 when needed), notify <code>SHELTER_BED_ASSIGNED</code>, and emit realtime.</td><td>Must</td></tr>
+<tr><td>FR-SHL-WL-06</td><td>The UI shall surface a prominent banner when available beds exist while clients are waiting.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="87-mobile-bed-request-lifecycle-mobile-web-staff-triage">8.7 Mobile Bed-Request Lifecycle (Mobile → Web-Staff Triage)</h3>
+<p>Victims submit requests from the app; staff triage them from a dedicated queue. Mobile requests are <code>shelter_waitlist</code> rows carrying an <code>appUserId</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/mobile-requests</code></td><td>Mobile-originated requests (paginated, bed-preference enriched) — filters <code>status</code> (csv), <code>page</code>, <code>per_page</code>, <code>shelter_uid</code></td></tr>
+<tr><td>PATCH</td><td><code>/mobile-requests/:uid/accept</code></td><td>Accept + assign 1..N beds; notify the app user</td></tr>
+<tr><td>PATCH</td><td><code>/mobile-requests/:uid/reject</code></td><td>Reject + notify (<code>reason</code>)</td></tr>
+<tr><td>PATCH</td><td><code>/mobile-requests/:uid/cancel</code></td><td>Staff cancels + notify (<code>reason</code>)</td></tr>
+<tr><td>PATCH</td><td><code>/mobile-requests/:uid/waitlist</code></td><td>Move <code>waiting</code> → <code>waitlisted</code> + notify (<code>notes</code>)</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SHL-MOB-01</td><td>Staff shall view mobile-originated requests filtered by status (Pending=<code>waiting</code>, Accepted=<code>assigned</code>, Waitlisted, Cancelled, Rejected), paginated and enriched with the requested bed preference (specific rooms/beds the victim picked).</td><td>Must</td></tr>
+<tr><td>FR-SHL-MOB-02</td><td>Accept (<code>/mobile-requests/:uid/accept</code>) shall assign 1..N beds by resolving composite <code>shelterUid-fN-rM-bK</code> IDs, real bed UIDs, room auto-pick, or any available bed; it shall run one <code>_createAssignmentInTrx</code> per bed and notify <code>SHELTER_BED_ASSIGNED</code>.</td><td>Must</td></tr>
+<tr><td>FR-SHL-MOB-03</td><td>Reject shall notify <code>SHELTER_REQUEST_REJECTED</code>; staff cancel shall notify the user; waitlist shall move <code>waiting</code>→<code>waitlisted</code> and notify <code>SHELTER_WAITLISTED</code>. All actions shall write <code>shelter_history</code> and emit realtime.</td><td>Must</td></tr>
+<tr><td>FR-SHL-MOB-04</td><td>When accepting a pending request returns no available bed (409), the UI shall offer to waitlist the request instead.</td><td>Should</td></tr>
+<tr><td>FR-SHL-MOB-05</td><td>Submission of a mobile request shall notify web staff via <code>SHELTER_REQUEST</code> (socket event <code>shelter-request</code> to <code>service-center-&lt;id&gt;</code>); the web queue and badges shall live-refresh on that event.</td><td>Must</td></tr>
+<tr><td>FR-SHL-MOB-06</td><td>The agency banner/tab badge shall reflect pending mobile-request count and pending incoming transfer count (polled ~every 30s in addition to socket refresh).</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="88-inter-agency-transfer-requests">8.8 Inter-Agency Transfer Requests</h3>
+<p>Agencies request beds from partner agencies. Every transfer action is gated by <code>shelters.manage_transfers</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/transfers/incoming</code> / <code>/outgoing</code> / <code>/pending-count</code></td><td>Transfer queues + pending count</td></tr>
+<tr><td>GET</td><td><code>/transfers/:uid</code></td><td>Single transfer</td></tr>
+<tr><td>POST</td><td><code>/transfers/request</code></td><td>Create an outgoing transfer (mirrors an incoming row for the target SC)</td></tr>
+<tr><td>PATCH</td><td><code>/transfers/:uid/accept</code></td><td>Accept + auto check-in to a bed</td></tr>
+<tr><td>PATCH</td><td><code>/transfers/:uid/decline</code></td><td>Decline (<code>declineReason</code>)</td></tr>
+<tr><td>GET</td><td><code>/partners</code></td><td>Partner agencies (accepted <code>AgencyPartnerships</code>) with shelter locations + bed availability</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SHL-TRA-01</td><td>Staff shall view partner-agency shelter availability (accepted partnerships only) via <code>/partners</code> — availability totals only, not bed-level detail.</td><td>Must</td></tr>
+<tr><td>FR-SHL-TRA-02</td><td>Staff with <code>shelters.manage_transfers</code> shall create an outgoing transfer via <code>POST /transfers/request</code> with <code>targetServiceCenterUid</code>, optional <code>targetLocationUid</code>, client name/phone, <code>bedTypePreference</code>, <code>familySize</code>, <code>familyMembers</code>, <code>urgency</code>, and a <code>message</code> (≥20 chars).</td><td>Must</td></tr>
+<tr><td>FR-SHL-TRA-03</td><td>Creating a transfer (<code>createTransferRequest</code>) shall write both an <code>outgoing</code> row (requesting SC) and a mirrored <code>incoming</code> row (target SC).</td><td>Must</td></tr>
+<tr><td>FR-SHL-TRA-04</td><td>Target staff shall accept (<code>/transfers/:uid/accept</code> with <code>assignedBedUid</code>, notes) — auto check-in via <code>_createAssignmentInTrx</code> — or decline (<code>/transfers/:uid/decline</code> with <code>declineReason</code>).</td><td>Must</td></tr>
+<tr><td>FR-SHL-TRA-05</td><td>The accept modal shall filter available beds across the target agency&#x27;s locations by requested bed type/family size.</td><td>Should</td></tr>
+<tr><td>FR-SHL-TRA-06</td><td><code>/transfers/pending-count</code> shall drive an incoming-transfer badge/banner.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="89-maintenance-items">8.9 Maintenance Items</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>GET/POST/DELETE</td><td><code>/locations/:locationUid/maintenance-items[/:itemUid]</code></td><td>Maintenance item CRUD</td></tr>
+<tr><td>GET</td><td><code>/locations/:locationUid/beds/maintenance-pdf</code></td><td>Server-rendered HTML maintenance report (beds in maintenance + items)</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SHL-MNT-01</td><td>Staff shall create/list/delete maintenance items per location with <code>title</code>, <code>category</code> (<code>light</code>/<code>toilet</code>/<code>door</code>/<code>window</code>/<code>ac</code>/<code>plumbing</code>/<code>electrical</code>/<code>furniture</code>/<code>other</code>), <code>locationDesc</code>, <code>priority</code> (<code>low</code>/<code>medium</code>/<code>high</code>), and notes.</td><td>Must</td></tr>
+<tr><td>FR-SHL-MNT-02</td><td>The system shall produce a server-rendered maintenance report (<code>/beds/maintenance-pdf</code>) listing beds in <code>maintenance</code> status plus open maintenance items, exportable/printable from the web client.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="810-shelter-history-incidents">8.10 Shelter History &amp; Incidents</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/locations/:locationUid/history</code></td><td>Event log (filter <code>eventType</code>, <code>limit</code>)</td></tr>
+<tr><td>GET</td><td><code>/locations/:locationUid/incidents</code></td><td>History where <code>eventType=&#x27;incident&#x27;</code></td></tr>
+<tr><td>GET</td><td><code>/beds/:bedUid/history</code></td><td>Per-bed history</td></tr>
+<tr><td>POST</td><td><code>/history/log</code></td><td>Add a manual log/note or incident entry</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SHL-HST-01</td><td>Every check-in, check-out, and transfer shall write a <code>shelter_history</code> row with <code>eventType</code> in {<code>check_in</code>,<code>check_out</code>,<code>transfer</code>,<code>incident</code>,<code>note</code>}, description, client name, <code>performedBy</code>, and metadata.</td><td>Must</td></tr>
+<tr><td>FR-SHL-HST-02</td><td>Staff shall add manual log/note entries via <code>POST /history/log</code> (location/bed/assignment reference, <code>eventType</code>, description, client name, metadata).</td><td>Must</td></tr>
+<tr><td>FR-SHL-HST-03</td><td>Staff shall log incidents (<code>eventType=&#x27;incident&#x27;</code>) with type (Safety concern / Policy violation / Medical emergency / Property damage / Conflict / Other), description, severity (Low/Medium/High/Critical), and action taken; incidents shall appear in the Incidents tab and the history timeline.</td><td>Must</td></tr>
+<tr><td>FR-SHL-HST-04</td><td>The history timeline shall be filterable by event type and viewable per location and per bed.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="811-victim-facing-shelter-discovery-simulation-mobile">8.11 Victim-Facing Shelter Discovery &amp; Simulation (Mobile)</h3>
+<p>The mobile surface lets victims discover shelters, inspect layout, request beds, and track requests — with confidential-location protection.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/shelters</code></td><td>Search/discover shelters (filters + distance + sort + pagination)</td></tr>
+<tr><td>GET</td><td><code>/shelters/:shelter_uid</code></td><td>Shelter detail (floors→rooms→beds, availability, my_assignment, bed_req_status)</td></tr>
+<tr><td>GET</td><td><code>/shelters/:shelter_uid/layout</code></td><td>Room/bed layout (ETag/304, <code>include_blocked</code>)</td></tr>
+<tr><td>GET</td><td><code>/shelters/:shelter_uid/directions</code></td><td>Coordinates for navigation (403 for confidential shelters)</td></tr>
+<tr><td>POST</td><td><code>/shelter/:sid/join-waitlist</code></td><td>Simplified join-waitlist (always <code>waitlisted</code>)</td></tr>
+<tr><td>POST</td><td><code>/shelter-requests</code></td><td>Submit a bed request (<code>waiting</code> if beds free else <code>waitlisted</code>)</td></tr>
+<tr><td>GET</td><td><code>/me/shelters</code></td><td>Consolidated &quot;My Shelters&quot;: active stays + waitlisted</td></tr>
+<tr><td>GET</td><td><code>/me/shelter-requests</code></td><td>List my requests (paginated, status filter)</td></tr>
+<tr><td>GET</td><td><code>/me/shelter-requests/:uid</code></td><td>Single request (history, assigned beds, requested beds, check-in window)</td></tr>
+<tr><td>POST</td><td><code>/me/shelter-requests/:uid/cancel</code></td><td>Cancel my request (blocked once <code>assigned</code>)</td></tr>
+<tr><td>GET</td><td><code>/me/shelter-searches/recent</code></td><td>Recent search terms</td></tr>
+<tr><td>POST</td><td><code>/me/shelter-searches</code></td><td>Record a search term (upsert per user+query)</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SHL-VIC-01</td><td>Victims shall search/filter shelters (<code>GET /shelters</code>) by <code>q</code>, <code>zipcode</code>, <code>type</code>, <code>open_24_7</code>, <code>accessible</code>, <code>accepts_pets</code>/<code>accepts_families</code>, <code>bed_type</code>, <code>min_open_beds</code>, with <code>sort</code> (availability/distance/name/rating), pagination, and optional <code>lat</code>/<code>lng</code>/<code>radius_km</code>.</td><td>Must</td></tr>
+<tr><td>FR-SHL-VIC-02</td><td>Listing shall compute per-shelter bed counts and Haversine distance from the user&#x27;s coordinates and sort accordingly.</td><td>Must</td></tr>
+<tr><td>FR-SHL-VIC-03</td><td>For <code>confidentialLocation</code> shelters, coordinates and address shall be hidden on the mobile surface (address rendered as &quot;Address shared after intake interview&quot;) and <code>GET /shelters/:uid/directions</code> shall return 403.</td><td>Must</td></tr>
+<tr><td>FR-SHL-VIC-04</td><td>Shelter detail (<code>GET /shelters/:uid</code>) shall return floors→rooms→beds, availability, the user&#x27;s <code>my_assignment</code>, and <code>bed_req_status</code>.</td><td>Must</td></tr>
+<tr><td>FR-SHL-VIC-05</td><td>Layout (<code>GET /shelters/:uid/layout</code>) shall support ETag/304 caching and an <code>include_blocked</code> parameter.</td><td>Should</td></tr>
+<tr><td>FR-SHL-VIC-06</td><td>Victims shall submit a bed request (<code>POST /shelter-requests</code>) with <code>shelter_id</code>/<code>uid</code>, <code>party_size</code>, <code>urgency</code>, <code>bed_type_preference</code>, <code>needs</code>, <code>contact</code>, notes, an optional <code>bed_preference</code> (floors→rooms→bed_ids), and <code>max_stay_nights</code>; the request shall be <code>waiting</code> if beds are available, else <code>waitlisted</code>.</td><td>Must</td></tr>
+<tr><td>FR-SHL-VIC-07</td><td>Submission shall dedupe an existing active request for the same user, normalize <code>bed_preference</code> (spec <code>floors[]</code> → stored flat <code>rooms[]</code>), derive bed type, insert a <code>shelter_waitlist</code> row with <code>appUserId</code>, write history, and notify web staff; the response shall include waitlist position and a check-in window.</td><td>Must</td></tr>
+<tr><td>FR-SHL-VIC-08</td><td>Victims shall join a shelter waitlist via the simplified <code>POST /shelter/:sid/join-waitlist</code> (always <code>waitlisted</code>) with <code>urgency</code>, <code>party_size</code>, <code>bed_type_preference</code>, <code>needs</code>, <code>contact</code>, notes.</td><td>Should</td></tr>
+<tr><td>FR-SHL-VIC-09</td><td>Victims shall view &quot;My Shelters&quot; (<code>/me/shelters</code>: active stays + waitlisted) and &quot;My requests&quot; (<code>/me/shelter-requests[/:uid]</code>) with status mapping (<code>waiting</code>→pending, <code>assigned</code>→accepted, plus <code>waitlisted</code>/<code>cancelled</code>/<code>rejected</code>), assigned-bed labels, days remaining, and history.</td><td>Must</td></tr>
+<tr><td>FR-SHL-VIC-10</td><td>Victims shall cancel their own request (<code>POST /me/shelter-requests/:uid/cancel</code>), blocked once the request is <code>assigned</code>.</td><td>Must</td></tr>
+<tr><td>FR-SHL-VIC-11</td><td>Victims shall see and record recent searches (<code>GET</code>/<code>POST /me/shelter-searches[/recent]</code>), upserted per user+query.</td><td>Should</td></tr>
+<tr><td>FR-SHL-VIC-12</td><td>The mobile client shall subscribe to live shelter updates (<code>/me</code> namespace <code>request.status_changed</code>, plus <code>bed.status_changed</code>/<code>availability.changed</code>/<code>layout.changed</code>/<code>shelter.directory_changed</code>) and reflect status changes and directory refreshes live.</td><td>Must</td></tr>
+</tbody></table></div>
+<h2 id="9-detailed-user-system-flows">9. Detailed User &amp; System Flows</h2>
+<h3 id="91-create-shelter-structure-location-floor-room-bed">9.1 Create Shelter Structure (Location → Floor → Room → Bed)</h3>
+<ol class="flow">
+<li>A Shelter Coordinator with <code>shelters.add</code> opens Shelter Locations in VS360 and clicks &quot;Add Location&quot;.</li>
+<li>They complete the location form (name, type, address/neighborhood/zip, contact + mobile-visibility toggles, lat/lng, feature switches incl. <code>confidentialLocation</code>, services/languages, policies such as <code>max_stay_nights</code>/<code>id_required</code>, description/notes) and submit → <code>POST /shelters/locations/create</code>.</li>
+<li>(Optional) They upload up to 5 images → <code>POST /shelters/locations/{uid}/upload-images</code>; images merge into <code>imageUrls</code>.</li>
+<li>The backend inserts the <code>shelter_locations</code> row, emits <code>shelter.directory_changed</code> (created) and <code>availability.changed</code>, and returns the location.</li>
+<li>In Bed Management → Structure, the coordinator adds a floor → <code>POST /shelters/floors/create</code> (floor number auto-increments if omitted).</li>
+<li>Within the floor, they add a room with a <code>capacity</code> → <code>POST /shelters/rooms/create</code>.</li>
+<li>Within the room, they add beds → <code>POST /shelters/beds/create</code>; each bed creation enforces the room capacity and a location-unique <code>bedNumber</code>.</li>
+<li>Each structural insert triggers <code>_emitShelterRealtime(..., { structural:true })</code> → <code>availability.changed</code> + <code>layout.changed</code>; subscribed mobile clients refetch layout.</li>
+<li>Edge cases: reducing a room&#x27;s capacity below its bed count is rejected; deleting a floor/room with active beds beneath is blocked; deleting an <code>occupied</code> bed is blocked. Effective capacity always reflects actual bed rows.</li>
+</ol>
+<h3 id="92-check-availability">9.2 Check Availability</h3>
+<ol class="flow">
+<li>Staff open Shelter Locations; KPI cards show Locations, Total Beds, Occupancy Rate, and Waitlist total via <code>GET /shelters/stats</code>.</li>
+<li>Each shelter card shows an occupancy progress bar (occupied/reserved/maintenance) and bed counts from <code>GET /shelters/locations</code> (per-shelter stats).</li>
+<li>Opening a shelter loads <code>GET /shelters/locations/{uid}/stats</code>, <code>.../beds</code>, <code>.../beds/available</code>, and <code>.../assignments/active</code>.</li>
+<li>The Bed Board groups beds by status (Available, Occupied, Reserved, Maintenance, Out of Service); occupancy rate = occupied ÷ total; waitlist count = <code>waitlisted</code> OR (<code>waiting</code> AND <code>appUserId IS NULL</code>).</li>
+<li>While the screen is open, <code>availability.changed</code> and <code>bed.status_changed</code> events keep counts and the board live without a manual refresh.</li>
+<li>On mobile, <code>GET /mobile/shelters</code> returns per-shelter open-bed counts and distance so a victim sees availability before travelling.</li>
+</ol>
+<h3 id="93-assign-a-client-to-a-bed-end-to-end-with-login-code-issuance">9.3 Assign a Client to a Bed (End-to-End, with Login-Code Issuance)</h3>
+<ol class="flow">
+<li>From an Available bed on the Bed Board, an Intake Advocate clicks &quot;Assign&quot;.</li>
+<li>They choose a mode: New Client, Existing Client (<code>GET /shelters/clients/search?q=</code>), or From Waitlist (<code>GET /shelters/locations/{uid}/waitlist</code>).</li>
+<li>They enter details — New: first/last name (required) + optional phone/email; Existing: pick a searched client; Waitlist: pick an entry — set Expected Length of Stay (capped at <code>policies.max_stay_nights</code>), and for family rooms add family members up to capacity.</li>
+<li>Submit:</li>
+</ol>
+<ul>
+<li>New/Existing → <code>POST /shelters/assignments/check-in</code> with <code>bedUid</code>, <code>clientName</code>, contact, <code>appUserId</code> (existing), <code>familyMembers</code>, <code>expectedStayDays</code>, notes, and <code>createLoginCode:true</code> for new clients.</li>
+<li>From Waitlist → <code>POST /shelters/waitlist/{uid}/promote</code> with <code>bedUid</code>, <code>expectedStayDays</code>.</li>
+</ul>
+<ol class="flow">
+<li>The backend runs <code>_createAssignmentInTrx</code> in a transaction: verify <code>max_stay_nights</code>; load the bed and require <code>status=&#x27;available&#x27;</code>.</li>
+<li>If no <code>appUserId</code> (walk-in): set <code>createLoginCode=true</code>, normalize phone/email, find-or-create an <code>app_users</code> row (<code>isVerified=false</code>, temp password, <code>otpChannel</code>).</li>
+<li>Resolve the location&#x27;s <code>serviceCenterId</code>, find-or-create the &quot;Shelter Services&quot; <code>Services</code> row (category 15), and create an approved <code>service_claims</code> row + claim stats.</li>
+<li>If the user is unverified, generate a one-time login code, store it on the claim, and send it via SMS/EMAIL. Verified users get no code.</li>
+<li>Insert the <code>shelter_assignments</code> row (status <code>active</code>, <code>expectedCheckOutDate = now + expectedStayDays||30</code>), flip the bed to <code>occupied</code>, and write history <code>check_in</code>.</li>
+<li>On commit, emit realtime (bed=occupied) and return <code>{ assignment, loginCode }</code>.</li>
+<li>The web modal shows the one-time login-code screen (copyable), indicates whether it was auto-sent (SMS/email) or must be shared manually, and gives the client mobile sign-in instructions.</li>
+<li>Edge cases: bed no longer available → error and staff pick another bed; expected stay exceeds <code>max_stay_nights</code> → capped/rejected; already-verified existing user → assignment created without a code.</li>
+</ol>
+<h3 id="94-waitlist-add-promote">9.4 Waitlist Add &amp; Promote</h3>
+<ol class="flow">
+<li>Add: a coordinator opens the Waitlist panel, searches for an existing app user or enters a client manually, sets bed preference, party adults/children, needs, preferred languages, priority, urgency, referral source, and notes → <code>POST /shelters/waitlist/add</code> (row with <code>appUserId=null</code> for staff walk-ins).</li>
+<li>The entry appears on the location and agency waitlists; the waitlist count updates via <code>availability.changed</code>.</li>
+<li>When a bed frees (check-out or new bed), a green banner signals available beds while clients wait.</li>
+<li>Promote: staff click Promote/Accept &amp; Assign → <code>POST /shelters/waitlist/{uid}/promote</code> with <code>expectedStayDays</code> (and optional <code>bedUid</code>).</li>
+<li>If <code>bedUid</code> is omitted, the backend auto-resolves a matching available bed by <code>bedTypePreference</code>.</li>
+<li>Promotion checks <code>max_stay_nights</code>, sets the entry <code>assigned</code>, runs <code>_createAssignmentInTrx</code> (creating account/claim/login code as needed), notifies <code>SHELTER_BED_ASSIGNED</code>, and emits realtime.</li>
+<li>Edge cases: no matching bed → promotion fails and the entry stays waitlisted; a mobile-originated entry transitioning to a terminal state notifies the linked app user.</li>
+</ol>
+<h3 id="95-request-approve-an-inter-agency-transfer">9.5 Request &amp; Approve an Inter-Agency Transfer</h3>
+<ol class="flow">
+<li>A Transfer Liaison (with <code>shelters.manage_transfers</code>) opens Partner Shelters and views partner availability via <code>GET /shelters/partners</code> (accepted partnerships; availability totals only).</li>
+<li>They open Request Bed Transfer, choose an existing client (from service claims) or a new client, set bed preference (individual/family/any) + family members, urgency, and a message (≥20 chars) → <code>POST /shelters/transfers/request</code> with <code>targetServiceCenterUid</code>, <code>targetLocationUid?</code>, bed prefs, urgency, message.</li>
+<li>The backend writes an <code>outgoing</code> row for the requesting SC and a mirrored <code>incoming</code> row for the target SC. The request appears in the requester&#x27;s Sent list.</li>
+<li>Target-agency staff see the request in <code>GET /shelters/transfers/incoming</code>; a badge/banner reflects <code>GET /shelters/transfers/pending-count</code>.</li>
+<li>To accept, target staff open Accept Transfer, which filters available beds across their locations by requested bed type/family size, pick a bed → <code>PATCH /shelters/transfers/{uid}/accept</code> with <code>assignedBedUid</code>, notes.</li>
+<li>Accept runs <code>_createAssignmentInTrx</code> to auto check-in the client to the assigned bed (creating account/claim/login code as needed), sets the transfer <code>accepted</code>, and emits realtime.</li>
+<li>To decline, target staff → <code>PATCH /shelters/transfers/{uid}/decline</code> with <code>declineReason</code>; the transfer is marked <code>declined</code>.</li>
+<li>Edge cases: no suitable bed at the target → staff decline with reason; a caller without <code>shelters.manage_transfers</code> is blocked at the permission gate.</li>
+</ol>
+<h3 id="96-log-maintenance">9.6 Log Maintenance</h3>
+<ol class="flow">
+<li>From Bed Management, a coordinator opens Add Maintenance and enters <code>title</code>, <code>category</code> (light/toilet/door/…/other), <code>locationDesc</code>, <code>priority</code>, and notes → <code>POST /shelters/locations/{uid}/maintenance-items</code>.</li>
+<li>(Optional) They set an affected bed to <code>maintenance</code> status via <code>PATCH /shelters/beds/{uid}</code>, which fires <code>bed.status_changed</code> and updates availability, plus a <code>POST /shelters/history/log</code> entry.</li>
+<li>Staff review open items via <code>GET /shelters/locations/{uid}/maintenance-items</code> and delete resolved items via <code>DELETE /shelters/locations/{uid}/maintenance-items/{itemUid}</code>.</li>
+<li>To produce a work list, staff export the maintenance report <code>GET /shelters/locations/{uid}/beds/maintenance-pdf</code> (beds in maintenance + open items).</li>
+<li>When repairs finish, staff return the bed to <code>available</code>, restoring capacity and emitting realtime.</li>
+</ol>
+<h3 id="97-mobile-bed-request-staff-triage">9.7 Mobile Bed Request → Staff Triage</h3>
+<ol class="flow">
+<li>In the app, a victim opens a shelter, optionally uses the room/bed picker, and submits a bed request → <code>POST /mobile/shelter-requests</code> with party size, urgency, bed-type preference, needs, contact, notes, <code>bed_preference</code>, and <code>max_stay_nights</code>.</li>
+<li>The backend dedupes an active request, normalizes <code>bed_preference</code>, derives bed type, sets status <code>waiting</code> (beds free) or <code>waitlisted</code>, inserts a <code>shelter_waitlist</code> row with <code>appUserId</code>, writes history, and notifies web staff (<code>SHELTER_REQUEST</code>, socket <code>shelter-request</code> to <code>service-center-&lt;id&gt;</code>). The response includes waitlist position + check-in window.</li>
+<li>Web staff see the request in the Mobile Requests queue (<code>GET /shelters/mobile-requests</code>); the queue and badges live-refresh on the <code>shelter-request</code> event and a 30s poll.</li>
+<li>Staff Accept &amp; Assign → <code>PATCH /shelters/mobile-requests/{uid}/accept</code>: if the victim requested specific beds, staff choose which (<code>bedUids</code>), else the system auto-assigns; set expected stay (≤ <code>max_stay_nights</code>) + notes. The backend runs one <code>_createAssignmentInTrx</code> per bed and notifies <code>SHELTER_BED_ASSIGNED</code>.</li>
+<li>Alternatively staff Send to Waitlist → <code>PATCH .../waitlist</code> (<code>SHELTER_WAITLISTED</code>), Reject → <code>PATCH .../reject</code> (<code>SHELTER_REQUEST_REJECTED</code>), or Cancel → <code>PATCH .../cancel</code>.</li>
+<li>The victim&#x27;s app reflects the outcome live via <code>/me</code> <code>request.status_changed</code> and receives an FCM + in-app notification; <code>GET /mobile/me/shelter-requests/{uid}</code> shows assigned beds, days remaining, and history.</li>
+<li>Edge cases: accepting a pending request with no available bed returns 409 → the UI offers to waitlist instead; the victim cancelling before assignment → <code>POST /mobile/me/shelter-requests/{uid}/cancel</code> (blocked once <code>assigned</code>).</li>
+</ol>
+<h3 id="98-victim-searches-for-a-shelter">9.8 Victim Searches for a Shelter</h3>
+<ol class="flow">
+<li>The victim opens the Shelter tab; the app requests location permission and records/loads recent searches (<code>GET /mobile/me/shelter-searches/recent</code>).</li>
+<li>They enter a query or zip and set filters (type, 24/7, accessible, pet-friendly, families, min open beds) → <code>GET /mobile/shelters</code> with <code>q</code>/<code>zipcode</code>/filters/<code>sort</code>/<code>lat</code>/<code>lng</code>/<code>radius_km</code>.</li>
+<li>The backend filters <code>shelter_locations</code>, computes per-shelter bed counts and Haversine distance, sorts, and paginates; for <code>confidentialLocation</code> shelters it hides coordinates/address (&quot;Address shared after intake interview&quot;).</li>
+<li>The search term is recorded via <code>POST /mobile/me/shelter-searches</code> (upsert per user+query).</li>
+<li>The victim opens a shelter → <code>GET /mobile/shelters/{uid}</code> (floors→rooms→beds, availability, <code>my_assignment</code>, <code>bed_req_status</code>) and <code>GET .../layout</code> (ETag/304). <code>ShelterSocketService</code> subscribes for live <code>bed.status_changed</code>/<code>availability.changed</code>/<code>layout.changed</code>.</li>
+<li>For a non-confidential shelter, they open directions → <code>GET /mobile/shelters/{uid}/directions</code> (coordinates + polyline). For a confidential shelter, directions return 403 and the UI explains the address is shared after intake.</li>
+<li>From detail, the victim can submit a bed request (§9.7) or join the waitlist (<code>POST /mobile/shelter/:sid/join-waitlist</code>).</li>
+<li>Edge cases: no results → empty state with filter hints; offline → connectivity fallback; a shelter marked confidential never exposes exact location pre-intake.</li>
+</ol>
+<h2 id="10-data-model">10. Data Model</h2>
+<p>All entities are Objection models under <code>src/model/v2/</code> with timestamps (<code>created_at</code>/<code>updated_at</code>). PK is integer <code>id</code>; <code>uid</code> is a business key.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Key Fields</th><th>Relationships</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>ShelterLocations (<code>shelter_locations</code>)</td><td>uid, serviceCenterId, name, address, phone/email/website, showPhone/showEmail, description, neighborhood, zipCode, type, lat, lng, totalBeds, totalFamilyRooms, open_24_7, acceptsFamilies/Lgbtq/Pets, accessible, confidentialLocation, imageUrls(json), languages(json), services(json), policies(json: max_stay_nights/id_required/minimum_age), notes, isActive, createdBy</td><td>belongsTo ServiceCenters; hasMany floors/beds/assignments/waitlist/history</td><td>The shelter facility; owns the hierarchy and directory metadata</td></tr>
+<tr><td>ShelterFloors (<code>shelter_floors</code>)</td><td>uid, locationId, name, floorNumber, notes, isActive</td><td>belongsTo location; hasMany rooms</td><td>A floor within a location</td></tr>
+<tr><td>ShelterRooms (<code>shelter_rooms</code>)</td><td>uid, floorId, locationId, name, type(standard/family/single/…), capacity, notes, isActive</td><td>belongsTo floor/location; hasMany beds</td><td>A room; capacity constrains bed count</td></tr>
+<tr><td>ShelterBeds (<code>shelter_beds</code>)</td><td>uid, locationId, roomId, bedNumber, type(individual/family_room), familyCapacity, status(available/occupied/reserved/maintenance/out_of_service), notes, isActive</td><td>belongsTo location/room; hasMany assignments/history</td><td>A physical bed; status drives availability</td></tr>
+<tr><td>ShelterAssignments (<code>shelter_assignments</code>)</td><td>uid, bedId, locationId, appUserId(nullable), clientName, clientPhone, familyMembers(json), checkInDate, expectedStayDays, expectedCheckOutDate, actualCheckOutDate, checkOutReason, assignedBy(vsms_users), notes, status(active/completed)</td><td>belongsTo bed/location; optional app_user</td><td>An occupancy record (check-in→check-out)</td></tr>
+<tr><td>ShelterWaitlist (<code>shelter_waitlist</code>)</td><td>uid, locationId, appUserId(nullable: NULL=walk-in, non-null=mobile request), clientName/Phone/Email, bedTypePreference, familySize, priority(normal/high/urgent), urgency(immediate/within_24h/within_48h/planning), partyAdults, partyChildren, needs(json), preferredLanguages(json), bedPreference(json flat rooms[] with room_id/bed_ids/whole_room), expectedStayDays, referralSource, notes, status(waiting/waitlisted/assigned/cancelled/rejected), addedDate, assignedDate</td><td>belongsTo location; optional app_user</td><td>Waitlist + mobile bed-request records</td></tr>
+<tr><td>ShelterTransferRequests (<code>shelter_transfer_requests</code>)</td><td>uid, type(incoming/outgoing), requestingServiceCenterId, targetServiceCenterId, targetLocationId, assignedBedId, clientName, clientPhone, bedTypePreference, familySize, familyMembers(json), urgency, message, status(pending/accepted/declined), declineReason, createdBy, respondedBy, respondedAt</td><td>belongs to requesting/target service centers, optional location/bed</td><td>Inter-agency bed transfer (mirrored outgoing/incoming rows)</td></tr>
+<tr><td>ShelterMaintenanceItems (<code>shelter_maintenance_items</code>)</td><td>uid, locationId, title, category(light/toilet/door/window/ac/plumbing/electrical/furniture/other), locationDesc, priority(low/medium/high), notes</td><td>belongsTo location</td><td>Facility maintenance tracking</td></tr>
+<tr><td>ShelterHistory (<code>shelter_history</code>)</td><td>uid, bedId, locationId, assignmentId, eventType(check_in/check_out/transfer/incident/note), description, clientName, performedBy(vsms_users), metadata(json)</td><td>belongsTo bed/location; optional assignment</td><td>Auditable event log per location/bed</td></tr>
+<tr><td>MobileShelterSearches (<code>mobile_shelter_searches</code>)</td><td>appUserId, query, searchedAt</td><td>belongsTo app_user</td><td>Victim recent-search history (upsert per user+query)</td></tr>
+</tbody></table></div>
+<p>Related platform entities consumed by this module: <code>AppUsers</code> (victim identity, created at walk-in check-in), <code>ServiceClaims</code> + <code>ServiceClaimStats</code> (approved shelter case created at check-in), <code>Services</code>/<code>ServiceCategories</code> (Shelter Services, category 15), <code>ServiceCenters</code> (agency ownership), <code>AgencyPartnerships</code> (partner availability + transfer eligibility), <code>VictimNotifications</code>/<code>ServiceCenterNotifications</code> (notification rows), and <code>ActionLogs</code> (audit trail).</p>
+<h2 id="11-api-integration-surface">11. API &amp; Integration Surface</h2>
+<h3 id="111-web-staff-endpoints-base-webshelters-allowonlyvs360-ratelimi">11.1 Web Staff Endpoints — base <code>/web/shelters</code> (<code>allowOnly(&#x27;VS360&#x27;)</code>, <code>rateLimiters.shelter</code>)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/locations</code></td><td>List agency shelters + stats</td><td>VS360, shelters.view</td></tr>
+<tr><td>GET</td><td><code>/locations/:uid</code></td><td>Single location</td><td>VS360, shelters.view</td></tr>
+<tr><td>POST</td><td><code>/locations/create</code></td><td>Create location</td><td>VS360, shelters.add</td></tr>
+<tr><td>PATCH</td><td><code>/locations/:uid</code></td><td>Update location</td><td>VS360, shelters.edit</td></tr>
+<tr><td>DELETE</td><td><code>/locations/:uid</code></td><td>Soft-delete location</td><td>VS360, shelters.delete</td></tr>
+<tr><td>POST</td><td><code>/locations/:locationUid/upload-images</code></td><td>Upload up to 5 images</td><td>VS360, shelters.edit</td></tr>
+<tr><td>GET</td><td><code>/locations/:locationUid/floors</code></td><td>Floors + rooms + counts</td><td>VS360, shelters.view</td></tr>
+<tr><td>POST</td><td><code>/floors/create</code></td><td>Create floor</td><td>VS360, shelters.add</td></tr>
+<tr><td>PATCH / DELETE</td><td><code>/floors/:uid</code></td><td>Update / delete floor</td><td>VS360, shelters.edit / delete</td></tr>
+<tr><td>GET</td><td><code>/floors/:floorUid/rooms</code></td><td>Rooms + beds</td><td>VS360, shelters.view</td></tr>
+<tr><td>POST</td><td><code>/rooms/create</code></td><td>Create room</td><td>VS360, shelters.add</td></tr>
+<tr><td>PATCH / DELETE</td><td><code>/rooms/:uid</code></td><td>Update / delete room</td><td>VS360, shelters.edit / delete</td></tr>
+<tr><td>GET</td><td><code>/locations/:locationUid/beds</code></td><td>All active beds</td><td>VS360, shelters.view</td></tr>
+<tr><td>GET</td><td><code>/locations/:locationUid/beds/available</code></td><td>Available beds</td><td>VS360, shelters.view</td></tr>
+<tr><td>POST</td><td><code>/beds/create</code></td><td>Create bed</td><td>VS360, shelters.add</td></tr>
+<tr><td>PATCH / DELETE</td><td><code>/beds/:uid</code></td><td>Update / delete bed</td><td>VS360, shelters.edit / delete</td></tr>
+<tr><td>GET</td><td><code>/locations/:locationUid/assignments[/active]</code></td><td>Assignments (all / active)</td><td>VS360, shelters.view</td></tr>
+<tr><td>POST</td><td><code>/assignments/check-in</code></td><td>Check in a client</td><td>VS360, shelters.edit</td></tr>
+<tr><td>PATCH</td><td><code>/assignments/:uid/check-out</code></td><td>Check out</td><td>VS360, shelters.edit</td></tr>
+<tr><td>PATCH</td><td><code>/assignments/:uid/transfer</code></td><td>Bed-to-bed transfer</td><td>VS360, shelters.edit</td></tr>
+<tr><td>GET</td><td><code>/waitlist</code> / <code>/locations/:locationUid/waitlist</code></td><td>Waitlist (agency / location)</td><td>VS360, shelters.view</td></tr>
+<tr><td>POST</td><td><code>/waitlist/add</code></td><td>Add walk-in</td><td>VS360, shelters.edit</td></tr>
+<tr><td>PATCH / DELETE</td><td><code>/waitlist/:uid</code></td><td>Update / cancel entry</td><td>VS360, shelters.edit</td></tr>
+<tr><td>POST</td><td><code>/waitlist/:uid/promote</code></td><td>Promote to a bed</td><td>VS360, shelters.edit</td></tr>
+<tr><td>GET</td><td><code>/mobile-requests</code></td><td>Mobile request queue</td><td>VS360, shelters.view</td></tr>
+<tr><td>PATCH</td><td>`/mobile-requests/:uid/accept</td><td>reject</td><td>cancel</td></tr>
+<tr><td>GET</td><td>`/transfers/incoming</td><td>outgoing</td><td>pending-count`</td></tr>
+<tr><td>GET</td><td><code>/transfers/:uid</code></td><td>Single transfer</td><td>VS360, shelters.manage_transfers</td></tr>
+<tr><td>POST</td><td><code>/transfers/request</code></td><td>Create outgoing transfer</td><td>VS360, shelters.manage_transfers</td></tr>
+<tr><td>PATCH</td><td>`/transfers/:uid/accept</td><td>decline`</td><td>Accept / decline transfer</td></tr>
+<tr><td>GET</td><td><code>/partners</code></td><td>Partner shelters + availability</td><td>VS360, shelters.view</td></tr>
+<tr><td>GET/POST/DELETE</td><td><code>/locations/:locationUid/maintenance-items[/:itemUid]</code></td><td>Maintenance CRUD</td><td>VS360, shelters.edit</td></tr>
+<tr><td>GET</td><td><code>/locations/:locationUid/beds/maintenance-pdf</code></td><td>Maintenance report</td><td>VS360, shelters.view</td></tr>
+<tr><td>GET</td><td><code>/locations/:locationUid/history</code></td><td>Event log</td><td>VS360, shelters.view</td></tr>
+<tr><td>GET</td><td><code>/locations/:locationUid/incidents</code></td><td>Incident log</td><td>VS360, shelters.view</td></tr>
+<tr><td>GET</td><td><code>/beds/:bedUid/history</code></td><td>Per-bed history</td><td>VS360, shelters.view</td></tr>
+<tr><td>POST</td><td><code>/history/log</code></td><td>Add log/incident entry</td><td>VS360, shelters.edit</td></tr>
+<tr><td>GET</td><td><code>/stats</code> / <code>/locations/:locationUid/stats</code></td><td>Stats rollups</td><td>VS360, shelters.view</td></tr>
+<tr><td>GET</td><td><code>/clients/search?q=</code></td><td>Search app_users</td><td>VS360, shelters.view</td></tr>
+</tbody></table></div>
+<h3 id="112-mobile-victim-endpoints-base-mobile-auth-app-user-ratelimite">11.2 Mobile (Victim) Endpoints — base <code>/mobile</code> (auth = app user, <code>rateLimiters.standard</code>)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/shelters</code></td><td>Search/discover shelters</td><td>App user (auth-only)</td></tr>
+<tr><td>GET</td><td><code>/shelters/:shelter_uid</code></td><td>Shelter detail</td><td>App user</td></tr>
+<tr><td>GET</td><td><code>/shelters/:shelter_uid/layout</code></td><td>Layout (ETag/304)</td><td>App user</td></tr>
+<tr><td>GET</td><td><code>/shelters/:shelter_uid/directions</code></td><td>Directions (403 if confidential)</td><td>App user</td></tr>
+<tr><td>POST</td><td><code>/shelter/:sid/join-waitlist</code></td><td>Join waitlist</td><td>App user</td></tr>
+<tr><td>POST</td><td><code>/shelter-requests</code></td><td>Submit bed request</td><td>App user</td></tr>
+<tr><td>GET</td><td><code>/me/shelters</code></td><td>My active stays + waitlisted</td><td>App user (self)</td></tr>
+<tr><td>GET</td><td><code>/me/shelter-requests[/:uid]</code></td><td>My requests / detail</td><td>App user (self)</td></tr>
+<tr><td>POST</td><td><code>/me/shelter-requests/:uid/cancel</code></td><td>Cancel my request</td><td>App user (self)</td></tr>
+<tr><td>GET</td><td><code>/me/shelter-searches/recent</code></td><td>Recent searches</td><td>App user (self)</td></tr>
+<tr><td>POST</td><td><code>/me/shelter-searches</code></td><td>Record a search</td><td>App user (self)</td></tr>
+</tbody></table></div>
+<h3 id="113-socketio-events">11.3 Socket.IO Events</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Event</th><th>Direction</th><th>Namespace / Room</th><th>Payload</th></tr></thead>
+<tbody>
+<tr><td><code>subscribe</code> / <code>subscribed</code></td><td>client↔server</td><td><code>/shelters</code></td><td><code>{ shelter_uid, channels }</code> handshake</td></tr>
+<tr><td><code>bed.status_changed</code></td><td>server→client</td><td><code>/shelters</code> <code>shelter:&lt;uid&gt;:layout</code></td><td><code>{ bedUid, roomUid, status, shelterUid }</code></td></tr>
+<tr><td><code>availability.changed</code></td><td>server→client</td><td><code>/shelters</code> <code>shelter:&lt;uid&gt;:availability</code></td><td><code>{ shelterUid, availableBeds, totalBeds, waitlistCount }</code></td></tr>
+<tr><td><code>layout.changed</code></td><td>server→client</td><td><code>/shelters</code> layout</td><td><code>{ shelterUid }</code> (refetch layout)</td></tr>
+<tr><td><code>request.status_changed</code></td><td>server→client</td><td><code>/me</code> <code>user:&lt;appUserId&gt;</code></td><td>request status update</td></tr>
+<tr><td><code>shelter.directory_changed</code></td><td>server→client</td><td><code>/me</code> (broadcast)</td><td>`{ action:&#x27;created&#x27;</td></tr>
+<tr><td><code>shelter-request</code></td><td>server→web</td><td><code>service-center-&lt;id&gt;</code></td><td>mobile request submitted/cancelled (staff toast + refetch)</td></tr>
+</tbody></table></div>
+<h3 id="114-external-cross-module-integrations">11.4 External &amp; Cross-Module Integrations</h3>
+<ul>
+<li><strong>FCM + in-app (web→mobile app user)</strong> via <code>appNotificationService.sendShelterStatusNotification</code> (<code>_notifyMobileShelterAction</code>): <code>SHELTER_BED_ASSIGNED</code>, <code>SHELTER_BED_TRANSFERRED</code>, <code>SHELTER_REQUEST_REJECTED</code>, <code>SHELTER_WAITLISTED</code>, <code>SHELTER_CHECKED_OUT</code>, <code>SHELTER_REQUEST_ACCEPTED</code>.</li>
+<li><strong>Mobile→web-staff</strong> via <code>VS360NotificationService.emitShelterRequestNotification</code>: <code>SHELTER_REQUEST</code>, <code>SHELTER_WAITLIST_JOIN</code>, <code>SHELTER_REQUEST_CANCELLED</code> (socket event <code>shelter-request</code>, room <code>service-center-&lt;id&gt;</code>).</li>
+<li><strong>Login-code service</strong> (<code>loginCodeService.generateUniqueCode</code> / <code>sendCodeNotification</code>) — SMS via Twilio / email — for walk-in account activation at check-in.</li>
+<li><strong>File service</strong> — location image uploads (multer <code>images</code>, up to 5 per request), merged into <code>imageUrls</code>.</li>
+<li><strong>Identity &amp; case subsystems</strong> — find-or-create <code>app_users</code>, find-or-create Shelter <code>Services</code> (category 15), create approved <code>service_claims</code> + stats at check-in.</li>
+<li><strong>Partnerships</strong> — <code>AgencyPartnerships</code> (accepted) gate partner availability visibility and transfer eligibility.</li>
+<li><strong>Google Maps/Directions</strong> (mobile client) — distance and navigation rendering from backend-supplied coordinates and the directions payload.</li>
+<li><strong>ActionLogs</strong> — audit rows for create/update/delete operations (platform-wide convention).</li>
+</ul>
+<h2 id="12-rbac-permissions">12. RBAC &amp; Permissions</h2>
+<p>Two coarse layers combine: the context gate <code>allowOnly(&#x27;VS360&#x27;)</code> on all web shelter routes, and fine-grained <code>shelters.&lt;action&gt;</code> permissions checked via <code>checkPermission</code>. <code>SUPER_ADMIN</code> bypasses fine-grained checks within the agency. Mobile shelter routes are auth-only (app user), scoped to the caller.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Action / Capability</th><th>Permission</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>View shelters, hierarchy, beds, assignments, waitlist, history, stats, partners</td><td><code>shelters.view</code></td><td>Read access to all agency shelter data</td></tr>
+<tr><td>Create location/floor/room/bed</td><td><code>shelters.add</code></td><td>Structural creation</td></tr>
+<tr><td>Edit location/floor/room/bed; check-in/check-out/bed transfer; waitlist add/update/promote; mobile-request triage; maintenance CRUD; history/incident log; image upload</td><td><code>shelters.edit</code></td><td>Operational actions</td></tr>
+<tr><td>Soft-delete location/floor/room/bed</td><td><code>shelters.delete</code></td><td>Guarded by occupied/active-children checks</td></tr>
+<tr><td>Send/accept/decline inter-agency transfers; view transfer queues/pending-count</td><td><code>shelters.manage_transfers</code></td><td>Dedicated permission for cross-agency transfer</td></tr>
+<tr><td>All of the above within the agency</td><td>SUPER_ADMIN</td><td>Bypasses fine-grained checks</td></tr>
+<tr><td>Search/discover shelters, view detail/layout/directions, request bed, join waitlist, track/cancel own requests</td><td>App-user auth only</td><td>No permission flag; scoped to self; confidential-location protection applies</td></tr>
+</tbody></table></div>
+<div class="callout note"><div class="callout-title">ℹ Route gating in the current web client</div><div class="callout-body">The VS360 shelter components are route-gated and do not each re-check a <code>shelters.*</code> constant in the UI; the authoritative enforcement is the backend <code>allowOnly(&#x27;VS360&#x27;)</code> context gate plus <code>checkPermission(&#x27;shelters&#x27;, action)</code>. The <code>shelters</code> module defines <code>view/add/edit/delete/manage_transfers</code> in the RBAC catalog (<code>vs360Modules</code>).</div></div>
+<h2 id="13-non-functional-requirements">13. Non-Functional Requirements</h2>
+<h3 id="131-victim-safety-confidentiality-of-shelter-locations">13.1 Victim Safety &amp; Confidentiality of Shelter Locations</h3>
+<ul>
+<li><strong>Confidential locations</strong>: shelters flagged <code>confidentialLocation</code> shall never expose exact address or coordinates on the mobile surface pre-intake; address renders as &quot;Address shared after intake interview&quot; and <code>GET /mobile/shelters/:uid/directions</code> returns 403.</li>
+<li><strong>Contact visibility</strong>: a shelter&#x27;s phone/email appear on the mobile surface only when <code>showPhone</code>/<code>showEmail</code> are enabled.</li>
+<li><strong>Partner exposure</strong>: partner agencies see availability totals only, never bed-level detail or client identity.</li>
+<li><strong>Login codes</strong>: one-time codes are single-use, delivered over the victim&#x27;s chosen channel (SMS/email); verified users never receive a code (they must use regular login).</li>
+<li><strong>Data minimization</strong>: mobile responses expose only the fields a victim needs; client identity and internal notes are never sent to other victims or to partner-availability views.</li>
+<li><strong>App-side safety</strong>: the victim app enforces a NECX PIN + biometric unlock, session lock (423)/lockout (403), an emergency-exit button, and encrypted API responses; shelter surfaces inherit these protections.</li>
+</ul>
+<h3 id="132-security-access-control">13.2 Security &amp; Access Control</h3>
+<ul>
+<li>All web routes require a valid VSMS session (<code>allowOnly(&#x27;VS360&#x27;)</code>) and the relevant <code>shelters.*</code> permission; agency data is strictly tenant-scoped to <code>issuer.serviceCenterInfo.id</code>.</li>
+<li>Mobile routes require app-user auth and the mobile-app secret header; <code>/me/*</code> endpoints are scoped to the authenticated user.</li>
+<li>Socket connections on <code>/shelters</code> and <code>/me</code> are authenticated (<code>socketAuthentication</code>); users only join their own <code>user:&lt;id&gt;</code> room and explicitly subscribed shelter rooms.</li>
+</ul>
+<h3 id="133-performance-availability">13.3 Performance &amp; Availability</h3>
+<ul>
+<li>Availability recomputation and realtime emission shall complete within &lt; 2s p95 of the triggering change.</li>
+<li>Shelter listing/detail/layout shall paginate and support ETag/304 caching for layout to minimize mobile data usage.</li>
+<li>The shelter API uses a dedicated rate-limit bucket (<code>rateLimiters.shelter</code>) to isolate load from other modules.</li>
+<li>Assignment, promotion, transfer-accept, and check-out run in DB transactions to keep bed status, assignments, and history consistent under concurrency.</li>
+</ul>
+<h3 id="134-auditability-compliance">13.4 Auditability &amp; Compliance</h3>
+<ul>
+<li>Every occupancy event (check-in/check-out/transfer/incident/note) writes a <code>shelter_history</code> row with actor (<code>performedBy</code>/<code>assignedBy</code>) and metadata; create/update/delete operations additionally write <code>ActionLogs</code>.</li>
+<li>History and incidents are retained via soft-deletion of locations/floors/rooms/beds so the audit trail is preserved.</li>
+<li>Occupancy and utilization data support grant/PMT reporting handled by the Reports module.</li>
+</ul>
+<h3 id="135-localization-accessibility">13.5 Localization &amp; Accessibility</h3>
+<ul>
+<li>Shelter directory fields include <code>languages</code> and <code>services</code>; mobile discovery supports filtering for <code>accessible</code> and affirming shelters (families, pets, LGBTQ+).</li>
+<li>The mobile app supports en/es/bn/fr/ar with dynamic translations; shelter-facing strings participate in the translation system.</li>
+</ul>
+<h2 id="14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</h2>
+<h3 id="141-dashboards-kpis">14.1 Dashboards &amp; KPIs</h3>
+<ul>
+<li>Agency-level KPI cards: Locations, Total Beds, Occupancy Rate, Waitlist total (<code>GET /shelters/stats</code>).</li>
+<li>Per-location: bed counts by status, occupancy progress bar, waitlist count, incidents (<code>GET /shelters/locations/:uid/stats</code>, <code>.../history</code>, <code>.../incidents</code>).</li>
+<li>Bed Board grouped by status (Available/Occupied/Reserved/Maintenance/Out of Service); overdue-stay indicators compare day counter vs expected stay.</li>
+<li>Maintenance report (<code>.../beds/maintenance-pdf</code>) for facility work lists.</li>
+<li>The agency dashboard&#x27;s <code>shelter_overview</code> widget summarizes shelter status alongside other modules.</li>
+</ul>
+<h3 id="142-notifications">14.2 Notifications</h3>
+<ul>
+<li><strong>In-app / socket (real-time)</strong>: <code>availability.changed</code>, <code>bed.status_changed</code>, <code>layout.changed</code> (<code>/shelters</code>); <code>request.status_changed</code>, <code>shelter.directory_changed</code> (<code>/me</code>); <code>shelter-request</code> (staff, <code>service-center-&lt;id&gt;</code>).</li>
+<li><strong>FCM + in-app to victims</strong>: <code>SHELTER_BED_ASSIGNED</code>, <code>SHELTER_REQUEST_ACCEPTED</code>, <code>SHELTER_BED_TRANSFERRED</code>, <code>SHELTER_WAITLISTED</code>, <code>SHELTER_REQUEST_REJECTED</code>, <code>SHELTER_CHECKED_OUT</code>.</li>
+<li><strong>To staff</strong>: <code>SHELTER_REQUEST</code>, <code>SHELTER_WAITLIST_JOIN</code>, <code>SHELTER_REQUEST_CANCELLED</code> on mobile-originated activity.</li>
+<li><strong>SMS/email</strong>: one-time login-code delivery to walk-in clients via the login-code service.</li>
+<li>All notification calls are wrapped defensively (failures logged, never breaking the underlying transaction).</li>
+</ul>
+<h2 id="15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Type</th><th>Impact</th><th>Mitigation / Owner</th></tr></thead>
+<tbody>
+<tr><td>Confidential shelter location could leak via detail/layout/directions payloads</td><td>Risk</td><td>High (survivor safety)</td><td>Enforce <code>confidentialLocation</code> masking on all mobile surfaces; 403 on directions; audit responses. Owner: Backend + Security</td></tr>
+<tr><td>Concurrent assignment to the same bed (two staff, or staff + mobile accept)</td><td>Risk</td><td>Medium (double-booking)</td><td>Transactional check that bed <code>status=&#x27;available&#x27;</code> inside <code>_createAssignmentInTrx</code>; 409 handling with waitlist fallback. Owner: Backend</td></tr>
+<tr><td>Login code delivered but not received (bad phone/email)</td><td>Risk</td><td>Medium (victim cannot sign in)</td><td>Staff can share the code manually from the check-in response; resend paths exist via auth code-login flow. Owner: Ops + Backend</td></tr>
+<tr><td>VS360 shelter UI is route-gated without per-component <code>shelters.*</code> checks</td><td>Open Question</td><td>Medium (defense-in-depth)</td><td>Confirm backend <code>checkPermission</code> covers all mutating routes; consider adding UI-level gating for <code>manage_transfers</code>. Owner: Web + Backend</td></tr>
+<tr><td><code>totalBeds</code> on a location can diverge from actual bed rows</td><td>Assumption/Risk</td><td>Low</td><td>Treat <code>totalBeds</code> as reference only; drive capacity from bed rows (documented). Owner: Product</td></tr>
+<tr><td>Stale realtime state if a client misses a socket event</td><td>Risk</td><td>Low</td><td>Layout ETag/304 + periodic polling (30s for staff queues) reconcile; <code>layout.changed</code> prompts refetch. Owner: Web + Mobile</td></tr>
+<tr><td>Partner availability accuracy depends on partner keeping beds current</td><td>Assumption</td><td>Medium</td><td>Availability is live-computed; transfers still require explicit accept with a real bed. Owner: Ops</td></tr>
+<tr><td>Family-capacity semantics across room <code>capacity</code> vs bed <code>familyCapacity</code></td><td>Open Question</td><td>Low</td><td>Clarify whether a family occupies one family bed or multiple beds; align assignment UI and validation. Owner: Product + Backend</td></tr>
+<tr><td>Maintenance report is server-rendered HTML (not a true PDF pipeline)</td><td>Assumption</td><td>Low</td><td>Acceptable for print/export; revisit if a signed/branded PDF is required. Owner: Product</td></tr>
+<tr><td>Cross-tenant data exposure if service-center scoping is missed on a new route</td><td>Risk</td><td>High</td><td>Enforce <code>issuer.serviceCenterInfo.id</code> scoping on every agency read/write; review new endpoints. Owner: Backend</td></tr>
+</tbody></table></div>
+<p>Assumptions: shelters belong to exactly one service center; a location&#x27;s true capacity equals its active bed rows; accepted <code>AgencyPartnerships</code> govern partner visibility and transfer eligibility; the Shelter Services category id is 15; the mobile app owns map/directions rendering from backend-supplied coordinates.</p>
+<h2 id="16-glossary">16. Glossary</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Shelter Location</td><td>A physical shelter facility owned by an agency (<code>shelter_locations</code>); root of the hierarchy</td></tr>
+<tr><td>Floor / Room / Bed</td><td>The physical hierarchy beneath a location; a Bed is the assignable unit</td></tr>
+<tr><td>Bed status</td><td><code>available</code> / <code>occupied</code> / <code>reserved</code> / <code>maintenance</code> / <code>out_of_service</code></td></tr>
+<tr><td>Assignment</td><td>An occupancy record linking a client to a bed from check-in to check-out (<code>shelter_assignments</code>)</td></tr>
+<tr><td>Check-in / Check-out</td><td>Assigning a client to a bed / releasing the bed when they leave</td></tr>
+<tr><td>Waitlist</td><td>Prioritized list of clients waiting for a bed; includes staff walk-ins and mobile requests (<code>shelter_waitlist</code>)</td></tr>
+<tr><td>Mobile bed request</td><td>A <code>shelter_waitlist</code> row with a non-null <code>appUserId</code>, submitted from the app</td></tr>
+<tr><td>Promote</td><td>Moving a waitlist entry into an assigned bed</td></tr>
+<tr><td>Transfer (bed-to-bed)</td><td>Moving an active assignment to another available bed</td></tr>
+<tr><td>Inter-agency transfer</td><td>A request to place a client in a partner agency&#x27;s shelter (<code>shelter_transfer_requests</code>)</td></tr>
+<tr><td>Confidential location</td><td>A shelter whose exact address/coordinates are hidden from victims until after an intake interview</td></tr>
+<tr><td>Login code</td><td>A one-time code issued to a walk-in client so they can activate their NECX account and sign in</td></tr>
+<tr><td>Service Claim / Case</td><td>An approved service record; check-in auto-creates an approved shelter <code>service_claims</code> row</td></tr>
+<tr><td>App user</td><td>A victim/survivor identity (<code>app_users</code>) using the mobile app</td></tr>
+<tr><td>VSMS staff</td><td>Agency staff (<code>issuer.type=&#x27;VSMS&#x27;</code>) operating in VS360</td></tr>
+<tr><td>Service Center / Agency</td><td>The organization that owns shelters and staff (<code>service_centers</code>)</td></tr>
+<tr><td>Partnership</td><td>An accepted agency-to-agency relationship (<code>AgencyPartnerships</code>) enabling shared availability and transfers</td></tr>
+<tr><td><code>_emitShelterRealtime</code></td><td>Internal helper that recomputes availability and fires realtime events on any bed/structural change</td></tr>
+<tr><td><code>/shelters</code> and <code>/me</code> namespaces</td><td>The two Socket.IO namespaces carrying shelter layout/availability and per-user/request events</td></tr>
+<tr><td>PMT / Grant</td><td>Performance/grant reporting that consumes occupancy/utilization data (Reports module)</td></tr>
+</tbody></table></div>
+      </div>
+      <nav class="prevnext"><a class="pn prev" href="P05.html"><span>← Previous</span><b>Case Management</b></a><a class="pn next" href="P07.html"><span>Next →</span><b>Hotline Management</b></a></nav>
+      <footer class="doc-foot">NECX Inc — Confidential · Generated 2026-07-05 · NECX Shelter Management</footer>
+    </article>
+  </main>
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav class="toc-nav"><a class="toc-1" href="#1-document-control">1. Document Control</a>
+<a class="toc-1" href="#2-executive-summary">2. Executive Summary</a>
+<a class="toc-1" href="#3-product-overview-vision">3. Product Overview &amp; Vision</a>
+<a class="toc-2" href="#31-problem-statement">3.1 Problem Statement</a>
+<a class="toc-2" href="#32-product-vision">3.2 Product Vision</a>
+<a class="toc-2" href="#33-position-in-the-necx-ecosystem">3.3 Position in the NECX Ecosystem</a>
+<a class="toc-1" href="#4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</a>
+<a class="toc-2" href="#41-goals-objectives">4.1 Goals &amp; Objectives</a>
+<a class="toc-2" href="#42-success-metrics">4.2 Success Metrics</a>
+<a class="toc-1" href="#5-scope">5. Scope</a>
+<a class="toc-2" href="#51-in-scope">5.1 In Scope</a>
+<a class="toc-2" href="#52-out-of-scope">5.2 Out of Scope</a>
+<a class="toc-1" href="#6-personas-user-roles">6. Personas &amp; User Roles</a>
+<a class="toc-2" href="#61-persona-narratives">6.1 Persona Narratives</a>
+<a class="toc-1" href="#7-system-context-architecture">7. System Context &amp; Architecture</a>
+<a class="toc-2" href="#71-technology-placement">7.1 Technology &amp; Placement</a>
+<a class="toc-2" href="#72-backend-communication">7.2 Backend Communication</a>
+<a class="toc-2" href="#73-real-time-notifications">7.3 Real-Time &amp; Notifications</a>
+<a class="toc-2" href="#74-tenancy-identity">7.4 Tenancy &amp; Identity</a>
+<a class="toc-1" href="#8-functional-requirements">8. Functional Requirements</a>
+<a class="toc-2" href="#81-shelter-hierarchy-location-floor-room-bed">8.1 Shelter Hierarchy (Location → Floor → Room → Bed)</a>
+<a class="toc-2" href="#82-bed-availability-occupancy">8.2 Bed Availability &amp; Occupancy</a>
+<a class="toc-2" href="#83-client-to-bed-assignment-check-in-login-code-issuance">8.3 Client-to-Bed Assignment (Check-In) &amp; Login-Code Issuance</a>
+<a class="toc-2" href="#84-check-out">8.4 Check-Out</a>
+<a class="toc-2" href="#85-bed-to-bed-transfer-withinacross-the-agencys-locations">8.5 Bed-to-Bed Transfer (within/across the agency&#x27;s locations)</a>
+<a class="toc-2" href="#86-waitlist">8.6 Waitlist</a>
+<a class="toc-2" href="#87-mobile-bed-request-lifecycle-mobile-web-staff-triage">8.7 Mobile Bed-Request Lifecycle (Mobile → Web-Staff Triage)</a>
+<a class="toc-2" href="#88-inter-agency-transfer-requests">8.8 Inter-Agency Transfer Requests</a>
+<a class="toc-2" href="#89-maintenance-items">8.9 Maintenance Items</a>
+<a class="toc-2" href="#810-shelter-history-incidents">8.10 Shelter History &amp; Incidents</a>
+<a class="toc-2" href="#811-victim-facing-shelter-discovery-simulation-mobile">8.11 Victim-Facing Shelter Discovery &amp; Simulation (Mobile)</a>
+<a class="toc-1" href="#9-detailed-user-system-flows">9. Detailed User &amp; System Flows</a>
+<a class="toc-2" href="#91-create-shelter-structure-location-floor-room-bed">9.1 Create Shelter Structure (Location → Floor → Room → Bed)</a>
+<a class="toc-2" href="#92-check-availability">9.2 Check Availability</a>
+<a class="toc-2" href="#93-assign-a-client-to-a-bed-end-to-end-with-login-code-issuance">9.3 Assign a Client to a Bed (End-to-End, with Login-Code Issuance)</a>
+<a class="toc-2" href="#94-waitlist-add-promote">9.4 Waitlist Add &amp; Promote</a>
+<a class="toc-2" href="#95-request-approve-an-inter-agency-transfer">9.5 Request &amp; Approve an Inter-Agency Transfer</a>
+<a class="toc-2" href="#96-log-maintenance">9.6 Log Maintenance</a>
+<a class="toc-2" href="#97-mobile-bed-request-staff-triage">9.7 Mobile Bed Request → Staff Triage</a>
+<a class="toc-2" href="#98-victim-searches-for-a-shelter">9.8 Victim Searches for a Shelter</a>
+<a class="toc-1" href="#10-data-model">10. Data Model</a>
+<a class="toc-1" href="#11-api-integration-surface">11. API &amp; Integration Surface</a>
+<a class="toc-2" href="#111-web-staff-endpoints-base-webshelters-allowonlyvs360-ratelimi">11.1 Web Staff Endpoints — base `/web/shelters` (`allowOnly(&#x27;VS360&#x27;)`, `rateLimiters.shelter`)</a>
+<a class="toc-2" href="#112-mobile-victim-endpoints-base-mobile-auth-app-user-ratelimite">11.2 Mobile (Victim) Endpoints — base `/mobile` (auth = app user, `rateLimiters.standard`)</a>
+<a class="toc-2" href="#113-socketio-events">11.3 Socket.IO Events</a>
+<a class="toc-2" href="#114-external-cross-module-integrations">11.4 External &amp; Cross-Module Integrations</a>
+<a class="toc-1" href="#12-rbac-permissions">12. RBAC &amp; Permissions</a>
+<a class="toc-1" href="#13-non-functional-requirements">13. Non-Functional Requirements</a>
+<a class="toc-2" href="#131-victim-safety-confidentiality-of-shelter-locations">13.1 Victim Safety &amp; Confidentiality of Shelter Locations</a>
+<a class="toc-2" href="#132-security-access-control">13.2 Security &amp; Access Control</a>
+<a class="toc-2" href="#133-performance-availability">13.3 Performance &amp; Availability</a>
+<a class="toc-2" href="#134-auditability-compliance">13.4 Auditability &amp; Compliance</a>
+<a class="toc-2" href="#135-localization-accessibility">13.5 Localization &amp; Accessibility</a>
+<a class="toc-1" href="#14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</a>
+<a class="toc-2" href="#141-dashboards-kpis">14.1 Dashboards &amp; KPIs</a>
+<a class="toc-2" href="#142-notifications">14.2 Notifications</a>
+<a class="toc-1" href="#15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</a>
+<a class="toc-1" href="#16-glossary">16. Glossary</a>
+</nav>
+  </aside>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

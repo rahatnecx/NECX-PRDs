@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NECX Internal Chat · NECX PRD</title>
+<meta name="description" content="Staff-to-staff messaging within an agency — direct messages, group chats, presence and real-time delivery">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="prd-page">
+<header class="topbar">
+  <button class="hamburger" aria-label="Menu" onclick="toggleNav()">&#9776;</button>
+  <a class="brand" href="../index.html"><svg class="logo" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 L35 10 V22 C35 31 28 37 20 39 C12 37 5 31 5 22 V10 Z" fill="var(--brand)"/><path d="M13 27 V14 L20 22 V14 M27 14 V27 L20 19" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="brand-text">NECX<span class="brand-sub">Product Requirements</span></span></a>
+  <div class="topbar-spacer"></div>
+  <a class="top-link" href="../index.html">Home</a>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><span class="ic-sun">☀</span><span class="ic-moon">☾</span></button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-search"><input type="search" id="navSearch" placeholder="Filter documents…" oninput="filterNav(this.value)"></div>
+    <nav class="nav"><div class="nav-group"><div class="nav-group-title">Platform &amp; Applications</div><a class="nav-item " href="P01.html" data-search="necx platform — core system whole-platform prd: unified backend, four clients, multi-tenancy, identity/rbac, and the end-to-end case lifecycle."><span class="nav-num">01</span><span class="nav-text">Platform — Core System</span></a>
+<a class="nav-item " href="P02.html" data-search="necx workspace — staff mobile app agency staff mobile app (flutter/riverpod) — the on-the-go companion to the vs360 web dashboard."><span class="nav-num">02</span><span class="nav-text">Workspace — Staff Mobile App</span></a>
+<a class="nav-item " href="P03.html" data-search="necx victim app — survivor mobile app victim / survivor mobile app (flutter/getx) — discover services, request help, chat, find shelter, e-sign."><span class="nav-num">03</span><span class="nav-text">Victim App — Survivor Mobile App</span></a>
+<a class="nav-item " href="P04.html" data-search="vs360 — agency web dashboard vs360 — the agency staff web dashboard (react/vite) and primary caseworker workspace."><span class="nav-num">04</span><span class="nav-text">VS360 — Agency Web Dashboard</span></a>
+</div>
+<div class="nav-group"><div class="nav-group-title">VS360 Feature Modules</div><a class="nav-item " href="P05.html" data-search="necx case management service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes."><span class="nav-num">05</span><span class="nav-text">Case Management</span></a>
+<a class="nav-item " href="P06.html" data-search="necx shelter management shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search."><span class="nav-num">06</span><span class="nav-text">Shelter Management</span></a>
+<a class="nav-item " href="P07.html" data-search="necx hotline management twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights."><span class="nav-num">07</span><span class="nav-text">Hotline Management</span></a>
+<a class="nav-item " href="P08.html" data-search="necx calendar &amp; appointments reminders, tasks and case-linked appointments in the vs360 tools calendar."><span class="nav-num">08</span><span class="nav-text">Calendar &amp; Appointments</span></a>
+<a class="nav-item " href="P09.html" data-search="necx staff time tracking staff time tracking: clock in/out, timesheets, and grant/pmt time attribution."><span class="nav-num">09</span><span class="nav-text">Staff Time Tracking</span></a>
+<a class="nav-item " href="P10.html" data-search="necx agency chat real-time advocate↔victim messaging tied to service threads and cases."><span class="nav-num">10</span><span class="nav-text">Agency Chat</span></a>
+<a class="nav-item active" href="P11.html" data-search="necx internal chat staff-to-staff messaging within an agency, real-time over socket.io."><span class="nav-num">11</span><span class="nav-text">Internal Chat</span></a>
+<a class="nav-item " href="P12.html" data-search="necx rbac &amp; user management roles, the module/action permission matrix, plan seats, and multi-layer enforcement."><span class="nav-num">12</span><span class="nav-text">RBAC &amp; User Management</span></a>
+<a class="nav-item " href="P13.html" data-search="necx notes center agency-scoped, cross-case view over internal (caseworker-only) case notes."><span class="nav-num">13</span><span class="nav-text">Notes Center</span></a>
+<a class="nav-item " href="P14.html" data-search="necx drive google-drive-style cloud file storage backed by azure blob, with quotas and analytics."><span class="nav-num">14</span><span class="nav-text">Drive</span></a>
+<a class="nav-item " href="P15.html" data-search="necx ai report builder pmt/grant reporting plus ai-assisted custom report generation with accuracy validation."><span class="nav-num">15</span><span class="nav-text">AI Report Builder</span></a>
+<a class="nav-item " href="P16.html" data-search="necx e-sign &amp; document center prepare, request, sign and pdf-stamp case documents with an audit trail."><span class="nav-num">16</span><span class="nav-text">E-Sign &amp; Document Center</span></a>
+<a class="nav-item " href="P17.html" data-search="necx referrals &amp; partnerships inter-agency network: partnerships, invitations, and consent-based case referrals."><span class="nav-num">17</span><span class="nav-text">Referrals &amp; Partnerships</span></a>
+<a class="nav-item " href="P18.html" data-search="necx inquiries management intake and triage of inquiries / requests-to-connect before they become cases."><span class="nav-num">18</span><span class="nav-text">Inquiries Management</span></a>
+<a class="nav-item " href="P19.html" data-search="necx communities agency-run community spaces: joining questions, membership, posts and moderation."><span class="nav-num">19</span><span class="nav-text">Communities</span></a>
+<a class="nav-item " href="P20.html" data-search="necx service management service catalog, categories, and the per-service claim-question (intake) builder."><span class="nav-num">20</span><span class="nav-text">Service Management</span></a>
+</div>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim" onclick="toggleNav()"></div>
+  
+  <main class="content">
+    <article class="doc">
+      <div class="doc-eyebrow">Product Requirements Document · NECX Inc — Confidential</div>
+      <h1 class="doc-title">NECX Internal Chat</h1>
+      <p class="doc-subtitle">Staff-to-staff messaging within an agency — direct messages, group chats, presence and real-time delivery</p>
+      <div class="doc-meta"><span class="chip">Version: <b>1.0</b></span><span class="chip">Status: <b>Baseline</b></span><span class="chip">Owner: <b>NECX Product Management</b></span><a class="dl-btn" href="../downloads/11_VS360_Feature_Internal_Chat.docx" download>⬇ Download DOCX</a></div>
+      <hr class="doc-rule">
+      <div class="doc-body">
+      <h2 id="1-document-control">1. Document Control</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td>NECX — Coordinated Victim Services Platform</td></tr>
+<tr><td>Module</td><td>Internal Chat (Staff-to-Staff Messaging)</td></tr>
+<tr><td>Version</td><td>1.0</td></tr>
+<tr><td>Status</td><td>Baseline</td></tr>
+<tr><td>Author</td><td>NECX Product Management</td></tr>
+<tr><td>Reviewers</td><td>Engineering (Backend / VS360 Web), Security &amp; Privacy, Agency Operations</td></tr>
+<tr><td>Last Updated</td><td>2026-07-05</td></tr>
+<tr><td>Related Documents</td><td>NECX Chat Platform (Inquiry / Service / Agency Chat) PRD, VS360 Web Architecture Overview, NECX Backend Feature Knowledgebase (Chat module), RBAC &amp; Permissions Catalog, Communities PRD (Group Chat precedent)</td></tr>
+</tbody></table></div>
+<p>Revision history:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>1.0</td><td>2026-07-05</td><td>NECX Product Management</td><td>Initial baseline covering staff-to-staff direct messaging, presence, unread counts, attachments, real-time delivery, and the planned group-chat extension.</td></tr>
+</tbody></table></div>
+<h2 id="2-executive-summary">2. Executive Summary</h2>
+<p>NECX serves victims and survivors of crime and the agencies, advocates, and caseworkers who help them. Coordinated victim services depend on fast, private coordination between the staff who deliver those services — a caseworker needs to consult a supervisor about a safety plan, a hotline advocate needs to hand a call context to a colleague, and a shelter coordinator needs a quick answer about bed availability. <strong>Internal Chat</strong> is the staff-to-staff messaging channel that carries these conversations inside a single agency (service center).</p>
+<p>Internal Chat is deliberately distinct from the other NECX chat surfaces. It is <strong>not</strong> the agency↔victim conversation (that is the INQUIRY and SERVICE thread types) and it is <strong>not</strong> the agency↔partner-agency conversation (that is AGENCY_CHAT / the My Network chat). Internal Chat is confined to the staff of one agency talking to one another — one-to-one direct messages today, with a planned group-chat extension for team conversations. It reuses the platform&#x27;s shared chat backbone (<code>chat_threads</code> / <code>chat_messages</code>), so it inherits file attachments, read receipts, real-time Socket.IO delivery, and cross-channel notifications, while remaining scoped and gated to internal staff.</p>
+<p>Because these conversations happen in the context of victim services, Internal Chat is a privacy-sensitive surface: staff discuss case details, safety concerns, and client information. The feature therefore inherits NECX&#x27;s tenancy isolation (an agency&#x27;s staff can only message within their own agency), permission gating (<code>internal_chat.view</code>), auditability, and the platform&#x27;s security posture (encrypted transport, authenticated sockets). This PRD specifies the capability end to end: contacts/user list, direct messages, the planned group chats, attachments, presence, unread counts, real-time delivery and read state, the data model, endpoints, socket events, RBAC, non-functional requirements, notifications, and risks.</p>
+<h2 id="3-product-overview-vision">3. Product Overview &amp; Vision</h2>
+<h3 id="31-problem-statement">3.1 Problem statement</h3>
+<p>Agency staff coordinating victim services need a lightweight, private, real-time way to talk to each other without leaving the NECX workspace. Before Internal Chat, staff coordination fell back on external tools (personal SMS, email, third-party messengers) that sit outside NECX&#x27;s tenancy, audit, and privacy controls — a poor fit when the subject matter is victim safety and confidential case detail. Coordination context (who is handling a case, what a colleague advised) is then lost from the platform entirely.</p>
+<h3 id="32-product-vision">3.2 Product vision</h3>
+<p>Internal Chat gives every agency a secure, in-platform staff messenger. A staff member opens the Chat page, sees the roster of their agency&#x27;s users with presence and unread badges, clicks a colleague, and is in a live conversation — with file sharing, read receipts, and instant delivery. Conversations stay inside the agency&#x27;s tenant boundary, are gated by permission, and are carried on the same reliable messaging backbone as the rest of NECX. The vision extends to <strong>group chats</strong> so whole teams (e.g. the hotline shift, the shelter team) can coordinate in one place.</p>
+<h3 id="33-where-this-sits-in-the-necx-ecosystem">3.3 Where this sits in the NECX ecosystem</h3>
+<p>Internal Chat is a module of the <strong>VS360 web app</strong> (the agency-staff dashboard) at route <code>/internal-chat</code>, served by the <strong>unified NECX backend</strong> chat module (<code>/web/chat-services/*</code>). It sits alongside the other NECX surfaces:</p>
+<ul>
+<li><strong>Victim App</strong> (mobile) — victims open INQUIRY/SERVICE chats with agencies; victims never participate in Internal Chat.</li>
+<li><strong>Workspace App</strong> (staff mobile) — staff clients of the same backend; Internal Chat routes are web-oriented today (see Scope).</li>
+<li><strong>VS360 web</strong> — hosts Internal Chat (<code>InternalChat.jsx</code>), Agency Chat (My Network), and Inquiries (victim chat) as three separate surfaces sharing one message pane.</li>
+<li><strong>NECX Admin</strong> — platform super-admin console; not a participant in agency Internal Chat.</li>
+<li><strong>Unified backend</strong> — one chat module serves all thread types (INQUIRY, SERVICE, INTERNAL, AGENCY_CHAT), with Internal Chat being the INTERNAL type.</li>
+</ul>
+<h2 id="4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</h2>
+<h3 id="41-goals-objectives">4.1 Goals &amp; objectives</h3>
+<ul>
+<li>Provide secure, private, in-platform <strong>staff-to-staff direct messaging</strong> scoped to a single agency.</li>
+<li>Deliver messages in <strong>real time</strong> over Socket.IO, with FCM/in-app notification fallback when the recipient is not actively viewing the thread.</li>
+<li>Surface <strong>presence</strong> and <strong>unread counts</strong> so staff know who is reachable and where messages are waiting.</li>
+<li>Support <strong>file attachments</strong> (documents, images) on internal messages using the shared upload pipeline.</li>
+<li>Provide <strong>read receipts</strong> so senders know when a colleague has seen a message.</li>
+<li>Keep all conversation within the agency&#x27;s <strong>tenant boundary</strong> and behind the <code>internal_chat.view</code> permission.</li>
+<li>Establish the foundation for <strong>group chats</strong> (team conversations) as a fast-follow extension.</li>
+</ul>
+<h3 id="42-success-metrics">4.2 Success metrics</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Definition</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>Real-time delivery latency</td><td>Time from <code>send-message</code> accepted to <code>message-internal</code> received by an online recipient</td><td>&lt; 1 s (p95)</td></tr>
+<tr><td>Message send success rate</td><td>Successful sends / attempted sends (excluding client offline)</td><td>≥ 99.5%</td></tr>
+<tr><td>Staff adoption</td><td>Distinct agency staff sending ≥ 1 internal message per active week / total active staff</td><td>≥ 60% within 2 quarters</td></tr>
+<tr><td>Coordination retention</td><td>Share of intra-agency staff coordination happening in-platform vs external tools (survey)</td><td>≥ 70%</td></tr>
+<tr><td>Unread accuracy</td><td>Unread badge matches actual unread messages on refresh (no phantom/stuck badges)</td><td>≥ 99%</td></tr>
+<tr><td>Attachment delivery</td><td>Attachments successfully stored + retrievable via <code>get-all-files</code></td><td>≥ 99.5%</td></tr>
+<tr><td>Notification reliability</td><td>Recipient receives at least one of (socket / in-app / FCM) per message when offline from thread</td><td>≥ 99%</td></tr>
+</tbody></table></div>
+<h2 id="5-scope">5. Scope</h2>
+<h3 id="51-in-scope">5.1 In Scope</h3>
+<ul>
+<li><strong>User list / contacts</strong> — the roster of the current user&#x27;s agency staff, from which a staff member picks a colleague to message.</li>
+<li><strong>Direct messages (1:1)</strong> — start (with de-duplication of existing threads), send, and read staff-to-staff messages within the agency (INTERNAL thread type).</li>
+<li><strong>Attachments</strong> — up to 5 files per message via the shared <code>file_uploads</code> pipeline; per-thread file listing.</li>
+<li><strong>Presence</strong> — online/offline indication for staff, derived from active socket connections (see Risks for current-state caveat).</li>
+<li><strong>Unread counts</strong> — per-thread and aggregate internal-chat unread badges driven by the notification list / <code>INTERNAL_NEW_MESSAGE</code> type.</li>
+<li><strong>Read receipts / read state</strong> — mark a thread read; per-user unread computation on <code>chat_messages</code>.</li>
+<li><strong>Real-time delivery</strong> — Socket.IO <code>message-internal</code> and <code>thread-creation-internal</code> events, per-thread rooms.</li>
+<li><strong>Notifications</strong> — in-app (<code>service_center_notifications</code>), socket, and FCM push for internal messages when appropriate.</li>
+<li><strong>RBAC</strong> — gating on the <code>internal_chat</code> module <code>view</code> permission and agency tenancy.</li>
+<li><strong>Group chats (planned extension)</strong> — multi-party staff conversations. Documented here as the target design; see 5.2 for current-state limitation.</li>
+</ul>
+<h3 id="52-out-of-scope">5.2 Out of Scope</h3>
+<ul>
+<li><strong>Agency↔victim chat</strong> (INQUIRY / SERVICE thread types) — victim intake and case conversations are covered by the Chat Platform PRD, not here.</li>
+<li><strong>Agency↔agency chat</strong> (AGENCY_CHAT / My Network / pre-partnership chat) — cross-agency staff messaging is a separate surface.</li>
+<li><strong>Cross-agency internal messaging</strong> — Internal Chat is intra-agency only; a staff member cannot DM staff of a different agency via this module (that is Agency Chat).</li>
+<li><strong>Victim-facing participation</strong> — victims (<code>app_users</code>) are never participants in Internal Chat.</li>
+<li><strong>Group chats in the current backend build</strong> — the INTERNAL thread type is <strong>1:1 only</strong> today. The <code>chat_threads</code> model carries exactly two staff participants (<code>vsmsId</code>, <code>vsmsId2</code>), and <code>start-internal-chat</code> takes a single <code>receiverId</code>. Multi-party staff group chat is <strong>planned but not yet implemented</strong> in the Internal Chat module; the platform&#x27;s existing <code>GroupChatMessages</code> model powers <strong>Communities</strong> group chats (victim-facing), not staff Internal Chat. This is tracked as an Open Question / Risk.</li>
+<li><strong>Message editing / deletion / reactions / typing indicators</strong> — not present in the current chat backbone.</li>
+<li><strong>Voice / video calling between staff</strong> — out of scope (hotline module handles telephony).</li>
+</ul>
+<div class="callout warn"><div class="callout-title">⚠ Group chat current state</div><div class="callout-body">Staff-to-staff <strong>group chat</strong> is specified in this PRD as the target design, but the shipped Internal Chat backend supports <strong>1:1 direct messages only</strong>. Sections that describe group behaviour are marked as planned. Implementation would extend the thread model to support N participants (or reuse the <code>GroupChatMessages</code> pattern from Communities). Do not represent group chat as available until built.</div></div>
+<h2 id="6-personas-user-roles">6. Personas &amp; User Roles</h2>
+<h3 id="61-roles">6.1 Roles</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Role</th><th>Description</th><th>Key permissions</th></tr></thead>
+<tbody>
+<tr><td>Agency Staff / Advocate</td><td>VSMS caseworker or advocate using VS360; the primary Internal Chat participant</td><td><code>internal_chat.view</code> (send/receive DMs)</td></tr>
+<tr><td>Agency Supervisor / Manager</td><td>Senior VSMS staff who coordinates the team</td><td><code>internal_chat.view</code> (+ broader case/claim permissions)</td></tr>
+<tr><td>Agency Admin (Super Admin)</td><td>Agency-scoped super-admin</td><td>Bypasses fine-grained checks (<code>isSuperAdmin</code>); full Internal Chat access within the agency</td></tr>
+<tr><td>NECX Platform Admin</td><td>NECX Inc super-admin (ADMIN context)</td><td>Not a participant in agency Internal Chat; manages platform, not agency staff DMs</td></tr>
+<tr><td>Victim / Survivor (<code>app_user</code>)</td><td>Mobile app user receiving services</td><td>No access to Internal Chat (excluded by type + tenancy)</td></tr>
+</tbody></table></div>
+<h3 id="62-persona-narratives">6.2 Persona narratives</h3>
+<p><strong>Maria — Caseworker.</strong> Maria is drafting a safety plan and needs a quick opinion from her supervisor. She opens Chat, sees her supervisor online (green dot), sends a message with the draft attached, and gets a reply in seconds — all inside NECX, with the exchange staying within her agency&#x27;s tenant.</p>
+<p><strong>David — Hotline Advocate.</strong> Mid-shift, David wants to flag a pattern to a colleague without leaving the softphone. He fires a one-line internal DM; the colleague, who is on another screen, gets an in-app toast and an unread badge, and reads it when free. A read receipt tells David it landed.</p>
+<p><strong>Priya — Shelter Coordinator.</strong> Priya coordinates a team. With the planned group chat, she would post bed-availability updates to the shelter team channel once instead of DMing each member. Today she sends individual DMs.</p>
+<h2 id="7-system-context-architecture">7. System Context &amp; Architecture</h2>
+<h3 id="71-tech-stack">7.1 Tech stack</h3>
+<ul>
+<li><strong>Backend</strong>: Express (ESM) + Objection/Knex over PostgreSQL, Socket.IO, Redis, FCM (<code>notificationServices</code>), Azure Blob (attachments via <code>fileService</code>/<code>file_uploads</code>). Chat module files: <code>src/apps/chat/chat-{routes,controllers,services}.js</code>. Models: <code>ChatThreads</code>, <code>ChatMessages</code>, <code>FileUploads</code> (and <code>GroupChatMessages</code> for the group precedent).</li>
+<li><strong>Frontend (VS360 web)</strong>: React 18 + Vite + Mantine + TanStack Query + Redux. Internal Chat pages: <code>src/pages/InternalChat/InternalChat.jsx</code>, <code>ActiveChat.jsx</code>, <code>components/pages/InternalChat/UserList.jsx</code>. Shared message pane reused from <code>ActiveInquiry.jsx</code>. Services: <code>src/services/chat.js</code>, <code>threads.js</code>, <code>users.js</code>.</li>
+</ul>
+<h3 id="72-how-it-talks-to-the-backend">7.2 How it talks to the backend</h3>
+<p>Internal Chat routes are mounted under the global <code>/v2</code> prefix on the chat module base <code>/web/chat-services</code> (web) and guarded by <code>allowOnly(&#x27;VS360&#x27;)</code>, with <code>rateLimiters.chatApi</code>. The VS360 axios client injects <code>Authorization: Bearer &lt;accessToken&gt;</code>, <code>x-refresh-token</code>, <code>X-Netlify-Secret</code>, and <code>X-Environment</code> on every call; non-development responses are AES-decrypted client-side. Responses use the platform <code>{ status, msg, data }</code> shape.</p>
+<p>Key endpoints used by Internal Chat: <code>POST /chat-services/start-internal-chat</code>, <code>GET /chat-services/get-internal-threads</code>, <code>GET /chat-services/get-thread/:threadUid</code>, <code>POST /chat-services/send-message/:threadUid</code>, <code>GET /chat-services/get-all-chats/:threadUid</code>, <code>GET /chat-services/get-all-files/:threadUid</code>, <code>PATCH /chat-services/read/:threadUid</code>, and the agency user roster <code>GET /users</code> (pageless).</p>
+<h3 id="73-real-time-notifications">7.3 Real-time &amp; notifications</h3>
+<p>A single Socket.IO connection is created per session (<code>SocketContext.jsx</code>), authenticated by JWT in the socket <code>auth</code> handshake (<code>socket-middelware.js</code> on the backend). The client joins <code>vs360-user-&lt;uid&gt;</code>, <code>service-center-&lt;id&gt;</code>, <code>global-notifications</code>, and per-thread <code>thread-&lt;threadUid&gt;-&lt;userUid&gt;</code> rooms (the last when a chat opens). Internal messages emit semantic events (<code>message-internal</code>, <code>thread-creation-internal</code>) to the relevant rooms; the frontend&#x27;s socket callbacks show a toast and set <code>refetch.internalThreadsRefetch</code> / specific-chat refetch flags that trigger TanStack Query refetches. Offline recipients also receive a DB notification row (<code>service_center_notifications</code>, type <code>INTERNAL_NEW_MESSAGE</code>) and an FCM push.</p>
+<h3 id="74-tenancy">7.4 Tenancy</h3>
+<p>Multi-tenancy is enforced by <code>issuer.serviceCenterInfo.id</code>: a VS360 user only ever sees and messages staff within their own agency. Internal thread queries (<code>getInternalThreadsForVSMSUser</code>) and the user roster are scoped to the agency. <code>internal_chat.view</code> further gates access. NECX platform super-admins are not participants; agency super-admins bypass fine-grained checks within their own agency.</p>
+<h2 id="8-functional-requirements">8. Functional Requirements</h2>
+<h3 id="81-user-list-contacts">8.1 User list / contacts</h3>
+<p>The Internal Chat left pane renders the roster of the current user&#x27;s agency staff (<code>UserList.jsx</code>), fetched via <code>GET /users</code> (pageless, agency-scoped). Each entry shows the staff member&#x27;s name/role, presence indicator, and unread badge. Selecting a user resolves an existing INTERNAL thread between the two users (matching <code>vsmsId</code>/<code>vsmsId2</code>) from the loaded internal threads; if none exists the right pane shows a &quot;Start Chat&quot; prompt. Deep-linking is supported via router <code>state.senderId</code> (e.g. arriving from a notification).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-LIST-01</td><td>The system shall list the current user&#x27;s agency staff as selectable contacts, scoped to <code>issuer.serviceCenterInfo.id</code>.</td><td>Must</td></tr>
+<tr><td>FR-LIST-02</td><td>The contact list shall exclude the current user and exclude non-VSMS identities (victims, other agencies).</td><td>Must</td></tr>
+<tr><td>FR-LIST-03</td><td>Each contact shall display an unread badge derived from the notification list (<code>INTERNAL_NEW_MESSAGE</code>).</td><td>Must</td></tr>
+<tr><td>FR-LIST-04</td><td>Each contact shall display a presence indicator (online/offline).</td><td>Should</td></tr>
+<tr><td>FR-LIST-05</td><td>Selecting a contact with an existing INTERNAL thread shall open that thread; otherwise the UI shall offer to start one.</td><td>Must</td></tr>
+<tr><td>FR-LIST-06</td><td>The list shall support deep-linking to a specific contact via <code>state.senderId</code>.</td><td>Should</td></tr>
+<tr><td>FR-LIST-07</td><td>The list shall support search/filter over agency staff.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="82-direct-messages-11">8.2 Direct messages (1:1)</h3>
+<p>Starting a DM calls <code>POST /chat-services/start-internal-chat</code> with <code>receiverId</code>. The backend (<code>startInternalChat</code>) <strong>de-duplicates</strong> an existing INTERNAL thread between the two users (<code>findExistingInternalThread</code>); if none exists it creates a new <code>chat_threads</code> row (<code>type=&#x27;INTERNAL&#x27;</code>, <code>vsmsId</code>=initiator, <code>vsmsId2</code>=receiver, <code>status=&#x27;ACTIVE&#x27;</code>). Both participants must belong to the same agency. Sending a message uses <code>POST /chat-services/send-message/:threadUid</code> (multer <code>files</code>, up to 5). History is paginated via <code>GET /chat-services/get-all-chats/:threadUid</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-DM-01</td><td>The system shall create a 1:1 INTERNAL thread between two staff of the same agency on <code>start-internal-chat</code>.</td><td>Must</td></tr>
+<tr><td>FR-DM-02</td><td>The system shall de-duplicate: if an INTERNAL thread already exists between the two users, it shall be reused, not recreated.</td><td>Must</td></tr>
+<tr><td>FR-DM-03</td><td>The system shall reject starting an internal chat with a user outside the initiator&#x27;s agency, or with oneself.</td><td>Must</td></tr>
+<tr><td>FR-DM-04</td><td>The system shall authorize every send via <code>isAuthorizedForThread</code> (sender must be a participant of the thread).</td><td>Must</td></tr>
+<tr><td>FR-DM-05</td><td>On send, the system shall insert a <code>chat_messages</code> row with <code>vsmsSenderId</code>, <code>content</code>, attach files, touch the thread, create notifications, and emit real-time events, all in a transaction.</td><td>Must</td></tr>
+<tr><td>FR-DM-06</td><td>The system shall return the sent message graph-fetched with its files.</td><td>Must</td></tr>
+<tr><td>FR-DM-07</td><td>The system shall paginate message history (<code>get-all-chats</code>) by page/pageSize.</td><td>Must</td></tr>
+<tr><td>FR-DM-08</td><td>The system shall provide a single-thread fetch (<code>get-thread/:threadUid</code>) authorized to participants only.</td><td>Must</td></tr>
+<tr><td>FR-DM-09</td><td>The system shall list all internal threads for the user (<code>get-internal-threads</code>), scoped to the agency, each with last message and unread count.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="83-group-chats-planned-extension">8.3 Group chats (planned extension)</h3>
+<p>Group chat is the target design for multi-party staff conversations (e.g. a shift or team channel). It is <strong>not implemented</strong> in the current Internal Chat backend (see 5.2 / Risks). The requirements below define the intended behaviour so it can be built consistently with the platform. Implementation would either extend <code>chat_threads</code> to N participants (participant join table) or reuse the <code>GroupChatMessages</code> model pattern used by Communities group chats.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-GRP-01</td><td>The system shall allow a staff member to create a named group chat with 2..N agency staff participants.</td><td>Could (planned)</td></tr>
+<tr><td>FR-GRP-02</td><td>Group chats shall be restricted to staff of a single agency (tenancy preserved).</td><td>Could (planned)</td></tr>
+<tr><td>FR-GRP-03</td><td>Any participant shall be able to send messages, attachments, and see read state within the group.</td><td>Could (planned)</td></tr>
+<tr><td>FR-GRP-04</td><td>The system shall support adding/removing participants and (for the creator/admin) renaming/archiving the group.</td><td>Could (planned)</td></tr>
+<tr><td>FR-GRP-05</td><td>Group messages shall deliver in real time to all participant thread rooms and generate per-recipient unread/notifications.</td><td>Could (planned)</td></tr>
+<tr><td>FR-GRP-06</td><td>Group message storage shall follow the <code>GroupChatMessages</code> model pattern (per-message sender, content, files) for consistency with Communities.</td><td>Could (planned)</td></tr>
+</tbody></table></div>
+<h3 id="84-attachments">8.4 Attachments</h3>
+<p>Messages support up to 5 file attachments via multer <code>upload.array(&#x27;files&#x27;, 5)</code>. On send, <code>processMessageFiles</code> persists each file to <code>file_uploads</code> linked to the message and thread. Files in a thread are retrievable via <code>GET /chat-services/get-all-files/:threadUid</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-ATT-01</td><td>The system shall accept up to 5 files per internal message.</td><td>Must</td></tr>
+<tr><td>FR-ATT-02</td><td>Each attachment shall be persisted to <code>file_uploads</code> linked to its <code>messageId</code> and <code>threadId</code>.</td><td>Must</td></tr>
+<tr><td>FR-ATT-03</td><td>The system shall list all files of a thread via <code>get-all-files/:threadUid</code>.</td><td>Must</td></tr>
+<tr><td>FR-ATT-04</td><td>Attachment storage shall use the platform file pipeline (Azure Blob via <code>fileService</code>).</td><td>Must</td></tr>
+<tr><td>FR-ATT-05</td><td>Attachment access shall be authorized to thread participants only.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="85-presence">8.5 Presence</h3>
+<p>Presence indicates whether a colleague is currently connected. The VS360 client derives presence from active socket connections; each authenticated session joins its <code>vs360-user-&lt;uid&gt;</code> room, and the front end reflects online/offline in the contact list. (See Risks for the current-state fidelity of presence.)</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-PRES-01</td><td>The system shall indicate online/offline presence for agency staff in the contact list.</td><td>Should</td></tr>
+<tr><td>FR-PRES-02</td><td>Presence shall be derived from active authenticated socket connections.</td><td>Should</td></tr>
+<tr><td>FR-PRES-03</td><td>Presence shall update in near real time on connect/disconnect.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="86-unread-counts">8.6 Unread counts</h3>
+<p>Unread state for Internal Chat is tracked two ways: per-message <code>isRead</code> on <code>chat_messages</code> (source of truth), and the Redux <code>notification</code> slice (<code>internalChat</code> count + <code>notificationList</code> filtered by <code>INTERNAL_NEW_MESSAGE</code>) that drives sidebar/contact badges. Opening/reading a thread clears its unread.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-UNRD-01</td><td>The system shall compute per-thread unread counts per user from <code>chat_messages.isRead</code>.</td><td>Must</td></tr>
+<tr><td>FR-UNRD-02</td><td>The VS360 sidebar shall show an aggregate internal-chat unread indicator.</td><td>Must</td></tr>
+<tr><td>FR-UNRD-03</td><td>Contact-list entries shall be sortable/badged by unread.</td><td>Should</td></tr>
+<tr><td>FR-UNRD-04</td><td>Reading a thread shall clear its unread badge and decrement the aggregate count.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="87-read-receipts-read-state">8.7 Read receipts / read state</h3>
+<p><code>PATCH /chat-services/read/:threadUid</code> marks all messages in the thread as read for the current user (<code>readAllMessagesInThread</code> sets <code>isRead=true</code>). This both drives read receipts for the sender and clears the recipient&#x27;s unread. Reading also clears the corresponding notification rows (<code>markThreadNotificationsAsRead</code>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-READ-01</td><td>The system shall mark all messages in a thread read on <code>read/:threadUid</code>.</td><td>Must</td></tr>
+<tr><td>FR-READ-02</td><td>Marking read shall clear the associated in-app notifications for the thread.</td><td>Must</td></tr>
+<tr><td>FR-READ-03</td><td>The sender shall be able to see read state of their messages.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="88-real-time-delivery">8.8 Real-time delivery</h3>
+<p>On send, the service emits semantic Socket.IO events (from <code>notificationEvents.js</code>) after the DB transaction: <code>message-internal</code> to the recipient&#x27;s per-thread room, and <code>thread-creation-internal</code> when a new thread is created. The frontend socket callbacks toast and set refetch flags (<code>internalThreadsRefetch</code>, specific-chat refetch) so open views live-update.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-RT-01</td><td>The system shall emit <code>message-internal</code> to the thread room on every internal message.</td><td>Must</td></tr>
+<tr><td>FR-RT-02</td><td>The system shall emit <code>thread-creation-internal</code> when a new INTERNAL thread is created.</td><td>Must</td></tr>
+<tr><td>FR-RT-03</td><td>Real-time emits shall occur only after the DB transaction commits.</td><td>Must</td></tr>
+<tr><td>FR-RT-04</td><td>Socket connections shall be authenticated (JWT handshake); unauthenticated sockets shall not receive internal events.</td><td>Must</td></tr>
+<tr><td>FR-RT-05</td><td>The client shall reconcile via refetch on receipt so state is correct even if a socket event is missed.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="89-notifications">8.9 Notifications</h3>
+<p>Internal messages create a <code>service_center_notifications</code> row (type <code>INTERNAL_NEW_MESSAGE</code>, <code>additionalData</code> carrying <code>threadUid</code>), emit via Socket.IO to the recipient, and send an FCM push to the recipient&#x27;s device token(s) for background delivery. Notification failures are defensive (logged, never break the send transaction).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-NOTIF-01</td><td>The system shall insert an <code>INTERNAL_NEW_MESSAGE</code> notification for the recipient of each internal message.</td><td>Must</td></tr>
+<tr><td>FR-NOTIF-02</td><td>The system shall send an FCM push to the recipient&#x27;s device token(s).</td><td>Should</td></tr>
+<tr><td>FR-NOTIF-03</td><td>Notification delivery failures shall not roll back the message send.</td><td>Must</td></tr>
+<tr><td>FR-NOTIF-04</td><td>Reading the thread shall clear the recipient&#x27;s related notifications.</td><td>Must</td></tr>
+</tbody></table></div>
+<h2 id="9-detailed-user-system-flows">9. Detailed User &amp; System Flows</h2>
+<h3 id="91-start-a-direct-message-dm-with-a-colleague">9.1 Start a direct message (DM) with a colleague</h3>
+<ol class="flow">
+<li>A staff member opens the Chat page (<code>/internal-chat</code>); <code>ProtectedPage</code> verifies auth and the <code>internal_chat.view</code> permission.</li>
+<li>The left pane loads the agency roster via <code>GET /users</code> (pageless, scoped to the user&#x27;s service center) and the user&#x27;s existing internal threads via <code>GET /chat-services/get-internal-threads</code>.</li>
+<li>The staff member selects a colleague from <code>UserList</code>.</li>
+<li>The client checks the loaded internal threads for an existing INTERNAL thread matching the two users (<code>vsmsId</code>/<code>vsmsId2</code>).</li>
+<li>If a thread exists → open it directly (proceed to 9.4 to read/send).</li>
+<li>If none exists → the right pane shows a &quot;Start Chat&quot; prompt. On confirm, the client calls <code>POST /chat-services/start-internal-chat</code> with <code>{ receiverId }</code>.</li>
+<li>The backend <code>startInternalChat</code> validates both users are in the same agency, prevents self-chat, and runs <code>findExistingInternalThread</code> to de-duplicate.</li>
+<li>If a thread already existed server-side, it is returned; otherwise a new <code>chat_threads</code> row is inserted (<code>type=&#x27;INTERNAL&#x27;</code>, <code>vsmsId</code>, <code>vsmsId2</code>, <code>status=&#x27;ACTIVE&#x27;</code>).</li>
+<li>The backend emits <code>thread-creation-internal</code> to the counterpart user&#x27;s room; the recipient&#x27;s client toasts and sets <code>internalThreadsRefetch</code>.</li>
+<li>The initiator&#x27;s client opens the new thread; the staff member can now compose the first message (9.3).</li>
+</ol>
+<h3 id="92-create-and-participate-in-a-group-chat-planned">9.2 Create and participate in a group chat (planned)</h3>
+<ol class="flow">
+<li>A staff member clicks &quot;New Group&quot; and selects 2..N agency colleagues and a group name (planned UI).</li>
+<li>The client calls the group-create endpoint (to be defined) with participants + name; the backend creates a multi-participant internal group (extended <code>chat_threads</code> or <code>GroupChatMessages</code>-backed group), scoped to the agency.</li>
+<li>All selected participants receive a <code>thread-creation-internal</code> (group variant) event and see the new group in their list.</li>
+<li>Any participant opens the group and joins the per-group thread room for live delivery.</li>
+<li>A participant sends a message (with optional attachments); the backend persists it and fans out real-time delivery + per-recipient unread/notifications to all other participants.</li>
+<li>Read state is tracked per participant; the group shows who has read the latest message.</li>
+<li>The creator/admin may add or remove participants, rename, or archive the group.</li>
+</ol>
+<div class="callout warn"><div class="callout-title">⚠ Not yet built</div><div class="callout-body">This flow is the planned target. The current backend supports 1:1 internal threads only; group creation endpoints and multi-participant storage do not exist yet.</div></div>
+<h3 id="93-send-a-message-with-an-attachment">9.3 Send a message with an attachment</h3>
+<ol class="flow">
+<li>In an open internal thread, the staff member types content and attaches up to 5 files.</li>
+<li>The client calls <code>POST /chat-services/send-message/:threadUid</code> as multipart (<code>files[]</code> + <code>content</code>).</li>
+<li>The backend authorizes the sender via <code>isAuthorizedForThread</code> (must be a thread participant); rejects otherwise.</li>
+<li>In a single transaction: insert a <code>chat_messages</code> row (<code>threadId</code>, <code>vsmsSenderId</code>, <code>content</code>), run <code>processMessageFiles</code> to persist each file to <code>file_uploads</code> (linked to message + thread) via the Azure Blob file pipeline, touch the thread <code>updated_at</code>, and create the recipient notification(s).</li>
+<li>On commit, the backend emits <code>message-internal</code> to the recipient&#x27;s <code>thread-&lt;threadUid&gt;-&lt;userUid&gt;</code> room, inserts the <code>INTERNAL_NEW_MESSAGE</code> notification, and sends an FCM push to the recipient.</li>
+<li>The backend returns the message graph-fetched with its <code>files</code>; the sender&#x27;s UI appends it optimistically/authoritatively.</li>
+<li>The recipient (if the thread is open) receives <code>message-internal</code>, appends the message, and can retrieve attachments via <code>GET /chat-services/get-all-files/:threadUid</code>.</li>
+<li>Edge case — recipient offline from the thread: no socket append, but the in-app notification + FCM push land, and the unread badge increments; the message appears on next thread load.</li>
+<li>Edge case — file rejected (size/type): the send fails with a field error and no partial <code>chat_messages</code> row is committed (transactional).</li>
+</ol>
+<h3 id="94-real-time-delivery-read-state">9.4 Real-time delivery &amp; read state</h3>
+<ol class="flow">
+<li>A recipient with the Chat page open has joined the thread room (<code>joinThreadRoom(threadUid, userUid)</code>) when the thread was opened.</li>
+<li>When the sender&#x27;s message commits, <code>message-internal</code> is emitted to that room; the recipient&#x27;s socket callback shows a toast and sets the specific-chat refetch flag, and the message is appended live (&lt; 1 s target).</li>
+<li>If the recipient is not viewing the thread, the aggregate internal-chat unread count increments (Redux <code>notification</code> slice) and a contact/sidebar badge appears.</li>
+<li>When the recipient opens/reads the thread, the client calls <code>PATCH /chat-services/read/:threadUid</code>.</li>
+<li>The backend <code>readAllMessagesInThread</code> sets <code>isRead=true</code> on all the thread&#x27;s messages for that user and calls <code>markThreadNotificationsAsRead</code>.</li>
+<li>The unread badge clears and the aggregate count decrements; the sender can see the messages are now read (read receipt).</li>
+<li>Resilience — missed socket event: because the client reconciles by refetching on socket callbacks (and React Query refetch-on-reconnect), a briefly-dropped socket does not lose messages; the next refetch restores correct state. On reconnect, the client rejoins user + thread rooms.</li>
+</ol>
+<h3 id="95-presence-indication">9.5 Presence indication</h3>
+<ol class="flow">
+<li>On login, the VS360 client opens an authenticated socket and joins <code>vs360-user-&lt;uid&gt;</code>.</li>
+<li>The contact list reflects a colleague as online when they have an active connection and offline otherwise.</li>
+<li>On disconnect/reconnect, presence updates in near real time.</li>
+<li>Edge case — stale presence: presence fidelity depends on connection tracking; see Risks for the current-state caveat (presence may be approximate).</li>
+</ol>
+<h2 id="10-data-model">10. Data Model</h2>
+<p>Internal Chat reuses the shared chat backbone. Group-chat storage (planned) would follow the <code>GroupChatMessages</code> precedent used by Communities.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Key Fields</th><th>Relationships</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td><code>chat_threads</code> (<code>ChatThreads</code>)</td><td>id, uid, type (<code>INQUIRY</code>/<code>SERVICE</code>/<code>INTERNAL</code>/<code>AGENCY_CHAT</code>), victimId (null for INTERNAL), vsmsId (→ users, participant 1), vsmsId2 (→ users, participant 2), serviceId (null for INTERNAL), status (<code>ACTIVE</code>/<code>ARCHIVED</code>), timestamps</td><td>belongsTo two Users (<code>vsmsUser1Info</code>, <code>vsmsUser2Info</code>); hasMany <code>ChatMessages</code>; hasMany <code>chatFiles</code>; <code>lastMessage</code></td><td>Conversation container. For Internal Chat, <code>type=&#x27;INTERNAL&#x27;</code> with the two staff participants in <code>vsmsId</code>/<code>vsmsId2</code>. Helpers: <code>getInternalThreadsForVSMSUser</code>, <code>findExistingInternalThread</code>.</td></tr>
+<tr><td><code>chat_messages</code> (<code>ChatMessages</code>)</td><td>id, uid, threadId (→ chat_threads), vsmsSenderId (→ users; the staff sender), victimSenderId (null for INTERNAL), content, translatedContent, isRead, timestamps</td><td>belongsTo thread; <code>vsmsSenderInfo</code> (Users); hasMany <code>files</code></td><td>Individual internal message. Read state via <code>isRead</code>; unread computed per user.</td></tr>
+<tr><td><code>file_uploads</code> (<code>FileUploads</code>)</td><td>id, messageId (→ chat_messages), threadId (→ chat_threads), file metadata/URL</td><td>belongsTo message + thread</td><td>Attachments on internal messages; stored via Azure Blob file pipeline.</td></tr>
+<tr><td><code>service_center_notifications</code> (<code>ServiceCenterNotifications</code>)</td><td>id, target user, type (<code>INTERNAL_NEW_MESSAGE</code>, <code>thread-creation</code> variants), additionalData (<code>threadUid</code>), read-state</td><td>belongsTo staff user</td><td>In-app notification + unread driver for staff; cleared on thread read.</td></tr>
+<tr><td><code>GroupChatMessages</code> (<code>GroupChatMessages</code>) — *precedent, Communities today*</td><td>id, uid, sender, content, files/attachments, group reference, timestamps</td><td>belongsTo a group container</td><td>Multi-party message storage pattern; the model an Internal Chat <strong>group</strong> feature would reuse/extend. Not wired to Internal Chat currently.</td></tr>
+<tr><td><code>users</code> (<code>Users</code>) / <code>vsms_users</code> (<code>VSMSUsers</code>)</td><td>staff identity; <code>vsms_users</code> joins a <code>users</code> row to a <code>service_centers</code> (agency)</td><td>staff ↔ agency</td><td>Source of the contact roster and tenancy scoping (<code>issuer.serviceCenterInfo.id</code>).</td></tr>
+</tbody></table></div>
+<h2 id="11-api-integration-surface">11. API &amp; Integration Surface</h2>
+<h3 id="111-internal-chat-endpoints-base-webchat-services-allowonlyvs360">11.1 Internal Chat endpoints — base <code>/web/chat-services</code> (<code>allowOnly(&#x27;VS360&#x27;)</code>, <code>rateLimiters.chatApi</code>)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>POST</td><td><code>/start-internal-chat</code></td><td>Start (or reuse) a 1:1 INTERNAL thread with <code>receiverId</code></td><td>VS360 + <code>internal_chat.view</code></td></tr>
+<tr><td>GET</td><td><code>/get-internal-threads</code></td><td>List the user&#x27;s internal threads (agency-scoped, last message + unread)</td><td>VS360 + <code>internal_chat.view</code></td></tr>
+<tr><td>GET</td><td><code>/get-thread/:threadUid</code></td><td>Fetch a single thread (participant-authorized)</td><td>VS360 + <code>internal_chat.view</code></td></tr>
+<tr><td>POST</td><td><code>/send-message/:threadUid</code></td><td>Send an internal message (multer <code>files</code>, up to 5) + <code>content</code></td><td>VS360 + <code>internal_chat.view</code></td></tr>
+<tr><td>GET</td><td><code>/get-all-chats/:threadUid</code></td><td>Paginated message history of a thread</td><td>VS360 + <code>internal_chat.view</code></td></tr>
+<tr><td>GET</td><td><code>/get-all-files/:threadUid</code></td><td>List files/attachments in a thread</td><td>VS360 + <code>internal_chat.view</code></td></tr>
+<tr><td>PATCH</td><td><code>/read/:threadUid</code></td><td>Mark all thread messages read (clears unread + notifications)</td><td>VS360 + <code>internal_chat.view</code></td></tr>
+<tr><td>GET</td><td><code>/get-all-threads</code></td><td>All threads for the user (all types; used for badge pre-fetch)</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/users</code> (base <code>/web/users</code>)</td><td>Agency staff roster for the contact list (pageless)</td><td>VS360</td></tr>
+</tbody></table></div>
+<div class="callout note"><div class="callout-title">ℹ Group endpoints</div><div class="callout-body">Group-chat create/manage endpoints (participant add/remove, rename, archive) are <strong>not yet defined</strong> — they are part of the planned extension (see 8.3 / 9.2).</div></div>
+<h3 id="112-socketio-events">11.2 Socket.IO events</h3>
+<p>Semantic events from <code>notificationEvents.js</code>. Room helpers: <code>SOCKET_ROOMS.THREAD(threadUid, userUid)</code> = <code>thread-&lt;threadUid&gt;-&lt;userUid&gt;</code>; <code>SOCKET_ROOMS.USER(uid)</code> = <code>vs360-user-&lt;uid&gt;</code>; <code>SOCKET_ROOMS.SERVICE_CENTER(id)</code> = <code>service-center-&lt;id&gt;</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Event</th><th>Direction</th><th>Room</th><th>Payload (essentials)</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>thread-creation-internal</code></td><td>server→client</td><td>recipient user room (<code>vs360-user-&lt;uid&gt;</code>)</td><td><code>{ threadUid, initiator, participant }</code></td><td>A new INTERNAL thread was created; recipient toasts + <code>setInternalThreadsRefetch</code>.</td></tr>
+<tr><td><code>message-internal</code></td><td>server→client</td><td>thread room (<code>thread-&lt;threadUid&gt;-&lt;userUid&gt;</code>)</td><td><code>{ threadUid, message: { uid, content, senderId, files, createdAt } }</code></td><td>New internal message; recipient toasts + specific-chat refetch + live append.</td></tr>
+<tr><td><code>notification-refetch</code> / <code>notification-update</code></td><td>server→client</td><td>user room</td><td>general</td><td>Trigger notification list / badge refresh.</td></tr>
+<tr><td><code>join-room</code> / <code>leave-room</code></td><td>client→server</td><td>—</td><td><code>{ room }</code></td><td>Client joins/leaves user and per-thread rooms.</td></tr>
+</tbody></table></div>
+<p>Handshake: sockets authenticate via JWT in the <code>auth</code> handshake (<code>socket-middelware.js</code>); only authenticated staff join their rooms.</p>
+<h3 id="113-external-integrations">11.3 External integrations</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Integration</th><th>Use in Internal Chat</th></tr></thead>
+<tbody>
+<tr><td>Azure Blob Storage (<code>fileService</code>)</td><td>Attachment persistence (<code>file_uploads</code>).</td></tr>
+<tr><td>FCM (<code>notificationServices</code>)</td><td>Push notification of new internal messages to recipient device tokens.</td></tr>
+<tr><td>Socket.IO / Redis</td><td>Real-time delivery + room fan-out; Redis for scaling/pub-sub.</td></tr>
+<tr><td>Email (BullMQ)</td><td>Not used for internal messages by default (email/SMS are reserved for victim-facing inquiry/service threads).</td></tr>
+<tr><td>Translation (<code>translate</code>)</td><td>The shared send path can translate content to a recipient&#x27;s preferred language; for staff-to-staff this is typically a no-op (same language) but the pipeline supports it.</td></tr>
+</tbody></table></div>
+<h2 id="12-rbac-permissions">12. RBAC &amp; Permissions</h2>
+<p>Access is enforced by two layers: the platform <strong>context gate</strong> (<code>allowOnly(&#x27;VS360&#x27;)</code>) and the <strong>fine-grained</strong> <code>internal_chat</code> module permission. On the VS360 web app the same is mirrored by <code>ProtectedPage</code> (route), <code>LeftSideNavbar.hasAccess()</code> (nav), and in-page <code>hasPermission(user, &#x27;internal_chat&#x27;, &#x27;view&#x27;)</code> checks. Agency super-admins bypass fine-grained checks within their own agency; NECX platform admins are not participants.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Action</th><th>Guard / permission</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Open Internal Chat page / see nav item</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>internal_chat.view</code></td><td>Route + nav gated; hidden if not permitted.</td></tr>
+<tr><td>Start a DM (<code>start-internal-chat</code>)</td><td><code>internal_chat.view</code> + same-agency tenancy</td><td>Cannot target another agency or self.</td></tr>
+<tr><td>List internal threads (<code>get-internal-threads</code>)</td><td><code>internal_chat.view</code></td><td>Scoped to <code>issuer.serviceCenterInfo.id</code>.</td></tr>
+<tr><td>Send message / attach files (<code>send-message</code>)</td><td><code>internal_chat.view</code> + <code>isAuthorizedForThread</code></td><td>Sender must be a thread participant.</td></tr>
+<tr><td>Read messages / files (<code>get-all-chats</code>, <code>get-all-files</code>, <code>get-thread</code>)</td><td><code>internal_chat.view</code> + participant check</td><td>Non-participants denied.</td></tr>
+<tr><td>Mark read (<code>read/:threadUid</code>)</td><td><code>internal_chat.view</code> + participant check</td><td></td></tr>
+<tr><td>Group create/manage (planned)</td><td><code>internal_chat.view</code> (+ possible creator/admin rules)</td><td>To be defined with the group feature.</td></tr>
+<tr><td>Cross-agency messaging</td><td>Denied</td><td>Belongs to <code>agency_chat</code>, not <code>internal_chat</code>.</td></tr>
+<tr><td>Victim participation</td><td>Denied</td><td><code>app_users</code> excluded by type + tenancy.</td></tr>
+</tbody></table></div>
+<p>Note: the <code>internal_chat</code> module in the RBAC catalog exposes only <code>{ view }</code> today; there is no separate add/edit/delete split — <code>view</code> gates full participation.</p>
+<h2 id="13-non-functional-requirements">13. Non-Functional Requirements</h2>
+<ul>
+<li><strong>Security &amp; transport</strong>: All API traffic is authenticated (Bearer + refresh) and passes the Netlify edge secret; non-development responses are AES-encrypted end to end. Sockets require a JWT handshake. Attachments are stored in Azure Blob and served only to authorized participants.</li>
+<li><strong>Privacy (victim safety)</strong>: Internal Chat frequently references case detail and safety concerns. Conversations are confined to the agency tenant; no victim or other-agency staff can read them. Access is permission-gated. Content should never be exposed in logs (the socket debug logger already suppresses PII for sensitive channels; the same discipline applies here).</li>
+<li><strong>Tenancy isolation</strong>: Every query is scoped by <code>issuer.serviceCenterInfo.id</code>; participant checks (<code>isAuthorizedForThread</code>) prevent cross-thread access. A staff member can only ever message within their own agency.</li>
+<li><strong>Performance</strong>: Real-time delivery target &lt; 1 s p95 to online recipients; message history paginated; attachment listing separate from message history to keep payloads small.</li>
+<li><strong>Availability &amp; resilience</strong>: Socket auto-reconnect (8 attempts, 2–10 s backoff) with room rejoin; client reconciles by refetch so a dropped socket never loses messages. Real-time emits fire only post-commit.</li>
+<li><strong>Auditability</strong>: Create/update operations across the platform write <code>ActionLogs</code> rows (action, referenceType, source/ip/url/context). Internal Chat message/thread operations should participate in this audit trail for compliance.</li>
+<li><strong>Rate limiting</strong>: Chat endpoints use <code>rateLimiters.chatApi</code> to protect against abuse/flooding.</li>
+<li><strong>Localization</strong>: UI strings are English (no app-wide i18n on VS360); the shared translate pipeline can localize message content on demand though staff-to-staff typically shares a language.</li>
+<li><strong>Accessibility</strong>: The chat UI (Mantine) should meet standard keyboard-navigation and contrast expectations; unread badges and presence must have non-color-only affordances.</li>
+<li><strong>Compliance</strong>: Because content may inform grant/PMT reporting context indirectly (coordination), retention and audit align with platform record-keeping policy; no separate PMT reporting derives from Internal Chat directly.</li>
+</ul>
+<h2 id="14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</h2>
+<h3 id="141-notifications">14.1 Notifications</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Channel</th><th>Trigger</th><th>Detail</th></tr></thead>
+<tbody>
+<tr><td>In-app (<code>service_center_notifications</code>)</td><td>New internal message; new internal thread</td><td>Type <code>INTERNAL_NEW_MESSAGE</code> / thread-creation variant; <code>additionalData.threadUid</code>; drives unread badges.</td></tr>
+<tr><td>Socket.IO</td><td>New internal message; new thread</td><td><code>message-internal</code> to thread room; <code>thread-creation-internal</code> to user room; live toast + refetch.</td></tr>
+<tr><td>FCM push</td><td>New internal message (recipient offline from thread)</td><td>Sent to recipient device token(s) for background delivery.</td></tr>
+<tr><td>Email / SMS</td><td>—</td><td>Not used for internal messages (reserved for victim-facing threads).</td></tr>
+</tbody></table></div>
+<p>Notification delivery is defensive — failures are logged and never roll back the message send. Reading a thread clears its notifications.</p>
+<h3 id="142-analytics-kpis">14.2 Analytics / KPIs</h3>
+<ul>
+<li>Sidebar/Redux <code>notification</code> slice tracks the <code>internalChat</code> unread count as a live badge.</li>
+<li>Product KPIs (Section 4) — delivery latency, send success rate, adoption, unread accuracy — should be instrumented (PostHog is available in staging/beta/production on VS360; server-side metrics for delivery/latency).</li>
+<li>No dedicated dashboard exists for Internal Chat today; adoption/usage reporting is a candidate follow-up.</li>
+</ul>
+<h2 id="15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Type</th><th>Impact</th><th>Mitigation / Owner</th></tr></thead>
+<tbody>
+<tr><td>Group chat not implemented in Internal Chat backend</td><td>Open Question</td><td>Feature gap vs this PRD&#x27;s group sections; risk of overstating capability</td><td>Ship DMs first; scope group build to extend <code>chat_threads</code> (N participants) or reuse <code>GroupChatMessages</code>; mark group flows &quot;planned&quot; until built — Product/Backend</td></tr>
+<tr><td><code>chat_threads</code> models exactly two staff participants (<code>vsmsId</code>, <code>vsmsId2</code>)</td><td>Constraint</td><td>Blocks group chat without schema change</td><td>Add a thread-participants join table or a group-message model — Backend</td></tr>
+<tr><td>Presence fidelity</td><td>Risk</td><td>Presence may be approximate (based on connection tracking) and could show stale online/offline</td><td>Define an authoritative presence source (Redis-backed, like hotline staff status) if precise presence is required — Backend</td></tr>
+<tr><td>PII in logs / debug</td><td>Privacy Risk</td><td>Internal messages contain case detail</td><td>Enforce PII-suppression in socket/debug logging for internal events; audit — Security</td></tr>
+<tr><td>Read receipts are all-or-nothing per thread (<code>readAllMessagesInThread</code>)</td><td>Assumption</td><td>No per-message read granularity</td><td>Acceptable for DMs; revisit for groups (per-participant, per-message) — Product</td></tr>
+<tr><td>No message edit/delete/typing indicators</td><td>Scope Limitation</td><td>Users may expect modern messenger features</td><td>Backlog; explicitly out of scope for v1 — Product</td></tr>
+<tr><td>Mobile (Workspace app) parity for Internal Chat</td><td>Open Question</td><td>Internal Chat routes are web-oriented; staff mobile parity unclear</td><td>Confirm whether Workspace app needs Internal Chat; align routes if so — Product</td></tr>
+<tr><td>Attachment scanning</td><td>Risk</td><td>Malicious file upload</td><td>Confirm AV/type/size validation on the shared file pipeline — Security/Backend</td></tr>
+<tr><td>Notification duplication (socket + FCM + in-app)</td><td>Risk</td><td>Recipient may get redundant alerts</td><td>Dedup on client; suppress push when thread is actively open — Frontend</td></tr>
+</tbody></table></div>
+<p>Assumptions: both participants of a DM belong to the same agency; the shared chat backbone (<code>chat_threads</code>/<code>chat_messages</code>/<code>file_uploads</code>) and its authorization (<code>isAuthorizedForThread</code>) apply unchanged to INTERNAL; Socket.IO + FCM infrastructure is available.</p>
+<h2 id="16-glossary">16. Glossary</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Internal Chat</td><td>Staff-to-staff messaging <strong>within one agency</strong> (INTERNAL thread type); 1:1 DMs today, group chats planned.</td></tr>
+<tr><td>Agency Chat</td><td>Cross-agency staff messaging (AGENCY_CHAT); a <strong>different</strong> surface (My Network), out of scope here.</td></tr>
+<tr><td>Inquiry / Service chat</td><td>Agency↔victim conversations (INQUIRY/SERVICE thread types); not Internal Chat.</td></tr>
+<tr><td>Thread</td><td>A conversation container (<code>chat_threads</code>) with a <code>type</code> and participants.</td></tr>
+<tr><td>INTERNAL</td><td>The <code>chat_threads.type</code> value denoting a staff-to-staff conversation.</td></tr>
+<tr><td>DM</td><td>Direct message — a 1:1 internal thread between two staff.</td></tr>
+<tr><td>Participant</td><td>A staff member (<code>users</code>/<code>vsms_users</code>) who is party to a thread; enforced by <code>isAuthorizedForThread</code>.</td></tr>
+<tr><td>VSMS / VS360</td><td>Victim Services Management System; the agency-staff web app and staff identity type (<code>issuer.type=&#x27;VSMS&#x27;</code>, context <code>VS360</code>).</td></tr>
+<tr><td>Service Center / Agency</td><td>A tenant (<code>service_centers</code>); all Internal Chat is scoped to one.</td></tr>
+<tr><td>Presence</td><td>Online/offline indication of a colleague derived from socket connections.</td></tr>
+<tr><td>Read receipt</td><td>Indication that a recipient has read a message (<code>isRead</code> on <code>chat_messages</code>).</td></tr>
+<tr><td>Unread count</td><td>Number of unread messages, per thread and aggregate, driving badges.</td></tr>
+<tr><td><code>internal_chat.view</code></td><td>The RBAC permission gating participation in Internal Chat.</td></tr>
+<tr><td><code>file_uploads</code></td><td>Table storing message attachments (Azure Blob).</td></tr>
+<tr><td><code>GroupChatMessages</code></td><td>Multi-party message model used by Communities; the storage precedent for a future Internal Chat group feature.</td></tr>
+<tr><td><code>message-internal</code></td><td>Socket.IO event delivering a new internal message to the thread room.</td></tr>
+<tr><td><code>thread-creation-internal</code></td><td>Socket.IO event announcing a newly created internal thread.</td></tr>
+<tr><td>FCM</td><td>Firebase Cloud Messaging — push delivery to recipient devices.</td></tr>
+<tr><td>Advocate / Caseworker</td><td>Agency staff delivering victim services; the primary Internal Chat user.</td></tr>
+</tbody></table></div>
+      </div>
+      <nav class="prevnext"><a class="pn prev" href="P10.html"><span>← Previous</span><b>Agency Chat</b></a><a class="pn next" href="P12.html"><span>Next →</span><b>RBAC &amp; User Management</b></a></nav>
+      <footer class="doc-foot">NECX Inc — Confidential · Generated 2026-07-05 · NECX Internal Chat</footer>
+    </article>
+  </main>
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav class="toc-nav"><a class="toc-1" href="#1-document-control">1. Document Control</a>
+<a class="toc-1" href="#2-executive-summary">2. Executive Summary</a>
+<a class="toc-1" href="#3-product-overview-vision">3. Product Overview &amp; Vision</a>
+<a class="toc-2" href="#31-problem-statement">3.1 Problem statement</a>
+<a class="toc-2" href="#32-product-vision">3.2 Product vision</a>
+<a class="toc-2" href="#33-where-this-sits-in-the-necx-ecosystem">3.3 Where this sits in the NECX ecosystem</a>
+<a class="toc-1" href="#4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</a>
+<a class="toc-2" href="#41-goals-objectives">4.1 Goals &amp; objectives</a>
+<a class="toc-2" href="#42-success-metrics">4.2 Success metrics</a>
+<a class="toc-1" href="#5-scope">5. Scope</a>
+<a class="toc-2" href="#51-in-scope">5.1 In Scope</a>
+<a class="toc-2" href="#52-out-of-scope">5.2 Out of Scope</a>
+<a class="toc-1" href="#6-personas-user-roles">6. Personas &amp; User Roles</a>
+<a class="toc-2" href="#61-roles">6.1 Roles</a>
+<a class="toc-2" href="#62-persona-narratives">6.2 Persona narratives</a>
+<a class="toc-1" href="#7-system-context-architecture">7. System Context &amp; Architecture</a>
+<a class="toc-2" href="#71-tech-stack">7.1 Tech stack</a>
+<a class="toc-2" href="#72-how-it-talks-to-the-backend">7.2 How it talks to the backend</a>
+<a class="toc-2" href="#73-real-time-notifications">7.3 Real-time &amp; notifications</a>
+<a class="toc-2" href="#74-tenancy">7.4 Tenancy</a>
+<a class="toc-1" href="#8-functional-requirements">8. Functional Requirements</a>
+<a class="toc-2" href="#81-user-list-contacts">8.1 User list / contacts</a>
+<a class="toc-2" href="#82-direct-messages-11">8.2 Direct messages (1:1)</a>
+<a class="toc-2" href="#83-group-chats-planned-extension">8.3 Group chats (planned extension)</a>
+<a class="toc-2" href="#84-attachments">8.4 Attachments</a>
+<a class="toc-2" href="#85-presence">8.5 Presence</a>
+<a class="toc-2" href="#86-unread-counts">8.6 Unread counts</a>
+<a class="toc-2" href="#87-read-receipts-read-state">8.7 Read receipts / read state</a>
+<a class="toc-2" href="#88-real-time-delivery">8.8 Real-time delivery</a>
+<a class="toc-2" href="#89-notifications">8.9 Notifications</a>
+<a class="toc-1" href="#9-detailed-user-system-flows">9. Detailed User &amp; System Flows</a>
+<a class="toc-2" href="#91-start-a-direct-message-dm-with-a-colleague">9.1 Start a direct message (DM) with a colleague</a>
+<a class="toc-2" href="#92-create-and-participate-in-a-group-chat-planned">9.2 Create and participate in a group chat (planned)</a>
+<a class="toc-2" href="#93-send-a-message-with-an-attachment">9.3 Send a message with an attachment</a>
+<a class="toc-2" href="#94-real-time-delivery-read-state">9.4 Real-time delivery &amp; read state</a>
+<a class="toc-2" href="#95-presence-indication">9.5 Presence indication</a>
+<a class="toc-1" href="#10-data-model">10. Data Model</a>
+<a class="toc-1" href="#11-api-integration-surface">11. API &amp; Integration Surface</a>
+<a class="toc-2" href="#111-internal-chat-endpoints-base-webchat-services-allowonlyvs360">11.1 Internal Chat endpoints — base `/web/chat-services` (`allowOnly(&#x27;VS360&#x27;)`, `rateLimiters.chatApi`)</a>
+<a class="toc-2" href="#112-socketio-events">11.2 Socket.IO events</a>
+<a class="toc-2" href="#113-external-integrations">11.3 External integrations</a>
+<a class="toc-1" href="#12-rbac-permissions">12. RBAC &amp; Permissions</a>
+<a class="toc-1" href="#13-non-functional-requirements">13. Non-Functional Requirements</a>
+<a class="toc-1" href="#14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</a>
+<a class="toc-2" href="#141-notifications">14.1 Notifications</a>
+<a class="toc-2" href="#142-analytics-kpis">14.2 Analytics / KPIs</a>
+<a class="toc-1" href="#15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</a>
+<a class="toc-1" href="#16-glossary">16. Glossary</a>
+</nav>
+  </aside>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

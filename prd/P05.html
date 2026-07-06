@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NECX Case Management · NECX PRD</title>
+<meta name="description" content="Service-claim lifecycle, intake, and coordinated case handling across the NECX platform">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="prd-page">
+<header class="topbar">
+  <button class="hamburger" aria-label="Menu" onclick="toggleNav()">&#9776;</button>
+  <a class="brand" href="../index.html"><svg class="logo" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 L35 10 V22 C35 31 28 37 20 39 C12 37 5 31 5 22 V10 Z" fill="var(--brand)"/><path d="M13 27 V14 L20 22 V14 M27 14 V27 L20 19" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="brand-text">NECX<span class="brand-sub">Product Requirements</span></span></a>
+  <div class="topbar-spacer"></div>
+  <a class="top-link" href="../index.html">Home</a>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><span class="ic-sun">☀</span><span class="ic-moon">☾</span></button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-search"><input type="search" id="navSearch" placeholder="Filter documents…" oninput="filterNav(this.value)"></div>
+    <nav class="nav"><div class="nav-group"><div class="nav-group-title">Platform &amp; Applications</div><a class="nav-item " href="P01.html" data-search="necx platform — core system whole-platform prd: unified backend, four clients, multi-tenancy, identity/rbac, and the end-to-end case lifecycle."><span class="nav-num">01</span><span class="nav-text">Platform — Core System</span></a>
+<a class="nav-item " href="P02.html" data-search="necx workspace — staff mobile app agency staff mobile app (flutter/riverpod) — the on-the-go companion to the vs360 web dashboard."><span class="nav-num">02</span><span class="nav-text">Workspace — Staff Mobile App</span></a>
+<a class="nav-item " href="P03.html" data-search="necx victim app — survivor mobile app victim / survivor mobile app (flutter/getx) — discover services, request help, chat, find shelter, e-sign."><span class="nav-num">03</span><span class="nav-text">Victim App — Survivor Mobile App</span></a>
+<a class="nav-item " href="P04.html" data-search="vs360 — agency web dashboard vs360 — the agency staff web dashboard (react/vite) and primary caseworker workspace."><span class="nav-num">04</span><span class="nav-text">VS360 — Agency Web Dashboard</span></a>
+</div>
+<div class="nav-group"><div class="nav-group-title">VS360 Feature Modules</div><a class="nav-item active" href="P05.html" data-search="necx case management service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes."><span class="nav-num">05</span><span class="nav-text">Case Management</span></a>
+<a class="nav-item " href="P06.html" data-search="necx shelter management shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search."><span class="nav-num">06</span><span class="nav-text">Shelter Management</span></a>
+<a class="nav-item " href="P07.html" data-search="necx hotline management twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights."><span class="nav-num">07</span><span class="nav-text">Hotline Management</span></a>
+<a class="nav-item " href="P08.html" data-search="necx calendar &amp; appointments reminders, tasks and case-linked appointments in the vs360 tools calendar."><span class="nav-num">08</span><span class="nav-text">Calendar &amp; Appointments</span></a>
+<a class="nav-item " href="P09.html" data-search="necx staff time tracking staff time tracking: clock in/out, timesheets, and grant/pmt time attribution."><span class="nav-num">09</span><span class="nav-text">Staff Time Tracking</span></a>
+<a class="nav-item " href="P10.html" data-search="necx agency chat real-time advocate↔victim messaging tied to service threads and cases."><span class="nav-num">10</span><span class="nav-text">Agency Chat</span></a>
+<a class="nav-item " href="P11.html" data-search="necx internal chat staff-to-staff messaging within an agency, real-time over socket.io."><span class="nav-num">11</span><span class="nav-text">Internal Chat</span></a>
+<a class="nav-item " href="P12.html" data-search="necx rbac &amp; user management roles, the module/action permission matrix, plan seats, and multi-layer enforcement."><span class="nav-num">12</span><span class="nav-text">RBAC &amp; User Management</span></a>
+<a class="nav-item " href="P13.html" data-search="necx notes center agency-scoped, cross-case view over internal (caseworker-only) case notes."><span class="nav-num">13</span><span class="nav-text">Notes Center</span></a>
+<a class="nav-item " href="P14.html" data-search="necx drive google-drive-style cloud file storage backed by azure blob, with quotas and analytics."><span class="nav-num">14</span><span class="nav-text">Drive</span></a>
+<a class="nav-item " href="P15.html" data-search="necx ai report builder pmt/grant reporting plus ai-assisted custom report generation with accuracy validation."><span class="nav-num">15</span><span class="nav-text">AI Report Builder</span></a>
+<a class="nav-item " href="P16.html" data-search="necx e-sign &amp; document center prepare, request, sign and pdf-stamp case documents with an audit trail."><span class="nav-num">16</span><span class="nav-text">E-Sign &amp; Document Center</span></a>
+<a class="nav-item " href="P17.html" data-search="necx referrals &amp; partnerships inter-agency network: partnerships, invitations, and consent-based case referrals."><span class="nav-num">17</span><span class="nav-text">Referrals &amp; Partnerships</span></a>
+<a class="nav-item " href="P18.html" data-search="necx inquiries management intake and triage of inquiries / requests-to-connect before they become cases."><span class="nav-num">18</span><span class="nav-text">Inquiries Management</span></a>
+<a class="nav-item " href="P19.html" data-search="necx communities agency-run community spaces: joining questions, membership, posts and moderation."><span class="nav-num">19</span><span class="nav-text">Communities</span></a>
+<a class="nav-item " href="P20.html" data-search="necx service management service catalog, categories, and the per-service claim-question (intake) builder."><span class="nav-num">20</span><span class="nav-text">Service Management</span></a>
+</div>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim" onclick="toggleNav()"></div>
+  
+  <main class="content">
+    <article class="doc">
+      <div class="doc-eyebrow">Product Requirements Document · NECX Inc — Confidential</div>
+      <h1 class="doc-title">NECX Case Management</h1>
+      <p class="doc-subtitle">Service-claim lifecycle, intake, and coordinated case handling across the NECX platform</p>
+      <div class="doc-meta"><span class="chip">Version: <b>1.0</b></span><span class="chip">Status: <b>Baseline</b></span><span class="chip">Owner: <b>NECX Product Management</b></span><a class="dl-btn" href="../downloads/05_VS360_Feature_Case_Management.docx" download>⬇ Download DOCX</a></div>
+      <hr class="doc-rule">
+      <div class="doc-body">
+      <h2 id="1-document-control">1. Document Control</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td>NECX — Coordinated Victim Services Platform</td></tr>
+<tr><td>Module</td><td>Case Management (Service Claims)</td></tr>
+<tr><td>Version</td><td>1.0</td></tr>
+<tr><td>Status</td><td>Baseline</td></tr>
+<tr><td>Author</td><td>NECX Product Management</td></tr>
+<tr><td>Reviewers</td><td>Engineering (Backend / VS360 Web / Victim App), Program Operations, Compliance &amp; Privacy</td></tr>
+<tr><td>Last Updated</td><td>2026-07-05</td></tr>
+<tr><td>Related Documents</td><td>Victim Services &amp; Services Catalog PRD, Referrals &amp; Partnerships PRD, Reports &amp; PMT PRD, Chat &amp; Messaging PRD, Platform Core / Auth &amp; RBAC PRD</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>1.0</td><td>2026-07-05</td><td>NECX Product Management</td><td>Baseline PRD for Case Management (service-claim lifecycle, intake, detail tabs, state machine, notifications).</td></tr>
+</tbody></table></div>
+<h2 id="2-executive-summary">2. Executive Summary</h2>
+<p>NECX is a coordinated victim-services platform that connects survivors of crime with the agencies (service centers) and advocates who help them. The atomic unit of help delivery is the <strong>case</strong> — technically a <strong>service claim</strong> (<code>service_claims</code>): one victim&#x27;s request for one published service, tracked from intake through resolution. Case Management is the module that governs the entire life of that record: how it is created (by a victim in the mobile app or by an advocate in the VS360 web app), how it moves through its status state machine (pending → approved → resolved, or pending → rejected), and everything an advocate does around it — capturing intake answers, writing internal notes, publishing victim-facing updates, uploading documents, chatting with the client in real time, referring the case to a partner agency, and closing it out with the grant-reporting (PMT) data funders require.</p>
+<p>This document is scoped <strong>entirely</strong> to Case Management. It specifies the case data model, the state machine and its side effects, the case list and its filters, every case-detail tab (demographics, intake questions/answers, notes, published updates, documents, referrals, chat, timeline, and the PMT snapshot), the two creation paths, the approve/reject/resolve actions, the link-client / anonymous-case flow with login codes, file uploads, question-answer editing, the distinction between internal notes and published updates, how multiple services are consolidated under one client, the PMT snapshot lifecycle, claim statistics/KPIs, and every notification and socket event the module emits.</p>
+<p>Case Management matters because it is where victim safety, dignity, and privacy are operationalized. A case can begin anonymously (advocate-created, no identifying contact) and only later be claimed by the victim via a one-time login code — so that a survivor never has to expose an email or phone number before they are ready. Internal notes are never shown to the victim; only explicitly *published* updates are. Cross-agency data sharing happens only with the victim&#x27;s consent and only for the fields an advocate elects to share. Every mutation is written to an immutable audit trail. Case Management is therefore both the operational core of day-to-day advocacy and the compliance backbone for federal/state grant reporting.</p>
+<h2 id="3-product-overview-vision">3. Product Overview &amp; Vision</h2>
+<h3 id="31-problem-statement">3.1 Problem Statement</h3>
+<p>Victim-services agencies juggle intake forms, case notes, funder reporting spreadsheets, and fragmented communication channels, often across disconnected tools. Survivors, meanwhile, have no single, safe place to request help, see progress, and communicate with an advocate without prematurely exposing identifying information. The result is duplicated data entry, lost context when a client is referred between agencies, inconsistent grant reporting, and friction that can deter a survivor from seeking help.</p>
+<h3 id="32-product-vision">3.2 Product Vision</h3>
+<p>Case Management makes the <strong>service claim</strong> the single source of truth for a survivor&#x27;s request for help. From one record an advocate can triage, communicate, document, report, refer, and resolve — while the survivor sees a safe, controlled view of the same case on their phone. Intake questions captured at claim time flow into the case detail; grant-reporting data is captured as a by-product of normal case work (the PMT snapshot) rather than as a separate chore; and a case can move between agencies (via referral) or be consolidated under one client account (via link-client) without re-keying.</p>
+<h3 id="33-where-this-sits-in-the-necx-ecosystem">3.3 Where This Sits in the NECX Ecosystem</h3>
+<p>Case Management is served by the single unified NECX backend (<code>necx-backend_v2</code>) through its tri-router pattern and consumed by multiple clients:</p>
+<ul>
+<li><strong>Victim mobile app</strong> (Flutter, issuer type <code>APP</code>) — victim-initiated case creation, viewing published updates, chat, rating, and claiming anonymous cases via login code (<code>/mobile/service-claims/*</code>).</li>
+<li><strong>VS360 web app</strong> (React 18 + Vite + Mantine, issuer type <code>VSMS</code>) — the advocate/caseworker workbench: case list, create-case, case detail with all tabs, approve/reject/resolve, notes/updates, referrals, PMT (<code>/web/service-claims/*</code>).</li>
+<li><strong>NECX Admin console</strong> (issuer type <code>NECX</code>) — read-only oversight of cases across agencies (<code>/admin/service-claims/*</code>; list + details only, no mutation).</li>
+<li><strong>Adjacent modules</strong> — Referrals &amp; Partnerships (cross-agency case cloning), Reports/PMT (grants, questionnaires, generated reports), Chat/Messaging (case chat threads), Dashboard (case KPIs), Notes Center (agency-wide view over <code>claim_notes</code>).</li>
+</ul>
+<h2 id="4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</h2>
+<h3 id="41-goals-objectives">4.1 Goals &amp; Objectives</h3>
+<ul>
+<li>Provide a single, authoritative case record (the service claim) covering intake, communication, documentation, reporting, and resolution.</li>
+<li>Enforce a clear, auditable status state machine (pending → approved → resolved; pending → rejected) with correct side effects at each transition.</li>
+<li>Enable both victim-initiated and advocate-created cases, including safe anonymous cases that a victim can later claim via a one-time login code.</li>
+<li>Keep internal case work (notes, PMT data) strictly separated from what the victim sees (published updates, chat).</li>
+<li>Capture grant-reporting (PMT) data as a by-product of case work and preserve it through the case lifecycle.</li>
+<li>Give advocates fast triage through a sortable, filterable case list with unread-message prioritization.</li>
+<li>Surface accurate case KPIs to advocates, agency admins, and the reporting pipeline.</li>
+</ul>
+<h3 id="42-success-metrics">4.2 Success Metrics</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Definition</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>Time to first response</td><td>Median of <code>service_claim_stats.approved_at − service_claims.created_at</code> for new claims</td><td>&lt; 24 business hours</td></tr>
+<tr><td>Case completion rate</td><td>Resolved claims ÷ total non-rejected claims over a period (<code>getAgencyCaseStats</code>)</td><td>≥ 70%</td></tr>
+<tr><td>Anonymous-case claim rate</td><td>Anonymous cases whose login code is used (<code>codeUsedAt</code> set) ÷ anonymous cases created</td><td>≥ 60%</td></tr>
+<tr><td>Intake completeness</td><td>Cases with all required intake questions answered (no bypass) at approval</td><td>≥ 90%</td></tr>
+<tr><td>PMT snapshot integrity</td><td>Approved/resolved cases with a non-null <code>pmt_report</code> row</td><td>100%</td></tr>
+<tr><td>Duplicate-case rate</td><td>Victim-initiated claims blocked by the one-open-claim-per-(service,victim) guard</td><td>Monitored (informational)</td></tr>
+<tr><td>Update publication latency</td><td>Median time from status change to victim receiving the published update notification</td><td>&lt; 5 seconds</td></tr>
+</tbody></table></div>
+<h2 id="5-scope">5. Scope</h2>
+<h3 id="51-in-scope">5.1 In Scope</h3>
+<ul>
+<li>The service-claim (case) data model, including <code>uid</code> format, status, login-code fields, ratings, and unseen-update flag.</li>
+<li>Case lifecycle and status state machine (pending, approved, rejected, resolved) plus the synthetic <code>requested</code> state surfaced from Request-to-Connect.</li>
+<li>Case list with issuer scoping, filters, header stat chips, sorting (unread-first), and CSV/XLS export.</li>
+<li>Create-case: victim-initiated (<code>claimService</code> from mobile) and advocate-created (<code>shouldCreateUser</code> from web), including duplicate guards and advocate auto-approve.</li>
+<li>Approve / reject / resolve actions and every side effect (published updates, chat-thread open/archive, stats attribution, PMT deletion on reject, referral status flip, notifications).</li>
+<li>Case detail tabs: Details (client answers + PMT questions), Chat, Updates, Notes, Files, Referrals, plus demographics, appointments/reminders context, and a case timeline view.</li>
+<li>Link-client (attach contact to an anonymous case) and the login-code issuance/redemption flow.</li>
+<li>File uploads on a case (≤ 5 files, context <code>SERVICE_CLAIM</code>) and the file translator tool.</li>
+<li>Intake question/answer capture and full-replace editing.</li>
+<li>Internal notes (<code>claim_notes</code>) vs. published updates (<code>claim_updates</code>) — creation, editing, deletion, and their differing visibility/notification behavior.</li>
+<li>Consolidating multiple services/cases under one client via link-client; the fact that each service request is its own case.</li>
+<li>PMT snapshot creation, questionnaire linkage, editing, and deletion-on-reject.</li>
+<li>Claim statistics and KPIs (per-claim attribution via <code>service_claim_stats</code>; agency KPIs via <code>getAgencyCaseStats</code> / dashboard).</li>
+<li>RBAC for cases (<code>claims.view/add/edit/delete/view_all</code>) and issuer scoping (APP / VSMS / ADMIN).</li>
+<li>Every case-related notification and socket event (VS360 staff side and victim side).</li>
+</ul>
+<h3 id="52-out-of-scope">5.2 Out of Scope</h3>
+<ul>
+<li>The Services &amp; Categories catalog (publishing services, category taxonomy) — covered only where it feeds intake questions and case creation. See the Victim Services PRD.</li>
+<li>Inquiries (anonymous pre-case message threads) except as a source of <code>prefill</code> data for Create Case.</li>
+<li>The full Referrals &amp; Partnerships lifecycle (partnership creation/accept/decline, cross-agency chat) — covered only at the case&#x27;s referral integration points. See the Referrals &amp; Partnerships PRD.</li>
+<li>Grant CRUD, questionnaire authoring, generated reports, and the AI report builders — covered only where the PMT snapshot and per-claim questionnaire answers touch a case. See the Reports &amp; PMT PRD.</li>
+<li>Hotline, Shelter, Communities, and general Chat internals — referenced only where they seed or attach to a case.</li>
+<li>Dashboard analytics screens beyond the case KPIs they compute.</li>
+<li>A one-click &quot;convert inquiry → case&quot; action — not implemented (see Open Questions).</li>
+</ul>
+<h2 id="6-personas-user-roles">6. Personas &amp; User Roles</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Role</th><th>Description</th><th>Key permissions</th></tr></thead>
+<tbody>
+<tr><td>Victim / Survivor (<code>APP</code>)</td><td>Uses the mobile app to request services, view published updates, chat, and rate. No web role exists.</td><td>Mobile routes (auth-only); scoped to own <code>issuer.id</code>; sees only published updates.</td></tr>
+<tr><td>Case Worker / Advocate (<code>VSMS</code>)</td><td>Frontline agency staff who triage, communicate, document, and resolve cases.</td><td><code>claims.view</code>, <code>claims.add</code>, <code>claims.edit</code>; typically without <code>claims.view_all</code> (sees only pending/self-actioned cases).</td></tr>
+<tr><td>Agency Admin / Super Admin (<code>VSMS</code>, elevated)</td><td>Agency leadership overseeing all cases and staff performance.</td><td><code>claims.view_all</code> (all agency cases), plus <code>claims.edit/delete</code>; <code>SUPER_ADMIN</code> bypasses fine-grained checks.</td></tr>
+<tr><td>NECX Platform Admin (<code>NECX</code>)</td><td>NECX Inc. staff providing cross-agency oversight and support.</td><td>Admin router: case list + details only; no case mutations.</td></tr>
+</tbody></table></div>
+<h3 id="61-persona-narratives">6.1 Persona Narratives</h3>
+<p><strong>Maria, Advocate.</strong> Maria opens VS360 to &quot;My Cases,&quot; which surfaces cases with unread client messages first. She approves a pending case, chats with the client, records an internal Safety Concern note, publishes a client-facing &quot;Approved — next steps&quot; update, uploads a court document, and later resolves the case after completing the PMT survey. For a walk-in with no email, she creates an anonymous case and hands the client the printed login code so they can later see progress on their phone.</p>
+<p><strong>Devon, Survivor.</strong> Devon requests a housing service in the mobile app, answering the service&#x27;s intake questions. He sees a published &quot;Approved&quot; update and chats with his advocate. Weeks later, an advocate at another agency (with Devon&#x27;s consent) receives a referred copy of his case.</p>
+<p><strong>Priya, Agency Admin.</strong> Priya has <code>claims.view_all</code>, so she sees every case in her agency, monitors completion rate and average response time on the dashboard, and audits which staff approved/resolved which cases via <code>service_claim_stats</code>.</p>
+<h2 id="7-system-context-architecture">7. System Context &amp; Architecture</h2>
+<h3 id="71-tech-stack">7.1 Tech Stack</h3>
+<ul>
+<li><strong>Backend:</strong> Node.js + Express (ESM), Objection.js/Knex over PostgreSQL, Socket.IO, Redis, BullMQ (email/jobs). Module root <code>src/apps/victim-services/service-claim/</code> (with <code>notes.*</code> and <code>updates.*</code> sub-modules).</li>
+<li><strong>VS360 web:</strong> React 18 + Vite, Mantine v7, Redux Toolkit + redux-persist, TanStack React Query v4, react-router-dom v6, TipTap (rich text), socket.io-client. Case services in <code>src/services/claims.js</code>.</li>
+<li><strong>Victim app:</strong> Flutter (GetX), consuming <code>/mobile/service-claims/*</code>.</li>
+<li><strong>NECX Admin:</strong> consumes <code>/admin/service-claims/*</code> (read-only).</li>
+</ul>
+<h3 id="72-tri-router-guards">7.2 Tri-Router &amp; Guards</h3>
+<p>Every case route file builds three sub-routers by URL prefix and RBAC context (<code>allowOnly</code> reads <code>req.issuer.roleInfo.context</code>), all wrapped with <code>rateLimiter(rateLimiters.standard)</code>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Sub-router</th><th>Prefix</th><th>Guard</th><th>Consumer</th></tr></thead>
+<tbody>
+<tr><td>adminRouter</td><td><code>/admin/service-claims/*</code></td><td><code>allowOnly(&#x27;ADMIN&#x27;)</code></td><td>NECX Admin (list + details only)</td></tr>
+<tr><td>webRouter</td><td><code>/web/service-claims/*</code></td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td><td>VS360 web / advocate (VSMS staff)</td></tr>
+<tr><td>mobileRouter</td><td><code>/mobile/service-claims/*</code></td><td>none (auth only)</td><td>Victim mobile app (<code>APP</code>)</td></tr>
+</tbody></table></div>
+<p><code>issuer.type</code> ∈ <code>APP</code> (victim), <code>VSMS</code> (agency staff), <code>NECX</code> (admin). Case services branch heavily on <code>issuer.type</code>. Requests are AES-response-encrypted (clients decrypt); VS360 also sends <code>X-Netlify-Secret</code>.</p>
+<h3 id="73-backend-communication">7.3 Backend Communication</h3>
+<p>VS360 axios factory adds <code>Authorization: Bearer &lt;access&gt;</code>, <code>x-refresh-token</code>, <code>X-Netlify-Secret</code>, <code>X-Environment</code>; responses are decrypted client-side. On 401 the interceptor logs out; 403 renders <code>UnauthorizedAccess</code>. Case reads/writes use React Query keys that include <code>user.roleInfo.permission.claims.view_all</code> so the cache differs for admins vs. workers.</p>
+<h3 id="74-real-time-notifications">7.4 Real-Time &amp; Notifications</h3>
+<p><code>req.io</code> is threaded through case controllers. Two notification services fire per case event: <code>VS360NotificationService</code> (staff/socket via <code>vs360-user-&lt;uid&gt;</code> room + <code>service_center_notifications</code>) and <code>AppNotificationService</code> (victim via <code>app-notification-room</code> + <code>victim_notifications</code> + FCM). All notification calls are wrapped defensively — failures are logged, never thrown, and never break the main transaction. Specific channels/events are enumerated in Sections 11 and 14.</p>
+<h3 id="75-tenancy">7.5 Tenancy</h3>
+<p>Agency-scoped data is filtered by <code>issuer.serviceCenterInfo.id</code>; a VSMS user only ever sees/edits their own agency&#x27;s cases. APP issuers are scoped to <code>issuer.id</code> (their own cases). The <code>claims.view_all</code> flag further narrows a VSMS user to only pending/self-actioned cases when absent. Cross-agency isolation (CJIS-style) is enforced when resolving agency-scoped claims and notes.</p>
+<h2 id="8-functional-requirements">8. Functional Requirements</h2>
+<h3 id="81-case-service-claim-core">8.1 Case (Service Claim) Core</h3>
+<p>A case is a <code>service_claims</code> row: a victim&#x27;s request for one service. It carries a human-readable <code>uid</code> (<code>CL&lt;yy&gt;&lt;month&gt;&lt;uuid6&gt;</code>), <code>serviceId</code>, <code>victimId</code> (FK <code>app_users</code>), <code>status</code>, <code>rating</code>, <code>hasUnseenUpdates</code>, and login-code fields (<code>loginCode</code>, <code>codeSentAt</code>, <code>codeUsedAt</code>, <code>codeLastUpdatedAt</code>). Advocate-created cases (<code>shouldCreateUser</code>) auto-approve.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CORE-01</td><td>The system shall represent each service request as one <code>service_claims</code> record with a unique human-readable <code>uid</code> in the format <code>CL&lt;yy&gt;&lt;month&gt;&lt;uuid6&gt;</code>.</td><td>Must</td></tr>
+<tr><td>FR-CORE-02</td><td>The system shall persist <code>status</code> ∈ {pending, approved, rejected, resolved} and surface a synthetic <code>requested</code> state for Request-to-Connect items in the app.</td><td>Must</td></tr>
+<tr><td>FR-CORE-03</td><td>The system shall store login-code fields on the case to support anonymous/advocate-created cases being claimed later by a victim.</td><td>Must</td></tr>
+<tr><td>FR-CORE-04</td><td>The system shall track <code>hasUnseenUpdates</code> per case and clear it when the victim marks updates seen.</td><td>Must</td></tr>
+<tr><td>FR-CORE-05</td><td>The system shall enforce one ongoing (pending or approved) claim per (service, victim) for victim-initiated creation.</td><td>Must</td></tr>
+<tr><td>FR-CORE-06</td><td>The system shall auto-approve cases created by an advocate on behalf of a victim (<code>shouldCreateUser</code>).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="82-case-list-filters">8.2 Case List &amp; Filters</h3>
+<p>Endpoint <code>GET /service-claims</code> (<code>getAllServiceClaims</code>), issuer-scoped. Returns <code>serviceClaims[]</code>, <code>requestsToConnect[]</code>, <code>newClaims</code>, <code>approvedClaims</code>, and <code>total</code>. VS360 renders cases as cards (not a table) under the title &quot;My Cases.&quot;</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-LIST-01</td><td>The system shall return an issuer-scoped case list: APP → own cases; VSMS → agency cases (further limited to pending/self-actioned without <code>claims.view_all</code>); ADMIN → cross-agency read.</td><td>Must</td></tr>
+<tr><td>FR-LIST-02</td><td>The list shall support filters: <code>searchKey</code> (client name or Case ID), <code>categoryId</code>, <code>status</code>, <code>statusNotIn</code>, <code>serviceCenterId</code>, <code>startDate</code>, <code>endDate</code>, <code>includeReferrals</code>, and pagination (<code>page</code>, <code>pageSize</code>, <code>pageLess</code>).</td><td>Must</td></tr>
+<tr><td>FR-LIST-03</td><td>The list shall include header stat chips: New Cases, Approved Cases, and Referred Cases (<code>referralSegment !== &#x27;none&#x27;</code>).</td><td>Must</td></tr>
+<tr><td>FR-LIST-04</td><td>VS360 shall sort cases by: (1) unread messages (<code>SERVICE_NEW_MESSAGE</code> notifications), (2) new/pending, (3) in-progress/approved, (4) resolved, (5) rejected; ties by newest <code>createdAt</code>. Received referrals sort as pending.</td><td>Should</td></tr>
+<tr><td>FR-LIST-05</td><td>VS360 shall export the list to CSV/XLS via a pageless fetch (Case ID, Claim Date, Requested By, Status, Service Claimed, Service Category).</td><td>Should</td></tr>
+<tr><td>FR-LIST-06</td><td>The category filter shall be limited to the user&#x27;s assigned <code>serviceCategories</code>.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="83-case-detail">8.3 Case Detail</h3>
+<p>Endpoint <code>GET /service-claims/:uid</code> (<code>getServiceClaimDetails</code>) returns the full case graph: claim, merged answered + unanswered intake questions, latest chat thread, and a referral view-model. VS360 additionally fetches the PMT questionnaire for the claim.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-DTL-01</td><td>The detail response shall include the claim, the service&#x27;s full question list merged with answers (unanswered rendered <code>id:null</code>), the latest chat thread, and referral view-model.</td><td>Must</td></tr>
+<tr><td>FR-DTL-02</td><td>VS360 shall render a right rail with Client Information (name, email, phone, Login Code + Used/Unused badge) and Case Information (Service, Category, Status badge, Claim Date).</td><td>Must</td></tr>
+<tr><td>FR-DTL-03</td><td>Header actions shall be status-dependent: pending → Approve/Reject (or Accept/Decline referral); approved → Refer (if eligible) and Mark as Resolved.</td><td>Must</td></tr>
+<tr><td>FR-DTL-04</td><td>Tabs shall be enabled/disabled by status (most disabled while pending/rejected; a denied referral forces the Referrals tab). The active tab persists in Redux <code>claimDetailsTab</code>.</td><td>Should</td></tr>
+<tr><td>FR-DTL-05</td><td>For APP issuers, the service detail fetch shall include the victim&#x27;s claim state; viewing increments the service <code>viewCount</code>.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="84-case-detail-tabs">8.4 Case Detail Tabs</h3>
+<p>The VS360 case detail exposes tabs, each backed by dedicated endpoints.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-TAB-01</td><td><strong>Details</strong> tab shall show Client Answers (intake answers, editable when approved via EditClaimQuestionsModal) and PMT Questions (the linked questionnaire + current answers). Edit disabled unless status = approved.</td><td>Must</td></tr>
+<tr><td>FR-TAB-02</td><td><strong>Chat</strong> tab shall provide real-time client↔advocate chat via <code>GET /chat-services/get-all-chats/:uid</code> and <code>POST /chat-services/send-message/:uid</code> (multipart; file attachments). Empty states when no client account or no chat initiated.</td><td>Must</td></tr>
+<tr><td>FR-TAB-03</td><td><strong>Updates</strong> tab shall list advocate-authored progress updates (title + rich text + optional &quot;notify client&quot; switch) with create/edit/delete.</td><td>Must</td></tr>
+<tr><td>FR-TAB-04</td><td><strong>Notes</strong> tab shall list internal notes (title + TipTap rich text, <code>noteType</code>) with create/edit/delete; notes are never shown to the victim.</td><td>Must</td></tr>
+<tr><td>FR-TAB-05</td><td><strong>Files</strong> tab shall list case/chat documents and support multipart upload (≤ 5 files) plus a File Translator tool (<code>POST /tool/translate/file</code>).</td><td>Must</td></tr>
+<tr><td>FR-TAB-06</td><td><strong>Referrals</strong> tab shall appear only when the case has sent/received referrals and shall show consent review, sent history, agency info, sharing-permission snapshot, and case-snapshot sections.</td><td>Should</td></tr>
+<tr><td>FR-TAB-07</td><td><strong>Demographics</strong> shall be captured at intake (age, gender, race/ethnicity, special classification, state/city) and stored in the PMT snapshot; editable via the PMT update paths.</td><td>Must</td></tr>
+<tr><td>FR-TAB-08</td><td><strong>Timeline</strong> shall present a chronological view of case events (creation, status changes, notes, updates, uploads, referral actions) derived from stats attribution, updates, notes, files, and action logs.</td><td>Should</td></tr>
+<tr><td>FR-TAB-09</td><td><strong>Appointments / Follow-ups</strong> context shall associate reminders (<code>GET /reminders</code>) with the case for upcoming follow-up visibility.</td><td>Could</td></tr>
+</tbody></table></div>
+<h3 id="85-create-case">8.5 Create Case</h3>
+<p>Endpoint <code>POST /service-claims</code> (<code>claimService</code>, transactional). Body: <code>serviceId</code>, <code>statementFromVictim?</code>, <code>questionAnswers[]?</code>, <code>shouldCreateUser?</code>, <code>userData?</code>, <code>victimId?</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CREATE-01</td><td>The system shall support victim-initiated creation (issuer <code>APP</code>, <code>victimId = issuer.id</code>) with a duplicate guard against an existing ongoing pending/approved claim for the (service, victim).</td><td>Must</td></tr>
+<tr><td>FR-CREATE-02</td><td>The system shall support advocate creation (<code>shouldCreateUser &amp;&amp; userData</code>): find user by email/phone or create a temp anonymous user (<code>anonymousUserCode</code>, <code>isVerified:false</code>); such cases auto-approve.</td><td>Must</td></tr>
+<tr><td>FR-CREATE-03</td><td>On create, the system shall insert the claim, its <code>questionAnswers</code>, a <code>service_claim_stats</code> row (with approvedBy/At when auto-approved), compute new-vs-returning client, and create a <code>pmt_report</code> snapshot with demographics.</td><td>Must</td></tr>
+<tr><td>FR-CREATE-04</td><td>If a new user is created and <code>otpChannel ≠ NONE</code>, the system shall generate a login code and send a code notification.</td><td>Must</td></tr>
+<tr><td>FR-CREATE-05</td><td>For non-advocate creation, the system shall emit <code>claim-request</code> to caseworkers assigned to the service&#x27;s category.</td><td>Must</td></tr>
+<tr><td>FR-CREATE-06</td><td>The create response shall return <code>{ newClaim, user?, code? }</code>; VS360 shall show &quot;Case Added to Existing Account&quot; when linked to an existing user, or CodeDisplayModal with the login code for a new anonymous/coded user.</td><td>Must</td></tr>
+<tr><td>FR-CREATE-07</td><td>VS360 Create Case shall be a 3-step stepper: Required Info (service + name, anonymous by default, optional contact + <code>otpChannel</code>), Optional Demographics, and Service Questions (with per-question &quot;Bypass Requirement&quot;). It shall support a <code>prefill</code> prop (hotline/inquiry wrap-up).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="86-status-transitions-approve-reject-resolve">8.6 Status Transitions (Approve / Reject / Resolve)</h3>
+<p>Endpoints <code>PATCH /service-claims/{approve|reject|resolve}/:uid</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-TRAN-01</td><td><strong>Approve</strong> (pending→approved) shall: patch status; create a published &quot;Approved&quot; update; open a new SERVICE <code>chat_thread</code> (victim↔caseworker); set <code>stats.approved_by/at</code>; if referred, set referral <code>accepted</code>; and notify the victim.</td><td>Must</td></tr>
+<tr><td>FR-TRAN-02</td><td><strong>Reject</strong> (pending→rejected) shall: patch status; set <code>stats.rejected_by/at</code>; set referral <code>declined</code>; delete the PMT report; and notify the victim.</td><td>Must</td></tr>
+<tr><td>FR-TRAN-03</td><td><strong>Resolve</strong> (approved→resolved) shall: patch status; create a published &quot;Resolved&quot; update; set <code>stats.resolved_by/at</code>; archive the chat thread; and notify the victim. Body carries <code>pmtValues</code> and <code>threadUid</code>.</td><td>Must</td></tr>
+<tr><td>FR-TRAN-04</td><td>VS360 Resolve shall open SurveyModalForm to complete PMT/questionnaire data before calling resolve.</td><td>Must</td></tr>
+<tr><td>FR-TRAN-05</td><td>The state machine shall reject invalid transitions (only pending→approved, pending→rejected, approved→resolved are valid).</td><td>Must</td></tr>
+<tr><td>FR-TRAN-06</td><td>Approve shall decrement the VS360 claims notification badge.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="87-link-client-login-codes">8.7 Link-Client &amp; Login Codes</h3>
+<p>Endpoint <code>PATCH /service-claims/link-client/:claimUid</code> (<code>linkClientToCase</code>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-LINK-01</td><td>The system shall attach contact info (email or phone) and <code>otpChannel</code> to an anonymous case, validating the channel/contact.</td><td>Must</td></tr>
+<tr><td>FR-LINK-02</td><td>The system shall reject linking if the user already has contact info, or if a verified account already uses that email/phone.</td><td>Must</td></tr>
+<tr><td>FR-LINK-03</td><td>The system shall reuse an existing <code>loginCode</code> if present, else generate one, then send a code notification, and log <code>ADVOCATE_LINKED_CLIENT</code>.</td><td>Must</td></tr>
+<tr><td>FR-LINK-04</td><td>The victim shall redeem a login code via the mobile auth flow (<code>send-otp-for-code</code> → <code>verify-otp-for-login-code</code> → <code>login-with-code</code> / <code>set-password-first-login</code>) to claim the anonymous case.</td><td>Must</td></tr>
+<tr><td>FR-LINK-05</td><td>VS360 shall show a &quot;Link Client Contact&quot; button in the right rail only for anonymous cases (no email/phone), and display the returned login code in CodeDisplayModal.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="88-file-uploads">8.8 File Uploads</h3>
+<p>Endpoint <code>POST /service-claims/upload-files/:uid</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-FILE-01</td><td>The system shall accept ≤ 5 files per upload, write buffers to <code>uploads/claim</code>, upload to remote storage via <code>fileService</code>, and insert <code>FileUploads</code> rows with <code>context = SERVICE_CLAIM</code>.</td><td>Must</td></tr>
+<tr><td>FR-FILE-02</td><td>The Files tab shall list both case-uploaded files and chat-attached files.</td><td>Should</td></tr>
+<tr><td>FR-FILE-03</td><td>The Files tab shall offer a File Translator (<code>POST /tool/translate/file</code>).</td><td>Could</td></tr>
+</tbody></table></div>
+<h3 id="89-intake-question-answer-editing">8.9 Intake Question / Answer Editing</h3>
+<p>Endpoint <code>PATCH /service-claims/claims/:claimId/questions</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-QA-01</td><td>Intake questions shall be per-service (<code>service_claim_questions</code>) with types fill-in-the-blank, multiple-choice, true-false; <code>isRequired</code>; <code>options</code> JSON.</td><td>Must</td></tr>
+<tr><td>FR-QA-02</td><td>Answers (<code>claim_question_answers</code>) shall be captured at claim time; the read side shall merge the service&#x27;s full question list with answers so unanswered appear <code>id:null</code>.</td><td>Must</td></tr>
+<tr><td>FR-QA-03</td><td>Editing answers shall be a <strong>full replace</strong>: delete all existing answers for the claim, then re-insert the provided set.</td><td>Must</td></tr>
+<tr><td>FR-QA-04</td><td>Answer editing shall be permitted only when the case is approved.</td><td>Must</td></tr>
+<tr><td>FR-QA-05</td><td>Required questions may be individually bypassed at intake (&quot;Bypass Requirement&quot;).</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="810-notes-vs-published-updates">8.10 Notes vs. Published Updates</h3>
+<p>Notes (<code>claim_notes</code>) are internal; updates (<code>claim_updates</code>) can be victim-facing.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-NU-01</td><td><strong>Notes</strong> shall be caseworker-only (never shown to victim), with <code>title</code>, <code>description</code> (HTML ≤ 50000), and <code>noteType</code> ∈ {General Note, Case Update, Safety Concern, Follow-up Note, Service Note, Court Update, Intake Note}, plus <code>createdBy</code>/<code>updatedBy</code>.</td><td>Must</td></tr>
+<tr><td>FR-NU-02</td><td>Notes shall support create (<code>POST new-note/:claimUid</code>), read (<code>GET get-notes/:claimUid</code>), update (<code>PATCH update-note/:noteUid</code>), delete (<code>DELETE delete-note/:noteUid</code>).</td><td>Must</td></tr>
+<tr><td>FR-NU-03</td><td><strong>Updates</strong> shall support create (<code>POST new-update/:claimUid</code>), read (<code>GET get-updates/:claimUid</code>; APP filtered to <code>isPublished=true</code>), update (<code>PATCH update-update/:updateUid</code>), delete (<code>DELETE delete-update/:updateUid</code>).</td><td>Must</td></tr>
+<tr><td>FR-NU-04</td><td>Only published updates (<code>isPublished=true</code>) shall be visible to the victim and shall trigger a victim notification (<code>CLAIM_UPDATE</code> + socket <code>update-&lt;receiverUid&gt;</code> + FCM).</td><td>Must</td></tr>
+<tr><td>FR-NU-05</td><td>An unpublished→published transition shall trigger the victim notification (publish trigger).</td><td>Must</td></tr>
+<tr><td>FR-NU-06</td><td>Approve and Resolve shall each auto-create a published update (&quot;Approved&quot;/&quot;Resolved&quot;).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="811-consolidating-multiple-services-under-one-client">8.11 Consolidating Multiple Services Under One Client</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CONS-01</td><td>Each service request shall be its own case; there is no &quot;add another service&quot; action inside an existing case.</td><td>Must</td></tr>
+<tr><td>FR-CONS-02</td><td>Multiple cases shall be consolidated under one client account by linking the client (<code>link-client</code>), after which the mobile client sees all their cases.</td><td>Must</td></tr>
+<tr><td>FR-CONS-03</td><td>Handing a case&#x27;s data to a second agency shall occur only via referral (with consent + per-field sharing), not by merging cases.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="812-pmt-snapshot">8.12 PMT Snapshot</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-PMT-01</td><td>The system shall create a <code>pmt_report</code> snapshot at claim creation with demographics and new-vs-returning-client determination.</td><td>Must</td></tr>
+<tr><td>FR-PMT-02</td><td>The PMT snapshot shall be deleted when a case is rejected.</td><td>Must</td></tr>
+<tr><td>FR-PMT-03</td><td>Applicable questionnaire(s) for a claim (by service category, linked to an active grant) shall be resolvable and editable via <code>GET/POST /reports/pmt-questionnaires/claim/:claimId[/answers]</code>.</td><td>Must</td></tr>
+<tr><td>FR-PMT-04</td><td>PMT demographic rows shall be editable via <code>PATCH /reports/pmt-report/:uid</code> (agency-scoped).</td><td>Should</td></tr>
+<tr><td>FR-PMT-05</td><td>Resolve shall persist final <code>pmtValues</code> supplied via SurveyModalForm.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="813-claim-statistics-kpis">8.13 Claim Statistics &amp; KPIs</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-STAT-01</td><td>Each case shall have one <code>service_claim_stats</code> row recording <code>approved_by/at</code>, <code>rejected_by/at</code>, <code>resolved_by/at</code> for caseworker attribution.</td><td>Must</td></tr>
+<tr><td>FR-STAT-02</td><td><code>getClaimStats</code> shall aggregate counts (new = pending, approved = approved), restricted to own/self-actioned for VSMS users lacking <code>claims.view_all</code>.</td><td>Must</td></tr>
+<tr><td>FR-STAT-03</td><td><code>ServiceClaims.getAgencyCaseStats</code> shall compute completion rate, unique/new/returning clients, top-5 services, and average rating.</td><td>Should</td></tr>
+<tr><td>FR-STAT-04</td><td>The victim shall be able to rate a case (<code>PATCH rating/:uid</code>, mobile).</td><td>Should</td></tr>
+<tr><td>FR-STAT-05</td><td>The dashboard shall compute case KPIs (new/completed/total claims, avg response time from <code>approved_at − created_at</code>, repeat-victim rate) for trend badges.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="814-request-to-connect-case-precursor">8.14 Request-to-Connect (Case Precursor)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-RTC-01</td><td>A victim may request to connect with a service center for a service (<code>PUT /victim-services/request-to-connect/:uid</code>), which emails the center, dedupes, and returns 409 if already requested.</td><td>Should</td></tr>
+<tr><td>FR-RTC-02</td><td>Request-to-Connect items shall be surfaced to the app as a synthetic <code>requested</code> state and returned in the case list as <code>requestsToConnect[]</code>.</td><td>Should</td></tr>
+</tbody></table></div>
+<h2 id="9-detailed-user-system-flows">9. Detailed User &amp; System Flows</h2>
+<h3 id="91-victim-initiated-case-creation-claimservice-transactional">9.1 Victim-Initiated Case Creation (<code>claimService</code>, transactional)</h3>
+<ol class="flow">
+<li>Victim opens a service in the mobile app; the service detail fetch increments <code>viewCount</code> and returns claim-state for this victim.</li>
+<li>Victim answers the service&#x27;s intake questions (fill-in-the-blank / multiple-choice / true-false; required questions enforced) and optionally adds a <code>statementFromVictim</code>.</li>
+<li>Client POSTs <code>/mobile/service-claims</code> with <code>serviceId</code>, <code>questionAnswers[]</code>, <code>statementFromVictim?</code>.</li>
+<li>The server resolves <code>victimId = issuer.id</code> (APP).</li>
+<li>Duplicate guard: if an ongoing pending/approved claim already exists for (service, victim), the request is rejected.</li>
+<li>Create the claim with <code>uid = CL&lt;yy&gt;&lt;month&gt;&lt;uuid6&gt;</code>; status = <code>pending</code> (victim path is not auto-approved).</li>
+<li>Insert <code>claim_question_answers</code> for the claim.</li>
+<li>Create a <code>service_claim_stats</code> row (no approval attribution yet).</li>
+<li>Compute <code>isNewClient</code>; create the <code>pmt_report</code> snapshot with demographics.</li>
+<li>Emit <code>claim-request</code> to caseworkers assigned to the service&#x27;s category (<code>vsms_user_service_categories</code>), inserting <code>service_center_notifications</code> and emitting socket <code>claim-request</code> to <code>vs360-user-&lt;uid&gt;</code>.</li>
+<li>Return <code>{ newClaim }</code> to the app; the case now appears in the agency&#x27;s &quot;My Cases&quot; as a New Case.</li>
+</ol>
+<h3 id="92-advocate-created-case-vs360-create-case-shouldcreateuser">9.2 Advocate-Created Case (VS360 Create Case, <code>shouldCreateUser</code>)</h3>
+<ol class="flow">
+<li>Advocate clicks &quot;Create Case&quot; and steps through: (1) Required Info — pick a service (limited to assigned categories) and enter First/Last name; case is anonymous by default. Optionally check &quot;Add Contact &amp; Notification Details&quot; to reveal Contact Method (Email/Phone) and Preferred Notification Method (<code>otpChannel</code>: EMAIL/SMS/NONE).</li>
+<li>Step 2 — Optional Demographics: age range, gender (+other), race/ethnicity (+other), special classification (+other), state → city (cities lazy-load).</li>
+<li>Step 3 — Service Questions: dynamic per selected service; required questions may be individually &quot;Bypass Requirement&quot;-checked.</li>
+<li>On submit, VS360 calls <code>POST /service-claims</code> with <code>serviceId</code>, <code>userData</code> (name/contact/demographics), <code>shouldCreateUser:true</code>, <code>questionAnswers[]</code>.</li>
+<li>Backend (advocate path): find an existing user by email/phone; if found, link the case to that account. Otherwise create a temp anonymous user (<code>anonymousUserCode</code>, <code>isVerified:false</code>).</li>
+<li>Create the claim; status = <code>approved</code> (advocate auto-approve because the acting principal is staff, not an app user).</li>
+<li>Insert answers; create <code>service_claim_stats</code> with <code>approvedBy/At</code> set (auto-approved); compute <code>isNewClient</code>; create the PMT snapshot.</li>
+<li>If a new user was created and <code>otpChannel ≠ NONE</code>, generate a login code and send the code notification.</li>
+<li>Because this is advocate-created, the <code>claim-request</code> caseworker notification is NOT emitted (the case is already approved).</li>
+<li>Return <code>{ newClaim, user?, code? }</code>. VS360 shows &quot;Case Added to Existing Account&quot; (existing user) or opens CodeDisplayModal with the login code (new anonymous/coded user).</li>
+<li>Because the case is auto-approved, its SERVICE chat thread and &quot;Approved&quot; published update follow the same side effects as the approve flow (see 9.3) where applicable.</li>
+</ol>
+<h3 id="93-approve-a-case-pending-approved">9.3 Approve a Case (pending → approved)</h3>
+<ol class="flow">
+<li>Advocate opens a pending case; header shows Approve / Reject (or Accept/Decline referral when <code>referralSegment === &#x27;referral_received&#x27;</code>).</li>
+<li>Advocate clicks Approve and confirms (<code>modals.openConfirmModal</code>).</li>
+<li>VS360 calls <code>PATCH /service-claims/approve/:uid</code>.</li>
+<li>Backend patches <code>status = approved</code>.</li>
+<li>Backend creates a published <code>claim_updates</code> row titled &quot;Approved&quot;.</li>
+<li>Backend inserts a new SERVICE <code>chat_thread</code> (victim ↔ caseworker), enabling the Chat tab.</li>
+<li>Backend sets <code>service_claim_stats.approved_by/at</code> (caseworker attribution).</li>
+<li>If this case is a referred (cloned) case, backend patches the source referral <code>referralStatus = accepted</code> (<code>AgencyReferrals.patch(...).where(&#x27;referredCaseId&#x27;, claim.uid)</code>).</li>
+<li>Backend notifies the victim: insert <code>victim_notifications</code> <code>SERVICE_CLAIM_APPROVED</code> + FCM + socket <code>service-claim-action-for-&lt;victimUid&gt;</code> and <code>community-status-notification-&lt;victimId&gt;</code>.</li>
+<li>VS360 decrements the claims notification badge; the case moves to Approved and its status-gated tabs enable.</li>
+</ol>
+<h3 id="94-reject-a-case-pending-rejected">9.4 Reject a Case (pending → rejected)</h3>
+<ol class="flow">
+<li>Advocate opens a pending case and clicks Reject; confirms.</li>
+<li>VS360 calls <code>PATCH /service-claims/reject/:uid</code>.</li>
+<li>Backend patches <code>status = rejected</code>.</li>
+<li>Backend sets <code>service_claim_stats.rejected_by/at</code>.</li>
+<li>If referred, backend patches the source referral <code>referralStatus = declined</code>.</li>
+<li>Backend deletes the case&#x27;s <code>pmt_report</code> snapshot.</li>
+<li>Backend notifies the victim (rejection notification via <code>AppNotificationService</code> + FCM + socket).</li>
+<li>The case moves to Rejected (read-only); most tabs are disabled.</li>
+</ol>
+<h3 id="95-resolve-a-case-approved-resolved">9.5 Resolve a Case (approved → resolved)</h3>
+<ol class="flow">
+<li>Advocate opens an approved case; header shows Refer (if eligible) and Mark as Resolved.</li>
+<li>Advocate clicks Mark as Resolved; VS360 opens SurveyModalForm to complete PMT/questionnaire data.</li>
+<li>On submit, VS360 calls <code>PATCH /service-claims/resolve/:uid</code> with <code>pmtValues</code> and <code>threadUid</code>.</li>
+<li>Backend patches <code>status = resolved</code>.</li>
+<li>Backend creates a published <code>claim_updates</code> row titled &quot;Resolved&quot;.</li>
+<li>Backend sets <code>service_claim_stats.resolved_by/at</code>.</li>
+<li>Backend archives the case&#x27;s chat thread (identified by <code>threadUid</code>).</li>
+<li>Backend notifies the victim (<code>CLAIM_UPDATE</code>/resolution notification + FCM + socket <code>update-&lt;receiverUid&gt;</code> / <code>service-claim-action-for-&lt;victimUid&gt;</code>).</li>
+<li>The case moves to Resolved; it sorts low in the list.</li>
+</ol>
+<h3 id="96-link-client-to-an-anonymous-case-linkclienttocase">9.6 Link Client to an Anonymous Case (<code>linkClientToCase</code>)</h3>
+<ol class="flow">
+<li>Advocate opens an anonymous case (no email/phone) and clicks &quot;Link Client Contact&quot; in the right rail.</li>
+<li>In LinkClientModal, the advocate enters an email or phone and selects <code>otpChannel</code>.</li>
+<li>VS360 calls <code>PATCH /service-claims/link-client/:claimUid</code>.</li>
+<li>Backend validates the channel/contact; rejects if the user already has contact info, or if a verified account already uses that email/phone.</li>
+<li>Backend sets the contact + <code>otpChannel</code> on the client.</li>
+<li>Backend reuses an existing <code>loginCode</code> if present, else generates a new one; sets <code>codeSentAt</code>.</li>
+<li>Backend sends the code notification (email/SMS) and logs <code>ADVOCATE_LINKED_CLIENT</code>.</li>
+<li>Backend returns a <code>code</code> where applicable; VS360 shows it in CodeDisplayModal.</li>
+<li>The victim redeems the code on the mobile app (<code>send-otp-for-code</code> → <code>verify-otp-for-login-code</code> → <code>login-with-code</code> / <code>set-password-first-login</code>), activating the account and gaining access to this and any other linked cases.</li>
+</ol>
+<h3 id="97-login-code-redemption-victim-claims-an-anonymous-case">9.7 Login-Code Redemption (Victim Claims an Anonymous Case)</h3>
+<ol class="flow">
+<li>Victim receives the login code (email/SMS) generated at case creation or link-client.</li>
+<li>Victim installs/opens the mobile app and chooses &quot;log in with code.&quot;</li>
+<li>Client POST <code>send-otp-for-code</code> → server delivers an OTP to the code&#x27;s channel.</li>
+<li>Client POST <code>verify-otp-for-login-code</code> → server activates the account (marks verified).</li>
+<li>Client POST <code>login-with-code</code> and/or <code>set-password-first-login</code> to establish credentials.</li>
+<li>Server records <code>codeUsedAt</code> on the case; the case&#x27;s &quot;Login Code&quot; badge flips to Used in VS360.</li>
+<li>The victim now sees the case, its published updates, and can chat; all cases linked to the client roll up under the account.</li>
+</ol>
+<h3 id="98-upload-files-to-a-case">9.8 Upload Files to a Case</h3>
+<ol class="flow">
+<li>Advocate opens the Files tab and drops up to 5 files.</li>
+<li>VS360 calls <code>POST /service-claims/upload-files/:uid</code> (multipart).</li>
+<li>Backend writes each buffer to <code>uploads/claim</code>, uploads via <code>fileService</code> to remote storage, and returns remote URLs.</li>
+<li>Backend inserts a <code>FileUploads</code> row per file with <code>context = SERVICE_CLAIM</code>.</li>
+<li>The Files tab refreshes, listing case files alongside chat-attached files.</li>
+<li>Optionally, the advocate opens a file in the File Translator (<code>POST /tool/translate/file</code>).</li>
+</ol>
+<h3 id="99-edit-intake-question-answers">9.9 Edit Intake Question Answers</h3>
+<ol class="flow">
+<li>On an approved case, advocate opens the Details tab → Client Answers → Edit (EditClaimQuestionsModal).</li>
+<li>Advocate revises answers; VS360 calls <code>PATCH /service-claims/claims/:uid/questions</code> with the full answer set.</li>
+<li>Backend deletes all existing <code>claim_question_answers</code> for the claim, then re-inserts the provided set (full replace).</li>
+<li>The read side re-merges the service&#x27;s full question list with answers so any still-unanswered questions render <code>id:null</code>.</li>
+<li>Edit controls remain disabled unless the case is approved.</li>
+</ol>
+<h3 id="910-add-edit-delete-an-internal-note">9.10 Add / Edit / Delete an Internal Note</h3>
+<ol class="flow">
+<li>Advocate opens the Notes tab and clicks New Note; enters title, TipTap rich text, and selects a <code>noteType</code>.</li>
+<li>VS360 calls <code>POST /service-claims/new-note/:claimUid</code>; backend inserts a <code>claim_notes</code> row with <code>createdBy = issuer.id</code>.</li>
+<li>To edit, <code>PATCH /service-claims/update-note/:noteUid</code> (sets <code>updatedBy</code>); to delete, <code>DELETE /service-claims/delete-note/:noteUid</code>.</li>
+<li>Notes are never sent to the victim and never trigger a victim notification; they are additionally visible in the agency-wide Notes Center over the same <code>claim_notes</code> table.</li>
+</ol>
+<h3 id="911-create-publish-edit-delete-a-victim-facing-update">9.11 Create / Publish / Edit / Delete a Victim-Facing Update</h3>
+<ol class="flow">
+<li>Advocate opens the Updates tab, clicks Create Update, enters a title + rich text, and toggles &quot;notify client&quot; (publish).</li>
+<li>VS360 calls <code>POST /service-claims/new-update/:claimUid</code>.</li>
+<li>If published (<code>isPublished=true</code>), backend notifies the victim: <code>CLAIM_UPDATE</code> <code>victim_notifications</code> row + socket <code>update-&lt;receiverUid&gt;</code> + FCM; sets <code>hasUnseenUpdates=true</code>.</li>
+<li>Editing via <code>PATCH /service-claims/update-update/:updateUid</code>: an unpublished→published transition fires the same victim notification (publish trigger).</li>
+<li>Deleting via <code>DELETE /service-claims/delete-update/:updateUid</code>.</li>
+<li>The mobile app lists only <code>isPublished=true</code> updates (<code>GET get-updates/:claimUid</code> filtered for APP).</li>
+</ol>
+<h3 id="912-victim-marks-updates-seen">9.12 Victim Marks Updates Seen</h3>
+<ol class="flow">
+<li>Victim opens a case with <code>hasUnseenUpdates=true</code> in the mobile app.</li>
+<li>Client calls <code>PATCH /service-claims/claim-update/seen/:uid</code>.</li>
+<li>Backend clears <code>hasUnseenUpdates</code>; the case&#x27;s unseen indicator disappears.</li>
+</ol>
+<h3 id="913-case-chat-client-advocate">9.13 Case Chat (Client ↔ Advocate)</h3>
+<ol class="flow">
+<li>Chat is available only after approval (the SERVICE chat thread is created on approve, or on advocate auto-approve).</li>
+<li>Advocate opens the Chat tab; VS360 fetches <code>GET /chat-services/get-all-chats/:uid</code> (paged).</li>
+<li>Either party sends a message (<code>POST /chat-services/send-message/:uid</code>, multipart with optional attachments).</li>
+<li>New messages generate <code>SERVICE_NEW_MESSAGE</code> notifications; the case list bubbles cases with unread messages to the top.</li>
+<li>On resolve, the thread is archived (read-only history retained).</li>
+</ol>
+<h3 id="914-refer-a-case-to-a-partner-agency-integration-point">9.14 Refer a Case to a Partner Agency (integration point)</h3>
+<ol class="flow">
+<li>On an approved case with accepted partnerships and no active referral, advocate clicks Refer.</li>
+<li>In ReferAgencyModal, advocate searches accepted partners (both agencies <code>acceptingReferrals=true</code>), picks a target service, chooses which case data to share (Case Notes, Files, Chat History, Updates, Client Answers, PMT Demographics), and writes a message.</li>
+<li>On confirm, a referral is created (<code>consentStatus=pending</code>, <code>referralStatus=pending</code>, <code>referredCaseId=null</code>); the single-active-referral guard returns 409 if one is already active.</li>
+<li>The victim consents (or rejects) on the mobile app. On consent, a sanitized case snapshot is built per the sharing flags and the case is cloned into the target agency (new <code>service_claims</code> + mirrored <code>pmt_report</code> + baseline <code>service_claim_stats</code>, status <code>pending</code>).</li>
+<li>The receiving agency approves/rejects the cloned case; that approve/reject flips the source referral <code>referralStatus</code> to <code>accepted</code>/<code>declined</code> (see 9.3 step 8 and 9.4 step 5).</li>
+<li>The Referrals tab on both the source and cloned cases reflects the sent/received referral and the shared snapshot sections.</li>
+</ol>
+<h3 id="915-consolidate-multiple-cases-under-one-client">9.15 Consolidate Multiple Cases Under One Client</h3>
+<ol class="flow">
+<li>A client has several separate cases (each its own service claim), possibly created anonymously at different times.</li>
+<li>An advocate links the client&#x27;s contact to each anonymous case (<code>link-client</code>) using the same email/phone.</li>
+<li>Because the cases resolve to one client account, the victim — after redeeming the login code — sees all their cases together in the mobile app.</li>
+<li>There is no case-merge operation; consolidation is purely by client account, and cross-agency handoff remains referral-only.</li>
+</ol>
+<h3 id="916-pmt-snapshot-lifecycle">9.16 PMT Snapshot Lifecycle</h3>
+<ol class="flow">
+<li>At claim creation, the backend computes new-vs-returning client and inserts a <code>pmt_report</code> row with demographics captured at intake (age, gender, race/ethnicity, special classification).</li>
+<li>During case work, applicable questionnaire(s) (matched by the service&#x27;s category and linked to an active grant) are resolved via <code>GET /reports/pmt-questionnaires/claim/:claimId</code>; answers are submitted via <code>POST /reports/pmt-questionnaires/claim/:claimId/answers</code>.</li>
+<li>PMT demographic fields can be corrected via <code>PATCH /reports/pmt-report/:uid</code> (agency-scoped; 403 if the row&#x27;s claim is not in the issuer&#x27;s agency).</li>
+<li>On resolve, final <code>pmtValues</code> from SurveyModalForm are persisted.</li>
+<li>On reject, the <code>pmt_report</code> snapshot is deleted.</li>
+<li>When a case is cloned by a referral, a mirrored <code>pmt_report</code> row is created in the target agency (demographics copied from <code>victimInfo</code>).</li>
+</ol>
+<h3 id="917-view-filter-the-case-list">9.17 View &amp; Filter the Case List</h3>
+<ol class="flow">
+<li>Advocate opens &quot;My Cases&quot;; VS360 calls <code>GET /service-claims</code> with <code>page</code>, <code>pageSize:20</code>, and current filters; the query key includes <code>claims.view_all</code>.</li>
+<li>Backend scopes results: VSMS → agency cases (pending/self-actioned only without <code>view_all</code>); APP → own cases; ADMIN → cross-agency read.</li>
+<li>Header chips show New Cases, Approved Cases, and Referred Cases; response also returns <code>requestsToConnect[]</code>.</li>
+<li>Advocate filters by search (client name or Case ID), Category (limited to assigned categories), and Status; refresh re-queries.</li>
+<li>Cases render as cards, sorted unread-first (matched against <code>SERVICE_NEW_MESSAGE</code> notifications), then by status priority, then recency.</li>
+<li>Advocate clicks a card → navigate to <code>/claims/:uid</code> (case detail), passing the claim in route state.</li>
+<li>Advocate optionally exports the list to CSV/XLS via a pageless fetch.</li>
+</ol>
+<h3 id="918-quick-case-status-update-from-dashboard">9.18 Quick Case-Status Update from Dashboard</h3>
+<ol class="flow">
+<li>On the dashboard, advocate uses StatusUpdateModal.</li>
+<li>VS360 calls <code>PATCH /dashboard/cases/:uid/status</code> with <code>{status, reason}</code> (guarded by <code>claims.edit</code>).</li>
+<li>Backend validates status against the whitelist (pending, approved, rejected, resolved, in_progress, pending_review, awaiting_client, pending_court_date, closed), verifies the case belongs to the issuer&#x27;s agency (403 otherwise), and patches <code>status</code> + <code>statusReason</code>.</li>
+<li>Note: this dashboard path allows extended workflow statuses beyond the core state machine and does not run the approve/reject/resolve side effects — see Open Questions.</li>
+</ol>
+<h3 id="919-rate-a-resolved-case-victim">9.19 Rate a Resolved Case (Victim)</h3>
+<ol class="flow">
+<li>After resolution, the victim opens the case in the mobile app.</li>
+<li>Client calls <code>PATCH /service-claims/rating/:uid</code> with a rating value.</li>
+<li>Backend patches <code>rating</code> on the case; the value feeds <code>getAgencyCaseStats</code> average rating and dashboard provider rating.</li>
+</ol>
+<h3 id="920-request-to-connect-precursor">9.20 Request-to-Connect Precursor</h3>
+<ol class="flow">
+<li>A victim browsing a service taps &quot;request to connect.&quot;</li>
+<li>Client calls <code>PUT /victim-services/request-to-connect/:uid</code>.</li>
+<li>Backend dedupes (409 if already requested), emails the service center, and records the request.</li>
+<li>The request surfaces in the agency case list as <code>requestsToConnect[]</code> and appears to the app as a synthetic <code>requested</code> state; an advocate follows up (e.g., by creating a case).</li>
+</ol>
+<h2 id="10-data-model">10. Data Model</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Key Fields</th><th>Relationships</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>ServiceClaims (<code>service_claims</code>)</td><td><code>id</code>, <code>uid</code> (<code>CL&lt;yy&gt;&lt;month&gt;&lt;uuid6&gt;</code>), <code>serviceId</code>, <code>victimId</code>, <code>status</code>, <code>rating</code>, <code>hasUnseenUpdates</code>, <code>statementFromVictim</code>, <code>loginCode</code>, <code>codeSentAt</code>, <code>codeUsedAt</code>, <code>codeLastUpdatedAt</code></td><td>belongsTo Services, AppUsers (victim); hasOne ServiceClaimStats, PmtReports; hasMany ClaimQuestionAnswers, ClaimNotes, ClaimUpdates, FileUploads; referenced by AgencyReferrals (<code>originalCaseId</code>/<code>referredCaseId</code>)</td><td>The case — a victim&#x27;s request for a service; central entity.</td></tr>
+<tr><td>ServiceClaimStats (<code>service_claim_stats</code>)</td><td><code>approved_by/at</code>, <code>rejected_by/at</code>, <code>resolved_by/at</code></td><td>belongsTo ServiceClaims; FK Users (caseworkers)</td><td>Per-claim caseworker attribution for each state transition.</td></tr>
+<tr><td>ClaimQuestions (<code>service_claim_questions</code>)</td><td><code>question</code>, <code>questionType</code> (fill-in-the-blank/multiple-choice/true-false), <code>isRequired</code>, <code>options</code> (JSON)</td><td>belongsTo Services</td><td>Per-service intake questions.</td></tr>
+<tr><td>ClaimQuestionAnswers (<code>claim_question_answers</code>)</td><td><code>claimId</code>, <code>questionId</code>, <code>answer</code></td><td>belongsTo ServiceClaims, ClaimQuestions</td><td>Answers captured per claim; full-replace on edit.</td></tr>
+<tr><td>ClaimNotes (<code>claim_notes</code>)</td><td><code>id</code>, <code>uid</code>, <code>title</code>, <code>description</code> (HTML ≤ 50000), <code>noteType</code>, <code>createdBy</code>, <code>updatedBy</code>, <code>claimId</code></td><td>belongsTo ServiceClaims, Users (owner/editor)</td><td>Internal caseworker-only annotations (never shown to victim).</td></tr>
+<tr><td>ClaimUpdates (<code>claim_updates</code>)</td><td><code>title</code>, <code>description</code>, <code>isPublished</code></td><td>belongsTo ServiceClaims</td><td>Progress messages; published updates are victim-facing and notify.</td></tr>
+<tr><td>PmtReports (<code>pmt_report</code>)</td><td><code>isNew</code>, <code>raceEtnicity(+Other)</code>, <code>gender(+Other)</code>, <code>age</code>, <code>victimizationType(+Other)</code>, <code>specialClassification(+Other)</code>, <code>typeOfService(+Sub)</code>, <code>serviceUnmet</code>, <code>surveyReceived</code>, <code>surveyCompleted</code>, <code>victimCompensation</code></td><td>belongsTo ServiceClaims</td><td>Grant/PMT demographic snapshot; created at claim creation, deleted on reject.</td></tr>
+<tr><td>FileUploads (<code>file_uploads</code>)</td><td><code>context</code> (<code>SERVICE_CLAIM</code>, <code>GRANT</code>, <code>GENERATED_REPORT</code>…), remote URL, filename</td><td>polymorphic to ServiceClaims (case files)</td><td>Case documents and chat attachments.</td></tr>
+<tr><td>RequestToConnect (<code>request_to_connect</code>)</td><td>victim, service center, service</td><td>belongsTo victim/service</td><td>Case precursor; synthetic <code>requested</code> state.</td></tr>
+<tr><td>ChatThreads (<code>chat_threads</code>)</td><td><code>type</code> (<code>SERVICE</code>, <code>AGENCY_CHAT</code>, <code>INQUIRY</code>…), <code>status</code> (ACTIVE/ARCHIVED), <code>vsmsId</code>, <code>vsmsId2</code></td><td>related to ServiceClaims (SERVICE thread)</td><td>Case chat thread opened on approve, archived on resolve.</td></tr>
+<tr><td>AgencyReferrals (<code>agency_referrals</code>)</td><td><code>uid</code>, <code>partnershipId</code>, <code>originalCaseId</code>, <code>referredCaseId</code>, <code>targetServiceId</code>, <code>consentStatus</code>, <code>referralStatus</code>, <code>metadata</code> (sharing flags + snapshot)</td><td>belongsTo AgencyPartnerships; references two ServiceClaims</td><td>Cross-agency referral / cloned case linkage.</td></tr>
+<tr><td>PmtQuestionnaireAnswers (<code>pmt_questionnaire_answers</code>)</td><td><code>questionId</code>, <code>answer</code>, <code>uid</code> (submitter)</td><td>linked to claim via questionnaire</td><td>Per-claim grant-questionnaire answers feeding the PMT tab.</td></tr>
+<tr><td>VictimNotifications (<code>victim_notifications</code>)</td><td>type (<code>SERVICE_CLAIM_APPROVED</code>, <code>CLAIM_UPDATE</code>…), <code>additionalData</code> (<code>claimUid</code>, <code>threadUid</code>)</td><td>belongsTo AppUsers</td><td>Victim-side notification rows for case events.</td></tr>
+<tr><td>ServiceCenterNotifications (<code>service_center_notifications</code>)</td><td>type (<code>claim-request</code>, <code>SERVICE_NEW_MESSAGE</code>…), <code>additionalData</code></td><td>belongsTo ServiceCenters/Users</td><td>Staff-side notification rows for case events.</td></tr>
+<tr><td>ActionLogs (<code>action_logs</code>)</td><td><code>action</code>, <code>referenceId</code>, <code>referenceType</code>, <code>actionDescription{source,ip,url,context}</code></td><td>polymorphic</td><td>Immutable audit trail for every case mutation.</td></tr>
+</tbody></table></div>
+<h2 id="11-api-integration-surface">11. API &amp; Integration Surface</h2>
+<h3 id="111-service-claim-case-endpoints">11.1 Service Claim (Case) Endpoints</h3>
+<p>Mounted under <code>/{admin,web,mobile}/service-claims</code>. Admin router exposes list + details only (no mutation).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/service-claims</code></td><td>List cases (<code>getAllServiceClaims</code>); issuer-scoped; filters searchKey, categoryId, status, statusNotIn, serviceCenterId, startDate, endDate, includeReferrals, page/pageSize/pageLess</td><td>APP / VS360 / ADMIN</td></tr>
+<tr><td>GET</td><td><code>/service-claims/:uid</code></td><td>Case details (<code>getServiceClaimDetails</code>) — full graph + merged questions + latest chat thread + referral VM</td><td>APP / VS360 / ADMIN</td></tr>
+<tr><td>POST</td><td><code>/service-claims</code></td><td>Create case (<code>claimService</code>); victim-initiated or advocate-created</td><td>APP / VS360</td></tr>
+<tr><td>PATCH</td><td><code>/service-claims/approve/:uid</code></td><td>pending → approved (opens SERVICE thread; notifies)</td><td>VS360</td></tr>
+<tr><td>PATCH</td><td><code>/service-claims/reject/:uid</code></td><td>pending → rejected (deletes PMT)</td><td>VS360</td></tr>
+<tr><td>PATCH</td><td><code>/service-claims/resolve/:uid</code></td><td>approved → resolved (archives thread); body <code>pmtValues</code>, <code>threadUid</code></td><td>VS360</td></tr>
+<tr><td>POST</td><td><code>/service-claims/upload-files/:uid</code></td><td>Upload ≤ 5 case files (context <code>SERVICE_CLAIM</code>)</td><td>VS360</td></tr>
+<tr><td>PATCH</td><td><code>/service-claims/claims/:claimId/questions</code></td><td>Replace all intake answers</td><td>VS360</td></tr>
+<tr><td>POST</td><td><code>/service-claims/new-note/:claimUid</code></td><td>Create internal note</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/service-claims/get-notes/:claimUid</code></td><td>List internal notes</td><td>VS360</td></tr>
+<tr><td>PATCH</td><td><code>/service-claims/update-note/:noteUid</code></td><td>Update a note</td><td>VS360</td></tr>
+<tr><td>DELETE</td><td><code>/service-claims/delete-note/:noteUid</code></td><td>Delete a note</td><td>VS360</td></tr>
+<tr><td>POST</td><td><code>/service-claims/new-update/:claimUid</code></td><td>Create an update (publish → notify)</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/service-claims/get-updates/:claimUid</code></td><td>List updates (APP filtered to published)</td><td>VS360 / APP</td></tr>
+<tr><td>PATCH</td><td><code>/service-claims/update-update/:updateUid</code></td><td>Update an update (publish trigger)</td><td>VS360</td></tr>
+<tr><td>DELETE</td><td><code>/service-claims/delete-update/:updateUid</code></td><td>Delete an update</td><td>VS360</td></tr>
+<tr><td>PATCH</td><td><code>/service-claims/link-client/:claimUid</code></td><td>Attach contact to anonymous case; issue login code</td><td>VS360</td></tr>
+<tr><td>PATCH</td><td><code>/service-claims/rating/:uid</code></td><td>Victim rates the case</td><td>APP</td></tr>
+<tr><td>PATCH</td><td><code>/service-claims/claim-update/seen/:uid</code></td><td>Victim marks updates seen</td><td>APP</td></tr>
+</tbody></table></div>
+<h3 id="112-adjacent-case-related-endpoints">11.2 Adjacent Case-Related Endpoints</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/chat-services/get-all-chats/:uid</code></td><td>Case chat history (paged)</td><td>VS360 / APP</td></tr>
+<tr><td>POST</td><td><code>/chat-services/send-message/:uid</code></td><td>Send case chat message (multipart)</td><td>VS360 / APP</td></tr>
+<tr><td>POST</td><td><code>/tool/translate/file</code></td><td>File translator</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/reports/pmt-questionnaires/claim/:claimId</code></td><td>Applicable questionnaire(s) + answers for a claim</td><td>VS360</td></tr>
+<tr><td>POST</td><td><code>/reports/pmt-questionnaires/claim/:claimId/answers</code></td><td>Submit questionnaire answers for a claim</td><td>VS360</td></tr>
+<tr><td>PATCH</td><td><code>/reports/pmt-report/:uid</code></td><td>Update PMT demographic row (agency-scoped)</td><td>VS360</td></tr>
+<tr><td>PATCH</td><td><code>/dashboard/cases/:uid/status</code></td><td>Quick case-status update (extended statuses)</td><td>VS360 + <code>claims.edit</code></td></tr>
+<tr><td>PUT</td><td><code>/victim-services/request-to-connect/:uid</code></td><td>Request-to-connect precursor</td><td>APP</td></tr>
+<tr><td>POST</td><td><code>/web/partnerships/referrals</code></td><td>Create a referral for a case</td><td>VS360</td></tr>
+<tr><td>POST</td><td><code>/mobile/partnerships/referrals/:uid/decision</code></td><td>Victim consent decision on a referral</td><td>APP</td></tr>
+</tbody></table></div>
+<h3 id="113-external-integrations">11.3 External Integrations</h3>
+<ul>
+<li><strong>Twilio</strong> — SMS delivery of login codes/OTP and case notifications (victim SMS channel).</li>
+<li><strong>FCM</strong> — push notifications to the victim&#x27;s device tokens for case events (approve/reject/resolve, published updates, new chat messages).</li>
+<li><strong>Azure Blob Storage</strong> (MinIO in dev) — remote storage for case files (<code>FileUploads</code>, context <code>SERVICE_CLAIM</code>) via <code>fileService</code>.</li>
+<li><strong>Email (BullMQ + Handlebars)</strong> — request-to-connect emails to the center, login-code delivery, and templated notifications.</li>
+<li><strong>Socket.IO</strong> — real-time case events to <code>vs360-user-&lt;uid&gt;</code> (staff) and <code>app-notification-room</code> (victim); channels <code>claim-request</code>, <code>service-claim-action-for-&lt;victimUid&gt;</code>, <code>community-status-notification-&lt;victimId&gt;</code>, <code>update-&lt;receiverUid&gt;</code>.</li>
+<li><strong>OpenAI/Anthropic</strong> — not part of case CRUD; touches cases only via the PMT/report AI surfaces (out of scope here).</li>
+</ul>
+<h2 id="12-rbac-permissions">12. RBAC &amp; Permissions</h2>
+<p>Two layers combine: the context gate (<code>allowOnly</code>, reading <code>issuer.roleInfo.context</code>) and fine-grained <code>claims.&lt;action&gt;</code> permissions (checked in services / <code>permission-middleware</code>). <code>SUPER_ADMIN</code> bypasses fine-grained checks.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Action</th><th>Endpoint(s)</th><th>Context</th><th>Permission</th><th>Scoping</th></tr></thead>
+<tbody>
+<tr><td>View own cases</td><td><code>GET /mobile/service-claims</code>, <code>/:uid</code></td><td>APP (auth-only)</td><td>—</td><td><code>issuer.id</code> (own cases)</td></tr>
+<tr><td>View agency cases</td><td><code>GET /web/service-claims</code>, <code>/:uid</code></td><td>VS360</td><td><code>claims.view</code></td><td>Own agency; limited to pending/self-actioned without <code>claims.view_all</code></td></tr>
+<tr><td>View all agency cases</td><td><code>GET /web/service-claims</code></td><td>VS360</td><td><code>claims.view_all</code></td><td>All cases in <code>issuer.serviceCenterInfo.id</code></td></tr>
+<tr><td>Cross-agency oversight</td><td><code>GET /admin/service-claims</code>, <code>/:uid</code></td><td>ADMIN</td><td>(admin module)</td><td>Cross-agency, read-only</td></tr>
+<tr><td>Create case</td><td><code>POST /service-claims</code></td><td>APP or VS360</td><td><code>claims.add</code> (VS360)</td><td>Agency (VS360) / self (APP)</td></tr>
+<tr><td>Approve / Reject / Resolve</td><td><code>PATCH .../{approve,reject,resolve}/:uid</code></td><td>VS360</td><td><code>claims.edit</code></td><td>Own agency</td></tr>
+<tr><td>Edit answers / notes / updates / files / link-client</td><td>corresponding routes</td><td>VS360</td><td><code>claims.edit</code></td><td>Own agency</td></tr>
+<tr><td>Delete note / update</td><td><code>DELETE .../{delete-note,delete-update}/*</code></td><td>VS360</td><td><code>claims.delete</code> (notes also <code>notes_center.delete</code> in Notes Center)</td><td>Own agency</td></tr>
+<tr><td>Quick status update (dashboard)</td><td><code>PATCH /dashboard/cases/:uid/status</code></td><td>VS360</td><td><code>claims.edit</code></td><td>Own agency (403 otherwise)</td></tr>
+<tr><td>Rate case / mark seen</td><td><code>PATCH .../{rating,claim-update/seen}/:uid</code></td><td>APP</td><td>—</td><td>Own case</td></tr>
+</tbody></table></div>
+<p>Notes: <code>claims.view_all</code> is the pivotal flag distinguishing agency admins (see all cases) from advocates (see only pending/self-actioned). Agency scoping is enforced server-side by <code>issuer.serviceCenterInfo.id</code> on every VS360 case read/write; PMT-row updates 403 when the row&#x27;s claim is not in the issuer&#x27;s agency.</p>
+<h2 id="13-non-functional-requirements">13. Non-Functional Requirements</h2>
+<ul>
+<li><strong>Victim safety &amp; privacy (paramount).</strong> Cases may be fully anonymous (no email/phone) until the victim chooses to claim them via login code. Internal notes (<code>claim_notes</code>) are never exposed to the victim. Only explicitly published updates and case chat are victim-visible. Cross-agency sharing occurs only with victim consent and only for the specific fields an advocate elects to share.</li>
+<li><strong>Security.</strong> All endpoints require authentication; VS360/ADMIN routes require the context gate plus fine-grained <code>claims.*</code> permissions. Responses are AES-encrypted; VS360 additionally requires <code>X-Netlify-Secret</code>. Agency isolation prevents any VSMS user from reading/writing another agency&#x27;s cases.</li>
+<li><strong>Auditability.</strong> Every case create/update/delete writes an <code>action_logs</code> row (<code>action</code>, <code>referenceType</code>, <code>actionDescription{source,ip,url,context}</code>); state transitions additionally attribute the acting caseworker in <code>service_claim_stats</code>. Login-code linking logs <code>ADVOCATE_LINKED_CLIENT</code>; referral consent logs <code>REFERRAL_CONSENT_GRANTED/DENIED</code>.</li>
+<li><strong>Performance.</strong> Case list and detail are paginated; write routes are rate-limited (<code>rateLimiters.standard</code>, ~10/5s). React Query caches reads with keys that vary by <code>claims.view_all</code>.</li>
+<li><strong>Availability &amp; resilience.</strong> Case creation and state transitions run in DB transactions (<code>withTransaction</code>); notification/socket calls are wrapped defensively so a delivery failure never rolls back or breaks the primary case operation.</li>
+<li><strong>Data integrity.</strong> One-open-claim-per-(service,victim) guard prevents duplicate victim-initiated cases; answer editing is an atomic full replace; PMT snapshot is created on creation and deleted on reject to keep grant data consistent with case state.</li>
+<li><strong>Compliance (grant/PMT reporting).</strong> The PMT snapshot and per-claim questionnaire answers are captured as a by-product of case work to support VOCA/VAWA-style federal/state reporting.</li>
+<li><strong>Localization &amp; accessibility.</strong> Victim-facing strings support the platform&#x27;s multi-language static translations; VS360 UI follows Mantine accessible components.</li>
+</ul>
+<h2 id="14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</h2>
+<h3 id="141-case-kpis-dashboards">14.1 Case KPIs &amp; Dashboards</h3>
+<ul>
+<li>Per-claim attribution in <code>service_claim_stats</code> (<code>approved_by/at</code>, <code>rejected_by/at</code>, <code>resolved_by/at</code>).</li>
+<li><code>getClaimStats</code> aggregate counts (new = pending, approved = approved), scoped by <code>claims.view_all</code>.</li>
+<li><code>ServiceClaims.getAgencyCaseStats</code> — completion rate, unique/new/returning clients, top-5 services, average rating.</li>
+<li>Dashboard KPIs (<code>GET /dashboard/kpi-data</code>) — new/completed/total claims, average response time (<code>approved_at − created_at</code>), repeat-victim rate, service-provider rating, with month-over-month trend badges.</li>
+<li>Cases-needing-attention widget uses <code>GET /service-claims?statusNotIn=resolved,rejected</code>.</li>
+</ul>
+<h3 id="142-notifications-socket-events-case-specific">14.2 Notifications &amp; Socket Events (Case-Specific)</h3>
+<p><strong>Staff side (<code>VS360NotificationService</code>, room <code>vs360-user-&lt;uid&gt;</code>):</strong></p>
+<ul>
+<li>New victim-initiated (non-advocate) case → <code>emitServiceClaimNotification</code> → <code>service_center_notifications</code> + socket <code>claim-request</code> to caseworkers assigned to the service&#x27;s category.</li>
+<li>New case chat message → <code>SERVICE_NEW_MESSAGE</code> notification (drives unread-first sorting in the case list).</li>
+</ul>
+<p><strong>Victim side (<code>AppNotificationService</code> + FCM, room <code>app-notification-room</code>):</strong></p>
+<ul>
+<li>Approve → <code>victim_notifications</code> <code>SERVICE_CLAIM_APPROVED</code> + FCM + socket <code>service-claim-action-for-&lt;victimUid&gt;</code> and <code>community-status-notification-&lt;victimId&gt;</code>.</li>
+<li>Reject → victim rejection notification + FCM + socket.</li>
+<li>Resolve → resolution/<code>CLAIM_UPDATE</code> notification + FCM + socket (<code>service-claim-action-for-&lt;victimUid&gt;</code> / <code>update-&lt;receiverUid&gt;</code>).</li>
+<li>Published update (or unpublished→published) → <code>CLAIM_UPDATE</code> + socket <code>update-&lt;receiverUid&gt;</code> + FCM; sets <code>hasUnseenUpdates</code>.</li>
+<li>Login-code delivery → email/SMS (Twilio) on creation and on link-client.</li>
+<li>Request-to-connect → email to the service center.</li>
+</ul>
+<p>All notification/socket calls are defensive: failures are logged and never break the primary case transaction.</p>
+<h2 id="15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Type</th><th>Impact</th><th>Mitigation / Owner</th></tr></thead>
+<tbody>
+<tr><td>No one-click &quot;convert inquiry → case&quot;</td><td>Open Question / Gap</td><td>Advocates must manually re-create a case from an inquiry (via <code>prefill</code>); inquiry and case link only once contact is linked</td><td>Product to decide whether to build a first-class convert action; Eng (Cases + Inquiries)</td></tr>
+<tr><td>Dashboard <code>PATCH /dashboard/cases/:uid/status</code> bypasses state-machine side effects</td><td>Open Question / Bug risk</td><td>Extended statuses (in_progress, awaiting_client, pending_court_date, closed) can be set without opening/archiving threads, PMT deletion, or notifications — cases can reach states the core flow never produces</td><td>Reconcile the extended status whitelist with the canonical state machine; Eng (Dashboard + Cases)</td></tr>
+<tr><td>Answer editing is a destructive full replace</td><td>Risk</td><td>Editing intake answers deletes all prior answers before re-insert; a partial payload could drop answers</td><td>Ensure UI always submits the complete answer set; consider soft/versioned edits; Eng (Cases)</td></tr>
+<tr><td>PMT snapshot deleted on reject</td><td>Risk / By design</td><td>Rejecting a case permanently removes its <code>pmt_report</code>; a later reversal loses demographics</td><td>Confirm no reporting need for rejected-case demographics; consider soft-delete; Compliance</td></tr>
+<tr><td>Anonymous-case login codes delivered over SMS/email</td><td>Privacy risk</td><td>A misdirected code could expose case access</td><td>Validate contact ownership; codes are single-use and channel-bound; Security</td></tr>
+<tr><td>Advocate auto-approve skips victim-side triage</td><td>Assumption</td><td>Advocate-created cases are immediately approved (chat/updates active) without victim action</td><td>Confirm this is intended; ensure login code reaches the client; Product</td></tr>
+<tr><td>Extended/synthetic statuses not unified</td><td>Open Question</td><td><code>requested</code> (Request-to-Connect) and dashboard extended statuses are not part of <code>service_claims.status</code> enum semantics used elsewhere</td><td>Define one canonical status vocabulary across list, detail, dashboard; Eng</td></tr>
+<tr><td><code>hasUnseenUpdates</code> cleared only via explicit mobile call</td><td>Risk</td><td>If the app fails to call <code>claim-update/seen</code>, the badge persists</td><td>Confirm client always calls on view; Eng (Victim App)</td></tr>
+<tr><td>Cross-agency isolation relies on server-side scoping</td><td>Assumption</td><td>Correct agency scoping (<code>serviceCenterInfo.id</code>) is critical to CJIS-style isolation</td><td>Maintain scoping tests on every case read/write; Security/QA</td></tr>
+<tr><td>Single active referral per case</td><td>Assumption / By design</td><td>Only one non-terminal referral may exist per case (409 otherwise)</td><td>Documented; surface clear UI messaging; Eng (Referrals)</td></tr>
+</tbody></table></div>
+<h2 id="16-glossary">16. Glossary</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Case</td><td>Operational name for a service claim — one victim&#x27;s request for one service.</td></tr>
+<tr><td>Service Claim (<code>service_claims</code>)</td><td>The backend entity representing a case; <code>uid</code> format <code>CL&lt;yy&gt;&lt;month&gt;&lt;uuid6&gt;</code>.</td></tr>
+<tr><td>Service</td><td>A concrete offering published by a service center under a category; owns the intake (claim) questions.</td></tr>
+<tr><td>Service Category</td><td>Taxonomy grouping services; also routes claim notifications to assigned caseworkers.</td></tr>
+<tr><td>Advocate / Case Worker (VSMS)</td><td>Agency staff who triage and manage cases (issuer type <code>VSMS</code>).</td></tr>
+<tr><td>VSMS</td><td>Victim Services Management System — agency staff identity/context.</td></tr>
+<tr><td>VS360</td><td>The web app used by agency staff to manage cases.</td></tr>
+<tr><td>Victim / Survivor (APP)</td><td>The client requesting help via the mobile app (issuer type <code>APP</code>).</td></tr>
+<tr><td>Login Code</td><td>One-time code letting a victim claim an advocate-created/anonymous case and establish an account.</td></tr>
+<tr><td>Anonymous Case</td><td>A case with no identifying contact info until a victim claims it or an advocate links contact.</td></tr>
+<tr><td>Link-Client</td><td>Attaching contact info to an anonymous case and issuing a login code (<code>linkClientToCase</code>).</td></tr>
+<tr><td>Intake Questions</td><td>Per-service questions (<code>service_claim_questions</code>) answered when a case is created.</td></tr>
+<tr><td>Note (<code>claim_notes</code>)</td><td>Internal, caseworker-only annotation never shown to the victim.</td></tr>
+<tr><td>Update (<code>claim_updates</code>)</td><td>Progress message; if published, victim-visible and triggers a notification.</td></tr>
+<tr><td>PMT</td><td>Performance Measurement Tool — the federal/grant demographic snapshot (<code>pmt_report</code>) per case.</td></tr>
+<tr><td>Grant</td><td>A funder&#x27;s reporting program linking questionnaires and an Excel template.</td></tr>
+<tr><td>Questionnaire</td><td>A data-collection form (by service category / grant) whose answers feed the PMT tab.</td></tr>
+<tr><td>Referral</td><td>Cross-agency handoff that clones a case into a partner agency after victim consent.</td></tr>
+<tr><td>Partnership</td><td>A bilateral agency relationship enabling referrals.</td></tr>
+<tr><td>Request-to-Connect</td><td>A victim&#x27;s lightweight request to connect with a center for a service; a case precursor (<code>requested</code>).</td></tr>
+<tr><td><code>claims.view_all</code></td><td>Permission flag: see all agency cases vs. only pending/self-actioned.</td></tr>
+<tr><td>Service Claim Stats</td><td>Per-claim attribution of who approved/rejected/resolved and when.</td></tr>
+<tr><td>Chat Thread (SERVICE)</td><td>The case&#x27;s real-time client↔advocate conversation, opened on approve, archived on resolve.</td></tr>
+<tr><td>File Upload (SERVICE_CLAIM)</td><td>A document attached to a case.</td></tr>
+<tr><td>Service Center / Agency</td><td>The organization delivering services and managing cases.</td></tr>
+</tbody></table></div>
+      </div>
+      <nav class="prevnext"><a class="pn prev" href="P04.html"><span>← Previous</span><b>VS360 — Agency Web Dashboard</b></a><a class="pn next" href="P06.html"><span>Next →</span><b>Shelter Management</b></a></nav>
+      <footer class="doc-foot">NECX Inc — Confidential · Generated 2026-07-05 · NECX Case Management</footer>
+    </article>
+  </main>
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav class="toc-nav"><a class="toc-1" href="#1-document-control">1. Document Control</a>
+<a class="toc-1" href="#2-executive-summary">2. Executive Summary</a>
+<a class="toc-1" href="#3-product-overview-vision">3. Product Overview &amp; Vision</a>
+<a class="toc-2" href="#31-problem-statement">3.1 Problem Statement</a>
+<a class="toc-2" href="#32-product-vision">3.2 Product Vision</a>
+<a class="toc-2" href="#33-where-this-sits-in-the-necx-ecosystem">3.3 Where This Sits in the NECX Ecosystem</a>
+<a class="toc-1" href="#4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</a>
+<a class="toc-2" href="#41-goals-objectives">4.1 Goals &amp; Objectives</a>
+<a class="toc-2" href="#42-success-metrics">4.2 Success Metrics</a>
+<a class="toc-1" href="#5-scope">5. Scope</a>
+<a class="toc-2" href="#51-in-scope">5.1 In Scope</a>
+<a class="toc-2" href="#52-out-of-scope">5.2 Out of Scope</a>
+<a class="toc-1" href="#6-personas-user-roles">6. Personas &amp; User Roles</a>
+<a class="toc-2" href="#61-persona-narratives">6.1 Persona Narratives</a>
+<a class="toc-1" href="#7-system-context-architecture">7. System Context &amp; Architecture</a>
+<a class="toc-2" href="#71-tech-stack">7.1 Tech Stack</a>
+<a class="toc-2" href="#72-tri-router-guards">7.2 Tri-Router &amp; Guards</a>
+<a class="toc-2" href="#73-backend-communication">7.3 Backend Communication</a>
+<a class="toc-2" href="#74-real-time-notifications">7.4 Real-Time &amp; Notifications</a>
+<a class="toc-2" href="#75-tenancy">7.5 Tenancy</a>
+<a class="toc-1" href="#8-functional-requirements">8. Functional Requirements</a>
+<a class="toc-2" href="#81-case-service-claim-core">8.1 Case (Service Claim) Core</a>
+<a class="toc-2" href="#82-case-list-filters">8.2 Case List &amp; Filters</a>
+<a class="toc-2" href="#83-case-detail">8.3 Case Detail</a>
+<a class="toc-2" href="#84-case-detail-tabs">8.4 Case Detail Tabs</a>
+<a class="toc-2" href="#85-create-case">8.5 Create Case</a>
+<a class="toc-2" href="#86-status-transitions-approve-reject-resolve">8.6 Status Transitions (Approve / Reject / Resolve)</a>
+<a class="toc-2" href="#87-link-client-login-codes">8.7 Link-Client &amp; Login Codes</a>
+<a class="toc-2" href="#88-file-uploads">8.8 File Uploads</a>
+<a class="toc-2" href="#89-intake-question-answer-editing">8.9 Intake Question / Answer Editing</a>
+<a class="toc-2" href="#810-notes-vs-published-updates">8.10 Notes vs. Published Updates</a>
+<a class="toc-2" href="#811-consolidating-multiple-services-under-one-client">8.11 Consolidating Multiple Services Under One Client</a>
+<a class="toc-2" href="#812-pmt-snapshot">8.12 PMT Snapshot</a>
+<a class="toc-2" href="#813-claim-statistics-kpis">8.13 Claim Statistics &amp; KPIs</a>
+<a class="toc-2" href="#814-request-to-connect-case-precursor">8.14 Request-to-Connect (Case Precursor)</a>
+<a class="toc-1" href="#9-detailed-user-system-flows">9. Detailed User &amp; System Flows</a>
+<a class="toc-2" href="#91-victim-initiated-case-creation-claimservice-transactional">9.1 Victim-Initiated Case Creation (`claimService`, transactional)</a>
+<a class="toc-2" href="#92-advocate-created-case-vs360-create-case-shouldcreateuser">9.2 Advocate-Created Case (VS360 Create Case, `shouldCreateUser`)</a>
+<a class="toc-2" href="#93-approve-a-case-pending-approved">9.3 Approve a Case (pending → approved)</a>
+<a class="toc-2" href="#94-reject-a-case-pending-rejected">9.4 Reject a Case (pending → rejected)</a>
+<a class="toc-2" href="#95-resolve-a-case-approved-resolved">9.5 Resolve a Case (approved → resolved)</a>
+<a class="toc-2" href="#96-link-client-to-an-anonymous-case-linkclienttocase">9.6 Link Client to an Anonymous Case (`linkClientToCase`)</a>
+<a class="toc-2" href="#97-login-code-redemption-victim-claims-an-anonymous-case">9.7 Login-Code Redemption (Victim Claims an Anonymous Case)</a>
+<a class="toc-2" href="#98-upload-files-to-a-case">9.8 Upload Files to a Case</a>
+<a class="toc-2" href="#99-edit-intake-question-answers">9.9 Edit Intake Question Answers</a>
+<a class="toc-2" href="#910-add-edit-delete-an-internal-note">9.10 Add / Edit / Delete an Internal Note</a>
+<a class="toc-2" href="#911-create-publish-edit-delete-a-victim-facing-update">9.11 Create / Publish / Edit / Delete a Victim-Facing Update</a>
+<a class="toc-2" href="#912-victim-marks-updates-seen">9.12 Victim Marks Updates Seen</a>
+<a class="toc-2" href="#913-case-chat-client-advocate">9.13 Case Chat (Client ↔ Advocate)</a>
+<a class="toc-2" href="#914-refer-a-case-to-a-partner-agency-integration-point">9.14 Refer a Case to a Partner Agency (integration point)</a>
+<a class="toc-2" href="#915-consolidate-multiple-cases-under-one-client">9.15 Consolidate Multiple Cases Under One Client</a>
+<a class="toc-2" href="#916-pmt-snapshot-lifecycle">9.16 PMT Snapshot Lifecycle</a>
+<a class="toc-2" href="#917-view-filter-the-case-list">9.17 View &amp; Filter the Case List</a>
+<a class="toc-2" href="#918-quick-case-status-update-from-dashboard">9.18 Quick Case-Status Update from Dashboard</a>
+<a class="toc-2" href="#919-rate-a-resolved-case-victim">9.19 Rate a Resolved Case (Victim)</a>
+<a class="toc-2" href="#920-request-to-connect-precursor">9.20 Request-to-Connect Precursor</a>
+<a class="toc-1" href="#10-data-model">10. Data Model</a>
+<a class="toc-1" href="#11-api-integration-surface">11. API &amp; Integration Surface</a>
+<a class="toc-2" href="#111-service-claim-case-endpoints">11.1 Service Claim (Case) Endpoints</a>
+<a class="toc-2" href="#112-adjacent-case-related-endpoints">11.2 Adjacent Case-Related Endpoints</a>
+<a class="toc-2" href="#113-external-integrations">11.3 External Integrations</a>
+<a class="toc-1" href="#12-rbac-permissions">12. RBAC &amp; Permissions</a>
+<a class="toc-1" href="#13-non-functional-requirements">13. Non-Functional Requirements</a>
+<a class="toc-1" href="#14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</a>
+<a class="toc-2" href="#141-case-kpis-dashboards">14.1 Case KPIs &amp; Dashboards</a>
+<a class="toc-2" href="#142-notifications-socket-events-case-specific">14.2 Notifications &amp; Socket Events (Case-Specific)</a>
+<a class="toc-1" href="#15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</a>
+<a class="toc-1" href="#16-glossary">16. Glossary</a>
+</nav>
+  </aside>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

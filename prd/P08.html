@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NECX Calendar &amp; Appointments · NECX PRD</title>
+<meta name="description" content="Staff reminders, tasks, appointments and unified calendar for coordinated victim services">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="prd-page">
+<header class="topbar">
+  <button class="hamburger" aria-label="Menu" onclick="toggleNav()">&#9776;</button>
+  <a class="brand" href="../index.html"><svg class="logo" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 L35 10 V22 C35 31 28 37 20 39 C12 37 5 31 5 22 V10 Z" fill="var(--brand)"/><path d="M13 27 V14 L20 22 V14 M27 14 V27 L20 19" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="brand-text">NECX<span class="brand-sub">Product Requirements</span></span></a>
+  <div class="topbar-spacer"></div>
+  <a class="top-link" href="../index.html">Home</a>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><span class="ic-sun">☀</span><span class="ic-moon">☾</span></button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-search"><input type="search" id="navSearch" placeholder="Filter documents…" oninput="filterNav(this.value)"></div>
+    <nav class="nav"><div class="nav-group"><div class="nav-group-title">Platform &amp; Applications</div><a class="nav-item " href="P01.html" data-search="necx platform — core system whole-platform prd: unified backend, four clients, multi-tenancy, identity/rbac, and the end-to-end case lifecycle."><span class="nav-num">01</span><span class="nav-text">Platform — Core System</span></a>
+<a class="nav-item " href="P02.html" data-search="necx workspace — staff mobile app agency staff mobile app (flutter/riverpod) — the on-the-go companion to the vs360 web dashboard."><span class="nav-num">02</span><span class="nav-text">Workspace — Staff Mobile App</span></a>
+<a class="nav-item " href="P03.html" data-search="necx victim app — survivor mobile app victim / survivor mobile app (flutter/getx) — discover services, request help, chat, find shelter, e-sign."><span class="nav-num">03</span><span class="nav-text">Victim App — Survivor Mobile App</span></a>
+<a class="nav-item " href="P04.html" data-search="vs360 — agency web dashboard vs360 — the agency staff web dashboard (react/vite) and primary caseworker workspace."><span class="nav-num">04</span><span class="nav-text">VS360 — Agency Web Dashboard</span></a>
+</div>
+<div class="nav-group"><div class="nav-group-title">VS360 Feature Modules</div><a class="nav-item " href="P05.html" data-search="necx case management service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes."><span class="nav-num">05</span><span class="nav-text">Case Management</span></a>
+<a class="nav-item " href="P06.html" data-search="necx shelter management shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search."><span class="nav-num">06</span><span class="nav-text">Shelter Management</span></a>
+<a class="nav-item " href="P07.html" data-search="necx hotline management twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights."><span class="nav-num">07</span><span class="nav-text">Hotline Management</span></a>
+<a class="nav-item active" href="P08.html" data-search="necx calendar &amp; appointments reminders, tasks and case-linked appointments in the vs360 tools calendar."><span class="nav-num">08</span><span class="nav-text">Calendar &amp; Appointments</span></a>
+<a class="nav-item " href="P09.html" data-search="necx staff time tracking staff time tracking: clock in/out, timesheets, and grant/pmt time attribution."><span class="nav-num">09</span><span class="nav-text">Staff Time Tracking</span></a>
+<a class="nav-item " href="P10.html" data-search="necx agency chat real-time advocate↔victim messaging tied to service threads and cases."><span class="nav-num">10</span><span class="nav-text">Agency Chat</span></a>
+<a class="nav-item " href="P11.html" data-search="necx internal chat staff-to-staff messaging within an agency, real-time over socket.io."><span class="nav-num">11</span><span class="nav-text">Internal Chat</span></a>
+<a class="nav-item " href="P12.html" data-search="necx rbac &amp; user management roles, the module/action permission matrix, plan seats, and multi-layer enforcement."><span class="nav-num">12</span><span class="nav-text">RBAC &amp; User Management</span></a>
+<a class="nav-item " href="P13.html" data-search="necx notes center agency-scoped, cross-case view over internal (caseworker-only) case notes."><span class="nav-num">13</span><span class="nav-text">Notes Center</span></a>
+<a class="nav-item " href="P14.html" data-search="necx drive google-drive-style cloud file storage backed by azure blob, with quotas and analytics."><span class="nav-num">14</span><span class="nav-text">Drive</span></a>
+<a class="nav-item " href="P15.html" data-search="necx ai report builder pmt/grant reporting plus ai-assisted custom report generation with accuracy validation."><span class="nav-num">15</span><span class="nav-text">AI Report Builder</span></a>
+<a class="nav-item " href="P16.html" data-search="necx e-sign &amp; document center prepare, request, sign and pdf-stamp case documents with an audit trail."><span class="nav-num">16</span><span class="nav-text">E-Sign &amp; Document Center</span></a>
+<a class="nav-item " href="P17.html" data-search="necx referrals &amp; partnerships inter-agency network: partnerships, invitations, and consent-based case referrals."><span class="nav-num">17</span><span class="nav-text">Referrals &amp; Partnerships</span></a>
+<a class="nav-item " href="P18.html" data-search="necx inquiries management intake and triage of inquiries / requests-to-connect before they become cases."><span class="nav-num">18</span><span class="nav-text">Inquiries Management</span></a>
+<a class="nav-item " href="P19.html" data-search="necx communities agency-run community spaces: joining questions, membership, posts and moderation."><span class="nav-num">19</span><span class="nav-text">Communities</span></a>
+<a class="nav-item " href="P20.html" data-search="necx service management service catalog, categories, and the per-service claim-question (intake) builder."><span class="nav-num">20</span><span class="nav-text">Service Management</span></a>
+</div>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim" onclick="toggleNav()"></div>
+  
+  <main class="content">
+    <article class="doc">
+      <div class="doc-eyebrow">Product Requirements Document · NECX Inc — Confidential</div>
+      <h1 class="doc-title">NECX Calendar &amp; Appointments</h1>
+      <p class="doc-subtitle">Staff reminders, tasks, appointments and unified calendar for coordinated victim services</p>
+      <div class="doc-meta"><span class="chip">Version: <b>1.0</b></span><span class="chip">Status: <b>Baseline</b></span><span class="chip">Owner: <b>NECX Product Management</b></span><a class="dl-btn" href="../downloads/08_VS360_Feature_Calendar_Appointments.docx" download>⬇ Download DOCX</a></div>
+      <hr class="doc-rule">
+      <div class="doc-body">
+      <h2 id="1-document-control">1. Document Control</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td>NECX — Coordinated Victim Services Platform</td></tr>
+<tr><td>Module</td><td>Calendar &amp; Appointments (VS360 &quot;Tools&quot; — Reminders, Tasks, Appointments)</td></tr>
+<tr><td>Version</td><td>1.0</td></tr>
+<tr><td>Status</td><td>Baseline</td></tr>
+<tr><td>Author</td><td>NECX Product Management</td></tr>
+<tr><td>Reviewers</td><td>Engineering (Backend), Engineering (VS360 Web), Security &amp; Privacy, Agency Operations</td></tr>
+<tr><td>Last Updated</td><td>2026-07-05</td></tr>
+<tr><td>Related Documents</td><td>NECX Hotline Management PRD (callbacks overlay), NECX Case/Claims Management PRD (claim linkage), NECX Staff Time PRD, NECX Notes Center PRD, NECX Platform Core &amp; RBAC PRD</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>1.0</td><td>2026-07-05</td><td>NECX Product Management</td><td>Baseline PRD covering staff reminders/tasks, case-linked appointments, the unified calendar view, and the read-only hotline callback overlay.</td></tr>
+</tbody></table></div>
+<h2 id="2-executive-summary">2. Executive Summary</h2>
+<p>NECX is a coordinated victim-services platform that serves victims and survivors of crime and the agencies, advocates, and caseworkers who help them. Advocates carry high caseloads across shelter intake, hotline calls, court dates, service follow-ups, and inter-agency referrals. The Calendar &amp; Appointments capability gives agency staff a single place to schedule and track their work: lightweight reminders and tasks that can be tied to a specific case (service claim) and therefore to a specific victim, presented in both a calendar and a list view, with an overlay of scheduled hotline callbacks so a caseworker sees everything on their plate in one screen.</p>
+<p>This document specifies the Calendar &amp; Appointments feature as it exists in the VS360 web application &quot;Tools&quot; area, backed by the backend <strong>Reminders</strong> module (<code>/web/reminders</code>). In the current platform, reminders are the scheduling primitive: a reminder carries a title, a message, a priority, a start/end date and time, an optional case link (<code>claimId</code>), and an optional agency-wide broadcast flag. Staff use them interchangeably as reminders, to-do tasks, and appointments. The calendar additionally surfaces hotline <strong>callbacks</strong> (owned by the Hotline module) as read-only events, so the calendar is a true unified day/week/month view of a caseworker&#x27;s commitments.</p>
+<p>This capability matters because coordination failures in victim services have real consequences: a missed court-support appointment, a dropped safety-planning follow-up, or an un-actioned callback can leave a survivor without help at a critical moment. A shared, case-linked, priority-aware calendar reduces those failures while keeping every scheduled item auditable and scoped to the correct agency.</p>
+<p>This PRD is deliberately explicit about what is present versus planned. The backend Reminders module is a plain CRUD scheduling store with no dedicated appointments table, no recurrence engine, and no in-app/socket/FCM reminder notifications; &quot;appointments&quot; are modeled as reminders. Email/SMS notification toggles for tasks exist as user-level preferences surfaced on the Tools screen, but there is no scheduled reminder-delivery job in the Reminders module today. These gaps are recorded precisely in Section 5 (Scope) and Section 15 (Risks &amp; Open Questions) so that stakeholders do not over-read current behavior.</p>
+<h2 id="3-product-overview-vision">3. Product Overview &amp; Vision</h2>
+<h3 id="31-problem-statement">3.1 Problem Statement</h3>
+<p>Advocates and caseworkers juggle time-sensitive commitments across multiple NECX modules — hotline callbacks, shelter follow-ups, court dates, service-claim milestones, and administrative tasks. Without a consolidated calendar, these commitments live in disparate places (or in the advocate&#x27;s memory), which leads to missed follow-ups, double-booking, and loss of continuity when a case is handed between staff. Staff also need to attach a reminder to a specific case and victim so the reminder carries context (&quot;Follow up with the victim on the protective-order filing&quot;), and supervisors need to broadcast agency-wide reminders.</p>
+<h3 id="32-product-vision">3.2 Product Vision</h3>
+<p>Provide agency staff with a unified, case-aware scheduling surface that consolidates reminders, tasks, and appointments alongside hotline callbacks in a single calendar/list experience. Every scheduled item is priority-ranked, optionally tied to a case (and therefore to a victim), scoped to the staff member&#x27;s agency, and auditable. The long-term vision is dependable, notification-driven scheduling (timely alerts before an appointment, recurrence for standing commitments, and assignment to colleagues), building on today&#x27;s reminders foundation.</p>
+<h3 id="33-position-in-the-necx-ecosystem">3.3 Position in the NECX Ecosystem</h3>
+<p>NECX is a single unified backend serving four clients: the Victim mobile app, the Workspace mobile app, the VS360 web app (agency staff), and the NECX Admin console. Calendar &amp; Appointments is a <strong>VS360 web, staff-facing</strong> capability. It is delivered under the VS360 &quot;Tools&quot; area and is gated by the <code>tools.view</code> permission. It reads and writes the backend Reminders module (<code>/web/reminders</code>, guarded by <code>allowOnly(&#x27;VS360&#x27;)</code>) and overlays read-only data from the Hotline module&#x27;s callbacks (<code>/hotlines/callbacks</code>). Reminders link to the Cases/Claims domain through <code>claimId</code> (a <code>service_claims</code> row), which is how an appointment is associated with a case and its victim. It is a peer of the other Tools-area staff productivity modules (Staff Time, Notes Center).</p>
+<h2 id="4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</h2>
+<h3 id="41-goals-objectives">4.1 Goals &amp; Objectives</h3>
+<ul>
+<li>Give every agency staff member one calendar/list surface for their reminders, tasks, and appointments.</li>
+<li>Allow any reminder/task/appointment to be tied to a case (<code>claimId</code>) so it carries victim and case context.</li>
+<li>Support both a calendar view (month/week, colored by priority) and a list view of the same data.</li>
+<li>Overlay scheduled hotline callbacks read-only so staff see all commitments together.</li>
+<li>Let supervisors (super-admin) broadcast reminders to the entire agency.</li>
+<li>Keep all scheduling data agency-scoped and gated behind the <code>tools.view</code> permission.</li>
+<li>Provide a foundation for future notification-driven, recurring, and assignable appointments.</li>
+</ul>
+<h3 id="42-success-metrics">4.2 Success Metrics</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Definition</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>Tools adoption</td><td>% of active agency staff who create ≥1 reminder/task per month</td><td>≥ 70%</td></tr>
+<tr><td>Case linkage rate</td><td>% of created reminders/tasks that carry a <code>claimId</code></td><td>≥ 50%</td></tr>
+<tr><td>Follow-up completion</td><td>% of <code>PENDING</code> reminders marked <code>DONE</code> on or before their <code>endDate</code></td><td>≥ 75%</td></tr>
+<tr><td>Callback visibility</td><td>% of scheduled hotline callbacks that appear on the unified calendar without error</td><td>100%</td></tr>
+<tr><td>Calendar load performance</td><td>p95 time to render the calendar month view after <code>GET /reminders</code> returns</td><td>&lt; 1.5 s</td></tr>
+<tr><td>Broadcast reach</td><td>% of agency staff who see a broadcast reminder in their next Tools session</td><td>100% (all agency users)</td></tr>
+</tbody></table></div>
+<h2 id="5-scope">5. Scope</h2>
+<h3 id="51-in-scope">5.1 In Scope</h3>
+<ul>
+<li>Creating, editing, completing, and deleting staff reminders/tasks/appointments via the backend Reminders module (<code>/web/reminders</code>).</li>
+<li>Combining a separate date field and time field into a single ISO datetime for start and end (via <code>combineDateTime</code>).</li>
+<li>Associating a reminder/task/appointment with a case/claim (and therefore the victim) through <code>claimId</code>.</li>
+<li>Priority ranking (<code>LOW</code>/<code>MEDIUM</code>/<code>HIGH</code>) and status lifecycle (<code>PENDING</code> → <code>DONE</code>).</li>
+<li>Agency-wide broadcast reminders (<code>isBroadcast</code>), authored by super-admin.</li>
+<li>The unified calendar view (FullCalendar, month/week) and the list view of reminders, with priority-based coloring.</li>
+<li>Read-only overlay of scheduled hotline callbacks (overdue/today/upcoming) on the calendar, opening a read-only callback detail that can jump to the Hotline module.</li>
+<li>Fetching the union of the staff member&#x27;s own reminders and the agency&#x27;s broadcast reminders, each graph-fetched with owner (<code>userInfo</code>) and case (<code>claimInfo.victimInfo</code>) context.</li>
+<li>Access control via <code>allowOnly(&#x27;VS360&#x27;)</code> (platform gate) plus the <code>tools.view</code> permission.</li>
+<li>Email/SMS notification preference toggles surfaced on the Tools screen (user-level notification preferences).</li>
+</ul>
+<h3 id="52-out-of-scope">5.2 Out of Scope</h3>
+<ul>
+<li><strong>A dedicated appointments/calendar table.</strong> There is no separate appointment or calendar entity; &quot;appointments&quot; are reminders. (Recorded as an enhancement in Risks.)</li>
+<li><strong>Recurrence / recurring appointments.</strong> The Reminders module has no recurrence fields or expansion engine. Each reminder is a single-instance event.</li>
+<li><strong>Assignment of a reminder/task to another staff member.</strong> Reminders are owned by their creating user (<code>userId</code>); the only cross-user visibility mechanism is <code>isBroadcast</code> (agency-wide). There is no per-assignee task delegation in the Reminders module. (Hotline callbacks do carry an <code>assignedToUserId</code>, but that assignment is owned by the Hotline module, not Reminders.)</li>
+<li><strong>Scheduled reminder notifications (in-app / Socket.IO / FCM / email delivery at reminder time).</strong> The Reminders module performs no Socket.IO, FCM, or email delivery — it is a plain CRUD store. The email/SMS toggles on the Tools screen set user notification preferences; they do not schedule per-reminder alerts.</li>
+<li><strong>Creating or editing hotline callbacks from the calendar.</strong> Callbacks are read-only on the calendar; their lifecycle lives in the Hotline module.</li>
+<li><strong>Victim-facing calendar.</strong> This is a VS360 staff surface only; victims do not see or receive these reminders.</li>
+<li><strong>Cross-agency scheduling.</strong> Reminders are strictly scoped to the staff member&#x27;s own service center.</li>
+</ul>
+<div class="callout warn"><div class="callout-title">⚠ Partial feature</div><div class="callout-body">The &quot;Appointments&quot; concept, recurrence, staff assignment/delegation, and reminder-time notifications are only partially present or absent in the current platform. Appointments are implemented as case-linked reminders; recurrence, delegation, and reminder-time delivery are not implemented. See Section 15 for enhancement tracking.</div></div>
+<h2 id="6-personas-user-roles">6. Personas &amp; User Roles</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Role</th><th>Description</th><th>Key permissions</th></tr></thead>
+<tbody>
+<tr><td>Advocate / Caseworker (VSMS staff)</td><td>Front-line agency staff who create reminders/tasks/appointments for their own follow-ups, often tied to a case; view their calendar and their agency&#x27;s broadcast reminders and callbacks.</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>tools.view</code>; reads <code>claims</code> for case linkage; reads <code>hotline.callbacks</code> for overlay</td></tr>
+<tr><td>Supervisor / Agency Super-Admin (VSMS)</td><td>Team lead who additionally can broadcast reminders to the whole agency; bypasses fine-grained permission checks.</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>tools.view</code>; <code>isBroadcast</code> authoring; <code>SUPER_ADMIN</code> bypass</td></tr>
+<tr><td>Hotline Staff (VSMS)</td><td>Staff who schedule callbacks in the Hotline module; those callbacks appear read-only on the Tools calendar.</td><td><code>hotline.callbacks</code> (owns callback lifecycle); <code>tools.view</code> to see the unified calendar</td></tr>
+<tr><td>Victim / Survivor (App user)</td><td>The subject of a case-linked reminder. Does not access this feature; appears only as case/victim context (<code>claimInfo.victimInfo</code>) on a linked reminder.</td><td>None on this module</td></tr>
+</tbody></table></div>
+<h3 id="61-persona-narratives">6.1 Persona Narratives</h3>
+<p><strong>Maria, Advocate.</strong> Maria opens Tools each morning in calendar view. She sees this week colored by priority: a red HIGH reminder to accompany a client to a protective-order hearing (linked to that client&#x27;s case), a couple of MEDIUM follow-ups, and two teal callback events her colleague scheduled from the hotline. She creates a new task from a day cell, ties it to the client&#x27;s case so the victim&#x27;s name shows on the card, sets a time range, and saves. Later she marks yesterday&#x27;s follow-up <code>DONE</code>.</p>
+<p><strong>Dwayne, Supervisor.</strong> Before a staff meeting, Dwayne creates a broadcast reminder (&quot;Mandatory training Thursday 2pm&quot;) with the broadcast switch on. Every advocate in the agency sees it on their calendar because their fetch includes agency broadcasts.</p>
+<p><strong>Priya, Hotline Staff.</strong> Priya wraps up a crisis call and schedules a callback for tomorrow morning. She does not create a reminder — but that callback shows up on the whole agency&#x27;s Tools calendar as a read-only teal event, so whoever is on shift can see it and, if needed, jump into the Hotline module to make the call.</p>
+<h2 id="7-system-context-architecture">7. System Context &amp; Architecture</h2>
+<h3 id="71-tech-stack">7.1 Tech Stack</h3>
+<ul>
+<li><strong>Frontend (VS360 web):</strong> React + Vite + Mantine UI + TanStack Query + Redux. The calendar uses <strong>FullCalendar</strong> (<code>RemindersCalendarView.jsx</code>) with a parallel list view (<code>RemindersListView.jsx</code>). Task authoring uses <code>CreateTask.jsx</code>; callback overlay detail uses <code>CallbackEventModal.jsx</code>. The Tools page is <code>src/pages/Tools/Tools.jsx</code>; supporting components live under <code>src/components/pages/Tools/</code>.</li>
+<li><strong>API client:</strong> all calls go through <code>axios()</code> (<code>src/services/axios.js</code>); the reminders service is <code>src/services/reminders.js</code> (base <code>/reminders</code>); callbacks are read via <code>src/services/hotlineService.js</code> (<code>/hotlines/callbacks</code>). Responses follow the platform shape <code>{ status, msg, data }</code> and are read via <code>response.data.data</code>.</li>
+<li><strong>Backend:</strong> Express (ESM) + Objection/Knex over PostgreSQL. The Reminders module is <code>src/apps/reminders/reminders.{routes,controller,services}.js</code>; model <code>Reminders</code> (table <code>reminders</code>, <code>src/model/v2/</code>). All routes are mounted under the global <code>/v2</code> API prefix.</li>
+</ul>
+<h3 id="72-how-it-talks-to-the-backend">7.2 How It Talks to the Backend</h3>
+<p>The VS360 client calls <code>GET /reminders</code> on load and renders both calendar and list views from the same dataset. Create/update/complete/delete map to <code>POST /reminders</code>, <code>PATCH /reminders/{uid}</code>, <code>PATCH /reminders/complete/{uid}</code>, and <code>DELETE /reminders/{uid}</code>. Callbacks are fetched separately per tab (overdue/today/upcoming) via the Hotline service and merged into the calendar client-side; callback fetch failures are handled silently so the calendar still renders reminders.</p>
+<h3 id="73-real-time-notifications">7.3 Real-Time &amp; Notifications</h3>
+<p>The Reminders module does <strong>not</strong> use Socket.IO, FCM, or email. It is a plain CRUD scheduling store. Real-time behavior in the calendar is limited to TanStack Query invalidation/refetch after a mutation. The only notification-related UI is the email/SMS notification preference toggles on the Tools screen, which write to <code>/notifications/*</code> (user preference endpoints), not to the Reminders module. (By contrast, the overlaid hotline callbacks are backed by the Hotline module, which does emit <code>hotline:callback-updated</code> over Socket.IO to the agency; that behavior is owned by the Hotline PRD.)</p>
+<h3 id="74-tenancy">7.4 Tenancy</h3>
+<p>Every reminder carries <code>userId</code> (owner) and <code>serviceCenterId</code> (agency). The middleware chain is rate-limiter → auth (<code>req.issuer</code>) → <code>allowOnly(&#x27;VS360&#x27;)</code> → permission (<code>tools.view</code>) → controller → service → model. A VS360 user only ever sees reminders they own plus broadcast reminders for their own service center; agency scoping is enforced from <code>issuer.serviceCenterInfo.id</code>. <code>SUPER_ADMIN</code> bypasses fine-grained permission checks.</p>
+<h2 id="8-functional-requirements">8. Functional Requirements</h2>
+<h3 id="81-reminder-task-appointment-crud">8.1 Reminder / Task / Appointment CRUD</h3>
+<p>Reminders are the single scheduling primitive: they act as reminders, to-do tasks, and appointments. A reminder carries a title, message, priority, start/end datetime, optional case link, and optional broadcast flag. On create, the client sends separate date and time fields; the service combines each date+time pair into a single ISO datetime using <code>combineDateTime</code> (which handles 12-hour and 24-hour input and avoids timezone shifting). Priority defaults to <code>MEDIUM</code> and is upper-cased; status defaults to <code>PENDING</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-REM-01</td><td>The system shall let a VS360 staff user create a reminder via <code>POST /reminders</code> with title, message, startDate, endDate, startTime, endTime, priority, isBroadcast, and optional claimId.</td><td>Must</td></tr>
+<tr><td>FR-REM-02</td><td>The system shall combine each date field and its paired time field into a single ISO datetime for <code>startDate</code> and <code>endDate</code> via <code>combineDateTime</code>, correctly handling 12h/24h formats without timezone shift.</td><td>Must</td></tr>
+<tr><td>FR-REM-03</td><td>The system shall default priority to <code>MEDIUM</code> (upper-cased) and status to <code>PENDING</code> on create.</td><td>Must</td></tr>
+<tr><td>FR-REM-04</td><td>The system shall let the owner edit a reminder via <code>PATCH /reminders/{uid}</code>, recombining start/end date+time and stripping the <code>startTime</code>/<code>endTime</code> helper fields (which are not DB columns).</td><td>Must</td></tr>
+<tr><td>FR-REM-05</td><td>The system shall let the owner mark a reminder complete via <code>PATCH /reminders/complete/{uid}</code>, setting status to <code>DONE</code>.</td><td>Must</td></tr>
+<tr><td>FR-REM-06</td><td>The system shall let the owner delete a reminder via <code>DELETE /reminders/{uid}</code> (hard delete).</td><td>Must</td></tr>
+<tr><td>FR-REM-07</td><td>The system shall support three priorities — <code>LOW</code>, <code>MEDIUM</code>, <code>HIGH</code> — and two statuses — <code>PENDING</code>, <code>DONE</code>.</td><td>Must</td></tr>
+<tr><td>FR-REM-08</td><td>The Tools UI shall present the same reminders in both a calendar view and a list view, toggled by the user.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="82-fetch-filtering-case-context">8.2 Fetch, Filtering &amp; Case Context</h3>
+<p><code>GET /reminders</code> returns the union of reminders owned by the requesting user and broadcast reminders for that user&#x27;s service center. Each row is graph-fetched with <code>userInfo</code> (the owning user) and <code>claimInfo.victimInfo</code> (so a case-linked reminder can display the victim). Optional <code>priority</code> and <code>status</code> query filters narrow the set.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-REM-09</td><td>The system shall return, for <code>GET /reminders</code>, the union of the user&#x27;s own reminders and <code>isBroadcast=true</code> reminders for the user&#x27;s service center.</td><td>Must</td></tr>
+<tr><td>FR-REM-10</td><td>The system shall graph-fetch each reminder with <code>userInfo</code> (owner) and <code>claimInfo.victimInfo</code> (linked case + victim).</td><td>Must</td></tr>
+<tr><td>FR-REM-11</td><td>The system shall support optional <code>priority</code> and <code>status</code> filters on <code>GET /reminders</code>.</td><td>Should</td></tr>
+<tr><td>FR-REM-12</td><td>The Tools calendar shall color reminder events by priority; the list view shall display priority and status.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="83-case-client-linkage-appointment-case">8.3 Case / Client Linkage (Appointment ↔ Case)</h3>
+<p>The <code>claimId</code> field is the appointment↔case/client link. When set, it references a <code>service_claims</code> row; the fetch join (<code>claimInfo.victimInfo</code>) exposes the victim so a case-linked appointment shows the client. In the Tools UI, <code>CreateTask.jsx</code> lets the user associate a task with a non-resolved claim.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-REM-13</td><td>The system shall let a reminder be linked to a case by setting <code>claimId</code> (a <code>service_claims</code> reference), establishing the appointment↔case/client relationship.</td><td>Must</td></tr>
+<tr><td>FR-REM-14</td><td>The Tools UI shall allow selecting only a non-resolved claim when associating a task with a case.</td><td>Should</td></tr>
+<tr><td>FR-REM-15</td><td>For a case-linked reminder, the system shall expose the victim via <code>claimInfo.victimInfo</code> so the client is shown on the reminder/appointment.</td><td>Must</td></tr>
+<tr><td>FR-REM-16</td><td>The system shall allow reminders with no <code>claimId</code> (general reminders not tied to a case).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="84-broadcast-agency-wide-reminders">8.4 Broadcast (Agency-Wide) Reminders</h3>
+<p>A reminder with <code>isBroadcast=true</code> is visible to every user in the authoring user&#x27;s service center. In the Tools UI, the broadcast switch is available only to super-admin.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-REM-17</td><td>The system shall support agency-wide reminders via <code>isBroadcast=true</code>, which are returned to all users of the authoring user&#x27;s service center by <code>GET /reminders</code>.</td><td>Must</td></tr>
+<tr><td>FR-REM-18</td><td>The Tools UI shall expose the broadcast switch only to super-admin users.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="85-unified-calendar-callback-overlay">8.5 Unified Calendar &amp; Callback Overlay</h3>
+<p>The Tools screen loads <code>GET /reminders</code> and overlays hotline callbacks for the overdue/today/upcoming tabs (<code>GetCallbacks({tab})</code>); callback-fetch failures are silent. FullCalendar renders month/week; reminders are colored by priority and callbacks are rendered teal with a phone icon. Clicking a reminder opens <code>CreateTask</code> in edit mode; clicking a callback opens <code>CallbackEventModal</code> (read-only), which can jump to the Hotline callback.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-REM-19</td><td>The calendar shall overlay scheduled hotline callbacks (overdue/today/upcoming) as read-only events, visually distinct (teal, phone icon) from reminders.</td><td>Must</td></tr>
+<tr><td>FR-REM-20</td><td>Callback-fetch failures shall be handled silently so the calendar still renders reminders.</td><td>Must</td></tr>
+<tr><td>FR-REM-21</td><td>Clicking a reminder event shall open the edit form (<code>CreateTask</code>); clicking a callback event shall open a read-only detail (<code>CallbackEventModal</code>) that can navigate to the Hotline callback.</td><td>Must</td></tr>
+<tr><td>FR-REM-22</td><td>The calendar shall support month and week views (FullCalendar), with a create entry point from a day-select or a &quot;+&quot; control.</td><td>Should</td></tr>
+<tr><td>FR-REM-23</td><td>The system shall not allow creating or editing hotline callbacks from the calendar (read-only overlay only).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="86-notification-preferences-tools-screen">8.6 Notification Preferences (Tools Screen)</h3>
+<p>The Tools screen surfaces email and SMS notification preference toggles (<code>toggleEmailNotifications</code> / <code>toggleSmsNotifications</code> on <code>/notifications/*</code>). These are user-level notification preferences and do not schedule per-reminder delivery.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-REM-24</td><td>The Tools screen shall surface email/SMS notification preference toggles that write user preferences to <code>/notifications/email-notifications</code> and <code>/notifications/sms-notifications</code>.</td><td>Should</td></tr>
+<tr><td>FR-REM-25</td><td>The system shall NOT (in the current baseline) deliver scheduled reminder-time notifications via in-app/socket/FCM/email; this is deferred (see Risks).</td><td>N/A (gap)</td></tr>
+</tbody></table></div>
+<h2 id="9-detailed-user-system-flows">9. Detailed User &amp; System Flows</h2>
+<h3 id="91-create-an-appointment-tied-to-a-case">9.1 Create an appointment tied to a case</h3>
+<ol class="flow">
+<li>An advocate opens the VS360 Tools screen; the client verifies <code>allowOnly(&#x27;VS360&#x27;)</code> + <code>tools.view</code> (route-gated) and loads <code>GET /reminders</code>.</li>
+<li>The advocate selects a day cell in the calendar (or clicks &quot;+&quot;) to open <code>CreateTask.jsx</code>.</li>
+<li>The advocate enters a title (e.g., &quot;Court-support appointment&quot;) and a message, and picks a priority (<code>LOW</code>/<code>MEDIUM</code>/<code>HIGH</code>).</li>
+<li>The advocate sets a start date and start time and an end date and end time (a time range for the appointment).</li>
+<li>In the <strong>Case</strong> field, the advocate associates the appointment with a non-resolved claim; the client sends the corresponding <code>claimId</code>. (Leaving Case empty creates a general reminder.)</li>
+<li>If the user is a super-admin and wants the item visible agency-wide, they enable the broadcast switch (<code>isBroadcast=true</code>).</li>
+<li>On submit, the client calls <code>POST /reminders</code> with title, message, startDate, endDate, startTime, endTime, priority, isBroadcast, claimId.</li>
+<li>The service combines each date+time pair into an ISO datetime via <code>combineDateTime</code>, upper-cases priority (default <code>MEDIUM</code>), sets status <code>PENDING</code>, stamps <code>userId</code> and <code>serviceCenterId</code> from <code>issuer</code>, and inserts the <code>reminders</code> row.</li>
+<li>The controller returns <code>{ status, data }</code>; the client invalidates/refetches reminders. The new appointment appears on the calendar colored by priority; because <code>claimId</code> is set, the fetch join <code>claimInfo.victimInfo</code> shows the linked victim on the event.</li>
+</ol>
+<h3 id="92-view-the-calendar-unified-with-callbacks">9.2 View the calendar (unified with callbacks)</h3>
+<ol class="flow">
+<li>The advocate opens Tools; the client fires <code>GET /reminders</code> and, in parallel, <code>GetCallbacks({tab})</code> for overdue/today/upcoming.</li>
+<li><code>GET /reminders</code> returns the union of the advocate&#x27;s own reminders plus agency broadcast reminders, each graph-fetched with <code>userInfo</code> and <code>claimInfo.victimInfo</code>.</li>
+<li>The calendar (FullCalendar, month/week) renders reminders colored by priority and overlays callbacks as teal, phone-icon events.</li>
+<li>If the callback fetch fails, the failure is swallowed silently and the calendar still renders reminders.</li>
+<li>The advocate toggles between Calendar and List views of the same reminder data; optional <code>priority</code>/<code>status</code> filters narrow the list.</li>
+<li>Clicking a reminder opens <code>CreateTask</code> in edit mode (see 9.5); clicking a callback opens <code>CallbackEventModal</code> (read-only), which offers a jump to the Hotline callback.</li>
+</ol>
+<h3 id="93-receive-a-reminder-notification-current-behavior-and-gap">9.3 Receive a reminder notification (current behavior and gap)</h3>
+<ol class="flow">
+<li><strong>Current baseline:</strong> The Reminders module performs no scheduled delivery — there is no in-app, Socket.IO, FCM, or email notification fired at a reminder&#x27;s start time. Staff become aware of due items by opening Tools and reading the calendar/list (priority colors, overdue position).</li>
+<li>The only notification controls on the Tools screen are user-level email/SMS preference toggles, which write to <code>/notifications/*</code>; they set preferences and do not schedule per-reminder alerts.</li>
+<li><strong>Related, but out of module:</strong> scheduled <strong>hotline callbacks</strong> overlaid on the calendar are backed by the Hotline module, which does emit <code>hotline:callback-updated</code> over Socket.IO to the agency and refreshes the callbacks view; that behavior is owned by the Hotline PRD, not Reminders.</li>
+<li><strong>Intended future flow (deferred — see Risks):</strong> a scheduled job would, ahead of a reminder&#x27;s <code>startDate</code>, insert a <code>service_center_notifications</code> row, emit to the owner&#x27;s <code>vs360-user-&lt;uid&gt;</code> room (and broadcasts to <code>service-center-&lt;id&gt;</code>), push via FCM, and optionally send templated email via the BullMQ queue — mirroring the platform&#x27;s standard notification delivery pattern.</li>
+</ol>
+<h3 id="94-complete-or-cancel-a-task">9.4 Complete or cancel a task</h3>
+<ol class="flow">
+<li>From the calendar or list, the advocate opens a reminder/task they own.</li>
+<li><strong>Complete:</strong> the advocate marks it done; the client calls <code>PATCH /reminders/complete/{uid}</code>; the service sets status <code>DONE</code>. The item re-renders as completed after refetch.</li>
+<li><strong>Cancel / remove:</strong> the advocate deletes the task; the client calls <code>DELETE /reminders/{uid}</code>; the service hard-deletes the row. The event disappears from the calendar/list after refetch.</li>
+<li>There is no separate &quot;cancelled&quot; status in the Reminders module — cancellation is a delete; completion is the <code>DONE</code> status. (Hotline callbacks, by contrast, have their own complete/cancel actions in the Hotline module and are read-only here.)</li>
+<li>All mutations invalidate the TanStack Query cache so calendar and list stay consistent.</li>
+</ol>
+<h3 id="95-edit-reschedule-a-reminder">9.5 Edit / reschedule a reminder</h3>
+<ol class="flow">
+<li>The advocate clicks a reminder event on the calendar (or a row in the list); <code>CreateTask</code> opens pre-filled in edit mode.</li>
+<li>The advocate changes any of: title, message, priority, status (edit only), Case (<code>claimId</code>), start/end date, or time range.</li>
+<li>On submit, the client calls <code>PATCH /reminders/{uid}</code>; the service recombines start/end date+time, strips the non-column <code>startTime</code>/<code>endTime</code> helper fields, and updates the row.</li>
+<li>Rescheduling is simply changing the start/end datetimes on the same reminder; there is no recurrence expansion (each reminder is a single instance).</li>
+</ol>
+<h3 id="96-broadcast-an-agency-wide-reminder-supervisor">9.6 Broadcast an agency-wide reminder (supervisor)</h3>
+<ol class="flow">
+<li>A super-admin opens <code>CreateTask</code> and enables the broadcast switch (visible only to super-admin).</li>
+<li>On submit (<code>POST /reminders</code> with <code>isBroadcast=true</code>), the reminder is stored against the supervisor&#x27;s <code>userId</code> and <code>serviceCenterId</code>.</li>
+<li>Every user in that service center then receives the reminder in their <code>GET /reminders</code> union (own reminders + agency broadcasts), so it appears on all agency staff calendars.</li>
+</ol>
+<h2 id="10-data-model">10. Data Model</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Key Fields</th><th>Relationships</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td><strong>Reminders</strong> (<code>reminders</code>)</td><td>id, uid, userId, serviceCenterId, title, message, priority (<code>LOW</code>/<code>MEDIUM</code>/<code>HIGH</code>), status (<code>PENDING</code>/<code>DONE</code>), startDate (datetime), endDate (datetime), isBroadcast (bool), claimId (nullable), created_at, updated_at</td><td><code>userInfo</code> → Users (owner); <code>claimInfo</code> → ServiceClaims → <code>victimInfo</code> (victim); serviceCenterId → ServiceCenters</td><td>The single scheduling primitive: reminders, tasks, and appointments. Carries start/end datetime + priority; <code>claimId</code> links to a case; <code>isBroadcast</code> makes it agency-wide. No separate calendar/appointment table exists.</td></tr>
+<tr><td><strong>ServiceClaims</strong> (<code>service_claims</code>)</td><td>id, uid, victim reference, service center, status</td><td>Referenced by <code>Reminders.claimId</code>; has <code>victimInfo</code> (app user)</td><td>The case a reminder/appointment is tied to; provides victim/client context on a linked reminder.</td></tr>
+<tr><td><strong>Users</strong> (<code>users</code>)</td><td>id, uid, name, serviceCenterId</td><td>Owner of a reminder (<code>Reminders.userId</code> / <code>userInfo</code>)</td><td>The agency staff member who owns the reminder.</td></tr>
+<tr><td><strong>ServiceCenters</strong> (<code>service_centers</code>)</td><td>id, uid, name</td><td><code>Reminders.serviceCenterId</code>; scopes broadcast reminders</td><td>The agency; scopes ownership, broadcasts, and RBAC.</td></tr>
+<tr><td><strong>HotlineCallbacks</strong> (<code>hotline_callbacks</code>) — read-only overlay</td><td>id, originalCallId, assignedToUserId, clientName, clientPhone, scheduledDate, scheduledTime, reason, status (<code>scheduled</code>/<code>completed</code>/<code>cancelled</code>), completedCallId</td><td>Owned by the Hotline module; agency derived from <code>assignedToUserId</code></td><td>Scheduled hotline callbacks surfaced read-only on the unified calendar. Not part of the Reminders schema; carries its own assignee (<code>assignedToUserId</code>).</td></tr>
+<tr><td><strong>ServiceCenterNotifications</strong> (<code>service_center_notifications</code>) — future</td><td>staff notification rows with <code>additionalData</code></td><td>Would reference a reminder uid</td><td>Would back scheduled reminder-time notifications (deferred; not used by the Reminders module today).</td></tr>
+</tbody></table></div>
+<h2 id="11-api-integration-surface">11. API &amp; Integration Surface</h2>
+<h3 id="111-reminders-endpoints-base-webreminders-allowonlyvs360-toolsvi">11.1 Reminders Endpoints — base <code>/web/reminders</code> (<code>allowOnly(&#x27;VS360&#x27;)</code>, <code>tools.view</code>)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/reminders</code></td><td>Fetch the user&#x27;s reminders + agency broadcast reminders (optional <code>priority</code>, <code>status</code> filters); graph-fetched with <code>userInfo</code> and <code>claimInfo.victimInfo</code></td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>tools.view</code></td></tr>
+<tr><td>POST</td><td><code>/reminders</code></td><td>Create a reminder/task/appointment (title, message, startDate, endDate, startTime, endTime, priority, isBroadcast, claimId)</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>tools.view</code></td></tr>
+<tr><td>PATCH</td><td><code>/reminders/{uid}</code></td><td>Update a reminder (recombines date+time; strips helper time fields)</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>tools.view</code> (owner)</td></tr>
+<tr><td>PATCH</td><td><code>/reminders/complete/{uid}</code></td><td>Mark a reminder <code>DONE</code></td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>tools.view</code> (owner)</td></tr>
+<tr><td>DELETE</td><td><code>/reminders/{uid}</code></td><td>Delete a reminder (hard delete)</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>tools.view</code> (owner)</td></tr>
+</tbody></table></div>
+<h3 id="112-overlaid-related-endpoints-read-only-on-calendar">11.2 Overlaid / Related Endpoints (read-only on calendar)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/hotlines/callbacks?tab=&amp;page=&amp;limit=</code></td><td>Fetch scheduled callbacks (overdue/today/upcoming) for read-only overlay on the calendar</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>hotline.callbacks</code> (owned by Hotline module)</td></tr>
+<tr><td>PATCH</td><td><code>/notifications/email-notifications</code></td><td>Toggle the user&#x27;s email notification preference (Tools screen)</td><td>Authenticated VS360 user</td></tr>
+<tr><td>PATCH</td><td><code>/notifications/sms-notifications</code></td><td>Toggle the user&#x27;s SMS notification preference (Tools screen)</td><td>Authenticated VS360 user</td></tr>
+</tbody></table></div>
+<h3 id="113-external-integrations">11.3 External Integrations</h3>
+<p>The Reminders module itself has <strong>no external integrations</strong> — no Twilio, no FCM, no Azure Blob, no OpenAI/Anthropic, and no email. It is a plain PostgreSQL-backed CRUD store served over the unified <code>/v2</code> API. The calendar&#x27;s callback overlay depends indirectly on the Hotline module (Twilio-backed), but only reads already-persisted callback rows. Any future reminder-time delivery would use the platform&#x27;s standard channels (Socket.IO, FCM, and the BullMQ templated-email queue) — see Risks.</p>
+<h2 id="12-rbac-permissions">12. RBAC &amp; Permissions</h2>
+<p>Two coarse layers apply. The <strong>context gate</strong> <code>allowOnly(&#x27;VS360&#x27;)</code> ensures only agency staff (issuer <code>roleInfo.context = VS360</code>) reach the routes. The <strong>fine-grained permission</strong> <code>tools.view</code> (from the VS360 module map <code>vs360Modules.tools = {view}</code>) gates the entire Tools area, including the calendar and reminders. <code>SUPER_ADMIN</code> bypasses the fine-grained check.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Action</th><th>Route(s)</th><th>Gate</th></tr></thead>
+<tbody>
+<tr><td>View the Tools calendar / list &amp; fetch reminders</td><td><code>GET /reminders</code></td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>tools.view</code></td></tr>
+<tr><td>Create a reminder/task/appointment</td><td><code>POST /reminders</code></td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>tools.view</code></td></tr>
+<tr><td>Edit / complete / delete a reminder</td><td><code>PATCH /reminders/{uid}</code>, <code>PATCH /reminders/complete/{uid}</code>, <code>DELETE /reminders/{uid}</code></td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>tools.view</code>; scoped to the owning user</td></tr>
+<tr><td>Broadcast an agency-wide reminder</td><td><code>POST /reminders</code> with <code>isBroadcast=true</code></td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>tools.view</code>; broadcast switch exposed only to super-admin</td></tr>
+<tr><td>View callback overlay on the calendar</td><td><code>GET /hotlines/callbacks</code></td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>hotline.callbacks</code> (Hotline module)</td></tr>
+<tr><td>Toggle email/SMS notification preferences</td><td>`/notifications/email</td><td>sms-notifications`</td></tr>
+</tbody></table></div>
+<p>Agency scoping: all reads/writes derive <code>userId</code> and <code>serviceCenterId</code> from <code>issuer</code>; a user sees only their own reminders plus their agency&#x27;s broadcasts, and can mutate only reminders they own. Cross-agency access is not possible.</p>
+<h2 id="13-non-functional-requirements">13. Non-Functional Requirements</h2>
+<ul>
+<li><strong>Security &amp; access control.</strong> Every route is protected by <code>allowOnly(&#x27;VS360&#x27;)</code> + <code>tools.view</code>; ownership and <code>serviceCenterId</code> come from the authenticated <code>issuer</code>, never from client input, preventing cross-agency or cross-user reminder access. Access tokens are Bearer JWTs with sliding refresh.</li>
+<li><strong>Privacy &amp; victim safety.</strong> Case-linked reminders expose victim context (<code>claimInfo.victimInfo</code>). This data must never leak outside the owning agency; broadcast reminders are agency-scoped and should avoid embedding sensitive victim identifiers in a title/message that will be seen agency-wide. Reminders are staff-only and are never surfaced to victims.</li>
+<li><strong>Data integrity.</strong> <code>combineDateTime</code> must produce timezone-stable ISO datetimes across 12h/24h input; on update, non-column helper fields (<code>startTime</code>/<code>endTime</code>) must be stripped before write.</li>
+<li><strong>Performance.</strong> <code>GET /reminders</code> returns a bounded per-user + per-agency-broadcast set; p95 calendar month render &lt; 1.5 s after the response. Callback overlay fetches must not block reminder rendering (parallel + silent failure).</li>
+<li><strong>Availability.</strong> The module is stateless CRUD over PostgreSQL; availability tracks the unified backend. A callback-service outage degrades gracefully (calendar still shows reminders).</li>
+<li><strong>Auditability.</strong> Consistent with platform conventions, create/update/delete operations are expected to be captured in the platform audit trail (<code>ActionLogs</code>) for compliance; reminders tied to cases contribute to the case&#x27;s activity picture. (See Open Question OQ-3 on confirming audit coverage for this module.)</li>
+<li><strong>Localization.</strong> UI strings follow the VS360 localization approach; reminder content is free text entered by staff.</li>
+<li><strong>Accessibility.</strong> The calendar (FullCalendar) and list views should meet the VS360 accessibility baseline (keyboard navigation, color-plus-text for priority so color is not the sole signal).</li>
+<li><strong>Compliance / reporting.</strong> Case-linked scheduling supports advocate accountability and continuity of care; while reminders are not a PMT/grant reporting source themselves, they reinforce timely follow-up that underpins grant-funded service delivery.</li>
+</ul>
+<h2 id="14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</h2>
+<h3 id="141-dashboards-kpis">14.1 Dashboards &amp; KPIs</h3>
+<p>The Reminders module does not ship a dedicated analytics dashboard. Operationally meaningful signals available from the data include: count of <code>PENDING</code> vs <code>DONE</code> reminders per staff member, overdue reminders (past <code>endDate</code>, still <code>PENDING</code>), case-linkage rate (<code>claimId</code> present), and priority distribution. These map to the success metrics in Section 4 and can be derived from <code>GET /reminders</code>.</p>
+<h3 id="142-notifications">14.2 Notifications</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Channel</th><th>Status</th><th>Detail</th></tr></thead>
+<tbody>
+<tr><td>In-app (DB row)</td><td>Not implemented in module</td><td>No <code>service_center_notifications</code> rows are created by the Reminders module.</td></tr>
+<tr><td>Socket.IO</td><td>Not implemented in module</td><td>Reminders emit no socket events. (Overlaid hotline callbacks are refreshed by the Hotline module&#x27;s <code>hotline:callback-updated</code>.)</td></tr>
+<tr><td>FCM push</td><td>Not implemented in module</td><td>No push at reminder time.</td></tr>
+<tr><td>Email / SMS delivery</td><td>Not implemented in module</td><td>No templated email/SMS is sent for a reminder. The Tools screen&#x27;s email/SMS toggles set user preferences (<code>/notifications/*</code>), not per-reminder alerts.</td></tr>
+<tr><td>Client refresh</td><td>Implemented</td><td>TanStack Query invalidation/refetch keeps calendar/list consistent after mutations.</td></tr>
+</tbody></table></div>
+<div class="callout note"><div class="callout-title">ℹ Notification gap</div><div class="callout-body">Timely reminder-time notifications (in-app/socket/FCM/email) are the most-requested enhancement for this module and are not implemented today. The platform already has the delivery machinery (Section 6 of the Core PRD: DB row → socket → FCM → BullMQ email); wiring a scheduler into it is the natural next step. Tracked in Risks (R-2).</div></div>
+<h2 id="15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Type</th><th>Impact</th><th>Mitigation / Owner</th></tr></thead>
+<tbody>
+<tr><td>No dedicated appointments/calendar entity; appointments are reminders</td><td>Risk / Gap</td><td>Limits richer appointment semantics (attendees, location, RSVP)</td><td>Model appointment fields on <code>reminders</code> or introduce an appointments table in a future release; Product + Backend</td></tr>
+<tr><td>No scheduled reminder-time notifications (in-app/socket/FCM/email)</td><td>Risk / Gap</td><td>Staff can miss due items; relies on opening Tools</td><td>Add a scheduler (e.g., BullMQ) to fire notifications ahead of <code>startDate</code> using the platform&#x27;s standard delivery path; Backend</td></tr>
+<tr><td>No recurrence / recurring appointments</td><td>Risk / Gap</td><td>Standing commitments must be re-created each time</td><td>Add recurrence fields + expansion, or generate instances; Product + Backend</td></tr>
+<tr><td>No assignment/delegation of a reminder to another staff member</td><td>Risk / Gap</td><td>Cannot delegate a task; only <code>isBroadcast</code> (all-agency) exists</td><td>Add an assignee field mirroring callbacks&#x27; <code>assignedToUserId</code>; Product + Backend</td></tr>
+<tr><td>No &quot;cancelled&quot; status — cancellation is a hard delete</td><td>Risk</td><td>Cancelled items vanish with no history</td><td>Consider a soft-cancel status + retention if history is needed; Backend</td></tr>
+<tr><td>Broadcast reminders are agency-wide and free-text</td><td>Privacy Risk</td><td>Sensitive victim info in a broadcast title/message is seen agency-wide</td><td>UI guidance / validation to avoid PII in broadcasts; restrict broadcast to super-admin (already enforced in UI); Product</td></tr>
+<tr><td>Callback overlay depends on the Hotline module</td><td>Assumption</td><td>If callbacks change shape, overlay may break</td><td>Overlay already fails silently; contract-test the callbacks response; Frontend</td></tr>
+<tr><td><code>combineDateTime</code> timezone correctness across client locales</td><td>Risk</td><td>Wrong appointment times if TZ handling regresses</td><td>Retain TZ-safe combine logic; add tests for 12h/24h + DST edges; Backend</td></tr>
+<tr><td><strong>OQ-1:</strong> Should appointments become a first-class entity distinct from reminders?</td><td>Open Question</td><td>Shapes future data model</td><td>Product to decide before recurrence/notifications work</td></tr>
+<tr><td><strong>OQ-2:</strong> Which notification channels and lead times should reminder alerts use?</td><td>Open Question</td><td>Defines delivery scope</td><td>Product + Security (victim-safety review of push/email content)</td></tr>
+<tr><td><strong>OQ-3:</strong> Are Reminders CRUD operations written to <code>ActionLogs</code> today?</td><td>Open Question</td><td>Affects auditability claim</td><td>Backend to confirm audit coverage for <code>/web/reminders</code></td></tr>
+<tr><td><strong>OQ-4:</strong> Should completed/overdue reminders feed case-continuity or supervisor dashboards?</td><td>Open Question</td><td>Reporting scope</td><td>Product</td></tr>
+</tbody></table></div>
+<h3 id="151-assumptions">15.1 Assumptions</h3>
+<ul>
+<li>The Reminders module remains the scheduling primitive for reminders, tasks, and appointments in this release.</li>
+<li>The unified calendar continues to overlay hotline callbacks read-only, owned by the Hotline module.</li>
+<li>Agency scoping and <code>tools.view</code> gating are enforced by the existing middleware chain and are not re-implemented here.</li>
+<li><code>SUPER_ADMIN</code> continues to bypass fine-grained permission checks and to be the role permitted to broadcast.</li>
+</ul>
+<h2 id="16-glossary">16. Glossary</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Reminder</td><td>The single scheduling primitive (<code>reminders</code> table): a titled item with message, priority, start/end datetime, optional case link, optional broadcast flag. Used as reminder, task, and appointment.</td></tr>
+<tr><td>Task</td><td>A reminder used as a to-do item, authored via <code>CreateTask</code>; same underlying <code>reminders</code> entity.</td></tr>
+<tr><td>Appointment</td><td>A reminder used as a scheduled meeting/event, typically with a time range and a <code>claimId</code>; there is no separate appointment entity.</td></tr>
+<tr><td>Tools</td><td>The VS360 web area (<code>/pages/Tools</code>) hosting the calendar, list, and task authoring; gated by <code>tools.view</code>.</td></tr>
+<tr><td>Calendar view</td><td>FullCalendar month/week rendering of reminders (colored by priority) plus read-only callback overlay.</td></tr>
+<tr><td>List view</td><td>A list rendering of the same reminders, with optional priority/status filters.</td></tr>
+<tr><td>Callback</td><td>A scheduled hotline callback (owned by the Hotline module) surfaced read-only on the calendar as a teal, phone-icon event.</td></tr>
+<tr><td>Broadcast</td><td>A reminder with <code>isBroadcast=true</code>, visible to all users of the authoring user&#x27;s service center.</td></tr>
+<tr><td>Priority</td><td><code>LOW</code> / <code>MEDIUM</code> / <code>HIGH</code> ranking on a reminder; drives calendar coloring (default <code>MEDIUM</code>).</td></tr>
+<tr><td>Status</td><td><code>PENDING</code> or <code>DONE</code>; completion sets <code>DONE</code>; there is no cancelled status (cancel = delete).</td></tr>
+<tr><td>Claim / Case</td><td>A <code>service_claims</code> row representing a victim&#x27;s service case; a reminder&#x27;s <code>claimId</code> links it to a case and, via <code>claimInfo.victimInfo</code>, to the victim.</td></tr>
+<tr><td>Service Claim</td><td>The formal case/claim record; the linkage target for appointments.</td></tr>
+<tr><td>VSMS</td><td>Victim Services Management System — the agency-staff domain (issuer type <code>VSMS</code>, context <code>VS360</code>).</td></tr>
+<tr><td>VS360</td><td>The staff-facing web application and the RBAC context (<code>allowOnly(&#x27;VS360&#x27;)</code>).</td></tr>
+<tr><td>Advocate / Caseworker</td><td>Front-line agency staff who own and act on reminders.</td></tr>
+<tr><td>Service Center / Agency</td><td>The tenant boundary (<code>service_centers</code>); scopes reminders, broadcasts, and permissions.</td></tr>
+<tr><td><code>tools.view</code></td><td>The VS360 permission flag that gates the entire Tools/calendar area.</td></tr>
+<tr><td><code>combineDateTime</code></td><td>Backend helper that merges a date field and a time field into a single timezone-stable ISO datetime.</td></tr>
+<tr><td>Broadcast switch</td><td>UI control (super-admin only) that sets <code>isBroadcast</code> when creating a reminder.</td></tr>
+<tr><td><code>issuer</code></td><td>The authenticated principal (<code>req.issuer</code>) carrying id, type, roleInfo/context, and serviceCenterInfo used for scoping.</td></tr>
+</tbody></table></div>
+      </div>
+      <nav class="prevnext"><a class="pn prev" href="P07.html"><span>← Previous</span><b>Hotline Management</b></a><a class="pn next" href="P09.html"><span>Next →</span><b>Staff Time Tracking</b></a></nav>
+      <footer class="doc-foot">NECX Inc — Confidential · Generated 2026-07-05 · NECX Calendar &amp; Appointments</footer>
+    </article>
+  </main>
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav class="toc-nav"><a class="toc-1" href="#1-document-control">1. Document Control</a>
+<a class="toc-1" href="#2-executive-summary">2. Executive Summary</a>
+<a class="toc-1" href="#3-product-overview-vision">3. Product Overview &amp; Vision</a>
+<a class="toc-2" href="#31-problem-statement">3.1 Problem Statement</a>
+<a class="toc-2" href="#32-product-vision">3.2 Product Vision</a>
+<a class="toc-2" href="#33-position-in-the-necx-ecosystem">3.3 Position in the NECX Ecosystem</a>
+<a class="toc-1" href="#4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</a>
+<a class="toc-2" href="#41-goals-objectives">4.1 Goals &amp; Objectives</a>
+<a class="toc-2" href="#42-success-metrics">4.2 Success Metrics</a>
+<a class="toc-1" href="#5-scope">5. Scope</a>
+<a class="toc-2" href="#51-in-scope">5.1 In Scope</a>
+<a class="toc-2" href="#52-out-of-scope">5.2 Out of Scope</a>
+<a class="toc-1" href="#6-personas-user-roles">6. Personas &amp; User Roles</a>
+<a class="toc-2" href="#61-persona-narratives">6.1 Persona Narratives</a>
+<a class="toc-1" href="#7-system-context-architecture">7. System Context &amp; Architecture</a>
+<a class="toc-2" href="#71-tech-stack">7.1 Tech Stack</a>
+<a class="toc-2" href="#72-how-it-talks-to-the-backend">7.2 How It Talks to the Backend</a>
+<a class="toc-2" href="#73-real-time-notifications">7.3 Real-Time &amp; Notifications</a>
+<a class="toc-2" href="#74-tenancy">7.4 Tenancy</a>
+<a class="toc-1" href="#8-functional-requirements">8. Functional Requirements</a>
+<a class="toc-2" href="#81-reminder-task-appointment-crud">8.1 Reminder / Task / Appointment CRUD</a>
+<a class="toc-2" href="#82-fetch-filtering-case-context">8.2 Fetch, Filtering &amp; Case Context</a>
+<a class="toc-2" href="#83-case-client-linkage-appointment-case">8.3 Case / Client Linkage (Appointment ↔ Case)</a>
+<a class="toc-2" href="#84-broadcast-agency-wide-reminders">8.4 Broadcast (Agency-Wide) Reminders</a>
+<a class="toc-2" href="#85-unified-calendar-callback-overlay">8.5 Unified Calendar &amp; Callback Overlay</a>
+<a class="toc-2" href="#86-notification-preferences-tools-screen">8.6 Notification Preferences (Tools Screen)</a>
+<a class="toc-1" href="#9-detailed-user-system-flows">9. Detailed User &amp; System Flows</a>
+<a class="toc-2" href="#91-create-an-appointment-tied-to-a-case">9.1 Create an appointment tied to a case</a>
+<a class="toc-2" href="#92-view-the-calendar-unified-with-callbacks">9.2 View the calendar (unified with callbacks)</a>
+<a class="toc-2" href="#93-receive-a-reminder-notification-current-behavior-and-gap">9.3 Receive a reminder notification (current behavior and gap)</a>
+<a class="toc-2" href="#94-complete-or-cancel-a-task">9.4 Complete or cancel a task</a>
+<a class="toc-2" href="#95-edit-reschedule-a-reminder">9.5 Edit / reschedule a reminder</a>
+<a class="toc-2" href="#96-broadcast-an-agency-wide-reminder-supervisor">9.6 Broadcast an agency-wide reminder (supervisor)</a>
+<a class="toc-1" href="#10-data-model">10. Data Model</a>
+<a class="toc-1" href="#11-api-integration-surface">11. API &amp; Integration Surface</a>
+<a class="toc-2" href="#111-reminders-endpoints-base-webreminders-allowonlyvs360-toolsvi">11.1 Reminders Endpoints — base `/web/reminders` (`allowOnly(&#x27;VS360&#x27;)`, `tools.view`)</a>
+<a class="toc-2" href="#112-overlaid-related-endpoints-read-only-on-calendar">11.2 Overlaid / Related Endpoints (read-only on calendar)</a>
+<a class="toc-2" href="#113-external-integrations">11.3 External Integrations</a>
+<a class="toc-1" href="#12-rbac-permissions">12. RBAC &amp; Permissions</a>
+<a class="toc-1" href="#13-non-functional-requirements">13. Non-Functional Requirements</a>
+<a class="toc-1" href="#14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</a>
+<a class="toc-2" href="#141-dashboards-kpis">14.1 Dashboards &amp; KPIs</a>
+<a class="toc-2" href="#142-notifications">14.2 Notifications</a>
+<a class="toc-1" href="#15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</a>
+<a class="toc-2" href="#151-assumptions">15.1 Assumptions</a>
+<a class="toc-1" href="#16-glossary">16. Glossary</a>
+</nav>
+  </aside>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

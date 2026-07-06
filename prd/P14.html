@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NECX Drive · NECX PRD</title>
+<meta name="description" content="Agency-scoped cloud file storage backed by Azure Blob Storage">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="prd-page">
+<header class="topbar">
+  <button class="hamburger" aria-label="Menu" onclick="toggleNav()">&#9776;</button>
+  <a class="brand" href="../index.html"><svg class="logo" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 L35 10 V22 C35 31 28 37 20 39 C12 37 5 31 5 22 V10 Z" fill="var(--brand)"/><path d="M13 27 V14 L20 22 V14 M27 14 V27 L20 19" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="brand-text">NECX<span class="brand-sub">Product Requirements</span></span></a>
+  <div class="topbar-spacer"></div>
+  <a class="top-link" href="../index.html">Home</a>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><span class="ic-sun">☀</span><span class="ic-moon">☾</span></button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-search"><input type="search" id="navSearch" placeholder="Filter documents…" oninput="filterNav(this.value)"></div>
+    <nav class="nav"><div class="nav-group"><div class="nav-group-title">Platform &amp; Applications</div><a class="nav-item " href="P01.html" data-search="necx platform — core system whole-platform prd: unified backend, four clients, multi-tenancy, identity/rbac, and the end-to-end case lifecycle."><span class="nav-num">01</span><span class="nav-text">Platform — Core System</span></a>
+<a class="nav-item " href="P02.html" data-search="necx workspace — staff mobile app agency staff mobile app (flutter/riverpod) — the on-the-go companion to the vs360 web dashboard."><span class="nav-num">02</span><span class="nav-text">Workspace — Staff Mobile App</span></a>
+<a class="nav-item " href="P03.html" data-search="necx victim app — survivor mobile app victim / survivor mobile app (flutter/getx) — discover services, request help, chat, find shelter, e-sign."><span class="nav-num">03</span><span class="nav-text">Victim App — Survivor Mobile App</span></a>
+<a class="nav-item " href="P04.html" data-search="vs360 — agency web dashboard vs360 — the agency staff web dashboard (react/vite) and primary caseworker workspace."><span class="nav-num">04</span><span class="nav-text">VS360 — Agency Web Dashboard</span></a>
+</div>
+<div class="nav-group"><div class="nav-group-title">VS360 Feature Modules</div><a class="nav-item " href="P05.html" data-search="necx case management service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes."><span class="nav-num">05</span><span class="nav-text">Case Management</span></a>
+<a class="nav-item " href="P06.html" data-search="necx shelter management shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search."><span class="nav-num">06</span><span class="nav-text">Shelter Management</span></a>
+<a class="nav-item " href="P07.html" data-search="necx hotline management twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights."><span class="nav-num">07</span><span class="nav-text">Hotline Management</span></a>
+<a class="nav-item " href="P08.html" data-search="necx calendar &amp; appointments reminders, tasks and case-linked appointments in the vs360 tools calendar."><span class="nav-num">08</span><span class="nav-text">Calendar &amp; Appointments</span></a>
+<a class="nav-item " href="P09.html" data-search="necx staff time tracking staff time tracking: clock in/out, timesheets, and grant/pmt time attribution."><span class="nav-num">09</span><span class="nav-text">Staff Time Tracking</span></a>
+<a class="nav-item " href="P10.html" data-search="necx agency chat real-time advocate↔victim messaging tied to service threads and cases."><span class="nav-num">10</span><span class="nav-text">Agency Chat</span></a>
+<a class="nav-item " href="P11.html" data-search="necx internal chat staff-to-staff messaging within an agency, real-time over socket.io."><span class="nav-num">11</span><span class="nav-text">Internal Chat</span></a>
+<a class="nav-item " href="P12.html" data-search="necx rbac &amp; user management roles, the module/action permission matrix, plan seats, and multi-layer enforcement."><span class="nav-num">12</span><span class="nav-text">RBAC &amp; User Management</span></a>
+<a class="nav-item " href="P13.html" data-search="necx notes center agency-scoped, cross-case view over internal (caseworker-only) case notes."><span class="nav-num">13</span><span class="nav-text">Notes Center</span></a>
+<a class="nav-item active" href="P14.html" data-search="necx drive google-drive-style cloud file storage backed by azure blob, with quotas and analytics."><span class="nav-num">14</span><span class="nav-text">Drive</span></a>
+<a class="nav-item " href="P15.html" data-search="necx ai report builder pmt/grant reporting plus ai-assisted custom report generation with accuracy validation."><span class="nav-num">15</span><span class="nav-text">AI Report Builder</span></a>
+<a class="nav-item " href="P16.html" data-search="necx e-sign &amp; document center prepare, request, sign and pdf-stamp case documents with an audit trail."><span class="nav-num">16</span><span class="nav-text">E-Sign &amp; Document Center</span></a>
+<a class="nav-item " href="P17.html" data-search="necx referrals &amp; partnerships inter-agency network: partnerships, invitations, and consent-based case referrals."><span class="nav-num">17</span><span class="nav-text">Referrals &amp; Partnerships</span></a>
+<a class="nav-item " href="P18.html" data-search="necx inquiries management intake and triage of inquiries / requests-to-connect before they become cases."><span class="nav-num">18</span><span class="nav-text">Inquiries Management</span></a>
+<a class="nav-item " href="P19.html" data-search="necx communities agency-run community spaces: joining questions, membership, posts and moderation."><span class="nav-num">19</span><span class="nav-text">Communities</span></a>
+<a class="nav-item " href="P20.html" data-search="necx service management service catalog, categories, and the per-service claim-question (intake) builder."><span class="nav-num">20</span><span class="nav-text">Service Management</span></a>
+</div>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim" onclick="toggleNav()"></div>
+  
+  <main class="content">
+    <article class="doc">
+      <div class="doc-eyebrow">Product Requirements Document · NECX Inc — Confidential</div>
+      <h1 class="doc-title">NECX Drive</h1>
+      <p class="doc-subtitle">Agency-scoped cloud file storage backed by Azure Blob Storage</p>
+      <div class="doc-meta"><span class="chip">Version: <b>1.0</b></span><span class="chip">Status: <b>Baseline</b></span><span class="chip">Owner: <b>NECX Product Management</b></span><a class="dl-btn" href="../downloads/14_VS360_Feature_NECX_Drive.docx" download>⬇ Download DOCX</a></div>
+      <hr class="doc-rule">
+      <div class="doc-body">
+      <h2 id="1-document-control">1. Document Control</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td>NECX — Coordinated Victim Services Platform</td></tr>
+<tr><td>Module</td><td>NECX Drive (cloud file storage)</td></tr>
+<tr><td>Version</td><td>1.0</td></tr>
+<tr><td>Status</td><td>Baseline</td></tr>
+<tr><td>Author</td><td>NECX Product Management</td></tr>
+<tr><td>Reviewers</td><td>Engineering (Backend Platform), VS360 Web, Security &amp; Compliance, Data Protection Officer</td></tr>
+<tr><td>Last Updated</td><td>2026-07-05</td></tr>
+<tr><td>Related Documents</td><td>E-Sign &amp; Document Center PRD; NECX Platform Core (Auth, RBAC, Data Model); VS360 Web Application PRD</td></tr>
+</tbody></table></div>
+<div class="callout warn"><div class="callout-title">⚠ Branch status</div><div class="callout-body">NECX Drive currently lives on the feature branch <code>feature/necx-569</code> (VS360 UI: <code>feature/necx-569-add_necx_drive</code>) and has <strong>not yet been merged to <code>develop</code></strong>. Backend and web code are developed in dedicated git worktrees (<code>.worktrees/backend-drive</code>, <code>.worktrees/vs360-drive</code>). Scope, endpoints, and behaviours below reflect that branch as of the last update; final release behaviour is subject to merge and QA.</div></div>
+<p>Revision History</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>1.0</td><td>2026-07-05</td><td>NECX Product Management</td><td>Initial baseline PRD authored from backend and VS360 knowledge-base analysis of <code>feature/necx-569</code>.</td></tr>
+</tbody></table></div>
+<h2 id="2-executive-summary">2. Executive Summary</h2>
+<p>NECX Drive is a Google-Drive-style cloud file storage feature embedded in the NECX platform, scoped to a single agency (service center). It lets agency staff upload, organise, browse, share, and track files without leaving the VS360 web application. Files are stored in Azure Blob Storage and streamed directly between the browser and Azure using short-lived signed URLs, so file bytes never transit the NECX API servers on upload or download.</p>
+<p>NECX serves victims and survivors of crime and the agencies and advocates who support them. Advocates routinely handle sensitive supporting documentation — identity documents, police reports, court paperwork, benefit applications, photographs — that today are scattered across personal drives, email attachments, and ad-hoc shared folders. NECX Drive gives each agency a single, tenant-isolated, auditable place to keep this material, with per-colleague and agency-wide sharing, expiring share links, soft-delete/restore via a Trash, and storage-usage visibility.</p>
+<p>The feature is designed around familiar cloud-drive conventions: a left rail of views (My Drive, Shared with me, Agency Drive, Starred, Trash), breadcrumb navigation, drag-and-drop upload (including whole folders), a per-row kebab action menu, MIME-typed file icons, and a storage meter. Security is foundational: strict multi-tenant isolation on every query, server-constructed blob paths that make path traversal impossible, MIME whitelisting plus magic-byte sniffing at commit, a 250 MB file cap enforced at three layers, SHA-256-hashed share-link tokens, and a full audit trail on every mutating action.</p>
+<p>NECX Drive is a <strong>VS360-web-only</strong> feature in this release: there is no Victim-app or Workspace-app surface. It complements — but is distinct from — the E-Sign / Document Center feature (case-scoped documents proxied through the API); NECX Drive is general-purpose agency file storage with direct-to-Azure transfer.</p>
+<h2 id="3-product-overview-vision">3. Product Overview &amp; Vision</h2>
+<h3 id="31-problem-statement">3.1 Problem Statement</h3>
+<p>Agency staff need to store and share operational files (case supporting documents, templates, agency records, media) in a way that is centralised, tenant-isolated, access-controlled, and auditable. Absent a first-party solution, staff resort to personal cloud drives and email, which fragments records, breaks the audit trail, risks exposing sensitive victim material outside the agency&#x27;s control, and provides no storage governance or usage visibility.</p>
+<h3 id="32-product-vision">3.2 Product Vision</h3>
+<p>Provide every NECX agency with a secure, self-service, Google-Drive-class file store built into VS360 — one that feels immediately familiar (folders, breadcrumbs, drag-drop, share dialogs, Trash) while enforcing NECX&#x27;s tenancy, safety, and auditing guarantees underneath. Files move directly between the browser and Azure Blob Storage for performance and to keep sensitive bytes off application servers, and every share, download, and deletion is recorded.</p>
+<h3 id="33-position-in-the-necx-ecosystem">3.3 Position in the NECX Ecosystem</h3>
+<p>NECX is a single unified backend (Node.js/Express, Objection/Knex over PostgreSQL, Azure Blob Storage) serving four clients: NECX Admin, VS360 web, Workspace mobile, and the Victim mobile app. NECX Drive is delivered exclusively through <strong>VS360 web</strong> for agency staff. It reuses the platform&#x27;s authentication (<code>req.issuer</code>), context gate (<code>allowOnly(&#x27;VS360&#x27;)</code>), multi-tenancy (<code>service_center_id</code>), and audit infrastructure (<code>logAudit</code> / <code>ActionLogs</code>). It is adjacent to the E-Sign / Document Center feature (case-attached documents) but architecturally distinct: NECX Drive owns its own Azure Blob adapter and uses direct-to-Azure SAS transfer rather than proxying bytes through Express.</p>
+<h2 id="4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</h2>
+<h3 id="41-goals-objectives">4.1 Goals &amp; Objectives</h3>
+<ul>
+<li>Give agency staff a familiar, self-service file store (folders, upload, browse, share, Trash) inside VS360.</li>
+<li>Keep sensitive file bytes off application servers by transferring directly between browser and Azure via short-lived signed URLs.</li>
+<li>Enforce strict multi-tenant isolation so no agency can ever see or reach another agency&#x27;s files.</li>
+<li>Provide flexible, revocable sharing: with specific colleagues, with the whole agency, and via expiring links.</li>
+<li>Give agencies visibility into storage consumption through a usage meter and a per-category storage breakdown.</li>
+<li>Maintain a complete audit trail of security-relevant actions (download, delete, restore, share, link, copy, empty-trash).</li>
+<li>Prevent abuse and accidental data loss through rate limiting, size caps, MIME validation, and soft-delete with restore.</li>
+</ul>
+<h3 id="42-success-metrics">4.2 Success Metrics</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Definition</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>Upload success rate</td><td>Two-phase uploads (SAS → PUT → commit) that reach a committed file row without error</td><td>≥ 99%</td></tr>
+<tr><td>Direct-transfer ratio</td><td>Share of file bytes that move browser↔Azure without transiting Express</td><td>100% of uploads and downloads</td></tr>
+<tr><td>Tenant isolation defects</td><td>Confirmed incidents of cross-agency file visibility or access</td><td>0</td></tr>
+<tr><td>Median upload commit latency</td><td>Time from <code>commit</code> request to committed file (excludes browser↔Azure PUT)</td><td>&lt; 500 ms</td></tr>
+<tr><td>SAS issuance latency</td><td>Median time to return a write SAS from <code>POST /drive/files/sas</code></td><td>&lt; 300 ms</td></tr>
+<tr><td>Storage-meter accuracy</td><td>Divergence between <code>drive_storage_usage.bytes_used</code> and summed live-file bytes</td><td>0 (post empty-trash reconciliation)</td></tr>
+<tr><td>Audit coverage</td><td>Security-relevant mutating actions that emit an audit record</td><td>100%</td></tr>
+<tr><td>Adoption</td><td>Agencies with ≥ 1 committed file within 30 days of enablement</td><td>≥ 60%</td></tr>
+</tbody></table></div>
+<h2 id="5-scope">5. Scope</h2>
+<h3 id="51-in-scope">5.1 In Scope</h3>
+<ul>
+<li>Agency-scoped folder/file model with a self-referencing folder tree and files at root or within a folder.</li>
+<li>Folder creation with case-insensitive per-parent name uniqueness (auto-suffixing on collision).</li>
+<li>Two-phase, direct-to-Azure file upload: write-SAS issuance, browser PUT to Azure, then metadata commit with size and MIME verification.</li>
+<li>Browsing views: My Drive, Shared with me, Agency Drive, Starred, Trash — with breadcrumb navigation, pagination, and sorting in My Drive.</li>
+<li>Move, rename, and star/unstar for both folders and files (with folder circular-move protection).</li>
+<li>Soft-delete to Trash, restore (with re-parent-to-root safety), and empty-trash (hard delete + Azure blob purge).</li>
+<li>Sharing: with specific same-agency users, with the whole agency, and via revocable expiring share links (token shown once, stored only as a SHA-256 hash).</li>
+<li>Copy a shared or owned file into the caller&#x27;s My Drive (Azure server-side copy).</li>
+<li>Filename search within a view (trigram-indexed ILIKE, with LIKE metacharacter escaping).</li>
+<li>Storage-usage tracking (per-agency running counter surfaced on every list) and a per-MIME-category storage breakdown.</li>
+<li>File-type icons (MIME → coloured icon) in the VS360 UI.</li>
+<li>Direct-to-Azure download via short-lived read SAS (returned as JSON, opened by the client).</li>
+<li>Full audit trail on mutating/security-relevant actions.</li>
+</ul>
+<h3 id="52-out-of-scope">5.2 Out of Scope</h3>
+<ul>
+<li><strong>Hard storage quota enforcement.</strong> There is no per-agency <code>max_bytes</code> limit checked before upload. <code>drive_storage_usage</code> is a tracked running counter only; the UI displays a 15 GB reference figure, but it is not enforced server-side (see Risks). The only server-side abuse guard is the SAS rate limiter.</li>
+<li><strong>In-app file preview/rendering.</strong> Files open in a new browser tab via the read-SAS URL; there is no embedded viewer.</li>
+<li><strong>Victim-app and Workspace-app surfaces.</strong> NECX Drive is VS360-web-only; the entire router is gated by <code>allowOnly(&#x27;VS360&#x27;)</code>.</li>
+<li><strong>Real-time collaboration / sockets.</strong> No socket events; UI feedback is via local toasts. No live co-editing or presence.</li>
+<li><strong>Automatic Trash retention purge worker.</strong> UI copy states items auto-delete after 30 days, but only manual <code>empty-trash</code> currently hard-deletes and decrements usage; a background cleanup worker is referenced as a future phase.</li>
+<li><strong>Cross-agency sharing.</strong> Sharing is limited to same-agency users or the whole agency.</li>
+<li><strong>File versioning / revision history</strong> of file contents.</li>
+<li><strong>Cross-user move.</strong> Ownership stays with the creator; non-owners get &quot;Save a copy to My Drive&quot; instead of edit rights.</li>
+</ul>
+<h2 id="6-personas-user-roles">6. Personas &amp; User Roles</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Role</th><th>Description</th><th>Key permissions</th></tr></thead>
+<tbody>
+<tr><td>Agency staff / advocate (VS360)</td><td>Any authenticated agency staff user (<code>issuer.type = VSMS</code>, <code>roleInfo.context = VS360</code>). Uploads, organises, shares, and browses files.</td><td>Full create/rename/move/delete/restore/share/link on files/folders they own; read on items owned, shared to them, shared agency-wide, or reachable via a valid share link.</td></tr>
+<tr><td>File owner</td><td>The staff user who created a folder/file (<code>owner_user_id</code>); <code>ownerIsMe = true</code> in responses.</td><td>Owner-only: rename, move, star, delete, restore, share, create/list/revoke links, list shares.</td></tr>
+<tr><td>Share recipient (user)</td><td>A same-agency staff user granted a direct <code>user</code> share of a file or folder.</td><td>Read/download the shared item (folder shares cascade to descendants); may copy a shared file to their own My Drive; may revoke a user-share targeting themselves.</td></tr>
+<tr><td>Agency-wide recipient</td><td>Any staff user in the agency when an item is shared with <code>share_kind = &#x27;agency&#x27;</code>.</td><td>Read/download via the Agency Drive view.</td></tr>
+<tr><td>Link holder</td><td>Anyone possessing a valid (non-revoked, non-expired) share-link token.</td><td>Read/download the linked file, or files within/under a linked folder, for as long as the link is valid.</td></tr>
+</tbody></table></div>
+<p>Persona narratives:</p>
+<ul>
+<li><strong>Dana, a victim advocate</strong>, receives a survivor&#x27;s identity and benefit documents by scan. She creates a &quot;Client Intake — 2026&quot; folder in My Drive, drag-drops the PDFs, and shares the folder with her supervisor for review. When a colleague covers her caseload, she shares the relevant files with the whole agency so any on-shift advocate can retrieve them.</li>
+<li><strong>Marcus, an agency administrator</strong>, monitors storage. From the Storage view he sees the agency&#x27;s consumption broken down by category (documents, images, video) and identifies large media files that should be cleaned up. He empties old items from Trash to reclaim space.</li>
+<li><strong>Priya, a partner-facing coordinator</strong>, needs to hand a single report to an external partner without granting platform access. She generates a 7-day expiring share link, copies the one-time token, sends it over a secure channel, and revokes it once the partner confirms receipt.</li>
+</ul>
+<h2 id="7-system-context-architecture">7. System Context &amp; Architecture</h2>
+<h3 id="71-technology-stack">7.1 Technology Stack</h3>
+<ul>
+<li><strong>Backend:</strong> Node.js + Express (ESM), Objection/Knex over PostgreSQL. Drive module under <code>src/apps/drive/</code> (route, controller, Joi validator, ~1900-line service, repository), with constants in <code>src/lib/constants/drive.js</code> and env config in <code>src/config/drive.upload.config.js</code>.</li>
+<li><strong>Storage:</strong> Azure Blob Storage in staging/production; Azurite emulator in dev/docker. The only module importing <code>@azure/storage-blob</code> is <code>src/services/v2/shared/storage/drive/azureBlobAdapter.js</code>.</li>
+<li><strong>Frontend:</strong> VS360 web (React/Vite + Mantine + TanStack Query). Feature under <code>src/pages/Drive/</code> with a <code>useDrive.js</code> hook layer and <code>src/services/drive.js</code> axios wrappers.</li>
+<li><strong>Database:</strong> PostgreSQL with the <code>pg_trgm</code> extension (for trigram filename search). Five tables under migrations <code>20260502100000..100400</code>.</li>
+</ul>
+<h3 id="72-how-it-talks-to-the-backend">7.2 How It Talks to the Backend</h3>
+<p>Every route is mounted under <code>/web</code> (e.g. <code>GET /web/drive/list</code>) and passes through the standard middleware chain: rate-limiter → auth (populates <code>req.issuer</code> with <code>id</code>, <code>uid</code>, <code>roleInfo.context</code>, <code>serviceCenterInfo</code>) → <code>allowOnly(&#x27;VS360&#x27;)</code> → Joi validator → controller → service → repository. Success responses use the envelope <code>{ status, msg, data }</code>; validation failures return <code>400 { status, msg }</code> (Joi <code>abortEarly:false</code>, <code>stripUnknown</code>). The VS360 axios factory baseURL already includes the <code>/web</code> prefix.</p>
+<h3 id="73-direct-to-azure-transfer-model">7.3 Direct-to-Azure Transfer Model</h3>
+<p>Uniquely among NECX file features, Drive transfers bytes <strong>directly between the browser and Azure</strong>, never through Express:</p>
+<ul>
+<li><strong>Upload</strong> is two-phase: the API issues a 10-minute write SAS for a server-constructed blob path; the browser PUTs the file bytes straight to the SAS URL (using a fresh axios instance so NECX auth headers do not leak to Azure); the API then commits metadata after verifying the blob&#x27;s size and sniffing its MIME.</li>
+<li><strong>Download</strong> returns a 5-minute read-SAS URL as JSON (not an HTTP 302). Because the platform uses <code>Authorization: Bearer</code> headers, a redirect would drop auth; instead the client fetches the signed URL over authenticated AJAX and then navigates the browser to the SAS URL.</li>
+<li><strong>Copy</strong> uses Azure server-side blob copy, so bytes never transit Express even when duplicating a file.</li>
+</ul>
+<h3 id="74-real-time-notifications-tenancy">7.4 Real-time / Notifications &amp; Tenancy</h3>
+<p>NECX Drive uses <strong>no sockets</strong>; user feedback is via local toasts (upload progress, success/error). Multi-tenancy is enforced by <code>service_center_id</code> on every query; foreign-tenant rows are treated as &quot;not found&quot; to avoid existence leaks. All mutating/security-relevant actions write an audit record.</p>
+<h2 id="8-functional-requirements">8. Functional Requirements</h2>
+<h3 id="81-folder-file-model">8.1 Folder &amp; File Model</h3>
+<p>Folders form a per-agency self-referencing tree: each folder has an optional <code>parent_folder_id</code> (null = root). Files belong to exactly one folder or sit at root (<code>folder_id</code> null). Both entities carry <code>owner_user_id</code>, <code>service_center_id</code>, <code>name</code>, <code>is_starred</code>, and <code>deleted_at</code> (soft-delete). Each file additionally stores <code>mime</code>, <code>size_bytes</code>, and <code>blob_name</code> (the Azure object key). External identifiers are UUID v4 <code>uid</code> values; a file&#x27;s <code>uid</code> equals the trailing segment of its blob path.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-MODEL-01</td><td>Folders shall form a self-referencing tree scoped by <code>service_center_id</code>, with <code>parent_folder_id</code> null denoting root.</td><td>Must</td></tr>
+<tr><td>FR-MODEL-02</td><td>Files shall reference an optional <code>folder_id</code> (null = root) and store <code>mime</code>, <code>size_bytes</code>, and <code>blob_name</code>.</td><td>Must</td></tr>
+<tr><td>FR-MODEL-03</td><td>Folder names shall be case-insensitively unique per parent among non-deleted siblings (enforced by a partial unique index on <code>(parent_folder_id, lower(name))</code>).</td><td>Must</td></tr>
+<tr><td>FR-MODEL-04</td><td>Both entities shall support soft-delete via <code>deleted_at</code> and an orthogonal <code>is_starred</code> flag.</td><td>Must</td></tr>
+<tr><td>FR-MODEL-05</td><td>File size shall be capped at 250 MB (262,144,000 bytes), enforced by a DB CHECK constraint in addition to API-layer checks.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="82-create-folder">8.2 Create Folder</h3>
+<p><code>POST /drive/folders</code> with <code>{ name (≤255, no </code>/ \ NUL<code>), parentId? }</code>. The service resolves the parent within owner+agency scope (throws NotFound if the parent uid isn&#x27;t owned by the caller), resolves a unique name (auto-suffixing <code>&quot; (1)&quot;</code>, <code>&quot; (2)&quot;</code>, … up to 50 attempts), and inserts a folder row with a fresh UUID.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-FOLDER-01</td><td>The system shall create a folder under a caller-owned parent (or root) and return the shaped folder with HTTP 201.</td><td>Must</td></tr>
+<tr><td>FR-FOLDER-02</td><td>On name collision within the parent, the system shall auto-suffix the name to the first free <code>&quot; (n)&quot;</code> (up to 50), else return PreconditionFailed.</td><td>Must</td></tr>
+<tr><td>FR-FOLDER-03</td><td>Folder names shall reject <code>/</code>, <code>\</code>, NUL, and lengths &gt; 255 at the validator.</td><td>Must</td></tr>
+<tr><td>FR-FOLDER-04</td><td>The parent shall be resolved within the caller&#x27;s owner+agency scope; unknown/foreign parents surface as NotFound.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="83-upload-two-phase-direct-to-azure">8.3 Upload (Two-Phase, Direct-to-Azure)</h3>
+<p>Upload is two API calls around a direct browser→Azure PUT. <strong>Phase 1</strong> <code>POST /drive/files/sas</code> with <code>{ name, declaredSize (1..250 MB), declaredMime (whitelist), folderId? }</code> (rate-limited <strong>30/min/user</strong>): the service resolves the target folder, pre-computes a non-colliding <code>finalName</code>, generates a file UUID, builds the blob path <strong>server-side</strong> as <code>agencies/{serviceCenterUid}/owners/{ownerUid}/{fileUid}</code>, obtains a 10-minute write SAS, and returns <code>{ fileUid, blobName, sasUrl, expiresAt, finalName, folderUid }</code>. The browser then PUTs bytes directly to <code>sasUrl</code> with header <code>x-ms-blob-type: BlockBlob</code>. <strong>Phase 2</strong> <code>POST /drive/files/commit</code> with <code>{ blobName, folderId?, name, declaredSize, declaredMime }</code>: the service verifies the tenant prefix, HEADs the blob to confirm existence and actual size, sniffs the first 4 KB for MIME, re-resolves a unique name, and (in a transaction) inserts the file row and increments the storage counter.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-UPLOAD-01</td><td>The system shall issue a 10-minute write SAS for a server-constructed blob path derived only from agency/owner/file UIDs (no user-supplied path segment).</td><td>Must</td></tr>
+<tr><td>FR-UPLOAD-02</td><td>SAS issuance shall be rate-limited to 30 requests per minute per user (quota-burn guard).</td><td>Must</td></tr>
+<tr><td>FR-UPLOAD-03</td><td><code>declaredMime</code> shall be validated against the MIME whitelist and <code>declaredSize</code> bounded to 1..250 MB at Phase 1.</td><td>Must</td></tr>
+<tr><td>FR-UPLOAD-04</td><td>At commit, the system shall reject any <code>blobName</code> not prefixed with <code>agencies/{callerSC}/owners/{callerUid}/</code> (Forbidden) and require a non-empty, slash-free trailing segment.</td><td>Must</td></tr>
+<tr><td>FR-UPLOAD-05</td><td>At commit, the system shall HEAD the blob and reject a size mismatch versus <code>declaredSize</code>, with a belt-and-suspenders 250 MB re-check.</td><td>Must</td></tr>
+<tr><td>FR-UPLOAD-06</td><td>At commit, the system shall sniff the first 4 KB and reject when the sniffed MIME differs from the declared MIME; a null sniff (e.g. text/csv) accepts the whitelisted declared MIME.</td><td>Must</td></tr>
+<tr><td>FR-UPLOAD-07</td><td>Commit shall insert the file and increment <code>drive_storage_usage</code> (+size, +1) atomically in one transaction, and return the file with HTTP 201.</td><td>Must</td></tr>
+<tr><td>FR-UPLOAD-08</td><td>File bytes shall never transit the API server on upload (direct browser→Azure PUT via a fresh HTTP client).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="84-browse-with-breadcrumbs">8.4 Browse with Breadcrumbs</h3>
+<p><code>GET /drive/list</code> with <code>{ view (my|shared-with-me|agency|starred|trash), parentId?, page, pageSize (≤200, def 50), sortField (name|updatedAt|sizeBytes), sortDirection (asc|desc) }</code> returns <code>{ folders[], files[], breadcrumbs[], pagination, agencyUsage:{bytesUsed,fileCount} }</code>. My Drive lists folders (unpaginated in-parent) and files (paginated) owned by the caller in the parent, builds breadcrumbs by walking <code>parent_folder_id</code> to root (capped at 25 hops against cycles), and includes agency usage. Other views dispatch to starred, trash, shared-with-me, and agency listings; unknown views return <code>501 NotImplemented</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-BROWSE-01</td><td>The list endpoint shall dispatch by <code>view</code> and return folders, files, breadcrumbs, pagination, and agency usage in one response.</td><td>Must</td></tr>
+<tr><td>FR-BROWSE-02</td><td>My Drive breadcrumbs shall be built by walking parents to root, capped at 25 hops to defend against cycles.</td><td>Must</td></tr>
+<tr><td>FR-BROWSE-03</td><td>Shared-with-me shall list items with a <code>user</code> share granted to the caller, excluding caller-owned items, with empty breadcrumbs.</td><td>Must</td></tr>
+<tr><td>FR-BROWSE-04</td><td>Agency view shall list all <code>agency</code>-shared items in the agency regardless of owner.</td><td>Must</td></tr>
+<tr><td>FR-BROWSE-05</td><td>Starred shall list caller-owned starred items; Trash shall list caller-owned items with <code>deleted_at</code> set.</td><td>Must</td></tr>
+<tr><td>FR-BROWSE-06</td><td>Unimplemented views shall return HTTP 501 and be rendered by the client as a graceful empty state.</td><td>Should</td></tr>
+<tr><td>FR-BROWSE-07</td><td>Sorting shall support name/updatedAt/sizeBytes; folders sorted by size shall fall back to <code>updated_at</code>.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="85-move-rename-star">8.5 Move, Rename &amp; Star</h3>
+<p><code>PATCH /drive/folders/:uid</code> and <code>PATCH /drive/files/:uid</code> accept at least one of <code>{ name, parentId/folderId, isStarred }</code>. The item is fetched owner-scoped (else NotFound). <code>parentId/folderId: null</code> moves to root; <code>undefined</code> leaves it unchanged. Moving a folder is guarded by a recursive descendants CTE that rejects moving a folder into itself or a descendant (PreconditionFailed). Renames re-resolve a unique name in the destination, excluding self.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-EDIT-01</td><td>The system shall allow the owner to rename, move (to another folder or root), and star/unstar folders and files.</td><td>Must</td></tr>
+<tr><td>FR-EDIT-02</td><td>Folder moves shall be rejected if the destination is the folder itself or any of its descendants.</td><td>Must</td></tr>
+<tr><td>FR-EDIT-03</td><td>Rename shall re-resolve a unique name at the destination (excluding the item itself).</td><td>Must</td></tr>
+<tr><td>FR-EDIT-04</td><td>A PATCH with no recognised field shall be rejected by the validator.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="86-delete-restore-empty-trash">8.6 Delete, Restore &amp; Empty Trash</h3>
+<p><code>DELETE /drive/folders/:uid</code> and <code>DELETE /drive/files/:uid</code> soft-delete (set <code>deleted_at</code>); folder deletion cascades via a recursive descendants CTE, setting <code>deleted_at</code> on all descendant folders and their files in a transaction. Restore (<code>POST .../restore</code>) clears <code>deleted_at</code> and re-parents to root if the original parent is still deleted (avoids orphaning inside a trashed parent). <code>DELETE /drive/trash</code> hard-deletes the caller&#x27;s trashed files — best-effort Azure blob deletes (Promise.allSettled), DB delete, then decrement of the storage counter — and then hard-deletes trashed folders. The storage counter is unchanged on soft-delete/restore; only empty-trash decrements it.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-TRASH-01</td><td>Soft-delete shall set <code>deleted_at</code>; folder deletion shall cascade <code>deleted_at</code> to all descendant folders and files atomically.</td><td>Must</td></tr>
+<tr><td>FR-TRASH-02</td><td>Restore shall clear <code>deleted_at</code> and re-parent to root when the original parent remains deleted.</td><td>Must</td></tr>
+<tr><td>FR-TRASH-03</td><td>Empty-trash shall hard-delete the caller&#x27;s trashed files, best-effort delete their Azure blobs, and decrement <code>drive_storage_usage</code> by the summed bytes/count; then hard-delete trashed folders.</td><td>Must</td></tr>
+<tr><td>FR-TRASH-04</td><td>Soft-delete and restore shall not change the storage counter (trashed items still count until hard-deleted).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="87-share-user-agency">8.7 Share (User &amp; Agency)</h3>
+<p><code>POST /drive/shares</code> with <code>{ targetKind (file|folder), targetUid, shareKind (user|agency), recipientUserIds[] (required iff user, forbidden iff agency) }</code>. The caller must own the target. An <code>agency</code> share inserts a single row (recipient null); a <code>user</code> share resolves recipient uids to same-agency users (excluding the caller), rejecting when none are valid, and bulk-inserts with <code>onConflict().ignore()</code> (dedup via partial unique indexes). <code>GET /drive/shares</code> (owner-only) lists shares with hydrated recipient name/email/uid. <code>DELETE /drive/shares/:uid</code> revokes a share (granter/owner, or the recipient for a user-share).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SHARE-01</td><td>Only the owner shall create shares; agency shares create one row, user shares create one row per valid same-agency recipient (deduped).</td><td>Must</td></tr>
+<tr><td>FR-SHARE-02</td><td>User-share recipients shall be restricted to same-agency staff, excluding the caller; a request with no valid recipient shall return BadRequest.</td><td>Must</td></tr>
+<tr><td>FR-SHARE-03</td><td>Listing shares shall be owner-only and hydrate recipient identity.</td><td>Must</td></tr>
+<tr><td>FR-SHARE-04</td><td>A share may be revoked by the granter/owner, or by the recipient for a user-share targeting them.</td><td>Must</td></tr>
+<tr><td>FR-SHARE-05</td><td>Folder shares shall cascade read access to descendants (resolved via ancestor-walk at access time).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="88-share-via-link">8.8 Share via Link</h3>
+<p><code>POST /drive/links</code> with <code>{ targetKind, targetUid, expiresIn (1d|7d|30d|never, def 7d) }</code> (owner-only). The service generates a 32-byte base64url token, stores only its SHA-256 hash (<code>token_hash</code>), computes <code>expires_at</code>, and <strong>returns the plaintext token exactly once</strong>. <code>GET /drive/links</code> (owner-only) lists active (non-revoked, non-expired) links without tokens. <code>DELETE /drive/links/:uid</code> revokes a link (creator-only, sets <code>revoked_at</code>). Link-based access is validated on every download.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-LINK-01</td><td>Only the owner shall create a share link; the plaintext token shall be returned exactly once and never stored.</td><td>Must</td></tr>
+<tr><td>FR-LINK-02</td><td>The system shall store only the SHA-256 hash of the token and honour expiry/revocation on every access.</td><td>Must</td></tr>
+<tr><td>FR-LINK-03</td><td>Expiry options shall be 1d/7d/30d/never (default 7d).</td><td>Must</td></tr>
+<tr><td>FR-LINK-04</td><td>Link listing shall be owner-only and exclude tokens; revocation shall be creator-only.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="89-download-access-resolution">8.9 Download &amp; Access Resolution</h3>
+<p><code>GET /drive/files/:uid/download</code> (optional <code>token</code> query for link access) returns <code>{ url, fileName }</code> — a 5-minute read-SAS URL as JSON. Access is granted if ANY of: (1) the caller owns the file; (2) a direct user share, a direct agency share, or a cascading folder share (ancestor-walk CTE) grants access; (3) a valid share-link token matches the file, or a folder-link whose linked folder is an ancestor of the file&#x27;s folder. If none apply, the response is NotFound (identical to a missing file, to avoid existence leaks). Every successful download emits a DOWNLOAD audit record.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-DL-01</td><td>Download shall return a 5-minute read-SAS URL as JSON (not a 302), fetched by the client over authenticated AJAX.</td><td>Must</td></tr>
+<tr><td>FR-DL-02</td><td>Access shall be granted for owner, direct/agency/cascading shares, or a valid share-link token; otherwise NotFound.</td><td>Must</td></tr>
+<tr><td>FR-DL-03</td><td>Folder-link access shall reach files within/under the linked folder; root files shall not be reachable via a folder link by design.</td><td>Must</td></tr>
+<tr><td>FR-DL-04</td><td>Every download shall emit a DOWNLOAD audit record.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="810-copy-to-my-drive">8.10 Copy to My Drive</h3>
+<p><code>POST /drive/files/:uid/copy-to-my-drive</code> requires read access (owned or shared). The service allocates a new <code>uid</code> and destination blob under the caller&#x27;s prefix, performs an <strong>Azure server-side copy</strong>, and (in a transaction) inserts a new file row at the caller&#x27;s root with a unique name and increments the storage counter; emits a COPY audit record.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-COPY-01</td><td>A caller with read access shall copy a file into their own My Drive root via Azure server-side copy.</td><td>Must</td></tr>
+<tr><td>FR-COPY-02</td><td>The copy shall be recorded as a new file owned by the caller and increment <code>drive_storage_usage</code>.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="811-search">8.11 Search</h3>
+<p><code>GET /drive/search</code> with <code>{ q (≤255), view (my|shared-with-me|agency), limit (≤100, def 20) }</code> performs an <code>ILIKE %q%</code> on <code>lower(name)</code> scoped by view, returning <code>{ folders[], files[] }</code>. LIKE metacharacters (<code>%</code>, <code>_</code>, <code>\</code>) are escaped before building the pattern. Backed by a GIN trigram index on files.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SEARCH-01</td><td>Filename search shall be scoped to the selected view and escape LIKE metacharacters in the query.</td><td>Must</td></tr>
+<tr><td>FR-SEARCH-02</td><td>Search shall be backed by a trigram index for performant case-insensitive substring matching.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="812-storage-usage-breakdown">8.12 Storage Usage &amp; Breakdown</h3>
+<p>Every list response returns <code>agencyUsage:{bytesUsed,fileCount}</code> from the per-agency counter. <code>GET /drive/storage/breakdown</code> groups the caller&#x27;s live (non-deleted) files by MIME into 9 categories (images, videos, audio, documents, spreadsheets, presentations, text, archives, other), each with a label and colour, returning non-empty categories plus a grand total.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-USAGE-01</td><td>Each list response shall include the agency&#x27;s <code>bytesUsed</code> and <code>fileCount</code> from <code>drive_storage_usage</code>.</td><td>Must</td></tr>
+<tr><td>FR-USAGE-02</td><td>The breakdown endpoint shall classify live files into 9 MIME categories with a label/colour and return non-empty categories plus a grand total.</td><td>Must</td></tr>
+<tr><td>FR-USAGE-03</td><td>The VS360 UI shall render a storage meter and per-category bars against a 15 GB reference figure (display-only; not server-enforced).</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="813-file-type-icons-preview">8.13 File-Type Icons &amp; Preview</h3>
+<p>The VS360 <code>FileTypeIcon</code> component maps MIME to a coloured Tabler icon (PDF red, Word blue, Excel green, PowerPoint orange, plus markdown, CSV, txt, image, audio, video, zip, and a generic fallback). There is no in-app preview; files open in a new browser tab via the read-SAS URL.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-ICON-01</td><td>The UI shall render a MIME-appropriate coloured icon per file type with a generic fallback.</td><td>Should</td></tr>
+<tr><td>FR-ICON-02</td><td>Opening a file shall navigate to the read-SAS URL in a new tab (no embedded viewer in this release).</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="814-google-drive-style-ux">8.14 Google-Drive-Style UX</h3>
+<p>The VS360 page is a single full-height view: a left rail (min 240px) listing the five views and a pinned Storage button with a mini progress bar; a header showing usage and a &quot;+ New&quot; menu (Upload files / Upload folder / New folder); a search input (My/Shared/Agency); a bulk-action toolbar when a selection exists; breadcrumbs (My Drive); and a scrollable file list. The file list shows folders then files with hover-checkbox selection, shift-range selection, single-click to select and double-click to open. Drag-drop anywhere over the content area shows a full-screen dashed overlay; folder upload recurses, creating folders as it descends, with a floating progress widget and one batch-summary toast.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-UX-01</td><td>The UI shall provide GDrive-style navigation: left-rail views, breadcrumbs, &quot;+ New&quot; menu, and a bulk-action toolbar.</td><td>Should</td></tr>
+<tr><td>FR-UX-02</td><td>The file list shall support hover-checkbox, shift-range selection, single-click select and double-click open.</td><td>Should</td></tr>
+<tr><td>FR-UX-03</td><td>Drag-drop upload shall accept files and whole folders (recursive), with per-file and batch progress feedback.</td><td>Should</td></tr>
+</tbody></table></div>
+<h2 id="9-detailed-user-system-flows">9. Detailed User &amp; System Flows</h2>
+<h3 id="91-create-a-folder">9.1 Create a Folder</h3>
+<ol class="flow">
+<li>From &quot;+ New → New folder&quot;, the user enters a name; VS360 calls <code>POST /drive/folders</code> with <code>{ name, parentId? }</code>.</li>
+<li>The service authorises the VS360 context and resolves <code>parentId</code> to a DB id within the caller&#x27;s owner+agency scope; a foreign/unknown parent surfaces as NotFound (never leaks). Null parent = root.</li>
+<li><code>resolveUniqueFolderName</code> checks for a case-insensitive collision among non-deleted siblings; on collision it appends <code>&quot; (1)&quot;</code>, <code>&quot; (2)&quot;</code>, … up to 50 tries, matching the partial unique index.</li>
+<li>If 50 attempts fail, the service returns PreconditionFailed.</li>
+<li>Otherwise it inserts a <code>drive_folders</code> row with a fresh UUID v4 <code>uid</code> and returns the shaped folder (<code>ownerIsMe</code> computed) with HTTP 201.</li>
+<li>VS360 shows a success toast and invalidates the <code>[&quot;drive&quot;,&quot;list&quot;]</code> query so the new folder appears.</li>
+</ol>
+<h3 id="92-upload-a-file-to-azure-two-phase">9.2 Upload a File to Azure (Two-Phase)</h3>
+<ol class="flow">
+<li>The user drops a file onto the content area (or picks &quot;+ New → Upload files&quot;). VS360 reads the file&#x27;s name, size, and MIME.</li>
+<li><strong>Phase 1 — SAS:</strong> VS360 calls <code>POST /drive/files/sas</code> with <code>{ name, declaredSize, declaredMime, folderId? }</code>. This call is rate-limited to 30/min/user.</li>
+<li>The service requires <code>issuer.uid</code> and <code>serviceCenterInfo.uid</code>, resolves the target folder within scope, pre-computes a non-colliding <code>finalName</code>, generates <code>fileUid</code>, and builds the blob path server-side as <code>agencies/{serviceCenterUid}/owners/{ownerUid}/{fileUid}</code> (no user string → path traversal impossible).</li>
+<li>The service requests a 10-minute write SAS from the Azure adapter and returns <code>{ fileUid, blobName, sasUrl, expiresAt, finalName, folderUid }</code>.</li>
+<li><strong>Direct PUT:</strong> VS360 uses a fresh axios instance (so NECX auth headers don&#x27;t reach Azure) to PUT the raw bytes directly to <code>sasUrl</code> with header <code>x-ms-blob-type: BlockBlob</code>, reporting progress 0..1.</li>
+<li><strong>Phase 2 — Commit:</strong> VS360 calls <code>POST /drive/files/commit</code> with <code>{ blobName, folderId?, name, declaredSize, declaredMime }</code>.</li>
+<li>The service verifies <code>blobName</code> starts with <code>agencies/{callerSC}/owners/{callerUid}/</code> (else Forbidden) and that the trailing segment (the file uid) is non-empty and slash-free (else BadRequest).</li>
+<li>It HEADs the blob to confirm existence and actual size, rejecting a size mismatch versus <code>declaredSize</code> and re-checking the 250 MB cap.</li>
+<li>It sniffs the first 4 KB (magic bytes) and rejects if the sniffed MIME differs from the declared MIME; a null sniff (e.g. text/csv) accepts the already-whitelisted declared MIME.</li>
+<li>It re-resolves a unique file name (concurrency race guard), then in a single transaction inserts the <code>drive_files</code> row (<code>uid = fileUid</code>) and increments <code>drive_storage_usage</code> by (+size, +1).</li>
+<li>It returns the committed file (HTTP 201); VS360 updates the floating progress widget and, once all files settle, shows one batch-summary toast.</li>
+<li><strong>Edge cases:</strong> SAS expiry mid-upload → the PUT fails and the client surfaces an error for that file; a blob that fails size/MIME verification is rejected at commit and never recorded (leaving an orphan blob to be cleaned up); a name collision resolved between SAS and commit is handled by the commit-time re-resolve.</li>
+</ol>
+<h3 id="93-browse-navigate-my-drive-with-breadcrumbs">9.3 Browse &amp; Navigate (My Drive with Breadcrumbs)</h3>
+<ol class="flow">
+<li>VS360 holds <code>parentId</code> state and calls <code>GET /drive/list?view=my&amp;parentId=…</code> (with page/sort options).</li>
+<li>The service lists all folders in the parent (unpaginated) and a page of files, both owned by the caller in that parent, and builds breadcrumbs by walking <code>parent_folder_id</code> up to root (capped at 25 hops to defend against cycles).</li>
+<li>The response includes <code>folders[]</code>, <code>files[]</code>, <code>breadcrumbs[]</code> (root-first, e.g. <code>[{uid:null,name:&quot;My Drive&quot;}, …]</code>), pagination, and <code>agencyUsage</code>.</li>
+<li>Double-clicking a folder row sets <code>parentId</code> to that folder&#x27;s uid and re-lists; clicking a breadcrumb navigates to that ancestor.</li>
+<li>Single-clicking a row enters select mode and toggles selection; hover reveals a checkbox; shift-click extends a range; Escape or deselect-all exits select mode.</li>
+<li>Double-clicking a file opens it (see 9.5 download); double-clicking a folder navigates into it.</li>
+<li><strong>Branches:</strong> switching the left-rail view re-issues <code>list</code> with the new <code>view</code>; unimplemented views return 501 and render as a graceful empty state; sorting by size on folders falls back to <code>updated_at</code>.</li>
+</ol>
+<h3 id="94-move-rename-delete">9.4 Move, Rename &amp; Delete</h3>
+<ol class="flow">
+<li><strong>Rename:</strong> from the row kebab, the user edits the name; VS360 calls <code>PATCH /drive/folders/:uid</code> or <code>/drive/files/:uid</code> with <code>{ name }</code>. The service fetches the item owner-scoped (else NotFound) and re-resolves a unique name at the destination (excluding self), then persists.</li>
+<li><strong>Move:</strong> the user picks a destination in the Move dialog (a folder browser excluding the item being moved); VS360 sends <code>{ parentId }</code> (folder) or <code>{ folderId }</code> (file); <code>null</code> moves to root.</li>
+<li>For a folder move, the service runs a recursive descendants CTE and rejects moving the folder into itself or any descendant with PreconditionFailed; otherwise it updates the parent.</li>
+<li><strong>Star/Unstar:</strong> VS360 sends <code>{ isStarred: !current }</code>; the list is invalidated to reflect the change.</li>
+<li><strong>Delete (soft):</strong> the user chooses &quot;Move to Trash&quot;; VS360 calls <code>DELETE /drive/folders/:uid</code> or <code>/drive/files/:uid</code>. For a folder, the service collects all descendant folder ids via a recursive CTE and sets <code>deleted_at</code> on those folders and all files within, in one transaction; for a file it sets <code>deleted_at</code>. The storage counter is unchanged.</li>
+<li><strong>Restore:</strong> from Trash, the user restores an item; the service clears <code>deleted_at</code>, re-parenting to root if the original parent is still deleted.</li>
+<li><strong>Empty Trash:</strong> the user confirms; VS360 calls <code>DELETE /drive/trash</code>. The service hard-deletes the caller&#x27;s trashed files (best-effort Azure blob deletes via Promise.allSettled, then DB delete), decrements <code>drive_storage_usage</code> by the summed bytes/count, and then hard-deletes trashed folders.</li>
+<li>All of the above emit audit records.</li>
+</ol>
+<h3 id="95-download-a-file">9.5 Download a File</h3>
+<ol class="flow">
+<li>The user opens a file (double-click or kebab → Download); VS360 calls <code>GET /drive/files/:uid/download</code> (with optional <code>token</code> for link access).</li>
+<li>The service resolves access: caller-owns, OR a direct/agency/cascading folder share, OR a valid share-link token (file-link matches, or folder-link ancestor of the file&#x27;s folder). If none, it returns NotFound (identical to a missing file).</li>
+<li>On success it issues a 5-minute read SAS from the Azure adapter, emits a DOWNLOAD audit record, and returns <code>{ url, fileName }</code> as JSON.</li>
+<li>VS360 (which cannot follow a redirect without dropping the Bearer header) receives the JSON and navigates the browser to <code>url</code>, downloading directly from Azure.</li>
+</ol>
+<h3 id="96-generate-a-share-link">9.6 Generate a Share Link</h3>
+<ol class="flow">
+<li>From the row kebab → &quot;Get link&quot;, the user opens the Link dialog and selects an expiry (1d/7d/30d/never); VS360 calls <code>POST /drive/links</code> with <code>{ targetKind, targetUid, expiresIn }</code>.</li>
+<li>The service verifies the caller owns the target, generates a 32-byte base64url token, stores only its SHA-256 hash and computed <code>expires_at</code>, and returns <code>{ uid, token, expiresAt }</code>.</li>
+<li>VS360 displays the plaintext token exactly once with a copy button; the token is never retrievable again.</li>
+<li>The dialog lists active links (<code>GET /drive/links?targetKind&amp;targetUid</code>, no tokens); the user can revoke via <code>DELETE /drive/links/:uid</code> (creator-only, sets <code>revoked_at</code>).</li>
+<li>A link holder later downloads via <code>GET /drive/files/:uid/download?token=…</code>; access is re-validated (hash match, non-revoked, non-expired) on every request.</li>
+</ol>
+<h3 id="97-share-with-users-or-the-whole-agency">9.7 Share with Users or the Whole Agency</h3>
+<ol class="flow">
+<li>From the kebab → &quot;Share&quot;, the user opens the Share dialog. To share agency-wide, they toggle &quot;agency&quot;; VS360 calls <code>POST /drive/shares</code> with <code>{ targetKind, targetUid, shareKind:&#x27;agency&#x27; }</code>, creating a single row.</li>
+<li>To share with specific colleagues, the user selects same-agency staff via autocomplete; VS360 calls <code>POST /drive/shares</code> with <code>{ shareKind:&#x27;user&#x27;, recipientUserIds:[…] }</code>.</li>
+<li>The service verifies ownership, resolves recipient uids to same-agency users (excluding the caller), rejects when none are valid, and bulk-inserts with <code>onConflict().ignore()</code> (dedup via partial unique indexes).</li>
+<li>Existing shares are listed via <code>GET /drive/shares?targetKind&amp;targetUid</code> (owner-only, hydrated names); a share is revoked via <code>DELETE /drive/shares/:uid</code> (granter, or the recipient for a user-share).</li>
+<li>Recipients see the item under <strong>Shared with me</strong> (user shares) or <strong>Agency Drive</strong> (agency shares); folder shares cascade read access to descendants.</li>
+</ol>
+<h3 id="98-view-storage-usage">9.8 View Storage Usage</h3>
+<ol class="flow">
+<li>The rail and header always show the agency&#x27;s <code>bytesUsed</code> (and item count) taken from <code>agencyUsage</code> in the latest <code>list</code> response.</li>
+<li>The user opens the Storage view; VS360 calls <code>GET /drive/storage/breakdown</code>.</li>
+<li>The service groups the caller&#x27;s live files by MIME into 9 categories (images/videos/audio/documents/spreadsheets/presentations/text/archives/other), each with a label and colour, and returns non-empty categories plus a grand total <code>{bytesUsed,fileCount}</code>.</li>
+<li>VS360 renders an overall quota bar (<code>total.bytesUsed / 15 GB</code>, a display-only reference) and per-category bars.</li>
+<li><strong>Note:</strong> the 15 GB figure is a UI constant only; the backend does not enforce it — usage is tracked, not capped (see Risks).</li>
+</ol>
+<h3 id="99-copy-a-shared-file-to-my-drive">9.9 Copy a Shared File to My Drive</h3>
+<ol class="flow">
+<li>For a file the caller does not own (<code>ownerIsMe === false</code>), the kebab offers &quot;Save a copy to My Drive&quot;; VS360 calls <code>POST /drive/files/:uid/copy-to-my-drive</code>.</li>
+<li>The service confirms read access (owned or shared), allocates a new uid and destination blob under the caller&#x27;s prefix, and performs an Azure server-side copy (bytes never transit Express), polling to a 30 s deadline.</li>
+<li>In a transaction it inserts a new <code>drive_files</code> row at the caller&#x27;s root with a unique name and increments the storage counter; it emits a COPY audit record and returns the new file (HTTP 201).</li>
+</ol>
+<h3 id="910-search-files">9.10 Search Files</h3>
+<ol class="flow">
+<li>As the user types in the search box (debounced ~300 ms), VS360 calls <code>GET /drive/search?q&amp;view&amp;limit=20</code> when <code>q</code> is non-empty.</li>
+<li>The service escapes LIKE metacharacters in <code>q</code>, runs <code>ILIKE %q%</code> on <code>lower(name)</code> scoped to the mapped view (my / shared-with-me / agency), and returns <code>{ folders[], files[] }</code>.</li>
+<li>VS360 replaces the normal listing with the search results; clearing the box restores the browse view.</li>
+</ol>
+<h2 id="10-data-model">10. Data Model</h2>
+<p>All foreign keys are <code>ON DELETE CASCADE</code> off <code>service_centers</code> / <code>users</code>. Tables are created by migrations <code>20260502100000..100400</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Key Fields</th><th>Relationships</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td><code>drive_folders</code></td><td><code>id</code> PK; <code>uid</code> (unique, UUID v4); <code>service_center_id</code> FK; <code>owner_user_id</code> FK; <code>parent_folder_id</code> FK→self (null=root); <code>name</code>; <code>is_starred</code>; <code>deleted_at</code>; timestamps. Indexes: listing composite <code>(service_center_id, owner_user_id, parent_folder_id, deleted_at)</code>; partial unique <code>(parent_folder_id, lower(name)) WHERE deleted_at IS NULL</code>.</td><td>Belongs to agency + owner; self-referencing tree (parent/children); has many files.</td><td>Self-referencing folder tree for organising files per agency/owner.</td></tr>
+<tr><td><code>drive_files</code></td><td><code>id</code> PK; <code>uid</code> (unique = trailing blob segment); <code>service_center_id</code> FK; <code>owner_user_id</code> FK; <code>folder_id</code> FK→drive_folders (null=root); <code>name</code>; <code>mime</code>; <code>size_bytes</code> (bigint, CHECK ≤ 262,144,000); <code>blob_name</code> (1024, Azure key); <code>is_starred</code>; <code>deleted_at</code>; timestamps. Indexes: listing composite; GIN trigram <code>lower(name) gin_trgm_ops</code>.</td><td>Belongs to agency + owner; belongs to one folder or root.</td><td>File metadata; the actual bytes live in Azure at <code>blob_name</code>.</td></tr>
+<tr><td><code>drive_shares</code></td><td><code>id</code> PK; <code>uid</code> unique; <code>service_center_id</code> FK; <code>target_kind</code> (file</td><td>folder); <code>target_file_id</code>/<code>target_folder_id</code> (XOR CHECK); <code>share_kind</code> (user</td><td>agency); <code>recipient_user_id</code> (non-null iff user, CHECK); <code>granted_by_user_id</code> FK; <code>created_at</code>. Four partial unique indexes: file+user, file+agency, folder+user, folder+agency.</td></tr>
+<tr><td><code>drive_share_links</code></td><td><code>id</code> PK; <code>uid</code> unique; <code>service_center_id</code> FK; <code>target_kind</code> + <code>target_file_id</code>/<code>target_folder_id</code> (XOR CHECK); <code>token_hash</code> (128, SHA-256 of token, indexed); <code>created_by_user_id</code> FK; <code>expires_at</code> (null=never); <code>revoked_at</code> (null=active); <code>created_at</code>.</td><td>Points (XOR) to one file OR folder.</td><td>Revocable, expiring anonymous access links; plaintext token never stored.</td></tr>
+<tr><td><code>drive_storage_usage</code></td><td><code>service_center_id</code> <strong>PK</strong> (one row per agency; <code>idColumn=&#x27;serviceCenterId&#x27;</code>); <code>bytes_used</code> (bigint, def 0); <code>file_count</code> (int, def 0); timestamps.</td><td>Belongs to <code>ServiceCenters</code> (1—1 per agency).</td><td>Per-agency running usage counter surfaced on every list and in the breakdown; tracked, not enforced.</td></tr>
+</tbody></table></div>
+<p>Relationships summary: an agency (service_center) has many folders/files/shares/links and exactly one <code>drive_storage_usage</code> row. A folder is a self-referencing tree; a file belongs to one folder or root. Shares and links each point (XOR) to exactly one file or folder.</p>
+<h2 id="11-api-integration-surface">11. API &amp; Integration Surface</h2>
+<h3 id="111-endpoints-all-under-web-all-guarded-by-allowonlyvs360">11.1 Endpoints (all under <code>/web</code>, all guarded by <code>allowOnly(&#x27;VS360&#x27;)</code>)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/drive/list</code></td><td>List/browse a view (folders, files, breadcrumbs, pagination, agency usage)</td><td>VS360 + owner/share scoping</td></tr>
+<tr><td>POST</td><td><code>/drive/folders</code></td><td>Create folder</td><td>VS360 + owner</td></tr>
+<tr><td>PATCH</td><td><code>/drive/folders/:uid</code></td><td>Rename / move / star folder</td><td>VS360 + owner</td></tr>
+<tr><td>DELETE</td><td><code>/drive/folders/:uid</code></td><td>Soft-delete folder (cascades)</td><td>VS360 + owner</td></tr>
+<tr><td>POST</td><td><code>/drive/folders/:uid/restore</code></td><td>Restore folder from trash</td><td>VS360 + owner</td></tr>
+<tr><td>POST</td><td><code>/drive/files/sas</code></td><td>Issue 10-min write SAS (rate-limited 30/min/user)</td><td>VS360 + owner</td></tr>
+<tr><td>POST</td><td><code>/drive/files/commit</code></td><td>Commit uploaded blob to metadata</td><td>VS360 + owner</td></tr>
+<tr><td>PATCH</td><td><code>/drive/files/:uid</code></td><td>Rename / move / star file</td><td>VS360 + owner</td></tr>
+<tr><td>DELETE</td><td><code>/drive/files/:uid</code></td><td>Soft-delete file</td><td>VS360 + owner</td></tr>
+<tr><td>POST</td><td><code>/drive/files/:uid/restore</code></td><td>Restore file from trash</td><td>VS360 + owner</td></tr>
+<tr><td>GET</td><td><code>/drive/files/:uid/download</code></td><td>Get 5-min read-SAS URL (JSON); optional <code>token</code></td><td>VS360 + owner/share/link</td></tr>
+<tr><td>POST</td><td><code>/drive/files/:uid/copy-to-my-drive</code></td><td>Copy a file into own My Drive (Azure server-side copy)</td><td>VS360 + read access</td></tr>
+<tr><td>POST</td><td><code>/drive/shares</code></td><td>Share file/folder with user(s) or agency</td><td>VS360 + owner</td></tr>
+<tr><td>GET</td><td><code>/drive/shares</code></td><td>List shares for an item (hydrated)</td><td>VS360 + owner</td></tr>
+<tr><td>DELETE</td><td><code>/drive/shares/:uid</code></td><td>Revoke a share</td><td>VS360 + granter/recipient</td></tr>
+<tr><td>POST</td><td><code>/drive/links</code></td><td>Create a share link (token shown once)</td><td>VS360 + owner</td></tr>
+<tr><td>GET</td><td><code>/drive/links</code></td><td>List active links (no token)</td><td>VS360 + owner</td></tr>
+<tr><td>DELETE</td><td><code>/drive/links/:uid</code></td><td>Revoke a link</td><td>VS360 + creator</td></tr>
+<tr><td>GET</td><td><code>/drive/search</code></td><td>Filename search within a view</td><td>VS360 + owner/share scoping</td></tr>
+<tr><td>DELETE</td><td><code>/drive/trash</code></td><td>Empty trash (hard-delete own trashed)</td><td>VS360 + owner</td></tr>
+<tr><td>GET</td><td><code>/drive/storage/breakdown</code></td><td>Per-MIME-category usage analytics</td><td>VS360</td></tr>
+<tr><td>PUT</td><td><code>&lt;azure sasUrl&gt;</code></td><td>Direct browser→Azure blob upload (fresh HTTP client)</td><td>SAS token (10-min, write)</td></tr>
+</tbody></table></div>
+<h3 id="112-external-integrations">11.2 External Integrations</h3>
+<ul>
+<li><strong>Azure Blob Storage</strong> (<code>azureBlobAdapter.js</code>, the sole <code>@azure/storage-blob</code> importer): <code>generateUploadSas</code> (10-min write, <code>cw</code>, host rewritten via <code>publicUrl</code> for Azurite/WSL2), <code>generateReadSas</code> (5-min read, <code>r</code>), <code>headBlob</code> (content-length/type, no body), <code>sniffMime</code> (4 KB range-read + <code>file-type</code> magic bytes), <code>copyBlob</code> (server-side copy, 30 s poll), <code>deleteBlob</code> (<code>deleteIfExists</code>), <code>initAzuriteCors</code> (dev). SAS <code>startsOn</code> back-dated 5 min for clock skew; <code>sasProtocol</code> = <code>https,http</code> in dev, <code>https</code> only in staging/prod. Uses <code>StorageSharedKeyCredential</code> from the connection string. Azurite in dev/docker; real Azure in staging/prod.</li>
+<li><strong>Constants</strong> (<code>src/lib/constants/drive.js</code>): <code>MAX_FILE_SIZE_BYTES = 262,144,000</code> (250 MB); <code>LINK_EXPIRY_OPTIONS { 1d, 7d, 30d, never:null }</code>; <code>MIME_WHITELIST</code> (~24 types: PDF; Office legacy + OOXML doc/xls/ppt; text/plain, csv, markdown; jpeg, png, heic, webp; mpeg/wav/mp4/m4a audio; mp4/quicktime video; zip).</li>
+<li><strong>PostgreSQL <code>pg_trgm</code></strong> extension: backs the GIN trigram index for filename search.</li>
+<li><strong>No Twilio / FCM / email / OpenAI-Anthropic / socket integrations</strong> in this feature — Drive uses none of the platform&#x27;s notification channels; feedback is local toasts only.</li>
+</ul>
+<h2 id="12-rbac-permissions">12. RBAC &amp; Permissions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Action</th><th>Who is allowed</th><th>Enforcement</th></tr></thead>
+<tbody>
+<tr><td>Any Drive route</td><td>Authenticated VS360 (agency staff) only</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> wraps the entire router; non-VS360 → 403.</td></tr>
+<tr><td>Create / rename / move / delete / restore</td><td>The item owner (<code>owner_user_id</code>) within the agency</td><td>Owner-scoped fetch in the service; foreign/unknown → NotFound.</td></tr>
+<tr><td>Share (create), list shares, create/list/revoke links</td><td>The item owner (links: creator for revoke)</td><td>Owner check in the service; non-owner → Forbidden.</td></tr>
+<tr><td>Revoke a share</td><td>The granter/owner, or the recipient of a user-share</td><td>Service-layer allow-list.</td></tr>
+<tr><td>Download / read</td><td>Owner, direct user share, agency share, cascading folder share, or valid link token</td><td><code>getDownloadUrl</code> access resolution; else NotFound (no existence leak).</td></tr>
+<tr><td>Copy to My Drive</td><td>Any caller with read access (owned or shared)</td><td>Read-access check in the service.</td></tr>
+<tr><td>Cross-tenant access</td><td>Nobody</td><td>Every query filtered by <code>service_center_id</code>; foreign rows surface as NotFound.</td></tr>
+</tbody></table></div>
+<p>Notes: Drive does not use the platform&#x27;s fine-grained <code>vs360Modules</code> permission map; access is governed by the VS360 context gate plus per-item owner/share/link scoping in the service layer. Any authenticated agency staff user may use Drive.</p>
+<h2 id="13-non-functional-requirements">13. Non-Functional Requirements</h2>
+<h3 id="131-security-privacy-victim-safety">13.1 Security &amp; Privacy (Victim Safety)</h3>
+<ul>
+<li><strong>Tenant isolation:</strong> every query is filtered by <code>service_center_id</code>; foreign-tenant rows surface as NotFound to avoid existence leaks. This is critical because stored files may include sensitive victim/survivor documentation.</li>
+<li><strong>Path-traversal prevention:</strong> blob paths are constructed server-side from agency/owner/file UIDs only; the filename never appears in the path, and the validator rejects <code>/</code>, <code>\</code>, NUL, and names &gt; 255.</li>
+<li><strong>MIME anti-spoofing:</strong> a MIME whitelist at the API edge plus a magic-byte sniff at commit; a declared/sniffed mismatch is rejected.</li>
+<li><strong>Size cap:</strong> 250 MB enforced at the Joi validator, at commit (post-HEAD re-check), and by a DB CHECK constraint.</li>
+<li><strong>Least-exposure transfer:</strong> file bytes move directly browser↔Azure via short-lived SAS (10-min write, 5-min read); a fresh HTTP client is used for the Azure PUT so NECX Bearer tokens never reach Azure.</li>
+<li><strong>Share-link secrecy:</strong> tokens are 32-byte random values stored only as SHA-256 hashes; the plaintext is revealed exactly once; expiry and revocation are re-checked on every access.</li>
+<li><strong>No existence leaks:</strong> unauthorised or missing items both return NotFound.</li>
+</ul>
+<h3 id="132-performance-scalability">13.2 Performance &amp; Scalability</h3>
+<ul>
+<li>SAS issuance target &lt; 300 ms; commit target &lt; 500 ms (excludes the direct Azure PUT, which scales with file size and the client&#x27;s link).</li>
+<li>Direct-to-Azure transfer keeps large-file bandwidth off application servers.</li>
+<li>Listing uses composite indexes; search uses a GIN trigram index; folder tree walks (breadcrumbs, descendants, ancestor-for-share) use bounded recursive CTEs (breadcrumbs capped at 25 hops).</li>
+<li>Copy uses Azure server-side copy (bytes never transit Express), polled to a 30 s deadline.</li>
+</ul>
+<h3 id="133-availability-reliability">13.3 Availability &amp; Reliability</h3>
+<ul>
+<li>Best-effort blob operations on cleanup (empty-trash uses Promise.allSettled so one failed blob delete doesn&#x27;t abort the batch).</li>
+<li>Metadata mutations that must stay consistent with usage (commit, copy, empty-trash) run in DB transactions with the counter update.</li>
+<li>Commit-time verification (HEAD size + MIME sniff) prevents recording corrupt or mis-declared uploads.</li>
+</ul>
+<h3 id="134-auditability">13.4 Auditability</h3>
+<ul>
+<li>A <code>logAudit</code> record is written for download, soft-delete, restore, share create/revoke, link create/revoke, copy, and empty-trash, capturing action/resource constants (integrated with the platform&#x27;s <code>ActionLogs</code> audit trail).</li>
+</ul>
+<h3 id="135-data-lifecycle-retention">13.5 Data Lifecycle &amp; Retention</h3>
+<ul>
+<li>Items are &quot;live&quot; (<code>deleted_at NULL</code>) or &quot;trashed&quot; (<code>deleted_at</code> set); starred is orthogonal. Trashed items remain recoverable until hard-deleted.</li>
+<li>The UI states a 30-day Trash retention, but only manual empty-trash currently hard-deletes and decrements usage; an automatic retention purge worker is a planned future phase (see Risks/Out of Scope).</li>
+</ul>
+<h3 id="136-localization-accessibility">13.6 Localization &amp; Accessibility</h3>
+<ul>
+<li>The VS360 UI follows the platform&#x27;s Mantine component conventions; localization and accessibility inherit VS360 web standards. No Drive-specific localization requirements beyond standard UI strings.</li>
+</ul>
+<h3 id="137-compliance">13.7 Compliance</h3>
+<ul>
+<li>The audit trail, tenant isolation, and access controls support the platform&#x27;s overall compliance posture for handling sensitive victim data. Files stored here are agency operational records, not case-linked signed documents (which live in the E-Sign / Document Center).</li>
+</ul>
+<h2 id="14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</h2>
+<h3 id="141-storage-analytics">14.1 Storage Analytics</h3>
+<ul>
+<li><strong>Agency usage meter:</strong> every <code>list</code> response carries <code>agencyUsage:{bytesUsed,fileCount}</code>, rendered in the left rail and header, and against a 15 GB display reference.</li>
+<li><strong>Storage breakdown:</strong> <code>GET /drive/storage/breakdown</code> returns per-category (9 MIME buckets) <code>{label,color,bytesUsed,fileCount}</code> plus a grand total, rendered as an overall bar and per-category bars in the Storage view.</li>
+</ul>
+<h3 id="142-notifications">14.2 Notifications</h3>
+<ul>
+<li><strong>None.</strong> NECX Drive emits no in-app, socket, FCM, or email notifications. All user feedback is via local VS360 toasts (upload progress, per-file and batch summaries, success/error on actions). Views not yet implemented return 501 and render as a graceful empty/&quot;coming soon&quot; state.</li>
+</ul>
+<h2 id="15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Type</th><th>Impact</th><th>Mitigation / Owner</th></tr></thead>
+<tbody>
+<tr><td>No hard storage quota enforced server-side</td><td>Risk</td><td>An agency can exceed the 15 GB figure shown in the UI; unbounded storage cost/abuse.</td><td>Add a <code>max_bytes</code> quota column and a pre-upload/commit check; treat the 15 GB UI constant as authoritative or make it configurable per plan. Owner: Backend/Product.</td></tr>
+<tr><td>Trashed items still count toward usage until empty-trash</td><td>Risk</td><td>Usage figure overstates live storage; no automatic reclamation.</td><td>Ship the planned Phase 6 cleanup worker to hard-delete after 30 days and decrement usage. Owner: Backend.</td></tr>
+<tr><td>Orphan blobs on failed/abandoned commit</td><td>Risk</td><td>Blobs uploaded via SAS but never committed (or rejected at commit) remain in Azure, uncounted.</td><td>Add a reaper for uncommitted blobs older than the SAS TTL. Owner: Backend.</td></tr>
+<tr><td>15 GB quota is a hard-coded UI constant in two files</td><td>Risk</td><td>Divergence and confusion if the real limit differs.</td><td>Centralise the quota value (server-provided) and remove client duplication. Owner: VS360/Backend.</td></tr>
+<tr><td>Feature not merged to <code>develop</code> (on <code>feature/necx-569</code>)</td><td>Assumption</td><td>Behaviour may change before release; integration risk with concurrent platform changes.</td><td>Complete QA and merge; re-baseline this PRD post-merge. Owner: Engineering.</td></tr>
+<tr><td>Some views may return 501 (phased delivery)</td><td>Risk</td><td>Users may hit &quot;coming soon&quot; states for not-yet-built views.</td><td>Confirm which views are live at release; ensure graceful empty states. Owner: VS360.</td></tr>
+<tr><td>No in-app preview (files open via SAS in a new tab)</td><td>Assumption</td><td>Users leave the app to view files; SAS URL exposure in browser history.</td><td>Acceptable for v1; consider an embedded viewer later. Owner: Product.</td></tr>
+<tr><td>Best-effort blob deletes on empty-trash</td><td>Risk</td><td>A blob delete failure leaves the object in Azure though the DB row is gone.</td><td>Log failures; reconcile via the cleanup worker. Owner: Backend.</td></tr>
+<tr><td>Sharing limited to same-agency / agency-wide</td><td>Assumption</td><td>No external collaborator sharing except via anonymous links.</td><td>Confirmed intentional for tenancy safety. Owner: Product.</td></tr>
+</tbody></table></div>
+<p>Open Questions: (1) What is the definitive per-agency quota and is it plan-tiered? (2) Should downloads (not just access checks) be additionally rate-limited? (3) Should trashed-item usage be excluded from the meter before the cleanup worker ships? (4) Is a background orphan-blob reaper in scope for the initial release?</p>
+<h2 id="16-glossary">16. Glossary</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>NECX Drive</td><td>Google-Drive-style, agency-scoped cloud file storage in VS360, backed by Azure Blob Storage.</td></tr>
+<tr><td>Service Center / Agency</td><td>An organisation tenant; every Drive row is scoped by <code>service_center_id</code>.</td></tr>
+<tr><td>VS360</td><td>The agency-staff web client; the only client that surfaces NECX Drive (<code>allowOnly(&#x27;VS360&#x27;)</code>).</td></tr>
+<tr><td><code>issuer</code></td><td>The authenticated principal on a request (<code>id</code>, <code>uid</code>, <code>roleInfo.context</code>, <code>serviceCenterInfo</code>).</td></tr>
+<tr><td>SAS (Shared Access Signature)</td><td>A short-lived signed Azure URL granting scoped access to a blob (10-min write / 5-min read here).</td></tr>
+<tr><td>Blob / <code>blob_name</code></td><td>The Azure object and its key; built server-side as <code>agencies/{sc}/owners/{owner}/{fileUid}</code>.</td></tr>
+<tr><td>Two-phase upload</td><td>SAS issuance → direct browser PUT to Azure → metadata commit with verification.</td></tr>
+<tr><td>Commit</td><td>The metadata-recording step that verifies size/MIME and increments usage after the Azure PUT.</td></tr>
+<tr><td>My Drive / Shared with me / Agency Drive / Starred / Trash</td><td>The five browse views listed by <code>GET /drive/list</code>.</td></tr>
+<tr><td>Breadcrumbs</td><td>The root-first ancestor path shown for My Drive navigation.</td></tr>
+<tr><td>Share (user / agency)</td><td>An access grant to specific same-agency users or to the whole agency (folder shares cascade).</td></tr>
+<tr><td>Share link</td><td>A revocable, expiring anonymous access URL; token shown once, stored only as a SHA-256 hash.</td></tr>
+<tr><td>Copy to My Drive</td><td>Duplicating a shared/owned file into the caller&#x27;s root via Azure server-side copy.</td></tr>
+<tr><td><code>drive_storage_usage</code></td><td>The per-agency running counter of <code>bytes_used</code> / <code>file_count</code> (tracked, not enforced).</td></tr>
+<tr><td>Storage breakdown</td><td>Per-MIME-category (9 buckets) usage analytics for the caller&#x27;s live files.</td></tr>
+<tr><td>Soft-delete / Trash</td><td>Marking <code>deleted_at</code> so items are recoverable; empty-trash hard-deletes and decrements usage.</td></tr>
+<tr><td>Trigram search</td><td>Case-insensitive substring filename search using PostgreSQL <code>pg_trgm</code> GIN indexing.</td></tr>
+<tr><td>E-Sign / Document Center</td><td>The separate, case-scoped document + signature feature (proxied bytes), distinct from NECX Drive.</td></tr>
+<tr><td><code>ActionLogs</code> / <code>logAudit</code></td><td>The platform audit trail; Drive records download, delete, restore, share, link, copy, empty-trash.</td></tr>
+</tbody></table></div>
+      </div>
+      <nav class="prevnext"><a class="pn prev" href="P13.html"><span>← Previous</span><b>Notes Center</b></a><a class="pn next" href="P15.html"><span>Next →</span><b>AI Report Builder</b></a></nav>
+      <footer class="doc-foot">NECX Inc — Confidential · Generated 2026-07-05 · NECX Drive</footer>
+    </article>
+  </main>
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav class="toc-nav"><a class="toc-1" href="#1-document-control">1. Document Control</a>
+<a class="toc-1" href="#2-executive-summary">2. Executive Summary</a>
+<a class="toc-1" href="#3-product-overview-vision">3. Product Overview &amp; Vision</a>
+<a class="toc-2" href="#31-problem-statement">3.1 Problem Statement</a>
+<a class="toc-2" href="#32-product-vision">3.2 Product Vision</a>
+<a class="toc-2" href="#33-position-in-the-necx-ecosystem">3.3 Position in the NECX Ecosystem</a>
+<a class="toc-1" href="#4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</a>
+<a class="toc-2" href="#41-goals-objectives">4.1 Goals &amp; Objectives</a>
+<a class="toc-2" href="#42-success-metrics">4.2 Success Metrics</a>
+<a class="toc-1" href="#5-scope">5. Scope</a>
+<a class="toc-2" href="#51-in-scope">5.1 In Scope</a>
+<a class="toc-2" href="#52-out-of-scope">5.2 Out of Scope</a>
+<a class="toc-1" href="#6-personas-user-roles">6. Personas &amp; User Roles</a>
+<a class="toc-1" href="#7-system-context-architecture">7. System Context &amp; Architecture</a>
+<a class="toc-2" href="#71-technology-stack">7.1 Technology Stack</a>
+<a class="toc-2" href="#72-how-it-talks-to-the-backend">7.2 How It Talks to the Backend</a>
+<a class="toc-2" href="#73-direct-to-azure-transfer-model">7.3 Direct-to-Azure Transfer Model</a>
+<a class="toc-2" href="#74-real-time-notifications-tenancy">7.4 Real-time / Notifications &amp; Tenancy</a>
+<a class="toc-1" href="#8-functional-requirements">8. Functional Requirements</a>
+<a class="toc-2" href="#81-folder-file-model">8.1 Folder &amp; File Model</a>
+<a class="toc-2" href="#82-create-folder">8.2 Create Folder</a>
+<a class="toc-2" href="#83-upload-two-phase-direct-to-azure">8.3 Upload (Two-Phase, Direct-to-Azure)</a>
+<a class="toc-2" href="#84-browse-with-breadcrumbs">8.4 Browse with Breadcrumbs</a>
+<a class="toc-2" href="#85-move-rename-star">8.5 Move, Rename &amp; Star</a>
+<a class="toc-2" href="#86-delete-restore-empty-trash">8.6 Delete, Restore &amp; Empty Trash</a>
+<a class="toc-2" href="#87-share-user-agency">8.7 Share (User &amp; Agency)</a>
+<a class="toc-2" href="#88-share-via-link">8.8 Share via Link</a>
+<a class="toc-2" href="#89-download-access-resolution">8.9 Download &amp; Access Resolution</a>
+<a class="toc-2" href="#810-copy-to-my-drive">8.10 Copy to My Drive</a>
+<a class="toc-2" href="#811-search">8.11 Search</a>
+<a class="toc-2" href="#812-storage-usage-breakdown">8.12 Storage Usage &amp; Breakdown</a>
+<a class="toc-2" href="#813-file-type-icons-preview">8.13 File-Type Icons &amp; Preview</a>
+<a class="toc-2" href="#814-google-drive-style-ux">8.14 Google-Drive-Style UX</a>
+<a class="toc-1" href="#9-detailed-user-system-flows">9. Detailed User &amp; System Flows</a>
+<a class="toc-2" href="#91-create-a-folder">9.1 Create a Folder</a>
+<a class="toc-2" href="#92-upload-a-file-to-azure-two-phase">9.2 Upload a File to Azure (Two-Phase)</a>
+<a class="toc-2" href="#93-browse-navigate-my-drive-with-breadcrumbs">9.3 Browse &amp; Navigate (My Drive with Breadcrumbs)</a>
+<a class="toc-2" href="#94-move-rename-delete">9.4 Move, Rename &amp; Delete</a>
+<a class="toc-2" href="#95-download-a-file">9.5 Download a File</a>
+<a class="toc-2" href="#96-generate-a-share-link">9.6 Generate a Share Link</a>
+<a class="toc-2" href="#97-share-with-users-or-the-whole-agency">9.7 Share with Users or the Whole Agency</a>
+<a class="toc-2" href="#98-view-storage-usage">9.8 View Storage Usage</a>
+<a class="toc-2" href="#99-copy-a-shared-file-to-my-drive">9.9 Copy a Shared File to My Drive</a>
+<a class="toc-2" href="#910-search-files">9.10 Search Files</a>
+<a class="toc-1" href="#10-data-model">10. Data Model</a>
+<a class="toc-1" href="#11-api-integration-surface">11. API &amp; Integration Surface</a>
+<a class="toc-2" href="#111-endpoints-all-under-web-all-guarded-by-allowonlyvs360">11.1 Endpoints (all under `/web`, all guarded by `allowOnly(&#x27;VS360&#x27;)`)</a>
+<a class="toc-2" href="#112-external-integrations">11.2 External Integrations</a>
+<a class="toc-1" href="#12-rbac-permissions">12. RBAC &amp; Permissions</a>
+<a class="toc-1" href="#13-non-functional-requirements">13. Non-Functional Requirements</a>
+<a class="toc-2" href="#131-security-privacy-victim-safety">13.1 Security &amp; Privacy (Victim Safety)</a>
+<a class="toc-2" href="#132-performance-scalability">13.2 Performance &amp; Scalability</a>
+<a class="toc-2" href="#133-availability-reliability">13.3 Availability &amp; Reliability</a>
+<a class="toc-2" href="#134-auditability">13.4 Auditability</a>
+<a class="toc-2" href="#135-data-lifecycle-retention">13.5 Data Lifecycle &amp; Retention</a>
+<a class="toc-2" href="#136-localization-accessibility">13.6 Localization &amp; Accessibility</a>
+<a class="toc-2" href="#137-compliance">13.7 Compliance</a>
+<a class="toc-1" href="#14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</a>
+<a class="toc-2" href="#141-storage-analytics">14.1 Storage Analytics</a>
+<a class="toc-2" href="#142-notifications">14.2 Notifications</a>
+<a class="toc-1" href="#15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</a>
+<a class="toc-1" href="#16-glossary">16. Glossary</a>
+</nav>
+  </aside>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

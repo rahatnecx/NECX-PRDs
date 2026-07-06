@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NECX E-Sign &amp; Document Center · NECX PRD</title>
+<meta name="description" content="In-house electronic signature and per-case document management across VS360 web and the Victim mobile app">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="prd-page">
+<header class="topbar">
+  <button class="hamburger" aria-label="Menu" onclick="toggleNav()">&#9776;</button>
+  <a class="brand" href="../index.html"><svg class="logo" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 L35 10 V22 C35 31 28 37 20 39 C12 37 5 31 5 22 V10 Z" fill="var(--brand)"/><path d="M13 27 V14 L20 22 V14 M27 14 V27 L20 19" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="brand-text">NECX<span class="brand-sub">Product Requirements</span></span></a>
+  <div class="topbar-spacer"></div>
+  <a class="top-link" href="../index.html">Home</a>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><span class="ic-sun">☀</span><span class="ic-moon">☾</span></button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-search"><input type="search" id="navSearch" placeholder="Filter documents…" oninput="filterNav(this.value)"></div>
+    <nav class="nav"><div class="nav-group"><div class="nav-group-title">Platform &amp; Applications</div><a class="nav-item " href="P01.html" data-search="necx platform — core system whole-platform prd: unified backend, four clients, multi-tenancy, identity/rbac, and the end-to-end case lifecycle."><span class="nav-num">01</span><span class="nav-text">Platform — Core System</span></a>
+<a class="nav-item " href="P02.html" data-search="necx workspace — staff mobile app agency staff mobile app (flutter/riverpod) — the on-the-go companion to the vs360 web dashboard."><span class="nav-num">02</span><span class="nav-text">Workspace — Staff Mobile App</span></a>
+<a class="nav-item " href="P03.html" data-search="necx victim app — survivor mobile app victim / survivor mobile app (flutter/getx) — discover services, request help, chat, find shelter, e-sign."><span class="nav-num">03</span><span class="nav-text">Victim App — Survivor Mobile App</span></a>
+<a class="nav-item " href="P04.html" data-search="vs360 — agency web dashboard vs360 — the agency staff web dashboard (react/vite) and primary caseworker workspace."><span class="nav-num">04</span><span class="nav-text">VS360 — Agency Web Dashboard</span></a>
+</div>
+<div class="nav-group"><div class="nav-group-title">VS360 Feature Modules</div><a class="nav-item " href="P05.html" data-search="necx case management service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes."><span class="nav-num">05</span><span class="nav-text">Case Management</span></a>
+<a class="nav-item " href="P06.html" data-search="necx shelter management shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search."><span class="nav-num">06</span><span class="nav-text">Shelter Management</span></a>
+<a class="nav-item " href="P07.html" data-search="necx hotline management twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights."><span class="nav-num">07</span><span class="nav-text">Hotline Management</span></a>
+<a class="nav-item " href="P08.html" data-search="necx calendar &amp; appointments reminders, tasks and case-linked appointments in the vs360 tools calendar."><span class="nav-num">08</span><span class="nav-text">Calendar &amp; Appointments</span></a>
+<a class="nav-item " href="P09.html" data-search="necx staff time tracking staff time tracking: clock in/out, timesheets, and grant/pmt time attribution."><span class="nav-num">09</span><span class="nav-text">Staff Time Tracking</span></a>
+<a class="nav-item " href="P10.html" data-search="necx agency chat real-time advocate↔victim messaging tied to service threads and cases."><span class="nav-num">10</span><span class="nav-text">Agency Chat</span></a>
+<a class="nav-item " href="P11.html" data-search="necx internal chat staff-to-staff messaging within an agency, real-time over socket.io."><span class="nav-num">11</span><span class="nav-text">Internal Chat</span></a>
+<a class="nav-item " href="P12.html" data-search="necx rbac &amp; user management roles, the module/action permission matrix, plan seats, and multi-layer enforcement."><span class="nav-num">12</span><span class="nav-text">RBAC &amp; User Management</span></a>
+<a class="nav-item " href="P13.html" data-search="necx notes center agency-scoped, cross-case view over internal (caseworker-only) case notes."><span class="nav-num">13</span><span class="nav-text">Notes Center</span></a>
+<a class="nav-item " href="P14.html" data-search="necx drive google-drive-style cloud file storage backed by azure blob, with quotas and analytics."><span class="nav-num">14</span><span class="nav-text">Drive</span></a>
+<a class="nav-item " href="P15.html" data-search="necx ai report builder pmt/grant reporting plus ai-assisted custom report generation with accuracy validation."><span class="nav-num">15</span><span class="nav-text">AI Report Builder</span></a>
+<a class="nav-item active" href="P16.html" data-search="necx e-sign &amp; document center prepare, request, sign and pdf-stamp case documents with an audit trail."><span class="nav-num">16</span><span class="nav-text">E-Sign &amp; Document Center</span></a>
+<a class="nav-item " href="P17.html" data-search="necx referrals &amp; partnerships inter-agency network: partnerships, invitations, and consent-based case referrals."><span class="nav-num">17</span><span class="nav-text">Referrals &amp; Partnerships</span></a>
+<a class="nav-item " href="P18.html" data-search="necx inquiries management intake and triage of inquiries / requests-to-connect before they become cases."><span class="nav-num">18</span><span class="nav-text">Inquiries Management</span></a>
+<a class="nav-item " href="P19.html" data-search="necx communities agency-run community spaces: joining questions, membership, posts and moderation."><span class="nav-num">19</span><span class="nav-text">Communities</span></a>
+<a class="nav-item " href="P20.html" data-search="necx service management service catalog, categories, and the per-service claim-question (intake) builder."><span class="nav-num">20</span><span class="nav-text">Service Management</span></a>
+</div>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim" onclick="toggleNav()"></div>
+  
+  <main class="content">
+    <article class="doc">
+      <div class="doc-eyebrow">Product Requirements Document · NECX Inc — Confidential</div>
+      <h1 class="doc-title">NECX E-Sign &amp; Document Center</h1>
+      <p class="doc-subtitle">In-house electronic signature and per-case document management across VS360 web and the Victim mobile app</p>
+      <div class="doc-meta"><span class="chip">Version: <b>1.0</b></span><span class="chip">Status: <b>Baseline</b></span><span class="chip">Owner: <b>NECX Product Management</b></span><a class="dl-btn" href="../downloads/16_VS360_Feature_ESign_Document_Center.docx" download>⬇ Download DOCX</a></div>
+      <hr class="doc-rule">
+      <div class="doc-body">
+      <h2 id="1-document-control">1. Document Control</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td>NECX Coordinated Victim Services Platform</td></tr>
+<tr><td>Module</td><td>E-Sign &amp; Document Center (Case Documents + User Signature)</td></tr>
+<tr><td>Version</td><td>1.0</td></tr>
+<tr><td>Status</td><td>Baseline</td></tr>
+<tr><td>Author</td><td>NECX Product Management</td></tr>
+<tr><td>Reviewers</td><td>Backend Engineering, VS360 Web Engineering, Victim App Engineering, Security &amp; Compliance, Legal</td></tr>
+<tr><td>Last Updated</td><td>2026-07-05</td></tr>
+<tr><td>Related Documents</td><td>NECX Drive PRD, Case Management (Claims) PRD, Victim Mobile App PRD, Platform Core / RBAC &amp; Data-Model Catalog, Notifications &amp; Communications PRD</td></tr>
+</tbody></table></div>
+<p>Revision history:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>1.0</td><td>2026-07-05</td><td>NECX Product Management</td><td>Initial baseline covering per-case Document Center, in-house e-signature preparation/sending/signing, PDF stamping, saved user signatures, and audit trail. Feature currently lives on <code>feature/necx-568</code> (backend) and <code>feature/necx-607</code> (victim app); not yet merged to <code>develop</code>.</td></tr>
+</tbody></table></div>
+<h2 id="2-executive-summary">2. Executive Summary</h2>
+<p>The NECX E-Sign &amp; Document Center gives agency staff a case-scoped place to attach documents to a victim&#x27;s case, prepare those documents for signature by placing signature fields, send them for signature, and collect legally meaningful electronic signatures from victims/survivors and staff — all without leaving the NECX platform and without engaging a third-party e-signature vendor. Signatures are captured in-house (drawn on a canvas or typed in a script font, or reused from a saved signature image), stamped directly onto the PDF, and preserved with a per-signature audit trail (signer identity, signature type, timestamp, and IP address).</p>
+<p>The feature serves two audiences from a single unified backend. Agency staff (advocates and caseworkers) work in the VS360 web app, inside the Case Management &quot;Documents&quot; tab of a claim/case. Victims/survivors work in the NECX mobile app, where documents awaiting their signature appear in the &quot;Documents &amp; Forms&quot; area and via a home-screen e-sign banner. Because NECX serves victims and survivors of crime — a population for whom safety, privacy, and dignity are paramount — the signing experience deliberately keeps the victim inside the authenticated mobile app rather than exposing a public signing link in email.</p>
+<p>This matters because case work generates consent forms, service agreements, releases, and acknowledgements that must be signed by the victim and/or the assigned staff member. Historically these were handled on paper or via disconnected tools, breaking the coordinated record of a case. By bringing document preparation, signing, stamping, and status tracking into the case record itself, NECX keeps the signed artifact, its status, and its audit trail attached to the claim, visible to both the agency and (for their own documents) the victim.</p>
+<p>This document specifies the Document Center and E-Sign capability as implemented on the <code>feature/necx-568</code> backend worktree and the <code>feature/necx-607</code> victim-app branch (with the VS360 web surface on <code>feature/necx-568-e-sign-and-document-center</code>). None of these are merged to <code>develop</code> at the time of writing; scope, risks, and open questions reflect that pre-merge state.</p>
+<h2 id="3-product-overview-vision">3. Product Overview &amp; Vision</h2>
+<h3 id="31-problem-statement">3.1 Problem statement</h3>
+<p>Case work at victim-services agencies routinely requires signed documents: consent-to-serve forms, releases of information, service agreements, and acknowledgements. Without an integrated tool, staff resort to printing, wet-ink signing, scanning, and re-uploading, or to external e-signature products that live outside the case record. This fragments the record, adds friction for a vulnerable population, and leaves the signed artifact and its audit trail disconnected from the claim it belongs to. Victims, in particular, should not be pushed to a public web link in an email — both for safety (link exposure) and for a coherent, in-app experience.</p>
+<h3 id="32-product-vision">3.2 Product vision</h3>
+<p>Provide an in-house, case-anchored electronic signature workflow: staff upload a document to a case, place signature fields for a victim and/or a staff signer directly on the PDF, and send it for signature. Each signer signs inside their own authenticated app — victims in the mobile app, staff in VS360 web. On each signature the system re-stamps the PDF from the pristine original, advances the document status, records an audit trail, and notifies the relevant parties. Every user may save one reusable signature image to sign faster. The signed PDF and its audit trail remain attached to the case.</p>
+<h3 id="33-where-this-sits-in-the-necx-ecosystem">3.3 Where this sits in the NECX ecosystem</h3>
+<p>E-Sign &amp; Document Center is a feature of Case Management. It is consumed by two of the four NECX clients:</p>
+<ul>
+<li><strong>VS360 web</strong> (agency staff): the Document Center is the &quot;Documents&quot; tab of a claim/case detail page; staff upload, prepare, send, sign, view, and cancel documents, and manage their own saved signature.</li>
+<li><strong>Victim mobile app</strong>: victims see documents awaiting their signature, view the PDF, and sign; they manage their own saved signature in Settings.</li>
+<li><strong>Unified backend</strong> (<code>necx-backend_v2</code>): a single Express (ESM) + Objection/Knex (PostgreSQL) API exposes <code>/web</code> (staff) and <code>/mobile</code> (victim) routers for case documents and user signatures, backed by shared object storage (MinIO in dev, Azure Blob in staging/production) and a pdf-lib stamping service.</li>
+<li><strong>NECX Admin</strong> and the <strong>Workspace mobile app</strong>: no surface in this feature (no admin console or workspace-app entry point exists for e-sign).</li>
+</ul>
+<p>This feature is adjacent to, but distinct from, <strong>NECX Drive</strong> (a Google-Drive-style agency file store, VS360-only, with direct-to-Azure SAS upload/download). The Document Center uses a different storage model (bytes proxied through Express) and a different identifier scheme, and is anchored to a case rather than to an agency file tree.</p>
+<h2 id="4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</h2>
+<h3 id="41-goals-objectives">4.1 Goals &amp; objectives</h3>
+<ul>
+<li>Let agency staff attach any relevant document to a case and manage those documents in one case-scoped list.</li>
+<li>Let staff prepare a PDF for signature by visually placing per-role signature fields (victim / staff) at precise, resolution-independent positions.</li>
+<li>Collect legally meaningful electronic signatures in-house from victims (mobile) and staff (web), with no external e-signature vendor and no public signing link.</li>
+<li>Stamp collected signatures onto the PDF, regenerating from the pristine original each time so partial progress is visible and no artifacts compound.</li>
+<li>Maintain a tamper-evident audit trail per signature (identity, type, timestamp, IP address) and per document (sent/completed timestamps).</li>
+<li>Keep all parties informed via multi-channel notifications (real-time socket, in-app, FCM push, and email to the victim on request).</li>
+<li>Let every user save one reusable signature image for faster signing.</li>
+<li>Keep the victim experience safe: signing happens inside the authenticated app, not via an emailed link.</li>
+</ul>
+<h3 id="42-success-metrics">4.2 Success metrics</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Definition</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>Time-to-complete</td><td>Median elapsed time from &quot;sent for signature&quot; (<code>sent_at</code>) to fully &quot;signed&quot; (<code>completed_at</code>)</td><td>&lt; 48 hours</td></tr>
+<tr><td>Signature completion rate</td><td>Documents reaching <code>signed</code> ÷ documents reaching <code>pending_signature</code></td><td>&gt; 80%</td></tr>
+<tr><td>Victim self-service signing</td><td>Share of victim signatures collected in-app (vs. staff follow-up needed)</td><td>&gt; 90%</td></tr>
+<tr><td>Saved-signature adoption</td><td>Share of active signers (staff + victims) with a saved signature image</td><td>&gt; 40%</td></tr>
+<tr><td>Stamping reliability</td><td>Signature records where PDF stamping succeeded on first attempt</td><td>&gt; 99%</td></tr>
+<tr><td>Notification delivery</td><td>Signature-request notifications delivered on ≥1 channel (socket/in-app/FCM/email)</td><td>&gt; 99%</td></tr>
+<tr><td>Re-send rate</td><td>Documents re-sent for signature per completed document (proxy for placement errors)</td><td>&lt; 0.2</td></tr>
+</tbody></table></div>
+<h2 id="5-scope">5. Scope</h2>
+<h3 id="51-in-scope">5.1 In Scope</h3>
+<ul>
+<li><strong>Per-case Document Center</strong>: list, upload, view, and cancel documents attached to a claim/case (VS360 web); list and view documents awaiting the victim&#x27;s signature (mobile).</li>
+<li><strong>Document preparation</strong>: place signature fields (victim / staff) on a PDF via a drag-and-drop editor with alignment guides; positions normalized 0..1; optional &quot;sign with saved signature&quot; for staff during preparation.</li>
+<li><strong>Send for signature</strong>: create signature-request records, derive required-signer flags, generate a placeholder-stamped preview, and notify signers (victim: socket + in-app + FCM + email; staff: implicit via case UI).</li>
+<li><strong>Signing</strong>: staff sign in VS360 web (draw / type / saved); victims sign in the mobile app (draw / type / saved). Role-matched pending record required; victim restricted to their own assigned signature record.</li>
+<li><strong>PDF stamping</strong>: incremental re-stamping from the original on each signature, embedding signed signatures plus dashed placeholders for still-pending positioned fields; unpositioned signatures land on an appended &quot;Signatures&quot; page.</li>
+<li><strong>Saved &quot;My signature&quot;</strong>: each staff user and each victim may store/replace/remove one reusable signature image.</li>
+<li><strong>Status &amp; audit</strong>: document lifecycle statuses; per-signature audit trail (identity, type, timestamp, IP); document <code>sent_at</code>/<code>completed_at</code>.</li>
+<li><strong>Storage per case</strong>: originals, signed copies, and signature images stored under case-namespaced object keys; bytes streamed through the backend.</li>
+<li><strong>Completion notifications</strong>: victim notified on full completion or when staff has signed and the victim is still needed; staff notified in the VS360 notification room on completion.</li>
+</ul>
+<h3 id="52-out-of-scope">5.2 Out of Scope</h3>
+<ul>
+<li><strong>Third-party / vendor e-signature</strong> (DocuSign, Adobe Sign, etc.) — signing is entirely in-house.</li>
+<li><strong>Public / email signing links or tokens</strong> — the signature-request email directs the victim to the app; there is no tokenized web signing link (contrast with NECX Drive share links).</li>
+<li><strong>External signer role (<code>external</code>)</strong> — the data model reserves a <code>signer_role=&#x27;external&#x27;</code>, but no upload/prepare/sign path targets external (non-victim, non-staff) signers in this release.</li>
+<li><strong>Non-PDF signature stamping</strong> — placement and stamping target PDFs; non-PDF uploads can be stored and viewed but are not field-stamped (positioned stamping is PDF-only).</li>
+<li><strong>Workspace mobile app surface</strong> — no entry point.</li>
+<li><strong>NECX Admin surface</strong> — no admin console management of case documents.</li>
+<li><strong>Storage quota / SAS direct upload for case documents</strong> — none (that model belongs to NECX Drive); case-document bytes are proxied via Express.</li>
+<li><strong>Trash / restore for documents</strong> — documents are soft-deleted via cancel only; there is no restore or empty-trash flow (contrast with Drive).</li>
+<li><strong>Decline-to-sign UI</strong> — the model supports a <code>declined</code> status for a signature and the document, but a first-class victim/staff &quot;decline&quot; action is not specified in this release (flagged in Risks / Open Questions).</li>
+</ul>
+<h2 id="6-personas-user-roles">6. Personas &amp; User Roles</h2>
+<h3 id="61-roles">6.1 Roles</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Role</th><th>Description</th><th>Key permissions</th></tr></thead>
+<tbody>
+<tr><td>Agency staff / Advocate (VS360)</td><td>Caseworker who manages a claim; uploads documents, prepares them, sends for signature, signs as staff, views, and cancels.</td><td>Full Document Center access under <code>allowOnly(&#x27;VS360&#x27;)</code>; can sign a <code>staff</code> pending record; manages own saved signature (<code>req.audience=&#x27;staff&#x27;</code>).</td></tr>
+<tr><td>Victim / Survivor (mobile, <code>APP</code>)</td><td>The person the case serves; signs documents assigned to them.</td><td>Sees documents that have a victim signature record for their own account; views and signs their own record only (<code>signerAppUserId === issuer.id</code>, else 403); manages own saved signature (<code>req.audience=&#x27;victim&#x27;</code>).</td></tr>
+<tr><td>External signer (reserved)</td><td>A non-victim, non-staff signer role reserved in the data model (<code>signer_role=&#x27;external&#x27;</code>).</td><td>No implemented upload/prepare/sign path in this release.</td></tr>
+<tr><td>NECX Admin / Workspace user</td><td>Platform admin / workspace mobile user.</td><td>No E-Sign surface.</td></tr>
+</tbody></table></div>
+<h3 id="62-persona-narratives">6.2 Persona narratives</h3>
+<p><strong>Dana, Advocate (VS360).</strong> Dana is preparing a consent-to-serve form for a new client. In the case&#x27;s Documents tab she uploads the PDF, opens the preparation editor, drops a blue &quot;Victim field&quot; where the client signs and a purple &quot;Staff field&quot; where she signs, nudging each into place with the alignment guides. She drags her own saved signature onto the staff field so she is signed in place, then clicks Send. The client gets a push and email; Dana watches the status move from &quot;Awaiting signature&quot; to &quot;Signed&quot; without leaving the case.</p>
+<p><strong>Marco, Survivor (mobile app).</strong> Marco receives a push notification and an email telling him a document needs his signature. He opens the NECX app (unlocked with his PIN/biometric), taps the e-sign banner, views the PDF, and signs by drawing on the canvas — or, because he saved a signature earlier, by tapping &quot;use saved.&quot; The document is stamped and his case advocate is notified it is complete.</p>
+<h2 id="7-system-context-architecture">7. System Context &amp; Architecture</h2>
+<h3 id="71-tech-stack">7.1 Tech stack</h3>
+<ul>
+<li><strong>Backend</strong>: Node.js + Express (ESM), Objection/Knex over PostgreSQL, Socket.IO, BullMQ (email queue), Handlebars email templates. Case documents live in <code>src/apps/case-documents/</code> and saved signatures in <code>src/apps/user-signature/</code>. PDF stamping is <code>src/services/v2/shared/pdf/signatureStamper.js</code> (pdf-lib). Storage is the shared <code>src/services/v2/shared/storage/fileService.js</code> (MinIO in dev, Azure Blob in staging/production, selected by <code>ENV</code>).</li>
+<li><strong>VS360 web</strong>: React/Vite + Mantine + TanStack Query. The Documents tab (<code>DocumentsManagement.jsx</code>), the preparation editor (<code>PrepareSignatureModal.jsx</code>, using <code>react-pdf</code>/pdf.js), the signature capture (<code>SignatureModal.jsx</code>, HTML canvas), and the saved-signature card (<code>AgencySignatureCard.jsx</code>). API wrappers in <code>services/caseDocuments.js</code> and <code>services/userSignature.js</code>; the shared axios factory prefixes <code>/web</code>.</li>
+<li><strong>Victim mobile app</strong>: Flutter + GetX. <code>CaseDocumentsController</code> / <code>UserSignatureController</code>, <code>CaseDocumentsService</code> / <code>UserSignatureService</code>, the &quot;Documents &amp; Forms&quot; screen (<code>signed_documents_screen.dart</code>), the PDF viewer (<code>document_pdf_viewer_screen.dart</code>, Syncfusion), and signature settings (<code>signature_settings_screen.dart</code>). Typed signatures render in cursive fonts (GreatVibes, DancingScript, Sacramento, Allura, Parisienne, AlexBrush).</li>
+</ul>
+<h3 id="72-request-model-tenancy">7.2 Request model &amp; tenancy</h3>
+<p>Both routers are mounted behind the platform auth layer (populating <code>req.issuer</code>) and behind <code>rateLimiter(rateLimiters.standard)</code>. The staff router is wrapped in <code>allowOnly(&#x27;VS360&#x27;)</code> (agency context); the victim (mobile) router has no <code>allowOnly</code> guard and relies on auth plus the per-signer ownership check. Case documents are keyed by <code>claim_id</code>; <code>service_center_id</code> is captured on the row for provenance, but read/sign paths (<code>getDocument</code>, <code>streamFile</code>, <code>applySignature</code>) look up purely by document <code>uid</code> and lean on route-level context guards and (for victims) the <code>signerAppUserId === issuer.id</code> check. This thin tenant re-check on read paths is flagged for security review (see Risks).</p>
+<h3 id="73-storage-model">7.3 Storage model</h3>
+<p>Unlike NECX Drive (direct-to-Azure via SAS), case-document bytes are <strong>proxied through Express</strong>. Uploads arrive via <code>upload.single(&#x27;file&#x27;)</code> (multer, in-memory buffer); the service writes the buffer to a temp file and pushes it through <code>fileService.uploadFile</code> (temp cleaned in <code>finally</code>). Downloads/views stream through the backend (<code>streamFile</code>), setting <code>res.locals.skipEncryption=true</code> so the raw file bytes are not response-encrypted. There is no SAS URL and no storage quota in this feature.</p>
+<h3 id="74-real-time-notifications">7.4 Real-time &amp; notifications</h3>
+<p>Notifications combine a DB notification row, a Socket.IO emit to the target room, and (for victims) an FCM push, plus a templated email on the signature request. Victim events use the app notification room and are routed in-app by <code>NotificationNavigator</code> (document-signature-request → the document sign screen). Staff completion is emitted to <code>vs360-notification-room</code> as <code>case-document-signed-{claimUid}</code>. The VS360 web UI itself surfaces mostly local toasts and TanStack Query refetches (it does not subscribe to sockets for this feature).</p>
+<h2 id="8-functional-requirements">8. Functional Requirements</h2>
+<h3 id="81-per-case-document-center">8.1 Per-case Document Center</h3>
+<p>Staff open the Document Center as the &quot;Documents&quot; tab of a claim/case (<code>DocumentsManagement.jsx</code>, keyed on <code>claim.uid</code>). It lists documents for the case, shows status badges, and launches prepare/sign/view actions. Each document exposes <code>uid, title, fileName, mime, createdAt, status, signatures[]</code>, with a per-doc signer summary line (<code>signatures.map(s =&gt; &quot;role: status&quot;)</code>). Victims see a parallel, filtered list in the mobile app of documents that have a victim signature record for their own account.</p>
+<p>Status badges: <code>draft</code> (gray), <code>pending_signature</code> (&quot;Awaiting signature&quot;, yellow), <code>partially_signed</code> (blue), <code>signed</code> (green), <code>declined</code> (red), <code>cancelled</code> (gray).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-DOC-01</td><td>Staff can list all non-deleted documents for a case via <code>GET /web/case-documents/claim/:claimUid</code>, returning <code>uid, title, fileName, mime, status, signatures[], createdAt</code>.</td><td>Must</td></tr>
+<tr><td>FR-DOC-02</td><td>Staff can upload a document to a case via <code>POST /web/case-documents/claim/:claimUid</code> (multipart <code>file</code> + <code>title</code>); accepted types include PDF, images, and Word docs.</td><td>Must</td></tr>
+<tr><td>FR-DOC-03</td><td>Each uploaded document is created in status <code>draft</code>, capturing <code>service_center_id</code>, <code>uploaded_by_user_id</code>, <code>mime</code>, and <code>size_bytes</code>.</td><td>Must</td></tr>
+<tr><td>FR-DOC-04</td><td>Staff can open a document detail via <code>GET /web/case-documents/:uid</code>, including <code>signatures</code>, <code>claimInfo</code>, and a <code>downloadUrl</code> that prefers the signed copy.</td><td>Must</td></tr>
+<tr><td>FR-DOC-05</td><td>Staff can view/stream document bytes via <code>GET /web/case-documents/:uid/file</code> (prefers the signed copy; inline disposition; <code>signed-</code> filename prefix when serving signed).</td><td>Must</td></tr>
+<tr><td>FR-DOC-06</td><td>Staff can cancel/withdraw a document via <code>DELETE /web/case-documents/:uid</code> (soft-delete → status <code>cancelled</code>, <code>deleted_at</code> set).</td><td>Must</td></tr>
+<tr><td>FR-DOC-07</td><td>Victims can list documents awaiting their signature via <code>GET /mobile/case-documents/</code> (documents in <code>pending_signature</code>/<code>partially_signed</code>/<code>signed</code> that have a victim signature record for <code>issuer.id</code>), including claim/service title and a <code>needsMySignature</code> flag.</td><td>Must</td></tr>
+<tr><td>FR-DOC-08</td><td>Victims can view document detail and stream file bytes via <code>GET /mobile/case-documents/:uid</code> and <code>GET /mobile/case-documents/:uid/file</code>.</td><td>Must</td></tr>
+<tr><td>FR-DOC-09</td><td>The per-document signer summary reflects each required signature&#x27;s role and status for at-a-glance progress.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="82-preparing-a-document-for-signature-field-placement">8.2 Preparing a document for signature (field placement)</h3>
+<p>Staff prepare a <code>draft</code> PDF in <code>PrepareSignatureModal.jsx</code>. The PDF is loaded via the authenticated proxy (<code>getCaseDocumentFile</code>) into an object URL and rendered with <code>react-pdf</code>/pdf.js (page width ~560px, with prev/next controls). Toolbar buttons &quot;Victim field&quot; and &quot;Staff field&quot; add draggable fields (default size ~30% × 7% of the page, staggered so repeats do not stack), each carrying <code>{id, role, page, x, y, w, h}</code> with coordinates normalized 0..1 and a top-left origin. Dragging shows Figma-style alignment guides that snap (~6px) to page edges/center and to other fields; each field has a remove control.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-PREP-01</td><td>Staff can add signature fields of role <code>victim</code> or <code>staff</code> and position them per page via drag-and-drop, with normalized 0..1 coordinates (<code>x, y, w, h</code>) and a 1-based <code>page</code>.</td><td>Must</td></tr>
+<tr><td>FR-PREP-02</td><td>The editor renders the PDF authentically (page-accurate) so placement matches what will be stamped; positioning is resolution-independent via normalized coordinates.</td><td>Must</td></tr>
+<tr><td>FR-PREP-03</td><td>Alignment guides snap fields to page edges/center and to other fields to aid precise placement.</td><td>Should</td></tr>
+<tr><td>FR-PREP-04</td><td>If the staff user has a saved signature, a draggable signature chip is available; dropping it onto the page creates a <code>staff</code> field flagged <code>signWithSaved:true</code>, rendering the signature in place (sign-in-place, no drawing).</td><td>Should</td></tr>
+<tr><td>FR-PREP-05</td><td>Send is disabled until at least one field is placed.</td><td>Must</td></tr>
+<tr><td>FR-PREP-06</td><td>The preparation editor is available only while the document is in status <code>draft</code>.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="83-sending-a-signature-request">8.3 Sending a signature request</h3>
+<p>Sending (<code>sendForSignature</code>, <code>POST /web/case-documents/:uid/send</code>) supports two placement modes. In the positioned mode the body is <code>fields[]</code> (each <code>{role, page, x, y, w, h, signWithSaved?}</code>), which the backend converts into <code>document_signatures</code> rows (status <code>pending</code>, normalized coordinates). In the fallback boolean mode the body carries <code>requireVictim</code>/<code>requireStaff</code> with no coordinates, producing appended-page signatures; at least one must be required, else 400. The current VS360 UI always sends the field-array form. On send, the backend deletes any prior <code>pending</code> rows (clean re-send), inserts the new rows, patches the document to <code>pending_signature</code> with the derived <code>requiresVictim/StaffSignature</code> and <code>sent_at</code>, generates a placeholder-stamped preview, and notifies the victim.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SEND-01</td><td><code>POST /web/case-documents/:uid/send</code> accepts positioned <code>fields[]</code> (preferred) or fallback <code>requireVictim</code>/<code>requireStaff</code>; at least one signer must be required.</td><td>Must</td></tr>
+<tr><td>FR-SEND-02</td><td>Each field becomes a <code>document_signatures</code> row in status <code>pending</code> with normalized coordinates; required-signer flags are derived from the rows.</td><td>Must</td></tr>
+<tr><td>FR-SEND-03</td><td>A <code>staff</code> field flagged <code>signWithSaved:true</code> is created <strong>already <code>signed</code></strong>: the staff&#x27;s saved signature is copied to the signature image key and <code>signed_at</code> is set.</td><td>Should</td></tr>
+<tr><td>FR-SEND-04</td><td>Re-sending deletes prior <code>pending</code> rows (idempotent re-request) while retaining already-<code>signed</code> rows.</td><td>Must</td></tr>
+<tr><td>FR-SEND-05</td><td>On send, the document status becomes <code>pending_signature</code> and <code>sent_at</code> is recorded.</td><td>Must</td></tr>
+<tr><td>FR-SEND-06</td><td>For PDFs with positioned rows and nothing auto-signed, a preview is stamped showing each field as a dashed placeholder, so &quot;View document&quot; reveals where signatures will go before anyone signs.</td><td>Should</td></tr>
+<tr><td>FR-SEND-07</td><td>If a staff field was auto-signed at send time, the document status is recomputed and the PDF is stamped for real.</td><td>Should</td></tr>
+<tr><td>FR-SEND-08</td><td>If a victim signature is required and the victim is resolvable, the victim is notified via socket + in-app + FCM, and, if the victim has an email, an email of type <code>DOCUMENT_SIGNATURE_REQUEST</code> (with <code>recipientName</code>, <code>documentTitle</code>) is queued.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="84-signer-viewing-signing">8.4 Signer viewing &amp; signing</h3>
+<p>Both audiences sign through <code>applySignature</code> (<code>POST /:uid/sign</code> on the respective router). The signature <code>payload</code> is <code>signatureImage</code> (data-URL <code>data:image/png;base64,...</code>) with <code>signatureType</code> (<code>drawn</code>|<code>typed</code>) and <code>signerName</code>, <strong>or</strong> <code>useSaved:true</code> to pull the signer&#x27;s saved signature. Staff sign in <code>SignatureModal.jsx</code> (draw on a 460×160 canvas, or type a name in a script font); victims sign in the mobile app (draw/type/saved). The backend finds the caller-role pending record, authorizes it, resolves the image, uploads it, marks the record <code>signed</code> with <code>signed_at</code> and <code>ip_address</code>, then recomputes status and re-stamps.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SIGN-01</td><td>A signer can apply a signature only to a <strong>pending</strong> record matching their role; if no matching pending record exists, return 400.</td><td>Must</td></tr>
+<tr><td>FR-SIGN-02</td><td>Victim authorization: the target record&#x27;s <code>signer_app_user_id</code> must equal <code>issuer.id</code>, else 403.</td><td>Must</td></tr>
+<tr><td>FR-SIGN-03</td><td>The signature image is resolved from the provided data-URL, or (<code>useSaved:true</code>) fetched from the signer&#x27;s saved signature (400 if none/unavailable).</td><td>Must</td></tr>
+<tr><td>FR-SIGN-04</td><td>On sign, the record is patched with signer id/name, <code>signature_type</code>, image URL/key, <code>status=&#x27;signed&#x27;</code>, <code>signed_at</code>, and <code>ip_address</code>.</td><td>Must</td></tr>
+<tr><td>FR-SIGN-05</td><td>After signing, document status is recomputed and the signed PDF is regenerated.</td><td>Must</td></tr>
+<tr><td>FR-SIGN-06</td><td>Signers can view the current document (original or latest signed copy) before signing via the detail/file endpoints; the file endpoint prefers the signed copy.</td><td>Must</td></tr>
+<tr><td>FR-SIGN-07</td><td>Staff sign via the VS360 canvas modal (draw or typed script font); victims sign via the mobile app (draw/typed/saved).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="85-signature-stamping-onto-the-pdf">8.5 Signature stamping onto the PDF</h3>
+<p>Stamping is centralized in <code>recomputeStatus</code> + <code>stampSignaturesOnPdf</code> (pdf-lib). Status is recomputed from the records: <code>declined</code> if any declined; <code>signed</code> if all non-declined are signed (sets <code>completed_at</code>); <code>partially_signed</code> if some signed; else <code>pending_signature</code>. The signed PDF is <strong>always regenerated from the pristine original</strong> (idempotent, no compounding artifacts), embedding all <code>signed</code> signatures in place plus dashed placeholders for still-<code>pending</code> positioned fields; unpositioned signatures land on an appended &quot;Signatures&quot; page. Output is saved as <code>{uid}-signed.pdf</code> and the document&#x27;s <code>signed_file_url</code>/<code>signed_storage_key</code> are patched. Stamping failures are swallowed so they never block recording a signature.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-STAMP-01</td><td>Every stamping run regenerates the signed PDF from the original, embedding all signed signatures and dashed placeholders for pending positioned fields.</td><td>Must</td></tr>
+<tr><td>FR-STAMP-02</td><td>Positioned signatures are drawn in-place: normalized coordinates map to PDF points (y measured from the page bottom: <code>boxBottom = height − posY*height − boxH</code>); the PNG is scaled to the field with a baseline and a caption <code>name · signedAt</code>.</td><td>Must</td></tr>
+<tr><td>FR-STAMP-03</td><td>Role accent colors distinguish signers (victim blue, staff purple); placeholders render as a tinted fill + dashed rectangle labeled &quot;ROLE SIGNATURE / Pending&quot;.</td><td>Should</td></tr>
+<tr><td>FR-STAMP-04</td><td>Signatures without a position are rendered on an appended &quot;Signatures&quot; page.</td><td>Must</td></tr>
+<tr><td>FR-STAMP-05</td><td>Stamping failures are non-fatal: the signature record is still recorded and status still advances.</td><td>Must</td></tr>
+<tr><td>FR-STAMP-06</td><td>Only PDFs are field-stamped; non-PDF documents are stored/viewable but not positionally stamped.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="86-saved-my-signature">8.6 Saved &quot;My signature&quot;</h3>
+<p>Each staff user and each victim can store one reusable signature image (<code>user-signature</code> module; audience routed by route — <code>req.audience=&#x27;staff&#x27;</code> on <code>/web</code>, <code>&#x27;victim&#x27;</code> on <code>/mobile</code>, mapping to <code>Users</code> vs <code>AppUsers</code>). <code>getSignature</code> returns the saved image as a base64 data URL (fetched from storage to avoid internal-host reachability). <code>uploadSignature</code> accepts an image by content-type or magic-byte sniff (PNG/JPEG/GIF/WEBP; tolerates <code>application/octet-stream</code> from clients like Dio), stores it at a versioned key, patches the principal row, and best-effort deletes the previous image. <code>removeSignature</code> deletes the stored object and nulls the columns.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-USIG-01</td><td>A user can fetch their saved signature as a data URL via `GET /web</td><td>mobile/user-signature`; returns null if none.</td></tr>
+<tr><td>FR-USIG-02</td><td>A user can upload/replace their saved signature via `POST /web</td><td>mobile/user-signature` (multipart image; validated by content-type or magic bytes).</td></tr>
+<tr><td>FR-USIG-03</td><td>A user can remove their saved signature via `DELETE /web</td><td>mobile/user-signature`.</td></tr>
+<tr><td>FR-USIG-04</td><td>Each principal stores exactly one saved signature (columns on <code>users</code> for staff, <code>app_users</code> for victims); upload replaces and best-effort deletes the prior image.</td><td>Must</td></tr>
+<tr><td>FR-USIG-05</td><td>The saved signature is reusable at sign time (<code>useSaved:true</code>) and, for staff, as a drag-to-sign chip during preparation.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="87-completion-audit-trail-notifications">8.7 Completion, audit trail &amp; notifications</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-AUD-01</td><td>Each signature record retains an audit trail: <code>signer_name</code>, <code>signer_user_id</code>/<code>signer_app_user_id</code>, <code>signature_type</code>, <code>signed_at</code>, and <code>ip_address</code>.</td><td>Must</td></tr>
+<tr><td>FR-AUD-02</td><td>The document records <code>sent_at</code> when sent and <code>completed_at</code> when all required signatures are collected.</td><td>Must</td></tr>
+<tr><td>FR-NOTE-01</td><td>On full completion, the victim receives a <code>DOCUMENT_SIGNED</code> notification (&quot;…is now fully signed.&quot;); if staff signed but the victim is still pending, the victim receives a <code>DOCUMENT_SIGNATURE_REQUEST</code> (&quot;Staff signed… Your signature is still needed.&quot;).</td><td>Must</td></tr>
+<tr><td>FR-NOTE-02</td><td>On full completion, staff are notified via <code>io.to(&#x27;vs360-notification-room&#x27;).emit(&#x27;case-document-signed-{claimUid}&#x27;, …)</code>.</td><td>Should</td></tr>
+<tr><td>FR-NOTE-03</td><td>On cancel, if a victim was a signer, a <code>DOCUMENT_REMOVED</code> notification is pushed so the document drops from the victim&#x27;s app list.</td><td>Should</td></tr>
+</tbody></table></div>
+<h2 id="9-detailed-user-system-flows">9. Detailed User &amp; System Flows</h2>
+<h3 id="91-prepare-a-document-from-a-case-staff-vs360">9.1 Prepare a document from a case (staff, VS360)</h3>
+<ol class="flow">
+<li>Staff opens the claim/case detail and selects the <strong>Documents</strong> tab (<code>DocumentsManagement.jsx</code>), which loads <code>GET /web/case-documents/claim/:claimUid</code>.</li>
+<li>Staff clicks <strong>Add Document</strong>, enters a Title, and selects a file (PDF, image, or Word doc) → <code>POST /web/case-documents/claim/:claimUid</code> (multipart <code>file</code>, <code>title</code>).</li>
+<li>Backend <code>createDocument</code>: validates a file is present (400 if missing); looks up the claim by <code>claimUid</code> (404 if missing); computes <code>storageKey = case-documents/{claim.id}/{uuid10}-{sanitizedName}</code>; writes the multer buffer to a temp file and pushes it via <code>fileService.uploadFile</code> (temp cleaned in <code>finally</code>); inserts a <code>case_documents</code> row in status <code>draft</code> capturing <code>service_center_id</code>, <code>uploaded_by_user_id</code>, <code>mime</code>, <code>size_bytes</code>.</li>
+<li>The new document appears in the list with a gray <strong>draft</strong> badge and a <strong>Prepare &amp; send</strong> action.</li>
+<li>Staff clicks <strong>Prepare &amp; send</strong> → <code>PrepareSignatureModal</code> loads the PDF via the authenticated proxy (<code>getCaseDocumentFile</code>) and renders it with <code>react-pdf</code>.</li>
+<li>Staff adds fields with <strong>Victim field</strong> / <strong>Staff field</strong>, drags each into position (alignment guides snap to edges/center and to other fields), and optionally removes fields via their X control. Each field is <code>{id, role, page, x, y, w, h}</code> with normalized 0..1 coordinates.</li>
+<li>(Optional) If the staff user has a saved signature, they drag the signature chip onto the page to create a <code>staff</code> field flagged <code>signWithSaved:true</code>, signing themselves in place.</li>
+</ol>
+<h3 id="92-send-a-signature-request-staff-vs360">9.2 Send a signature request (staff, VS360)</h3>
+<ol class="flow">
+<li>In <code>PrepareSignatureModal</code>, staff clicks <strong>Send</strong> (enabled only once ≥1 field is placed) → <code>POST /web/case-documents/:uid/send</code> with <code>{ fields:[{role,page,x,y,w,h,signWithSaved?}] }</code>.</li>
+<li>Backend <code>sendForSignature</code> loads the document (with <code>claimInfo.victimInfo</code>) and resolves the victim&#x27;s app-user id.</li>
+<li>It deletes any prior <code>pending</code> signature records (clean re-send) and inserts new <code>document_signatures</code> rows (status <code>pending</code>, normalized coordinates). For any <code>staff</code> field with <code>signWithSaved:true</code>, it fetches the staff&#x27;s saved signature, copies it to <code>sig-{uid}.png</code>, and creates that row already <code>signed</code> with <code>signed_at</code> set.</li>
+<li>It derives <code>requiresVictimSignature</code>/<code>requiresStaffSignature</code> from the rows and patches the document: <code>status=&#x27;pending_signature&#x27;</code>, the requirement flags, and <code>sent_at</code>.</li>
+<li><strong>Preview stamping</strong>: if the document is a PDF with positioned rows and nothing was auto-signed, it stamps a copy showing each field as a dashed placeholder and saves it as <code>{uid}-signed.pdf</code> (so &quot;View document&quot; reveals placement before signing). If a staff field was auto-signed, it instead calls <code>recomputeStatus</code> to do real stamping.</li>
+<li><strong>Notify victim</strong> (if a victim signature is required and the victim is present): <code>sendDocumentSignatureRequestNotification</code> delivers a socket + in-app + FCM notification, and, if the victim has an email, an email of type <code>DOCUMENT_SIGNATURE_REQUEST</code> is queued with <code>recipientName</code> and <code>documentTitle</code>.</li>
+<li>VS360 shows a &quot;Document sent for signature&quot; toast, refetches the list (status now yellow &quot;Awaiting signature&quot;), and closes the modal.</li>
+<li>Edge case: if neither positioned fields nor <code>requireVictim</code>/<code>requireStaff</code> are provided, the send is rejected with 400.</li>
+</ol>
+<h3 id="93-victim-receives-the-request-and-signs-mobile-app">9.3 Victim receives the request and signs (mobile app)</h3>
+<ol class="flow">
+<li>The victim receives an FCM push (and, if they have an email, an email) that a document needs their signature. The email directs them to the app (no signing link/token).</li>
+<li>Tapping the push routes via <code>NotificationNavigator</code> (type <code>document-signature-request</code>) to the document sign screen; alternatively the victim opens <strong>Documents &amp; Forms</strong> (<code>signed_documents_screen.dart</code>) or taps the home-screen e-sign banner.</li>
+<li>The app lists documents via <code>GET /mobile/case-documents/</code> — those in <code>pending_signature</code>/<code>partially_signed</code>/<code>signed</code> that have a victim signature record for the logged-in <code>issuer.id</code>, each carrying <code>needsMySignature</code> and <code>claimUid</code>.</li>
+<li>The victim opens the document → <code>GET /mobile/case-documents/:uid</code> for detail and <code>GET /mobile/case-documents/:uid/file</code> to stream the PDF into the Syncfusion viewer (the signed/preview copy is served when present, so placeholders show where to sign).</li>
+<li>The victim signs: draws on the canvas, types their name (rendered in a cursive font), or chooses <strong>use saved</strong> → <code>POST /mobile/case-documents/:uid/sign</code> with <code>{signatureType, signatureImage(dataURL), signerName}</code> or <code>{useSaved:true}</code>.</li>
+<li>Backend <code>applySignature</code> finds the victim-role <strong>pending</strong> record (400 if none), verifies <code>signer_app_user_id === issuer.id</code> (403 otherwise), resolves the image (data-URL decode, or fetch saved — 400 if none), uploads it to <code>case-documents/{claimId}/sig-{sigUid}.png</code>, and patches the record: signer id/name/type/url/key, <code>status=&#x27;signed&#x27;</code>, <code>signed_at</code>, and <code>ip_address</code>.</li>
+<li><code>recomputeStatus</code> runs (see 9.5); the app refetches and reflects the new status.</li>
+</ol>
+<h3 id="94-staff-signs-in-the-web-app-vs360">9.4 Staff signs in the web app (VS360)</h3>
+<ol class="flow">
+<li>In the Documents tab, when a <code>staff</code> signature record is <code>pending</code> (<code>staffCanSign</code>), the document shows a <strong>Sign</strong> action → opens <code>SignatureModal</code>.</li>
+<li>Staff enters their <strong>Full legal name</strong> and picks a mode: <strong>Draw</strong> (freehand on a 460×160 canvas, with Clear/eraser) or <strong>Type</strong> (name rendered in a script font onto the canvas).</li>
+<li>On submit, the canvas is exported (<code>toDataURL(&#x27;image/png&#x27;)</code>) and <code>POST /web/case-documents/:uid/sign</code> is called with <code>{signatureType:&#x27;drawn&#x27;|&#x27;typed&#x27;, signatureImage(dataURL), signerName}</code>.</li>
+<li>Backend <code>applySignature</code> finds the staff-role <strong>pending</strong> record, uploads the image, and patches the record (<code>signed</code>, <code>signed_at</code>, <code>ip_address</code>) exactly as for the victim (without the victim ownership check; staff authorization is via <code>allowOnly(&#x27;VS360&#x27;)</code>).</li>
+<li><code>recomputeStatus</code> runs; VS360 shows a success toast and refetches. Status advances to <code>partially_signed</code> or <code>signed</code>.</li>
+</ol>
+<h3 id="95-signature-is-stamped-onto-the-pdf-system-on-every-signature">9.5 Signature is stamped onto the PDF (system, on every signature)</h3>
+<ol class="flow">
+<li><code>recomputeStatus</code> loads the document&#x27;s signature records and computes the new status: <code>declined</code> if any is declined; <code>signed</code> if all non-declined records are signed (also sets <code>completed_at</code>); <code>partially_signed</code> if at least one is signed; otherwise <code>pending_signature</code>.</li>
+<li>It re-stamps by calling <code>stampSignaturesOnPdf</code> against the <strong>pristine original</strong> (never the prior signed copy), embedding every <code>signed</code> signature in place and a dashed placeholder for each still-<code>pending</code> positioned field.</li>
+<li>For positioned signatures, normalized coordinates convert to PDF points with a bottom-origin transform (<code>boxBottom = height − posY*height − boxH</code>); the PNG is scaled into the field, drawn with a baseline and a caption <code>name · signedAt</code>, using role accent colors (victim blue, staff purple).</li>
+<li>Signatures without a position are drawn onto an appended &quot;Signatures&quot; page.</li>
+<li>The output is written to <code>{uid}-signed.pdf</code> and the document&#x27;s <code>signed_file_url</code>/<code>signed_storage_key</code> are patched, so subsequent views/downloads prefer the signed copy.</li>
+<li>If stamping throws, the error is swallowed: the signature record and status change still persist (the PDF just isn&#x27;t re-rendered this pass).</li>
+</ol>
+<h3 id="96-completion-audit-trail-completion-notifications-system">9.6 Completion, audit trail &amp; completion notifications (system)</h3>
+<ol class="flow">
+<li>When <code>recomputeStatus</code> finds all required signatures collected, it sets the document status to <code>signed</code> and stamps <code>completed_at</code>.</li>
+<li>The audit trail is preserved per signature: <code>signer_name</code>, <code>signer_user_id</code>/<code>signer_app_user_id</code>, <code>signature_type</code>, <code>signed_at</code>, and <code>ip_address</code>; the document carries <code>sent_at</code> and <code>completed_at</code>.</li>
+<li><strong>Victim notifications</strong>: on full completion the victim gets a <code>DOCUMENT_SIGNED</code> notification (&quot;…is now fully signed.&quot;); if instead staff just signed and the victim is still pending, the victim gets a <code>DOCUMENT_SIGNATURE_REQUEST</code> notification (&quot;Staff signed… Your signature is still needed.&quot;). Both go via socket + in-app + FCM.</li>
+<li><strong>Staff notification</strong>: on full completion, the backend emits <code>io.to(&#x27;vs360-notification-room&#x27;).emit(&#x27;case-document-signed-{claimUid}&#x27;, …)</code>.</li>
+<li>Any party can now view the completed document; the file endpoint serves the signed copy with a <code>signed-</code> filename prefix and inline disposition.</li>
+</ol>
+<h3 id="97-cancel-withdraw-a-document-staff-vs360">9.7 Cancel / withdraw a document (staff, VS360)</h3>
+<ol class="flow">
+<li>Staff selects <strong>Remove</strong> on a document → confirm modal → <code>DELETE /web/case-documents/:uid</code>.</li>
+<li>Backend <code>deleteDocument</code> soft-deletes: sets <code>status=&#x27;cancelled&#x27;</code> and <code>deleted_at</code>.</li>
+<li>If a victim was a signer, a <code>DOCUMENT_REMOVED</code> notification is pushed so the document drops from the victim&#x27;s app list.</li>
+<li>The document no longer appears in the case&#x27;s active list (there is no restore/trash flow).</li>
+</ol>
+<h3 id="98-upload-a-personal-signature-my-signature">9.8 Upload a personal signature (&quot;My signature&quot;)</h3>
+<ol class="flow">
+<li><strong>Staff</strong>: in Agency Profile / user settings, <code>AgencySignatureCard</code> calls <code>GET /web/user-signature</code> to show the current signature (as a data URL) if any. <strong>Victim</strong>: in the app&#x27;s <code>signature_settings_screen</code>, <code>GET /mobile/user-signature</code> does the same.</li>
+<li>The user uploads an image → <code>POST /web|mobile/user-signature</code> (multipart <code>file</code>). Backend <code>uploadSignature</code> accepts the file if its content-type is an image or its magic bytes sniff to PNG/JPEG/GIF/WEBP (tolerating <code>application/octet-stream</code>).</li>
+<li>The image is stored at a versioned key <code>user-signatures/{staff|victim}-{id}-{uuid10}.png</code>; the principal row (<code>users</code> or <code>app_users</code>) is patched with <code>signature_image_url</code>/<code>signature_storage_key</code>; the previous image is best-effort deleted.</li>
+<li><code>getSignature</code> thereafter returns the saved image as a base64 data URL (fetched from storage to avoid internal-host reachability).</li>
+<li><strong>Remove</strong> → <code>DELETE /web|mobile/user-signature</code> deletes the stored object (best-effort) and nulls the columns.</li>
+<li>The saved signature is then usable via <code>useSaved:true</code> at sign time and, for staff, as the drag-to-sign chip in <code>PrepareSignatureModal</code>.</li>
+</ol>
+<h3 id="99-edge-cases-branches">9.9 Edge cases &amp; branches</h3>
+<ol class="flow">
+<li><strong>No matching pending record on sign</strong> → 400 (e.g., role already signed, or role not requested).</li>
+<li><strong>Victim signing another victim&#x27;s record</strong> → 403 (<code>signerAppUserId !== issuer.id</code>).</li>
+<li><strong><code>useSaved:true</code> with no saved signature</strong> → 400.</li>
+<li><strong>Re-send after placement error</strong> → prior <code>pending</code> records are deleted and replaced; already-<code>signed</code> records are retained; status returns to <code>pending_signature</code>.</li>
+<li><strong>Non-PDF document sent for signature</strong> → stored and viewable, but positioned stamping does not apply (fields/placeholders are PDF-only).</li>
+<li><strong>Stamping failure</strong> → non-fatal; the signature is still recorded and status still advances; the signed copy simply isn&#x27;t refreshed this pass.</li>
+<li><strong>Missing file on upload</strong> → 400; <strong>missing claim</strong> → 404.</li>
+</ol>
+<h2 id="10-data-model">10. Data Model</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Key Fields</th><th>Relationships</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td><code>case_documents</code></td><td><code>id</code> PK; <code>uid</code> (128, unique, <code>uuid10()</code>); <code>claim_id</code> FK→service_claims (CASCADE, indexed); <code>service_center_id</code> FK (SET NULL); <code>uploaded_by_user_id</code> FK→users (SET NULL); <code>title</code>; <code>file_name</code>; <code>mime</code>; <code>size_bytes</code>; <code>file_url</code> + <code>storage_key</code> (original); <code>signed_file_url</code> + <code>signed_storage_key</code> (stamped output, nullable); <code>requires_victim_signature</code> / <code>requires_staff_signature</code> (bool, def false); <code>status</code> enum (<code>draft</code>→<code>pending_signature</code>→<code>partially_signed</code>→<code>signed</code>, plus <code>declined</code>, <code>cancelled</code>, def <code>draft</code>); <code>sent_at</code>; <code>completed_at</code>; <code>deleted_at</code>; timestamps. Index <code>(claim_id, deleted_at)</code>.</td><td><code>claimInfo</code>→ServiceClaims; <code>uploadedBy</code>→Users; <code>signatures</code> HasMany→DocumentSignatures.</td><td>One document attached to a case; tracks original + signed copies, required signers, lifecycle status, and send/complete timestamps.</td></tr>
+<tr><td><code>document_signatures</code></td><td><code>id</code> PK; <code>uid</code> unique; <code>document_id</code> FK→case_documents (CASCADE, indexed); <code>signer_role</code> enum (<code>victim</code>\</td><td><code>staff</code>\</td><td><code>external</code>); <code>signer_app_user_id</code> FK→app_users (victim) / <code>signer_user_id</code> FK→users (staff), both SET NULL; <code>signer_name</code>; <code>signature_type</code> enum (<code>drawn</code>\</td></tr>
+<tr><td><code>users</code> (saved-signature columns)</td><td><code>signature_image_url</code> + <code>signature_storage_key</code> (added migration <code>...120000</code>).</td><td>Principal table for staff.</td><td>Stores one reusable staff signature image.</td></tr>
+<tr><td><code>app_users</code> (saved-signature columns)</td><td><code>signature_image_url</code> + <code>signature_storage_key</code> (added migration <code>...120000</code>).</td><td>Principal table for victims.</td><td>Stores one reusable victim signature image.</td></tr>
+<tr><td><code>service_claims</code> (context)</td><td><code>id</code>, <code>uid</code>, victim linkage.</td><td>1—N <code>case_documents</code>.</td><td>The case a document is attached to; resolves the victim signer.</td></tr>
+</tbody></table></div>
+<p>Relationship summary: ServiceClaim 1—N CaseDocuments 1—N DocumentSignatures. A signature references a claim&#x27;s victim (<code>app_users</code>) or a staff member (<code>users</code>). Saved-signature columns live directly on the principal tables (one per user).</p>
+<p>Migrations: <code>20260617100000_create_case_documents</code>, <code>20260617100100_create_document_signatures</code>, <code>20260618100000_add_position_to_document_signatures</code>, <code>20260623120000_add_signature_to_users</code>.</p>
+<p>Storage keys (case-namespaced, via <code>fileService</code>): originals/signed at <code>case-documents/{claimId}/{docUid}-….pdf</code> and <code>-signed.pdf</code>; signature images at <code>case-documents/{claimId}/sig-{sigUid}.png</code>; saved signatures at <code>user-signatures/{staff|victim}-{userId}-{uuid10}.png</code>. No SAS/quota logic — bytes are proxied through Express (<code>streamFile</code>).</p>
+<h2 id="11-api-integration-surface">11. API &amp; Integration Surface</h2>
+<h3 id="111-case-documents-staff-webcase-documents-allowonlyvs360">11.1 Case Documents — staff (<code>/web/case-documents</code>, <code>allowOnly(&#x27;VS360&#x27;)</code>)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/claim/:claimUid</code></td><td>List documents for a case</td><td>VS360</td></tr>
+<tr><td>POST</td><td><code>/claim/:claimUid</code></td><td>Upload a document to a case (multipart <code>file</code>, <code>title</code>)</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/:uid</code></td><td>Document detail (+ <code>signatures</code>, <code>claimInfo</code>, <code>downloadUrl</code>)</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/:uid/file</code></td><td>Stream file bytes (prefers signed copy)</td><td>VS360</td></tr>
+<tr><td>POST</td><td><code>/:uid/send</code></td><td>Send for signature (<code>fields[]</code> or <code>requireVictim</code>/<code>requireStaff</code>)</td><td>VS360</td></tr>
+<tr><td>POST</td><td><code>/:uid/sign</code></td><td>Staff applies their signature</td><td>VS360</td></tr>
+<tr><td>DELETE</td><td><code>/:uid</code></td><td>Cancel/withdraw (soft-delete → <code>cancelled</code>)</td><td>VS360</td></tr>
+</tbody></table></div>
+<h3 id="112-case-documents-victim-mobilecase-documents-auth-only">11.2 Case Documents — victim (<code>/mobile/case-documents</code>, auth only)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/</code></td><td>List documents awaiting my signature</td><td>Auth (app user)</td></tr>
+<tr><td>GET</td><td><code>/:uid</code></td><td>Document detail</td><td>Auth</td></tr>
+<tr><td>GET</td><td><code>/:uid/file</code></td><td>Stream file bytes</td><td>Auth</td></tr>
+<tr><td>POST</td><td><code>/:uid/sign</code></td><td>Victim applies signature (self-record only)</td><td>Auth + <code>signerAppUserId===issuer.id</code></td></tr>
+</tbody></table></div>
+<h3 id="113-user-signature-my-signature">11.3 User signature (&quot;My signature&quot;)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/web/user-signature</code></td><td>Get my saved signature (data URL)</td><td>VS360 (<code>audience=staff</code>)</td></tr>
+<tr><td>POST</td><td><code>/web/user-signature</code></td><td>Upload/replace my signature (multipart)</td><td>VS360</td></tr>
+<tr><td>DELETE</td><td><code>/web/user-signature</code></td><td>Remove my saved signature</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/mobile/user-signature</code></td><td>Get my saved signature (data URL)</td><td>Auth (<code>audience=victim</code>)</td></tr>
+<tr><td>POST</td><td><code>/mobile/user-signature</code></td><td>Upload/replace my signature (multipart)</td><td>Auth</td></tr>
+<tr><td>DELETE</td><td><code>/mobile/user-signature</code></td><td>Remove my saved signature</td><td>Auth</td></tr>
+</tbody></table></div>
+<p>Both routers are additionally rate-limited (<code>rateLimiters.standard</code>). Signature <code>/sign</code> payload: <code>{signatureImage (data-URL), signatureType (&#x27;drawn&#x27;|&#x27;typed&#x27;), signerName}</code> or <code>{useSaved:true}</code>.</p>
+<h3 id="114-external-integrations">11.4 External integrations</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Integration</th><th>Use</th></tr></thead>
+<tbody>
+<tr><td>Object storage (<code>fileService</code>)</td><td>MinIO (dev) / Azure Blob (staging/prod) by <code>ENV</code>; stores originals, signed copies, signature images, saved signatures; bytes proxied via Express (no SAS/quota).</td></tr>
+<tr><td>PDF stamping (<code>signatureStamper.js</code>, pdf-lib)</td><td>Embeds signature PNGs at normalized coordinates, draws placeholders/captions/role colors, appends a signatures page; regenerated from the original each run; failures swallowed.</td></tr>
+<tr><td>Email (BullMQ + Handlebars)</td><td><code>documentSignatureRequest.hbs</code> template; <code>EMAIL_TYPES.DOCUMENT_SIGNATURE_REQUEST</code> wired in <code>email.config.js</code>; sent to the victim on request with <code>recipientName</code>, <code>documentTitle</code>; directs the victim to the app (no signing link/token).</td></tr>
+<tr><td>Socket.IO</td><td>Victim room notifications (document-signature-request / signed / removed); staff completion emit <code>case-document-signed-{claimUid}</code> to <code>vs360-notification-room</code>.</td></tr>
+<tr><td>FCM push</td><td>Background delivery of victim document notifications; routed in-app by <code>NotificationNavigator</code>.</td></tr>
+<tr><td>Multer (<code>upload.single(&#x27;file&#x27;)</code>)</td><td>In-memory buffer intake for document and signature uploads.</td></tr>
+</tbody></table></div>
+<h2 id="12-rbac-permissions">12. RBAC &amp; Permissions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Action</th><th>Staff (VS360)</th><th>Victim (APP)</th><th>Enforcement</th></tr></thead>
+<tbody>
+<tr><td>List case documents (staff)</td><td>Yes</td><td>—</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+<tr><td>List documents awaiting my signature (victim)</td><td>—</td><td>Yes</td><td>Auth; filtered to victim signature records for <code>issuer.id</code></td></tr>
+<tr><td>Upload a document to a case</td><td>Yes</td><td>No</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+<tr><td>Prepare / send for signature</td><td>Yes</td><td>No</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+<tr><td>Sign a staff signature record</td><td>Yes</td><td>No</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + role-matched pending record</td></tr>
+<tr><td>Sign a victim signature record</td><td>No</td><td>Yes</td><td>Auth + <code>signer_app_user_id === issuer.id</code> (403 otherwise) + role-matched pending record</td></tr>
+<tr><td>View / stream document file</td><td>Yes</td><td>Yes (own case documents)</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> (staff) / auth (victim)</td></tr>
+<tr><td>Cancel / withdraw a document</td><td>Yes</td><td>No</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+<tr><td>Manage own saved signature</td><td>Yes (<code>audience=staff</code>)</td><td>Yes (<code>audience=victim</code>)</td><td>Route-audience mapping to <code>Users</code> / <code>AppUsers</code></td></tr>
+</tbody></table></div>
+<p>Notes: the staff surface is gated purely by the VS360 context guard (no fine-grained per-action permission flag is applied within this feature); consider tying it to the Case Management (<code>claims</code>) permission set (see Risks). Victim access is constrained by the per-record ownership check rather than by an explicit claim-ownership re-check.</p>
+<h2 id="13-non-functional-requirements">13. Non-Functional Requirements</h2>
+<h3 id="131-legal-validity-tamper-evidence">13.1 Legal validity &amp; tamper-evidence</h3>
+<ul>
+<li><strong>Audit trail</strong> per signature: signer identity (name + staff/app user id), signature type (<code>drawn</code>/<code>typed</code>), <code>signed_at</code>, and <code>ip_address</code>; document-level <code>sent_at</code> and <code>completed_at</code>. These constitute the evidentiary record for an in-house electronic signature.</li>
+<li><strong>Tamper-evidence via regeneration</strong>: the signed PDF is always re-generated from the pristine original with all current signatures, so the artifact is deterministic from the recorded signature data; there is no incremental editing of a prior signed copy that could accumulate hidden state.</li>
+<li><strong>Intent &amp; attribution</strong>: signing requires an explicit action (draw/type/use-saved) plus the signer&#x27;s full legal name; captions on the stamped signature show <code>name · signedAt</code>.</li>
+</ul>
+<h3 id="132-security-privacy-victim-safety">13.2 Security &amp; privacy (victim safety)</h3>
+<ul>
+<li><strong>No public signing link</strong>: victims sign only inside the authenticated mobile app; the request email carries no token/link — reducing exposure risk for a vulnerable population.</li>
+<li><strong>Per-record authorization</strong>: victims can act only on their own signature record (<code>signerAppUserId === issuer.id</code>).</li>
+<li><strong>Context isolation</strong>: staff surface behind <code>allowOnly(&#x27;VS360&#x27;)</code>; victim surface behind platform auth.</li>
+<li><strong>Byte handling</strong>: files are proxied through Express with <code>res.locals.skipEncryption=true</code> for raw file streaming; uploads validated by content-type and, for signatures, magic-byte sniffing.</li>
+<li><strong>Known gap</strong>: read/sign paths look up by document <code>uid</code> without an explicit tenant/claim-ownership re-check in the service; access control leans on the route guards and the victim ownership check. This warrants a security review before merge (see Risks).</li>
+</ul>
+<h3 id="133-performance-availability">13.3 Performance &amp; availability</h3>
+<ul>
+<li>Document, signature-image, and saved-signature payloads are small; PDFs are bounded by typical case-document sizes. Byte streaming is proxied, so large documents consume backend bandwidth (acceptable at expected volumes).</li>
+<li>Stamping runs synchronously on send/sign but is failure-tolerant (non-fatal), so a stamping fault never blocks recording a signature or advancing status.</li>
+</ul>
+<h3 id="134-auditability-compliance-reporting">13.4 Auditability, compliance &amp; reporting</h3>
+<ul>
+<li>The signature records plus document timestamps provide a self-contained audit trail suitable for compliance review; consider also emitting platform <code>ActionLogs</code> entries for upload/send/sign/cancel to align with the platform-wide audit pattern (see Risks).</li>
+</ul>
+<h3 id="135-accessibility-localization">13.5 Accessibility &amp; localization</h3>
+<ul>
+<li>Typed signatures use script/cursive fonts (web script font; mobile cursive font family). Victim app strings are localizable (en, es, bn, fr, ar). Signature capture supports mouse and touch on both platforms.</li>
+</ul>
+<h2 id="14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</h2>
+<h3 id="141-notifications">14.1 Notifications</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Event</th><th>Recipient</th><th>Channels</th><th>Payload / room</th></tr></thead>
+<tbody>
+<tr><td>Signature requested</td><td>Victim</td><td>Socket + in-app + FCM (+ email if victim has one)</td><td><code>DOCUMENT_SIGNATURE_REQUEST</code>; email <code>documentSignatureRequest.hbs</code> with <code>recipientName</code>, <code>documentTitle</code>; routed in-app by <code>NotificationNavigator</code></td></tr>
+<tr><td>Staff signed, victim still needed</td><td>Victim</td><td>Socket + in-app + FCM</td><td><code>DOCUMENT_SIGNATURE_REQUEST</code> (&quot;Staff signed… Your signature is still needed.&quot;)</td></tr>
+<tr><td>Document fully signed</td><td>Victim</td><td>Socket + in-app + FCM</td><td><code>DOCUMENT_SIGNED</code> (&quot;…is now fully signed.&quot;)</td></tr>
+<tr><td>Document fully signed</td><td>Staff</td><td>Socket</td><td><code>case-document-signed-{claimUid}</code> → <code>vs360-notification-room</code></td></tr>
+<tr><td>Document removed/cancelled</td><td>Victim (if a signer)</td><td>Socket + in-app + FCM</td><td><code>DOCUMENT_REMOVED</code> (drops from app list)</td></tr>
+</tbody></table></div>
+<p>The VS360 web UI otherwise relies on local toasts and TanStack Query refetches for immediate feedback (it does not subscribe to sockets for this feature). Notification delivery is wrapped defensively (failures logged, never break the main transaction).</p>
+<h3 id="142-reporting-kpis">14.2 Reporting / KPIs</h3>
+<p>No dedicated dashboard ships with this feature. The success metrics in §4.2 (time-to-complete, completion rate, saved-signature adoption, stamping reliability, re-send rate) are derivable from <code>case_documents</code> (<code>sent_at</code>, <code>completed_at</code>, <code>status</code>) and <code>document_signatures</code> (<code>status</code>, <code>signed_at</code>, <code>signature_type</code>) and are recommended as the initial KPI set.</p>
+<h2 id="15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Type</th><th>Impact</th><th>Mitigation / Owner</th></tr></thead>
+<tbody>
+<tr><td>Read/sign paths look up by document <code>uid</code> with a thin tenant/claim-ownership re-check</td><td>Risk</td><td>A staff user in another agency (or a victim referencing a foreign document) could potentially access a document if only route guards apply</td><td>Add explicit claim/tenant ownership checks on <code>getDocument</code>/<code>streamFile</code>/<code>applySignature</code>; security review before merge — Backend + Security</td></tr>
+<tr><td>Staff surface gated only by <code>allowOnly(&#x27;VS360&#x27;)</code>, no fine-grained permission flag</td><td>Risk</td><td>Any VS360 user may manage case documents regardless of claim-level permissions</td><td>Tie actions to the <code>claims</code> permission set (e.g., <code>claims.view</code>/<code>edit</code>, and <code>view_all</code> for cross-case access) — Backend</td></tr>
+<tr><td>Feature not merged to <code>develop</code> (backend <code>feature/necx-568</code>, victim app <code>feature/necx-607</code>, VS360 <code>feature/necx-568-e-sign-and-document-center</code>)</td><td>Assumption</td><td>Behavior may drift before release; this PRD reflects the pre-merge branches</td><td>Track merge; re-baseline PRD on merge — Product + Eng</td></tr>
+<tr><td>Stamping failures are swallowed</td><td>Risk</td><td>A signature can be recorded while the visible signed PDF is stale; users may not notice a missing stamp</td><td>Add stamping-failure telemetry/alerting and a re-stamp retry/queue; surface a &quot;regenerating&quot; state — Backend</td></tr>
+<tr><td>No first-class &quot;decline to sign&quot; action</td><td>Open Question</td><td>Model supports <code>declined</code> status, but no signer-facing decline flow is specified</td><td>Decide whether victims/staff can decline and how it notifies the case — Product</td></tr>
+<tr><td><code>external</code> signer role reserved but unimplemented</td><td>Open Question</td><td>Non-victim/non-staff signers (e.g., guardians, third parties) cannot be requested</td><td>Confirm whether external signing is a near-term need; design an external channel if so — Product</td></tr>
+<tr><td>Platform <code>ActionLogs</code> not confirmed for upload/send/sign/cancel</td><td>Open Question</td><td>E-sign actions may not appear in the platform-wide audit trail (unlike most modules)</td><td>Emit <code>ActionLogs</code> rows to align with platform auditing — Backend</td></tr>
+<tr><td>No storage quota / cleanup for case documents</td><td>Risk</td><td>Orphaned/original+signed copies accumulate; cancelled docs are soft-deleted but bytes may persist</td><td>Define a retention/cleanup policy for cancelled/completed documents — Backend + Compliance</td></tr>
+<tr><td>Positioned stamping is PDF-only</td><td>Assumption</td><td>Images/Word docs can be uploaded but not field-signed in place</td><td>Communicate PDF-first guidance in the UI; consider converting Word to PDF on upload — Product</td></tr>
+<tr><td>Victim identity resolution depends on the claim&#x27;s victim linkage</td><td>Risk</td><td>If a claim lacks a resolvable victim app-user, victim notifications/signing cannot proceed</td><td>Validate victim linkage at send time and surface a clear error — Backend</td></tr>
+<tr><td>VS360 client documents an older <code>{requireVictim, requireStaff}</code> send payload in comments</td><td>Open Question</td><td>Field-array form is current; stale comment could mislead integrators</td><td>Treat <code>fields[]</code> as authoritative; update client docs — VS360 Web</td></tr>
+</tbody></table></div>
+<p>Assumptions: the consuming clients are VS360 web and the victim mobile app only; PDFs are the primary signed artifact; object storage is MinIO in dev and Azure Blob in staging/production; the platform auth layer populates <code>req.issuer</code> for both routers.</p>
+<h2 id="16-glossary">16. Glossary</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Claim / Case</td><td>A victim&#x27;s service claim (<code>service_claims</code>); the anchor a document is attached to (<code>claim_id</code>).</td></tr>
+<tr><td>Document Center</td><td>The per-case list and management surface for case documents (VS360 &quot;Documents&quot; tab; victim &quot;Documents &amp; Forms&quot;).</td></tr>
+<tr><td>Case document</td><td>A file attached to a case (<code>case_documents</code>); may be prepared for e-signature.</td></tr>
+<tr><td>Signature field</td><td>A placed region on a PDF page (role + normalized <code>x,y,w,h</code> + page) that becomes a signature record.</td></tr>
+<tr><td>Signature record</td><td>A <code>document_signatures</code> row: one required/collected signature with role, placement, image, status, and audit fields.</td></tr>
+<tr><td>Signer role</td><td><code>victim</code> (blue), <code>staff</code> (purple), or reserved <code>external</code>.</td></tr>
+<tr><td>Saved signature (&quot;My signature&quot;)</td><td>One reusable signature image stored per user (<code>signature_image_url</code>/<code>signature_storage_key</code> on <code>users</code>/<code>app_users</code>).</td></tr>
+<tr><td>Signature type</td><td>How the signature was produced: <code>drawn</code> (canvas) or <code>typed</code> (script font).</td></tr>
+<tr><td>Sign with saved</td><td>Placing a staff field already signed from the staff member&#x27;s saved signature during preparation (<code>signWithSaved:true</code>).</td></tr>
+<tr><td>Stamping</td><td>Rendering signatures (and pending placeholders) onto the PDF via <code>signatureStamper.js</code>, regenerated from the original.</td></tr>
+<tr><td>Signed copy</td><td>The stamped output PDF (<code>signed_file_url</code>/<code>signed_storage_key</code>, <code>{uid}-signed.pdf</code>).</td></tr>
+<tr><td>Status (document)</td><td><code>draft</code> → <code>pending_signature</code> → <code>partially_signed</code> → <code>signed</code>, plus <code>declined</code> and <code>cancelled</code>.</td></tr>
+<tr><td>Status (signature)</td><td><code>pending</code> → <code>signed</code>, or <code>declined</code>.</td></tr>
+<tr><td>Normalized coordinates</td><td>Field position expressed 0..1 relative to the page (top-left origin) so placement is resolution-independent.</td></tr>
+<tr><td><code>uuid10()</code></td><td>The identifier scheme used for case-document/signature <code>uid</code>s (contrast Drive&#x27;s <code>uuidv4</code>).</td></tr>
+<tr><td>Advocate / Caseworker</td><td>Agency staff (VS360, <code>issuer.type = VSMS</code>) who manages the case and prepares/sends/signs documents.</td></tr>
+<tr><td>Victim / Survivor</td><td>The person the case serves (<code>issuer.type = APP</code>, <code>app_users</code>); signs in the mobile app.</td></tr>
+<tr><td>Service Center / Agency</td><td>The tenant organization (<code>service_center_id</code>) that owns the case and staff.</td></tr>
+<tr><td>VS360</td><td>The agency staff web application (context <code>VS360</code>).</td></tr>
+<tr><td>Login Code</td><td>One-time code an advocate can issue to activate a victim&#x27;s account (relevant when the victim must sign but has not yet activated).</td></tr>
+<tr><td><code>fileService</code></td><td>Shared storage adapter (MinIO dev / Azure prod) used to store and stream case-document bytes.</td></tr>
+<tr><td><code>allowOnly(...)</code></td><td>Middleware gating a route by <code>req.issuer.roleInfo.context</code> (403 otherwise).</td></tr>
+</tbody></table></div>
+      </div>
+      <nav class="prevnext"><a class="pn prev" href="P15.html"><span>← Previous</span><b>AI Report Builder</b></a><a class="pn next" href="P17.html"><span>Next →</span><b>Referrals &amp; Partnerships</b></a></nav>
+      <footer class="doc-foot">NECX Inc — Confidential · Generated 2026-07-05 · NECX E-Sign &amp; Document Center</footer>
+    </article>
+  </main>
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav class="toc-nav"><a class="toc-1" href="#1-document-control">1. Document Control</a>
+<a class="toc-1" href="#2-executive-summary">2. Executive Summary</a>
+<a class="toc-1" href="#3-product-overview-vision">3. Product Overview &amp; Vision</a>
+<a class="toc-2" href="#31-problem-statement">3.1 Problem statement</a>
+<a class="toc-2" href="#32-product-vision">3.2 Product vision</a>
+<a class="toc-2" href="#33-where-this-sits-in-the-necx-ecosystem">3.3 Where this sits in the NECX ecosystem</a>
+<a class="toc-1" href="#4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</a>
+<a class="toc-2" href="#41-goals-objectives">4.1 Goals &amp; objectives</a>
+<a class="toc-2" href="#42-success-metrics">4.2 Success metrics</a>
+<a class="toc-1" href="#5-scope">5. Scope</a>
+<a class="toc-2" href="#51-in-scope">5.1 In Scope</a>
+<a class="toc-2" href="#52-out-of-scope">5.2 Out of Scope</a>
+<a class="toc-1" href="#6-personas-user-roles">6. Personas &amp; User Roles</a>
+<a class="toc-2" href="#61-roles">6.1 Roles</a>
+<a class="toc-2" href="#62-persona-narratives">6.2 Persona narratives</a>
+<a class="toc-1" href="#7-system-context-architecture">7. System Context &amp; Architecture</a>
+<a class="toc-2" href="#71-tech-stack">7.1 Tech stack</a>
+<a class="toc-2" href="#72-request-model-tenancy">7.2 Request model &amp; tenancy</a>
+<a class="toc-2" href="#73-storage-model">7.3 Storage model</a>
+<a class="toc-2" href="#74-real-time-notifications">7.4 Real-time &amp; notifications</a>
+<a class="toc-1" href="#8-functional-requirements">8. Functional Requirements</a>
+<a class="toc-2" href="#81-per-case-document-center">8.1 Per-case Document Center</a>
+<a class="toc-2" href="#82-preparing-a-document-for-signature-field-placement">8.2 Preparing a document for signature (field placement)</a>
+<a class="toc-2" href="#83-sending-a-signature-request">8.3 Sending a signature request</a>
+<a class="toc-2" href="#84-signer-viewing-signing">8.4 Signer viewing &amp; signing</a>
+<a class="toc-2" href="#85-signature-stamping-onto-the-pdf">8.5 Signature stamping onto the PDF</a>
+<a class="toc-2" href="#86-saved-my-signature">8.6 Saved &quot;My signature&quot;</a>
+<a class="toc-2" href="#87-completion-audit-trail-notifications">8.7 Completion, audit trail &amp; notifications</a>
+<a class="toc-1" href="#9-detailed-user-system-flows">9. Detailed User &amp; System Flows</a>
+<a class="toc-2" href="#91-prepare-a-document-from-a-case-staff-vs360">9.1 Prepare a document from a case (staff, VS360)</a>
+<a class="toc-2" href="#92-send-a-signature-request-staff-vs360">9.2 Send a signature request (staff, VS360)</a>
+<a class="toc-2" href="#93-victim-receives-the-request-and-signs-mobile-app">9.3 Victim receives the request and signs (mobile app)</a>
+<a class="toc-2" href="#94-staff-signs-in-the-web-app-vs360">9.4 Staff signs in the web app (VS360)</a>
+<a class="toc-2" href="#95-signature-is-stamped-onto-the-pdf-system-on-every-signature">9.5 Signature is stamped onto the PDF (system, on every signature)</a>
+<a class="toc-2" href="#96-completion-audit-trail-completion-notifications-system">9.6 Completion, audit trail &amp; completion notifications (system)</a>
+<a class="toc-2" href="#97-cancel-withdraw-a-document-staff-vs360">9.7 Cancel / withdraw a document (staff, VS360)</a>
+<a class="toc-2" href="#98-upload-a-personal-signature-my-signature">9.8 Upload a personal signature (&quot;My signature&quot;)</a>
+<a class="toc-2" href="#99-edge-cases-branches">9.9 Edge cases &amp; branches</a>
+<a class="toc-1" href="#10-data-model">10. Data Model</a>
+<a class="toc-1" href="#11-api-integration-surface">11. API &amp; Integration Surface</a>
+<a class="toc-2" href="#111-case-documents-staff-webcase-documents-allowonlyvs360">11.1 Case Documents — staff (`/web/case-documents`, `allowOnly(&#x27;VS360&#x27;)`)</a>
+<a class="toc-2" href="#112-case-documents-victim-mobilecase-documents-auth-only">11.2 Case Documents — victim (`/mobile/case-documents`, auth only)</a>
+<a class="toc-2" href="#113-user-signature-my-signature">11.3 User signature (&quot;My signature&quot;)</a>
+<a class="toc-2" href="#114-external-integrations">11.4 External integrations</a>
+<a class="toc-1" href="#12-rbac-permissions">12. RBAC &amp; Permissions</a>
+<a class="toc-1" href="#13-non-functional-requirements">13. Non-Functional Requirements</a>
+<a class="toc-2" href="#131-legal-validity-tamper-evidence">13.1 Legal validity &amp; tamper-evidence</a>
+<a class="toc-2" href="#132-security-privacy-victim-safety">13.2 Security &amp; privacy (victim safety)</a>
+<a class="toc-2" href="#133-performance-availability">13.3 Performance &amp; availability</a>
+<a class="toc-2" href="#134-auditability-compliance-reporting">13.4 Auditability, compliance &amp; reporting</a>
+<a class="toc-2" href="#135-accessibility-localization">13.5 Accessibility &amp; localization</a>
+<a class="toc-1" href="#14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</a>
+<a class="toc-2" href="#141-notifications">14.1 Notifications</a>
+<a class="toc-2" href="#142-reporting-kpis">14.2 Reporting / KPIs</a>
+<a class="toc-1" href="#15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</a>
+<a class="toc-1" href="#16-glossary">16. Glossary</a>
+</nav>
+  </aside>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

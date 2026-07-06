@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NECX Referrals &amp; Partnerships · NECX PRD</title>
+<meta name="description" content="Inter-agency partner network, referrals, and consent-driven case sharing (My Network)">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="prd-page">
+<header class="topbar">
+  <button class="hamburger" aria-label="Menu" onclick="toggleNav()">&#9776;</button>
+  <a class="brand" href="../index.html"><svg class="logo" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 L35 10 V22 C35 31 28 37 20 39 C12 37 5 31 5 22 V10 Z" fill="var(--brand)"/><path d="M13 27 V14 L20 22 V14 M27 14 V27 L20 19" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="brand-text">NECX<span class="brand-sub">Product Requirements</span></span></a>
+  <div class="topbar-spacer"></div>
+  <a class="top-link" href="../index.html">Home</a>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><span class="ic-sun">☀</span><span class="ic-moon">☾</span></button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-search"><input type="search" id="navSearch" placeholder="Filter documents…" oninput="filterNav(this.value)"></div>
+    <nav class="nav"><div class="nav-group"><div class="nav-group-title">Platform &amp; Applications</div><a class="nav-item " href="P01.html" data-search="necx platform — core system whole-platform prd: unified backend, four clients, multi-tenancy, identity/rbac, and the end-to-end case lifecycle."><span class="nav-num">01</span><span class="nav-text">Platform — Core System</span></a>
+<a class="nav-item " href="P02.html" data-search="necx workspace — staff mobile app agency staff mobile app (flutter/riverpod) — the on-the-go companion to the vs360 web dashboard."><span class="nav-num">02</span><span class="nav-text">Workspace — Staff Mobile App</span></a>
+<a class="nav-item " href="P03.html" data-search="necx victim app — survivor mobile app victim / survivor mobile app (flutter/getx) — discover services, request help, chat, find shelter, e-sign."><span class="nav-num">03</span><span class="nav-text">Victim App — Survivor Mobile App</span></a>
+<a class="nav-item " href="P04.html" data-search="vs360 — agency web dashboard vs360 — the agency staff web dashboard (react/vite) and primary caseworker workspace."><span class="nav-num">04</span><span class="nav-text">VS360 — Agency Web Dashboard</span></a>
+</div>
+<div class="nav-group"><div class="nav-group-title">VS360 Feature Modules</div><a class="nav-item " href="P05.html" data-search="necx case management service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes."><span class="nav-num">05</span><span class="nav-text">Case Management</span></a>
+<a class="nav-item " href="P06.html" data-search="necx shelter management shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search."><span class="nav-num">06</span><span class="nav-text">Shelter Management</span></a>
+<a class="nav-item " href="P07.html" data-search="necx hotline management twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights."><span class="nav-num">07</span><span class="nav-text">Hotline Management</span></a>
+<a class="nav-item " href="P08.html" data-search="necx calendar &amp; appointments reminders, tasks and case-linked appointments in the vs360 tools calendar."><span class="nav-num">08</span><span class="nav-text">Calendar &amp; Appointments</span></a>
+<a class="nav-item " href="P09.html" data-search="necx staff time tracking staff time tracking: clock in/out, timesheets, and grant/pmt time attribution."><span class="nav-num">09</span><span class="nav-text">Staff Time Tracking</span></a>
+<a class="nav-item " href="P10.html" data-search="necx agency chat real-time advocate↔victim messaging tied to service threads and cases."><span class="nav-num">10</span><span class="nav-text">Agency Chat</span></a>
+<a class="nav-item " href="P11.html" data-search="necx internal chat staff-to-staff messaging within an agency, real-time over socket.io."><span class="nav-num">11</span><span class="nav-text">Internal Chat</span></a>
+<a class="nav-item " href="P12.html" data-search="necx rbac &amp; user management roles, the module/action permission matrix, plan seats, and multi-layer enforcement."><span class="nav-num">12</span><span class="nav-text">RBAC &amp; User Management</span></a>
+<a class="nav-item " href="P13.html" data-search="necx notes center agency-scoped, cross-case view over internal (caseworker-only) case notes."><span class="nav-num">13</span><span class="nav-text">Notes Center</span></a>
+<a class="nav-item " href="P14.html" data-search="necx drive google-drive-style cloud file storage backed by azure blob, with quotas and analytics."><span class="nav-num">14</span><span class="nav-text">Drive</span></a>
+<a class="nav-item " href="P15.html" data-search="necx ai report builder pmt/grant reporting plus ai-assisted custom report generation with accuracy validation."><span class="nav-num">15</span><span class="nav-text">AI Report Builder</span></a>
+<a class="nav-item " href="P16.html" data-search="necx e-sign &amp; document center prepare, request, sign and pdf-stamp case documents with an audit trail."><span class="nav-num">16</span><span class="nav-text">E-Sign &amp; Document Center</span></a>
+<a class="nav-item active" href="P17.html" data-search="necx referrals &amp; partnerships inter-agency network: partnerships, invitations, and consent-based case referrals."><span class="nav-num">17</span><span class="nav-text">Referrals &amp; Partnerships</span></a>
+<a class="nav-item " href="P18.html" data-search="necx inquiries management intake and triage of inquiries / requests-to-connect before they become cases."><span class="nav-num">18</span><span class="nav-text">Inquiries Management</span></a>
+<a class="nav-item " href="P19.html" data-search="necx communities agency-run community spaces: joining questions, membership, posts and moderation."><span class="nav-num">19</span><span class="nav-text">Communities</span></a>
+<a class="nav-item " href="P20.html" data-search="necx service management service catalog, categories, and the per-service claim-question (intake) builder."><span class="nav-num">20</span><span class="nav-text">Service Management</span></a>
+</div>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim" onclick="toggleNav()"></div>
+  
+  <main class="content">
+    <article class="doc">
+      <div class="doc-eyebrow">Product Requirements Document · NECX Inc — Confidential</div>
+      <h1 class="doc-title">NECX Referrals &amp; Partnerships</h1>
+      <p class="doc-subtitle">Inter-agency partner network, referrals, and consent-driven case sharing (My Network)</p>
+      <div class="doc-meta"><span class="chip">Version: <b>1.0</b></span><span class="chip">Status: <b>Baseline</b></span><span class="chip">Owner: <b>NECX Product Management</b></span><a class="dl-btn" href="../downloads/17_VS360_Feature_Referrals_Partnerships.docx" download>⬇ Download DOCX</a></div>
+      <hr class="doc-rule">
+      <div class="doc-body">
+      <h2 id="1-document-control">1. Document Control</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td>NECX — Coordinated Victim Services Platform</td></tr>
+<tr><td>Module</td><td>Referrals &amp; Partnerships (My Network)</td></tr>
+<tr><td>Version</td><td>1.0</td></tr>
+<tr><td>Status</td><td>Baseline</td></tr>
+<tr><td>Author</td><td>NECX Product Management</td></tr>
+<tr><td>Reviewers</td><td>Engineering (Backend Cases / Victim-Services / Service-Center), VS360 Web, Privacy &amp; Compliance, Victim Safety</td></tr>
+<tr><td>Last Updated</td><td>2026-07-05</td></tr>
+<tr><td>Related Documents</td><td>Victim Services &amp; Cases PRD, Service Center &amp; Agency Directory PRD, Chat &amp; Inquiries PRD, Reports &amp; PMT PRD, Platform Core / RBAC PRD</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>1.0</td><td>2026-07-05</td><td>NECX Product Management</td><td>Baseline covering agency directory, partnerships, agency invitations, consent-driven referrals, and partner assignment.</td></tr>
+</tbody></table></div>
+<h2 id="2-executive-summary">2. Executive Summary</h2>
+<p>NECX serves victims and survivors of crime and the agencies, advocates, and caseworkers who help them. Victims rarely need a single service from a single agency; a survivor may need shelter from one provider, legal advocacy from a second, and financial compensation assistance from a third. The Referrals &amp; Partnerships module — surfaced to staff as the <strong>My Network</strong> area of the VS360 web app — is how agencies build a trusted inter-agency network and hand a case off to a partner without the victim having to re-tell their story or re-submit intake.</p>
+<p>This module delivers three tightly linked capabilities. First, an <strong>agency directory</strong> that lets staff discover other verified NECX agencies and invite non-member agencies by email. Second, <strong>partnerships</strong>: a bilateral, request/accept relationship between two agencies that, once accepted, unlocks a shared agency-to-agency chat thread and makes each agency eligible as a referral destination. Third, <strong>referrals</strong>: a consent-first workflow in which an agency owning a case refers the client to a partner agency for a specific service — but no case data crosses the agency boundary until the victim explicitly consents from their mobile app, at which point a sanitized snapshot of only the fields the sending agency chose to share is used to clone a new case into the partner agency.</p>
+<p>The design centers on victim safety, consent, and data minimization. Sharing preferences default to sharing nothing; consent is time-boxed (two days) and revocable in effect through decline/resend history; only one active referral may exist per case at a time; and cross-agency isolation (CJIS-aligned) is enforced everywhere so an agency can never read another agency&#x27;s case data except through the explicit, consented referral snapshot. Real-time socket notifications, email, and SMS keep both agencies informed at every state transition.</p>
+<p>This PRD specifies the functional behavior, data model (<code>AgencyPartnerships</code>, <code>AgencyReferrals</code>, <code>AgencyInvitations</code>), API surface, RBAC, notifications, non-functional requirements, and end-to-end flows for the module, grounded in the current NECX backend and VS360 web implementation.</p>
+<h2 id="3-product-overview-vision">3. Product Overview &amp; Vision</h2>
+<h3 id="31-problem-statement">3.1 Problem Statement</h3>
+<p>Victim services are fragmented across many independent agencies. When one agency cannot fully serve a client, the handoff today is manual, insecure, and lossy: a phone call or email, re-collection of intake data at the receiving agency, and no shared record of who is helping the client with what. That fragmentation delays help, forces survivors to repeat trauma narratives, and creates uncontrolled copies of sensitive case data outside any consent framework.</p>
+<h3 id="32-product-vision">3.2 Product Vision</h3>
+<p>My Network makes coordinated, consented, inter-agency care a first-class workflow. An advocate can find the right partner agency, establish a trusted connection, and refer a client for a specific service in minutes — with the victim in control of exactly what is shared and the receiving agency getting a ready-to-work case rather than a blank intake form. The network becomes the connective tissue of the NECX ecosystem: partnerships enable chat and referrals; referrals link cases across agency boundaries; and the resulting acceptance metrics feed agency dashboards and AI reporting.</p>
+<h3 id="33-position-in-the-necx-ecosystem">3.3 Position in the NECX Ecosystem</h3>
+<ul>
+<li><strong>VS360 web app</strong> — the primary surface. My Network (agency directory, partnerships, invitations, referral creation and management) and Agency Chat live here; all partnership and referral write operations are VS360-only.</li>
+<li><strong>Victim mobile app (Flutter)</strong> — the consent surface. The victim is the only actor who can approve or reject a referral, and they do so from the mobile app.</li>
+<li><strong>NECX Admin</strong> — owns agency lifecycle (create/verify/bulk-import agencies) that populates the directory; not a party to partnerships or referrals.</li>
+<li><strong>Unified backend (<code>necx-backend_v2</code>)</strong> — the single API hosting the <code>referrals</code>, <code>partnerships</code>, <code>service-center</code>, <code>agency-services</code>, and <code>victim-services</code> modules, Socket.IO real-time, BullMQ email, and the audit trail.</li>
+<li><strong>Reports / Dashboard</strong> — consume referral acceptance statistics (<code>AgencyReferrals.getAgencyReferralStats</code>) and accepted-partnership counts as inputs to agency KPIs and the AI report builder.</li>
+</ul>
+<h2 id="4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</h2>
+<h3 id="41-goals-objectives">4.1 Goals &amp; Objectives</h3>
+<ul>
+<li>Enable agencies to discover and connect with trusted partner agencies with minimal friction.</li>
+<li>Make inter-agency case handoff consent-first, so no case data is shared without explicit victim approval.</li>
+<li>Enforce strict data minimization: share only the specific case fields the sending agency selects, and nothing by default.</li>
+<li>Guarantee a single, unambiguous active referral per case to prevent conflicting or duplicate handoffs.</li>
+<li>Give the receiving agency a ready-to-work cloned case that preserves the client relationship without re-intake.</li>
+<li>Keep both agencies informed in real time (socket) and via email/SMS at every partnership and referral transition.</li>
+<li>Preserve a complete, compliance-grade audit trail of every partnership and referral action.</li>
+</ul>
+<h3 id="42-success-metrics">4.2 Success Metrics</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Definition</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>Partnership acceptance rate</td><td>Accepted partnerships ÷ partnership requests sent</td><td>≥ 60%</td></tr>
+<tr><td>Referral consent rate</td><td>Referrals reaching <code>consentStatus=granted</code> ÷ referrals sent</td><td>≥ 70%</td></tr>
+<tr><td>Referral acceptance rate</td><td>Referrals reaching <code>referralStatus=accepted</code> ÷ consent-granted referrals</td><td>≥ 80%</td></tr>
+<tr><td>Time-to-consent</td><td>Median time from referral creation to client consent decision</td><td>≤ 24 hours</td></tr>
+<tr><td>Consent expiry rate</td><td>Referrals lapsing unactioned before <code>consentExpiresAt</code> (now + 2 days)</td><td>≤ 15%</td></tr>
+<tr><td>Re-intake avoidance</td><td>Referred cases accepted without staff re-entering intake data</td><td>100%</td></tr>
+<tr><td>Data-minimization adherence</td><td>Referred snapshots containing only fields whose <code>canShare*</code> flag was true</td><td>100% (enforced)</td></tr>
+<tr><td>Notification delivery</td><td>Partnership/referral state changes delivered via socket + email/SMS</td><td>≥ 99%</td></tr>
+</tbody></table></div>
+<h2 id="5-scope">5. Scope</h2>
+<h3 id="51-in-scope">5.1 In Scope</h3>
+<ul>
+<li>Agency directory search and discovery (VS360 <code>/web/service-centers</code>), including the directory visibility rules.</li>
+<li>Agency-to-agency email invitations for non-member agencies (<code>agency-services</code>), and the &quot;Invitations Sent&quot; list.</li>
+<li>Partnership lifecycle: create/reactivate request, list, get one, accept, decline — with auto agency-chat creation on accept and socket/email/SMS notifications.</li>
+<li>Pre-partnership and connected agency chat entry points (as they gate on partnership state).</li>
+<li>Referral lifecycle: create referral against an accepted partnership, client consent decision (approve/reject) from mobile, consent-driven case clone + sanitized snapshot, update/resend, delete, toggle <code>acceptingReferrals</code>, referral options listing.</li>
+<li>The single-active-referral-per-case rule and the two independent status axes (consent vs referral).</li>
+<li>Referred-case acceptance on the partner (Agency B) side as it flips <code>referralStatus</code> (integration point with victim-services).</li>
+<li>Partner assignment / eligibility (which agencies and services are selectable as referral targets).</li>
+<li>Data model for <code>AgencyPartnerships</code>, <code>AgencyReferrals</code>, <code>AgencyInvitations</code>; endpoints; RBAC; notifications; NFRs; risks.</li>
+</ul>
+<h3 id="52-out-of-scope">5.2 Out of Scope</h3>
+<ul>
+<li>Case/claim lifecycle mechanics inside a single agency (create, approve, reject, resolve, notes, updates) — owned by the Victim Services &amp; Cases PRD; referenced here only at integration points.</li>
+<li>Full chat/messaging feature specification (message pane, read receipts, attachments) — owned by the Chat &amp; Inquiries PRD; only the auto-creation of the agency chat thread on partnership accept is specified here.</li>
+<li>Shelter bed-transfer requests between partner agencies — a separate partner workflow owned by the Shelter Management PRD.</li>
+<li>Converting an accepted email invitee into a provisioned agency (agency onboarding) and converting an invitee into VSMS staff — owned by NECX Admin / User Management.</li>
+<li>PMT, grants, and AI report generation, except where they consume referral statistics.</li>
+<li>A mobile router for partnerships (declared but has no registered routes) — not a delivered capability.</li>
+</ul>
+<h2 id="6-personas-user-roles">6. Personas &amp; User Roles</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Role</th><th>Description</th><th>Key permissions</th></tr></thead>
+<tbody>
+<tr><td>Agency staff / caseworker (VSMS)</td><td>Staff of a service-providing agency who discover partners, request/accept partnerships, send invitations, create and manage referrals for their own agency&#x27;s cases.</td><td>VS360 context (<code>allowOnly(&#x27;VS360&#x27;)</code>); operations scoped to <code>issuer.serviceCenterInfo</code>; case actions gated by <code>claims</code> permissions.</td></tr>
+<tr><td>Agency admin (VSMS_ADMIN / SUPER_ADMIN)</td><td>Senior agency staff who set network policy such as the <code>acceptingReferrals</code> toggle and manage partnerships on behalf of the agency.</td><td>VS360 context; <code>SUPER_ADMIN</code> bypasses fine-grained checks; owns agency-level toggles.</td></tr>
+<tr><td>Victim / survivor (APP)</td><td>The client whose case is being referred. The only actor who can approve or reject a referral; acts from the mobile app.</td><td>Mobile (auth-only, <code>issuer.type=&#x27;APP&#x27;</code>); consent decision on their own referral only.</td></tr>
+<tr><td>NECX super-admin (NECX)</td><td>Platform staff who create/verify agencies that populate the directory.</td><td>ADMIN context; not a party to partnerships/referrals; bypasses fine-grained permission checks.</td></tr>
+</tbody></table></div>
+<h3 id="61-persona-narratives">6.1 Persona Narratives</h3>
+<p><strong>Dana, an advocate at Agency A (shelter provider).</strong> Dana is helping a survivor who now needs legal advocacy her agency doesn&#x27;t offer. In My Network she searches the directory, finds a verified legal-services agency, and — if not already connected — sends a partnership request with a short note, or chats with them first. Once connected, she creates a referral for the client&#x27;s case, choosing exactly which case details to share, and sends it. She watches for the consent and acceptance notifications.</p>
+<p><strong>Marcus, intake coordinator at Agency B (legal services).</strong> Marcus receives a partnership request notification and accepts it, which immediately opens a shared agency chat with Agency A. Later, once the client has consented, a new case appears in his queue pre-populated from the shared snapshot. He reviews and approves it as a normal service claim; that approval marks the referral accepted on Agency A&#x27;s side.</p>
+<p><strong>The survivor (victim/client).</strong> Nothing about their case leaves Agency A until they open the referral on their mobile app and tap Approve. They can see the message from Agency A and reject if they prefer. If they do nothing, the request quietly expires after two days.</p>
+<h2 id="7-system-context-architecture">7. System Context &amp; Architecture</h2>
+<h3 id="71-tech-stack">7.1 Tech Stack</h3>
+<ul>
+<li><strong>Backend:</strong> Node.js + Express (ESM), Objection.js ORM over Knex/PostgreSQL. <code>knexSnakeCaseMappers</code> converts snake_case columns to camelCase in service code. Modules in scope: <code>src/apps/referrals</code>, <code>src/apps/partnerships</code>, <code>src/apps/service-center</code>, <code>src/apps/agency-services</code>, with integration into <code>src/apps/victim-services/service-claim</code>.</li>
+<li><strong>Frontend (VS360 web):</strong> React + Vite + Mantine UI + TanStack Query + Redux. My Network lives at <code>src/pages/MyNetwork/MyNetwork.jsx</code> with agency-chat components under <code>src/components/pages/AgencyChat/</code> and hooks in <code>src/hooks/usePartnerships.js</code>; services in <code>src/services/partnerships.js</code>, <code>serviceCenters.js</code>, <code>agencyServices.js</code>.</li>
+<li><strong>Mobile (consent surface):</strong> Flutter victim app calls the <code>/mobile/partnerships/referrals/:uid/decision</code> endpoint.</li>
+</ul>
+<h3 id="72-backend-communication">7.2 Backend Communication</h3>
+<ul>
+<li><strong>Tri-router pattern:</strong> web routes are mounted under <code>/web/...</code> and guarded by <code>allowOnly(&#x27;VS360&#x27;)</code>; the single mobile referral route is under <code>/mobile/...</code> (auth-only, no context guard). API version prefix <code>v2</code>.</li>
+<li><strong>Mounts:</strong> partnerships <code>/web/partnerships</code>; referrals <code>/web/partnerships/referrals</code> and <code>/mobile/partnerships/referrals</code>; agency directory <code>/web/service-centers</code>; invitations <code>/web/agency-services</code>.</li>
+<li><strong>Response envelope:</strong> <code>{ status, msg|message, data }</code>; the VS360 client reads payloads via <code>response.data.data</code>.</li>
+<li><strong>Rate limiting:</strong> <code>rateLimiters.standard</code> (~10/5s) on write routes.</li>
+<li><strong>Auth principal:</strong> <code>req.issuer</code> carries <code>id</code>, <code>uid</code>, <code>type</code> (<code>APP</code>/<code>VSMS</code>/<code>NECX</code>), <code>roleInfo</code> (with <code>context</code> + <code>permission</code>), and — for staff — <code>serviceCenterInfo.{id,uid,name}</code> identifying the agency.</li>
+<li><strong>Transactions:</strong> referral create and partnership accept/decline run inside <code>withTransaction</code> so audit logs and side effects commit atomically.</li>
+</ul>
+<h3 id="73-real-time-notifications">7.3 Real-Time &amp; Notifications</h3>
+<ul>
+<li><strong>Socket.IO</strong> via <code>VS360NotificationService.emitPartnershipNotification</code>. Delivery is to the recipient agency&#x27;s users, filtered by service categories, in per-user rooms <code>vs360-user-&lt;uid&gt;</code>. The VS360 client listens for <code>partnership-notification</code>, shows a toast, and sets a Redux refetch flag.</li>
+<li><strong>Email + SMS</strong> via <code>emailNotificationHelper.sendEmails</code> / <code>smsNotificationHelper.sendSMS</code> to the service users of the recipient agency; agency email invitations use a BullMQ queue (<code>SEND_EMAIL</code>, type <code>AGENCY_INVITATION</code>, 3 attempts, exponential backoff).</li>
+<li><strong>No direct socket</strong> is emitted by the referrals module itself; app-facing notifications for the cloned/approved case are handled downstream by the service-claim / app notification services.</li>
+</ul>
+<h3 id="74-tenancy-isolation">7.4 Tenancy &amp; Isolation</h3>
+<p>Agency-scoped data is filtered by <code>issuer.serviceCenterInfo.id</code>; a VS360 user only ever sees or edits their own agency. Cross-agency case data is never readable directly — the only path across the boundary is the consented, sanitized referral snapshot. This CJIS-aligned isolation is enforced in service logic (e.g., <code>resolveAgencyScopedClaim</code>) and by ownership checks on every partnership/referral mutation.</p>
+<h2 id="8-functional-requirements">8. Functional Requirements</h2>
+<h3 id="81-agency-directory-discovery">8.1 Agency Directory &amp; Discovery</h3>
+<p>Staff discover other agencies through the VS360 directory (<code>GET /web/service-centers</code>), rendered in My Network as a searchable, filterable grid excluding the caller&#x27;s own agency. Search supports category, country, state, and city filters (draft vs applied). A single agency&#x27;s detail is fetched via <code>GET /web/service-centers/:uid</code> for the profile modal used by partnership and chat actions.</p>
+<p><strong>Directory visibility rule:</strong> <code>searchAgencies</code> returns only agencies with <code>status=&#x27;ACTIVE&#x27;</code> AND <code>serviceType=&#x27;VICTIM_SERVICE_PROVIDER&#x27;</code> AND <code>planId NOT NULL</code>. Police stations, inactive agencies, and plan-less agencies never appear in search results, though a specific agency remains retrievable by direct <code>:uid</code> lookup.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-DIR-01</td><td>The system shall provide a directory search returning active, victim-service, plan-holding agencies, excluding the caller&#x27;s own agency.</td><td>Must</td></tr>
+<tr><td>FR-DIR-02</td><td>Directory search shall support filtering by category, country, state, and city, plus free-text search.</td><td>Must</td></tr>
+<tr><td>FR-DIR-03</td><td>The system shall exclude police stations, inactive agencies, and plan-less agencies from search results.</td><td>Must</td></tr>
+<tr><td>FR-DIR-04</td><td>The system shall return a single agency&#x27;s full profile by <code>uid</code> for use in partnership and chat modals.</td><td>Must</td></tr>
+<tr><td>FR-DIR-05</td><td>Each directory card shall expose View Details, Chat, and (context-dependent) partnership actions.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="82-agency-invitations-email">8.2 Agency Invitations (Email)</h3>
+<p>For agencies not yet on NECX, staff can send email invitations from My Network. The <code>agency-services</code> module (VS360-only) exposes exactly two endpoints. Sending validates the email list and message, resolves the sending agency from <code>issuer.serviceCenterInfo</code>, enqueues a BullMQ <code>SEND_EMAIL</code> job per address (type <code>AGENCY_INVITATION</code>), and persists an <code>AgencyInvitations</code> row per invitee with <code>status=&#x27;sent&#x27;</code>. The &quot;Invitations Sent&quot; view lists invitations for the caller&#x27;s agency.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-INV-01</td><td>Staff shall send email invitations to one or more external agency contacts with an optional message.</td><td>Must</td></tr>
+<tr><td>FR-INV-02</td><td>The system shall persist an <code>AgencyInvitations</code> row per invitee (status <code>sent</code>) attributed to the sending agency.</td><td>Must</td></tr>
+<tr><td>FR-INV-03</td><td>Invitation emails shall be delivered asynchronously via the BullMQ email queue (3 attempts, exponential backoff).</td><td>Must</td></tr>
+<tr><td>FR-INV-04</td><td>Staff shall view a paginated, searchable list of invitations sent by their own agency.</td><td>Must</td></tr>
+<tr><td>FR-INV-05</td><td>The system shall validate email addresses (comma/newline separated) before enqueueing.</td><td>Should</td></tr>
+</tbody></table></div>
+<div class="callout note"><div class="callout-title">ℹ Invitation ≠ onboarding</div><div class="callout-body">The <code>agency-services</code> module only sends and tracks invitations. Converting an invitee into a provisioned NECX agency, and converting an invitee contact into VSMS staff, are handled by NECX Admin / User Management and are out of scope here.</div></div>
+<h3 id="83-partnerships-create-reactivate">8.3 Partnerships — Create &amp; Reactivate</h3>
+<p>A partnership is a bilateral relationship between two agencies. The requesting agency (the caller&#x27;s agency) sends a request to a target agency identified by <code>targetAgencyUid</code>, with an optional message (≤1000 chars). The service rejects self-partnership, verifies both agencies exist, and checks for an existing mutual partnership in either direction. If a non-declined partnership already exists, it returns <code>202</code> (pending) or <code>200</code> (already accepted/other) rather than creating a duplicate. If a prior partnership was <code>declined</code>, it is reactivated in place — reusing the row, <strong>swapping requester/target roles</strong>, and resetting status to <code>pending</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-PART-01</td><td>Staff shall create a partnership request to another agency with an optional message (≤1000 chars).</td><td>Must</td></tr>
+<tr><td>FR-PART-02</td><td>The system shall reject self-partnership (requesting = target) with 403.</td><td>Must</td></tr>
+<tr><td>FR-PART-03</td><td>The system shall return 202 (existing pending) or 200 (already accepted) instead of creating a duplicate partnership.</td><td>Must</td></tr>
+<tr><td>FR-PART-04</td><td>The system shall reactivate a previously declined partnership by reusing the row, swapping requester/target, and resetting to pending.</td><td>Must</td></tr>
+<tr><td>FR-PART-05</td><td>On create/reactivate, the system shall notify the target agency via socket, email, and SMS.</td><td>Must</td></tr>
+<tr><td>FR-PART-06</td><td>Create/reactivate shall be audited (<code>PARTNERSHIP_REQUEST</code> / <code>PARTNERSHIP_REQUEST_REACTIVATED</code>).</td><td>Must</td></tr>
+</tbody></table></div>
+<p>Endpoint: <code>POST /web/partnerships</code> → 201 <code>{partnership}</code> (or 202/200). Socket: <code>emitPartnershipNotification(io, partnership, &#x27;created&#x27;)</code> to the target agency. Side effects: for every service in the target agency, send <code>EMAIL_TYPES.PARTNERSHIP</code> email + SMS to that service&#x27;s users.</p>
+<h3 id="84-partnerships-list-get">8.4 Partnerships — List &amp; Get</h3>
+<p>Staff list their agency&#x27;s partnerships in both directions with optional <code>status</code> filter (<code>pending|accepted|declined|inactive</code>) and pagination (<code>pageSize</code> ≤ 50). A single partnership is retrievable by <code>uid</code>, returning 403 if the caller&#x27;s agency is not one of the two parties. Both <code>requestingAgency</code> and <code>targetAgency</code> are eagerly loaded on every query.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-PART-07</td><td>Staff shall list their agency&#x27;s partnerships (both directions) with status filter and pagination (≤50/page).</td><td>Must</td></tr>
+<tr><td>FR-PART-08</td><td>Staff shall retrieve a single partnership by <code>uid</code>; non-parties receive 403.</td><td>Must</td></tr>
+<tr><td>FR-PART-09</td><td>Partnership responses shall include both agencies&#x27; profiles (auto-loaded).</td><td>Must</td></tr>
+</tbody></table></div>
+<p>Endpoints: <code>GET /web/partnerships</code> → <code>{partnerships, pagination}</code>; <code>GET /web/partnerships/:uid</code> → <code>{partnership}</code>.</p>
+<h3 id="85-partnerships-accept">8.5 Partnerships — Accept</h3>
+<p>Only the target agency of a pending request may accept it. On accept, the system sets status <code>accepted</code>, records <code>lastActionByUser</code>, and — critically — <strong>auto-creates a shared agency-to-agency chat thread</strong> if both agencies have users and no existing <code>AGENCY_CHAT</code> thread between them already exists (<code>ChatThreads.findExistingAgencyThreadByAgencies</code>). The new <code>ChatThreads</code> row is <code>type=&#x27;AGENCY_CHAT&#x27;</code>, <code>status=&#x27;ACTIVE&#x27;</code>, with <code>vsmsId</code>/<code>vsmsId2</code> set to the first user of each agency. The requesting agency is then notified.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-PART-10</td><td>Only the target agency shall accept a pending partnership (403 otherwise); status must be <code>pending</code> (400 otherwise).</td><td>Must</td></tr>
+<tr><td>FR-PART-11</td><td>On accept, the system shall auto-create a shared <code>AGENCY_CHAT</code> thread between the two agencies if none exists.</td><td>Must</td></tr>
+<tr><td>FR-PART-12</td><td>On accept, the system shall notify the requesting agency via socket, email, and SMS.</td><td>Must</td></tr>
+<tr><td>FR-PART-13</td><td>Accept shall be audited (<code>PARTNERSHIP_ACCEPTED</code>) within a transaction.</td><td>Must</td></tr>
+</tbody></table></div>
+<p>Endpoint: <code>POST /web/partnerships/:uid/accept</code> (empty body) → 200 <code>{partnership}</code>. Socket: <code>emitPartnershipNotification(...,&#x27;accepted&#x27;)</code> to the requesting agency.</p>
+<h3 id="86-partnerships-decline">8.6 Partnerships — Decline</h3>
+<p>Same guards as accept: only the target agency may decline a pending request. Status is set to <code>declined</code>, audited (<code>PARTNERSHIP_DECLINED</code>), and the requesting agency is notified (socket + email/SMS). A declined partnership is not permanent — either side may later reactivate it via create (with role swap, §8.3).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-PART-14</td><td>Only the target agency shall decline a pending partnership (403 otherwise).</td><td>Must</td></tr>
+<tr><td>FR-PART-15</td><td>On decline, the system shall notify the requesting agency and audit <code>PARTNERSHIP_DECLINED</code>.</td><td>Must</td></tr>
+<tr><td>FR-PART-16</td><td>A declined partnership shall remain reactivatable by either agency.</td><td>Must</td></tr>
+</tbody></table></div>
+<p>Endpoint: <code>POST /web/partnerships/:uid/decline</code> (empty body) → 200 <code>{partnership}</code>.</p>
+<h3 id="87-agency-chat-gating-partnership-dependent">8.7 Agency Chat Gating (Partnership-Dependent)</h3>
+<p>Agency-to-agency chat is a partnership-gated capability. The <code>AgencyChatTab</code> (in the agency profile modal) is enabled only once <strong>Connected</strong>; starting it calls <code>POST /chat-services/start-agency-chat</code> and handles: 200 = thread ready; 201 with <code>needsPartnership</code> = no partnership; 201/202 = partnership request pending. A separate <code>ReferralChatModal</code> allows <strong>pre-partnership</strong> messaging via <code>POST /chat-services/start-pre-partnership-chat</code>, so staff can message an agency before sending a request; those messages persist after connecting.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CHAT-01</td><td>The connected agency chat shall be enabled only for accepted partnerships.</td><td>Must</td></tr>
+<tr><td>FR-CHAT-02</td><td>The system shall support pre-partnership chat with an agency before a request is sent, preserving history on connect.</td><td>Should</td></tr>
+<tr><td>FR-CHAT-03</td><td>The full chat message/pane behavior is specified in the Chat &amp; Inquiries PRD (referenced, not redefined here).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="88-referrals-create">8.8 Referrals — Create</h3>
+<p>An agency owning an existing case refers the client to a partner agency for a specific service. Create requires <code>requestingAgencyUid</code>, <code>partnershipUid</code>, <code>originalCaseUid</code>, <code>targetServiceId</code>, an optional <code>message</code>, and the six <code>canShare*</code> booleans. The service validates the service center and issuer agency, loads the partnership (issuer must be one of the two agencies; partnership status must be <code>accepted</code>), validates the original case, and enforces the <strong>single-active-referral guard</strong>: if any non-terminal referral already exists for the case, it returns <strong>409 Conflict</strong> with the active referral summary. On success it inserts an <code>agency_referrals</code> row with <code>consentStatus=&#x27;pending&#x27;</code>, <code>referralStatus=&#x27;pending&#x27;</code>, <code>referredCaseId=null</code>, <code>consentExpiresAt=now+2 days</code>, and metadata carrying the sharing flags + referral message.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-REF-01</td><td>Staff shall create a referral only against an <code>accepted</code> partnership their agency is party to (403/400 otherwise).</td><td>Must</td></tr>
+<tr><td>FR-REF-02</td><td>The system shall enforce a single active (non-terminal) referral per case, returning 409 with the active referral if violated.</td><td>Must</td></tr>
+<tr><td>FR-REF-03</td><td>New referrals shall start <code>consentStatus=pending</code>, <code>referralStatus=pending</code>, <code>referredCaseId=null</code>, with a 2-day consent expiry.</td><td>Must</td></tr>
+<tr><td>FR-REF-04</td><td>Sharing preferences shall default to all-false; staff explicitly opt into each of the six <code>canShare*</code> fields.</td><td>Must</td></tr>
+<tr><td>FR-REF-05</td><td>Referral creation shall be audited (<code>AGENCY_REFERRAL_CREATED</code>).</td><td>Must</td></tr>
+</tbody></table></div>
+<p>Endpoint: <code>POST /web/partnerships/referrals</code> → 201 <code>{ referral, referredCase: null }</code>. The six flags: <code>canShareCaseNotes, canShareCaseFiles, canShareCaseChat, canShareCaseUpdates, canShareVictimAnswers, canSharePmtDemographics</code>.</p>
+<h3 id="89-referrals-client-consent-decision-mobile">8.9 Referrals — Client Consent Decision (Mobile)</h3>
+<p>The victim/client is the sole approver. The mobile endpoint requires <code>issuer.type=&#x27;APP&#x27;</code> (403 otherwise) and loads the referral with its partnership context. <strong>Reject</strong> sets <code>consentStatus=&#x27;denied&#x27;</code> (appending <code>denialHistory</code>), audits <code>REFERRAL_CONSENT_DENIED</code>, and makes the referral terminal. <strong>Approve</strong> sets <code>consentStatus=&#x27;granted&#x27;</code>, builds a sanitized case-data snapshot from only the enabled <code>canShare*</code> fields, resolves the destination agency by validating the target <code>Service</code>&#x27;s <code>serviceCenterId</code> belongs to one of the partnership&#x27;s two agencies, <strong>clones</strong> the case into the target agency, sets <code>referredCaseId</code> to the new case, and leaves <code>referralStatus=&#x27;pending&#x27;</code> (the receiving agency has not accepted yet). Audit <code>REFERRAL_CONSENT_GRANTED</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-REF-06</td><td>Only an <code>APP</code> issuer shall submit a consent decision; VS360/ADMIN attempts return 403.</td><td>Must</td></tr>
+<tr><td>FR-REF-07</td><td>Reject shall set <code>consentStatus=denied</code>, record denial history, and terminate the referral.</td><td>Must</td></tr>
+<tr><td>FR-REF-08</td><td>Approve shall set <code>consentStatus=granted</code> and build a snapshot containing only fields whose <code>canShare*</code> flag is true.</td><td>Must</td></tr>
+<tr><td>FR-REF-09</td><td>On approve, the system shall clone the case into the target agency and link it via <code>referredCaseId</code>, keeping <code>referralStatus=pending</code>.</td><td>Must</td></tr>
+<tr><td>FR-REF-10</td><td>Snapshot building shall be skipped entirely when no <code>canShare*</code> flag is true.</td><td>Must</td></tr>
+<tr><td>FR-REF-11</td><td>The destination service&#x27;s <code>serviceCenterId</code> must belong to the partnership&#x27;s two agencies, else the operation is rejected.</td><td>Must</td></tr>
+</tbody></table></div>
+<p>Endpoint: <code>POST /mobile/partnerships/referrals/:uid/decision</code>, body <code>action=&#x27;approve&#x27;|&#x27;reject&#x27;</code>, optional <code>message</code>, optional <code>targetServiceId</code>.</p>
+<p><strong>Snapshot (<code>buildCaseDataSnapshot</code>) and clone (<code>§9.3</code> detail):</strong> the snapshot loads the claim with <code>victimInfo, notes, files, updates, claimQuestions.questionInfo, pmtReportInfo, claimThreads</code> and copies <strong>sanitized</strong> subsets per flag — notes, files, <strong>published updates only</strong>, chat threads, victim questionnaire answers, and PMT demographics. The clone inserts a new <code>service_claims</code> row (<code>uid=CL&lt;yy&gt;&lt;month&gt;&lt;uuid6&gt;</code>, <code>status=&#x27;pending&#x27;</code>, same <code>victimId</code>, <code>serviceId=targetService.id</code>, copied <code>statementFromVictim</code>), a mirrored <code>pmt_report</code> row (age/gender/race/classification from <code>victimInfo</code>), and a baseline <code>service_claim_stats</code> row.</p>
+<h3 id="810-referrals-partner-acceptance-integration-point">8.10 Referrals — Partner Acceptance (Integration Point)</h3>
+<p>The receiving agency (Agency B) does not act in the referrals module. It approves or rejects the <strong>cloned service claim</strong> in the normal case workflow (victim-services). On approve, the service-claim service patches <code>referralStatus=&#x27;accepted&#x27;</code> where <code>referredCaseId</code> matches the claim; on reject, <code>referralStatus=&#x27;declined&#x27;</code>. This is what flips a consent-granted referral to its terminal accepted/declined state.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-REF-12</td><td>Approving the cloned case in Agency B shall set the linked referral&#x27;s <code>referralStatus=accepted</code>.</td><td>Must</td></tr>
+<tr><td>FR-REF-13</td><td>Rejecting the cloned case in Agency B shall set the linked referral&#x27;s <code>referralStatus=declined</code>.</td><td>Must</td></tr>
+<tr><td>FR-REF-14</td><td>The referred case shall follow the standard case state machine (approve opens a SERVICE chat thread; reject deletes its PMT row).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="811-referrals-update-resend">8.11 Referrals — Update / Resend</h3>
+<p>Only the requesting agency (<code>partnership.requestingAgencyUid === issuer.serviceCenterInfo.uid</code>) may update a referral. If <code>consentStatus=&#x27;denied&#x27;</code> and <code>resend:true</code>, the referral resets to <code>pending</code> with a new <code>consentExpiresAt</code>, appends to <code>denialHistory</code>, and audits <code>AGENCY_REFERRAL_RESENT</code>. Otherwise only <code>pending</code> referrals may be edited (409 if granted/denied); an edit requires at least one sharing flag and audits <code>AGENCY_REFERRAL_UPDATED</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-REF-15</td><td>Only the requesting agency shall update or resend a referral.</td><td>Must</td></tr>
+<tr><td>FR-REF-16</td><td>A denied referral may be resent (reset to pending with new expiry); denial history is preserved.</td><td>Must</td></tr>
+<tr><td>FR-REF-17</td><td>Only pending referrals may have their sharing preferences edited (409 otherwise); at least one flag required.</td><td>Must</td></tr>
+</tbody></table></div>
+<p>Endpoint: <code>PATCH /web/partnerships/referrals/:uid</code>, body: any <code>canShare*</code>, <code>resend?</code>, <code>metadata.resendMessage?</code>.</p>
+<h3 id="812-referrals-delete">8.12 Referrals — Delete</h3>
+<p>Only the agency that owns the original case (derived via <code>originalCase.serviceInfo.serviceCenterInfo.uid</code>) may soft-delete a sent referral. Deletion sets <code>isDeleted=true</code>, records <code>metadata.deletionReason</code>, and audits <code>AGENCY_REFERRAL_DELETED</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-REF-18</td><td>Only the case-owning agency shall soft-delete a referral, with an optional reason.</td><td>Must</td></tr>
+<tr><td>FR-REF-19</td><td>Deletion shall be soft (recoverable) and audited (<code>AGENCY_REFERRAL_DELETED</code>).</td><td>Must</td></tr>
+</tbody></table></div>
+<p>Endpoint: <code>DELETE /web/partnerships/referrals/:uid</code>, body <code>reason?</code>.</p>
+<h3 id="813-referral-options-acceptingreferrals-toggle-partner-assignmen">8.13 Referral Options &amp; <code>acceptingReferrals</code> Toggle (Partner Assignment)</h3>
+<p>Referral targets (partner assignment) are constrained. <code>getReferralOptions</code> returns partner agencies from <strong>accepted</strong> partnerships where <strong>both</strong> agencies have <code>acceptingReferrals=true</code>, each enriched with its <code>services</code> (filterable by <code>categoryIds</code> and name <code>search</code>); only agencies with at least one service are returned. Each agency controls its own inbound availability via a <code>acceptingReferrals</code> toggle on its service center; the toggle may be flipped only by a member of that agency matching the <code>serviceCenterUid</code>, and is audited (<code>SERVICE_CENTER_REFERRALS_TOGGLED</code>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-REF-20</td><td>Referral options shall list only accepted-partnership agencies where both agencies have <code>acceptingReferrals=true</code> and the target has ≥1 service.</td><td>Must</td></tr>
+<tr><td>FR-REF-21</td><td>Referral options shall be filterable by service category and name search.</td><td>Should</td></tr>
+<tr><td>FR-REF-22</td><td>An agency shall toggle its own <code>acceptingReferrals</code> flag; only its own members may do so.</td><td>Must</td></tr>
+<tr><td>FR-REF-23</td><td>The referral target service selection shall drive which agency receives the clone (destination resolved on consent).</td><td>Must</td></tr>
+</tbody></table></div>
+<p>Endpoints: <code>GET /web/partnerships/referrals/:serviceCenterUid/referral-options</code>; <code>PATCH /web/partnerships/referrals/:serviceCenterUid/toggle-referrals</code>.</p>
+<h3 id="814-referral-read-models-segmentation">8.14 Referral Read Models &amp; Segmentation</h3>
+<p><code>AgencyReferrals</code> static helpers surface referral data to case lists and AI reporting: <code>getReceivedReferralsForClaims</code>, <code>getSentReferralsForClaims</code>, <code>getReferralsForSingleClaim</code> (APP issuers see granted-with-target plus pending-needing-consent; VSMS see granted-with-target only), <code>getAgencyReferralStats</code> (outgoing/incoming totals + acceptance rates keyed by service-center uid), and <code>getAcceptedReferralsForCases</code>. The domain layer computes a per-claim <code>referralSegment</code> (<code>none|referral_received|referral_sent|referral_both</code>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-REF-24</td><td>The system shall compute a per-claim referral segment for case-list display.</td><td>Should</td></tr>
+<tr><td>FR-REF-25</td><td>The system shall expose agency referral statistics (totals + acceptance rates) for dashboards and AI reporting.</td><td>Should</td></tr>
+<tr><td>FR-REF-26</td><td>APP issuers shall see pending referrals needing consent; VSMS shall see only granted-with-target referrals.</td><td>Must</td></tr>
+</tbody></table></div>
+<h2 id="9-detailed-user-system-flows">9. Detailed User &amp; System Flows</h2>
+<h3 id="91-flow-find-an-agency-and-send-a-partnership-request">9.1 Flow — Find an agency and send a partnership request</h3>
+<ol class="flow">
+<li>Staff at Agency A open <strong>My Network</strong> in VS360; the directory grid loads via <code>GET /web/service-centers</code>, excluding Agency A.</li>
+<li>Staff apply filters (category, country, state, city) and/or a search term to narrow results (draft filters, then Apply).</li>
+<li>Staff open a candidate agency&#x27;s profile modal (<code>GET /web/service-centers/:uid</code>); the header shows partnership status (Your Agency / Connected Partner / Request Pending / Not connected).</li>
+<li>If desired, staff click <strong>Chat</strong> to start a pre-partnership conversation (<code>POST /chat-services/start-pre-partnership-chat</code>) before committing.</li>
+<li>Staff click <strong>Request to Connect</strong>, enter an optional message (≤1000 chars), and submit <code>POST /web/partnerships</code> with <code>targetAgencyUid</code> and <code>message</code>.</li>
+<li>Backend guards: reject self-partnership (403); verify both agencies exist (404); check <code>getMutualPartnership</code>.</li>
+<li>Branch — existing non-declined partnership: return 202 (pending exists) or 200 (already accepted); UI shows the current status, no duplicate created.</li>
+<li>Branch — previously declined: <code>reactivateDeclinedPartnership</code> reuses the row, swaps requester/target roles, resets to <code>pending</code>; audit <code>PARTNERSHIP_REQUEST_REACTIVATED</code>.</li>
+<li>Branch — none exists: <code>createPartnership</code> with status <code>pending</code>; audit <code>PARTNERSHIP_REQUEST</code>.</li>
+<li>Backend emits <code>emitPartnershipNotification(io, partnership, &#x27;created&#x27;)</code> to Agency B&#x27;s users (title &quot;New Partnership Request&quot;) and sends email + SMS to Agency B&#x27;s service users.</li>
+<li>Agency A&#x27;s UI flips the agency status to <strong>Request Pending</strong> (optimistic cache update; <code>[&quot;partnerships&quot;]</code> invalidated). Response 201 <code>{partnership}</code>.</li>
+</ol>
+<h3 id="92-flow-accept-a-partnership-and-auto-create-agency-chat">9.2 Flow — Accept a partnership (and auto-create agency chat)</h3>
+<ol class="flow">
+<li>Agency B receives a <code>partnership-notification</code> socket toast and a notification refetch; the request also appears in email/SMS.</li>
+<li>A staff member at Agency B opens the requesting agency&#x27;s profile modal and reviews the request and any message.</li>
+<li>Staff click <strong>Accept</strong> (confirm modal) → <code>POST /web/partnerships/:uid/accept</code> (empty body).</li>
+<li>Backend verifies the caller&#x27;s agency is the <code>targetAgencyUid</code> (403 otherwise) and status is <code>pending</code> (400 otherwise).</li>
+<li><code>updatePartnershipStatus(uid,&#x27;accepted&#x27;,{userUid})</code>; audit <code>PARTNERSHIP_ACCEPTED</code> — all transactional.</li>
+<li>Auto-chat: if both agencies have users and no existing <code>AGENCY_CHAT</code> thread between them, insert a <code>ChatThreads</code> row (<code>type=&#x27;AGENCY_CHAT&#x27;</code>, <code>status=&#x27;ACTIVE&#x27;</code>, <code>vsmsId</code>/<code>vsmsId2</code> = first user of each agency).</li>
+<li>Backend emits <code>emitPartnershipNotification(...,&#x27;accepted&#x27;)</code> to Agency A and sends email + SMS to Agency A&#x27;s service users.</li>
+<li>Both agencies now see status <strong>Connected Partner</strong>; the Chat tab becomes enabled; each agency now appears as a potential referral target for the other (subject to <code>acceptingReferrals</code>). Response 200 <code>{partnership}</code>.</li>
+</ol>
+<h3 id="93-flow-refer-a-caseclient-to-a-partner-agency-end-to-end-with-c">9.3 Flow — Refer a case/client to a partner agency, end-to-end (with consent)</h3>
+<ol class="flow">
+<li>At Agency A, staff open a case (service claim) they own, or start from the referral network in My Network.</li>
+<li>Staff fetch referral options via <code>GET /web/partnerships/referrals/:serviceCenterUid/referral-options</code> (optionally filtered by <code>categoryIds</code>/<code>search</code>); only accepted-partnership agencies where both agencies have <code>acceptingReferrals=true</code> and the target has ≥1 service appear.</li>
+<li>Staff select the target partner agency and a specific target service (<code>targetServiceId</code>) — this is the partner assignment.</li>
+<li>Staff choose exactly which case data to share by enabling any of the six <code>canShare*</code> flags (all default off) and write an optional message to the client.</li>
+<li>Staff submit <code>POST /web/partnerships/referrals</code> with <code>requestingAgencyUid</code>, <code>partnershipUid</code>, <code>originalCaseUid</code>, <code>targetServiceId</code>, <code>message?</code>, and the flags.</li>
+<li>Backend validates the agency/issuer, loads the partnership (issuer must be a party; status must be <code>accepted</code>), and validates the original case.</li>
+<li>Single-active-referral guard: <code>checkActiveReferrals(originalCaseUid)</code> — if any non-terminal referral exists, return <strong>409 Conflict</strong> with the active referral summary; staff must resolve/delete it first.</li>
+<li>Backend inserts the <code>agency_referrals</code> row (<code>consentStatus=pending</code>, <code>referralStatus=pending</code>, <code>referredCaseId=null</code>, <code>consentExpiresAt=now+2 days</code>, metadata with flags + message); audit <code>AGENCY_REFERRAL_CREATED</code>; return 201 <code>{ referral, referredCase: null }</code>. No case data has crossed the boundary yet.</li>
+<li>The client sees a pending referral needing consent in their mobile app (surfaced via <code>getReferralsForSingleClaim</code> for APP issuers).</li>
+<li>Consent decision — <strong>Approve</strong> (<code>POST /mobile/partnerships/referrals/:uid/decision</code>, <code>action=&#x27;approve&#x27;</code>, <code>issuer.type=&#x27;APP&#x27;</code>):</li>
+</ol>
+<p>a. <code>updateConsentStatus(&#x27;granted&#x27;)</code>. b. <code>buildCaseDataSnapshot</code> runs only if ≥1 <code>canShare*</code> flag is true, copying sanitized subsets (notes, files, published updates only, chat threads, victim answers, PMT demographics) into <code>metadata.caseSnapshot</code>. c. Resolve destination: load target <code>Service</code> by <code>targetServiceId</code>; verify its <code>serviceCenterId</code> belongs to one of the partnership&#x27;s two agencies (else throw). d. Clone: insert a new <code>service_claims</code> row into Agency B (<code>uid=CL...</code>, <code>status=&#x27;pending&#x27;</code>, same <code>victimId</code>, <code>serviceId=targetService.id</code>, copied <code>statementFromVictim</code>); insert a mirrored <code>pmt_report</code> row and a baseline <code>service_claim_stats</code> row. e. Patch referral <code>referredCaseId=newClaim.uid</code>; <code>referralStatus</code> stays <code>pending</code>. f. Audit <code>REFERRAL_CONSENT_GRANTED</code>; return 200 <code>{ referralUid, newClaim: { ...isReferred:true } }</code>.</p>
+<ol class="flow">
+<li>Consent decision — <strong>Reject</strong> (<code>action=&#x27;reject&#x27;</code>): <code>updateConsentStatus(&#x27;denied&#x27;)</code> (appends <code>denialHistory</code>); audit <code>REFERRAL_CONSENT_DENIED</code>; referral is now terminal; no clone occurs.</li>
+<li>Consent lapse: if the client takes no action before <code>consentExpiresAt</code> (now + 2 days), the referral is effectively stale/terminal pending; Agency A may resend (§9.5).</li>
+</ol>
+<h3 id="94-flow-partner-accepts-and-a-linked-case-is-created">9.4 Flow — Partner accepts and a linked case is created</h3>
+<ol class="flow">
+<li>At Agency B, the newly cloned case appears in the case queue as a pending service claim (flagged <code>isReferred</code>).</li>
+<li>A caseworker reviews the case; the shared snapshot (per Agency A&#x27;s <code>canShare*</code> selections) provides context without re-intake.</li>
+<li>Caseworker <strong>approves</strong> the claim in the normal victim-services workflow (<code>PATCH .../service-claims/approve/:uid</code>).</li>
+<li>Approve side effects: create a published &quot;Approved&quot; update; open a SERVICE chat thread (victim ↔ Agency B caseworker); set stats <code>approved_by/at</code>; notify the victim (victim_notifications + FCM + socket).</li>
+<li>Referral linkage: the service-claim service patches <code>referralStatus=&#x27;accepted&#x27;</code> where <code>referredCaseId</code> = this claim&#x27;s uid — the referral is now terminal <code>accepted</code>.</li>
+<li>Alternative — Agency B <strong>rejects</strong> the claim (<code>PATCH .../reject/:uid</code>): stats <code>rejected_by/at</code>; the mirrored PMT row is deleted; the linked referral is patched to <code>referralStatus=&#x27;declined&#x27;</code> (terminal); the victim is notified.</li>
+<li>Agency A sees the outcome reflected in its case list / referral segment and in referral statistics.</li>
+</ol>
+<h3 id="95-flow-update-resend-a-denied-referral">9.5 Flow — Update / resend a denied referral</h3>
+<ol class="flow">
+<li>Agency A staff open a referral whose <code>consentStatus=&#x27;denied&#x27;</code>.</li>
+<li>Staff optionally revise the message and click Resend → <code>PATCH /web/partnerships/referrals/:uid</code> with <code>resend:true</code> and <code>metadata.resendMessage?</code>.</li>
+<li>Backend confirms the caller is the requesting agency, resets <code>consentStatus=&#x27;pending&#x27;</code>, sets a new <code>consentExpiresAt</code>, appends to <code>denialHistory</code>; audit <code>AGENCY_REFERRAL_RESENT</code>.</li>
+<li>The client again sees a pending referral needing consent; flow rejoins §9.3 step 10.</li>
+<li>Edit-only branch (no resend): if the referral is still <code>pending</code>, staff may change sharing flags (≥1 required); audit <code>AGENCY_REFERRAL_UPDATED</code>. Granted/denied referrals cannot be edited (409).</li>
+</ol>
+<h3 id="96-flow-decline-a-partnership">9.6 Flow — Decline a partnership</h3>
+<ol class="flow">
+<li>Agency B receives the partnership request (socket + email/SMS).</li>
+<li>Staff open the requesting agency&#x27;s profile and click <strong>Decline</strong> (confirm modal) → <code>POST /web/partnerships/:uid/decline</code>.</li>
+<li>Backend verifies the caller&#x27;s agency is the <code>targetAgencyUid</code> (403) and status is <code>pending</code> (400); sets <code>declined</code>; audit <code>PARTNERSHIP_DECLINED</code>.</li>
+<li>Backend emits <code>emitPartnershipNotification(...,&#x27;declined&#x27;)</code> to Agency A plus email/SMS.</li>
+<li>Agency A sees status revert to &quot;Not connected.&quot; Either agency may later re-request, which reactivates the declined row with swapped roles (§9.1 step 8).</li>
+</ol>
+<h3 id="97-flow-invite-a-non-member-agency-by-email">9.7 Flow — Invite a non-member agency by email</h3>
+<ol class="flow">
+<li>Agency A staff click <strong>Send Invitation</strong> in My Network.</li>
+<li>Staff enter one or more email addresses (comma/newline separated, validated) and a message.</li>
+<li>Submit <code>POST /web/agency-services/send-invitations</code> (<code>emails[]</code>, <code>message</code>).</li>
+<li>Backend validates, resolves the sending agency (requires <code>serviceCenterInfo</code>), and per email enqueues a BullMQ <code>SEND_EMAIL</code> job (type <code>AGENCY_INVITATION</code>, 3 attempts, exponential backoff) and inserts an <code>AgencyInvitations</code> row (<code>status=&#x27;sent&#x27;</code>).</li>
+<li>Staff open <strong>Invitations Sent</strong> (<code>GET /web/agency-services/invitations</code>, paginated/searchable) to track status.</li>
+<li>(Out of scope) When an invited agency later joins NECX and is provisioned by Admin, it becomes discoverable in the directory and available for partnership.</li>
+</ol>
+<h3 id="98-flow-toggle-inbound-referral-availability">9.8 Flow — Toggle inbound referral availability</h3>
+<ol class="flow">
+<li>An Agency B admin opens their agency&#x27;s referral-status setting.</li>
+<li>They flip <code>acceptingReferrals</code> → <code>PATCH /web/partnerships/referrals/:serviceCenterUid/toggle-referrals</code>.</li>
+<li>Backend verifies the caller belongs to and matches <code>serviceCenterUid</code>, flips <code>service_centers.acceptingReferrals</code>; audit <code>SERVICE_CENTER_REFERRALS_TOGGLED</code>.</li>
+<li>Effect: when off, Agency B no longer appears in any partner&#x27;s <code>getReferralOptions</code> (both agencies must be accepting), so no new referrals can target it.</li>
+</ol>
+<h2 id="10-data-model">10. Data Model</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Key Fields</th><th>Relationships</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>AgencyPartnerships (<code>agency_partnerships</code>)</td><td><code>uid</code> (PK, DB-generated), <code>requestingAgencyUid</code> → <code>service_centers.uid</code>, <code>targetAgencyUid</code> → <code>service_centers.uid</code>, <code>status</code> (`pending\</td><td>accepted\</td><td>declined\</td></tr>
+<tr><td>AgencyReferrals (<code>agency_referrals</code>)</td><td><code>uid</code> (PK), <code>partnershipId</code> → <code>agency_partnerships.uid</code>, <code>originalCaseId</code> → <code>service_claims.uid</code>, <code>referredCaseId</code> → <code>service_claims.uid</code> (null until consent), <code>targetServiceId</code> → <code>services.id</code>, <code>consentStatus</code> (`pending\</td><td>granted\</td><td>denied<code>), </code>referralStatus<code> (</code>pending\</td></tr>
+<tr><td>AgencyReferrals.metadata (JSON)</td><td>six <code>canShare*</code> flags, <code>referralMessage</code>, <code>caseSnapshot</code> (captured on consent), <code>denialHistory[]</code>, <code>resendMessage</code>, <code>lastConsentChange</code>, <code>deletionReason</code></td><td>—</td><td>Carries sharing preferences, the sanitized snapshot, and the referral&#x27;s history without extra columns.</td></tr>
+<tr><td>AgencyInvitations (<code>agency_invitations</code>)</td><td>invitee email, message, <code>status</code> (<code>sent</code>), sending-agency reference, timestamps</td><td>Belongs to the sending service center</td><td>Email invitations one agency sends to prospective (non-member) agencies.</td></tr>
+<tr><td>ServiceCenters (<code>service_centers</code>)</td><td><code>uid</code>, <code>code</code> (4-char), <code>serviceType</code> (`VICTIM_SERVICE_PROVIDER\</td><td>POLICE_STATION<code>), </code>planId<code>, </code>status<code> (</code>ACTIVE<code>), </code>acceptingReferrals`</td><td>HasMany Services, VSMSUsers</td></tr>
+<tr><td>ServiceClaims (<code>service_claims</code>)</td><td><code>uid</code> (<code>CL&lt;yy&gt;&lt;month&gt;&lt;uuid6&gt;</code>), <code>serviceId</code>, <code>victimId</code>, <code>status</code>, <code>statementFromVictim</code></td><td>Referenced as <code>originalCaseId</code> and <code>referredCaseId</code></td><td>Both the source case and the cloned target case created on consent.</td></tr>
+<tr><td>ChatThreads (<code>chat_threads</code>)</td><td><code>type</code> (<code>AGENCY_CHAT</code>), <code>status</code> (<code>ACTIVE</code>), <code>vsmsId</code>, <code>vsmsId2</code></td><td>Between two agencies&#x27; first users</td><td>The shared agency-to-agency chat auto-created on partnership accept.</td></tr>
+<tr><td>PmtReports / ServiceClaimStats</td><td>demographics; approval/rejection/resolution attribution</td><td>One per (referred) claim</td><td>Mirrored PMT row + baseline stats row created for the cloned case.</td></tr>
+<tr><td>ActionLogs (<code>action_logs</code>)</td><td><code>action</code>, <code>referenceId</code>, <code>referenceType</code>, <code>actionDescription</code>, actor</td><td>Points at partnership/referral uids</td><td>Compliance audit trail for every partnership/referral action.</td></tr>
+</tbody></table></div>
+<h3 id="101-status-semantics">10.1 Status Semantics</h3>
+<p><strong>Two independent axes on <code>AgencyReferrals</code>:</strong> <code>consentStatus</code> (the client&#x27;s decision) and <code>referralStatus</code> (the receiving agency&#x27;s decision on the cloned case). A referral is <strong>terminal</strong> when <code>consentStatus=&#x27;denied&#x27;</code>, OR (<code>consentStatus=&#x27;granted&#x27;</code> AND <code>referralStatus ∈ {accepted, declined}</code>). It is <strong>active</strong> otherwise (consent pending; or consent granted + referral pending). The single-active-referral rule keys off this active/terminal distinction.</p>
+<p><strong>Default sharing preferences</strong> (<code>DEFAULT_SHARING_PREFERENCES</code>) are all <code>false</code>: <code>canShareCaseNotes, canShareCaseFiles, canShareCaseChat, canShareCaseUpdates, canShareVictimAnswers, canSharePmtDemographics</code>.</p>
+<h2 id="11-api-integration-surface">11. API &amp; Integration Surface</h2>
+<h3 id="111-partnerships-mount-webpartnerships-guard-allowonlyvs360">11.1 Partnerships (mount <code>/web/partnerships</code>, guard <code>allowOnly(&#x27;VS360&#x27;)</code>)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>POST</td><td><code>/web/partnerships</code></td><td>Create or reactivate a partnership request</td><td>VS360; requester = issuer&#x27;s agency</td></tr>
+<tr><td>GET</td><td><code>/web/partnerships</code></td><td>List agency partnerships (both directions; <code>status?</code>, <code>page?</code>, <code>pageSize?</code> ≤50)</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/web/partnerships/:uid</code></td><td>Get one partnership (403 if not a party)</td><td>VS360</td></tr>
+<tr><td>POST</td><td><code>/web/partnerships/:uid/accept</code></td><td>Accept a pending request (empty body)</td><td>VS360; target agency only</td></tr>
+<tr><td>POST</td><td><code>/web/partnerships/:uid/decline</code></td><td>Decline a pending request (empty body)</td><td>VS360; target agency only</td></tr>
+</tbody></table></div>
+<h3 id="112-referrals-mount-webpartnershipsreferrals-mobilepartnershipsr">11.2 Referrals (mount <code>/web/partnerships/referrals</code> + <code>/mobile/partnerships/referrals</code>)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>POST</td><td><code>/web/partnerships/referrals</code></td><td>Create a referral for an existing case</td><td>VS360</td></tr>
+<tr><td>PATCH</td><td><code>/web/partnerships/referrals/:uid</code></td><td>Update sharing prefs / resend a denied referral</td><td>VS360; requesting agency only</td></tr>
+<tr><td>DELETE</td><td><code>/web/partnerships/referrals/:uid</code></td><td>Soft-delete a sent referral (<code>reason?</code>)</td><td>VS360; case-owning agency only</td></tr>
+<tr><td>POST</td><td><code>/mobile/partnerships/referrals/:uid/decision</code></td><td>Client consent decision (<code>approve</code>/<code>reject</code>)</td><td><code>issuer.type=&#x27;APP&#x27;</code></td></tr>
+<tr><td>PATCH</td><td><code>/web/partnerships/referrals/:serviceCenterUid/toggle-referrals</code></td><td>Toggle agency&#x27;s <code>acceptingReferrals</code></td><td>VS360; own agency only</td></tr>
+<tr><td>GET</td><td><code>/web/partnerships/referrals/:serviceCenterUid/referral-options</code></td><td>List partner agencies + services eligible as targets</td><td>VS360</td></tr>
+</tbody></table></div>
+<h3 id="113-agency-directory-invitations">11.3 Agency Directory &amp; Invitations</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/web/service-centers</code></td><td>Directory search (search, city[], state[], country[], category[], page, pageSize)</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/web/service-centers/:uid</code></td><td>Agency details for partnership/chat modals</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/web/service-centers/profile</code></td><td>Caller&#x27;s own agency profile</td><td>VS360</td></tr>
+<tr><td>PATCH</td><td><code>/web/service-centers/profile</code></td><td>Self-service profile edit (includes <code>acceptingReferrals</code>)</td><td>VS360; own agency</td></tr>
+<tr><td>POST</td><td><code>/web/agency-services/send-invitations</code></td><td>Queue email invitations (<code>emails[]</code>, <code>message</code>); persist AgencyInvitations</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/web/agency-services/invitations</code></td><td>List invitations by caller&#x27;s agency (page, pageSize, search)</td><td>VS360</td></tr>
+</tbody></table></div>
+<h3 id="114-chat-integration-partnership-gated">11.4 Chat Integration (partnership-gated)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>POST</td><td><code>/chat-services/start-agency-chat</code></td><td>Open the connected agency chat (200 ready / 201 needsPartnership / 201-202 pending)</td><td>VS360</td></tr>
+<tr><td>POST</td><td><code>/chat-services/start-pre-partnership-chat</code></td><td>Message an agency before a partnership request</td><td>VS360</td></tr>
+</tbody></table></div>
+<h3 id="115-external-integrations">11.5 External Integrations</h3>
+<ul>
+<li><strong>Socket.IO</strong> — <code>VS360NotificationService.emitPartnershipNotification</code> to <code>vs360-user-&lt;uid&gt;</code> rooms; VS360 client event <code>partnership-notification</code>.</li>
+<li><strong>Email</strong> — <code>emailNotificationHelper.sendEmails</code> (<code>EMAIL_TYPES.PARTNERSHIP</code>); invitations via BullMQ <code>SEND_EMAIL</code> (<code>AGENCY_INVITATION</code>).</li>
+<li><strong>SMS</strong> — <code>smsNotificationHelper.sendSMS</code> (Twilio) to recipient agency service users.</li>
+<li><strong>FCM / victim notifications</strong> — the downstream cloned-case approve/reject notifies the victim (handled by victim-services / AppNotificationService), not by the referrals module directly.</li>
+<li><strong>PostgreSQL (Objection/Knex)</strong> — persistence for all three entities plus the cloned claim, PMT, and stats rows.</li>
+</ul>
+<h2 id="12-rbac-permissions">12. RBAC &amp; Permissions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Action</th><th>Required context / permission</th><th>Additional ownership check</th></tr></thead>
+<tbody>
+<tr><td>Directory search / agency detail</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td><td>Excludes caller&#x27;s own agency in search; own-agency scope for profile</td></tr>
+<tr><td>Send / list agency invitations</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td><td>Attributed to <code>issuer.serviceCenterInfo</code></td></tr>
+<tr><td>Create / reactivate partnership</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td><td>Requester = issuer&#x27;s agency; no self-partnership</td></tr>
+<tr><td>List / get partnership</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td><td>403 unless caller&#x27;s agency is a party</td></tr>
+<tr><td>Accept / decline partnership</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td><td>Only the <code>targetAgencyUid</code> agency</td></tr>
+<tr><td>Create referral</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td><td>Issuer must be a party to an <code>accepted</code> partnership; case must belong to issuer&#x27;s agency</td></tr>
+<tr><td>Update / resend referral</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td><td>Only the requesting agency (<code>partnership.requestingAgencyUid</code>)</td></tr>
+<tr><td>Delete referral</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td><td>Only the case-owning agency</td></tr>
+<tr><td>Toggle <code>acceptingReferrals</code></td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td><td>Only a member matching <code>serviceCenterUid</code></td></tr>
+<tr><td>Client consent decision</td><td>Mobile (auth-only)</td><td><code>issuer.type=&#x27;APP&#x27;</code>; own referral only</td></tr>
+<tr><td>Accept/reject the referred (cloned) case</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>claims</code> edit</td><td>Receiving agency&#x27;s caseworker (victim-services); <code>claims.view_all</code> governs visibility</td></tr>
+<tr><td>Agency chat (connected)</td><td><code>agency_chat.view</code></td><td>Enabled only for accepted partnerships</td></tr>
+</tbody></table></div>
+<p>Notes: <code>SUPER_ADMIN</code> bypasses fine-grained permission checks; NECX super-admin (ADMIN context) is not a party to partnerships/referrals. Cross-agency isolation is enforced by ownership checks on every mutation, independent of role.</p>
+<h2 id="13-non-functional-requirements">13. Non-Functional Requirements</h2>
+<h3 id="131-consent-victim-safety">13.1 Consent &amp; Victim Safety</h3>
+<ul>
+<li><strong>Consent-first:</strong> No case data crosses the agency boundary until the victim explicitly approves the referral from their own mobile app; only an <code>APP</code> issuer can decide.</li>
+<li><strong>Time-boxed consent:</strong> <code>consentExpiresAt</code> defaults to now + 2 days; unactioned referrals lapse rather than remaining indefinitely open.</li>
+<li><strong>Denial history:</strong> Every denial and resend is recorded in <code>metadata.denialHistory</code>, giving an auditable record of the client&#x27;s decisions.</li>
+<li><strong>Client control of message:</strong> The referral message the client sees is stored and re-shown on resend, so the client always has context.</li>
+</ul>
+<h3 id="132-data-sharing-minimization">13.2 Data Sharing Minimization</h3>
+<ul>
+<li><strong>Opt-in per field:</strong> All six <code>canShare*</code> flags default to <code>false</code>; the sending agency must explicitly enable each category.</li>
+<li><strong>Snapshot sanitization:</strong> <code>buildCaseDataSnapshot</code> copies only the enabled categories and only sanitized subsets — notably <strong>published updates only</strong> (never unpublished caseworker-only updates). If no flag is enabled, no snapshot is built at all.</li>
+<li><strong>Point-in-time snapshot:</strong> The shared data is a snapshot captured at consent, not a live feed; the receiving agency does not gain ongoing read access to the source case.</li>
+<li><strong>No direct cross-agency reads:</strong> CJIS-aligned isolation ensures an agency can never query another agency&#x27;s cases except via the consented clone.</li>
+</ul>
+<h3 id="133-security-access-control">13.3 Security &amp; Access Control</h3>
+<ul>
+<li>All partnership/referral write routes are VS360-context-gated and further constrained by ownership (party/requesting/case-owning agency).</li>
+<li>The mobile consent route is restricted to <code>issuer.type=&#x27;APP&#x27;</code> and the client&#x27;s own referral.</li>
+<li>Response encryption (AES) is applied by the platform&#x27;s encryption middleware; clients decrypt.</li>
+<li>Destination validation: the target service&#x27;s <code>serviceCenterId</code> must belong to the partnership&#x27;s two agencies before any clone, preventing misdirected shares.</li>
+</ul>
+<h3 id="134-integrity-consistency">13.4 Integrity &amp; Consistency</h3>
+<ul>
+<li><strong>Single active referral per case</strong> prevents conflicting or duplicate handoffs (409 on violation).</li>
+<li>Referral create and partnership accept/decline run inside <code>withTransaction</code>, so the row change, audit log, and clone/chat side effects are atomic.</li>
+<li>Soft-delete for referrals preserves history and auditability.</li>
+</ul>
+<h3 id="135-performance-availability">13.5 Performance &amp; Availability</h3>
+<ul>
+<li>Write routes are protected by <code>rateLimiters.standard</code> (~10/5s).</li>
+<li>Partnership listing is paginated (<code>pageSize</code> ≤ 50); directory search is paginated.</li>
+<li>Notification calls (socket/email/SMS) are wrapped defensively — a delivery failure is logged and never breaks the main transaction.</li>
+<li>Email invitations are queued (BullMQ, 3 attempts, exponential backoff) to decouple delivery from the request.</li>
+</ul>
+<h3 id="136-auditability-compliance">13.6 Auditability &amp; Compliance</h3>
+<ul>
+<li>Every partnership and referral action writes an <code>ActionLogs</code> row: <code>PARTNERSHIP_REQUEST</code>, <code>PARTNERSHIP_REQUEST_REACTIVATED</code>, <code>PARTNERSHIP_ACCEPTED</code>, <code>PARTNERSHIP_DECLINED</code>, <code>AGENCY_REFERRAL_CREATED</code>, <code>REFERRAL_CONSENT_GRANTED</code>, <code>REFERRAL_CONSENT_DENIED</code>, <code>AGENCY_REFERRAL_RESENT</code>, <code>AGENCY_REFERRAL_UPDATED</code>, <code>AGENCY_REFERRAL_DELETED</code>, <code>SERVICE_CENTER_REFERRALS_TOGGLED</code>.</li>
+<li>Audit descriptions capture <code>source</code>, <code>ip</code>, <code>url</code>, and <code>context</code> for compliance.</li>
+</ul>
+<h3 id="137-localization-accessibility">13.7 Localization &amp; Accessibility</h3>
+<ul>
+<li>The VS360 UI follows the platform&#x27;s Mantine-based accessibility conventions; client-facing referral messages are free-text authored by staff.</li>
+<li>Platform static translations cover mobile-app UI strings shown around the consent decision.</li>
+</ul>
+<h2 id="14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</h2>
+<h3 id="141-metrics-reporting">14.1 Metrics &amp; Reporting</h3>
+<ul>
+<li><code>AgencyReferrals.getAgencyReferralStats</code> yields per-agency outgoing/incoming referral totals and acceptance rates (keyed by service-center uid); these feed the agency Dashboard KPIs and the AI report builder&#x27;s agency-KPI context.</li>
+<li>Accepted-partnership counts feed the &quot;AGENCY PROFILE&quot; context block used by the custom-report AI builder.</li>
+<li>Per-claim <code>referralSegment</code> (<code>none|referral_received|referral_sent|referral_both</code>) supports case-list filtering and reporting.</li>
+</ul>
+<h3 id="142-notifications">14.2 Notifications</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Event</th><th>Channel</th><th>Recipient</th></tr></thead>
+<tbody>
+<tr><td>Partnership request created / reactivated</td><td>Socket (<code>partnership-notification</code>, type <code>PARTNERSHIP_REQUEST</code>) + email (<code>EMAIL_TYPES.PARTNERSHIP</code>) + SMS</td><td>Target agency&#x27;s users</td></tr>
+<tr><td>Partnership accepted</td><td>Socket (type <code>PARTNERSHIP_ACCEPTED</code>) + email + SMS</td><td>Requesting agency&#x27;s users</td></tr>
+<tr><td>Partnership declined</td><td>Socket (type <code>PARTNERSHIP_DECLINED</code>) + email + SMS</td><td>Requesting agency&#x27;s users</td></tr>
+<tr><td>Agency email invitation</td><td>Email (BullMQ <code>AGENCY_INVITATION</code>)</td><td>Invited external contacts</td></tr>
+<tr><td>Referral pending consent</td><td>Surfaced in mobile via <code>getReferralsForSingleClaim</code> (APP)</td><td>Victim/client</td></tr>
+<tr><td>Referred case approved/rejected (downstream)</td><td>victim_notifications + FCM + socket (<code>service-claim-action-for-&lt;victimUid&gt;</code>)</td><td>Victim/client</td></tr>
+</tbody></table></div>
+<p>Socket delivery is filtered to the recipient agency&#x27;s users by service category; the VS360 client shows a toast and sets a Redux refetch flag to live-update partnership lists.</p>
+<h2 id="15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Type</th><th>Impact</th><th>Mitigation / Owner</th></tr></thead>
+<tbody>
+<tr><td>Consent lapses silently after 2 days with no automated reminder</td><td>Risk</td><td>Referrals stall; clients miss time-sensitive handoffs</td><td>Consider a pre-expiry reminder notification; staff can resend. Owner: Product/Backend</td></tr>
+<tr><td>No socket event emitted directly by the referrals module</td><td>Risk</td><td>VS360 staff may not see real-time referral state changes without a refresh</td><td>Verify downstream service-claim notifications cover staff-facing referral updates; consider adding referral socket events. Owner: Backend</td></tr>
+<tr><td>Snapshot is point-in-time; later source-case changes are not reflected</td><td>Assumption</td><td>Receiving agency may work from slightly stale context</td><td>Documented behavior; staff can send an updated referral if needed. Owner: Product</td></tr>
+<tr><td>Partnership auto-chat links only the *first* user of each agency (<code>vsmsId</code>/<code>vsmsId2</code>)</td><td>Open Question</td><td>Ambiguity about which staff own the agency-chat thread</td><td>Confirm intended participant model for agency chat. Owner: Backend/Chat</td></tr>
+<tr><td><code>referralStatus=&#x27;completed&#x27;</code> exists (<code>completeReferral</code>) but its trigger/usage is not documented in-flow</td><td>Open Question</td><td>Unclear lifecycle terminal beyond accepted/declined</td><td>Clarify when/if referrals transition to <code>completed</code>. Owner: Backend</td></tr>
+<tr><td>Reactivating a declined partnership swaps requester/target roles</td><td>Assumption</td><td>Role/attribution changes may confuse audit review</td><td>Documented; audit <code>PARTNERSHIP_REQUEST_REACTIVATED</code> records the actor. Owner: Compliance</td></tr>
+<tr><td>Email invitation does not itself onboard/verify an agency</td><td>Assumption</td><td>Invitees are not automatically discoverable until Admin provisions them</td><td>Out-of-scope onboarding handled by NECX Admin. Owner: Admin/Product</td></tr>
+<tr><td>Declared partnerships <code>mobileRouter</code> has no registered routes</td><td>Open Question</td><td>Mobile has no partnership surface beyond referral consent</td><td>Confirm no mobile partnership capability is planned. Owner: Product</td></tr>
+<tr><td>Validation depth on invitation payload is minimal server-side</td><td>Risk</td><td>Malformed emails could queue failing jobs</td><td>Enforce server-side email validation; BullMQ retries/backoff bound the blast radius. Owner: Backend</td></tr>
+<tr><td>Single-active-referral rule may block legitimate parallel referrals to different partners</td><td>Risk</td><td>Cannot refer one case to two agencies simultaneously</td><td>Confirm this is intended; staff resolve/delete the active referral first. Owner: Product</td></tr>
+</tbody></table></div>
+<h2 id="16-glossary">16. Glossary</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Agency / Service Center</td><td>An organization providing victim services (<code>service_centers</code>); <code>serviceType</code> VICTIM_SERVICE_PROVIDER or POLICE_STATION.</td></tr>
+<tr><td>My Network</td><td>The VS360 web area for agency discovery, partnerships, invitations, and referrals.</td></tr>
+<tr><td>Partnership</td><td>A bilateral request/accept relationship between two agencies (<code>AgencyPartnerships</code>) enabling agency chat and referrals.</td></tr>
+<tr><td>Referral</td><td>A consented, cross-agency handoff of a case to a partner agency for a specific service (<code>AgencyReferrals</code>).</td></tr>
+<tr><td>Agency Invitation</td><td>An email invitation one agency sends to a non-member agency (<code>AgencyInvitations</code>).</td></tr>
+<tr><td>Consent status</td><td>The victim&#x27;s decision on a referral: <code>pending</code>, <code>granted</code>, or <code>denied</code>.</td></tr>
+<tr><td>Referral status</td><td>The receiving agency&#x27;s decision on the cloned case: <code>pending</code>, <code>accepted</code>, <code>declined</code> (also <code>completed</code>).</td></tr>
+<tr><td>Terminal referral</td><td>A referral that is <code>denied</code>, or <code>granted</code> + <code>accepted</code>/<code>declined</code>; not counted as active.</td></tr>
+<tr><td>Active referral</td><td>A non-terminal referral; only one may exist per case at a time.</td></tr>
+<tr><td>Case snapshot</td><td>The sanitized, point-in-time copy of selected case data captured at consent (<code>metadata.caseSnapshot</code>).</td></tr>
+<tr><td><code>canShare*</code> flags</td><td>Six opt-in booleans (notes, files, chat, updates, victim answers, PMT demographics) controlling what the referral shares; default all false.</td></tr>
+<tr><td>Case clone / referred case</td><td>The new <code>service_claims</code> row created in the target agency on consent; linked via <code>referredCaseId</code>.</td></tr>
+<tr><td><code>acceptingReferrals</code></td><td>A service-center flag controlling whether an agency can be targeted by referrals; both agencies must have it on.</td></tr>
+<tr><td>Claim / Case</td><td>A victim&#x27;s request for a service (<code>service_claims</code>); the unit that is referred and cloned.</td></tr>
+<tr><td>Service Claim</td><td>Synonym for a case/claim.</td></tr>
+<tr><td>PMT</td><td>Performance Measurement Tool — grant demographic snapshot (<code>pmt_report</code>) mirrored for the cloned case.</td></tr>
+<tr><td>Agency Chat</td><td>Staff-to-staff chat between two partner agencies (<code>ChatThreads</code> type <code>AGENCY_CHAT</code>), auto-created on partnership accept.</td></tr>
+<tr><td>Pre-partnership chat</td><td>Messaging an agency before a partnership request; history persists after connecting.</td></tr>
+<tr><td>VSMS</td><td>Victim Services Management System — agency staff / caseworker (issuer type <code>VSMS</code>, VS360 context).</td></tr>
+<tr><td>Advocate</td><td>Agency staff member acting on behalf of a victim.</td></tr>
+<tr><td>APP issuer</td><td>A victim/survivor authenticated on the mobile app (<code>issuer.type=&#x27;APP&#x27;</code>).</td></tr>
+<tr><td>Action Log</td><td>A row in <code>action_logs</code> recording an audited operation for compliance.</td></tr>
+</tbody></table></div>
+      </div>
+      <nav class="prevnext"><a class="pn prev" href="P16.html"><span>← Previous</span><b>E-Sign &amp; Document Center</b></a><a class="pn next" href="P18.html"><span>Next →</span><b>Inquiries Management</b></a></nav>
+      <footer class="doc-foot">NECX Inc — Confidential · Generated 2026-07-05 · NECX Referrals &amp; Partnerships</footer>
+    </article>
+  </main>
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav class="toc-nav"><a class="toc-1" href="#1-document-control">1. Document Control</a>
+<a class="toc-1" href="#2-executive-summary">2. Executive Summary</a>
+<a class="toc-1" href="#3-product-overview-vision">3. Product Overview &amp; Vision</a>
+<a class="toc-2" href="#31-problem-statement">3.1 Problem Statement</a>
+<a class="toc-2" href="#32-product-vision">3.2 Product Vision</a>
+<a class="toc-2" href="#33-position-in-the-necx-ecosystem">3.3 Position in the NECX Ecosystem</a>
+<a class="toc-1" href="#4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</a>
+<a class="toc-2" href="#41-goals-objectives">4.1 Goals &amp; Objectives</a>
+<a class="toc-2" href="#42-success-metrics">4.2 Success Metrics</a>
+<a class="toc-1" href="#5-scope">5. Scope</a>
+<a class="toc-2" href="#51-in-scope">5.1 In Scope</a>
+<a class="toc-2" href="#52-out-of-scope">5.2 Out of Scope</a>
+<a class="toc-1" href="#6-personas-user-roles">6. Personas &amp; User Roles</a>
+<a class="toc-2" href="#61-persona-narratives">6.1 Persona Narratives</a>
+<a class="toc-1" href="#7-system-context-architecture">7. System Context &amp; Architecture</a>
+<a class="toc-2" href="#71-tech-stack">7.1 Tech Stack</a>
+<a class="toc-2" href="#72-backend-communication">7.2 Backend Communication</a>
+<a class="toc-2" href="#73-real-time-notifications">7.3 Real-Time &amp; Notifications</a>
+<a class="toc-2" href="#74-tenancy-isolation">7.4 Tenancy &amp; Isolation</a>
+<a class="toc-1" href="#8-functional-requirements">8. Functional Requirements</a>
+<a class="toc-2" href="#81-agency-directory-discovery">8.1 Agency Directory &amp; Discovery</a>
+<a class="toc-2" href="#82-agency-invitations-email">8.2 Agency Invitations (Email)</a>
+<a class="toc-2" href="#83-partnerships-create-reactivate">8.3 Partnerships — Create &amp; Reactivate</a>
+<a class="toc-2" href="#84-partnerships-list-get">8.4 Partnerships — List &amp; Get</a>
+<a class="toc-2" href="#85-partnerships-accept">8.5 Partnerships — Accept</a>
+<a class="toc-2" href="#86-partnerships-decline">8.6 Partnerships — Decline</a>
+<a class="toc-2" href="#87-agency-chat-gating-partnership-dependent">8.7 Agency Chat Gating (Partnership-Dependent)</a>
+<a class="toc-2" href="#88-referrals-create">8.8 Referrals — Create</a>
+<a class="toc-2" href="#89-referrals-client-consent-decision-mobile">8.9 Referrals — Client Consent Decision (Mobile)</a>
+<a class="toc-2" href="#810-referrals-partner-acceptance-integration-point">8.10 Referrals — Partner Acceptance (Integration Point)</a>
+<a class="toc-2" href="#811-referrals-update-resend">8.11 Referrals — Update / Resend</a>
+<a class="toc-2" href="#812-referrals-delete">8.12 Referrals — Delete</a>
+<a class="toc-2" href="#813-referral-options-acceptingreferrals-toggle-partner-assignmen">8.13 Referral Options &amp; `acceptingReferrals` Toggle (Partner Assignment)</a>
+<a class="toc-2" href="#814-referral-read-models-segmentation">8.14 Referral Read Models &amp; Segmentation</a>
+<a class="toc-1" href="#9-detailed-user-system-flows">9. Detailed User &amp; System Flows</a>
+<a class="toc-2" href="#91-flow-find-an-agency-and-send-a-partnership-request">9.1 Flow — Find an agency and send a partnership request</a>
+<a class="toc-2" href="#92-flow-accept-a-partnership-and-auto-create-agency-chat">9.2 Flow — Accept a partnership (and auto-create agency chat)</a>
+<a class="toc-2" href="#93-flow-refer-a-caseclient-to-a-partner-agency-end-to-end-with-c">9.3 Flow — Refer a case/client to a partner agency, end-to-end (with consent)</a>
+<a class="toc-2" href="#94-flow-partner-accepts-and-a-linked-case-is-created">9.4 Flow — Partner accepts and a linked case is created</a>
+<a class="toc-2" href="#95-flow-update-resend-a-denied-referral">9.5 Flow — Update / resend a denied referral</a>
+<a class="toc-2" href="#96-flow-decline-a-partnership">9.6 Flow — Decline a partnership</a>
+<a class="toc-2" href="#97-flow-invite-a-non-member-agency-by-email">9.7 Flow — Invite a non-member agency by email</a>
+<a class="toc-2" href="#98-flow-toggle-inbound-referral-availability">9.8 Flow — Toggle inbound referral availability</a>
+<a class="toc-1" href="#10-data-model">10. Data Model</a>
+<a class="toc-2" href="#101-status-semantics">10.1 Status Semantics</a>
+<a class="toc-1" href="#11-api-integration-surface">11. API &amp; Integration Surface</a>
+<a class="toc-2" href="#111-partnerships-mount-webpartnerships-guard-allowonlyvs360">11.1 Partnerships (mount `/web/partnerships`, guard `allowOnly(&#x27;VS360&#x27;)`)</a>
+<a class="toc-2" href="#112-referrals-mount-webpartnershipsreferrals-mobilepartnershipsr">11.2 Referrals (mount `/web/partnerships/referrals` + `/mobile/partnerships/referrals`)</a>
+<a class="toc-2" href="#113-agency-directory-invitations">11.3 Agency Directory &amp; Invitations</a>
+<a class="toc-2" href="#114-chat-integration-partnership-gated">11.4 Chat Integration (partnership-gated)</a>
+<a class="toc-2" href="#115-external-integrations">11.5 External Integrations</a>
+<a class="toc-1" href="#12-rbac-permissions">12. RBAC &amp; Permissions</a>
+<a class="toc-1" href="#13-non-functional-requirements">13. Non-Functional Requirements</a>
+<a class="toc-2" href="#131-consent-victim-safety">13.1 Consent &amp; Victim Safety</a>
+<a class="toc-2" href="#132-data-sharing-minimization">13.2 Data Sharing Minimization</a>
+<a class="toc-2" href="#133-security-access-control">13.3 Security &amp; Access Control</a>
+<a class="toc-2" href="#134-integrity-consistency">13.4 Integrity &amp; Consistency</a>
+<a class="toc-2" href="#135-performance-availability">13.5 Performance &amp; Availability</a>
+<a class="toc-2" href="#136-auditability-compliance">13.6 Auditability &amp; Compliance</a>
+<a class="toc-2" href="#137-localization-accessibility">13.7 Localization &amp; Accessibility</a>
+<a class="toc-1" href="#14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</a>
+<a class="toc-2" href="#141-metrics-reporting">14.1 Metrics &amp; Reporting</a>
+<a class="toc-2" href="#142-notifications">14.2 Notifications</a>
+<a class="toc-1" href="#15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</a>
+<a class="toc-1" href="#16-glossary">16. Glossary</a>
+</nav>
+  </aside>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

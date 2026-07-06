@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NECX RBAC &amp; User Management · NECX PRD</title>
+<meta name="description" content="Identity, roles, fine-grained permissions &amp; multi-tenant user provisioning">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="prd-page">
+<header class="topbar">
+  <button class="hamburger" aria-label="Menu" onclick="toggleNav()">&#9776;</button>
+  <a class="brand" href="../index.html"><svg class="logo" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 L35 10 V22 C35 31 28 37 20 39 C12 37 5 31 5 22 V10 Z" fill="var(--brand)"/><path d="M13 27 V14 L20 22 V14 M27 14 V27 L20 19" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="brand-text">NECX<span class="brand-sub">Product Requirements</span></span></a>
+  <div class="topbar-spacer"></div>
+  <a class="top-link" href="../index.html">Home</a>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><span class="ic-sun">☀</span><span class="ic-moon">☾</span></button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-search"><input type="search" id="navSearch" placeholder="Filter documents…" oninput="filterNav(this.value)"></div>
+    <nav class="nav"><div class="nav-group"><div class="nav-group-title">Platform &amp; Applications</div><a class="nav-item " href="P01.html" data-search="necx platform — core system whole-platform prd: unified backend, four clients, multi-tenancy, identity/rbac, and the end-to-end case lifecycle."><span class="nav-num">01</span><span class="nav-text">Platform — Core System</span></a>
+<a class="nav-item " href="P02.html" data-search="necx workspace — staff mobile app agency staff mobile app (flutter/riverpod) — the on-the-go companion to the vs360 web dashboard."><span class="nav-num">02</span><span class="nav-text">Workspace — Staff Mobile App</span></a>
+<a class="nav-item " href="P03.html" data-search="necx victim app — survivor mobile app victim / survivor mobile app (flutter/getx) — discover services, request help, chat, find shelter, e-sign."><span class="nav-num">03</span><span class="nav-text">Victim App — Survivor Mobile App</span></a>
+<a class="nav-item " href="P04.html" data-search="vs360 — agency web dashboard vs360 — the agency staff web dashboard (react/vite) and primary caseworker workspace."><span class="nav-num">04</span><span class="nav-text">VS360 — Agency Web Dashboard</span></a>
+</div>
+<div class="nav-group"><div class="nav-group-title">VS360 Feature Modules</div><a class="nav-item " href="P05.html" data-search="necx case management service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes."><span class="nav-num">05</span><span class="nav-text">Case Management</span></a>
+<a class="nav-item " href="P06.html" data-search="necx shelter management shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search."><span class="nav-num">06</span><span class="nav-text">Shelter Management</span></a>
+<a class="nav-item " href="P07.html" data-search="necx hotline management twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights."><span class="nav-num">07</span><span class="nav-text">Hotline Management</span></a>
+<a class="nav-item " href="P08.html" data-search="necx calendar &amp; appointments reminders, tasks and case-linked appointments in the vs360 tools calendar."><span class="nav-num">08</span><span class="nav-text">Calendar &amp; Appointments</span></a>
+<a class="nav-item " href="P09.html" data-search="necx staff time tracking staff time tracking: clock in/out, timesheets, and grant/pmt time attribution."><span class="nav-num">09</span><span class="nav-text">Staff Time Tracking</span></a>
+<a class="nav-item " href="P10.html" data-search="necx agency chat real-time advocate↔victim messaging tied to service threads and cases."><span class="nav-num">10</span><span class="nav-text">Agency Chat</span></a>
+<a class="nav-item " href="P11.html" data-search="necx internal chat staff-to-staff messaging within an agency, real-time over socket.io."><span class="nav-num">11</span><span class="nav-text">Internal Chat</span></a>
+<a class="nav-item active" href="P12.html" data-search="necx rbac &amp; user management roles, the module/action permission matrix, plan seats, and multi-layer enforcement."><span class="nav-num">12</span><span class="nav-text">RBAC &amp; User Management</span></a>
+<a class="nav-item " href="P13.html" data-search="necx notes center agency-scoped, cross-case view over internal (caseworker-only) case notes."><span class="nav-num">13</span><span class="nav-text">Notes Center</span></a>
+<a class="nav-item " href="P14.html" data-search="necx drive google-drive-style cloud file storage backed by azure blob, with quotas and analytics."><span class="nav-num">14</span><span class="nav-text">Drive</span></a>
+<a class="nav-item " href="P15.html" data-search="necx ai report builder pmt/grant reporting plus ai-assisted custom report generation with accuracy validation."><span class="nav-num">15</span><span class="nav-text">AI Report Builder</span></a>
+<a class="nav-item " href="P16.html" data-search="necx e-sign &amp; document center prepare, request, sign and pdf-stamp case documents with an audit trail."><span class="nav-num">16</span><span class="nav-text">E-Sign &amp; Document Center</span></a>
+<a class="nav-item " href="P17.html" data-search="necx referrals &amp; partnerships inter-agency network: partnerships, invitations, and consent-based case referrals."><span class="nav-num">17</span><span class="nav-text">Referrals &amp; Partnerships</span></a>
+<a class="nav-item " href="P18.html" data-search="necx inquiries management intake and triage of inquiries / requests-to-connect before they become cases."><span class="nav-num">18</span><span class="nav-text">Inquiries Management</span></a>
+<a class="nav-item " href="P19.html" data-search="necx communities agency-run community spaces: joining questions, membership, posts and moderation."><span class="nav-num">19</span><span class="nav-text">Communities</span></a>
+<a class="nav-item " href="P20.html" data-search="necx service management service catalog, categories, and the per-service claim-question (intake) builder."><span class="nav-num">20</span><span class="nav-text">Service Management</span></a>
+</div>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim" onclick="toggleNav()"></div>
+  
+  <main class="content">
+    <article class="doc">
+      <div class="doc-eyebrow">Product Requirements Document · NECX Inc — Confidential</div>
+      <h1 class="doc-title">NECX RBAC &amp; User Management</h1>
+      <p class="doc-subtitle">Identity, roles, fine-grained permissions &amp; multi-tenant user provisioning</p>
+      <div class="doc-meta"><span class="chip">Version: <b>1.0</b></span><span class="chip">Status: <b>Baseline</b></span><span class="chip">Owner: <b>NECX Product Management</b></span><a class="dl-btn" href="../downloads/12_VS360_Feature_RBAC_User_Management.docx" download>⬇ Download DOCX</a></div>
+      <hr class="doc-rule">
+      <div class="doc-body">
+      <h2 id="1-document-control">1. Document Control</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td>NECX — Coordinated Victim Services Platform</td></tr>
+<tr><td>Module</td><td>Role-Based Access Control (RBAC) &amp; User Management</td></tr>
+<tr><td>Version</td><td>1.0</td></tr>
+<tr><td>Status</td><td>Baseline</td></tr>
+<tr><td>Author</td><td>NECX Product Management</td></tr>
+<tr><td>Reviewers</td><td>Platform Engineering, Security &amp; Compliance, Agency Operations</td></tr>
+<tr><td>Last Updated</td><td>2026-07-05</td></tr>
+<tr><td>Related Documents</td><td>Platform Core &amp; Authentication PRD, NECX Admin Console PRD, VS360 Web Operations PRD, Agency Provisioning &amp; Plans PRD</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>1.0</td><td>2026-07-05</td><td>NECX Product Management</td><td>Baseline PRD covering identity model, context gate, fine-grained permission matrices, roles CRUD, user provisioning, seat limits, and frontend/backend enforcement.</td></tr>
+</tbody></table></div>
+<h2 id="2-executive-summary">2. Executive Summary</h2>
+<p>NECX is a coordinated platform serving victims and survivors of crime alongside the agencies and advocates who help them. A single unified backend serves four distinct clients — the NECX Admin console (operated by NECX Inc), the VS360 web dashboard (agency staff), and the Workspace and Victim mobile applications. Because these audiences range from platform super-administrators who can see every tenant to individual victims who must only ever see their own case, access control is not a peripheral concern — it is the foundation on which the platform&#x27;s safety, privacy, and multi-tenancy guarantees rest.</p>
+<p>This document specifies the Role-Based Access Control (RBAC) and User Management capability of NECX. It defines the identity model that distinguishes platform/staff users (<code>users</code>) from victim end-users (<code>app_users</code>), the three issuer types (<code>NECX</code>, <code>VSMS</code>, <code>APP</code>) that classify every authenticated caller, and the two enforcement layers that gate every protected request: a coarse <strong>context gate</strong> (<code>allowOnly</code>) that segregates traffic by client, and a <strong>fine-grained module→action permission matrix</strong> evaluated per role. It documents both permission catalogs in full — the NECX platform <code>modules</code> map and the agency <code>vs360Modules</code> map — as well as the <code>SUPER_ADMIN</code> bypass, role creation and permission assignment, agency user provisioning with plan-driven seat limits, and the three consistent frontend enforcement layers (route guard, navigation gating, and in-page action checks).</p>
+<p>RBAC at NECX is deliberately cascading: the platform defines the roles and plans that agencies consume; each agency is provisioned with a plan that caps which roles and how many seats it may use; and agency administrators then assign those roles to their own staff. This model lets NECX Inc govern the platform centrally while allowing each tenant to self-administer within safe, contractually bounded limits.</p>
+<p>Correct access control directly protects vulnerable people. A permission leak could expose a survivor&#x27;s location, case notes, or shelter placement to an unauthorized party. Accordingly, this PRD treats least-privilege defaults, complete auditability, and defense-in-depth (never trusting the client alone) as first-class, non-negotiable requirements.</p>
+<h2 id="3-product-overview-vision">3. Product Overview &amp; Vision</h2>
+<h3 id="problem-statement">Problem Statement</h3>
+<p>The NECX platform hosts many independent agencies (tenants) on shared infrastructure, each with staff of varying seniority, plus NECX Inc&#x27;s own platform operators, plus the victims themselves. These populations must be strictly isolated from one another and internally stratified: a caseworker at Agency A must never see Agency B&#x27;s data; a junior advocate may log cases but not manage roles; a victim may only see their own services. Without a rigorous, centrally governed access-control system, the platform cannot uphold the confidentiality that victim services demand, cannot enforce commercial plan limits, and cannot produce the audit trail required for grant and compliance reporting.</p>
+<h3 id="product-vision">Product Vision</h3>
+<p>RBAC &amp; User Management provides a single, coherent authorization model spanning all four clients. Access decisions are driven by two composable layers — a client-context gate and a fine-grained permission map — that are evaluated identically on the backend for every request and mirrored on the frontend for responsive UX. Platform administrators author roles and plans once; those definitions cascade down to tenants; and every agency self-administers its own staff within the seats and roles its plan allows. Every mutation is written to an immutable audit log.</p>
+<h3 id="where-this-sits-in-the-necx-ecosystem">Where This Sits in the NECX Ecosystem</h3>
+<p>RBAC is a cross-cutting core service of the unified backend (<code>necx-backend_v2</code>). It underpins:</p>
+<ul>
+<li><strong>NECX Admin</strong> — where platform super-admins define roles for both the Admin and VS360 contexts, bundle roles into plans, provision agencies with seat counts, and create/manage NECX, VSMS, and App users.</li>
+<li><strong>VS360 web</strong> — where agency administrators create agency staff, assign plan-permitted roles, and where every page, nav item, and action button is gated by the user&#x27;s permission map.</li>
+<li><strong>Workspace &amp; Victim mobile apps</strong> — where victim (<code>APP</code>) users authenticate without a context gate (auth-only) and operate strictly within their own data.</li>
+</ul>
+<p>RBAC consumes the platform&#x27;s authentication service (which resolves each caller into <code>req.issuer</code>) and is consumed by every feature module (claims, shelters, hotline, notes, communities, reports, and so on), each of which declares the context and permission it requires.</p>
+<h2 id="4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</h2>
+<h3 id="goals">Goals</h3>
+<ul>
+<li><strong>Enforce strict tenant isolation</strong> — a VS360 user only ever sees and edits data belonging to their own agency (<code>serviceCenterInfo.id</code>).</li>
+<li><strong>Provide fine-grained, least-privilege access</strong> — every sensitive action is individually gated by a module→action permission flag, not by broad role names alone.</li>
+<li><strong>Centralize governance, distribute administration</strong> — NECX Inc defines roles/plans; agencies self-administer staff within plan limits.</li>
+<li><strong>Enforce defense-in-depth</strong> — the backend is the source of truth for every access decision; the frontend mirrors permissions only for UX and is never trusted alone.</li>
+<li><strong>Guarantee complete auditability</strong> — every create/update/delete on identity, role, and permission objects writes an <code>ActionLogs</code> row.</li>
+<li><strong>Enforce commercial constraints</strong> — plans cap the roles an agency may assign and the number of seats it may consume.</li>
+</ul>
+<h3 id="success-metrics">Success Metrics</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Definition</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>Cross-tenant leakage incidents</td><td>Confirmed cases of one agency accessing another agency&#x27;s data</td><td>0</td></tr>
+<tr><td>Backend enforcement coverage</td><td>Protected routes guarded by both <code>allowOnly</code> context gate and permission middleware where applicable</td><td>100% of protected routes</td></tr>
+<tr><td>Audit completeness</td><td>Identity/role mutations that produce an <code>ActionLogs</code> entry</td><td>100%</td></tr>
+<tr><td>Seat-limit enforcement</td><td>Agency user-creation attempts beyond <code>numberOfUsers</code> that are blocked</td><td>100% blocked</td></tr>
+<tr><td>Least-privilege default</td><td>New roles created with no permissions granted by default (opt-in only)</td><td>100%</td></tr>
+<tr><td>Permission-catalog fidelity</td><td>Role editor exposes only actions the agency&#x27;s plan grants</td><td>100% of shown actions plan-enabled</td></tr>
+<tr><td>Super-admin bypass containment</td><td><code>SUPER_ADMIN</code> bypass restricted to the <code>SUPER_ADMIN</code> role only</td><td>100%</td></tr>
+</tbody></table></div>
+<h2 id="5-scope">5. Scope</h2>
+<h3 id="51-in-scope">5.1 In Scope</h3>
+<ul>
+<li>The identity model: <code>users</code> vs <code>app_users</code>, the <code>vsms_users</code> agency-membership join, and the three issuer types (<code>NECX</code>, <code>VSMS</code>, <code>APP</code>).</li>
+<li>The <code>req.issuer</code> shape (<code>id</code>, <code>uid</code>, <code>type</code>, <code>roleInfo</code> with <code>context</code> + <code>permission</code>, and <code>serviceCenterInfo</code>).</li>
+<li>The context gate (<code>allowOnly</code>) and its allow-list values (<code>ADMIN</code>, <code>VS360</code>), including multi-context routes.</li>
+<li>The complete NECX platform permission catalog (<code>modules</code>) and agency permission catalog (<code>vs360Modules</code>), documented as full tables.</li>
+<li>The fine-grained permission middleware (module.action gate) evaluated in services.</li>
+<li>The <code>SUPER_ADMIN</code> bypass semantics on both backend and frontend.</li>
+<li>Roles CRUD (create, read, update, delete) with permission-JSON authoring, in both the <code>ADMIN</code> and <code>VS360</code> contexts.</li>
+<li>Assigning permissions to roles and assigning roles to users.</li>
+<li>Provisioning agency (VSMS) users — inline from agency detail and via the VS360 Users tab and VS360 &quot;Staff Management&quot;.</li>
+<li>Plan-driven role catalogs (<code>GET /roles/plan/:id</code>) and seat limits (<code>numberOfUsers</code>).</li>
+<li>Frontend enforcement: <code>ProtectedPage</code> route guard, <code>LeftSideNavbar</code>/nav gating, and in-page <code>hasPermission</code>/<code>isSuperAdmin</code> checks.</li>
+<li>User activation/deactivation (archival) and onboarding-email delivery.</li>
+<li>Auditing of identity/role/permission mutations via <code>ActionLogs</code>.</li>
+</ul>
+<h3 id="52-out-of-scope">5.2 Out of Scope</h3>
+<ul>
+<li>Authentication mechanics themselves (OTP login, password reset, login codes, PIN/step-up, token rotation) — covered by the Platform Core &amp; Authentication PRD; referenced here only where they intersect user creation.</li>
+<li>The internal business logic of feature modules gated by RBAC (claims, shelters, hotline, communities, reports) — covered by their respective PRDs.</li>
+<li>Agency (tenant) provisioning end-to-end, hotline/Twilio provisioning, and plan billing mechanics — covered by the NECX Admin and Provisioning PRDs (referenced where relevant to seats/roles).</li>
+<li>Victim self-registration flows on mobile beyond their <code>app_user</code> identity classification.</li>
+<li>Transport-level response encryption and edge-proxy secrets (<code>X-Netlify-Secret</code>) — a platform concern, noted only as context.</li>
+</ul>
+<div class="callout note"><div class="callout-title">ℹ Least privilege by default</div><div class="callout-body">New roles are authored with an explicit, opt-in permission map. A role grants nothing until an administrator toggles specific module→action switches, and the switches shown are constrained to what the agency&#x27;s plan permits.</div></div>
+<h2 id="6-personas-user-roles">6. Personas &amp; User Roles</h2>
+<p>RBAC recognizes three identity classes and, within the staff classes, an arbitrary number of platform-defined roles. The three built-in structural roles/positions below are the reference points; agencies and NECX Inc define additional named roles as data.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Role</th><th>Description</th><th>Key permissions</th></tr></thead>
+<tbody>
+<tr><td>NECX Super Admin (<code>SUPER_ADMIN</code>, <code>NECX</code> issuer)</td><td>NECX Inc platform operator. The <code>SUPER_ADMIN</code> role bypasses all fine-grained checks.</td><td>Everything, platform-wide: all <code>modules</code> actions, all agencies, roles, plans, categories, localization, AI/telephony config.</td></tr>
+<tr><td>NECX Platform Staff (<code>NECX</code> issuer, non-super)</td><td>NECX Inc staff with a scoped Admin role.</td><td>Subset of <code>modules</code> per assigned role (e.g. <code>agency.view</code>, <code>necx_user.add</code>, <code>role_management.edit</code>). Context <code>ADMIN</code>.</td></tr>
+<tr><td>Agency Administrator (<code>VSMS</code> issuer)</td><td>Senior agency staff who administer their own agency&#x27;s users and roles.</td><td><code>user.*</code>, <code>role_management.*</code> (plan-permitting), plus operational <code>vs360Modules</code>. Context <code>VS360</code>; scoped to own <code>serviceCenterInfo.id</code>.</td></tr>
+<tr><td>Agency Caseworker / Advocate (<code>VSMS</code> issuer)</td><td>Front-line agency staff handling cases, shelter, hotline, notes.</td><td>Operational subset of <code>vs360Modules</code> (e.g. <code>claims.view/add/edit</code>, <code>shelters.view</code>, <code>notes_center.*</code>); often lacking <code>role_management</code> and limited <code>claims.view_all</code>.</td></tr>
+<tr><td>Victim / Survivor (<code>APP</code> issuer)</td><td>Mobile-app end-user. No context gate; auth-only routes; sees only own data.</td><td>No staff permission map; access bounded by ownership of their own <code>app_user</code> records.</td></tr>
+</tbody></table></div>
+<h3 id="persona-narratives">Persona Narratives</h3>
+<p><strong>Dana — NECX Inc Platform Administrator.</strong> Dana operates the Admin console as a <code>SUPER_ADMIN</code>. She authors the role catalog for both the Admin panel and the VS360 panel, bundles VS360 roles into subscription plans, and provisions new agencies with a seat count and a plan. Because she is a super-admin, every module and action is available to her regardless of the fine-grained map; the header always shows her &quot;SUPER ADMIN&quot; badge.</p>
+<p><strong>Marcus — Agency Administrator (VS360).</strong> Marcus runs day-to-day staff administration for his agency in VS360&#x27;s &quot;Staff Management&quot;. He creates caseworker accounts, assigns them roles drawn from his agency&#x27;s plan, and sets their service categories and OTP channel. He cannot exceed his agency&#x27;s seat count, cannot grant permissions his plan does not include, and cannot see or touch any other agency&#x27;s users.</p>
+<p><strong>Priya — Agency Caseworker (VS360).</strong> Priya logs in and sees only the nav items her role permits. She can view and edit her own cases but, lacking <code>claims.view_all</code>, cannot see cases she was not assigned to. Buttons for actions she lacks (e.g. deleting a role) never render for her.</p>
+<p><strong>Sam — Victim (mobile).</strong> Sam authenticates via a login code created when an advocate opened a case, then sets a password/PIN. Sam&#x27;s requests carry the <code>APP</code> issuer type, hit auth-only mobile routes with no context gate, and can only ever touch Sam&#x27;s own services and requests.</p>
+<h2 id="7-system-context-architecture">7. System Context &amp; Architecture</h2>
+<h3 id="tech-stack">Tech Stack</h3>
+<p>The RBAC system lives in the unified backend <code>necx-backend_v2</code> (Node.js + Express, ESM; Objection/Knex over PostgreSQL; Socket.IO; Redis; BullMQ). It is consumed by three frontends: <strong>NECX Admin</strong> (React 18 + Vite + Mantine + Redux + TanStack Query), <strong>VS360 web</strong> (React 18 + Vite + Mantine + Redux + TanStack Query), and the mobile apps.</p>
+<h3 id="request-model-enforcement-chain">Request Model &amp; Enforcement Chain</h3>
+<p>The backend uses a <strong>tri-router pattern</strong>: nearly every feature module exports <code>adminRouter</code> (<code>/admin/*</code>), <code>webRouter</code> (<code>/web/*</code>), and <code>mobileRouter</code> (<code>/mobile/*</code>), mounted under the API version prefix <code>v2</code> (e.g. <code>/v2/admin</code>, <code>/v2/web</code>, <code>/v2/mobile</code>). The URL prefix declares the intended client. Every protected request flows through a middleware chain:</p>
+<ol class="flow">
+<li><strong>Rate limiter</strong> (named limiters: <code>standard</code>, <code>auth</code>, <code>authStrict</code>, <code>passwordReset</code>).</li>
+<li><strong>Auth middleware</strong> — validates the JWT and populates <code>req.issuer</code>.</li>
+<li><strong>Context middleware</strong> — resolves <code>roleInfo.context</code>.</li>
+<li><strong><code>allowOnly(...context)</code></strong> — the context gate (403 if the caller&#x27;s context is absent or not allow-listed).</li>
+<li><strong>Permission middleware</strong> — the fine-grained module.action gate (also enforced inside services).</li>
+<li><strong>Validator (Joi) → controller → service → repository/model.</strong></li>
+</ol>
+<p>RBAC is therefore evaluated at two layers on every protected request, before any business logic runs.</p>
+<h3 id="talking-to-the-backend">Talking to the Backend</h3>
+<p>Both web clients use an Axios factory with interceptors that inject <code>Authorization: Bearer &lt;accessToken&gt;</code>, <code>x-refresh-token</code>, <code>X-Netlify-Secret</code>, and <code>X-Environment</code>; rotate the refresh token from the response header; decrypt AES-encrypted response bodies; and force a full logout on HTTP 401. The login response carries the user&#x27;s <code>roleInfo</code> (with <code>permission</code>) plus the permission catalogs (<code>modules</code> / <code>vs360Modules</code>) used to render the role editor.</p>
+<h3 id="tenancy">Tenancy</h3>
+<p>Multi-tenancy is enforced server-side: agency-scoped data is filtered by <code>req.issuer.serviceCenterInfo.id</code>, so a VS360 user only ever sees or edits their own agency. On the frontend, tenant context rides on the persisted <code>auth.user</code> object (<code>serviceCenterInfo</code>, <code>roleInfo</code>, <code>vsmsUserInfo</code>); socket rooms and RBAC checks derive scope from it. The <code>vsms_users</code> table joins a <code>users</code> row to a <code>service_centers</code> row to establish agency membership.</p>
+<h3 id="real-time">Real-Time</h3>
+<p>Socket.IO authenticates via a JWT in the connection handshake (<code>auth: { token, refreshToken }</code>), not headers, and joins per-user rooms (<code>vs360-user-&lt;uid&gt;</code>), the agency room (<code>service-center-&lt;id&gt;</code>), and global rooms. Access to socket-delivered data follows the same tenant scoping as REST.</p>
+<h2 id="8-functional-requirements">8. Functional Requirements</h2>
+<h3 id="81-identity-model">8.1 Identity Model</h3>
+<p>NECX maintains two identity tables. <strong><code>users</code></strong> holds platform and agency staff (NECX Inc operators and agency caseworkers/administrators). <strong><code>app_users</code></strong> holds victims/survivors. Credentials live separately in <code>user_credentials</code> (bcrypt). Agency membership is established by <strong><code>vsms_users</code></strong>, which joins a <code>users</code> row to a <code>service_centers</code> (agency) row; <code>vsms_user_service_categories</code> scopes a staff member to specific service categories.</p>
+<p>Every authenticated caller is resolved by the auth middleware into <strong><code>req.issuer</code></strong>, carrying <code>id</code>, <code>uid</code>, <code>type</code>, <code>roleInfo</code> (with <code>context</code> + <code>permission</code>), and — for staff — <code>serviceCenterInfo</code>. The <code>type</code> classifies the caller:</p>
+<div class="table-wrap"><table>
+<thead><tr><th><code>issuer.type</code></th><th>Who</th><th>Primary client</th><th><code>roleInfo.context</code></th></tr></thead>
+<tbody>
+<tr><td><code>NECX</code></td><td>NECX Inc platform super-admin / staff</td><td>NECX Admin console</td><td><code>ADMIN</code></td></tr>
+<tr><td><code>VSMS</code></td><td>Agency staff / caseworker (Victim Services Mgmt System)</td><td>VS360 web + Workspace mobile</td><td><code>VS360</code></td></tr>
+<tr><td><code>APP</code></td><td>Victim / survivor</td><td>Victim mobile app</td><td>(mobile routes: no context guard, auth only)</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-ID-01</td><td>The system SHALL classify every authenticated caller into exactly one issuer type: <code>NECX</code>, <code>VSMS</code>, or <code>APP</code>.</td><td>Must</td></tr>
+<tr><td>FR-ID-02</td><td>Staff identities SHALL be stored in <code>users</code>; victim identities SHALL be stored in <code>app_users</code>; the two SHALL be distinct tables.</td><td>Must</td></tr>
+<tr><td>FR-ID-03</td><td>Agency staff membership SHALL be represented by a <code>vsms_users</code> row joining a <code>users</code> row to a <code>service_centers</code> row.</td><td>Must</td></tr>
+<tr><td>FR-ID-04</td><td><code>req.issuer</code> SHALL expose <code>id</code>, <code>uid</code>, <code>type</code>, <code>roleInfo</code> (including <code>context</code> and <code>permission</code>), and, for staff, <code>serviceCenterInfo</code>.</td><td>Must</td></tr>
+<tr><td>FR-ID-05</td><td>Credentials SHALL be stored separately in <code>user_credentials</code> (bcrypt-hashed) and never returned to clients.</td><td>Must</td></tr>
+<tr><td>FR-ID-06</td><td>The Admin console SHALL manage three staff/user categories via tabs: NECX Users (<code>necx_user</code>), VS360 Users (<code>vsms_user</code>), and App Users (<code>app_user</code>).</td><td>Must</td></tr>
+<tr><td>FR-ID-07</td><td>Agency-scoped queries SHALL be filtered server-side by <code>issuer.serviceCenterInfo.id</code>; a VS360 caller SHALL never receive another agency&#x27;s records.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="82-the-context-gate-allowonly">8.2 The Context Gate (<code>allowOnly</code>)</h3>
+<p>The coarse authorization layer is the context gate, implemented in <code>src/middleware/allowOnly.js</code>. It reads <code>req.issuer.roleInfo.context</code> and returns <strong>403</strong> if the value is absent or not in the route&#x27;s allow-list. The allow-list values are <code>ADMIN</code> (NECX platform) and <code>VS360</code> (agency). Mobile victim routes usually omit the guard entirely (auth-only). Some routes allow multiple contexts — for example the roles list is guarded <code>allowOnly(&#x27;VS360&#x27;,&#x27;ADMIN&#x27;)</code>, letting both platform admins and agency admins read/manage roles for their respective contexts.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CTX-01</td><td>Each protected route SHALL declare an <code>allowOnly(...)</code> allow-list of contexts; the gate SHALL 403 when the caller&#x27;s <code>roleInfo.context</code> is absent or not listed.</td><td>Must</td></tr>
+<tr><td>FR-CTX-02</td><td>The allow-list values SHALL be <code>ADMIN</code> and <code>VS360</code>.</td><td>Must</td></tr>
+<tr><td>FR-CTX-03</td><td>Mobile victim (<code>APP</code>) routes SHALL be auth-only (no context gate) unless a specific route requires otherwise.</td><td>Must</td></tr>
+<tr><td>FR-CTX-04</td><td>Routes intended for both platform and agency admins (e.g. roles) SHALL declare <code>allowOnly(&#x27;VS360&#x27;,&#x27;ADMIN&#x27;)</code>.</td><td>Must</td></tr>
+<tr><td>FR-CTX-05</td><td>The context gate SHALL run before the fine-grained permission middleware and before any controller/service logic.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="83-fine-grained-permission-model">8.3 Fine-Grained Permission Model</h3>
+<p>A role&#x27;s <code>permission</code> object is a <strong>module → action → boolean</strong> map, defined in <code>src/lib/constants/role-permissions.js</code> and evaluated in services and <code>permission-middleware.js</code>. There are two permission templates: the NECX platform catalog (<code>modules</code>) and the agency catalog (<code>vs360Modules</code>). Roles (<code>roles</code> table) hold a name plus this permission JSON, scoped per agency/platform (<code>serviceCenterId</code> present for agency roles; system roles have none and are locked).</p>
+<p>The frontend checks the same map via <code>hasPermission(appUser, module, action)</code>, reading <code>appUser.roleInfo.permission[module][action]</code> (module hyphens normalized to underscores).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-PERM-01</td><td>Permissions SHALL be expressed as a module→action boolean map stored as JSON on the role.</td><td>Must</td></tr>
+<tr><td>FR-PERM-02</td><td>The backend SHALL evaluate the map in <code>permission-middleware.js</code> and/or in services on every gated action.</td><td>Must</td></tr>
+<tr><td>FR-PERM-03</td><td>The frontend SHALL mirror the map via <code>hasPermission(appUser, module, action)</code>, normalizing module name hyphens to underscores.</td><td>Must</td></tr>
+<tr><td>FR-PERM-04</td><td>The permission catalog SHALL be partitioned into <code>modules</code> (Admin/NECX) and <code>vs360Modules</code> (agency), delivered to the client at login.</td><td>Must</td></tr>
+<tr><td>FR-PERM-05</td><td>Action dependencies SHALL be enforced in the editor (e.g. <code>claims.view_all</code> requires <code>claims.view</code>).</td><td>Must</td></tr>
+<tr><td>FR-PERM-06</td><td><code>claims.view_all</code> SHALL gate visibility of all agency cases; without it a user sees only their own/self-actioned cases.</td><td>Must</td></tr>
+</tbody></table></div>
+<h4 id="831-necx-platform-permission-catalog-modules-complete">8.3.1 NECX Platform Permission Catalog (<code>modules</code>) — complete</h4>
+<p>All NECX platform modules are <code>necxOnly: true</code> (only assignable to <code>ADMIN</code>-context roles).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Module</th><th>Actions</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td><code>dashboard</code></td><td><code>view</code></td><td>Access the Admin dashboard landing.</td></tr>
+<tr><td><code>necx_user</code></td><td><code>view</code>, <code>add</code>, <code>edit</code>, <code>delete</code>, <code>password_reset_trigger</code></td><td>Manage NECX Inc internal/platform staff accounts.</td></tr>
+<tr><td><code>vsms_user</code></td><td><code>view</code>, <code>add</code>, <code>edit</code>, <code>delete</code>, <code>password_reset_trigger</code></td><td>Manage agency (tenant) staff who log into VS360.</td></tr>
+<tr><td><code>app_user</code></td><td><code>view</code>, <code>add</code>, <code>edit</code>, <code>delete</code>, <code>password_reset_trigger</code></td><td>Manage mobile end-users (victims).</td></tr>
+<tr><td><code>role_management</code></td><td><code>view</code>, <code>add</code>, <code>edit</code>, <code>delete</code></td><td>Create/edit/delete RBAC roles for both Admin and VS360 contexts.</td></tr>
+<tr><td><code>agency</code></td><td><code>view</code>, <code>add</code>, <code>edit</code>, <code>delete</code>, <code>add_service</code>, <code>edit_service</code>, <code>add_user</code></td><td>Provision and manage agencies (service centers), their services, and their users.</td></tr>
+<tr><td><code>plans</code></td><td><code>view</code>, <code>add</code>, <code>edit</code>, <code>delete</code></td><td>Manage subscription plans (role bundles + seat caps).</td></tr>
+<tr><td><code>category</code></td><td><code>view</code>, <code>add</code>, <code>edit</code>, <code>delete</code></td><td>Manage service categories.</td></tr>
+</tbody></table></div>
+<h4 id="832-agency-permission-catalog-vs360modules-complete">8.3.2 Agency Permission Catalog (<code>vs360Modules</code>) — complete</h4>
+<div class="table-wrap"><table>
+<thead><tr><th>Module</th><th>Actions</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td><code>dashboard</code></td><td><code>view</code>, <code>show_old</code>, <code>greeting</code>, <code>stats</code>, <code>quick_action</code>, <code>shelter_overview</code>, <code>hotline</code>, <code>cases_needing_attention</code>, <code>team_overview</code>, <code>recent_activity</code>, <code>upcoming_follow_ups</code>, <code>case_notes</code>, <code>analytics_insights</code></td><td>Fine-grained control of each dashboard widget/section.</td></tr>
+<tr><td><code>user</code></td><td><code>view</code>, <code>add</code>, <code>edit</code>, <code>delete</code>, <code>password_reset_trigger</code></td><td>Manage agency staff users.</td></tr>
+<tr><td><code>services</code></td><td><code>view</code>, <code>add</code>, <code>edit</code>, <code>delete</code></td><td>Manage the agency&#x27;s services offered to victims.</td></tr>
+<tr><td><code>claims</code></td><td><code>view</code>, <code>add</code>, <code>edit</code>, <code>delete</code>, <code>view_all</code></td><td>Manage victim service claims (cases); <code>view_all</code> unlocks all agency cases vs. only own.</td></tr>
+<tr><td><code>inquiries</code></td><td><code>view</code>, <code>add</code>, <code>edit</code>, <code>delete</code></td><td>Manage the victim↔agency inquiries inbox.</td></tr>
+<tr><td><code>communities</code></td><td><code>view</code>, <code>add</code>, <code>edit</code>, <code>delete</code></td><td>Manage/moderate agency communities.</td></tr>
+<tr><td><code>internal_chat</code></td><td><code>view</code></td><td>Access staff↔staff direct messaging within the agency.</td></tr>
+<tr><td><code>agency_chat</code></td><td><code>view</code></td><td>Access agency↔partner-agency chat and network.</td></tr>
+<tr><td><code>notes_center</code></td><td><code>view</code>, <code>add</code>, <code>edit</code>, <code>delete</code></td><td>Manage case notes across the agency.</td></tr>
+<tr><td><code>reports</code></td><td><code>pmt_reports</code></td><td>Access PMT/grant reporting.</td></tr>
+<tr><td><code>tools</code></td><td><code>view</code></td><td>Access calendar/reminders/tasks (and staff time).</td></tr>
+<tr><td><code>shelters</code></td><td><code>view</code>, <code>add</code>, <code>edit</code>, <code>delete</code>, <code>manage_transfers</code></td><td>Manage shelter locations/beds/waitlist; <code>manage_transfers</code> gates partner bed transfers.</td></tr>
+<tr><td><code>role_management</code></td><td><code>necxOnly</code>, <code>view</code>, <code>add</code>, <code>edit</code>, <code>delete</code></td><td>Manage RBAC roles within the agency (subject to plan).</td></tr>
+<tr><td><code>hotline</code></td><td><code>view</code>, <code>command_center</code>, <code>call_logs</code>, <code>callbacks</code>, <code>analytics</code>, <code>settings</code>, <code>show_simulate_button</code></td><td>Fine-grained control of hotline call-center sections.</td></tr>
+<tr><td><code>time</code></td><td><code>view</code></td><td>Access staff time/timesheets.</td></tr>
+</tbody></table></div>
+<h3 id="84-superadmin-bypass">8.4 SUPER_ADMIN Bypass</h3>
+<p>The <code>SUPER_ADMIN</code> role short-circuits all fine-grained permission checks and returns access on every module/action. On the backend it bypasses the permission middleware/service checks; on the frontend, <code>isSuperAdmin(roleName)</code> normalizes the role name (strips non-alpha, lowercases) and, if it equals <code>superadmin</code>, makes <code>hasPermission(...)</code> return <code>true</code> everywhere. The Admin header always renders the &quot;SUPER ADMIN&quot; badge for such a user. Super-admin identity is recognized either via <code>roleInfo.roleName</code> or membership in the user&#x27;s <code>roles[]</code> array.</p>
+<p>The context gate still applies structurally (a super-admin operates within the <code>ADMIN</code> context), but the fine-grained layer is fully bypassed.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SA-01</td><td>A <code>SUPER_ADMIN</code> role SHALL bypass all fine-grained permission checks on both backend and frontend.</td><td>Must</td></tr>
+<tr><td>FR-SA-02</td><td>Super-admin detection SHALL normalize the role name (non-alpha stripped, lowercased) and compare to <code>superadmin</code>; membership MAY also be resolved via the <code>roles[]</code> array.</td><td>Must</td></tr>
+<tr><td>FR-SA-03</td><td>The bypass SHALL be restricted to the super-admin role; no other role SHALL receive an implicit bypass.</td><td>Must</td></tr>
+<tr><td>FR-SA-04</td><td>The Admin UI SHALL display a &quot;SUPER ADMIN&quot; badge for super-admin users.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="85-roles-crud-permission-authoring">8.5 Roles CRUD &amp; Permission Authoring</h3>
+<p>Roles are managed under <strong>Roles &amp; Permissions</strong> (module <code>role_management</code>) in both Admin and VS360. In Admin, roles are authored for two target panels via <code>roleContextPanels</code> = <code>{ &quot;VS360 Panel&quot;: &quot;VS360&quot;, &quot;Admin Panel&quot;: &quot;ADMIN&quot; }</code>. The role editor (<code>RolePermissionForm.jsx</code> / <code>RolePermissionsForm.jsx</code>) loads the permission catalog — <code>modules</code> for the Admin panel, <code>vs360Modules</code> for the VS360 panel — and renders a vertical tab per module with a permission switch per action, plus Select-All / Deselect-All per module. In VS360, the editor additionally fetches the agency plan&#x27;s allowed permission catalog via <code>GET /roles/plan/:planId</code> and shows only the actions the plan grants.</p>
+<p>Persisting a role calls <code>POST /roles</code> (create) or <code>PATCH /roles/:id</code> (update) with <code>{ roleName, permission, description, context }</code>. System roles (no <code>serviceCenterId</code>) are locked from editing in VS360; &quot;View Details&quot; requires edit permission and an agency-scoped role.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-ROLE-01</td><td>Users with <code>role_management.view</code> SHALL list roles (paginated, searchable, filterable by permissions, exportable).</td><td>Must</td></tr>
+<tr><td>FR-ROLE-02</td><td>Users with <code>role_management.add</code> SHALL create a role via <code>POST /roles</code> with <code>{ roleName, permission, description, context }</code>.</td><td>Must</td></tr>
+<tr><td>FR-ROLE-03</td><td>Users with <code>role_management.edit</code> SHALL update a role via <code>PATCH /roles/:id</code>.</td><td>Must</td></tr>
+<tr><td>FR-ROLE-04</td><td>Users with <code>role_management.delete</code> SHALL delete a role.</td><td>Must</td></tr>
+<tr><td>FR-ROLE-05</td><td>In Admin, roles SHALL be creatable for both the <code>ADMIN</code> and <code>VS360</code> contexts (<code>roleContextPanels</code>), loading <code>modules</code> or <code>vs360Modules</code> respectively.</td><td>Must</td></tr>
+<tr><td>FR-ROLE-06</td><td>In VS360, the editor SHALL show only actions permitted by the agency&#x27;s plan (<code>GET /roles/plan/:planId</code>).</td><td>Must</td></tr>
+<tr><td>FR-ROLE-07</td><td>The editor SHALL provide per-module Select-All / Deselect-All and enforce action dependencies (e.g. <code>claims.view_all</code> ⇒ <code>claims.view</code>).</td><td>Must</td></tr>
+<tr><td>FR-ROLE-08</td><td>System roles (no <code>serviceCenterId</code>) SHALL be locked from edit/delete in VS360.</td><td>Must</td></tr>
+<tr><td>FR-ROLE-09</td><td>Every role create/update/delete SHALL write an <code>ActionLogs</code> audit entry.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="86-assigning-roles-to-users">8.6 Assigning Roles to Users</h3>
+<p>Roles are assigned <strong>on the user</strong>, not on the role. In both consoles, the user form exposes a multi-select of roles (<code>GET /roles?pageLess</code>); saving the user persists the mapped <code>roleIds</code>. A user may hold multiple roles; the effective permission set is the union of the assigned roles&#x27; maps (with super-admin overriding).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-ASSIGN-01</td><td>Role assignment SHALL be performed on the user record via a roles multi-select, persisting <code>roleIds</code>.</td><td>Must</td></tr>
+<tr><td>FR-ASSIGN-02</td><td>In VS360, assignable roles SHALL be constrained to those permitted by the agency&#x27;s plan.</td><td>Must</td></tr>
+<tr><td>FR-ASSIGN-03</td><td>A user MAY hold multiple roles; the effective permissions SHALL be the union of assigned roles&#x27; maps.</td><td>Must</td></tr>
+<tr><td>FR-ASSIGN-04</td><td>Changing a user&#x27;s roles SHALL take effect on the user&#x27;s next token issuance / login response (permission map is carried on the session).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="87-creating-inviting-users">8.7 Creating &amp; Inviting Users</h3>
+<p>There is no separate email-invitation flow inside User Management; staff are created directly with a <strong>temporary password</strong> and an OTP channel, and an onboarding email carrying credentials can be sent. (Agency-to-agency email invitations are a separate My Network feature, out of scope here.)</p>
+<p><strong>VS360 (agency admin) — <code>UserForm.jsx</code>:</strong> fields are roles (multi), first/last name, email, phone, temporary password (create only), OTP channel (Email/SMS), and service categories (multi, with an &quot;all&quot; option). Create calls <code>POST /users</code> (adding <code>type:&quot;VSMS&quot;</code>, the agency <code>serviceCenterId</code>, and mapped <code>roleIds</code>/<code>categoryIds</code>); edit calls <code>PATCH /users/:uid</code>. Activation/deactivation toggles <code>isArchived</code> via <code>PATCH /users/:uid</code> (a dedicated <code>PATCH /users/update-status/:uid</code> also exists). Confirm modals guard create/update/status changes.</p>
+<p><strong>Admin (platform) — <code>VsmsUserForm.jsx</code> / <code>NecxUsers</code> / <code>AppUsers</code>:</strong> VS360 users can also be created inline from the agency detail page (&quot;Add User&quot;) or the VS360 Users tab. When creating a VS360 user, the admin selects the agency and roles are fetched by the agency&#x27;s plan (<code>GET /roles/plan/:planId</code>), service categories and OTP channel are set, and <code>POST /users</code> with <code>type:&quot;VSMS&quot;</code> provisions the login. NECX users and App users are managed from their respective tabs. Onboarding email: <code>POST /users/send-onboarding-email/:uid</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-USER-01</td><td>Authorized admins SHALL create staff users via <code>POST /users</code> with roles, names, email, phone, temporary password, OTP channel, and service categories.</td><td>Must</td></tr>
+<tr><td>FR-USER-02</td><td>VS360-created users SHALL be stamped <code>type:&quot;VSMS&quot;</code> and the creating admin&#x27;s/agency&#x27;s <code>serviceCenterId</code>.</td><td>Must</td></tr>
+<tr><td>FR-USER-03</td><td>Admins SHALL edit users via <code>PATCH /users/:uid</code> and activate/deactivate via <code>isArchived</code> (or <code>PATCH /users/update-status/:uid</code>).</td><td>Must</td></tr>
+<tr><td>FR-USER-04</td><td>When creating a VS360 user in Admin, assignable roles SHALL be fetched by the agency&#x27;s plan (<code>GET /roles/plan/:planId</code>).</td><td>Must</td></tr>
+<tr><td>FR-USER-05</td><td>The system SHALL send onboarding credentials via <code>POST /users/send-onboarding-email/:uid</code>.</td><td>Should</td></tr>
+<tr><td>FR-USER-06</td><td>Create/edit/status actions SHALL be guarded by confirm modals in the UI and by the corresponding <code>add</code>/<code>edit</code>/<code>password_reset_trigger</code> permissions on the backend.</td><td>Must</td></tr>
+<tr><td>FR-USER-07</td><td>Mobile victim self-registration SHALL create an <code>app_user</code> (<code>type:&quot;APP&quot;</code>) via the mobile user-creation path (auth-only).</td><td>Must</td></tr>
+<tr><td>FR-USER-08</td><td>The <code>password_reset_trigger</code> permission SHALL gate an admin&#x27;s ability to initiate a password reset on another user.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="88-plan-driven-seat-limits-role-catalogs">8.8 Plan-Driven Seat Limits &amp; Role Catalogs</h3>
+<p>A <strong>plan</strong> (<code>plans</code> + <code>plan_roles</code>) is a named bundle of <code>VS360</code>-context roles plus caps. Agencies are assigned a plan at provisioning, which determines: (a) which roles their users can be given, via <code>GET /roles/plan/:planId</code>; and (b) a <strong>seat count</strong> derived from the agency&#x27;s <code>numberOfUsers</code> (&quot;1 Super Admin + N-1 users&quot;). The Admin UI disables &quot;Add User&quot; once <code>users.length &gt;= numberOfUsers</code>; the role editor and user forms show only plan-permitted roles/actions.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-PLAN-01</td><td>Plans SHALL bundle a set of <code>VS360</code>-context roles and be managed via <code>GET/POST /plans</code> and <code>PATCH /plans/:uid</code>.</td><td>Must</td></tr>
+<tr><td>FR-PLAN-02</td><td>An agency&#x27;s assignable roles SHALL be constrained to its plan&#x27;s roles (<code>GET /roles/plan/:planId</code>).</td><td>Must</td></tr>
+<tr><td>FR-PLAN-03</td><td>An agency&#x27;s seat count SHALL be <code>numberOfUsers</code>; user creation beyond it SHALL be blocked (UI disables &quot;Add User&quot;; backend rejects).</td><td>Must</td></tr>
+<tr><td>FR-PLAN-04</td><td>The role editor SHALL expose only permission actions the agency&#x27;s plan grants.</td><td>Must</td></tr>
+<tr><td>FR-PLAN-05</td><td>Only <code>ADMIN</code>-context users SHALL create/edit plans; VS360 users SHALL have read-only plan access.</td><td>Must</td></tr>
+</tbody></table></div>
+<div class="callout warn"><div class="callout-title">⚠ Seat enforcement must be server-side</div><div class="callout-body">The UI disables &quot;Add User&quot; at the seat cap, but the backend MUST independently reject over-seat creation. A UI-only check is insufficient because clients cannot be trusted.</div></div>
+<h3 id="89-frontend-enforcement-layers">8.9 Frontend Enforcement Layers</h3>
+<p>Both web clients centralize RBAC in <code>src/utils/utils.js</code> (<code>hasPermission</code>, <code>isSuperAdmin</code>, <code>getHomeRoute</code>), reading the persisted <code>state.auth.user.roleInfo</code>. There is no separate RBAC context/provider. Three consistent gating layers, backed by the same helpers, apply:</p>
+<ol class="flow">
+<li><strong>Route guard (<code>ProtectedPage.jsx</code>)</strong> — checks <code>isAuth</code> first (redirect to login with <code>state.from</code> if not). Then: super-admin or <code>isForAll</code> route → allow; a route with an explicit <code>permission</code> (string or array) → require <strong>all</strong> listed permissions; else fall back to module-presence (<code>hasPermission(user, module, &quot;view&quot;, true)</code>). Denied → renders <code>&lt;NoViewPermission/&gt;</code> (or <code>null</code> while the user loads).</li>
+<li><strong>Navigation gating (<code>LeftSideNavbar.jsx</code> <code>hasAccess()</code> / Admin <code>NavbarLinks.jsx</code>)</strong> — mirrors the same logic (isForAll → explicit permission array → module presence). Hidden items simply do not render; <code>isForAll</code> items (e.g. Settings) always show.</li>
+<li><strong>In-page action checks</strong> — components call <code>hasPermission(...)</code> / <code>isSuperAdmin(...)</code> directly to render/enable individual buttons and actions.</li>
+</ol>
+<p>The permission map is hydrated from the login/verify response (<code>modules</code> / <code>vs360Modules</code> plus <code>user.roleInfo</code>); <code>getHomeRoute(navItems, user)</code> selects the first nav item the user can see as the post-login landing page.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-FE-01</td><td><code>ProtectedPage</code> SHALL gate every protected route on authentication and RBAC; explicit <code>permission</code> values SHALL require ALL listed permissions.</td><td>Must</td></tr>
+<tr><td>FR-FE-02</td><td>Denied routes SHALL render a no-permission view rather than the protected content.</td><td>Must</td></tr>
+<tr><td>FR-FE-03</td><td>Navigation SHALL hide items the user cannot access via the same <code>hasPermission</code> logic; <code>isForAll</code> items SHALL always show.</td><td>Must</td></tr>
+<tr><td>FR-FE-04</td><td>In-page buttons/actions SHALL be gated by direct <code>hasPermission</code>/<code>isSuperAdmin</code> checks.</td><td>Must</td></tr>
+<tr><td>FR-FE-05</td><td>The permission map SHALL be hydrated from the auth response and read from the persisted Redux <code>auth</code> slice.</td><td>Must</td></tr>
+<tr><td>FR-FE-06</td><td>Frontend checks SHALL be treated as UX only; the backend SHALL remain the authoritative enforcement point.</td><td>Must</td></tr>
+<tr><td>FR-FE-07</td><td><code>getHomeRoute</code> SHALL land the user on the first nav item they are permitted to see (fallback <code>/dashboard</code>).</td><td>Should</td></tr>
+</tbody></table></div>
+<h2 id="9-detailed-user-system-flows">9. Detailed User &amp; System Flows</h2>
+<h3 id="91-create-a-role-assign-permissions-admin-vs360-context">9.1 Create a Role &amp; Assign Permissions (Admin, VS360 context)</h3>
+<ol class="flow">
+<li>A platform admin with <code>role_management.add</code> opens NECX Admin → <code>/users</code> → <strong>Roles and Permissions</strong> tab.</li>
+<li>They click <strong>Create</strong> and choose the target panel: <strong>VS360 Panel</strong> (<code>context: &quot;VS360&quot;</code>) or <strong>Admin Panel</strong> (<code>context: &quot;ADMIN&quot;</code>).</li>
+<li>The editor loads the permission catalog from Redux — <code>vs360Modules</code> for VS360, <code>modules</code> for Admin — populated at login, and renders a vertical tab per module.</li>
+<li>The admin enters a <code>roleName</code> and <code>description</code>, then toggles permission switches per module (using Select-All / Deselect-All as needed). The editor enforces dependencies — e.g. <code>claims.view_all</code> cannot be enabled unless <code>claims.view</code> is on.</li>
+<li>On save, the client sends <code>POST /roles</code> with <code>{ roleName, permission, description, context }</code>.</li>
+<li>Backend: <code>allowOnly(&#x27;VS360&#x27;,&#x27;ADMIN&#x27;)</code> passes (admin context), <code>role_management.add</code> passes, the role row is written with the permission JSON, and an <code>ActionLogs</code> entry is recorded.</li>
+<li>A confirm/success toast fires and the roles cache (<code>[&quot;roles-pageless&quot;]</code>) is invalidated so the new role appears in lists and user-assignment selectors.</li>
+</ol>
+<p><strong>Branch — agency admin creating a role in VS360:</strong> identical, except step 3 additionally calls <code>GET /roles/plan/:planId</code> and the editor shows only the actions the agency&#x27;s plan grants; system roles (no <code>serviceCenterId</code>) are not editable.</p>
+<h3 id="92-invite-create-a-user-assign-a-role-vs360-agency-admin">9.2 Invite / Create a User &amp; Assign a Role (VS360 agency admin)</h3>
+<ol class="flow">
+<li>An agency admin with <code>user.add</code> opens VS360 → <strong>Staff Management</strong> → <strong>Users</strong> tab and clicks <strong>Add User</strong>. If the agency is at its seat cap (<code>users.length &gt;= numberOfUsers</code>), the button is disabled.</li>
+<li>In <code>UserForm</code>, they select one or more <strong>roles</strong> (from <code>GET /roles?pageLess</code>, constrained to the plan), enter first/last name, email, phone, a <strong>temporary password</strong>, an <strong>OTP channel</strong> (Email/SMS), and <strong>service categories</strong>.</li>
+<li>On submit (behind a confirm modal), the client sends <code>POST /users</code> adding <code>type:&quot;VSMS&quot;</code>, the agency <code>serviceCenterId</code>, and mapped <code>roleIds</code>/<code>categoryIds</code>.</li>
+<li>Backend: <code>allowOnly(&#x27;VS360&#x27;)</code> passes, <code>user.add</code> passes, the seat cap is re-checked server-side, the <code>users</code> + <code>vsms_users</code> rows are created, credentials stored (bcrypt), and an <code>ActionLogs</code> entry written.</li>
+<li>Optionally the admin triggers the onboarding email (<code>POST /users/send-onboarding-email/:uid</code>) delivering credentials/instructions.</li>
+<li>The new staff member signs in (email + temp password → OTP verification); the verify response carries their <code>roleInfo.permission</code> (union of assigned roles) and the permission catalog, hydrating their session.</li>
+<li><code>getHomeRoute</code> lands them on the first nav item their roles permit.</li>
+</ol>
+<p><strong>Branch — platform admin creating a VS360 user in Admin:</strong> from the agency detail page (&quot;Add User&quot;) or the VS360 Users tab, the admin selects the agency, roles are fetched via <code>GET /roles/plan/:planId</code>, categories/OTP channel are set, and <code>POST /users</code> with <code>type:&quot;VSMS&quot;</code> provisions the account. Seat cap and plan-role constraints apply identically.</p>
+<h3 id="93-a-permission-gated-action-allowed-end-to-end-frontend-backend">9.3 A Permission-Gated Action Allowed End-to-End (frontend + backend)</h3>
+<p>Scenario: caseworker Priya deletes a case note (<code>notes_center.delete</code>).</p>
+<ol class="flow">
+<li>Priya&#x27;s session was hydrated at login with <code>roleInfo.permission</code> including <code>notes_center: { view: true, delete: true, ... }</code>.</li>
+<li><strong>Nav layer:</strong> <code>LeftSideNavbar.hasAccess()</code> shows the Notes item because <code>notes_center</code> is present in her map.</li>
+<li><strong>Route layer:</strong> navigating to <code>/notes</code>, <code>ProtectedPage</code> confirms <code>isAuth</code> and the route&#x27;s module presence/permission — allowed.</li>
+<li><strong>Action layer:</strong> the note detail drawer renders the Delete button because <code>hasPermission(user, &quot;notes_center&quot;, &quot;delete&quot;)</code> returns <code>true</code>.</li>
+<li>Priya clicks Delete; the client sends <code>DELETE /notes/:noteUid</code> with her bearer token.</li>
+<li><strong>Backend:</strong> rate-limiter → auth (<code>req.issuer</code> resolved) → context middleware → <code>allowOnly(&#x27;VS360&#x27;)</code> passes → permission middleware confirms <code>notes_center.delete</code> → the service deletes the note (scoped to her agency) → writes an <code>ActionLogs</code> entry.</li>
+<li>A success response is returned; the notes list cache is invalidated and the UI updates.</li>
+</ol>
+<h3 id="94-a-permission-gated-action-denied-end-to-end-frontend-backend">9.4 A Permission-Gated Action Denied End-to-End (frontend + backend)</h3>
+<p>Scenario: caseworker Priya lacks <code>role_management.*</code> and attempts to reach or act on Roles &amp; Permissions.</p>
+<ol class="flow">
+<li><strong>Nav layer:</strong> the Roles &amp; Permissions nav/tab does not render because her map has no <code>role_management</code> module presence.</li>
+<li><strong>Route/tab layer:</strong> if Priya deep-links to the roles view, <code>ProtectedPage</code> (or the tab&#x27;s <code>hasPermission(user, &quot;role_management&quot;, &quot;view&quot;)</code> check) fails and renders <code>&lt;NoViewPermission/&gt;</code> instead of the content.</li>
+<li><strong>Action layer:</strong> even if a stale/cached UI exposed a control, the Delete/Save buttons are gated by <code>hasPermission(...)</code> and do not render/enable.</li>
+<li><strong>Backend (defense-in-depth):</strong> if a crafted request nonetheless reaches <code>DELETE /roles/:id</code>, the permission middleware evaluates <code>role_management.delete</code> against her map, finds it absent (and she is not <code>SUPER_ADMIN</code>), and returns <strong>403</strong>. No mutation occurs.</li>
+<li>The client surfaces a friendly error toast via <code>handleErrorResponse</code> (403 → &quot;not permitted&quot;).</li>
+</ol>
+<p><strong>Branch — cross-tenant attempt:</strong> if Priya&#x27;s request targets another agency&#x27;s resource, the server&#x27;s tenant scoping (<code>serviceCenterInfo.id</code> filter) yields a not-found/403 regardless of her permission map — an agency user can never reach another agency&#x27;s data.</p>
+<h3 id="95-plan-seat-enforcement">9.5 Plan Seat Enforcement</h3>
+<ol class="flow">
+<li>An agency is provisioned with a plan and <code>numberOfUsers = N</code> (&quot;1 Super Admin + N-1 users&quot;).</li>
+<li>As the agency admin adds staff, the Users list reflects current headcount.</li>
+<li>When <code>users.length &gt;= numberOfUsers</code>, the <strong>Add User</strong> button is disabled in both VS360 and Admin (agency detail page).</li>
+<li>If a client bypasses the disabled control and still sends <code>POST /users</code>, the backend independently re-checks the seat cap for that agency and <strong>rejects</strong> the creation with an error.</li>
+<li>To add more seats, a platform admin edits the agency&#x27;s <code>numberOfUsers</code> (and/or plan) in Admin; the new cap then permits additional users.</li>
+<li>Every creation attempt (allowed or rejected) is auditable via <code>ActionLogs</code>.</li>
+</ol>
+<h3 id="96-superadmin-access">9.6 SUPER_ADMIN Access</h3>
+<ol class="flow">
+<li>Dana (NECX Inc) signs in; her <code>roleInfo.roleName</code> normalizes to <code>superadmin</code> (or she is a member of the super-admin <code>roles[]</code>).</li>
+<li><strong>Frontend:</strong> <code>isSuperAdmin(...)</code> returns <code>true</code>, so <code>hasPermission(...)</code> returns <code>true</code> for every module/action — all nav items, routes, and buttons are available; the header shows the &quot;SUPER ADMIN&quot; badge.</li>
+<li><strong>Backend:</strong> the permission middleware detects the super-admin role and bypasses all fine-grained checks; the <code>allowOnly</code> context gate still applies structurally (she operates in <code>ADMIN</code>).</li>
+<li>Dana can define roles for both panels, manage plans and agencies, and manage all three user categories.</li>
+</ol>
+<h3 id="97-deactivate-archive-a-staff-user">9.7 Deactivate (Archive) a Staff User</h3>
+<ol class="flow">
+<li>An admin with <code>user.edit</code> opens the Users list and selects a staff member.</li>
+<li>They toggle Deactivate (behind a confirm modal), sending <code>PATCH /users/:uid</code> with <code>isArchived: true</code> (or <code>PATCH /users/update-status/:uid</code>).</li>
+<li>Backend validates context + <code>user.edit</code>, flips the archive flag, and writes an <code>ActionLogs</code> entry.</li>
+<li>The archived user can no longer authenticate; existing sessions lose access on next token validation/refresh.</li>
+<li>Reactivation reverses the flag via the same endpoint.</li>
+</ol>
+<h2 id="10-data-model">10. Data Model</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Key Fields</th><th>Relationships</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td><code>Users</code></td><td>id, uid, type (<code>NECX</code>/<code>VSMS</code>), name, email, phone, isArchived</td><td>1—1 <code>UserCredential</code>; 1—1 <code>UserSettings</code>; M—N <code>Roles</code>; 1—M <code>VSMSUsers</code></td><td>Platform &amp; agency staff identities.</td></tr>
+<tr><td><code>AppUsers</code></td><td>id, uid, name, phone, email</td><td>1—M <code>ServiceClaims</code>; <code>VictimNotifications</code></td><td>Victim/survivor (mobile) identities.</td></tr>
+<tr><td><code>UserCredential</code></td><td>userId, passwordHash (bcrypt), channels</td><td>1—1 <code>Users</code></td><td>Secret credential store, never returned to clients.</td></tr>
+<tr><td><code>Roles</code></td><td>id, roleName, permission (JSON module→action), description, context (<code>ADMIN</code>/<code>VS360</code>), serviceCenterId (null = system)</td><td>M—N <code>Users</code>; M—N <code>Plans</code> via <code>PlanRoles</code>; belongs to <code>ServiceCenters</code> (agency roles)</td><td>Named permission bundle.</td></tr>
+<tr><td><code>Plans</code></td><td>id, uid, name</td><td>M—N <code>Roles</code> via <code>PlanRoles</code>; 1—M <code>ServiceCenters</code></td><td>Subscription bundle capping roles/seats.</td></tr>
+<tr><td><code>PlanRoles</code></td><td>planId, roleId</td><td>join <code>Plans</code>↔<code>Roles</code></td><td>Which roles a plan grants.</td></tr>
+<tr><td><code>VSMSUsers</code></td><td>userId, serviceCenterId</td><td>joins <code>Users</code>↔<code>ServiceCenters</code></td><td>Agency staff membership.</td></tr>
+<tr><td><code>VsmsUserServiceCategories</code></td><td>vsmsUserId, serviceCategoryId</td><td>joins <code>VSMSUsers</code>↔<code>ServiceCategories</code></td><td>Category scoping of a staff member.</td></tr>
+<tr><td><code>ServiceCenters</code></td><td>id, uid, name, numberOfUsers (seats), planId, serviceType</td><td>1—M <code>VSMSUsers</code>; belongs to <code>Plans</code></td><td>Agency (tenant); carries seat count &amp; plan.</td></tr>
+<tr><td><code>UserSettings</code></td><td>userId, preferences (notification toggles, language)</td><td>1—1 <code>Users</code></td><td>Per-user preferences.</td></tr>
+<tr><td><code>ActionLogs</code></td><td>action, referenceType, actionDescription{source, ip, url, context}</td><td>references any mutated entity</td><td>Immutable audit trail for all mutations.</td></tr>
+</tbody></table></div>
+<h2 id="11-api-integration-surface">11. API &amp; Integration Surface</h2>
+<h3 id="roles">Roles</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/roles</code></td><td>List roles (paginated, searchable, filterable)</td><td><code>allowOnly(&#x27;VS360&#x27;,&#x27;ADMIN&#x27;)</code> + <code>role_management.view</code></td></tr>
+<tr><td>POST</td><td><code>/roles</code></td><td>Create a role (<code>{ roleName, permission, description, context }</code>)</td><td><code>allowOnly(&#x27;VS360&#x27;,&#x27;ADMIN&#x27;)</code> + <code>role_management.add</code></td></tr>
+<tr><td>PATCH</td><td><code>/roles/:id</code></td><td>Update a role</td><td><code>allowOnly(&#x27;VS360&#x27;,&#x27;ADMIN&#x27;)</code> + <code>role_management.edit</code></td></tr>
+<tr><td>DELETE</td><td><code>/roles/:id</code></td><td>Delete a role</td><td><code>allowOnly(&#x27;VS360&#x27;,&#x27;ADMIN&#x27;)</code> + <code>role_management.delete</code></td></tr>
+<tr><td>GET</td><td><code>/roles/plan/:id</code></td><td>Roles/permission catalog permitted by a plan</td><td><code>allowOnly(&#x27;VS360&#x27;,&#x27;ADMIN&#x27;)</code></td></tr>
+<tr><td>GET</td><td><code>/roles?pageLess</code></td><td>Full role list for assignment selectors</td><td>context + <code>role_management</code>/<code>user</code> view</td></tr>
+</tbody></table></div>
+<h3 id="users">Users</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/users</code></td><td>List staff users (filters/pagination)</td><td><code>allowOnly(&#x27;ADMIN&#x27;)</code>/<code>allowOnly(&#x27;VS360&#x27;)</code> + <code>necx_user</code>/<code>vsms_user</code>/<code>user</code> view</td></tr>
+<tr><td>POST</td><td><code>/users</code></td><td>Create a staff user (<code>type</code>, <code>roleIds</code>, <code>categoryIds</code>, <code>serviceCenterId</code>)</td><td>context + <code>add</code>; server-side seat-cap check</td></tr>
+<tr><td>GET</td><td><code>/users/:uid</code></td><td>Get one user</td><td>context + view</td></tr>
+<tr><td>PATCH</td><td><code>/users/:uid</code></td><td>Edit user / toggle <code>isArchived</code></td><td>context + <code>edit</code></td></tr>
+<tr><td>PATCH</td><td><code>/users/update-status/:uid</code></td><td>Activate/deactivate user</td><td>context + <code>edit</code></td></tr>
+<tr><td>POST</td><td><code>/users/send-onboarding-email/:uid</code></td><td>Send onboarding credentials</td><td>context + <code>add</code>/<code>edit</code></td></tr>
+<tr><td>(mobile)</td><td>create mobile user</td><td>Victim self-registration → <code>app_user</code> (<code>type:&quot;APP&quot;</code>)</td><td>auth-only (no context gate)</td></tr>
+</tbody></table></div>
+<h3 id="plans">Plans</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/plans</code></td><td>List plans</td><td><code>allowOnly(&#x27;ADMIN&#x27;)</code> (VS360 read where applicable)</td></tr>
+<tr><td>POST</td><td><code>/plans</code></td><td>Create a plan</td><td><code>allowOnly(&#x27;ADMIN&#x27;)</code> + <code>plans.add</code></td></tr>
+<tr><td>PATCH</td><td><code>/plans/:uid</code></td><td>Update a plan</td><td><code>allowOnly(&#x27;ADMIN&#x27;)</code> + <code>plans.edit</code></td></tr>
+</tbody></table></div>
+<h3 id="agencies-seat-context">Agencies (seat context)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>POST</td><td><code>/service-centers</code></td><td>Create agency with <code>numberOfUsers</code> (seats) + <code>planId</code></td><td><code>allowOnly(&#x27;ADMIN&#x27;)</code> + <code>agency.add</code></td></tr>
+<tr><td>PATCH</td><td><code>/service-centers/update/:uid</code></td><td>Edit agency (adjust seats/plan)</td><td><code>allowOnly(&#x27;ADMIN&#x27;)</code> + <code>agency.edit</code></td></tr>
+<tr><td>GET</td><td><code>/service-centers/:id</code></td><td>Agency detail (users, seat usage)</td><td><code>allowOnly(&#x27;ADMIN&#x27;)</code> + <code>agency.view</code></td></tr>
+</tbody></table></div>
+<h3 id="external-integrations-rbac-adjacent">External Integrations (RBAC-adjacent)</h3>
+<ul>
+<li><strong>Email (BullMQ + templated Handlebars):</strong> onboarding-credential emails and OTP delivery for new users.</li>
+<li><strong>Twilio (SMS):</strong> OTP delivery when a user&#x27;s OTP channel is SMS.</li>
+<li><strong>JWT:</strong> access/refresh tokens carry the session; the permission map/<code>roleInfo</code> is delivered in the auth response and rides the session.</li>
+<li><strong>AES response encryption:</strong> all API responses (including role/user payloads) are encrypted in non-dev environments and decrypted client-side.</li>
+</ul>
+<h2 id="12-rbac-permissions">12. RBAC &amp; Permissions</h2>
+<p>The table below summarizes which flags gate the actions in this module. <code>SUPER_ADMIN</code> bypasses all fine-grained rows.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Action</th><th>Context (<code>allowOnly</code>)</th><th>Fine-grained permission</th></tr></thead>
+<tbody>
+<tr><td>Access Admin dashboard</td><td><code>ADMIN</code></td><td><code>dashboard.view</code></td></tr>
+<tr><td>List / create / edit / delete NECX staff</td><td><code>ADMIN</code></td><td><code>necx_user.{view,add,edit,delete}</code></td></tr>
+<tr><td>Trigger password reset on NECX staff</td><td><code>ADMIN</code></td><td><code>necx_user.password_reset_trigger</code></td></tr>
+<tr><td>List / create / edit / delete VS360 (agency) staff (from Admin)</td><td><code>ADMIN</code></td><td><code>vsms_user.{view,add,edit,delete}</code></td></tr>
+<tr><td>List / create / edit / delete App users (victims)</td><td><code>ADMIN</code></td><td><code>app_user.{view,add,edit,delete}</code></td></tr>
+<tr><td>Create/edit/delete roles (both panels, from Admin)</td><td><code>ADMIN</code></td><td><code>role_management.{view,add,edit,delete}</code></td></tr>
+<tr><td>Provision/manage agencies, add agency service/user</td><td><code>ADMIN</code></td><td><code>agency.{view,add,edit,delete,add_service,edit_service,add_user}</code></td></tr>
+<tr><td>Manage plans</td><td><code>ADMIN</code></td><td><code>plans.{view,add,edit,delete}</code></td></tr>
+<tr><td>Manage service categories</td><td><code>ADMIN</code></td><td><code>category.{view,add,edit,delete}</code></td></tr>
+<tr><td>List roles (both contexts)</td><td><code>VS360</code> or <code>ADMIN</code></td><td><code>role_management.view</code></td></tr>
+<tr><td>Manage agency staff (from VS360)</td><td><code>VS360</code></td><td><code>user.{view,add,edit,delete,password_reset_trigger}</code></td></tr>
+<tr><td>Create/edit/delete agency roles</td><td><code>VS360</code></td><td><code>role_management.{view,add,edit,delete}</code> (plan-permitting)</td></tr>
+<tr><td>View own cases vs. all agency cases</td><td><code>VS360</code></td><td><code>claims.view</code> vs. <code>claims.view_all</code></td></tr>
+<tr><td>Manage shelters / partner transfers</td><td><code>VS360</code></td><td><code>shelters.{view,add,edit,delete}</code> / <code>shelters.manage_transfers</code></td></tr>
+<tr><td>Access hotline sections</td><td><code>VS360</code></td><td><code>hotline.{view,command_center,call_logs,callbacks,analytics,settings,show_simulate_button}</code></td></tr>
+<tr><td>Access notes / services / inquiries / communities / tools / time / chat / reports</td><td><code>VS360</code></td><td>respective <code>vs360Modules</code> action flags</td></tr>
+<tr><td>Victim mobile actions</td><td>(none)</td><td>auth-only; bounded by ownership of own data</td></tr>
+</tbody></table></div>
+<h2 id="13-non-functional-requirements">13. Non-Functional Requirements</h2>
+<h3 id="security-privacy-victim-safety">Security &amp; Privacy (victim safety)</h3>
+<ul>
+<li><strong>Defense-in-depth:</strong> every access decision is enforced server-side; the frontend mirrors permissions for UX only and is never the sole gate. A denied frontend still yields a 403 on the backend.</li>
+<li><strong>Least privilege:</strong> new roles grant nothing until explicitly toggled; editors expose only plan-permitted actions; the super-admin bypass is confined to the <code>SUPER_ADMIN</code> role.</li>
+<li><strong>Tenant isolation:</strong> agency-scoped data is filtered by <code>serviceCenterInfo.id</code>; cross-tenant access is structurally impossible for VS360 users, independent of their permission map.</li>
+<li><strong>Credential protection:</strong> passwords are bcrypt-hashed in <code>user_credentials</code> and never returned; OTP-based two-step login protects staff sign-in; sensitive victim data is protected by ownership scoping.</li>
+<li><strong>Transport security:</strong> API responses are AES-encrypted in non-dev environments; the edge proxy validates <code>X-Netlify-Secret</code>; 401 forces full client logout.</li>
+</ul>
+<h3 id="auditability">Auditability</h3>
+<ul>
+<li>Nearly all create/update/delete operations — including role and user mutations — write an <code>ActionLogs</code> row capturing <code>action</code>, <code>referenceType</code>, and <code>actionDescription</code> (<code>source</code>, <code>ip</code>, <code>url</code>, <code>context</code>), providing a complete, immutable audit trail for compliance and grant/PMT reporting.</li>
+</ul>
+<h3 id="performance-availability">Performance &amp; Availability</h3>
+<ul>
+<li>Permission checks are in-memory map lookups on data carried in the session; they add negligible latency to the middleware chain.</li>
+<li>Role/user list endpoints are paginated; the plan catalog (<code>GET /roles/plan/:id</code>) is fetched once per editor session and cached client-side (TanStack Query).</li>
+<li>The permission map is hydrated at login and persisted client-side, so authorization requires no per-navigation round-trips.</li>
+</ul>
+<h3 id="consistency-correctness">Consistency &amp; Correctness</h3>
+<ul>
+<li>Frontend and backend evaluate the same module→action semantics; the three frontend layers (route, nav, action) share the same helpers, preventing drift.</li>
+<li>Action dependencies (e.g. <code>claims.view_all</code> ⇒ <code>claims.view</code>) are enforced in the editor to prevent inconsistent permission maps.</li>
+</ul>
+<h3 id="localization-accessibility">Localization &amp; Accessibility</h3>
+<ul>
+<li>Staff web UIs are English; the permission model itself is language-neutral. Role/permission editors follow the platform&#x27;s Mantine accessibility conventions (keyboard-operable switches, confirm modals).</li>
+</ul>
+<h3 id="compliance">Compliance</h3>
+<ul>
+<li>The audit trail and least-privilege posture support grant/PMT reporting obligations and general data-protection expectations for handling sensitive victim data.</li>
+</ul>
+<h2 id="14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</h2>
+<ul>
+<li><strong>Onboarding notification:</strong> new-user creation can trigger an onboarding email (<code>POST /users/send-onboarding-email/:uid</code>) with credentials/instructions, delivered via the BullMQ email queue; OTP for first sign-in is delivered by email or SMS (Twilio) per the user&#x27;s channel.</li>
+<li><strong>Seat-usage visibility:</strong> the Admin agency detail page surfaces current headcount vs. <code>numberOfUsers</code>, disabling &quot;Add User&quot; at the cap — an operational signal for plan upgrades.</li>
+<li><strong>Audit reporting:</strong> <code>ActionLogs</code> provides the substrate for administrative/compliance reporting on who created/edited/deleted which identities, roles, and permissions, with source/IP/URL/context metadata.</li>
+<li><strong>PostHog (web):</strong> product analytics identify the logged-in user (staging/beta/production only) and tag events with platform/version; RBAC events are not separately instrumented beyond standard page/action tracking.</li>
+<li><strong>No dedicated RBAC dashboard</strong> exists today (the Admin dashboard is a placeholder); seat and audit reporting are surfaced via the agency detail page and audit logs respectively.</li>
+</ul>
+<h2 id="15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Type</th><th>Impact</th><th>Mitigation/Owner</th></tr></thead>
+<tbody>
+<tr><td>Frontend-only gating relied upon for a new action</td><td>Risk</td><td>A missing backend check could allow an unauthorized action</td><td>Enforce every action in <code>permission-middleware</code>/service; treat frontend as UX only — Engineering</td></tr>
+<tr><td>Super-admin bypass over-broad</td><td>Risk</td><td>A misclassified role name normalizing to <code>superadmin</code> would gain full access</td><td>Restrict super-admin recognition strictly; audit role names; alert on new super-admins — Security</td></tr>
+<tr><td>Seat cap enforced only in UI</td><td>Risk</td><td>Over-seat user creation via crafted request</td><td>Re-check <code>numberOfUsers</code> server-side on <code>POST /users</code> — Engineering</td></tr>
+<tr><td>Plan/role drift after plan change</td><td>Risk</td><td>Existing roles may reference actions no longer in the plan</td><td>Re-validate role permission maps against plan on plan edit — Engineering</td></tr>
+<tr><td>Multi-role permission union semantics</td><td>Assumption</td><td>Effective permissions assumed to be the union of assigned roles</td><td>Confirm union (not intersection) is the intended and implemented behavior — Product/Engineering</td></tr>
+<tr><td>Permission changes require re-login to take effect</td><td>Risk</td><td>A user&#x27;s map is carried on the session; edits may not apply until next token issuance</td><td>Define/verify propagation on refresh or force re-auth for permission changes — Engineering</td></tr>
+<tr><td>System-role lock relies on <code>serviceCenterId</code> null check</td><td>Risk</td><td>A mislabeled role could be editable/deletable by a tenant</td><td>Enforce system-role immutability server-side, not just in UI — Engineering</td></tr>
+<tr><td>No self-serve email-invite flow for staff</td><td>Open Question</td><td>Staff are created with temp passwords; onboarding UX may be weaker</td><td>Decide whether to add an invite-link flow — Product</td></tr>
+<tr><td>Tenant isolation depends on consistent <code>serviceCenterInfo.id</code> filtering</td><td>Risk</td><td>A query missing the tenant filter could leak cross-tenant data</td><td>Centralize tenant scoping in repositories; add tests — Engineering</td></tr>
+<tr><td>Audit coverage completeness</td><td>Open Question</td><td>Confirm every identity/role mutation writes <code>ActionLogs</code></td><td>Audit the write paths; add missing log calls — Engineering/Security</td></tr>
+</tbody></table></div>
+<h2 id="16-glossary">16. Glossary</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>RBAC</td><td>Role-Based Access Control — access governed by roles carrying permission maps.</td></tr>
+<tr><td>Issuer (<code>req.issuer</code>)</td><td>The resolved authenticated caller: <code>id</code>, <code>uid</code>, <code>type</code>, <code>roleInfo</code>, <code>serviceCenterInfo</code>.</td></tr>
+<tr><td>Issuer type</td><td><code>NECX</code> (platform staff), <code>VSMS</code> (agency staff), <code>APP</code> (victim).</td></tr>
+<tr><td><code>users</code></td><td>Table of platform and agency staff identities.</td></tr>
+<tr><td><code>app_users</code></td><td>Table of victim/survivor (mobile) identities.</td></tr>
+<tr><td><code>vsms_users</code></td><td>Join of a <code>users</code> row to a <code>service_centers</code> row = agency staff membership.</td></tr>
+<tr><td>Context gate (<code>allowOnly</code>)</td><td>Coarse authorization by client context; values <code>ADMIN</code>, <code>VS360</code>.</td></tr>
+<tr><td>Context</td><td><code>roleInfo.context</code>: <code>ADMIN</code> (NECX) or <code>VS360</code> (agency).</td></tr>
+<tr><td><code>modules</code></td><td>NECX platform permission catalog (all <code>necxOnly</code>).</td></tr>
+<tr><td><code>vs360Modules</code></td><td>Agency (VS360) permission catalog.</td></tr>
+<tr><td>Permission map</td><td>A role&#x27;s <code>permission</code> JSON: module → action → boolean.</td></tr>
+<tr><td><code>SUPER_ADMIN</code></td><td>Role that bypasses all fine-grained permission checks.</td></tr>
+<tr><td><code>hasPermission</code></td><td>Frontend helper checking <code>roleInfo.permission[module][action]</code>.</td></tr>
+<tr><td><code>isSuperAdmin</code></td><td>Frontend helper detecting the super-admin role (bypass).</td></tr>
+<tr><td><code>ProtectedPage</code></td><td>Frontend route guard enforcing auth + RBAC.</td></tr>
+<tr><td><code>view_all</code></td><td><code>claims</code> action unlocking all agency cases vs. only own.</td></tr>
+<tr><td>Role</td><td>Named permission bundle (<code>roles</code> table) with a <code>context</code> and optional <code>serviceCenterId</code>.</td></tr>
+<tr><td>System role</td><td>A role with no <code>serviceCenterId</code>; locked from tenant edit/delete.</td></tr>
+<tr><td>Plan</td><td>A bundle of <code>VS360</code> roles (+ seat/feature caps) assigned to an agency (<code>plans</code>/<code>plan_roles</code>).</td></tr>
+<tr><td>Seat count (<code>numberOfUsers</code>)</td><td>Max staff an agency may provision (&quot;1 Super Admin + N-1 users&quot;).</td></tr>
+<tr><td>Agency / Service Center</td><td>A tenant (UI: &quot;Agency&quot;; code: &quot;Service Center&quot;).</td></tr>
+<tr><td><code>ActionLogs</code></td><td>Immutable audit trail of all mutations.</td></tr>
+<tr><td>OTP channel</td><td>The delivery channel (Email/SMS) for a user&#x27;s one-time login code.</td></tr>
+<tr><td>Onboarding email</td><td>Credentials/instructions email sent to a newly created staff user.</td></tr>
+<tr><td><code>serviceCenterInfo.id</code></td><td>The agency id used to scope all VS360 tenant data.</td></tr>
+</tbody></table></div>
+      </div>
+      <nav class="prevnext"><a class="pn prev" href="P11.html"><span>← Previous</span><b>Internal Chat</b></a><a class="pn next" href="P13.html"><span>Next →</span><b>Notes Center</b></a></nav>
+      <footer class="doc-foot">NECX Inc — Confidential · Generated 2026-07-05 · NECX RBAC &amp; User Management</footer>
+    </article>
+  </main>
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav class="toc-nav"><a class="toc-1" href="#1-document-control">1. Document Control</a>
+<a class="toc-1" href="#2-executive-summary">2. Executive Summary</a>
+<a class="toc-1" href="#3-product-overview-vision">3. Product Overview &amp; Vision</a>
+<a class="toc-2" href="#problem-statement">Problem Statement</a>
+<a class="toc-2" href="#product-vision">Product Vision</a>
+<a class="toc-2" href="#where-this-sits-in-the-necx-ecosystem">Where This Sits in the NECX Ecosystem</a>
+<a class="toc-1" href="#4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</a>
+<a class="toc-2" href="#goals">Goals</a>
+<a class="toc-2" href="#success-metrics">Success Metrics</a>
+<a class="toc-1" href="#5-scope">5. Scope</a>
+<a class="toc-2" href="#51-in-scope">5.1 In Scope</a>
+<a class="toc-2" href="#52-out-of-scope">5.2 Out of Scope</a>
+<a class="toc-1" href="#6-personas-user-roles">6. Personas &amp; User Roles</a>
+<a class="toc-2" href="#persona-narratives">Persona Narratives</a>
+<a class="toc-1" href="#7-system-context-architecture">7. System Context &amp; Architecture</a>
+<a class="toc-2" href="#tech-stack">Tech Stack</a>
+<a class="toc-2" href="#request-model-enforcement-chain">Request Model &amp; Enforcement Chain</a>
+<a class="toc-2" href="#talking-to-the-backend">Talking to the Backend</a>
+<a class="toc-2" href="#tenancy">Tenancy</a>
+<a class="toc-2" href="#real-time">Real-Time</a>
+<a class="toc-1" href="#8-functional-requirements">8. Functional Requirements</a>
+<a class="toc-2" href="#81-identity-model">8.1 Identity Model</a>
+<a class="toc-2" href="#82-the-context-gate-allowonly">8.2 The Context Gate (`allowOnly`)</a>
+<a class="toc-2" href="#83-fine-grained-permission-model">8.3 Fine-Grained Permission Model</a>
+<a class="toc-2" href="#84-superadmin-bypass">8.4 SUPER_ADMIN Bypass</a>
+<a class="toc-2" href="#85-roles-crud-permission-authoring">8.5 Roles CRUD &amp; Permission Authoring</a>
+<a class="toc-2" href="#86-assigning-roles-to-users">8.6 Assigning Roles to Users</a>
+<a class="toc-2" href="#87-creating-inviting-users">8.7 Creating &amp; Inviting Users</a>
+<a class="toc-2" href="#88-plan-driven-seat-limits-role-catalogs">8.8 Plan-Driven Seat Limits &amp; Role Catalogs</a>
+<a class="toc-2" href="#89-frontend-enforcement-layers">8.9 Frontend Enforcement Layers</a>
+<a class="toc-1" href="#9-detailed-user-system-flows">9. Detailed User &amp; System Flows</a>
+<a class="toc-2" href="#91-create-a-role-assign-permissions-admin-vs360-context">9.1 Create a Role &amp; Assign Permissions (Admin, VS360 context)</a>
+<a class="toc-2" href="#92-invite-create-a-user-assign-a-role-vs360-agency-admin">9.2 Invite / Create a User &amp; Assign a Role (VS360 agency admin)</a>
+<a class="toc-2" href="#93-a-permission-gated-action-allowed-end-to-end-frontend-backend">9.3 A Permission-Gated Action Allowed End-to-End (frontend + backend)</a>
+<a class="toc-2" href="#94-a-permission-gated-action-denied-end-to-end-frontend-backend">9.4 A Permission-Gated Action Denied End-to-End (frontend + backend)</a>
+<a class="toc-2" href="#95-plan-seat-enforcement">9.5 Plan Seat Enforcement</a>
+<a class="toc-2" href="#96-superadmin-access">9.6 SUPER_ADMIN Access</a>
+<a class="toc-2" href="#97-deactivate-archive-a-staff-user">9.7 Deactivate (Archive) a Staff User</a>
+<a class="toc-1" href="#10-data-model">10. Data Model</a>
+<a class="toc-1" href="#11-api-integration-surface">11. API &amp; Integration Surface</a>
+<a class="toc-2" href="#roles">Roles</a>
+<a class="toc-2" href="#users">Users</a>
+<a class="toc-2" href="#plans">Plans</a>
+<a class="toc-2" href="#agencies-seat-context">Agencies (seat context)</a>
+<a class="toc-2" href="#external-integrations-rbac-adjacent">External Integrations (RBAC-adjacent)</a>
+<a class="toc-1" href="#12-rbac-permissions">12. RBAC &amp; Permissions</a>
+<a class="toc-1" href="#13-non-functional-requirements">13. Non-Functional Requirements</a>
+<a class="toc-2" href="#security-privacy-victim-safety">Security &amp; Privacy (victim safety)</a>
+<a class="toc-2" href="#auditability">Auditability</a>
+<a class="toc-2" href="#performance-availability">Performance &amp; Availability</a>
+<a class="toc-2" href="#consistency-correctness">Consistency &amp; Correctness</a>
+<a class="toc-2" href="#localization-accessibility">Localization &amp; Accessibility</a>
+<a class="toc-2" href="#compliance">Compliance</a>
+<a class="toc-1" href="#14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</a>
+<a class="toc-1" href="#15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</a>
+<a class="toc-1" href="#16-glossary">16. Glossary</a>
+</nav>
+  </aside>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

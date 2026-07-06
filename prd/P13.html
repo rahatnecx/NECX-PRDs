@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NECX Notes Center · NECX PRD</title>
+<meta name="description" content="Agency-scoped, cross-case caseworker notes management for VS360">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="prd-page">
+<header class="topbar">
+  <button class="hamburger" aria-label="Menu" onclick="toggleNav()">&#9776;</button>
+  <a class="brand" href="../index.html"><svg class="logo" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 L35 10 V22 C35 31 28 37 20 39 C12 37 5 31 5 22 V10 Z" fill="var(--brand)"/><path d="M13 27 V14 L20 22 V14 M27 14 V27 L20 19" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="brand-text">NECX<span class="brand-sub">Product Requirements</span></span></a>
+  <div class="topbar-spacer"></div>
+  <a class="top-link" href="../index.html">Home</a>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><span class="ic-sun">☀</span><span class="ic-moon">☾</span></button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-search"><input type="search" id="navSearch" placeholder="Filter documents…" oninput="filterNav(this.value)"></div>
+    <nav class="nav"><div class="nav-group"><div class="nav-group-title">Platform &amp; Applications</div><a class="nav-item " href="P01.html" data-search="necx platform — core system whole-platform prd: unified backend, four clients, multi-tenancy, identity/rbac, and the end-to-end case lifecycle."><span class="nav-num">01</span><span class="nav-text">Platform — Core System</span></a>
+<a class="nav-item " href="P02.html" data-search="necx workspace — staff mobile app agency staff mobile app (flutter/riverpod) — the on-the-go companion to the vs360 web dashboard."><span class="nav-num">02</span><span class="nav-text">Workspace — Staff Mobile App</span></a>
+<a class="nav-item " href="P03.html" data-search="necx victim app — survivor mobile app victim / survivor mobile app (flutter/getx) — discover services, request help, chat, find shelter, e-sign."><span class="nav-num">03</span><span class="nav-text">Victim App — Survivor Mobile App</span></a>
+<a class="nav-item " href="P04.html" data-search="vs360 — agency web dashboard vs360 — the agency staff web dashboard (react/vite) and primary caseworker workspace."><span class="nav-num">04</span><span class="nav-text">VS360 — Agency Web Dashboard</span></a>
+</div>
+<div class="nav-group"><div class="nav-group-title">VS360 Feature Modules</div><a class="nav-item " href="P05.html" data-search="necx case management service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes."><span class="nav-num">05</span><span class="nav-text">Case Management</span></a>
+<a class="nav-item " href="P06.html" data-search="necx shelter management shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search."><span class="nav-num">06</span><span class="nav-text">Shelter Management</span></a>
+<a class="nav-item " href="P07.html" data-search="necx hotline management twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights."><span class="nav-num">07</span><span class="nav-text">Hotline Management</span></a>
+<a class="nav-item " href="P08.html" data-search="necx calendar &amp; appointments reminders, tasks and case-linked appointments in the vs360 tools calendar."><span class="nav-num">08</span><span class="nav-text">Calendar &amp; Appointments</span></a>
+<a class="nav-item " href="P09.html" data-search="necx staff time tracking staff time tracking: clock in/out, timesheets, and grant/pmt time attribution."><span class="nav-num">09</span><span class="nav-text">Staff Time Tracking</span></a>
+<a class="nav-item " href="P10.html" data-search="necx agency chat real-time advocate↔victim messaging tied to service threads and cases."><span class="nav-num">10</span><span class="nav-text">Agency Chat</span></a>
+<a class="nav-item " href="P11.html" data-search="necx internal chat staff-to-staff messaging within an agency, real-time over socket.io."><span class="nav-num">11</span><span class="nav-text">Internal Chat</span></a>
+<a class="nav-item " href="P12.html" data-search="necx rbac &amp; user management roles, the module/action permission matrix, plan seats, and multi-layer enforcement."><span class="nav-num">12</span><span class="nav-text">RBAC &amp; User Management</span></a>
+<a class="nav-item active" href="P13.html" data-search="necx notes center agency-scoped, cross-case view over internal (caseworker-only) case notes."><span class="nav-num">13</span><span class="nav-text">Notes Center</span></a>
+<a class="nav-item " href="P14.html" data-search="necx drive google-drive-style cloud file storage backed by azure blob, with quotas and analytics."><span class="nav-num">14</span><span class="nav-text">Drive</span></a>
+<a class="nav-item " href="P15.html" data-search="necx ai report builder pmt/grant reporting plus ai-assisted custom report generation with accuracy validation."><span class="nav-num">15</span><span class="nav-text">AI Report Builder</span></a>
+<a class="nav-item " href="P16.html" data-search="necx e-sign &amp; document center prepare, request, sign and pdf-stamp case documents with an audit trail."><span class="nav-num">16</span><span class="nav-text">E-Sign &amp; Document Center</span></a>
+<a class="nav-item " href="P17.html" data-search="necx referrals &amp; partnerships inter-agency network: partnerships, invitations, and consent-based case referrals."><span class="nav-num">17</span><span class="nav-text">Referrals &amp; Partnerships</span></a>
+<a class="nav-item " href="P18.html" data-search="necx inquiries management intake and triage of inquiries / requests-to-connect before they become cases."><span class="nav-num">18</span><span class="nav-text">Inquiries Management</span></a>
+<a class="nav-item " href="P19.html" data-search="necx communities agency-run community spaces: joining questions, membership, posts and moderation."><span class="nav-num">19</span><span class="nav-text">Communities</span></a>
+<a class="nav-item " href="P20.html" data-search="necx service management service catalog, categories, and the per-service claim-question (intake) builder."><span class="nav-num">20</span><span class="nav-text">Service Management</span></a>
+</div>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim" onclick="toggleNav()"></div>
+  
+  <main class="content">
+    <article class="doc">
+      <div class="doc-eyebrow">Product Requirements Document · NECX Inc — Confidential</div>
+      <h1 class="doc-title">NECX Notes Center</h1>
+      <p class="doc-subtitle">Agency-scoped, cross-case caseworker notes management for VS360</p>
+      <div class="doc-meta"><span class="chip">Version: <b>1.0</b></span><span class="chip">Status: <b>Baseline</b></span><span class="chip">Owner: <b>NECX Product Management</b></span><a class="dl-btn" href="../downloads/13_VS360_Feature_Notes_Center.docx" download>⬇ Download DOCX</a></div>
+      <hr class="doc-rule">
+      <div class="doc-body">
+      <h2 id="1-document-control">1. Document Control</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td>NECX — Coordinated Victim Services Platform</td></tr>
+<tr><td>Module</td><td>Notes Center (VS360 web; backend <code>notes-center</code>, model <code>ClaimNotes</code> / table <code>claim_notes</code>)</td></tr>
+<tr><td>Version</td><td>1.0</td></tr>
+<tr><td>Status</td><td>Baseline</td></tr>
+<tr><td>Author</td><td>NECX Product Management</td></tr>
+<tr><td>Reviewers</td><td>Engineering (Backend Cases squad), VS360 Web, Security &amp; Privacy, Agency Operations</td></tr>
+<tr><td>Last Updated</td><td>2026-07-05</td></tr>
+<tr><td>Related Documents</td><td>Victim Services / Service Claim PRD; Referrals &amp; Partnerships PRD; Dashboard &amp; Reports PRD; RBAC &amp; Roles PRD; NECX Platform Core &amp; Auth reference</td></tr>
+</tbody></table></div>
+<p>Revision history:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>1.0</td><td>2026-07-05</td><td>NECX Product Management</td><td>Initial baseline PRD for the Notes Center, derived from the <code>notes-center</code> backend module, the <code>claim_notes</code> domain in victim-services, and the VS360 Notes Center page.</td></tr>
+</tbody></table></div>
+<h2 id="2-executive-summary">2. Executive Summary</h2>
+<p>The Notes Center is the agency-scoped, cross-case surface through which caseworkers (VSMS staff) record, browse, search, and manage internal case notes across every case their agency owns. A note is always a private, caseworker-only annotation attached to exactly one case (service claim). Notes capture the operational reality of victim service delivery — safety concerns, follow-up actions, court updates, intake details, and service documentation — that staff must retain for coordination and continuity of care but that is <strong>never shown to the victim/survivor</strong>.</p>
+<p>NECX serves victims and survivors of crime and the agencies and advocates who help them. Advocates work cases over long periods, often hand off between colleagues, and must keep a defensible, confidential record of what was observed, decided, and planned. Individual case detail pages already expose a per-case notes panel; the Notes Center elevates that same underlying data (<code>claim_notes</code>) into an agency-wide management view — a single place to see all notes across all cases, filter by note type, staff author, date, and free-text search, and act on any note without navigating case-by-case.</p>
+<p>This document specifies the Notes Center as a distinct product surface: its note taxonomy (seven note types), full note lifecycle (create, edit, delete, and re-link to a different case), the cross-case browse/search/stat experience, and the permission model (<code>notes_center.{view,add,edit,delete}</code>) that gates it. It draws a firm boundary between <strong>internal notes</strong> (this feature — caseworker-only, never victim-facing) and <strong>published claim updates</strong> (a separate feature that is deliberately surfaced to victims). Confidentiality and strict per-agency (CJIS-style) isolation are the defining non-functional constraints.</p>
+<p>Critically, this PRD also records known implementation risks flagged during discovery — including controller-to-service argument-mismatch defects in the <code>notes-center</code> controllers — so that the baseline is honest about current state and the hardening work is scoped explicitly.</p>
+<h2 id="3-product-overview-vision">3. Product Overview &amp; Vision</h2>
+<h3 id="31-problem-statement">3.1 Problem statement</h3>
+<p>Caseworkers accumulate a large volume of internal notes across many cases. When notes are only reachable one case at a time, staff cannot answer agency-level questions: *Which cases have open safety concerns? What did we log this week? Which follow-up notes did a particular advocate write before going on leave?* Supervisors have no consolidated view for oversight, quality assurance, or hand-off. At the same time, these notes are among the most sensitive data in the platform — they must remain caseworker-only and strictly scoped to the owning agency, and must never leak into victim-facing surfaces.</p>
+<h3 id="32-product-vision">3.2 Product vision</h3>
+<p>Provide agency staff a single, fast, permission-gated Notes Center that lists every case note the agency owns, with rich filtering (type, staff, date, highlight), full-text search, at-a-glance stat cards (Total / Today / This Week / This Month), and inline create/edit/delete — while guaranteeing confidentiality, per-agency isolation, and clear attribution (who created and who last edited each note). The Notes Center is a *management lens* over the same <code>claim_notes</code> records used on case detail pages; a note created in either place is the same record.</p>
+<h3 id="33-where-this-sits-in-the-necx-ecosystem">3.3 Where this sits in the NECX ecosystem</h3>
+<ul>
+<li><strong>Victim App (Flutter mobile):</strong> Never sees Notes Center content. Notes are internal-only; victims see <strong>published claim updates</strong>, not notes.</li>
+<li><strong>Workspace / VS360 web (staff):</strong> Hosts the Notes Center page and consumes the <code>/web/notes</code> API. Primary and only surface for this feature.</li>
+<li><strong>NECX Admin:</strong> Not a consumer of the Notes Center routes; NECX super-admin bypasses fine-grained permission checks at the middleware level but the surface remains agency-scoped in practice.</li>
+<li><strong>Unified backend (<code>necx-backend_v2</code>):</strong> Owns <code>claim_notes</code>, the <code>notes-center</code> app (its own routes/controller/service/validator/repository), and the shared <code>ClaimNotes</code> model that the per-case victim-services notes endpoints also use.</li>
+</ul>
+<h3 id="34-relationship-to-the-per-case-notes-panel">3.4 Relationship to the per-case notes panel</h3>
+<p>The victim-services module exposes per-case note endpoints (<code>POST new-note/:claimUid</code>, <code>GET get-notes/:claimUid</code>, <code>PATCH update-note/:noteUid</code>, <code>DELETE delete-note/:noteUid</code>). The Notes Center is a <strong>different surface over the same table</strong> — it adds agency-wide listing, filtering, stat cards, staff-filter options, and cross-case management. Both write to <code>claim_notes</code>. This PRD scopes the cross-case Notes Center surface (<code>/web/notes</code>); the per-case panel is referenced only at its integration points.</p>
+<h2 id="4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</h2>
+<h3 id="41-goals">4.1 Goals</h3>
+<ul>
+<li>Give agency staff one consolidated, searchable view of all internal case notes their agency owns.</li>
+<li>Support the full note lifecycle — create, edit, delete, and re-link a note to a different in-agency case — with clear author/editor attribution.</li>
+<li>Enforce a strict confidentiality boundary: notes are caseworker-only and never appear on any victim-facing surface.</li>
+<li>Enforce strict per-agency (cross-agency isolation) scoping on every read and write.</li>
+<li>Gate every action behind granular permissions (<code>notes_center.view/add/edit/delete</code>).</li>
+<li>Preserve the taxonomy of seven note types so notes are consistently classified and filterable.</li>
+<li>Provide lightweight operational insight via stat cards and a highlight filter.</li>
+</ul>
+<h3 id="42-success-metrics">4.2 Success metrics</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Definition</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>Cross-agency leakage incidents</td><td>Notes from one agency ever returned to, or mutated by, another agency</td><td>0</td></tr>
+<tr><td>Victim exposure incidents</td><td>Any <code>claim_notes</code> content surfaced on a victim-facing (APP) surface</td><td>0</td></tr>
+<tr><td>Permission-bypass incidents</td><td>Notes Center action performed without the required <code>notes_center</code> permission (non-super-admin)</td><td>0</td></tr>
+<tr><td>Notes Center list latency (P95)</td><td>Server response time for <code>GET /web/notes</code> at default page size</td><td>&lt; 800 ms</td></tr>
+<tr><td>Note attribution completeness</td><td>Notes with a resolvable <code>createdBy</code>, and <code>updatedBy</code> set on every human edit</td><td>100%</td></tr>
+<tr><td>Runtime error rate on note CRUD</td><td>5xx / unhandled errors on <code>/web/notes</code> write routes (see §15 arg-mismatch risk)</td><td>&lt; 0.1% after hardening</td></tr>
+<tr><td>Note-type classification rate</td><td>Notes stored with a valid <code>noteType</code> from the enum (vs. defaulting)</td><td>Tracked; &gt; 90% intentionally typed</td></tr>
+</tbody></table></div>
+<h2 id="5-scope">5. Scope</h2>
+<h3 id="51-in-scope">5.1 In Scope</h3>
+<ul>
+<li>The agency-scoped, cross-case Notes Center surface served at mount <code>/web/notes</code> (VS360 web only).</li>
+<li>Note taxonomy: the seven note types — General Note, Case Update, Safety Concern, Follow-up Note, Service Note, Court Update, Intake Note.</li>
+<li>Create a note on a case in the agency (<code>POST /web/notes</code>).</li>
+<li>Edit a note — partial update of title / description / note type, and <strong>re-link (reassign) the note to another in-agency case</strong> (<code>PATCH /web/notes/:id</code>).</li>
+<li>Delete a note — hard delete (<code>DELETE /web/notes/:id</code>).</li>
+<li>Cross-case browse/search/list with pagination, sorting, date-range, note-type multi-filter, staff multi-filter, free-text search, and a &quot;has highlight&quot; filter (<code>GET /web/notes</code>).</li>
+<li>Stat cards (Total / Today / This Week / This Month) and the staff-filter option list derived from the current result page.</li>
+<li>Permission gating via <code>checkPermission(&#x27;notes_center&#x27;, &lt;action&gt;)</code> plus the <code>allowOnly(&#x27;VS360&#x27;)</code> context gate.</li>
+<li>Strict per-agency scoping on every read and write via the <code>claim_notes → service_claims → services → services.serviceCenterId</code> join chain.</li>
+<li>Author (<code>createdBy</code>) and editor (<code>updatedBy</code>) attribution semantics.</li>
+<li>Audit-trail expectations for note mutations.</li>
+<li>Client-side single-note and all-listed-notes PDF export (VS360 web utility).</li>
+</ul>
+<h3 id="52-out-of-scope">5.2 Out of Scope</h3>
+<ul>
+<li>The per-case notes panel endpoints in victim-services (<code>.../service-claims/*-note/*</code>) — referenced only as an integration point; they share the <code>claim_notes</code> table but are a separate surface.</li>
+<li><strong>Published claim updates</strong> (<code>claim_updates</code>, <code>isPublished</code>) — the victim-facing progress-message feature that is deliberately distinct from internal notes (see §7.5 and §16).</li>
+<li>Victim/APP access of any kind to notes (explicitly excluded — confidentiality boundary).</li>
+<li>NECX Admin management of notes (no <code>/admin</code> notes routes exist).</li>
+<li>Cross-agency sharing of notes as first-class objects. (Note content may be copied into a <strong>referral case snapshot</strong> when the <code>canShareCaseNotes</code> sharing flag is set on a consented referral; that is a one-time sanitized copy handled by the Referrals module, not live Notes Center access.)</li>
+<li>Soft-delete / trash / restore for notes (current behavior is hard delete).</li>
+<li>Real-time socket updates for the Notes Center (the VS360 page relies on query invalidation, not sockets).</li>
+<li>Rich collaboration features (comments on notes, @-mentions, note threading, versioned history/diff) — not present.</li>
+</ul>
+<h2 id="6-personas-user-roles">6. Personas &amp; User Roles</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Role</th><th>Description</th><th>Key permissions</th></tr></thead>
+<tbody>
+<tr><td>Caseworker / Advocate (VSMS)</td><td>Front-line agency staff who work cases and record notes</td><td><code>notes_center.view</code>, <code>notes_center.add</code>, <code>notes_center.edit</code> (typically), <code>notes_center.delete</code> (if granted)</td></tr>
+<tr><td>Agency Supervisor / VSMS Admin</td><td>Oversees casework, reviews notes across the agency, curates note quality</td><td>Full <code>notes_center.{view,add,edit,delete}</code> (granted on the <code>VSMS_ADMIN</code> role template)</td></tr>
+<tr><td>Agency Read-only Staff</td><td>Staff who may read but not mutate notes</td><td><code>notes_center.view</code> only</td></tr>
+<tr><td>NECX Super-Admin</td><td>NECX Inc platform administrator</td><td>Bypasses fine-grained <code>checkPermission</code> in middleware; still operates within agency-scoped data joins</td></tr>
+<tr><td>Victim / Survivor (APP)</td><td>The person receiving services</td><td><strong>No access</strong> to notes under any circumstance</td></tr>
+</tbody></table></div>
+<p>Persona narratives:</p>
+<ul>
+<li><strong>Maria, Advocate.</strong> Maria opens the Notes Center each morning to see everything logged since yesterday. She filters by &quot;Safety Concern&quot; to triage risk, adds a Follow-up Note to a case she is handing off, and searches a client&#x27;s name to review the history before a court appearance.</li>
+<li><strong>David, Supervisor.</strong> David uses the stat cards and the staff filter to review what each caseworker logged this week for quality assurance. He filters by &quot;Court Update&quot; ahead of a hearing calendar review and occasionally corrects a mis-typed note or deletes a duplicate.</li>
+<li><strong>A victim/survivor</strong> never encounters any of this content. What they see about their case are the <strong>published updates</strong> their advocate chooses to publish — a separate, intentionally victim-facing channel.</li>
+</ul>
+<h2 id="7-system-context-architecture">7. System Context &amp; Architecture</h2>
+<h3 id="71-tech-stack">7.1 Tech stack</h3>
+<ul>
+<li><strong>Backend:</strong> Node.js + Express (ESM), Objection.js ORM over Knex/PostgreSQL, with <code>knexSnakeCaseMappers</code> (DB snake_case ⇄ JS camelCase). The <code>notes-center</code> app is its own Express router mounted at <code>/web/notes</code> (API version prefix <code>v2</code>, e.g. <code>/v2/web/notes</code>).</li>
+<li><strong>Frontend:</strong> VS360 web app — React + Vite + Mantine UI + TanStack Query + Redux. Notes Center lives at <code>src/pages/NotesCenter/</code> (<code>NotesCenter.jsx</code>, <code>useNotesCenter.js</code>, <code>constants.js</code>); API calls via <code>src/services/notes.js</code> against <code>/notes</code>. Response envelope <code>{ status, msg, data }</code> (payload at <code>response.data.data</code>).</li>
+<li><strong>Key backend files:</strong> routes <code>src/apps/notes-center/notes-center.route.js</code>; controller <code>notes-center.controller.js</code>; service <code>notes-center.service.js</code>; validator <code>notes-center.validator.js</code>; repository <code>src/db/repositories/claimNotesRepository.js</code>; model <code>src/model/v2/ClaimNotes.js</code>.</li>
+</ul>
+<h3 id="72-how-it-talks-to-the-backend">7.2 How it talks to the backend</h3>
+<p>The VS360 Notes Center calls four REST endpoints under <code>/web/notes</code> (list, create, update, delete). Every request passes the standard middleware chain: rate-limiter → auth (populates <code>req.issuer</code>) → context gate <code>allowOnly(&#x27;VS360&#x27;)</code> → fine-grained <code>checkPermission(&#x27;notes_center&#x27;, &lt;action&gt;)</code> → validator (<code>@tsed/exceptions</code>-based validation, throwing <code>BadRequest</code>) → controller → service → <code>claimNotesRepository</code>. The service resolves the agency from the issuer and enforces scoping.</p>
+<h3 id="73-real-time-notifications">7.3 Real-time / notifications</h3>
+<p>The Notes Center has <strong>no</strong> socket events and issues <strong>no</strong> victim or staff notifications on note CRUD. The VS360 page keeps its data fresh purely via TanStack Query invalidation of the <code>[&quot;notes-center&quot;]</code> query key after a successful mutation. (Contrast with published claim updates, which *do* notify the victim.)</p>
+<h3 id="74-tenancy-isolation">7.4 Tenancy &amp; isolation</h3>
+<p>The Notes Center is strictly agency-scoped. Every read and write resolves the issuer&#x27;s agency (<code>requireAgencyId(issuer)</code> / <code>issuer.serviceCenterInfo.id</code>) and constrains data through the join chain <code>claim_notes → service_claims (claimId) → services (serviceId)</code> filtered by <code>services.serviceCenterId = agencyId</code>. Creating or editing a note verifies the target case belongs to the issuer&#x27;s agency (<code>resolveAgencyScopedClaim</code> / <code>resolveAgencyScopedNote</code>); scoping violations throw <code>NotFound</code>/<code>Forbidden</code>. This enforces CJIS-style cross-agency isolation: a caseworker can only ever see and touch notes on cases their own agency owns.</p>
+<h3 id="75-the-internal-note-vs-published-update-boundary-architectural">7.5 The internal-note vs published-update boundary (architectural)</h3>
+<p>Two separate tables underpin two separate features:</p>
+<ul>
+<li><code>claim_notes</code> (this feature) — internal, caseworker-only, never victim-visible.</li>
+<li><code>claim_updates</code> — progress messages with an <code>isPublished</code> flag; mobile filters to <code>isPublished = true</code>, and publishing triggers a victim notification.</li>
+</ul>
+<p>They are distinct entities, distinct endpoints, distinct audiences. The Notes Center must never render or expose <code>claim_updates</code>, and the victim app must never receive <code>claim_notes</code>. This boundary is a core architectural invariant, restated in Scope (§5.2), NFRs (§13), and the Glossary (§16).</p>
+<h2 id="8-functional-requirements">8. Functional Requirements</h2>
+<p>The Notes Center exposes four capabilities behind the <code>/web/notes</code> mount, each gated by <code>allowOnly(&#x27;VS360&#x27;)</code> and a specific <code>notes_center</code> permission. <code>id</code> in the path is the note&#x27;s public <code>uid</code> (not the numeric PK).</p>
+<h3 id="81-note-taxonomy-note-types">8.1 Note taxonomy (note types)</h3>
+<p>Every note carries a <code>noteType</code> drawn from <code>ClaimNotes.NOTE_TYPES</code>. The enum (and its VS360 mirror in <code>constants.js</code>) is: <strong>General Note, Case Update, Safety Concern, Follow-up Note, Service Note, Court Update, Intake Note</strong>. Default is <code>General Note</code>. Note type is a first-class filter and sort key in the Notes Center.</p>
+<p>Suggested semantics (for consistent staff usage; not enforced by the backend beyond the enum):</p>
+<ul>
+<li><strong>General Note</strong> — catch-all annotation; the default.</li>
+<li><strong>Case Update</strong> — internal progress/status commentary (distinct from a *published* victim-facing update).</li>
+<li><strong>Safety Concern</strong> — risk, threat, or safety-planning observation; the highest-sensitivity type.</li>
+<li><strong>Follow-up Note</strong> — planned or required follow-up action.</li>
+<li><strong>Service Note</strong> — documentation of a service delivered or coordinated.</li>
+<li><strong>Court Update</strong> — legal/court-process developments.</li>
+<li><strong>Intake Note</strong> — information captured at or about intake.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-NT-01</td><td>The system shall constrain <code>noteType</code> to the seven-value enum and reject any other value with a validation error.</td><td>Must</td></tr>
+<tr><td>FR-NT-02</td><td>The system shall default <code>noteType</code> to <code>General Note</code> when none is supplied at creation.</td><td>Must</td></tr>
+<tr><td>FR-NT-03</td><td>The Notes Center shall allow filtering the list by one or more note types (<code>types[]</code>).</td><td>Must</td></tr>
+<tr><td>FR-NT-04</td><td>The Notes Center shall allow sorting by note type.</td><td>Should</td></tr>
+<tr><td>FR-NT-05</td><td>The VS360 client shall present the note-type list identically to the backend enum (single source of truth).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="82-cross-case-browse-filter-search-stats-get-webnotes">8.2 Cross-case browse, filter, search &amp; stats (<code>GET /web/notes</code>)</h3>
+<p>Returns a paged, filtered list of the agency&#x27;s notes plus stat counts and the staff-filter options. Query parameters: <code>page</code>, <code>pageSize</code> (≤ 200), <code>startDate</code>, <code>endDate</code> (ISO), <code>types[]</code>, <code>staffIds[]</code>, <code>search</code>, <code>hasHighlight</code> (boolean), <code>sortField</code>, <code>sortDirection</code>.</p>
+<p>Behavior (<code>fetchNotesCenter</code> → <code>findNotesForAgency</code> + <code>getAgencyNoteStats</code>, run in parallel):</p>
+<ul>
+<li><strong>Agency scoping:</strong> <code>requireAgencyId(issuer)</code>; the list join surfaces display fields — client name (via <code>service_claims.victimId → app_users</code>), <code>services.title</code>, and the creator/updater names (<code>users</code> aliased <code>creator</code>/<code>updater</code>).</li>
+<li><strong>Sorting:</strong> by <code>createdAt</code>, <code>title</code>, <code>noteType</code>, client name, case id, or <code>createdBy</code> (staff), in the requested direction.</li>
+<li><strong>Search:</strong> <code>search</code> matches note title, description, and client name.</li>
+<li><strong>Highlight filter:</strong> <code>hasHighlight=true</code> filters to notes whose <code>description ILIKE &#x27;%&lt;mark%&#x27;</code> (i.e., contain highlighted/marked rich-text spans).</li>
+<li><strong>Stats:</strong> <code>getAgencyNoteStats</code> returns counts for total, today, this week, and this month (via <code>date_trunc</code> FILTER aggregations).</li>
+<li><strong>Staff filter options:</strong> <code>availableStaff</code> is the distinct set of authors present on the returned page (there is no separate endpoint for staff options).</li>
+<li><strong>Response shape:</strong> <code>{ notes, stats, pagination, availableStaff }</code>.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-NC-01</td><td>The system shall return only notes whose case belongs to the issuer&#x27;s agency.</td><td>Must</td></tr>
+<tr><td>FR-NC-02</td><td>The system shall support pagination with <code>pageSize</code> capped at 200.</td><td>Must</td></tr>
+<tr><td>FR-NC-03</td><td>The system shall support date-range (<code>startDate</code>/<code>endDate</code>), <code>types[]</code>, <code>staffIds[]</code>, <code>search</code>, and <code>hasHighlight</code> filters, combinable.</td><td>Must</td></tr>
+<tr><td>FR-NC-04</td><td>The system shall support sorting by date, title, note type, client name, case id, and staff author.</td><td>Must</td></tr>
+<tr><td>FR-NC-05</td><td>The system shall return stat counts (total, today, this week, this month).</td><td>Must</td></tr>
+<tr><td>FR-NC-06</td><td>The system shall return <code>availableStaff</code> (distinct authors on the page) for the staff filter dropdown.</td><td>Should</td></tr>
+<tr><td>FR-NC-07</td><td>The system shall join and return display fields: client name, service/case title, creator name, updater name.</td><td>Must</td></tr>
+<tr><td>FR-NC-08</td><td>The endpoint shall require <code>notes_center.view</code>.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="83-create-a-note-on-a-case-post-webnotes">8.3 Create a note on a case (<code>POST /web/notes</code>)</h3>
+<p>Body: <code>claimUid</code>, <code>title</code> (≤ 200), <code>description</code> (rich HTML ≤ 50,000; VS360 enforces ~5,000 visible characters), <code>noteType</code> (enum). Behavior (<code>createNote</code>):</p>
+<ol class="flow">
+<li>Validate body (<code>BadRequest</code> on failure).</li>
+<li><code>resolveAgencyScopedClaim({ claimUid, agencyId })</code> — verify the case exists <strong>and</strong> belongs to the issuer&#x27;s agency (CJIS isolation); else <code>NotFound</code>/<code>Forbidden</code>.</li>
+<li>Insert a <code>claim_notes</code> row with a new v7 UUID (<code>uid</code>), <code>createdBy = issuer.id</code>, <code>updatedBy = null</code>, <code>claimId</code> resolved from <code>claimUid</code>, and the provided <code>title</code>/<code>description</code>/<code>noteType</code>.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CR-01</td><td>The system shall create a note only against a case owned by the issuer&#x27;s agency.</td><td>Must</td></tr>
+<tr><td>FR-CR-02</td><td>The system shall generate a UUID <code>uid</code> for the note and set <code>createdBy = issuer.id</code>.</td><td>Must</td></tr>
+<tr><td>FR-CR-03</td><td>The system shall leave <code>updatedBy</code> null on creation (null = never human-edited).</td><td>Must</td></tr>
+<tr><td>FR-CR-04</td><td>The system shall enforce size caps (title ≤ 200; description ≤ 50,000).</td><td>Must</td></tr>
+<tr><td>FR-CR-05</td><td>The system shall validate <code>noteType</code> against the enum and default to <code>General Note</code>.</td><td>Must</td></tr>
+<tr><td>FR-CR-06</td><td>The endpoint shall require <code>notes_center.add</code>.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="84-edit-re-link-a-note-patch-webnotesid">8.4 Edit / re-link a note (<code>PATCH /web/notes/:id</code>)</h3>
+<p><code>:id</code> = note <code>uid</code>. Body must include at least one editable field: <code>title</code>, <code>description</code>, <code>noteType</code>, and/or <code>claimUid</code> (to reassign the note to a different case). Behavior (<code>updateNote</code>):</p>
+<ol class="flow">
+<li><code>resolveAgencyScopedNote</code> — verify the note and its current case are in-agency; else <code>NotFound</code>/<code>Forbidden</code>.</li>
+<li>Partial <code>.patch()</code> of provided fields.</li>
+<li><strong>Always set <code>updatedBy = issuer.id</code></strong> (this powers &quot;edited by&quot; display; a null <code>updatedBy</code> means never edited).</li>
+<li>If <code>claimUid</code> is supplied, re-scope the target case and <strong>reassign</strong> the note&#x27;s <code>claimId</code> to that other in-agency case.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-ED-01</td><td>The system shall require at least one editable field and reject an empty patch.</td><td>Must</td></tr>
+<tr><td>FR-ED-02</td><td>The system shall verify the note is in-agency before editing.</td><td>Must</td></tr>
+<tr><td>FR-ED-03</td><td>The system shall always set <code>updatedBy = issuer.id</code> on any edit.</td><td>Must</td></tr>
+<tr><td>FR-ED-04</td><td>The system shall permit reassigning the note to a different case only if that case is in the issuer&#x27;s agency.</td><td>Must</td></tr>
+<tr><td>FR-ED-05</td><td>The system shall re-validate <code>noteType</code>/size caps on edit.</td><td>Must</td></tr>
+<tr><td>FR-ED-06</td><td>The endpoint shall require <code>notes_center.edit</code>.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="85-delete-a-note-delete-webnotesid">8.5 Delete a note (<code>DELETE /web/notes/:id</code>)</h3>
+<p><code>:id</code> = note <code>uid</code>. Behavior (<code>deleteNote</code>): agency-scope verify, then <strong>hard delete</strong> the row (<code>deleteOne</code>). There is no soft-delete/trash.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-DL-01</td><td>The system shall verify the note is in-agency before deletion.</td><td>Must</td></tr>
+<tr><td>FR-DL-02</td><td>The system shall hard-delete the note record.</td><td>Must</td></tr>
+<tr><td>FR-DL-03</td><td>The endpoint shall require <code>notes_center.delete</code>.</td><td>Must</td></tr>
+<tr><td>FR-DL-04</td><td>The system should confirm intent on the client before issuing a delete.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="86-distinction-from-published-claim-updates-guardrail-requiremen">8.6 Distinction from published claim updates (guardrail requirements)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-DS-01</td><td>The Notes Center shall operate exclusively on <code>claim_notes</code> and shall never read from or write to <code>claim_updates</code>.</td><td>Must</td></tr>
+<tr><td>FR-DS-02</td><td>No note (<code>claim_notes</code> row) shall ever be exposed to an APP (victim) issuer or any victim-facing surface.</td><td>Must</td></tr>
+<tr><td>FR-DS-03</td><td>Note CRUD shall not emit victim notifications (unlike published updates, which do).</td><td>Must</td></tr>
+<tr><td>FR-DS-04</td><td>Product copy and UI shall clearly label notes as internal/caseworker-only to prevent staff confusion with published updates.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="87-export-vs360-client-utility">8.7 Export (VS360 client utility)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-EX-01</td><td>The VS360 client shall allow exporting a single note to PDF.</td><td>Should</td></tr>
+<tr><td>FR-EX-02</td><td>The VS360 client shall allow exporting all currently listed notes to PDF.</td><td>Could</td></tr>
+<tr><td>FR-EX-03</td><td>Exports shall respect the confidentiality boundary (internal use only; no victim distribution path).</td><td>Must</td></tr>
+</tbody></table></div>
+<h2 id="9-detailed-user-system-flows">9. Detailed User &amp; System Flows</h2>
+<h3 id="91-add-a-note-to-a-case">9.1 Add a note to a case</h3>
+<ol class="flow">
+<li>A caseworker with <code>notes_center.add</code> opens the Notes Center and clicks &quot;Add Note&quot; (or adds from a case context that pre-fills the case).</li>
+<li>The create modal collects: <strong>Case</strong> (select an in-agency case → <code>serviceClaimUid</code>/<code>claimUid</code>), <strong>Title</strong> (≤ 200), <strong>Note Type</strong> (one of the seven), and a <strong>rich-text Description</strong> (≤ ~5,000 visible chars). Client-side validation (<code>yup noteFormSchema</code>) requires <code>serviceClaimUid</code>, title, note type, and description.</li>
+<li>On submit, the client calls <code>POST /web/notes</code> with <code>{ claimUid, title, description, noteType }</code>.</li>
+<li>Middleware enforces <code>allowOnly(&#x27;VS360&#x27;)</code> and <code>checkPermission(&#x27;notes_center&#x27;,&#x27;add&#x27;)</code>.</li>
+<li>The service validates the body, then <code>resolveAgencyScopedClaim({claimUid, agencyId})</code> confirms the case exists and belongs to the issuer&#x27;s agency. If not → 404/403.</li>
+<li>The service inserts the <code>claim_notes</code> row (new v7 <code>uid</code>, <code>createdBy = issuer.id</code>, <code>updatedBy = null</code>, <code>claimId</code>, <code>title</code>, <code>description</code>, <code>noteType</code>) via <code>claimNotesRepository.createOne</code>.</li>
+<li>An <code>ActionLogs</code> audit row is written for the create (see §13.5).</li>
+<li>The service returns the created note in the standard envelope; the client invalidates <code>[&quot;notes-center&quot;]</code> and the new note appears in the list and updates the stat cards.</li>
+</ol>
+<p>Edge cases: invalid/blank required field → validation error surfaced inline; <code>claimUid</code> for a case in another agency → 403/404 (isolation); over-cap title/description → validation error.</p>
+<h3 id="92-browse-all-notes-in-the-notes-center">9.2 Browse all notes in the Notes Center</h3>
+<ol class="flow">
+<li>A caseworker with <code>notes_center.view</code> opens the Notes Center page.</li>
+<li><code>useNotesCenter.js</code> issues <code>GET /web/notes</code> with defaults (page 1, <code>pageSize</code> 50, default sort by date desc).</li>
+<li>Middleware enforces <code>allowOnly(&#x27;VS360&#x27;)</code> + <code>checkPermission(&#x27;notes_center&#x27;,&#x27;view&#x27;)</code>.</li>
+<li>The service resolves the agency (<code>requireAgencyId</code>), then runs <code>findNotesForAgency</code> (paged, joined list) and <code>getAgencyNoteStats</code> in parallel.</li>
+<li>The response <code>{ notes, stats, pagination, availableStaff }</code> renders as: four <strong>stat cards</strong> (Total / Today / This Week / This Month), a filter bar, and a sortable table (columns: date, title, type, client, case, staff).</li>
+<li>The staff-filter dropdown is populated from <code>availableStaff</code> (distinct authors on the page).</li>
+<li>Clicking a row opens the detail drawer showing the full note (title, type, rich description, case/client, created-by, and — if <code>updatedBy</code> is set — edited-by).</li>
+</ol>
+<h3 id="93-filter-by-type-andor-case-search-and-sort">9.3 Filter by type and/or case, search, and sort</h3>
+<ol class="flow">
+<li>The user opens the filter bar and selects one or more <strong>note types</strong> → client sends <code>types[]</code>.</li>
+<li>To narrow by case/client, the user types into <strong>search</strong> (matches title, description, and client name) → <code>search=</code>.</li>
+<li>To scope by author, the user selects one or more staff in the <strong>staff filter</strong> → <code>staffIds[]</code>.</li>
+<li>The user optionally sets a <strong>date range</strong> (<code>startDate</code>/<code>endDate</code>) and/or toggles <strong>has highlight</strong> (<code>hasHighlight=true</code>, matching notes containing marked/highlighted text).</li>
+<li>The user clicks a sortable column header → client sends <code>sortField</code> + <code>sortDirection</code> (date/title/type/client/case/staff).</li>
+<li>The client re-issues <code>GET /web/notes</code> with the combined parameters; the service applies all filters within the agency scope and returns the filtered page + refreshed pagination. (Stat cards reflect agency totals by period, independent of the active filter.)</li>
+<li>Pagination controls (50/page on the client; server caps <code>pageSize</code> at 200) move between pages.</li>
+</ol>
+<p>Note: filtering strictly to a single case is achieved via search / the case column; the primary agency-wide use is multi-case triage by type, staff, date, and keyword.</p>
+<h3 id="94-edit-a-note">9.4 Edit a note</h3>
+<ol class="flow">
+<li>From the list, the user opens a note&#x27;s detail drawer and clicks &quot;Edit&quot; (requires <code>notes_center.edit</code>).</li>
+<li>The user changes any of: title, note type, description; and/or selects a <strong>different in-agency case</strong> to reassign the note.</li>
+<li>On save, the client calls <code>PATCH /web/notes/:id</code> (note <code>uid</code>) with only the changed fields (must be ≥ 1).</li>
+<li>Middleware enforces <code>allowOnly(&#x27;VS360&#x27;)</code> + <code>checkPermission(&#x27;notes_center&#x27;,&#x27;edit&#x27;)</code>.</li>
+<li>The service <code>resolveAgencyScopedNote</code> verifies the note and its case are in-agency (else 404/403), then partial-patches the provided fields and <strong>always sets <code>updatedBy = issuer.id</code></strong>.</li>
+<li>If <code>claimUid</code> was supplied, the service re-scopes the target case (in-agency check) and updates <code>claimId</code> to reassign the note.</li>
+<li>An <code>ActionLogs</code> update row is written. The client invalidates <code>[&quot;notes-center&quot;]</code>; the drawer now shows &quot;edited by &lt;user&gt;&quot;.</li>
+</ol>
+<p>Edge cases: empty patch → rejected; reassign to an out-of-agency case → 403/404; over-cap or bad <code>noteType</code> → validation error.</p>
+<h3 id="95-delete-a-note">9.5 Delete a note</h3>
+<ol class="flow">
+<li>From the detail drawer (or a row action), a user with <code>notes_center.delete</code> clicks &quot;Delete&quot;.</li>
+<li>The client shows a confirmation prompt.</li>
+<li>On confirm, the client calls <code>DELETE /web/notes/:id</code> (note <code>uid</code>).</li>
+<li>Middleware enforces <code>allowOnly(&#x27;VS360&#x27;)</code> + <code>checkPermission(&#x27;notes_center&#x27;,&#x27;delete&#x27;)</code>.</li>
+<li>The service verifies the note is in-agency (else 404/403), then <strong>hard-deletes</strong> the row.</li>
+<li>An <code>ActionLogs</code> delete row is written. The client invalidates <code>[&quot;notes-center&quot;]</code>; the note disappears and stat cards refresh.</li>
+</ol>
+<p>Edge case: deleting a note in another agency → 403/404; there is no undo/restore (hard delete).</p>
+<h3 id="96-export-a-note-or-the-current-list-to-pdf">9.6 Export a note (or the current list) to PDF</h3>
+<ol class="flow">
+<li>From a note&#x27;s drawer, the user selects &quot;Export&quot; → the client renders that note to PDF (<code>utils/noteExport.js</code>).</li>
+<li>Alternatively, from the list toolbar the user selects &quot;Export all listed&quot; → the client renders the current result set to PDF.</li>
+<li>The export is a client-side operation; the confidentiality boundary applies (internal use only).</li>
+</ol>
+<h3 id="97-cross-surface-consistency-per-case-panel-notes-center">9.7 Cross-surface consistency (per-case panel ↔ Notes Center)</h3>
+<ol class="flow">
+<li>A note created on a <strong>case detail page</strong> (via victim-services <code>POST new-note/:claimUid</code>) writes to the same <code>claim_notes</code> table.</li>
+<li>When the caseworker opens the Notes Center, that note appears in the agency-wide list (same record, same <code>uid</code>).</li>
+<li>Editing/deleting via either surface affects the single underlying record. (Guardrail: both surfaces must apply the same agency-scope checks; see §15 risks.)</li>
+</ol>
+<h3 id="98-permission-denied-and-isolation-branches-system-flow">9.8 Permission-denied and isolation branches (system flow)</h3>
+<ol class="flow">
+<li>A staff user lacking the required <code>notes_center</code> action calls a Notes Center endpoint → <code>checkPermission</code> returns 403 (unless the issuer is NECX super-admin, who bypasses the fine-grained check).</li>
+<li>A non-VS360 issuer (e.g., APP victim, ADMIN) hitting <code>/web/notes</code> → <code>allowOnly(&#x27;VS360&#x27;)</code> returns 403.</li>
+<li>Any read/write referencing a case or note outside the issuer&#x27;s agency → the service throws <code>NotFound</code>/<code>Forbidden</code> (isolation preserved; existence not confirmed to the caller).</li>
+</ol>
+<h2 id="10-data-model">10. Data Model</h2>
+<p>Primary entity: <code>claim_notes</code> (model <code>ClaimNotes</code>, <code>idColumn = id</code>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Key Fields</th><th>Relationships</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>ClaimNotes (<code>claim_notes</code>)</td><td><code>id</code> (PK), <code>uid</code> (public id used in URLs), <code>title</code>, <code>description</code> (rich HTML, ≤ 50,000), <code>noteType</code> (enum, default <code>General Note</code>), <code>createdBy</code> → <code>users.id</code>, <code>updatedBy</code> → <code>users.id</code> (nullable; null = never human-edited), <code>claimId</code> → <code>service_claims.id</code>, <code>created_at</code>, <code>updated_at</code></td><td><code>claimInfo</code> → <code>ServiceClaims</code>; <code>noteOwner</code> → creator <code>Users</code>; <code>noteEditor</code> → editor <code>Users</code></td><td>The internal, caseworker-only note attached to exactly one case; the sole entity the Notes Center manages</td></tr>
+<tr><td>ServiceClaims (<code>service_claims</code>)</td><td><code>id</code>, <code>uid</code> (<code>CL&lt;yy&gt;&lt;month&gt;&lt;uuid6&gt;</code>), <code>serviceId</code>, <code>victimId</code>, <code>status</code></td><td>HasMany <code>ClaimNotes</code> (<code>claimId</code>); BelongsTo <code>Services</code></td><td>The case a note is attached to; anchors agency scoping and client-name display</td></tr>
+<tr><td>Services (<code>services</code>)</td><td><code>id</code>, <code>title</code>, <code>serviceCenterId</code></td><td>BelongsTo <code>ServiceCenters</code>; HasMany <code>ServiceClaims</code></td><td>Bridges a case to its owning agency; <code>serviceCenterId</code> is the agency-scope key</td></tr>
+<tr><td>ServiceCenters (<code>service_centers</code>)</td><td><code>id</code>, <code>uid</code>, <code>name</code></td><td>HasMany <code>Services</code></td><td>The agency (tenant) that owns cases and therefore notes</td></tr>
+<tr><td>Users (<code>users</code>)</td><td><code>id</code>, <code>uid</code>, name</td><td>Referenced by <code>createdBy</code>/<code>updatedBy</code>; aliased <code>creator</code>/<code>updater</code> in list joins</td><td>Staff attribution: who created and who last edited a note</td></tr>
+<tr><td>AppUsers (<code>app_users</code>)</td><td><code>id</code>, name</td><td>Referenced via <code>service_claims.victimId</code></td><td>Supplies the client-name display column (never a note author)</td></tr>
+<tr><td>ClaimUpdates (<code>claim_updates</code>) — *contrast, not managed here*</td><td><code>id</code>, <code>isPublished</code></td><td>BelongsTo <code>ServiceClaims</code></td><td>The separate victim-facing progress-update feature; explicitly NOT part of the Notes Center</td></tr>
+</tbody></table></div>
+<p>Agency-scoping join chain (enforced on every operation): <code>claim_notes → service_claims (claimId) → services (serviceId)</code> filtered by <code>services.serviceCenterId = agencyId</code>. Display joins add client name (<code>service_claims.victimId → app_users</code>), <code>services.title</code>, and <code>creator</code>/<code>updater</code> from <code>users</code>.</p>
+<p>Constraints: <code>NOTE_TYPES</code> enum (seven values); <code>NOTE_LIMITS</code> — title 200, description HTML 50,000 (frontend caps visible text ~5,000). <code>updatedBy</code> nullability is semantic: null ⇒ never human-edited.</p>
+<h2 id="11-api-integration-surface">11. API &amp; Integration Surface</h2>
+<h3 id="111-notes-center-endpoints-mount-webnotes-every-route-allowonlyv">11.1 Notes Center endpoints (mount <code>/web/notes</code>; every route <code>allowOnly(&#x27;VS360&#x27;)</code> + <code>checkPermission(&#x27;notes_center&#x27;, …)</code>)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/web/notes</code></td><td>Paged, filtered agency notes list + stats + staff filter options</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>notes_center.view</code></td></tr>
+<tr><td>POST</td><td><code>/web/notes</code></td><td>Create a note on an in-agency case</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>notes_center.add</code></td></tr>
+<tr><td>PATCH</td><td><code>/web/notes/:id</code></td><td>Partial update (title/description/noteType) and/or reassign to another in-agency case; sets <code>updatedBy</code></td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>notes_center.edit</code></td></tr>
+<tr><td>DELETE</td><td><code>/web/notes/:id</code></td><td>Hard-delete a note</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>notes_center.delete</code></td></tr>
+</tbody></table></div>
+<p><code>:id</code> = note <code>uid</code>. Request/response envelope: <code>{ status, msg|message, data }</code>. <code>GET</code> returns <code>{ notes, stats, pagination, availableStaff }</code>.</p>
+<h3 id="112-related-out-of-scope-endpoints-for-reference">11.2 Related (out-of-scope) endpoints for reference</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>POST</td><td><code>/web/service-claims/new-note/:claimUid</code></td><td>Per-case create (same <code>claim_notes</code> table)</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+<tr><td>GET</td><td><code>/web/service-claims/get-notes/:claimUid</code></td><td>Per-case list</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+<tr><td>PATCH</td><td><code>/web/service-claims/update-note/:noteUid</code></td><td>Per-case update</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+<tr><td>DELETE</td><td><code>/web/service-claims/delete-note/:noteUid</code></td><td>Per-case delete</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+<tr><td>POST/GET/PATCH/DELETE</td><td><code>/web/service-claims/*-update/*</code></td><td><strong>Published claim updates</strong> (victim-facing) — distinct feature</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+</tbody></table></div>
+<h3 id="113-external-integrations">11.3 External integrations</h3>
+<p>The Notes Center itself has <strong>no</strong> external integrations: no Twilio, no FCM, no email, no OpenAI/Anthropic, no Azure Blob usage on note CRUD. Indirect touchpoints:</p>
+<ul>
+<li><strong>Audit:</strong> <code>ActionLogs.logAction(...)</code> writes to <code>action_logs</code> (internal audit store) — see §13.5.</li>
+<li><strong>Referral snapshot (one-way copy):</strong> when a referral is consented with <code>canShareCaseNotes = true</code>, the Referrals module copies a <strong>sanitized</strong> subset of the case&#x27;s notes into <code>metadata.caseSnapshot</code>. This is a point-in-time copy performed by the Referrals module — not live cross-agency Notes Center access.</li>
+<li><strong>AI report context:</strong> agency notes may be included in AI report context aggregation. This is a downstream read by the Reports subsystem, not a Notes Center feature.</li>
+</ul>
+<h2 id="12-rbac-permissions">12. RBAC &amp; Permissions</h2>
+<p>Two layers gate every Notes Center action: the context gate <code>allowOnly(&#x27;VS360&#x27;)</code> (403 unless the issuer&#x27;s <code>roleInfo.context = VS360</code>) and the fine-grained <code>checkPermission(&#x27;notes_center&#x27;, &lt;action&gt;)</code>. The <code>notes_center</code> module actions are <code>view</code>, <code>add</code>, <code>edit</code>, <code>delete</code>, granted on the <code>VSMS_ADMIN</code> role template and assignable to other agency roles via Role Management (subject to the agency plan&#x27;s permission catalog). NECX super-admin bypasses the fine-grained check inside the middleware; the <code>allowOnly(&#x27;VS360&#x27;)</code> context gate still applies to <code>/web</code> routes.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Action</th><th>Endpoint</th><th>Context gate</th><th>Permission flag</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Browse / search / view stats</td><td><code>GET /web/notes</code></td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td><td><code>notes_center.view</code></td><td>Agency-scoped read; returns list + stats + <code>availableStaff</code></td></tr>
+<tr><td>Create note</td><td><code>POST /web/notes</code></td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td><td><code>notes_center.add</code></td><td>Target case must be in-agency</td></tr>
+<tr><td>Edit / reassign note</td><td><code>PATCH /web/notes/:id</code></td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td><td><code>notes_center.edit</code></td><td>Sets <code>updatedBy</code>; reassignment target must be in-agency</td></tr>
+<tr><td>Delete note</td><td><code>DELETE /web/notes/:id</code></td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td><td><code>notes_center.delete</code></td><td>Hard delete</td></tr>
+<tr><td>Any (super-admin)</td><td>all</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td><td>bypassed</td><td>NECX super-admin bypasses fine-grained check; still agency-scoped by data joins</td></tr>
+<tr><td>Victim (APP) access</td><td>—</td><td>denied</td><td>—</td><td>No route path exists; notes are never victim-visible</td></tr>
+</tbody></table></div>
+<p>Additional rule: the frontend also gates UI affordances with <code>hasPermission(user, &#x27;notes_center&#x27;, &lt;action&gt;)</code> so buttons/menus appear only for permitted actions; the server remains the authoritative gate.</p>
+<h2 id="13-non-functional-requirements">13. Non-Functional Requirements</h2>
+<h3 id="131-confidentiality-victim-safety-paramount">13.1 Confidentiality &amp; victim safety (paramount)</h3>
+<ul>
+<li><strong>NFR-CONF-01:</strong> Notes (<code>claim_notes</code>) are caseworker-only and must never be returned to an APP (victim) issuer or rendered on any victim-facing surface. This is a hard invariant.</li>
+<li><strong>NFR-CONF-02:</strong> The Notes Center is the internal counterpart to victim-facing <strong>published updates</strong>; the two data sets must never be mixed in either direction.</li>
+<li><strong>NFR-CONF-03:</strong> Safety Concern notes (and all notes) must be treated as high-sensitivity data; UI and exports must reinforce internal-only handling.</li>
+</ul>
+<h3 id="132-privacy-tenancy-isolation">13.2 Privacy &amp; tenancy isolation</h3>
+<ul>
+<li><strong>NFR-ISO-01:</strong> Every read and write must be constrained to the issuer&#x27;s agency via the <code>service_centers</code>-scoped join; cross-agency access must be impossible (CJIS-style isolation).</li>
+<li><strong>NFR-ISO-02:</strong> Scoping violations must fail closed (<code>NotFound</code>/<code>Forbidden</code>) without confirming existence of out-of-agency records.</li>
+<li><strong>NFR-ISO-03:</strong> Any cross-agency propagation of note content occurs only via an explicit, consented referral snapshot (sanitized, one-way) — never via the Notes Center.</li>
+</ul>
+<h3 id="133-performance-scalability">13.3 Performance &amp; scalability</h3>
+<ul>
+<li><strong>NFR-PERF-01:</strong> <code>GET /web/notes</code> P95 &lt; 800 ms at default page size; list and stats computed in parallel.</li>
+<li><strong>NFR-PERF-02:</strong> <code>pageSize</code> is capped at 200 to bound query cost; client default is 50/page.</li>
+<li><strong>NFR-PERF-03:</strong> Filter/sort/search operations must remain performant on the agency&#x27;s full note volume (indexed on <code>claimId</code>, <code>createdBy</code>, <code>created_at</code>, <code>noteType</code> recommended).</li>
+</ul>
+<h3 id="134-availability-reliability">13.4 Availability &amp; reliability</h3>
+<ul>
+<li><strong>NFR-REL-01:</strong> Write operations must be atomic per note; a failed create/update/delete must not leave partial state.</li>
+<li><strong>NFR-REL-02:</strong> Endpoints are rate-limited (<code>rateLimiters.standard</code>, ~10/5s on writes) to protect the service.</li>
+</ul>
+<h3 id="135-auditability">13.5 Auditability</h3>
+<ul>
+<li><strong>NFR-AUD-01:</strong> Create, update, and delete of a note must write an <code>ActionLogs</code> row (<code>action</code>, <code>referenceType</code>, <code>actionDescription{source,ip,url,context}</code>, referenceId = note) for a complete compliance audit trail.</li>
+<li><strong>NFR-AUD-02:</strong> Attribution must be preserved: <code>createdBy</code> on creation and <code>updatedBy</code> on every human edit (null <code>updatedBy</code> ⇒ never edited).</li>
+</ul>
+<h3 id="136-localization-accessibility">13.6 Localization &amp; accessibility</h3>
+<ul>
+<li><strong>NFR-LOC-01:</strong> Notes Center UI strings should be localizable via the VS360 client&#x27;s i18n. (Note content itself is free text authored by staff.)</li>
+<li><strong>NFR-A11Y-01:</strong> The Notes Center list, filters, drawers, and rich-text editor must meet WCAG 2.1 AA (keyboard navigation, labels, contrast).</li>
+</ul>
+<h3 id="137-data-integrity-validation">13.7 Data integrity &amp; validation</h3>
+<ul>
+<li><strong>NFR-VAL-01:</strong> Enforce <code>noteType</code> enum and size caps (title 200 / description 50,000) server-side; do not rely on client validation alone.</li>
+<li><strong>NFR-VAL-02:</strong> Rich HTML descriptions must be stored safely and rendered without XSS (sanitize on render).</li>
+</ul>
+<h3 id="138-compliance">13.8 Compliance</h3>
+<ul>
+<li><strong>NFR-CMP-01:</strong> Because notes may inform grant/PMT narratives and legal proceedings, retention and audit of notes must satisfy the agency&#x27;s record-keeping obligations; hard deletion is irreversible and must be a permissioned action.</li>
+</ul>
+<h2 id="14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</h2>
+<h3 id="141-in-product-analytics-stat-cards">14.1 In-product analytics (stat cards)</h3>
+<p>The Notes Center surfaces four period counts derived from <code>getAgencyNoteStats</code>: <strong>Total</strong>, <strong>Today</strong>, <strong>This Week</strong>, <strong>This Month</strong> (via <code>date_trunc</code> FILTER aggregations, agency-scoped). These give supervisors an at-a-glance sense of note activity.</p>
+<h3 id="142-operational-insight-via-filters">14.2 Operational insight via filters</h3>
+<ul>
+<li>The <strong>staff filter</strong> (<code>availableStaff</code>) enables per-caseworker review (quality assurance, hand-off checks).</li>
+<li>The <strong>note-type filter</strong> enables risk triage (e.g., surfacing all Safety Concern notes) and process review (e.g., Court Update, Intake Note).</li>
+<li>The <strong>has-highlight</strong> filter surfaces notes with emphasized content.</li>
+</ul>
+<h3 id="143-notifications">14.3 Notifications</h3>
+<ul>
+<li><strong>None from the Notes Center.</strong> Note CRUD emits no socket events and no victim/staff notifications. Freshness on the VS360 client is handled by TanStack Query invalidation (<code>[&quot;notes-center&quot;]</code>), not real-time push.</li>
+<li>Contrast: <strong>published claim updates</strong> *do* notify the victim (victim_notifications + FCM + socket <code>update-&lt;receiverUid&gt;</code>); this is deliberately outside the Notes Center.</li>
+</ul>
+<h3 id="144-downstream-reporting">14.4 Downstream reporting</h3>
+<ul>
+<li>Notes may be incorporated into AI report context aggregation at the agency level (Reports subsystem), and note content may be copied into a referral snapshot when sharing is consented. Both are downstream consumers, not Notes Center capabilities.</li>
+</ul>
+<h2 id="15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Type</th><th>Impact</th><th>Mitigation / Owner</th></tr></thead>
+<tbody>
+<tr><td><strong>Controller ↔ service argument mismatch</strong> in <code>notes-center.controller.js</code>: controllers may pass arguments to service functions in an order/shape that does not match the service signatures (e.g., issuer, params, and body values positioned incorrectly), causing runtime errors or silently wrong scoping on one or more of the four routes.</td><td>Risk / Known bug</td><td>High — can break note CRUD at runtime and, worst case, weaken agency scoping</td><td>Backend Cases squad to audit each controller→service call site against the service signatures; add contract/integration tests per route; verify <code>issuer</code>, path <code>id</code>/<code>uid</code>, and body are threaded correctly. Track to closure before GA.</td></tr>
+<tr><td>Hard delete with no soft-delete/restore</td><td>Risk</td><td>Medium — accidental permanent loss of a note; irreversible for compliance</td><td>Client confirmation (FR-DL-04); consider soft-delete + audit-based restore in a future version; gate <code>delete</code> tightly via RBAC.</td></tr>
+<tr><td><code>hasHighlight</code> relies on <code>description ILIKE &#x27;%&lt;mark%&#x27;</code></td><td>Risk</td><td>Low — brittle if the editor changes highlight markup</td><td>Define a stable highlight marker; add tests; document the contract between editor output and the filter.</td></tr>
+<tr><td><code>availableStaff</code> derived only from the current page</td><td>Assumption / Limitation</td><td>Low/Medium — staff filter may omit authors not on the current page</td><td>Confirm intended UX; consider a dedicated distinct-authors query if agencies need the full author list.</td></tr>
+<tr><td>Rich HTML description (≤ 50,000) stored and rendered</td><td>Risk</td><td>Medium — XSS if not sanitized</td><td>Sanitize on render (NFR-VAL-02); enforce caps server-side.</td></tr>
+<tr><td>Dual write surfaces (Notes Center + per-case panel) over one table</td><td>Risk</td><td>Medium — scoping/behavior could drift between the two surfaces</td><td>Ensure both apply identical agency-scope checks; ideally converge on shared service logic; add cross-surface tests.</td></tr>
+<tr><td>Audit coverage on note CRUD not independently verified in this KB</td><td>Open Question</td><td>Medium — compliance gap if some mutations are unlogged</td><td>Confirm <code>ActionLogs</code> rows are written for create/update/delete (NFR-AUD-01); add where missing.</td></tr>
+<tr><td>No notifications on note changes</td><td>Assumption</td><td>Low — by design; supervisors won&#x27;t be alerted to new safety-concern notes in real time</td><td>Confirm this is acceptable; if not, consider an opt-in staff notification for high-sensitivity note types.</td></tr>
+<tr><td>Cross-agency isolation depends entirely on the join chain / resolvers</td><td>Risk</td><td>High if a code path bypasses <code>resolveAgencyScoped*</code></td><td>Security review of every query path; negative tests attempting cross-agency access (NFR-ISO-01/02).</td></tr>
+</tbody></table></div>
+<p>Assumptions:</p>
+<ul>
+<li>The <code>notes_center</code> permission set (<code>view/add/edit/delete</code>) is provisioned on relevant agency roles (default on <code>VSMS_ADMIN</code>) and appears in the agency plan&#x27;s permission catalog.</li>
+<li>The VS360 note-type list stays in lockstep with the backend <code>NOTE_TYPES</code> enum.</li>
+<li>Notes remain internal-only permanently; there is no product intent to ever expose them to victims.</li>
+</ul>
+<h2 id="16-glossary">16. Glossary</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Note (Case Note / Claim Note)</td><td>An internal, caseworker-only annotation attached to exactly one case; stored in <code>claim_notes</code>. Never shown to victims.</td></tr>
+<tr><td>Notes Center</td><td>The agency-scoped, cross-case VS360 surface (mount <code>/web/notes</code>) for browsing, searching, filtering, and managing all of an agency&#x27;s case notes.</td></tr>
+<tr><td>Note Type</td><td>The classification of a note; one of General Note, Case Update, Safety Concern, Follow-up Note, Service Note, Court Update, Intake Note (<code>ClaimNotes.NOTE_TYPES</code>, default General Note).</td></tr>
+<tr><td>Published Claim Update</td><td>A victim-facing progress message (<code>claim_updates</code>, <code>isPublished=true</code>) that notifies the victim — a separate feature, deliberately distinct from internal notes.</td></tr>
+<tr><td>Claim / Case</td><td>A victim&#x27;s request for a service (<code>service_claims</code>, <code>uid</code> <code>CL&lt;yy&gt;&lt;month&gt;&lt;uuid6&gt;</code>); the entity a note is attached to.</td></tr>
+<tr><td>Service</td><td>A concrete offering published by an agency under a category (<code>services</code>); its <code>serviceCenterId</code> links a case to its owning agency.</td></tr>
+<tr><td>Agency / Service Center</td><td>The tenant organization (<code>service_centers</code>) that owns cases and their notes; the unit of scoping/isolation.</td></tr>
+<tr><td>Caseworker / Advocate (VSMS)</td><td>Agency staff who work cases; <code>issuer.type = VSMS</code>, context <code>VS360</code>.</td></tr>
+<tr><td>Victim / Survivor (APP)</td><td>The person receiving services; <code>issuer.type = APP</code>. Has no access to notes.</td></tr>
+<tr><td><code>createdBy</code> / <code>updatedBy</code></td><td>Staff attribution on a note; <code>updatedBy</code> null means the note has never been human-edited.</td></tr>
+<tr><td><code>uid</code></td><td>The note&#x27;s public identifier used in URLs (distinct from the numeric PK <code>id</code>).</td></tr>
+<tr><td><code>checkPermission(&#x27;notes_center&#x27;, …)</code></td><td>The fine-grained RBAC gate for Notes Center actions (view/add/edit/delete).</td></tr>
+<tr><td><code>allowOnly(&#x27;VS360&#x27;)</code></td><td>The context gate restricting Notes Center routes to VS360 (agency staff) issuers.</td></tr>
+<tr><td>Agency scoping (CJIS isolation)</td><td>Enforcement that a user only ever sees/edits data for their own agency, via the <code>claim_notes → service_claims → services (serviceCenterId)</code> join.</td></tr>
+<tr><td>Referral case snapshot</td><td>A sanitized, one-time copy of case data (optionally including notes when <code>canShareCaseNotes=true</code>) captured by the Referrals module on consent — not live Notes Center access.</td></tr>
+<tr><td>ActionLogs / <code>action_logs</code></td><td>The platform audit trail; note mutations should write rows here for compliance.</td></tr>
+<tr><td>PMT</td><td>Performance Measurement Tool — federal/grant reporting; notes may inform report narratives but are separate from PMT data.</td></tr>
+</tbody></table></div>
+      </div>
+      <nav class="prevnext"><a class="pn prev" href="P12.html"><span>← Previous</span><b>RBAC &amp; User Management</b></a><a class="pn next" href="P14.html"><span>Next →</span><b>Drive</b></a></nav>
+      <footer class="doc-foot">NECX Inc — Confidential · Generated 2026-07-05 · NECX Notes Center</footer>
+    </article>
+  </main>
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav class="toc-nav"><a class="toc-1" href="#1-document-control">1. Document Control</a>
+<a class="toc-1" href="#2-executive-summary">2. Executive Summary</a>
+<a class="toc-1" href="#3-product-overview-vision">3. Product Overview &amp; Vision</a>
+<a class="toc-2" href="#31-problem-statement">3.1 Problem statement</a>
+<a class="toc-2" href="#32-product-vision">3.2 Product vision</a>
+<a class="toc-2" href="#33-where-this-sits-in-the-necx-ecosystem">3.3 Where this sits in the NECX ecosystem</a>
+<a class="toc-2" href="#34-relationship-to-the-per-case-notes-panel">3.4 Relationship to the per-case notes panel</a>
+<a class="toc-1" href="#4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</a>
+<a class="toc-2" href="#41-goals">4.1 Goals</a>
+<a class="toc-2" href="#42-success-metrics">4.2 Success metrics</a>
+<a class="toc-1" href="#5-scope">5. Scope</a>
+<a class="toc-2" href="#51-in-scope">5.1 In Scope</a>
+<a class="toc-2" href="#52-out-of-scope">5.2 Out of Scope</a>
+<a class="toc-1" href="#6-personas-user-roles">6. Personas &amp; User Roles</a>
+<a class="toc-1" href="#7-system-context-architecture">7. System Context &amp; Architecture</a>
+<a class="toc-2" href="#71-tech-stack">7.1 Tech stack</a>
+<a class="toc-2" href="#72-how-it-talks-to-the-backend">7.2 How it talks to the backend</a>
+<a class="toc-2" href="#73-real-time-notifications">7.3 Real-time / notifications</a>
+<a class="toc-2" href="#74-tenancy-isolation">7.4 Tenancy &amp; isolation</a>
+<a class="toc-2" href="#75-the-internal-note-vs-published-update-boundary-architectural">7.5 The internal-note vs published-update boundary (architectural)</a>
+<a class="toc-1" href="#8-functional-requirements">8. Functional Requirements</a>
+<a class="toc-2" href="#81-note-taxonomy-note-types">8.1 Note taxonomy (note types)</a>
+<a class="toc-2" href="#82-cross-case-browse-filter-search-stats-get-webnotes">8.2 Cross-case browse, filter, search &amp; stats (`GET /web/notes`)</a>
+<a class="toc-2" href="#83-create-a-note-on-a-case-post-webnotes">8.3 Create a note on a case (`POST /web/notes`)</a>
+<a class="toc-2" href="#84-edit-re-link-a-note-patch-webnotesid">8.4 Edit / re-link a note (`PATCH /web/notes/:id`)</a>
+<a class="toc-2" href="#85-delete-a-note-delete-webnotesid">8.5 Delete a note (`DELETE /web/notes/:id`)</a>
+<a class="toc-2" href="#86-distinction-from-published-claim-updates-guardrail-requiremen">8.6 Distinction from published claim updates (guardrail requirements)</a>
+<a class="toc-2" href="#87-export-vs360-client-utility">8.7 Export (VS360 client utility)</a>
+<a class="toc-1" href="#9-detailed-user-system-flows">9. Detailed User &amp; System Flows</a>
+<a class="toc-2" href="#91-add-a-note-to-a-case">9.1 Add a note to a case</a>
+<a class="toc-2" href="#92-browse-all-notes-in-the-notes-center">9.2 Browse all notes in the Notes Center</a>
+<a class="toc-2" href="#93-filter-by-type-andor-case-search-and-sort">9.3 Filter by type and/or case, search, and sort</a>
+<a class="toc-2" href="#94-edit-a-note">9.4 Edit a note</a>
+<a class="toc-2" href="#95-delete-a-note">9.5 Delete a note</a>
+<a class="toc-2" href="#96-export-a-note-or-the-current-list-to-pdf">9.6 Export a note (or the current list) to PDF</a>
+<a class="toc-2" href="#97-cross-surface-consistency-per-case-panel-notes-center">9.7 Cross-surface consistency (per-case panel ↔ Notes Center)</a>
+<a class="toc-2" href="#98-permission-denied-and-isolation-branches-system-flow">9.8 Permission-denied and isolation branches (system flow)</a>
+<a class="toc-1" href="#10-data-model">10. Data Model</a>
+<a class="toc-1" href="#11-api-integration-surface">11. API &amp; Integration Surface</a>
+<a class="toc-2" href="#111-notes-center-endpoints-mount-webnotes-every-route-allowonlyv">11.1 Notes Center endpoints (mount `/web/notes`; every route `allowOnly(&#x27;VS360&#x27;)` + `checkPermission(&#x27;notes_center&#x27;, …)`)</a>
+<a class="toc-2" href="#112-related-out-of-scope-endpoints-for-reference">11.2 Related (out-of-scope) endpoints for reference</a>
+<a class="toc-2" href="#113-external-integrations">11.3 External integrations</a>
+<a class="toc-1" href="#12-rbac-permissions">12. RBAC &amp; Permissions</a>
+<a class="toc-1" href="#13-non-functional-requirements">13. Non-Functional Requirements</a>
+<a class="toc-2" href="#131-confidentiality-victim-safety-paramount">13.1 Confidentiality &amp; victim safety (paramount)</a>
+<a class="toc-2" href="#132-privacy-tenancy-isolation">13.2 Privacy &amp; tenancy isolation</a>
+<a class="toc-2" href="#133-performance-scalability">13.3 Performance &amp; scalability</a>
+<a class="toc-2" href="#134-availability-reliability">13.4 Availability &amp; reliability</a>
+<a class="toc-2" href="#135-auditability">13.5 Auditability</a>
+<a class="toc-2" href="#136-localization-accessibility">13.6 Localization &amp; accessibility</a>
+<a class="toc-2" href="#137-data-integrity-validation">13.7 Data integrity &amp; validation</a>
+<a class="toc-2" href="#138-compliance">13.8 Compliance</a>
+<a class="toc-1" href="#14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</a>
+<a class="toc-2" href="#141-in-product-analytics-stat-cards">14.1 In-product analytics (stat cards)</a>
+<a class="toc-2" href="#142-operational-insight-via-filters">14.2 Operational insight via filters</a>
+<a class="toc-2" href="#143-notifications">14.3 Notifications</a>
+<a class="toc-2" href="#144-downstream-reporting">14.4 Downstream reporting</a>
+<a class="toc-1" href="#15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</a>
+<a class="toc-1" href="#16-glossary">16. Glossary</a>
+</nav>
+  </aside>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

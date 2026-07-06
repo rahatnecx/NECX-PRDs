@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NECX AI Report Builder · NECX PRD</title>
+<meta name="description" content="AI-assisted PMT, grant, and custom reporting for victim-services agencies">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="prd-page">
+<header class="topbar">
+  <button class="hamburger" aria-label="Menu" onclick="toggleNav()">&#9776;</button>
+  <a class="brand" href="../index.html"><svg class="logo" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 L35 10 V22 C35 31 28 37 20 39 C12 37 5 31 5 22 V10 Z" fill="var(--brand)"/><path d="M13 27 V14 L20 22 V14 M27 14 V27 L20 19" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="brand-text">NECX<span class="brand-sub">Product Requirements</span></span></a>
+  <div class="topbar-spacer"></div>
+  <a class="top-link" href="../index.html">Home</a>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><span class="ic-sun">☀</span><span class="ic-moon">☾</span></button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-search"><input type="search" id="navSearch" placeholder="Filter documents…" oninput="filterNav(this.value)"></div>
+    <nav class="nav"><div class="nav-group"><div class="nav-group-title">Platform &amp; Applications</div><a class="nav-item " href="P01.html" data-search="necx platform — core system whole-platform prd: unified backend, four clients, multi-tenancy, identity/rbac, and the end-to-end case lifecycle."><span class="nav-num">01</span><span class="nav-text">Platform — Core System</span></a>
+<a class="nav-item " href="P02.html" data-search="necx workspace — staff mobile app agency staff mobile app (flutter/riverpod) — the on-the-go companion to the vs360 web dashboard."><span class="nav-num">02</span><span class="nav-text">Workspace — Staff Mobile App</span></a>
+<a class="nav-item " href="P03.html" data-search="necx victim app — survivor mobile app victim / survivor mobile app (flutter/getx) — discover services, request help, chat, find shelter, e-sign."><span class="nav-num">03</span><span class="nav-text">Victim App — Survivor Mobile App</span></a>
+<a class="nav-item " href="P04.html" data-search="vs360 — agency web dashboard vs360 — the agency staff web dashboard (react/vite) and primary caseworker workspace."><span class="nav-num">04</span><span class="nav-text">VS360 — Agency Web Dashboard</span></a>
+</div>
+<div class="nav-group"><div class="nav-group-title">VS360 Feature Modules</div><a class="nav-item " href="P05.html" data-search="necx case management service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes."><span class="nav-num">05</span><span class="nav-text">Case Management</span></a>
+<a class="nav-item " href="P06.html" data-search="necx shelter management shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search."><span class="nav-num">06</span><span class="nav-text">Shelter Management</span></a>
+<a class="nav-item " href="P07.html" data-search="necx hotline management twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights."><span class="nav-num">07</span><span class="nav-text">Hotline Management</span></a>
+<a class="nav-item " href="P08.html" data-search="necx calendar &amp; appointments reminders, tasks and case-linked appointments in the vs360 tools calendar."><span class="nav-num">08</span><span class="nav-text">Calendar &amp; Appointments</span></a>
+<a class="nav-item " href="P09.html" data-search="necx staff time tracking staff time tracking: clock in/out, timesheets, and grant/pmt time attribution."><span class="nav-num">09</span><span class="nav-text">Staff Time Tracking</span></a>
+<a class="nav-item " href="P10.html" data-search="necx agency chat real-time advocate↔victim messaging tied to service threads and cases."><span class="nav-num">10</span><span class="nav-text">Agency Chat</span></a>
+<a class="nav-item " href="P11.html" data-search="necx internal chat staff-to-staff messaging within an agency, real-time over socket.io."><span class="nav-num">11</span><span class="nav-text">Internal Chat</span></a>
+<a class="nav-item " href="P12.html" data-search="necx rbac &amp; user management roles, the module/action permission matrix, plan seats, and multi-layer enforcement."><span class="nav-num">12</span><span class="nav-text">RBAC &amp; User Management</span></a>
+<a class="nav-item " href="P13.html" data-search="necx notes center agency-scoped, cross-case view over internal (caseworker-only) case notes."><span class="nav-num">13</span><span class="nav-text">Notes Center</span></a>
+<a class="nav-item " href="P14.html" data-search="necx drive google-drive-style cloud file storage backed by azure blob, with quotas and analytics."><span class="nav-num">14</span><span class="nav-text">Drive</span></a>
+<a class="nav-item active" href="P15.html" data-search="necx ai report builder pmt/grant reporting plus ai-assisted custom report generation with accuracy validation."><span class="nav-num">15</span><span class="nav-text">AI Report Builder</span></a>
+<a class="nav-item " href="P16.html" data-search="necx e-sign &amp; document center prepare, request, sign and pdf-stamp case documents with an audit trail."><span class="nav-num">16</span><span class="nav-text">E-Sign &amp; Document Center</span></a>
+<a class="nav-item " href="P17.html" data-search="necx referrals &amp; partnerships inter-agency network: partnerships, invitations, and consent-based case referrals."><span class="nav-num">17</span><span class="nav-text">Referrals &amp; Partnerships</span></a>
+<a class="nav-item " href="P18.html" data-search="necx inquiries management intake and triage of inquiries / requests-to-connect before they become cases."><span class="nav-num">18</span><span class="nav-text">Inquiries Management</span></a>
+<a class="nav-item " href="P19.html" data-search="necx communities agency-run community spaces: joining questions, membership, posts and moderation."><span class="nav-num">19</span><span class="nav-text">Communities</span></a>
+<a class="nav-item " href="P20.html" data-search="necx service management service catalog, categories, and the per-service claim-question (intake) builder."><span class="nav-num">20</span><span class="nav-text">Service Management</span></a>
+</div>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim" onclick="toggleNav()"></div>
+  
+  <main class="content">
+    <article class="doc">
+      <div class="doc-eyebrow">Product Requirements Document · NECX Inc — Confidential</div>
+      <h1 class="doc-title">NECX AI Report Builder</h1>
+      <p class="doc-subtitle">AI-assisted PMT, grant, and custom reporting for victim-services agencies</p>
+      <div class="doc-meta"><span class="chip">Version: <b>1.0</b></span><span class="chip">Status: <b>Baseline</b></span><span class="chip">Owner: <b>NECX Product Management</b></span><a class="dl-btn" href="../downloads/15_VS360_Feature_AI_Report_Builder.docx" download>⬇ Download DOCX</a></div>
+      <hr class="doc-rule">
+      <div class="doc-body">
+      <h2 id="1-document-control">1. Document Control</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td>NECX — Coordinated Victim Services Platform</td></tr>
+<tr><td>Module</td><td>Reporting &amp; AI Report Builder (PMT reports, grants, questionnaires, generated reports, custom AI reports)</td></tr>
+<tr><td>Version</td><td>1.0</td></tr>
+<tr><td>Status</td><td>Baseline</td></tr>
+<tr><td>Author</td><td>NECX Product Management</td></tr>
+<tr><td>Reviewers</td><td>Engineering (Backend Reports), VS360 Web, Workspace Mobile, Data/Compliance, Security</td></tr>
+<tr><td>Last Updated</td><td>2026-07-05</td></tr>
+<tr><td>Related Documents</td><td>VS360 Web Cases &amp; Reports KB; Workspace Mobile App KB; Backend Cases KB (Reports/AI); Backend Core KB (Auth/RBAC/Data Model); Cases &amp; Referrals PRD; Grants &amp; PMT Compliance PRD</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>1.0</td><td>2026-07-05</td><td>NECX Product Management</td><td>Baseline PRD covering the reporting suite and both AI surfaces: the conservative PMT spreadsheet editor and the NECX AI Report Builder (custom reports).</td></tr>
+</tbody></table></div>
+<h2 id="2-executive-summary">2. Executive Summary</h2>
+<p>NECX serves victims and survivors of crime and the agencies, advocates, and caseworkers who help them. Every funded victim-services agency must repeatedly prove its impact — to boards, to funders, and to state and federal programs such as VOCA and VAWA — through Performance Measurement Tool (PMT) submissions, grant-template spreadsheets, and narrative program reports. This reporting work is manual, error-prone, and pulls advocates away from client-facing work.</p>
+<p>The NECX AI Report Builder is the platform&#x27;s reporting subsystem and its two AI-assisted authoring surfaces. It spans (a) the OAG/PMT data pipeline — grants, data-collection questionnaires, per-case answers, and PMT demographic rows; (b) Excel-template-based generated grant reports edited in an in-browser Luckysheet spreadsheet with a conservative, human-approval AI cell editor; and (c) the flagship NECX AI Report Builder, a JSON-schema-driven, publication-quality custom-report generator with a natural-language chat, agency-brain and live-data context, file-upload metric extraction, and a post-generation accuracy validator that flags value conflicts and possible hallucinations.</p>
+<p>Two deliberately different AI postures coexist. The PMT spreadsheet editor is conservative by design: it uses OpenAI gpt-4o, returns only surgical cell edits, enforces an 80–100% confidence-only fill policy, and requires human approval before edits are applied. The custom-report AI builder is generative: it produces an entire structured report from live agency data plus uploaded files, using OpenAI gpt-4o or Anthropic claude-haiku-4-5, and layers prompt-level accuracy rules with a programmatic validator. Because reporting drives funding and compliance decisions, accuracy, provenance, and auditability are first-class concerns throughout this document.</p>
+<p>The subsystem is available to agency staff on the VS360 web app and the Workspace mobile app, gated behind the <code>reports.pmt_reports</code> permission. This PRD specifies the reporting suite end to end: functional behavior, step-by-step flows, data model, endpoints, integrations, RBAC, non-functional requirements, and the known accuracy risks that must be tracked as open questions.</p>
+<h2 id="3-product-overview-vision">3. Product Overview &amp; Vision</h2>
+<h3 id="31-problem-statement">3.1 Problem statement</h3>
+<p>Victim-services agencies live and die by their reporting. Funders require PMT/VOCA/VAWA submissions on funder-supplied Excel templates; boards want quarterly and annual impact summaries; program managers need grant-progress reports. Today advocates re-key case data into spreadsheets by hand, reconcile demographic counts across systems, and assemble narrative reports under deadline pressure. The work is slow, duplicative, and prone to transcription errors — and an error in a grant report can jeopardize funding. Agencies need reporting that draws directly from the case data they already capture, assists authoring with AI, and makes every number traceable to its source.</p>
+<h3 id="32-product-vision">3.2 Product vision</h3>
+<p>The NECX AI Report Builder turns the case data agencies already collect into accurate, funder-ready reports with minimal manual effort. Grants define what funders need; linked questionnaires collect that data automatically as staff work cases; PMT rows capture demographics per case; and AI assists two ways — surgically filling funder spreadsheets under human approval, and generating complete, styled custom reports from live data and uploaded files. The north star is trustworthy automation: the platform accelerates reporting without ever fabricating numbers, and it surfaces provenance and accuracy checks so staff can verify before they submit.</p>
+<h3 id="33-where-this-sits-in-the-necx-ecosystem">3.3 Where this sits in the NECX ecosystem</h3>
+<p>NECX is a single unified backend serving four clients: the Victim mobile app, the Workspace staff mobile app, the VS360 agency web app, and the NECX Admin console. Reporting is an agency (VS360) capability. It consumes data produced across the platform — service claims (cases), PMT demographic rows, questionnaire answers, referrals, partnerships, chat/inquiry threads, and staff time entries — and it is authored on two clients: the VS360 web app (full reporting suite, Luckysheet editor, drag-drop Grant Report Builder, Custom Report Builder) and the Workspace mobile app (PMT/grants management plus an on-device AI custom-report builder with PDF export). All web AI calls are backend-routed with server-held provider keys; the current mobile AI builder calls providers directly from the device (flagged in Risks).</p>
+<h2 id="4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</h2>
+<h3 id="41-goals-objectives">4.1 Goals &amp; objectives</h3>
+<ul>
+<li>Reduce the time and manual effort required to produce PMT, grant, and board/program reports by drawing directly from live case and PMT data.</li>
+<li>Provide two fit-for-purpose AI surfaces: a conservative, human-approved spreadsheet editor for funder templates, and a generative custom-report builder for narrative/analytical reports.</li>
+<li>Guarantee numeric trustworthiness: the AI must never fabricate, round, or substitute numbers; uploaded-file values are authoritative; and a post-generation validator flags conflicts and possible hallucinations.</li>
+<li>Make every reported datapoint traceable to a source (database, uploaded file, user input, or AI-generated) for audit and compliance.</li>
+<li>Support the full grant lifecycle: define a grant + Excel template, link data-collection questionnaires, collect answers as cases progress, generate reports, edit them, and export.</li>
+<li>Deliver reporting on both VS360 web and Workspace mobile, gated by a single <code>reports.pmt_reports</code> permission.</li>
+</ul>
+<h3 id="42-success-metrics">4.2 Success metrics</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Definition</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>Report authoring time</td><td>Median time from starting a custom report to a saved final report</td><td>≤ 15 minutes</td></tr>
+<tr><td>PMT template fill effort</td><td>Median staff-edited cells per generated grant report after AI assist</td><td>≥ 50% reduction vs manual baseline</td></tr>
+<tr><td>AI approval rate</td><td>Share of PMT editor AI responses whose edits are accepted by staff after review</td><td>≥ 80%</td></tr>
+<tr><td>Validator conflict rate</td><td>Share of file-backed custom reports generated with zero high-severity numeric conflicts</td><td>≥ 95%</td></tr>
+<tr><td>Hallucination flag follow-through</td><td>Share of validator warnings reviewed/resolved before a report is marked <code>final</code></td><td>100% (process target)</td></tr>
+<tr><td>Data-source coverage</td><td>Share of custom-report datapoints with a resolved source type (not <code>ai_generated</code>)</td><td>≥ 90%</td></tr>
+<tr><td>Reporting adoption</td><td>Share of active agencies producing ≥ 1 report per quarter via the subsystem</td><td>≥ 70%</td></tr>
+</tbody></table></div>
+<h2 id="5-scope">5. Scope</h2>
+<h3 id="51-in-scope">5.1 In Scope</h3>
+<ul>
+<li><strong>PMT reports:</strong> paged, agency-scoped PMT demographic rows (<code>pmt_report</code>) with per-row editing; grant-filtered views.</li>
+<li><strong>Questionnaires:</strong> CRUD of data-collection questionnaires and questions; per-claim answer submission; the full question×case <strong>answer matrix</strong> that feeds the AI editor.</li>
+<li><strong>Grants:</strong> grant CRUD with Excel template upload/replace/download; questionnaire linkage; field-distribution analytics.</li>
+<li><strong>Generated reports:</strong> creation by copying a grant&#x27;s Excel template; status management; Excel overwrite; deletion (cascading chat logs + file); download.</li>
+<li><strong>PMT AI spreadsheet editor:</strong> OpenAI gpt-4o surgical cell editor with confidence scoring, questions-before-edits, and human approval (<code>requiresApproval</code>).</li>
+<li><strong>Report Builder AI:</strong> lightweight advisory chat (gpt-4o-mini) for the drag-drop Grant Report Builder canvas.</li>
+<li><strong>NECX AI Report Builder (custom reports):</strong> JSON-schema report generation via <code>custom-reports/generate-chat</code> (gpt-4o / claude-haiku-4-5); agency-brain + live-data context; chat iteration; manual section editing; status (draft/final); duplication; chat history.</li>
+<li><strong>File upload + accuracy pipeline:</strong> server-side file parse (doc/docx/pdf/xlsx/xls/csv/txt), metric extraction with provenance, verified-metrics reference table injection, and the post-generation accuracy validator (conflicts/warnings) and data-source mapper.</li>
+<li><strong>Luckysheet grant editor</strong> and the <strong>drag-drop Grant Report Builder</strong> on VS360 web.</li>
+<li><strong>PDF export:</strong> server-side Puppeteer render (web) and client-side PDF (web print + mobile <code>pdf</code>/<code>printing</code>).</li>
+<li><strong>Workspace mobile</strong> reporting hub and on-device AI custom-report builder with PDF export.</li>
+<li><strong>RBAC</strong> via <code>reports.pmt_reports</code>; per-resource ownership scoping (grants/reports/questionnaires by service center; custom reports by user).</li>
+</ul>
+<h3 id="52-out-of-scope">5.2 Out of Scope</h3>
+<ul>
+<li>Case management, intake, referrals, partnerships, notes-center, inquiries, hotline, and shelter features (covered by their own PRDs; referenced here only where they feed reporting data).</li>
+<li>The Victim (client) mobile app — reporting is a staff-only capability.</li>
+<li>NECX Admin console reporting/administration beyond platform AI-provider configuration.</li>
+<li>Automated funder submission/transmission (e.g., direct upload to OAG/PMT portals) — reports are generated and exported; transmission is manual.</li>
+<li>The &quot;Case Management AI Agent&quot; (named in mobile branches but not implemented — see Risks).</li>
+<li>Offline reporting on mobile (no local cache is implemented).</li>
+<li>Scanned/image PDF OCR for file uploads (unsupported; text-based files only).</li>
+</ul>
+<h2 id="6-personas-user-roles">6. Personas &amp; User Roles</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Role</th><th>Description</th><th>Key permissions</th></tr></thead>
+<tbody>
+<tr><td>Agency Super Admin</td><td>Agency owner/administrator; full reporting access; bypasses fine-grained checks</td><td><code>reports.pmt_reports</code> (+ SUPER_ADMIN bypass)</td></tr>
+<tr><td>Agency Admin</td><td>Manages grants, questionnaires, and reports for the agency</td><td><code>reports.pmt_reports</code></td></tr>
+<tr><td>Case Worker / Advocate</td><td>Works cases; may build and own custom reports; edits PMT/questionnaire data on their cases</td><td><code>reports.pmt_reports</code> (+ <code>claims.*</code> for case data)</td></tr>
+<tr><td>NECX Platform Admin</td><td>NECX Inc staff; configures platform AI-provider settings (<code>admin_settings</code>)</td><td>ADMIN context; not an agency reporting user</td></tr>
+<tr><td>Victim / Survivor (client)</td><td>Uses the Victim app; contributes case data but never accesses reporting</td><td>none (no reporting surface)</td></tr>
+</tbody></table></div>
+<p><strong>Persona narratives.</strong></p>
+<p>*Dana, Agency Admin.* Dana sets up each funder&#x27;s grant by uploading its Excel template and linking the questionnaires that collect the required data. When a report is due, she creates a generated report from the template, opens it in the Luckysheet editor, and uses the PMT AI copilot to fill cells — reviewing and approving every suggested edit before saving. For the board, she uses the Custom Report Builder: she picks &quot;Board Report,&quot; a date range, and the sections she wants, then lets the AI draft it from live agency data.</p>
+<p>*Marco, Advocate.* Marco captures questionnaire answers as he resolves cases, feeding the answer matrix. On the road, he opens the Workspace mobile app, runs the AI report wizard to produce a quarterly summary, iterates with the chat panel, and exports a PDF to share.</p>
+<p>*Priya, Data/Compliance reviewer.* Priya cares about provenance. Before any report is marked <code>final</code>, she checks the accuracy validator&#x27;s PASS/FAIL summary, resolves flagged conflicts (where a report number disagrees with an uploaded file) and warnings (numbers not found in any source), and confirms placeholder/zero data sources are not being mistaken for real results.</p>
+<h2 id="7-system-context-architecture">7. System Context &amp; Architecture</h2>
+<h3 id="71-tech-stack">7.1 Tech stack</h3>
+<ul>
+<li><strong>Backend:</strong> Node.js + Express (ESM), Objection.js/Knex over PostgreSQL, Socket.IO, Redis, BullMQ. <code>knexSnakeCaseMappers</code> maps snake_case columns to camelCase in JS. Reports live under <code>src/apps/reports</code> and are mounted at <code>/web/reports</code>.</li>
+<li><strong>VS360 web:</strong> React 18 + Vite, Mantine v7, Redux Toolkit + redux-persist, TanStack React Query v4, react-router-dom v6. Charts via ApexCharts/Recharts/@mantine/charts; maps via Leaflet. Spreadsheets via <strong>Luckysheet + LuckyExcel + ExcelJS</strong>. Drag-drop via <strong>@dnd-kit</strong>. Rich text via TipTap. Realtime via socket.io-client.</li>
+<li><strong>Workspace mobile:</strong> Flutter (Dart), Riverpod, GoRouter, Dio, Socket.IO client, <code>fl_chart</code>, and <code>pdf</code>/<code>printing</code> for report export.</li>
+<li><strong>AI providers:</strong> OpenAI (gpt-4o, gpt-4o-mini) via <code>src/loaders/openai.js</code>; Anthropic (claude-haiku-4-5-20251001) via raw axios to <code>api.anthropic.com/v1/messages</code>.</li>
+<li><strong>File/PDF:</strong> server-side parsers (word-extractor, mammoth, pdf-parse, ExcelJS, CSV), and Puppeteer (<code>puppeteer-core</code> + system Chromium) for server PDF export.</li>
+</ul>
+<h3 id="72-how-clients-talk-to-the-backend">7.2 How clients talk to the backend</h3>
+<p>Every reporting call is issued to the unified API under <code>/v2/web/reports/...</code>. Requests carry <code>Authorization: Bearer &lt;access&gt;</code>, <code>x-refresh-token</code>, <code>X-Netlify-Secret</code>, and <code>X-Environment</code>. Response bodies are AES-encrypted by the encryption middleware and decrypted client-side. The entire <code>/web/reports</code> tree is gated by <code>allowOnly(&#x27;VS360&#x27;)</code> and rate-limited by <code>rateLimiters.pmtApi</code> (~15 requests / 5s). Services return <code>{ status, success, data|message }</code>; controllers echo the status.</p>
+<p>All AI provider keys are held server-side on the web path — the browser never sees an API key; the backend fetches the data, builds the prompt, calls the provider, and returns structured results. The Workspace mobile app currently calls Anthropic/OpenAI <strong>directly from the device</strong> using embedded keys (flagged in Risks as a security gap; the server AI chat endpoints exist and should supersede this).</p>
+<h3 id="73-real-time-tenancy-and-data-lineage">7.3 Real-time, tenancy, and data lineage</h3>
+<ul>
+<li><strong>Tenancy:</strong> agency-scoped resources (grants, generated reports, questionnaires, PMT rows) are filtered by <code>issuer.serviceCenterInfo.id</code>. Custom reports are owned by the creating user (<code>custom_reports.userId</code>) and scoped by user, not agency.</li>
+<li><strong>Data lineage:</strong> grants → linked questionnaires (by service category) → per-claim answers → the answer matrix + <code>pmt_report</code> demographic rows → the AI editor context and the custom-report live-data/agency-brain context.</li>
+<li><strong>Auditing:</strong> create/update/delete operations across the platform write <code>ActionLogs</code> rows for a full compliance trail.</li>
+<li><strong>Notifications:</strong> the reporting subsystem is primarily request/response; it does not emit dedicated socket/FCM report-ready events in the current implementation (see §14).</li>
+</ul>
+<h2 id="8-functional-requirements">8. Functional Requirements</h2>
+<h3 id="81-pmt-reports">8.1 PMT reports</h3>
+<p>PMT reports are per-case demographic/service rows (<code>pmt_report</code>) created automatically when a claim is created and when a case is cloned by a referral. <code>getPmtReport</code> requires <code>issuer.serviceCenterInfo</code>, joins <code>pmt_report → service_claims → services</code>, scopes to <code>serviceCenterId</code>, and eager-loads <code>claimInfo.[victimInfo, serviceInfo]</code>. It supports <code>page/pageSize</code>, <code>pageLess</code> (returns all rows — used by the AI data services), <code>startDate/endDate</code>, and <code>grantId</code> (resolves the grant&#x27;s linked questionnaire categories and filters claims to those service categories; returns nothing if the grant has no categories). <code>updatePmtReport</code> verifies the row&#x27;s claim&#x27;s <code>serviceCenterId</code> matches the issuer (403 otherwise) before patching.</p>
+<p>PMT fields: <code>isNew, raceEtnicity(+Other), gender(+Other), age, victimizationType(+Other), specialClassification(+Other), typeOfService(+Other), typeOfServiceSubCategory(+Other), serviceUnmet, surveyReceived, surveyCompleted, victimCompensation</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-PMT-01</td><td>The system shall list PMT rows for the issuer&#x27;s agency with paging, date-range, and <code>grantId</code> filters.</td><td>Must</td></tr>
+<tr><td>FR-PMT-02</td><td>The system shall support <code>pageLess</code> retrieval of all agency PMT rows for AI data assembly.</td><td>Must</td></tr>
+<tr><td>FR-PMT-03</td><td>The system shall allow editing of a PMT row only when its claim belongs to the issuer&#x27;s agency (else 403).</td><td>Must</td></tr>
+<tr><td>FR-PMT-04</td><td>The system shall auto-create a PMT row on claim creation and on referral case cloning.</td><td>Must</td></tr>
+<tr><td>FR-PMT-05</td><td><code>grantId</code> filtering shall return no rows when the grant has no linked questionnaire categories.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="82-questionnaires-answer-matrix">8.2 Questionnaires &amp; answer matrix</h3>
+<p>Data-collection questionnaires drive PMT/grant data capture. Tables: <code>pmt_questionnaires</code>, <code>pmt_questionnaire_questions</code>, <code>pmt_questionnaire_categories</code> (M2M questionnaire↔service category), <code>pmt_questionnaire_answers</code>, <code>pmt_grant_questionnaires</code> (M2M grant↔questionnaire). CRUD is agency-scoped with soft-delete (<code>is_active=false</code>). Questions store <code>questionText, questionType, options (JSON), questionOrder</code> with types fill-in-the-blank / multiple-choice / true-false. Updates use a smart upsert that preserves answers for kept questions and only deletes answers for removed questions.</p>
+<p><code>getQuestionnaireForClaim(claimId)</code> finds active questionnaires whose category matches the claim&#x27;s service category and which are linked to an active grant, returning a merged (composite) question list plus existing answers. <code>submitQuestionnaireAnswers(claimId,{answers})</code> maps each <code>questionId</code> to its questionnaire, deletes prior answers for those questionnaires on that claim, and inserts new ones. <code>getQuestionnaireAnswersMatrix(issuer)</code> builds <code>{ questions[], cases[], answers{qId:{caseId:{answer}}}, applicability{qId:{caseId:bool}} }</code> across the agency, including only questions linked to an active grant — this matrix is the primary data source for the PMT AI editor.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-QNR-01</td><td>The system shall provide agency-scoped questionnaire CRUD with soft-delete.</td><td>Must</td></tr>
+<tr><td>FR-QNR-02</td><td>Question updates shall preserve answers for retained questions and delete answers only for removed questions.</td><td>Must</td></tr>
+<tr><td>FR-QNR-03</td><td>The system shall return the applicable questionnaire(s) and existing answers for a claim by service category and active-grant linkage.</td><td>Must</td></tr>
+<tr><td>FR-QNR-04</td><td>The system shall accept per-claim answer submission, replacing prior answers for the affected questionnaires.</td><td>Must</td></tr>
+<tr><td>FR-QNR-05</td><td>The system shall expose an answer count per questionnaire to warn before destructive edits/deletes.</td><td>Must</td></tr>
+<tr><td>FR-QNR-06</td><td>The system shall build a question×case answer matrix (with applicability) for reporting/AI context, limited to active-grant-linked questions.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="83-grants">8.3 Grants</h3>
+<p>A grant = name + description + an Excel template file (<code>.xlsx/.xls</code> only) + linked questionnaires. Templates are uploaded to cloud storage (Azure Blob in prod/staging, MinIO in dev) via <code>fileService</code>, with metadata in <code>file_uploads</code> (<code>context=&#x27;GRANT&#x27;</code>). CRUD is transactional and agency-scoped. Delete is soft (<code>is_active=false</code>) and blocked if any <code>pmt_generated_reports</code> reference the grant. <code>downloadGrantFile</code> streams the template. Relations: <code>serviceCenter</code>, <code>createdByUser</code>, <code>templateFile</code>, <code>questionnaires</code> (M2M). <code>getFieldDistribution</code> computes count/% for either a questionnaire question (joined grant→questionnaire→answers) or a whitelisted demographic field on <code>pmt_report</code> (<code>ALLOWED_DEMOGRAPHIC_FIELDS</code> guards the interpolated field name against SQL injection).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-GRT-01</td><td>The system shall create/update grants with a required Excel template (create) and optional replacement template.</td><td>Must</td></tr>
+<tr><td>FR-GRT-02</td><td>The system shall reject non-Excel template files.</td><td>Must</td></tr>
+<tr><td>FR-GRT-03</td><td>The system shall link grants to questionnaires (M2M) so answers are collected by service category.</td><td>Must</td></tr>
+<tr><td>FR-GRT-04</td><td>The system shall soft-delete grants and block deletion when generated reports reference the grant.</td><td>Must</td></tr>
+<tr><td>FR-GRT-05</td><td>The system shall stream the grant template for preview/download.</td><td>Must</td></tr>
+<tr><td>FR-GRT-06</td><td>The system shall compute count/% field distributions for questionnaire questions and whitelisted demographic fields.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="84-generated-reports-excel-from-grant-template">8.4 Generated reports (Excel from grant template)</h3>
+<p><code>createGeneratedReport</code> copies the grant&#x27;s template (downloads from storage, uploads a uniquely-named copy, writes a new <code>file_uploads</code> row <code>context=&#x27;GENERATED_REPORT&#x27;</code>), then inserts a report row (<code>status=&#x27;in_progress&#x27;</code>, linking <code>grantId</code>, <code>templateFileId</code>, <code>reportFileId</code>) — agency-scoped and transactional. <code>updateGeneratedReportStatus</code> toggles <code>in_progress|completed</code> (sets/clears <code>completed_at</code>). <code>updateGeneratedReportFile</code> overwrites the same cloud object with staff-edited Excel. <code>deleteGeneratedReport</code> deletes the cloud file, all <code>pmt_report_chat_logs</code> for the report, and the row. <code>downloadGeneratedReport</code> streams the file.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-GEN-01</td><td>The system shall create a generated report by cloning the grant&#x27;s Excel template into a new editable file.</td><td>Must</td></tr>
+<tr><td>FR-GEN-02</td><td>The system shall let staff overwrite a generated report&#x27;s Excel file (Luckysheet save).</td><td>Must</td></tr>
+<tr><td>FR-GEN-03</td><td>The system shall support `in_progress</td><td>completed` status with completion timestamping.</td></tr>
+<tr><td>FR-GEN-04</td><td>Deleting a generated report shall cascade-delete its AI chat logs and cloud file.</td><td>Must</td></tr>
+<tr><td>FR-GEN-05</td><td>The system shall stream generated report files for download.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="85-pmt-ai-spreadsheet-editor-conservative-human-approved">8.5 PMT AI spreadsheet editor (conservative, human-approved)</h3>
+<p>The PMT AI editor fills/corrects the Excel generated report rendered in Luckysheet, returning surgical cell edits — never a whole document. Provider: OpenAI <strong>gpt-4o</strong> (<code>temperature 0.7</code>, <code>max_tokens 4096</code>) via <code>src/loaders/openai.js</code>, 30s timeout, retry on 429 (exp backoff, max 2), requires <code>OPENAI_API_KEY</code>.</p>
+<p><code>processAiChatMessage</code> validates the key, saves the user message to <code>pmt_report_chat_logs</code>, builds context, calls OpenAI with <code>[system, ...history, user]</code>, parses JSON, saves the assistant message, and returns <code>{message, edits[], rowInsertions[], questions[], requiresApproval}</code>. Context (<code>fetchEnrichedContext</code>) = the questionnaire answer matrix + per-case enriched details (status, new/returning client, service, victim demographics, referral status) + agency KPIs (<code>fetchAgencyKpis</code>: case/inquiry/referral stats via <code>AgencyReferrals.getAgencyReferralStats</code>, client demographics, top services, satisfaction), optionally tagged/highlighted cell ranges and current spreadsheet data, assembled by <code>buildAiContext</code>.</p>
+<p>The system prompt is a large XML &quot;EXPERT PMT DOCUMENT EDITOR&quot; enforcing a zero-error / 80–100% confidence-only fill policy: never guess or infer beyond explicit data; protect formulas; match header + row-label + case-ID + <strong>case creation date</strong> (temporal placement into Q1/Q2/FY); questions-before-edits (if unclear, return empty <code>edits</code>/<code>rowInsertions</code> and populate <code>questions</code>); <code>requiresApproval:true</code> unless the user explicitly says &quot;auto fill&quot;/&quot;automatically&quot;; limited victimization inference (≥90% only when service name is explicit); no duplicate data across rows; ID unification (Case/Client/Claim IDs are synonymous). Every edit carries <code>oldState</code> (including formula preservation) for revert.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-PAI-01</td><td>The editor shall return surgical cell edits and row insertions, never a full-document rewrite.</td><td>Must</td></tr>
+<tr><td>FR-PAI-02</td><td>The editor shall only fill values at 80–100% confidence and otherwise ask clarifying questions with empty edits.</td><td>Must</td></tr>
+<tr><td>FR-PAI-03</td><td>Each edit shall carry <code>oldState</code> (with formula preservation) to enable revert.</td><td>Must</td></tr>
+<tr><td>FR-PAI-04</td><td>The editor shall set <code>requiresApproval:true</code> unless the user explicitly authorizes auto-fill.</td><td>Must</td></tr>
+<tr><td>FR-PAI-05</td><td>The editor shall place data temporally by case creation date and protect existing formulas.</td><td>Must</td></tr>
+<tr><td>FR-PAI-06</td><td>Chat history shall persist in <code>pmt_report_chat_logs</code>; deleting an assistant message deletes its paired user message.</td><td>Must</td></tr>
+<tr><td>FR-PAI-07</td><td>Provider calls shall enforce a 30s timeout and retry on 429 with exponential backoff (max 2).</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="86-report-builder-ai-advisory">8.6 Report Builder AI (advisory)</h3>
+<p>A lightweight advisory chat for the drag-drop Grant Report Builder canvas. Provider: OpenAI <strong>gpt-4o-mini</strong> (<code>temperature 0.7</code>, <code>max_tokens 500</code>). Input: grant name/description + list of canvas fields. Output: a plain conversational suggestion string. No DB writes, no accuracy validation.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-RBA-01</td><td>The builder AI shall return conversational suggestions for the grant report canvas without persisting data.</td><td>Should</td></tr>
+<tr><td>FR-RBA-02</td><td>The builder AI shall not perform accuracy validation (advisory only).</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="87-necx-ai-report-builder-custom-reports">8.7 NECX AI Report Builder — custom reports</h3>
+<p>The flagship generator produces a structured JSON report (header + typed sections + footer) rendered as a publication-quality report and exportable to PDF.</p>
+<p><strong>Storage</strong> (<code>CustomReport</code> → <code>custom_reports</code>): <code>id</code>, <code>uid</code>, <code>userId</code> (owner), <code>serviceCenterId</code>, <code>title</code>, <code>reportData</code> (JSON — the full report), <code>status</code> (<code>draft|final</code>), <code>organizationName</code>, <code>dateRange</code> (JSON), <code>isDeleted</code>, timestamps. All service ops scope by <code>userId</code>. <code>status=&#x27;final&#x27;</code> locks non-AI edits (423 unless <code>aiAssisted:true</code>, which may only change <code>reportData</code>). CRUD: list, create, get, update, soft-delete, duplicate (&quot;(Copy)&quot;, resets to draft), <code>updateReportStatus</code>; chat history via <code>getChatHistoryByReportId</code>.</p>
+<p><strong>Report JSON schema:</strong> <code>{ header:{reportTitle, orgName, dateRange, style:{backgroundColor,color,accentColor}}, sections:[...], footer:{generatedDate, pageNumber} }</code>. Section <code>type</code>s: <code>kpi</code>, <code>bar_chart</code>, <code>pie_chart</code>/<code>donut</code>, <code>line_chart</code>, <code>stacked_bar</code>, <code>data_table</code>, <code>narrative</code>, <code>section_divider</code>, <code>two_column</code>, <code>metric_comparison</code>. Manually authored sections carry <code>_userAdded:true</code> + <code>_id</code> and must be preserved verbatim by the AI.</p>
+<p><strong>Generation</strong> (<code>generateReportChat</code>): providers are OpenAI <strong>gpt-4o</strong> by default (<code>response_format: json_object</code>, <code>max_tokens 16384</code>) or Anthropic <strong>claude-haiku-4-5-20251001</strong> when <code>AI_PROVIDER=claude</code> (<code>anthropic-version: 2023-06-01</code>, <code>max_tokens 16384</code>). Keys stay server-side. Context assembly:</p>
+<ol class="flow">
+<li>Fetch chat history (last 6 turns) from <code>custom_report_chat_logs</code>; prepend.</li>
+<li><code>fetchReportContextData(serviceCenterId, start, end)</code> — live agency data from PMT rows (<code>getPmtReport</code> pageLess): KPIs, demographics by race/gender/age/classification, service breakdown, inquiries (from <code>chat_threads</code> counts), staff time (from <code>staff_time_entries</code>); formatted by <code>formatDataForPrompt</code>.</li>
+<li><code>fetchAgencyBrain(serviceCenterId)</code> — agency identity: profile+plan, active services+categories, staff roles/headcount, accepted-partnership count, active grants, all-time claim stats; formatted by <code>formatAgencyBrainForPrompt</code> (&quot;AGENCY PROFILE&quot;).</li>
+<li>Load previously uploaded files for the report (<code>reportFileUploadRepository</code>) and any new files on incoming messages.</li>
+</ol>
+<p>System prompt = INSTRUCTIONS + (file-override block if files present) + DATA_RULES + AGENCY PROFILE + COMPONENT_CATALOG + DESIGN_GUIDELINES + EDITING_GUIDELINES + SECTION_REFERENCE (skipped for large reports with files) + AVAILABLE SYSTEM DATA + VERIFIED METRICS TABLE. <strong>Large-report handling:</strong> if <code>sections ≥ 40</code>, the current report is reduced to a skeleton (<code>buildReportSkeleton</code> strips chart/table/narrative bodies but keeps structure and full <code>_userAdded</code> sections) and the AI repopulates from DB/file data. <strong>Output:</strong> parse JSON (with brace-matching fallback), save new user+assistant messages + file uploads, run accuracy validation, return <code>{ message, reportUpdate, changedSections[], detectedDateRange, dataDateLabel, extractedMetrics, validationResult }</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CR-01</td><td>The builder shall generate a full report JSON conforming to the header/sections/footer schema.</td><td>Must</td></tr>
+<tr><td>FR-CR-02</td><td>The builder shall assemble context from live PMT data, the agency brain, chat history, and uploaded files.</td><td>Must</td></tr>
+<tr><td>FR-CR-03</td><td>Manually authored <code>_userAdded</code> sections shall be preserved verbatim across AI regenerations.</td><td>Must</td></tr>
+<tr><td>FR-CR-04</td><td>Reports with ≥ 40 sections shall be skeletonized before generation to fit token limits, then repopulated.</td><td>Should</td></tr>
+<tr><td>FR-CR-05</td><td>Custom reports shall be owned/scoped by <code>userId</code>; <code>final</code> status shall block non-AI edits (423).</td><td>Must</td></tr>
+<tr><td>FR-CR-06</td><td>The builder shall support create/get/update/soft-delete/duplicate/status and chat-history retrieval.</td><td>Must</td></tr>
+<tr><td>FR-CR-07</td><td>The builder shall support both OpenAI gpt-4o and Anthropic claude-haiku-4-5 via server-side keys.</td><td>Must</td></tr>
+<tr><td>FR-CR-08</td><td>The response shall include <code>changedSections</code>, <code>detectedDateRange</code>, <code>dataDateLabel</code>, <code>extractedMetrics</code>, and <code>validationResult</code>.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="88-file-upload-metric-extraction-accuracy-validation">8.8 File upload, metric extraction &amp; accuracy validation</h3>
+<p>Files arrive as pre-parsed text (browser converts Excel to a pipe-separated table) or as buffers. <code>processFilesForMetricExtraction</code> parses each (<code>parseTextTableToStructure</code>/<code>parseExcelStructured</code>/<code>parseCSVStructured</code>/<code>parseDocxStructured</code>), persists to <code>report_file_uploads</code> (with parsed structure), and extracts numeric metrics with <code>{key, value, cellRef, sheetName, header, rowLabel}</code> provenance. <code>buildMetricsReferenceTable</code> renders a &quot;VERIFIED METRICS FROM UPLOADED FILES&quot; ASCII table injected into the system prompt; the prompt mandates the AI use ONLY these values and never hallucinate/round/substitute.</p>
+<p>After generation, <code>validateReportAgainstMetrics(reportUpdate, extractedMetrics)</code> extracts every numeric value from the produced report (KPIs, chart data, table cells) and compares to the extracted metrics, producing <strong>conflicts</strong> (value mismatch &gt; 0.01, severity high) and <strong>warnings</strong> (values not found in files = possible hallucination). <code>formatValidationReport</code> renders a PASS/FAIL summary returned to the client. <code>data-source-mapper.service.js</code> provides per-datapoint source-audit records (<code>source_type ∈ database|file|user_input|ai_generated</code>, confidence 0–1). The server-side parse endpoint handles doc (word-extractor), docx (mammoth), pdf (pdf-parse), xlsx/xls, csv, and txt for formats the browser can&#x27;t parse.</p>
+<p><strong>Accuracy posture.</strong> Two layers: (a) prompt-level — strong &quot;trust is everything / never fabricate / match numbers exactly / show zeros / file data overrides system data&quot; rules; (b) programmatic — post-generation numeric cross-check with conflict/hallucination flags. Validation is <strong>advisory</strong> (returned to the client, not enforced server-side); file values are designed to <strong>win</strong> over DB values; conflicts are reported but do not block saving.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-FUP-01</td><td>The system shall parse uploaded doc/docx/pdf/xlsx/xls/csv/txt files and persist parsed structure to <code>report_file_uploads</code>.</td><td>Must</td></tr>
+<tr><td>FR-FUP-02</td><td>The system shall extract numeric metrics with cell/sheet/header/row provenance from uploaded files.</td><td>Must</td></tr>
+<tr><td>FR-FUP-03</td><td>The system shall inject a verified-metrics reference table into the prompt and mandate exact use of those values.</td><td>Must</td></tr>
+<tr><td>FR-FUP-04</td><td>The system shall run a post-generation validator producing high-severity conflicts and possible-hallucination warnings.</td><td>Must</td></tr>
+<tr><td>FR-FUP-05</td><td>The system shall return a PASS/FAIL validation summary to the client.</td><td>Must</td></tr>
+<tr><td>FR-FUP-06</td><td>The system shall record per-datapoint source type (database/file/user_input/ai_generated) with a confidence score.</td><td>Should</td></tr>
+<tr><td>FR-FUP-07</td><td>File-provided values shall take precedence over database values during generation.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="89-luckysheet-grant-editor-drag-drop-grant-report-builder-vs360-">8.9 Luckysheet grant editor &amp; drag-drop Grant Report Builder (VS360 web)</h3>
+<p>The generated-report editor is a resizable split: <strong>LuckysheetEditor</strong> (loads the report&#x27;s Excel via <code>GET /reports/grants/:id/file</code> blob → <code>LuckyExcel.transformExcelToLucky</code>, edits cells, saves back as <code>.xlsx</code> via ExcelJS to <code>PUT /reports/generated-reports/:reportId/file</code>, with reset-to-template and background autosave) on the left, and the <strong>ChatInterface</strong> PMT AI copilot on the right (reads current cells, applies edits directly via <code>setCellValue</code>/<code>setCellFormat</code>; users can select cells and &quot;Add to chat&quot; as context). The <strong>Grant Report Builder</strong> is a 3-panel @dnd-kit drag-drop tool: DataFieldsSidebar (draggable demographics + questionnaire questions), BuilderCanvas (drop zone), and AiCopilotPanel (gpt-4o-mini advisory); field distributions via <code>GET /reports/grants/:grantId/field-distribution</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-LUX-01</td><td>The web editor shall render the report Excel in Luckysheet and persist edits back as <code>.xlsx</code>.</td><td>Must</td></tr>
+<tr><td>FR-LUX-02</td><td>The editor shall support reset-to-template and background autosave.</td><td>Should</td></tr>
+<tr><td>FR-LUX-03</td><td>The AI copilot shall apply cell edits (values, formats, formulas) directly to the Luckysheet.</td><td>Must</td></tr>
+<tr><td>FR-LUX-04</td><td>The Grant Report Builder shall support drag-drop of demographic/questionnaire fields with distribution analytics.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="810-custom-report-builder-ui-vs360-web-pdf-export">8.10 Custom Report Builder UI (VS360 web) &amp; PDF export</h3>
+<p>The Custom Report Builder has three views: <strong>landing</strong> (saved reports + templates), <strong>setup</strong> (guided form), <strong>builder</strong> (live preview + AI chat). Report types (<code>REPORT_TYPES</code>): Board Report, Grant Progress (VOCA/VAWA-aligned), Quarterly Program Summary, Annual Impact, Custom. The setup form collects type, title, organization, date range, audience, sections (a large <code>SECTION_OPTIONS</code> catalog grouped by <code>SECTION_CATEGORIES</code>, each tagged by data source <code>live</code>/<code>db</code>/<code>upload</code>), and notes, then converts to a natural-language prompt. The builder renders sections via Recharts and supports manual editing (<code>SectionEditModal</code> with a JSON tab + error boundary), add/move/delete sections, &quot;Send to chat&quot; to improve a section, and undo/redo (max 20). Persistence via <code>reportStorage</code>; autosave to <code>localStorage</code> every 30s. <strong>Export:</strong> client-side PDF (<code>handleExportPDF</code> clones the preview DOM, strips print CSS, groups sections into page-break units, bakes Recharts SVG viewBoxes) via react-to-print, and server-side Puppeteer render (<code>custom-reports/export-pdf</code>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CRU-01</td><td>The builder shall offer templated report types and a guided setup form that becomes an AI prompt.</td><td>Must</td></tr>
+<tr><td>FR-CRU-02</td><td>Section options shall be tagged by data source (live/db/upload) to set data expectations.</td><td>Should</td></tr>
+<tr><td>FR-CRU-03</td><td>The builder shall support manual section add/edit/move/delete and undo/redo (max 20).</td><td>Must</td></tr>
+<tr><td>FR-CRU-04</td><td>Changed sections shall be highlighted and scrolled to after each AI generation.</td><td>Should</td></tr>
+<tr><td>FR-CRU-05</td><td>The builder shall autosave drafts locally and offer restore on return.</td><td>Should</td></tr>
+<tr><td>FR-CRU-06</td><td>The system shall export reports to PDF via client-side render and server-side Puppeteer.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="811-workspace-mobile-reporting-on-device-ai-builder">8.11 Workspace mobile reporting &amp; on-device AI builder</h3>
+<p>The Workspace mobile app provides a PMT reporting hub (grants list/detail, generated reports, questionnaires + answer/matrix detail, PMT report) and an <strong>AI Custom Report Builder</strong>: a 4-step wizard (Type → Details incl. organization/date range/audience → Content/sections → Generate), a section-based editor with an AI chat panel (per-section improve/edit), backend persistence via the custom-reports endpoints, and PDF export via <code>pdf</code>/<code>printing</code>. Generation is currently <strong>client-side direct-to-LLM</strong> (default Claude claude-haiku-4-5, fallback OpenAI gpt-4o) using an embedded key; the returned JSON <code>{message, reportUpdate, changedSections, detectedDateRange}</code> becomes the report. Server AI chat endpoints (<code>/reports/ai/chat</code>) are defined and should replace direct-to-device calls.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-MOB-01</td><td>The mobile app shall provide PMT/grants/questionnaires/generated-report management scoped to the agency.</td><td>Must</td></tr>
+<tr><td>FR-MOB-02</td><td>The mobile AI builder shall generate and iteratively edit custom reports and persist them via the custom-reports API.</td><td>Must</td></tr>
+<tr><td>FR-MOB-03</td><td>The mobile app shall export custom reports to PDF for share/print.</td><td>Must</td></tr>
+<tr><td>FR-MOB-04</td><td>Mobile AI generation shall migrate to backend-routed calls (no device-embedded provider keys).</td><td>Must</td></tr>
+</tbody></table></div>
+<h2 id="9-detailed-user-system-flows">9. Detailed User &amp; System Flows</h2>
+<h3 id="91-build-a-custom-ai-report-end-to-end-vs360-web">9.1 Build a custom AI report end-to-end (VS360 web)</h3>
+<ol class="flow">
+<li>A user with <code>reports.pmt_reports</code> opens Reports &amp; Analytics and launches the Custom Report Builder (landing view).</li>
+<li>In setup, the user selects a report type (e.g., Board Report), enters title/organization/date range/audience, ticks the sections to include (each tagged live/db/upload), and adds free-text notes.</li>
+<li>The UI converts the form into a natural-language prompt and enters the builder (empty or template preview + chat).</li>
+<li>The client calls <code>POST /reports/custom-reports/generate-chat</code> with <code>messages</code>, <code>currentReportData</code>, <code>dateRange</code>, <code>serviceCenterId</code>, <code>organizationName</code>, and <code>reportId</code>.</li>
+<li>The backend fetches the last 6 chat turns, <code>fetchReportContextData</code> (live PMT/agency data), and <code>fetchAgencyBrain</code> (agency profile), loads any uploaded files, and assembles the system prompt (INSTRUCTIONS + DATA_RULES + AGENCY PROFILE + catalogs + AVAILABLE SYSTEM DATA + VERIFIED METRICS TABLE).</li>
+<li>If the current report has ≥ 40 sections, the backend skeletonizes it (preserving <code>_userAdded</code> sections) before calling the provider.</li>
+<li>The backend calls OpenAI gpt-4o (or Claude if <code>AI_PROVIDER=claude</code>) with <code>response_format: json_object</code> / <code>max_tokens 16384</code>.</li>
+<li>The backend parses the JSON report (with brace-matching fallback), persists the new user+assistant messages and file uploads, and runs the accuracy validator.</li>
+<li>The response returns <code>{ message, reportUpdate, changedSections, detectedDateRange, dataDateLabel, extractedMetrics, validationResult }</code>.</li>
+<li>The builder renders the report JSON (KPIs/charts/tables/narrative), highlights and scrolls to <code>changedSections</code>, and shows the PASS/FAIL validation summary.</li>
+<li>The user iterates via chat, edits sections manually (preserved as <code>_userAdded</code>), and uses undo/redo as needed.</li>
+<li>The user saves the report (<code>POST</code>/<code>PUT /reports/custom-reports[/:id]</code>); drafts also autosave to <code>localStorage</code> every 30s.</li>
+<li>When satisfied, the user sets status <code>final</code> (<code>PATCH /:id/status</code>), which locks non-AI edits.</li>
+</ol>
+<h3 id="92-upload-a-file-for-metric-extraction">9.2 Upload a file for metric extraction</h3>
+<ol class="flow">
+<li>In the builder&#x27;s chat, the user attaches a file (<code>.xlsx/.xls/.csv/.pdf/.doc/.docx/.txt</code>).</li>
+<li>For <code>.txt</code>, the browser sends text directly; for other formats the client calls <code>POST /reports/custom-reports/parse-file</code> (multipart) and the server extracts text + structured tables (doc/docx/pdf/xlsx/csv).</li>
+<li>The parsed content is attached to the outgoing chat message to <code>generate-chat</code>.</li>
+<li><code>processFilesForMetricExtraction</code> parses each file, persists it to <code>report_file_uploads</code> with parsed structure, and extracts numeric metrics with <code>{key, value, cellRef, sheetName, header, rowLabel}</code> provenance.</li>
+<li><code>buildMetricsReferenceTable</code> renders the &quot;VERIFIED METRICS FROM UPLOADED FILES&quot; table and injects it (plus a file-override block) into the system prompt.</li>
+<li>The AI is instructed to use ONLY these values (no rounding, no substitution) and that file values override system/DB data.</li>
+<li>Generation proceeds as in §9.1; extracted metrics are returned in <code>extractedMetrics</code> for downstream validation.</li>
+</ol>
+<h3 id="93-accuracy-validation-human-review">9.3 Accuracy validation &amp; human review</h3>
+<ol class="flow">
+<li>After generation, <code>validateReportAgainstMetrics(reportUpdate, extractedMetrics)</code> extracts every numeric value from the produced report (KPIs, chart data, table cells).</li>
+<li>Each report value is compared to the extracted file metrics: a mismatch &gt; 0.01 becomes a high-severity <strong>conflict</strong>; a value not found in any file becomes a <strong>warning</strong> (possible hallucination).</li>
+<li><code>formatValidationReport</code> builds a PASS/FAIL summary; <code>data-source-mapper</code> records per-datapoint source type (database/file/user_input/ai_generated) with a confidence score.</li>
+<li>The <code>validationResult</code> is returned to the client and displayed alongside the report — but is advisory only and does not block saving.</li>
+<li>The reviewer inspects each conflict (report vs file value + provenance) and each warning, then fixes the report via chat or manual section edits.</li>
+<li>Process gate: the report should not be marked <code>final</code> until high-severity conflicts are resolved and warnings reviewed (organizational control, not a server enforcement).</li>
+</ol>
+<h3 id="94-generate-and-fill-a-pmtgrant-report-luckysheet-ai-editor">9.4 Generate and fill a PMT/grant report (Luckysheet + AI editor)</h3>
+<ol class="flow">
+<li>In Report Management, the user selects a Grant (remembered in <code>localStorage</code>).</li>
+<li>The user clicks New Report → <code>POST /reports/generated-reports {reportName, grantId}</code>; the backend clones the grant&#x27;s Excel template into a new report (<code>status=&#x27;in_progress&#x27;</code>).</li>
+<li>The editor opens: LuckysheetEditor loads the report Excel (<code>GET /reports/grants/:id/file</code> → <code>LuckyExcel.transformExcelToLucky</code>); the AI ChatInterface loads history (<code>GET /reports/ai/chat/:reportId/history</code>).</li>
+<li>The user asks the AI to fill data (e.g., &quot;populate Q2 victim counts&quot;). The client posts <code>POST /reports/ai/chat</code>.</li>
+<li>The backend saves the user message, builds enriched context (answer matrix + per-case details + agency KPIs + optional tagged cell ranges + current sheet data), and calls OpenAI gpt-4o.</li>
+<li>The AI returns <code>{message, edits[], rowInsertions[], questions[], requiresApproval}</code>. If confidence is below threshold or data is ambiguous, <code>edits</code>/<code>rowInsertions</code> are empty and <code>questions</code> are populated.</li>
+<li>If <code>questions</code> are present, the user answers them in chat and the AI re-attempts.</li>
+<li>With <code>requiresApproval:true</code>, the user reviews each proposed edit (with <code>oldState</code> shown) and approves; the copilot applies edits to Luckysheet cells (<code>setCellValue</code>/<code>setCellFormat</code>, formulas protected, temporal placement by case creation date).</li>
+<li>The user saves the sheet → <code>PUT /reports/generated-reports/:reportId/file</code> (ExcelJS rebuild); background autosave also runs.</li>
+<li>When done, the user sets status <code>completed</code> (<code>PATCH /reports/generated-reports/:reportId/status</code>).</li>
+<li>Any misplaced edit can be reverted using the stored <code>oldState</code>.</li>
+</ol>
+<h3 id="95-set-up-a-grant-and-collect-data-prerequisite-flow">9.5 Set up a grant and collect data (prerequisite flow)</h3>
+<ol class="flow">
+<li>In PMT Grants, the user creates a grant: name, description, linked questionnaires, and the funder&#x27;s Excel template (<code>POST /reports/grants</code>, multipart).</li>
+<li>Linked questionnaires (by service category) begin collecting data as staff work cases: <code>getQuestionnaireForClaim</code> surfaces the applicable questions on the case&#x27;s PMT tab; answers are submitted via <code>POST /reports/pmt-questionnaires/claim/:claimId/answers</code>.</li>
+<li>PMT rows accrue automatically per case; the answer matrix (<code>GET /reports/questionnaire-answers-matrix</code>) aggregates question×case answers for reporting/AI context.</li>
+<li>When reporting time comes, the grant&#x27;s template + collected data feed the generated-report and custom-report flows (§9.4, §9.1).</li>
+</ol>
+<h3 id="96-export-a-report">9.6 Export a report</h3>
+<ol class="flow">
+<li><strong>Custom report (web):</strong> the user clicks Export → the client either renders PDF locally (clone preview DOM, strip print CSS, group sections into page-break units, bake Recharts SVGs) via react-to-print, or calls <code>POST /reports/custom-reports/export-pdf</code> for a server-side Puppeteer render of the posted HTML.</li>
+<li><strong>Custom report (mobile):</strong> <code>pdf_export_service</code> builds a PDF via <code>pdf</code>/<code>printing</code> for share/print.</li>
+<li><strong>Generated (grant) report:</strong> the user downloads the Excel via <code>GET /reports/generated-reports/:reportId/file</code> (streamed).</li>
+<li><strong>Grant template:</strong> downloadable via <code>GET /reports/grants/:id/file</code>.</li>
+</ol>
+<h3 id="97-duplicate-finalize-delete-a-custom-report">9.7 Duplicate / finalize / delete a custom report</h3>
+<ol class="flow">
+<li><strong>Duplicate:</strong> <code>POST /reports/custom-reports/:reportId/duplicate</code> creates a &quot;(Copy)&quot; reset to <code>draft</code>.</li>
+<li><strong>Finalize:</strong> <code>PATCH /:reportId/status</code> to <code>final</code> — subsequent non-AI edits return 423; only <code>aiAssisted:true</code> updates to <code>reportData</code> are allowed.</li>
+<li><strong>Delete:</strong> <code>DELETE /:reportId</code> soft-deletes (<code>isDeleted=true</code>).</li>
+</ol>
+<h3 id="98-provider-selection-failure-handling">9.8 Provider selection &amp; failure handling</h3>
+<ol class="flow">
+<li>The custom-report generator uses OpenAI gpt-4o unless <code>AI_PROVIDER=claude</code>, in which case it calls Anthropic claude-haiku-4-5 via raw axios (<code>anthropic-version: 2023-06-01</code>).</li>
+<li>The PMT editor uses gpt-4o with a 30s timeout and retries on 429 (exp backoff, max 2).</li>
+<li>On missing key / provider error, the service returns an error envelope; the client surfaces a failure message and preserves the current report/sheet state.</li>
+<li>Malformed JSON from the model triggers a brace-matching fallback parse in the custom-report path before erroring.</li>
+</ol>
+<h2 id="10-data-model">10. Data Model</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Key Fields</th><th>Relationships</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>PmtReports (<code>pmt_report</code>)</td><td><code>uid</code>, <code>claimId</code>, demographics (<code>raceEtnicity</code>, <code>gender</code>, <code>age</code>, <code>victimizationType</code>, <code>specialClassification</code>, <code>typeOfService</code>, <code>serviceUnmet</code>, <code>surveyReceived/Completed</code>, <code>victimCompensation</code>), <code>isNew</code></td><td>belongsTo <code>ServiceClaims</code> → <code>Services</code> → <code>ServiceCenters</code>; eager <code>claimInfo.[victimInfo, serviceInfo]</code></td><td>Per-case PMT/demographic row; core reporting fact table</td></tr>
+<tr><td>PmtGrants (<code>pmt_grants</code>)</td><td><code>id</code>, name, description, <code>templateFileId</code>, <code>serviceCenterId</code>, <code>isActive</code></td><td>belongsTo <code>ServiceCenters</code>, <code>createdByUser</code>, <code>templateFile</code> (<code>FileUploads</code>); M2M <code>questionnaires</code></td><td>Funder grant + Excel template + questionnaire links</td></tr>
+<tr><td>PmtQuestionnaires (<code>pmt_questionnaires</code>)</td><td><code>id</code>, title, <code>serviceCenterId</code>, <code>isActive</code></td><td>hasMany <code>PmtQuestionnaireQuestions</code>; M2M <code>PmtQuestionnaireCategories</code>, <code>PmtGrantQuestionnaires</code></td><td>Data-collection questionnaire</td></tr>
+<tr><td>PmtQuestionnaireQuestions</td><td><code>id</code>, <code>questionText</code>, <code>questionType</code>, <code>options</code> (JSON), <code>questionOrder</code></td><td>belongsTo questionnaire</td><td>Individual question definition</td></tr>
+<tr><td>PmtQuestionnaireAnswers</td><td><code>id</code>, <code>uid</code> (submitting user), <code>questionId</code>, <code>claimId</code>, <code>answer</code></td><td>belongsTo question, claim</td><td>Per-claim answer to a question</td></tr>
+<tr><td>PmtQuestionnaireCategories</td><td>questionnaireId, serviceCategoryId</td><td>M2M questionnaire↔service category</td><td>Routes questionnaires to matching service categories</td></tr>
+<tr><td>PmtGrantQuestionnaires</td><td>grantId, questionnaireId</td><td>M2M grant↔questionnaire</td><td>Links data collection to a grant</td></tr>
+<tr><td>PmtGeneratedReports (<code>pmt_generated_reports</code>)</td><td><code>id</code>, <code>grantId</code>, <code>templateFileId</code>, <code>reportFileId</code>, <code>status</code> (`in_progress</td><td>completed<code>), </code>completedAt<code>, </code>serviceCenterId`</td><td>belongsTo <code>ServiceCenters</code>, <code>createdByUser</code>, <code>grant</code>, <code>templateFile</code>, <code>reportFile</code>; hasMany <code>PmtReportChatLogs</code></td></tr>
+<tr><td>PmtReportChatLogs (<code>pmt_report_chat_logs</code>)</td><td><code>reportId</code>, <code>role</code>, <code>content</code>, <code>edits[]</code>, <code>rowInsertions[]</code>, <code>questions[]</code></td><td>belongsTo <code>PmtGeneratedReports</code></td><td>PMT AI editor conversation + proposed edits</td></tr>
+<tr><td>CustomReport (<code>custom_reports</code>)</td><td><code>id</code>, <code>uid</code>, <code>userId</code> (owner), <code>serviceCenterId</code>, <code>title</code>, <code>reportData</code> (JSON), <code>status</code> (`draft</td><td>final<code>), </code>organizationName<code>, </code>dateRange<code> (JSON), </code>isDeleted`</td><td>belongsTo owner <code>Users</code>, <code>ServiceCenters</code>; hasMany <code>CustomReportChatLog</code>, <code>ReportFileUpload</code></td></tr>
+<tr><td>CustomReportChatLog (<code>custom_report_chat_logs</code>)</td><td>reportId, role, content, (file refs)</td><td>belongsTo <code>CustomReport</code></td><td>Custom-report AI chat history (last 6 turns used)</td></tr>
+<tr><td>ReportFileUpload (<code>report_file_uploads</code>)</td><td>reportId, filename, parsed structure, extracted metrics</td><td>belongsTo <code>CustomReport</code></td><td>Persisted uploaded files + parsed data for metric extraction</td></tr>
+<tr><td>ReportDataSourceMap</td><td>datapoint key, <code>sourceType</code> (`database</td><td>file</td><td>user_input</td></tr>
+<tr><td>FileUploads (<code>file_uploads</code>)</td><td><code>id</code>, filename, storage path, <code>context</code> (<code>GRANT</code>/<code>GENERATED_REPORT</code>)</td><td>referenced by grants/generated reports</td><td>Cloud storage metadata (Azure Blob/MinIO)</td></tr>
+<tr><td>Dashboard</td><td>(aggregation model, no own table)</td><td>reads <code>pmt_report</code>, <code>service_claims</code>, etc.</td><td>Aggregation queries for KPIs/analytics</td></tr>
+</tbody></table></div>
+<h2 id="11-api-integration-surface">11. API &amp; Integration Surface</h2>
+<h3 id="111-reports-endpoints-mount-webreports-all-allowonlyvs360-rateli">11.1 Reports endpoints (mount <code>/web/reports</code>, all <code>allowOnly(&#x27;VS360&#x27;)</code> + <code>rateLimiters.pmtApi</code>)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/pmt-report</code></td><td>Paged/pageLess PMT rows (filters: startDate/endDate/grantId)</td><td>VS360</td></tr>
+<tr><td>PATCH</td><td><code>/pmt-report/:uid</code></td><td>Update a PMT demographic row (agency-scoped)</td><td>VS360</td></tr>
+<tr><td>GET/POST/PUT/DELETE</td><td><code>/pmt-questionnaires</code>, <code>/pmt-questionnaires/:id</code></td><td>Questionnaire CRUD</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/pmt-questionnaires/:id/answer-count</code></td><td>Answer count (delete warning)</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/pmt-questionnaires/claim/:claimId</code></td><td>Applicable questionnaire(s) + answers for a claim</td><td>VS360</td></tr>
+<tr><td>POST</td><td><code>/pmt-questionnaires/claim/:claimId/answers</code></td><td>Submit answers for a claim</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/questionnaire-answers-matrix</code></td><td>Question×case answer matrix (AI editor source)</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/grants</code></td><td>List grants</td><td>VS360</td></tr>
+<tr><td>POST</td><td><code>/grants</code> (multipart <code>templateFile</code>)</td><td>Create grant + upload Excel template</td><td>VS360</td></tr>
+<tr><td>PUT</td><td><code>/grants/:id</code> (multipart)</td><td>Update grant + optional new template</td><td>VS360</td></tr>
+<tr><td>DELETE</td><td><code>/grants/:id</code></td><td>Soft-delete grant (blocked if reports exist)</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/grants/:id/file</code></td><td>Download/preview grant template (stream)</td><td>VS360</td></tr>
+<tr><td>PUT</td><td><code>/grants/:id/template</code> (multipart)</td><td>Replace template only</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/grants/:grantId/field-distribution</code></td><td>Count/% distribution for a question or demographic field</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/grants/:grantId/generated-reports</code></td><td>List generated reports for a grant</td><td>VS360</td></tr>
+<tr><td>POST</td><td><code>/generated-reports</code></td><td>Create a report by cloning the grant template</td><td>VS360</td></tr>
+<tr><td>PATCH</td><td><code>/generated-reports/:reportId/status</code></td><td>Set `in_progress</td><td>completed`</td></tr>
+<tr><td>PUT</td><td><code>/generated-reports/:reportId/file</code> (multipart)</td><td>Overwrite the report&#x27;s Excel file</td><td>VS360</td></tr>
+<tr><td>DELETE</td><td><code>/generated-reports/:reportId</code></td><td>Delete report + chat logs + file</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/generated-reports/:reportId/file</code></td><td>Download report file (stream)</td><td>VS360</td></tr>
+<tr><td>POST</td><td><code>/ai/chat</code></td><td>PMT AI spreadsheet editor (surgical cell edits)</td><td>VS360</td></tr>
+<tr><td>GET/DELETE</td><td><code>/ai/chat/:id/history</code></td><td>Get / clear editor chat history</td><td>VS360</td></tr>
+<tr><td>DELETE</td><td><code>/ai/chat/message/:messageId</code></td><td>Delete a chat message (+ paired user msg)</td><td>VS360</td></tr>
+<tr><td>POST</td><td><code>/ai/builder-chat</code></td><td>Grant report-builder AI suggestions (gpt-4o-mini)</td><td>VS360</td></tr>
+<tr><td>GET/POST</td><td><code>/custom-reports</code></td><td>List / create custom reports</td><td>VS360</td></tr>
+<tr><td>POST</td><td><code>/custom-reports/generate-chat</code></td><td>NECX AI Report Builder — generate/update report JSON</td><td>VS360</td></tr>
+<tr><td>POST</td><td><code>/custom-reports/export-pdf</code></td><td>Render report HTML → PDF (Puppeteer)</td><td>VS360</td></tr>
+<tr><td>POST</td><td><code>/custom-reports/parse-file</code> (multipart <code>file</code>)</td><td>Server-side parse of doc/docx/pdf/xlsx/csv/txt</td><td>VS360</td></tr>
+<tr><td>GET/PUT/DELETE</td><td><code>/custom-reports/:reportId</code></td><td>Get / update / soft-delete a custom report</td><td>VS360 (owner)</td></tr>
+<tr><td>POST</td><td><code>/custom-reports/:reportId/duplicate</code></td><td>Duplicate (→ draft)</td><td>VS360 (owner)</td></tr>
+<tr><td>GET</td><td><code>/custom-reports/:reportId/chat-history</code></td><td>AI chat log for a report</td><td>VS360 (owner)</td></tr>
+<tr><td>PATCH</td><td><code>/custom-reports/:reportId/status</code></td><td>Set `draft</td><td>final`</td></tr>
+</tbody></table></div>
+<h3 id="112-external-integrations">11.2 External integrations</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Integration</th><th>Use</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>OpenAI gpt-4o</td><td>PMT editor + default custom-report provider</td><td><code>src/loaders/openai.js</code>; JSON output; 30s timeout, 429 retry (editor); <code>response_format: json_object</code>, <code>max_tokens 16384</code> (custom)</td></tr>
+<tr><td>OpenAI gpt-4o-mini</td><td>Grant Report Builder advisory chat</td><td><code>temperature 0.7</code>, <code>max_tokens 500</code>; no DB writes</td></tr>
+<tr><td>Anthropic claude-haiku-4-5-20251001</td><td>Custom-report provider when <code>AI_PROVIDER=claude</code></td><td>raw axios to <code>api.anthropic.com/v1/messages</code>, <code>anthropic-version: 2023-06-01</code>, <code>max_tokens 16384</code>; <code>ANTHROPIC_API_KEY</code></td></tr>
+<tr><td>Azure Blob Storage / MinIO</td><td>Grant templates + generated report files</td><td>via <code>fileService</code>; <code>file_uploads.context</code> = <code>GRANT</code>/<code>GENERATED_REPORT</code>; Azure in prod/staging, MinIO in dev</td></tr>
+<tr><td>Puppeteer (<code>puppeteer-core</code> + Chromium)</td><td>Server-side PDF export</td><td>singleton browser; renders posted HTML</td></tr>
+<tr><td>File parsers</td><td>Server-side upload parsing</td><td>word-extractor (doc), mammoth (docx), pdf-parse (pdf), ExcelJS (xlsx/xls), CSV, txt</td></tr>
+</tbody></table></div>
+<h3 id="113-client-libraries">11.3 Client libraries</h3>
+<p>VS360 web: Luckysheet + LuckyExcel + ExcelJS + file-saver (spreadsheets), @dnd-kit (builder), Recharts/ApexCharts/@mantine/charts (report charts), react-to-print (PDF), TanStack Query + Redux. Workspace mobile: Dio, <code>fl_chart</code>, <code>pdf</code>/<code>printing</code>.</p>
+<h2 id="12-rbac-permissions">12. RBAC &amp; Permissions</h2>
+<p>Access to the entire reporting subsystem is gated by the agency (VS360) permission <code>reports.pmt_reports</code>. The <code>/web/reports</code> router is additionally gated by <code>allowOnly(&#x27;VS360&#x27;)</code> (context gate) and rate-limited by <code>rateLimiters.pmtApi</code>. <code>SUPER_ADMIN</code> bypasses fine-grained permission checks. Beyond the module gate, ownership is enforced per resource.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Action</th><th>Gate</th><th>Ownership scope</th></tr></thead>
+<tbody>
+<tr><td>Access any reporting page/endpoint</td><td><code>allowOnly(&#x27;VS360&#x27;)</code> + <code>reports.pmt_reports</code></td><td>Agency context required</td></tr>
+<tr><td>List/edit PMT rows</td><td><code>reports.pmt_reports</code></td><td>Row&#x27;s claim must be in issuer&#x27;s service center (else 403)</td></tr>
+<tr><td>Grant CRUD, template up/download</td><td><code>reports.pmt_reports</code></td><td>Agency-scoped (<code>serviceCenterId</code>)</td></tr>
+<tr><td>Questionnaire CRUD, answers, matrix</td><td><code>reports.pmt_reports</code></td><td>Agency-scoped</td></tr>
+<tr><td>Generated report CRUD, file, status</td><td><code>reports.pmt_reports</code></td><td>Agency-scoped</td></tr>
+<tr><td>PMT AI editor + builder AI</td><td><code>reports.pmt_reports</code></td><td>Report&#x27;s grant must be agency-scoped</td></tr>
+<tr><td>Custom report list/create</td><td><code>reports.pmt_reports</code></td><td>Created under issuer&#x27;s <code>userId</code></td></tr>
+<tr><td>Custom report get/update/delete/duplicate/status/chat</td><td><code>reports.pmt_reports</code></td><td>Scoped by <code>userId</code> (owner only), not whole agency</td></tr>
+<tr><td>Custom report AI generate / parse-file / export-pdf</td><td><code>reports.pmt_reports</code></td><td>Owner; provider keys server-side</td></tr>
+<tr><td>Platform AI-provider config (<code>AI_PROVIDER</code>, keys)</td><td>ADMIN context (<code>admin_settings</code>)</td><td>NECX platform admin only</td></tr>
+</tbody></table></div>
+<div class="callout note"><div class="callout-title">ℹ Ownership asymmetry</div><div class="callout-body">Grants, questionnaires, generated reports, and PMT rows are scoped to the <strong>agency</strong> (<code>serviceCenterId</code>), but custom reports are scoped to the <strong>individual user</strong> (<code>userId</code>). Two staff in the same agency do not automatically see each other&#x27;s custom reports.</div></div>
+<h2 id="13-non-functional-requirements">13. Non-Functional Requirements</h2>
+<h3 id="131-security-privacy-victim-safety">13.1 Security &amp; privacy (victim safety)</h3>
+<ul>
+<li>Reporting operates on aggregated demographic/PMT data; reports and prompts must minimize exposure of individually identifying victim information. The prompt distinguishes staff-entered <code>pmt_report</code> demographics from <code>app_users</code> self-reported demographics.</li>
+<li>All web AI calls are backend-routed; provider API keys are never exposed to the browser. AES response encryption applies to all reporting responses.</li>
+<li>Mobile currently embeds provider keys and <code>X-Netlify-Secret</code> in source and calls providers directly from the device — a security gap to be closed by moving to backend-routed AI (see Risks / FR-MOB-04).</li>
+<li>Agency isolation (CJIS-aligned) must hold: no cross-agency data must appear in a report; PMT edits are 403-guarded by service center.</li>
+</ul>
+<h3 id="132-accuracy-data-integrity">13.2 Accuracy &amp; data integrity</h3>
+<ul>
+<li>The AI must never fabricate, round, or substitute numbers; uploaded-file values are authoritative and override DB values; zeros must be shown as data, not omitted.</li>
+<li>The PMT editor must operate at 80–100% confidence and ask questions rather than guess; every edit must be revertible via <code>oldState</code>.</li>
+<li>The post-generation validator must flag high-severity conflicts (&gt;0.01 mismatch) and possible hallucinations; results are surfaced to the reviewer.</li>
+</ul>
+<h3 id="133-performance">13.3 Performance</h3>
+<ul>
+<li>Custom-report generation is bounded by provider latency; large reports (≥40 sections) are skeletonized to stay within token limits (<code>max_tokens 16384</code>).</li>
+<li>The PMT editor enforces a 30s provider timeout with 429 retry (exp backoff, max 2).</li>
+<li>The reporting tree is rate-limited (<code>pmtApi</code> ~15/5s); Luckysheet uses background autosave to avoid blocking edits.</li>
+</ul>
+<h3 id="134-availability-resilience">13.4 Availability &amp; resilience</h3>
+<ul>
+<li>Provider/model errors must degrade gracefully: current report/sheet state is preserved and the user sees a clear failure message; malformed JSON is recovered via brace-matching fallback where possible.</li>
+<li>Puppeteer runs as a singleton browser for PDF export to bound resource use.</li>
+</ul>
+<h3 id="135-auditability">13.5 Auditability</h3>
+<ul>
+<li>Create/update/delete operations write <code>ActionLogs</code> rows (action, referenceType, description context). Custom-report and PMT-editor conversations are persisted (<code>custom_report_chat_logs</code>, <code>pmt_report_chat_logs</code>) for traceability. Per-datapoint provenance is recorded in <code>ReportDataSourceMap</code>.</li>
+</ul>
+<h3 id="136-compliance-localization">13.6 Compliance &amp; localization</h3>
+<ul>
+<li>Reporting must support VOCA/VAWA/OAG PMT program requirements (grant templates, questionnaires, PMT demographics). Grant deletion is blocked while dependent generated reports exist to protect the audit trail.</li>
+<li>Reports are authored in English; the reporting UI is not localized (mobile language picker is a no-op).</li>
+</ul>
+<h3 id="137-accessibility">13.7 Accessibility</h3>
+<ul>
+<li>Report previews and builder controls should meet standard web accessibility guidance; exported PDFs should preserve chart labels and readable contrast. Recharts SVGs are baked with viewBoxes for faithful PDF rendering.</li>
+</ul>
+<h2 id="14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</h2>
+<h3 id="141-reporting-outputs">14.1 Reporting outputs</h3>
+<ul>
+<li><strong>PMT/generated reports:</strong> funder Excel templates filled via Luckysheet + AI editor, exported as <code>.xlsx</code>.</li>
+<li><strong>Custom reports:</strong> publication-quality JSON reports (KPI/charts/tables/narrative) exported as PDF; templated types (Board, Grant Progress, Quarterly, Annual, Custom).</li>
+<li><strong>Grant dashboard:</strong> KPI cards + charts summarizing a grant&#x27;s generated reports and per-questionnaire answer counts.</li>
+<li><strong>Field distribution:</strong> count/% for a questionnaire question or a whitelisted demographic field, used in the drag-drop builder.</li>
+</ul>
+<h3 id="142-underlying-analytics-data-sources">14.2 Underlying analytics data sources</h3>
+<p>Custom-report live data is aggregated from PMT rows (<code>getPmtReport</code> pageLess): KPIs, demographics (race/gender/age/classification), service breakdown, inquiries (from <code>chat_threads</code> counts), and staff time (from <code>staff_time_entries</code>). The agency brain adds profile/plan, services/categories, staff headcount, partnership count, active grants, and all-time claim stats.</p>
+<div class="callout warn"><div class="callout-title">⚠ Placeholder data sources</div><div class="callout-body">Several KPIs in <code>custom-report-data.service.js</code> (hotlineCalls, satisfaction, shelter, financial, HR) are currently hard-coded to zero, yet the AI is told to present them as real data. Reports must not treat these as verified results until the sources are wired. See Open Questions.</div></div>
+<h3 id="143-notifications">14.3 Notifications</h3>
+<p>The reporting subsystem is request/response and does not emit dedicated report-ready socket/FCM notifications in the current implementation. Mobile in-app notifications are fetched by REST polling. Any future &quot;report generated/shared&quot; notifications would flow through the platform&#x27;s standard notification delivery (DB row + Socket.IO + FCM + email). Chat-based iteration feedback (validation summary, changed sections) is delivered inline in the builder response.</p>
+<h2 id="15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Type</th><th>Impact</th><th>Mitigation / Owner</th></tr></thead>
+<tbody>
+<tr><td>File values override DB values by design</td><td>Accuracy risk</td><td>An incorrect uploaded file silently overrides verified DB data in the report</td><td>Show provenance per datapoint; require reviewer confirmation of file-sourced values before <code>final</code>; Product/Data</td></tr>
+<tr><td>Accuracy validation is advisory only</td><td>Accuracy risk</td><td>Conflicts/hallucination warnings do not block saving or finalizing</td><td>Add a process gate (and consider server enforcement) preventing <code>final</code> while high-severity conflicts exist; Engineering/Compliance</td></tr>
+<tr><td>Hard-coded-zero data sources presented as data</td><td>Accuracy risk</td><td>hotlineCalls/satisfaction/shelter/financial/HR appear as zero results and may mislead funders</td><td>Mark placeholder KPIs as &quot;not yet wired&quot;; suppress or label until real sources exist; Engineering</td></tr>
+<tr><td>Raw-SQL date interpolation</td><td>Security/accuracy risk</td><td>Dates interpolated directly into SQL in dashboard/demographics aggregations (injection + off-by-range risk)</td><td>Parameterize all date filters; audit <code>fetchDemographicsandClaimTrends</code> and related; Engineering/Security</td></tr>
+<tr><td>Mobile embeds provider keys + <code>X-Netlify-Secret</code> in source</td><td>Security risk</td><td>Anthropic/OpenAI keys and secret extractable from the app binary; direct device-to-LLM calls</td><td>Migrate mobile AI to backend-routed <code>/reports/ai/*</code> endpoints; rotate keys; FR-MOB-04; Security</td></tr>
+<tr><td>Custom reports scoped by <code>userId</code>, not agency</td><td>UX/governance</td><td>Colleagues cannot see/collaborate on each other&#x27;s custom reports; loss on offboarding</td><td>Decide on agency-shared custom reports / ownership transfer; Product</td></tr>
+<tr><td>Advisory validator vs generative model drift</td><td>Accuracy risk</td><td>Model may still produce plausible-but-wrong narrative text (non-numeric) not caught by numeric validator</td><td>Add narrative review guidance; consider claim-level checks; Product/Data</td></tr>
+<tr><td>PMT editor confidence is model self-reported</td><td>Accuracy risk</td><td>&quot;80–100% confidence&quot; is prompt-enforced, not measured</td><td>Keep human approval mandatory; monitor approval/rejection rates; Product</td></tr>
+<tr><td>Provider/model availability</td><td>Availability risk</td><td>Report generation blocked during provider outage</td><td>Provider fallback (Claude↔OpenAI), graceful failure, retries; Engineering</td></tr>
+<tr><td>Scanned/image PDFs unsupported</td><td>Functional limitation</td><td>Users may upload unparseable files and get empty metrics</td><td>Document supported formats in upload guide; warn on empty parse; Product</td></tr>
+<tr><td>No report-ready notifications</td><td>UX gap</td><td>Long generations give no async signal</td><td>Consider socket/FCM report-status events; Product</td></tr>
+<tr><td>&quot;Case Management AI Agent&quot; expected but absent</td><td>Scope risk</td><td>Named in mobile branches, not implemented</td><td>Track as future; do not represent as shipped; Product</td></tr>
+</tbody></table></div>
+<p><strong>Assumptions.</strong> Agencies have configured grants + questionnaires so live data exists; staff capture PMT/questionnaire answers as they work cases; provider keys and <code>AI_PROVIDER</code> are set server-side; cloud storage (Azure/MinIO) is available; the <code>reports.pmt_reports</code> permission is provisioned to reporting staff.</p>
+<h2 id="16-glossary">16. Glossary</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>PMT</td><td>Performance Measurement Tool — the demographic/service data model (<code>pmt_report</code>) and reporting program (OAG/VOCA/VAWA).</td></tr>
+<tr><td>VOCA / VAWA</td><td>Victims of Crime Act / Violence Against Women Act — federal funding programs whose reports NECX supports.</td></tr>
+<tr><td>Grant</td><td>A funder record = name + description + Excel template + linked questionnaires (<code>pmt_grants</code>).</td></tr>
+<tr><td>Grant template</td><td>The funder-supplied Excel file (<code>.xlsx/.xls</code>) that generated reports are cloned from.</td></tr>
+<tr><td>Questionnaire</td><td>A data-collection form (<code>pmt_questionnaires</code>) linked to service categories and/or a grant.</td></tr>
+<tr><td>Answer matrix</td><td>The question×case aggregation (<code>getQuestionnaireAnswersMatrix</code>) that feeds the PMT AI editor.</td></tr>
+<tr><td>Generated report</td><td>An editable Excel report (<code>pmt_generated_reports</code>) cloned from a grant template, filled via Luckysheet + AI.</td></tr>
+<tr><td>PMT AI spreadsheet editor</td><td>Conservative gpt-4o cell editor returning surgical edits with confidence scoring + human approval (<code>/ai/chat</code>).</td></tr>
+<tr><td>NECX AI Report Builder</td><td>The custom-report generator (<code>/custom-reports/generate-chat</code>) producing JSON reports from live data + files.</td></tr>
+<tr><td>Custom report</td><td>An AI-generated structured report document (<code>custom_reports</code>, <code>reportData</code> JSON), owned by a user.</td></tr>
+<tr><td>Agency brain</td><td>The agency-identity context block (profile, services, staff, partnerships, grants, claim stats) in the custom-report prompt.</td></tr>
+<tr><td>Live data</td><td>Real-time agency data aggregated from PMT rows and related tables for the custom-report context.</td></tr>
+<tr><td>Verified metrics table</td><td>The &quot;VERIFIED METRICS FROM UPLOADED FILES&quot; block injected into the prompt from extracted file numbers.</td></tr>
+<tr><td>Accuracy validator</td><td>Post-generation numeric cross-check producing conflicts (mismatch) and warnings (possible hallucination).</td></tr>
+<tr><td>Conflict / Warning</td><td>Report value that mismatches a file value (conflict) / a value not found in any source (warning).</td></tr>
+<tr><td>Data source map</td><td>Per-datapoint provenance record (<code>ReportDataSourceMap</code>): database / file / user_input / ai_generated + confidence.</td></tr>
+<tr><td>Luckysheet</td><td>The in-browser spreadsheet used to render and edit grant/generated Excel reports.</td></tr>
+<tr><td>Grant Report Builder</td><td>The @dnd-kit drag-drop tool for composing grant reports from demographic/questionnaire fields.</td></tr>
+<tr><td>Field distribution</td><td>Count/% breakdown for a questionnaire question or a whitelisted demographic field.</td></tr>
+<tr><td>requiresApproval</td><td>Flag in the PMT editor response indicating proposed edits need human approval before applying.</td></tr>
+<tr><td>_userAdded section</td><td>A manually authored report section preserved verbatim by the AI across regenerations.</td></tr>
+<tr><td>Skeleton</td><td>A stripped report structure (bodies removed, <code>_userAdded</code> kept) used for large reports to fit token limits.</td></tr>
+<tr><td>Service claim / Case</td><td>An agency&#x27;s case record; the unit demographics and questionnaire answers attach to.</td></tr>
+<tr><td>Service center / Agency</td><td>A victim-services organization; the tenant boundary for agency-scoped reporting data.</td></tr>
+<tr><td>reports.pmt_reports</td><td>The VS360 permission flag gating the entire reporting subsystem.</td></tr>
+<tr><td>AI_PROVIDER</td><td>Server-side setting selecting OpenAI (default) or Anthropic Claude for custom-report generation.</td></tr>
+</tbody></table></div>
+      </div>
+      <nav class="prevnext"><a class="pn prev" href="P14.html"><span>← Previous</span><b>Drive</b></a><a class="pn next" href="P16.html"><span>Next →</span><b>E-Sign &amp; Document Center</b></a></nav>
+      <footer class="doc-foot">NECX Inc — Confidential · Generated 2026-07-05 · NECX AI Report Builder</footer>
+    </article>
+  </main>
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav class="toc-nav"><a class="toc-1" href="#1-document-control">1. Document Control</a>
+<a class="toc-1" href="#2-executive-summary">2. Executive Summary</a>
+<a class="toc-1" href="#3-product-overview-vision">3. Product Overview &amp; Vision</a>
+<a class="toc-2" href="#31-problem-statement">3.1 Problem statement</a>
+<a class="toc-2" href="#32-product-vision">3.2 Product vision</a>
+<a class="toc-2" href="#33-where-this-sits-in-the-necx-ecosystem">3.3 Where this sits in the NECX ecosystem</a>
+<a class="toc-1" href="#4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</a>
+<a class="toc-2" href="#41-goals-objectives">4.1 Goals &amp; objectives</a>
+<a class="toc-2" href="#42-success-metrics">4.2 Success metrics</a>
+<a class="toc-1" href="#5-scope">5. Scope</a>
+<a class="toc-2" href="#51-in-scope">5.1 In Scope</a>
+<a class="toc-2" href="#52-out-of-scope">5.2 Out of Scope</a>
+<a class="toc-1" href="#6-personas-user-roles">6. Personas &amp; User Roles</a>
+<a class="toc-1" href="#7-system-context-architecture">7. System Context &amp; Architecture</a>
+<a class="toc-2" href="#71-tech-stack">7.1 Tech stack</a>
+<a class="toc-2" href="#72-how-clients-talk-to-the-backend">7.2 How clients talk to the backend</a>
+<a class="toc-2" href="#73-real-time-tenancy-and-data-lineage">7.3 Real-time, tenancy, and data lineage</a>
+<a class="toc-1" href="#8-functional-requirements">8. Functional Requirements</a>
+<a class="toc-2" href="#81-pmt-reports">8.1 PMT reports</a>
+<a class="toc-2" href="#82-questionnaires-answer-matrix">8.2 Questionnaires &amp; answer matrix</a>
+<a class="toc-2" href="#83-grants">8.3 Grants</a>
+<a class="toc-2" href="#84-generated-reports-excel-from-grant-template">8.4 Generated reports (Excel from grant template)</a>
+<a class="toc-2" href="#85-pmt-ai-spreadsheet-editor-conservative-human-approved">8.5 PMT AI spreadsheet editor (conservative, human-approved)</a>
+<a class="toc-2" href="#86-report-builder-ai-advisory">8.6 Report Builder AI (advisory)</a>
+<a class="toc-2" href="#87-necx-ai-report-builder-custom-reports">8.7 NECX AI Report Builder — custom reports</a>
+<a class="toc-2" href="#88-file-upload-metric-extraction-accuracy-validation">8.8 File upload, metric extraction &amp; accuracy validation</a>
+<a class="toc-2" href="#89-luckysheet-grant-editor-drag-drop-grant-report-builder-vs360-">8.9 Luckysheet grant editor &amp; drag-drop Grant Report Builder (VS360 web)</a>
+<a class="toc-2" href="#810-custom-report-builder-ui-vs360-web-pdf-export">8.10 Custom Report Builder UI (VS360 web) &amp; PDF export</a>
+<a class="toc-2" href="#811-workspace-mobile-reporting-on-device-ai-builder">8.11 Workspace mobile reporting &amp; on-device AI builder</a>
+<a class="toc-1" href="#9-detailed-user-system-flows">9. Detailed User &amp; System Flows</a>
+<a class="toc-2" href="#91-build-a-custom-ai-report-end-to-end-vs360-web">9.1 Build a custom AI report end-to-end (VS360 web)</a>
+<a class="toc-2" href="#92-upload-a-file-for-metric-extraction">9.2 Upload a file for metric extraction</a>
+<a class="toc-2" href="#93-accuracy-validation-human-review">9.3 Accuracy validation &amp; human review</a>
+<a class="toc-2" href="#94-generate-and-fill-a-pmtgrant-report-luckysheet-ai-editor">9.4 Generate and fill a PMT/grant report (Luckysheet + AI editor)</a>
+<a class="toc-2" href="#95-set-up-a-grant-and-collect-data-prerequisite-flow">9.5 Set up a grant and collect data (prerequisite flow)</a>
+<a class="toc-2" href="#96-export-a-report">9.6 Export a report</a>
+<a class="toc-2" href="#97-duplicate-finalize-delete-a-custom-report">9.7 Duplicate / finalize / delete a custom report</a>
+<a class="toc-2" href="#98-provider-selection-failure-handling">9.8 Provider selection &amp; failure handling</a>
+<a class="toc-1" href="#10-data-model">10. Data Model</a>
+<a class="toc-1" href="#11-api-integration-surface">11. API &amp; Integration Surface</a>
+<a class="toc-2" href="#111-reports-endpoints-mount-webreports-all-allowonlyvs360-rateli">11.1 Reports endpoints (mount `/web/reports`, all `allowOnly(&#x27;VS360&#x27;)` + `rateLimiters.pmtApi`)</a>
+<a class="toc-2" href="#112-external-integrations">11.2 External integrations</a>
+<a class="toc-2" href="#113-client-libraries">11.3 Client libraries</a>
+<a class="toc-1" href="#12-rbac-permissions">12. RBAC &amp; Permissions</a>
+<a class="toc-1" href="#13-non-functional-requirements">13. Non-Functional Requirements</a>
+<a class="toc-2" href="#131-security-privacy-victim-safety">13.1 Security &amp; privacy (victim safety)</a>
+<a class="toc-2" href="#132-accuracy-data-integrity">13.2 Accuracy &amp; data integrity</a>
+<a class="toc-2" href="#133-performance">13.3 Performance</a>
+<a class="toc-2" href="#134-availability-resilience">13.4 Availability &amp; resilience</a>
+<a class="toc-2" href="#135-auditability">13.5 Auditability</a>
+<a class="toc-2" href="#136-compliance-localization">13.6 Compliance &amp; localization</a>
+<a class="toc-2" href="#137-accessibility">13.7 Accessibility</a>
+<a class="toc-1" href="#14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</a>
+<a class="toc-2" href="#141-reporting-outputs">14.1 Reporting outputs</a>
+<a class="toc-2" href="#142-underlying-analytics-data-sources">14.2 Underlying analytics data sources</a>
+<a class="toc-2" href="#143-notifications">14.3 Notifications</a>
+<a class="toc-1" href="#15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</a>
+<a class="toc-1" href="#16-glossary">16. Glossary</a>
+</nav>
+  </aside>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NECX Agency Chat · NECX PRD</title>
+<meta name="description" content="Real-time advocate–victim messaging tied to cases and service threads">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="prd-page">
+<header class="topbar">
+  <button class="hamburger" aria-label="Menu" onclick="toggleNav()">&#9776;</button>
+  <a class="brand" href="../index.html"><svg class="logo" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 L35 10 V22 C35 31 28 37 20 39 C12 37 5 31 5 22 V10 Z" fill="var(--brand)"/><path d="M13 27 V14 L20 22 V14 M27 14 V27 L20 19" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="brand-text">NECX<span class="brand-sub">Product Requirements</span></span></a>
+  <div class="topbar-spacer"></div>
+  <a class="top-link" href="../index.html">Home</a>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><span class="ic-sun">☀</span><span class="ic-moon">☾</span></button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-search"><input type="search" id="navSearch" placeholder="Filter documents…" oninput="filterNav(this.value)"></div>
+    <nav class="nav"><div class="nav-group"><div class="nav-group-title">Platform &amp; Applications</div><a class="nav-item " href="P01.html" data-search="necx platform — core system whole-platform prd: unified backend, four clients, multi-tenancy, identity/rbac, and the end-to-end case lifecycle."><span class="nav-num">01</span><span class="nav-text">Platform — Core System</span></a>
+<a class="nav-item " href="P02.html" data-search="necx workspace — staff mobile app agency staff mobile app (flutter/riverpod) — the on-the-go companion to the vs360 web dashboard."><span class="nav-num">02</span><span class="nav-text">Workspace — Staff Mobile App</span></a>
+<a class="nav-item " href="P03.html" data-search="necx victim app — survivor mobile app victim / survivor mobile app (flutter/getx) — discover services, request help, chat, find shelter, e-sign."><span class="nav-num">03</span><span class="nav-text">Victim App — Survivor Mobile App</span></a>
+<a class="nav-item " href="P04.html" data-search="vs360 — agency web dashboard vs360 — the agency staff web dashboard (react/vite) and primary caseworker workspace."><span class="nav-num">04</span><span class="nav-text">VS360 — Agency Web Dashboard</span></a>
+</div>
+<div class="nav-group"><div class="nav-group-title">VS360 Feature Modules</div><a class="nav-item " href="P05.html" data-search="necx case management service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes."><span class="nav-num">05</span><span class="nav-text">Case Management</span></a>
+<a class="nav-item " href="P06.html" data-search="necx shelter management shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search."><span class="nav-num">06</span><span class="nav-text">Shelter Management</span></a>
+<a class="nav-item " href="P07.html" data-search="necx hotline management twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights."><span class="nav-num">07</span><span class="nav-text">Hotline Management</span></a>
+<a class="nav-item " href="P08.html" data-search="necx calendar &amp; appointments reminders, tasks and case-linked appointments in the vs360 tools calendar."><span class="nav-num">08</span><span class="nav-text">Calendar &amp; Appointments</span></a>
+<a class="nav-item " href="P09.html" data-search="necx staff time tracking staff time tracking: clock in/out, timesheets, and grant/pmt time attribution."><span class="nav-num">09</span><span class="nav-text">Staff Time Tracking</span></a>
+<a class="nav-item active" href="P10.html" data-search="necx agency chat real-time advocate↔victim messaging tied to service threads and cases."><span class="nav-num">10</span><span class="nav-text">Agency Chat</span></a>
+<a class="nav-item " href="P11.html" data-search="necx internal chat staff-to-staff messaging within an agency, real-time over socket.io."><span class="nav-num">11</span><span class="nav-text">Internal Chat</span></a>
+<a class="nav-item " href="P12.html" data-search="necx rbac &amp; user management roles, the module/action permission matrix, plan seats, and multi-layer enforcement."><span class="nav-num">12</span><span class="nav-text">RBAC &amp; User Management</span></a>
+<a class="nav-item " href="P13.html" data-search="necx notes center agency-scoped, cross-case view over internal (caseworker-only) case notes."><span class="nav-num">13</span><span class="nav-text">Notes Center</span></a>
+<a class="nav-item " href="P14.html" data-search="necx drive google-drive-style cloud file storage backed by azure blob, with quotas and analytics."><span class="nav-num">14</span><span class="nav-text">Drive</span></a>
+<a class="nav-item " href="P15.html" data-search="necx ai report builder pmt/grant reporting plus ai-assisted custom report generation with accuracy validation."><span class="nav-num">15</span><span class="nav-text">AI Report Builder</span></a>
+<a class="nav-item " href="P16.html" data-search="necx e-sign &amp; document center prepare, request, sign and pdf-stamp case documents with an audit trail."><span class="nav-num">16</span><span class="nav-text">E-Sign &amp; Document Center</span></a>
+<a class="nav-item " href="P17.html" data-search="necx referrals &amp; partnerships inter-agency network: partnerships, invitations, and consent-based case referrals."><span class="nav-num">17</span><span class="nav-text">Referrals &amp; Partnerships</span></a>
+<a class="nav-item " href="P18.html" data-search="necx inquiries management intake and triage of inquiries / requests-to-connect before they become cases."><span class="nav-num">18</span><span class="nav-text">Inquiries Management</span></a>
+<a class="nav-item " href="P19.html" data-search="necx communities agency-run community spaces: joining questions, membership, posts and moderation."><span class="nav-num">19</span><span class="nav-text">Communities</span></a>
+<a class="nav-item " href="P20.html" data-search="necx service management service catalog, categories, and the per-service claim-question (intake) builder."><span class="nav-num">20</span><span class="nav-text">Service Management</span></a>
+</div>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim" onclick="toggleNav()"></div>
+  
+  <main class="content">
+    <article class="doc">
+      <div class="doc-eyebrow">Product Requirements Document · NECX Inc — Confidential</div>
+      <h1 class="doc-title">NECX Agency Chat</h1>
+      <p class="doc-subtitle">Real-time advocate–victim messaging tied to cases and service threads</p>
+      <div class="doc-meta"><span class="chip">Version: <b>1.0</b></span><span class="chip">Status: <b>Baseline</b></span><span class="chip">Owner: <b>NECX Product Management</b></span><a class="dl-btn" href="../downloads/10_VS360_Feature_Agency_Chat.docx" download>⬇ Download DOCX</a></div>
+      <hr class="doc-rule">
+      <div class="doc-body">
+      <h2 id="1-document-control">1. Document Control</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td>NECX — Coordinated Victim Services Platform</td></tr>
+<tr><td>Module</td><td>Agency Chat (Advocate–Victim Messaging)</td></tr>
+<tr><td>Version</td><td>1.0</td></tr>
+<tr><td>Status</td><td>Baseline</td></tr>
+<tr><td>Author</td><td>NECX Product Management</td></tr>
+<tr><td>Reviewers</td><td>Engineering (Backend / VS360 Web / Mobile), Victim Safety &amp; Privacy, Agency Operations</td></tr>
+<tr><td>Last Updated</td><td>2026-07-05</td></tr>
+<tr><td>Related Documents</td><td>Victim Services &amp; Cases PRD, VS360 Web Overview, Victim App PRD, Inquiries Management PRD, Notifications &amp; Real-Time Infrastructure PRD, RBAC &amp; Permissions PRD</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>1.0</td><td>2026-07-05</td><td>NECX Product Management</td><td>Baseline PRD for Agency Chat — advocate↔victim real-time messaging over SERVICE and INQUIRY threads, thread lifecycle tied to case approval/resolution, attachments, read receipts, and Socket.IO delivery.</td></tr>
+</tbody></table></div>
+<h2 id="2-executive-summary">2. Executive Summary</h2>
+<p>Agency Chat is NECX&#x27;s secure, real-time messaging channel between agency staff (advocates / caseworkers, referred to internally as VSMS users) and the victims/survivors they serve. It is the human, one-to-one conversational surface that wraps a victim&#x27;s journey through a service — from the first <strong>inquiry</strong> about a published service, through an approved <strong>case</strong> (service claim), to case resolution. Where NECX&#x27;s AI assistant provides automated triage, Agency Chat is the channel where a real advocate and a real victim exchange words, documents, and reassurance in real time.</p>
+<p>The feature serves two audiences from a single backend. On the victim side, the NECX mobile app exposes an inbox of conversations tied to the services and cases a survivor is engaged with. On the agency side, the VS360 web dashboard exposes the same conversations to the assigned advocate and, where permitted, the broader agency team, embedded directly in the case and inquiry workspaces. Messages, attachments, and read state are shared through a unified Express backend, delivered instantly over Socket.IO, and backed by durable notifications (in-app, push/FCM, and — for high-signal events — email and SMS).</p>
+<p>This matters because timeliness and continuity are safety-critical for victim services. A survivor reaching out about a shelter bed, a protective order, or a crisis cannot be left waiting, and an advocate must be able to pick up the thread of a case without losing history. Agency Chat binds each conversation to a specific case/claim so that context, attachments, and accountability travel together, and so that a conversation opens automatically when a case is approved and is archived automatically when the case is resolved.</p>
+<p>Above all, Agency Chat is designed under NECX&#x27;s mission constraints: the safety, privacy, and dignity of victims. Conversations are access-scoped to the assigned advocate and their agency, content can be translated into the recipient&#x27;s preferred language, and the victim app layers on additional protections (PIN/biometric lock, an emergency-exit control, encrypted transport) so a sensitive conversation stays private on a shared or monitored device.</p>
+<h2 id="3-product-overview-vision">3. Product Overview &amp; Vision</h2>
+<h3 id="31-problem-statement">3.1 Problem Statement</h3>
+<p>Victim services are relationship-driven and time-sensitive, yet the conversation between a survivor and their advocate is easily fragmented across phone calls, personal email, SMS, and memory. Without a purpose-built channel, context is lost between the intake question and the approved case, attachments live in inboxes outside any case record, and no one can prove a message was seen. Generic consumer messaging tools also fail the privacy bar for victim work: they are not scoped to a case, not access-controlled to the assigned advocate, and not safe on a device that an abuser may share or monitor.</p>
+<h3 id="32-product-vision">3.2 Product Vision</h3>
+<p>Agency Chat is the single, case-anchored conversation channel between a victim and the agency helping them. Every message belongs to a thread, every thread belongs to a service or case, and the thread&#x27;s lifecycle mirrors the case&#x27;s lifecycle — it opens when help is approved and archives when help is complete. Advocates get continuity and accountability; victims get a private, translated, always-current line to the person helping them.</p>
+<h3 id="33-where-this-sits-in-the-necx-ecosystem">3.3 Where This Sits in the NECX Ecosystem</h3>
+<ul>
+<li><strong>Victim App</strong> (Flutter mobile) — the survivor&#x27;s inbox: starts inquiries, reads and sends case messages, receives push notifications, and enforces device-level safety (PIN, emergency exit).</li>
+<li><strong>VS360 Web</strong> (React SPA) — the advocate&#x27;s workspace: the shared message pane inside Inquiries Management and Cases (Claims) Management where staff triage inquiries and correspond with victims on active cases.</li>
+<li><strong>Unified Backend</strong> (Express + Objection/Knex over PostgreSQL, Socket.IO, Redis) — the chat module (<code>chat_threads</code>, <code>chat_messages</code>), thread creation on case approval (victim-services module), notification fan-out, translation, and file storage.</li>
+<li><strong>NECX Admin</strong> — platform administration; not a direct participant in Agency Chat but governs plans, roles, and the permission templates that gate it.</li>
+<li><strong>Adjacent modules</strong> — Agency Chat is one of four thread types in the shared chat backbone (SERVICE, INQUIRY, INTERNAL staff↔staff, AGENCY_CHAT agency↔agency). This PRD covers the two victim-facing types (SERVICE, INQUIRY); the staff-only types are out of scope (see §5.2).</li>
+</ul>
+<h2 id="4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</h2>
+<h3 id="41-goals">4.1 Goals</h3>
+<ul>
+<li>Provide a real-time, one-to-one messaging channel between a victim and their assigned advocate that is anchored to a specific service/case.</li>
+<li>Automatically open a durable SERVICE conversation the moment a case (service claim) is approved, and automatically archive it when the case is resolved — no manual thread management.</li>
+<li>Deliver messages, attachments, and read state instantly to whichever clients are open (web + mobile) via Socket.IO, with reliable fallback notifications (in-app, push, email/SMS) when they are not.</li>
+<li>Preserve full, auditable conversation history and attachments as part of the case record.</li>
+<li>Remove language as a barrier by translating message content into the recipient&#x27;s preferred language.</li>
+<li>Enforce victim safety and privacy at the message, thread, transport, and device layers.</li>
+</ul>
+<h3 id="42-success-metrics">4.2 Success Metrics</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Definition</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>Real-time delivery latency</td><td>Time from <code>send-message</code> commit to socket receipt on an open peer client</td><td>&lt; 2 s (p95)</td></tr>
+<tr><td>Thread-open reliability</td><td>Approved cases that successfully open a SERVICE thread</td><td>100%</td></tr>
+<tr><td>First advocate response time</td><td>Median time from a victim&#x27;s first message to first advocate reply on an active case</td><td>&lt; 4 business hours</td></tr>
+<tr><td>Message read rate</td><td>Share of delivered messages marked read within 24 h</td><td>&gt; 90%</td></tr>
+<tr><td>Notification deliverability</td><td>Successful FCM/in-app delivery for <code>SERVICE_NEW_MESSAGE</code> / <code>INQUIRY_NEW_MESSAGE</code></td><td>&gt; 98%</td></tr>
+<tr><td>Attachment success rate</td><td>Attachments that upload and render for both parties</td><td>&gt; 99%</td></tr>
+<tr><td>Translation coverage</td><td>Cross-language messages delivered with a populated <code>translatedContent</code></td><td>&gt; 95%</td></tr>
+<tr><td>Unauthorized access attempts</td><td>Requests to a thread by a non-participant that are blocked</td><td>100% blocked</td></tr>
+</tbody></table></div>
+<h2 id="5-scope">5. Scope</h2>
+<h3 id="51-in-scope">5.1 In Scope</h3>
+<ul>
+<li>Victim-facing chat thread types: <strong>SERVICE</strong> (advocate ↔ victim on an approved case/claim) and <strong>INQUIRY</strong> (victim ↔ agency intake conversation about a published service).</li>
+<li>Automatic SERVICE thread creation on case approval and thread archival on case resolution.</li>
+<li>Message send/receive with text content and up to 5 file attachments per message.</li>
+<li>Attachment/media upload, storage, and per-thread file listing.</li>
+<li>Read receipts (mark-all-read) and per-user, per-type unread counts / badges.</li>
+<li>Real-time delivery via Socket.IO thread rooms, plus durable in-app, push (FCM), email, and SMS notifications.</li>
+<li>Message translation into the recipient&#x27;s preferred language.</li>
+<li>RBAC scoping of chat access to the assigned advocate and their agency.</li>
+<li>Inquiry lifecycle triage (approve / reject / resolve) as it relates to opening and closing conversations.</li>
+</ul>
+<h3 id="52-out-of-scope">5.2 Out of Scope</h3>
+<ul>
+<li><strong>INTERNAL</strong> chat (staff ↔ staff 1:1 within an agency) and <strong>AGENCY_CHAT / pre-partnership</strong> chat (staff ↔ staff across agencies). These share the same backend and message pane but are advocate-only channels; note the naming collision described in §16 and §15.</li>
+<li>The NECX AI assistant chat (a separate REST-based guidance chatbot, not human messaging).</li>
+<li>Community group chats and post/comment feeds (covered by the Communities PRD).</li>
+<li>Voice/video calling and the Twilio hotline (covered by the Hotline PRD).</li>
+<li>Typing indicators and rich online/offline presence (not implemented today; see §15 Open Questions).</li>
+<li>Message editing/deletion/recall and end-to-end (client-side) encryption (transport encryption only today).</li>
+<li>Case notes and victim-facing case updates (separate case-record surfaces, not chat messages).</li>
+</ul>
+<h2 id="6-personas-user-roles">6. Personas &amp; User Roles</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Role</th><th>Description</th><th>Key permissions</th></tr></thead>
+<tbody>
+<tr><td>Victim / Survivor (app user)</td><td>The person seeking services; uses the NECX mobile app. Authenticated as <code>issuer.type = APP</code> (<code>app_users.id</code>). Sees only their own inquiry/case conversations.</td><td>Start inquiry; send/read messages on own threads; mark own threads read; upload attachments. Scoped to <code>issuer.id</code>.</td></tr>
+<tr><td>Advocate / Caseworker (VSMS user)</td><td>Agency staff who triages inquiries and works cases. Authenticated as <code>issuer.type = VSMS</code> with <code>serviceCenterInfo</code> and <code>vsmsUserInfo</code>.</td><td>View and reply on inquiry/case threads within their agency and service categories; approve/reject/resolve inquiries; send attachments; mark threads read. Gated by <code>agency_chat.view</code> (see §12).</td></tr>
+<tr><td>Agency Supervisor / Admin</td><td>A VSMS user whose role carries broader case visibility.</td><td>All advocate actions plus <code>claims.view_all</code> — sees all agency cases (and therefore all agency SERVICE threads), not only self-assigned.</td></tr>
+<tr><td>NECX Super Admin</td><td>Platform-level administrator.</td><td>Bypasses fine-grained permission checks in middleware; used for support/oversight, not routine chat participation.</td></tr>
+</tbody></table></div>
+<h3 id="61-persona-narratives">6.1 Persona Narratives</h3>
+<p><strong>Maria (survivor).</strong> Maria opens the NECX app and starts an inquiry about a shelter service. She exchanges a few messages with the agency, and once her case is approved she gets a push notification and a new case conversation appears in her inbox — in Spanish, her preferred language. She sends a photo of a document and later checks that the advocate has seen it.</p>
+<p><strong>David (advocate).</strong> David works from the VS360 dashboard. Inquiries land in his queue routed by service category; he approves Maria&#x27;s inquiry, which assigns the case to him and opens a SERVICE thread. He replies in real time from the case workspace, sends a form as an attachment, and when the case is resolved the conversation archives itself into the case record.</p>
+<h2 id="7-system-context-architecture">7. System Context &amp; Architecture</h2>
+<h3 id="71-tech-stack">7.1 Tech Stack</h3>
+<ul>
+<li><strong>Backend</strong>: Node.js + Express (ESM), Objection/Knex over PostgreSQL, Socket.IO for real-time, Redis for scaling/pub-sub and caching, BullMQ for background jobs, Azure Blob Storage for attachments, FCM for push, Twilio for SMS, and an AI/translation provider layer. Chat lives in <code>src/apps/chat/chat-{routes,controllers,services}.js</code>; thread creation on approval lives in the victim-services module.</li>
+<li><strong>VS360 Web</strong>: React 18 + Vite SPA. A single Socket.IO connection in <code>SocketContext.jsx</code>; thread rooms joined via <code>socketRoomManager</code>; event names in <code>SocketEvents.js</code>; chat calls in <code>services/chat.js</code> and <code>services/threads.js</code>; the shared message pane is <code>ActiveInquiry.jsx</code>.</li>
+<li><strong>Victim App</strong>: Flutter. <code>SocketService</code> singleton (<code>socket_service.dart</code>); chat via <code>InquiryChatController</code> / <code>InboxController</code> over <code>VictimService</code> chat-services endpoints.</li>
+</ul>
+<h3 id="72-how-clients-talk-to-the-backend">7.2 How Clients Talk to the Backend</h3>
+<p>All endpoints are mounted under the global <code>/v2</code> API prefix. Web chat routes live under <code>/web/chat-services/*</code> (guarded by <code>allowOnly(&#x27;VS360&#x27;)</code>); victim routes under <code>/mobile/chat-services/*</code>. Requests carry a JWT access token; responses use the standard <code>{ status, msg, data }</code> envelope and may be AES-encrypted (clients decrypt). Chat routes run under the <code>rateLimiters.chatApi</code> bucket.</p>
+<h3 id="73-real-time-notifications">7.3 Real-Time &amp; Notifications</h3>
+<p>Socket.IO is initialized in <code>src/utils/socket.js</code> and authenticated by <code>socket-middelware.js</code> using the JWT passed in the connection <code>auth</code> handshake (<code>{ token, refreshToken }</code>). The mobile client additionally sends the app-secret header (<code>x-mobile-app-secret</code> / <code>X-Netlify-Secret</code>). Clients join rooms via <code>join-room</code> / <code>leave-room</code> emits. Per-thread delivery uses room <code>thread-&lt;threadUid&gt;-&lt;userUid&gt;</code>; staff also join <code>vs360-user-&lt;uid&gt;</code> and <code>service-center-&lt;id&gt;</code>; victims join <code>app-notification-room</code>. Every notable event follows the same fan-out: a DB notification row (<code>service_center_notifications</code> for staff, <code>victim_notifications</code> for victims, with <code>additionalData</code> carrying <code>threadUid</code>) + a Socket.IO emit to the target room + an FCM push + (for select events) email/SMS. Notification calls are wrapped defensively — failures are logged, never breaking the message transaction.</p>
+<h3 id="74-tenancy">7.4 Tenancy</h3>
+<p>NECX is multi-tenant by agency (service center). Staff visibility is scoped by <code>issuer.serviceCenterInfo.id</code> and by the staff member&#x27;s assigned service categories; victim visibility is scoped by <code>issuer.id</code>. SERVICE and INQUIRY threads carry both a <code>victimId</code> and the agency staff participants (<code>vsmsId</code>/<code>vsmsId2</code>) plus the originating <code>serviceId</code>, so tenant scope is derivable from the thread itself.</p>
+<h2 id="8-functional-requirements">8. Functional Requirements</h2>
+<h3 id="81-chat-threads">8.1 Chat Threads</h3>
+<p>A chat thread is the container for a conversation. The <code>chat_threads</code> table supports four <code>type</code> values; Agency Chat uses <strong>SERVICE</strong> (advocate ↔ victim on an approved case) and <strong>INQUIRY</strong> (victim ↔ agency intake). A thread carries <code>victimId</code> (→ <code>app_users</code>), <code>vsmsId</code> and <code>vsmsId2</code> (→ <code>users</code>, the staff participant(s)), <code>serviceId</code> (→ <code>services</code>), a <code>status</code> (<code>ACTIVE</code> / <code>ARCHIVED</code>), and timestamps. INQUIRY threads additionally have an <code>inquiry_lifecycle</code> row (<code>pending</code> / <code>approved</code> / <code>rejected</code> / <code>resolved</code>).</p>
+<p>Threads are surfaced through type-specific query helpers: <code>getInquiryThreadsForVSMSUser</code> (filtered by the staff member&#x27;s service categories + service center), <code>getThreadsForVSMSUser</code>, and existence checks used for dedup. Victims retrieve all their threads via <code>get-all-threads</code> and open a specific one by uid.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-THREAD-01</td><td>The system shall model conversations as <code>chat_threads</code> rows with <code>type</code>, <code>victimId</code>, <code>vsmsId</code>/<code>vsmsId2</code>, <code>serviceId</code>, <code>status</code>, and timestamps.</td><td>Must</td></tr>
+<tr><td>FR-THREAD-02</td><td>The system shall automatically create a SERVICE thread linking the victim and the approving advocate when a service claim is approved (see §8.7, §9.1).</td><td>Must</td></tr>
+<tr><td>FR-THREAD-03</td><td>The system shall support INQUIRY threads created by a victim from the mobile app about a published service, deduplicated on active <code>(victimId, serviceId)</code>.</td><td>Must</td></tr>
+<tr><td>FR-THREAD-04</td><td>The system shall expose per-user thread lists filtered by type: <code>get-all-threads</code>, <code>get-inquiry-threads</code> (paginated, status filter).</td><td>Must</td></tr>
+<tr><td>FR-THREAD-05</td><td>The system shall return a single authorized thread via <code>get-thread/:threadUid</code>, rejecting access by non-participants.</td><td>Must</td></tr>
+<tr><td>FR-THREAD-06</td><td>The system shall scope staff inquiry threads to the staff member&#x27;s service center and assigned service categories.</td><td>Must</td></tr>
+<tr><td>FR-THREAD-07</td><td>The system shall set thread <code>status</code> to <code>ARCHIVED</code> when its case is resolved (SERVICE) or its inquiry is rejected/resolved (INQUIRY).</td><td>Must</td></tr>
+<tr><td>FR-THREAD-08</td><td>The system shall relate each thread to its participants, service, last message, and files for efficient list rendering.</td><td>Should</td></tr>
+</tbody></table></div>
+<p>Key endpoints: <code>GET /{web,mobile}/chat-services/get-all-threads</code>, <code>GET .../get-inquiry-threads</code>, <code>GET .../get-thread/:threadUid</code>.</p>
+<h3 id="82-messages">8.2 Messages</h3>
+<p>Messages are rows in <code>chat_messages</code>: <code>uid</code>, <code>threadId</code>, exactly one sender key (<code>victimSenderId</code> → <code>app_users</code> or <code>vsmsSenderId</code> → <code>users</code>), <code>content</code>, <code>translatedContent</code>, <code>isRead</code>, and timestamps. Sending is authorized against thread participation (<code>isAuthorizedForThread</code>), the sender/receiver are resolved by thread type, content is translated to the receiver&#x27;s preferred language, and — within a single transaction — the message is inserted, attachments are persisted, the thread is touched (updated <code>last message</code>), and notification rows are created. Socket + FCM (and email/SMS for select types) fire after commit; the created message is returned graph-fetched with its files.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-MSG-01</td><td>The system shall let an authorized participant send a message to a thread via <code>POST /send-message/:threadUid</code> with <code>content</code> and optional attachments.</td><td>Must</td></tr>
+<tr><td>FR-MSG-02</td><td>The system shall record the sender as either a victim (<code>victimSenderId</code>) or a staff user (<code>vsmsSenderId</code>) based on <code>issuer.type</code>.</td><td>Must</td></tr>
+<tr><td>FR-MSG-03</td><td>The system shall persist the message, attach files, update the thread&#x27;s last-message reference, and create notifications atomically in one transaction.</td><td>Must</td></tr>
+<tr><td>FR-MSG-04</td><td>The system shall return paginated message history for a thread via <code>GET /get-all-chats/:threadUid?page&amp;pageSize</code> (mobile default pageSize 20, reversed).</td><td>Must</td></tr>
+<tr><td>FR-MSG-05</td><td>The system shall reject <code>send-message</code> from any principal that is not a participant of the thread.</td><td>Must</td></tr>
+<tr><td>FR-MSG-06</td><td>The system shall emit the type-appropriate socket event (<code>message-service</code> / <code>message-inquiry</code>) and dispatch notifications after the message commits.</td><td>Must</td></tr>
+<tr><td>FR-MSG-07</td><td>The system shall translate message <code>content</code> into the receiver&#x27;s <code>preferredLanguage</code> and store the result in <code>translatedContent</code>.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="83-attachments-media">8.3 Attachments &amp; Media</h3>
+<p>A message may carry up to 5 files (multer <code>upload.array(&#x27;files&#x27;, 5)</code>). Files are written to storage (Azure Blob via the file service), recorded in <code>file_uploads</code> linked to both the message and the thread, and are retrievable per thread. On mobile, <code>send-message</code> is a <code>multipart/form-data</code> request combining <code>content</code> and file parts.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-ATT-01</td><td>The system shall accept up to 5 file attachments per message (<code>files</code> multipart field).</td><td>Must</td></tr>
+<tr><td>FR-ATT-02</td><td>The system shall persist each attachment to blob storage and record metadata/URL in <code>file_uploads</code> linked to the message and thread.</td><td>Must</td></tr>
+<tr><td>FR-ATT-03</td><td>The system shall list all files in a thread via <code>GET /get-all-files/:threadUid</code>.</td><td>Must</td></tr>
+<tr><td>FR-ATT-04</td><td>The system shall return attachments as part of the graph-fetched message so both clients render them inline.</td><td>Must</td></tr>
+<tr><td>FR-ATT-05</td><td>The system should enforce file-type/size limits at the upload middleware appropriate to victim-services documents and images.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="84-read-receipts-unseen-counts">8.4 Read Receipts &amp; Unseen Counts</h3>
+<p>Read state is per message (<code>chat_messages.isRead</code>). Marking a thread read (<code>PATCH /read/:threadUid</code>) sets <code>isRead = true</code> for all of that thread&#x27;s messages and clears the associated thread notifications. Unread counts are computed per user and per thread type on <code>chat_messages</code> and surfaced as sidebar/inbox badges.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-READ-01</td><td>The system shall mark all messages in a thread as read via <code>PATCH /read/:threadUid</code> for the requesting participant.</td><td>Must</td></tr>
+<tr><td>FR-READ-02</td><td>The system shall compute per-user, per-type unread counts from <code>chat_messages</code> for badge rendering.</td><td>Must</td></tr>
+<tr><td>FR-READ-03</td><td>Marking a thread read shall clear the corresponding in-app thread notifications (<code>markThreadNotificationsAsRead</code>).</td><td>Must</td></tr>
+<tr><td>FR-READ-04</td><td>Clients shall display unread indicators on chat navigation entries and per-thread list rows.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="85-presence-real-time-delivery">8.5 Presence &amp; Real-Time Delivery</h3>
+<p>&quot;Presence&quot; in Agency Chat is delivery-oriented rather than a rich online/offline roster. When a client opens a thread it joins the room <code>thread-&lt;threadUid&gt;-&lt;userUid&gt;</code>; the server emits new messages to the thread room so any open peer client updates live. Staff pre-join their user and service-center rooms on connect; victims join <code>app-notification-room</code>. Clients auto-reconnect and re-join rooms on reconnect.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-RT-01</td><td>Clients shall join <code>thread-&lt;threadUid&gt;-&lt;userUid&gt;</code> when a conversation is opened/loaded, and leave on close.</td><td>Must</td></tr>
+<tr><td>FR-RT-02</td><td>The server shall emit new messages to the thread room in real time (<code>message-service</code> / <code>message-inquiry</code>).</td><td>Must</td></tr>
+<tr><td>FR-RT-03</td><td>Clients shall reconnect automatically and re-join their rooms after a dropped connection.</td><td>Must</td></tr>
+<tr><td>FR-RT-04</td><td>The mobile client shall consume a catch-all <code>new-message-*</code> stream keyed by <code>additionalData.threadUid</code> to route messages to the correct thread.</td><td>Must</td></tr>
+<tr><td>FR-RT-05</td><td>Typing indicators and online-status presence are not provided (see §15).</td><td>Won&#x27;t (v1)</td></tr>
+</tbody></table></div>
+<h3 id="86-inquiry-intake-triage">8.6 Inquiry Intake &amp; Triage</h3>
+<p>The victim-facing intake conversation is the INQUIRY thread. A victim starts one from the app; agency staff whose service categories match the service are notified and triage it. Triage transitions the <code>inquiry_lifecycle</code> and, on approval, the workflow moves the relationship toward a case.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-INQ-01</td><td>The victim app shall start an inquiry via <code>POST /mobile/chat-services/start-inquiry</code> with <code>inquiryData { serviceCenterId, serviceId }</code>, deduplicated on active <code>(victimId, serviceId)</code>.</td><td>Must</td></tr>
+<tr><td>FR-INQ-02</td><td>On inquiry creation the system shall insert an <code>inquiry_lifecycle</code> row (<code>pending</code>) and notify category-matched agency staff (socket <code>thread-creation-inquiry</code> + email + SMS).</td><td>Must</td></tr>
+<tr><td>FR-INQ-03</td><td>Staff shall approve an inquiry (<code>PATCH /inquiry/approve/:id</code>): set lifecycle <code>approved</code>, assign <code>vsmsId = issuer.id</code>, mark read, notify the victim (FCM <code>INQUIRY_APPROVED</code>, socket <code>inquiry-approve-for-&lt;victimUid&gt;</code>), and write an action log.</td><td>Must</td></tr>
+<tr><td>FR-INQ-04</td><td>Staff shall reject an inquiry (<code>PATCH /inquiry/reject/:id</code>): set lifecycle <code>rejected</code> and archive the thread.</td><td>Must</td></tr>
+<tr><td>FR-INQ-05</td><td>Staff shall resolve an inquiry (<code>PATCH /inquiry/resolve/:id</code>).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="87-service-thread-lifecycle-case-bound">8.7 SERVICE Thread Lifecycle (Case-Bound)</h3>
+<p>The SERVICE thread is the case conversation. It is created by the victim-services case (service claim) state machine, not by a manual chat action, so the conversation is guaranteed to exist for exactly the life of the case.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SVC-01</td><td>On case approval (<code>PATCH /web/service-claims/approve/:uid</code>, pending→approved) the system shall insert a SERVICE <code>chat_thread</code> linking the victim and approving caseworker.</td><td>Must</td></tr>
+<tr><td>FR-SVC-02</td><td>Approval shall also publish a case update (&quot;Approved&quot;) and notify the victim (<code>SERVICE_CLAIM_APPROVED</code> + FCM + socket <code>service-claim-action-for-&lt;victimUid&gt;</code>).</td><td>Must</td></tr>
+<tr><td>FR-SVC-03</td><td>Advocate-created / auto-approved cases (<code>shouldCreateUser</code>) shall likewise open a SERVICE thread on the auto-approval path.</td><td>Must</td></tr>
+<tr><td>FR-SVC-04</td><td>On case resolution (<code>PATCH /web/service-claims/resolve/:uid</code>, approved→resolved) the system shall archive the SERVICE thread and notify the victim.</td><td>Must</td></tr>
+<tr><td>FR-SVC-05</td><td>Messages in a SERVICE thread shall emit <code>message-service</code> and create <code>SERVICE_NEW_MESSAGE</code> notifications.</td><td>Must</td></tr>
+<tr><td>FR-SVC-06</td><td>The case detail response shall include the latest chat thread so the conversation is reachable from the case workspace.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="88-notifications-chat">8.8 Notifications (Chat)</h3>
+<p>Every inbound message and lifecycle event produces a durable notification in addition to the live socket emit, so a recipient who is offline is still informed.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-NOTIF-01</td><td>New messages shall create DB notifications typed <code>SERVICE_NEW_MESSAGE</code> or <code>INQUIRY_NEW_MESSAGE</code> with <code>additionalData.threadUid</code>.</td><td>Must</td></tr>
+<tr><td>FR-NOTIF-02</td><td>New messages shall push FCM to the recipient&#x27;s device token(s) for background delivery.</td><td>Must</td></tr>
+<tr><td>FR-NOTIF-03</td><td>Select events (new inquiry to agency; inquiry approval to victim) shall also send email and/or SMS.</td><td>Should</td></tr>
+<tr><td>FR-NOTIF-04</td><td>Tapping a chat push on mobile shall deep-link to the correct inbox conversation via <code>NotificationNavigator</code>.</td><td>Must</td></tr>
+</tbody></table></div>
+<h2 id="9-detailed-user-system-flows">9. Detailed User &amp; System Flows</h2>
+<h3 id="91-a-service-thread-opens-when-a-case-is-approved">9.1 A SERVICE thread opens when a case is approved</h3>
+<ol class="flow">
+<li>A victim&#x27;s service claim exists in <code>pending</code> (victim-initiated) — or is created and auto-approved on the advocate path (<code>shouldCreateUser</code>).</li>
+<li>An advocate opens the case in VS360 and approves it: <code>PATCH /web/service-claims/approve/:uid</code>.</li>
+<li>The backend transitions the claim <code>pending → approved</code> and writes <code>service_claim_stats.approved_by/at</code>.</li>
+<li>The backend inserts a new <code>chat_threads</code> row with <code>type = SERVICE</code>, <code>victimId</code> = the claim&#x27;s victim, <code>vsmsId</code> = the approving caseworker, <code>serviceId</code> = the claim&#x27;s service, <code>status = ACTIVE</code>.</li>
+<li>The backend publishes a case update titled &quot;Approved&quot;.</li>
+<li>The backend notifies the victim: inserts a <code>victim_notifications</code> row (<code>SERVICE_CLAIM_APPROVED</code>), sends FCM, and emits socket <code>service-claim-action-for-&lt;victimUid&gt;</code> to <code>app-notification-room</code>.</li>
+<li>If the claim originated from a partner referral, the referral is marked <code>accepted</code>.</li>
+<li>The victim app receives the notification; the new case conversation appears in the inbox. The advocate sees the conversation attached to the case workspace (case detail returns the latest thread).</li>
+<li>Both parties may now exchange messages (see §9.2). No manual &quot;start chat&quot; step is required.</li>
+</ol>
+<h3 id="92-advocate-and-victim-exchange-messages-in-real-time">9.2 Advocate and victim exchange messages in real time</h3>
+<ol class="flow">
+<li>The advocate opens the case conversation in VS360; the client joins socket room <code>thread-&lt;threadUid&gt;-&lt;staffUid&gt;</code>.</li>
+<li>The victim opens the same conversation in the app; the client joins <code>thread-&lt;threadUid&gt;-&lt;victimUid&gt;</code> and listens on the <code>new-message-*</code> stream.</li>
+<li>The advocate types a message and calls <code>POST /web/chat-services/send-message/:threadUid</code> with <code>content</code>.</li>
+<li>The backend authorizes the sender via <code>isAuthorizedForThread</code>, resolves receiver = victim (SERVICE thread), and translates <code>content</code> into the victim&#x27;s <code>preferredLanguage</code> → <code>translatedContent</code>.</li>
+<li>In one transaction the backend inserts the <code>chat_messages</code> row (<code>vsmsSenderId</code> = advocate), touches the thread&#x27;s last-message pointer, and creates a <code>victim_notifications</code> (<code>SERVICE_NEW_MESSAGE</code>, <code>additionalData.threadUid</code>) row.</li>
+<li>After commit the backend emits <code>message-service</code> to the victim&#x27;s thread room and pushes FCM.</li>
+<li>The victim app receives the socket event, appends the message live (showing <code>translatedContent</code>), and — if the app was backgrounded — also shows the push.</li>
+<li>The victim replies via <code>POST /mobile/chat-services/send-message/:threadUid</code>; the mirror path resolves receiver = advocate, translates into the advocate&#x27;s language, creates a <code>service_center_notifications</code> row, emits <code>message-service</code> to the advocate&#x27;s thread room, and pushes to staff.</li>
+<li>Each client optimistically renders its own outgoing bubble and reconciles it with the returned graph-fetched server message.</li>
+</ol>
+<h3 id="93-sending-an-attachment-media">9.3 Sending an attachment / media</h3>
+<ol class="flow">
+<li>The sender attaches up to 5 files and submits <code>send-message/:threadUid</code> as <code>multipart/form-data</code> (<code>content</code> + <code>files[]</code>).</li>
+<li>Multer (<code>upload.array(&#x27;files&#x27;, 5)</code>) parses the parts; the file service writes each buffer to blob storage and returns URLs.</li>
+<li>Within the send transaction, the message is inserted and each file is recorded in <code>file_uploads</code> linked to the message and thread (<code>processMessageFiles</code>).</li>
+<li>The message is returned graph-fetched with its <code>files</code>; the socket <code>message-service</code> / <code>message-inquiry</code> payload carries them so the peer renders attachments inline without a refetch.</li>
+<li>Either party can later browse all thread attachments via <code>GET /get-all-files/:threadUid</code>.</li>
+<li>Edge case: if an upload fails, the transaction does not commit a partial message; the client surfaces a retryable error.</li>
+</ol>
+<h3 id="94-marking-a-thread-read-and-unseen-counts">9.4 Marking a thread read and unseen counts</h3>
+<ol class="flow">
+<li>When a participant opens a thread, the client calls <code>PATCH /{web,mobile}/chat-services/read/:threadUid</code>.</li>
+<li>The backend sets <code>isRead = true</code> on all messages in that thread and clears the participant&#x27;s associated thread notifications (<code>markThreadNotificationsAsRead</code>).</li>
+<li>Unread badges (sidebar &quot;Chat&quot; indicator on web; inbox counts on mobile) recompute from per-type unread counts on <code>chat_messages</code> and from the notification list.</li>
+<li>Edge case: messages that arrive while the thread is open are delivered by socket and are effectively read; the client may re-issue read to keep counts precise.</li>
+</ol>
+<h3 id="95-archiving-on-case-resolution">9.5 Archiving on case resolution</h3>
+<ol class="flow">
+<li>When the case work is complete, the advocate resolves the case: <code>PATCH /web/service-claims/resolve/:uid</code> (approved→resolved), passing <code>pmtValues</code> and the <code>threadUid</code>.</li>
+<li>The backend transitions the claim <code>approved → resolved</code>, writes <code>service_claim_stats.resolved_by/at</code>, and publishes a &quot;Resolved&quot; case update.</li>
+<li>The backend sets the SERVICE thread <code>status = ARCHIVED</code>.</li>
+<li>The backend notifies the victim of resolution.</li>
+<li>The archived conversation and its attachments remain readable as part of the case record (history is preserved, not deleted); it no longer appears as an active conversation.</li>
+</ol>
+<h3 id="96-inquiry-intake-approval-branch-that-leads-into-a-case">9.6 Inquiry intake → approval (branch that leads into a case)</h3>
+<ol class="flow">
+<li>From the app, the victim starts an inquiry about a service: <code>POST /mobile/chat-services/start-inquiry { inquiryData: { serviceCenterId, serviceId } }</code>.</li>
+<li>The backend deduplicates on an existing active INQUIRY for <code>(victimId, serviceId)</code>; otherwise it creates the thread (<code>type = INQUIRY</code>) and an <code>inquiry_lifecycle</code> row (<code>pending</code>).</li>
+<li>The backend notifies the agency&#x27;s staff whose service categories match the service: socket <code>thread-creation-inquiry</code>, plus email and SMS to the agency.</li>
+<li>Victim and staff exchange messages on the inquiry thread (<code>message-inquiry</code> / <code>INQUIRY_NEW_MESSAGE</code>), same mechanics as §9.2.</li>
+<li>Staff approve the inquiry (<code>PATCH /inquiry/approve/:id</code>): lifecycle → <code>approved</code>, <code>vsmsId</code> assigned to the actor, messages marked read, victim notified (FCM <code>INQUIRY_APPROVED</code>, socket <code>inquiry-approve-for-&lt;victimUid&gt;</code>), action logged.</li>
+<li>The approved inquiry moves the victim toward a service claim; when that claim is approved, the case-bound SERVICE thread opens (§9.1).</li>
+<li>Branch — reject: <code>PATCH /inquiry/reject/:id</code> sets lifecycle <code>rejected</code> and archives the thread.</li>
+<li>Branch — resolve: <code>PATCH /inquiry/resolve/:id</code> closes the inquiry.</li>
+</ol>
+<h3 id="97-message-translation">9.7 Message translation</h3>
+<ol class="flow">
+<li>On send, the backend resolves the receiver and their <code>preferredLanguage</code>.</li>
+<li><code>translateMessageContent</code> produces <code>translatedContent</code>; both original <code>content</code> and <code>translatedContent</code> are stored on the message.</li>
+<li>The receiving client renders <code>translatedContent</code> when the receiver&#x27;s language differs from the sender&#x27;s; the on-demand <code>/mobile/tool/translate</code> endpoint (and the web <code>translate</code> service) support additional translation as needed.</li>
+</ol>
+<h3 id="98-reconnection-offline-and-safety-edge-cases">9.8 Reconnection, offline, and safety edge cases</h3>
+<ol class="flow">
+<li>Dropped socket → the client auto-reconnects (websocket-first, polling fallback) and re-joins all thread/user rooms; any messages missed while disconnected are retrieved via <code>get-all-chats</code> and covered by the durable notification rows.</li>
+<li>Recipient offline → no socket delivery, but the DB notification + FCM push ensure the message is seen on next open; tapping the push deep-links to the thread.</li>
+<li>Non-participant access → <code>get-thread</code>, <code>get-all-chats</code>, and <code>send-message</code> reject unauthorized principals (participant check).</li>
+<li>Victim safety on device → the app enforces PIN/biometric lock and offers an emergency-exit control; sensitive conversations require re-unlock after inactivity (session lock 423 / lockout 403).</li>
+</ol>
+<h2 id="10-data-model">10. Data Model</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Key Fields</th><th>Relationships</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>ChatThreads (<code>chat_threads</code>)</td><td>id, uid, type (<code>INQUIRY</code>/<code>SERVICE</code>/<code>INTERNAL</code>/<code>AGENCY_CHAT</code>), victimId, vsmsId, vsmsId2, serviceId, status (<code>ACTIVE</code>/<code>ARCHIVED</code>), timestamps</td><td>victimInfo (→ app_users), vsmsUser1Info/vsmsUser2Info (→ users), serviceInfo (→ services), lastMessage, chatFiles, statusInfo (→ inquiry_lifecycle)</td><td>The conversation container; one per case (SERVICE) or intake (INQUIRY).</td></tr>
+<tr><td>ChatMessages (<code>chat_messages</code>)</td><td>id, uid, threadId, victimSenderId, vsmsSenderId, content, translatedContent, isRead, timestamps</td><td>thread (→ chat_threads), victimSenderInfo (→ app_users), vsmsSenderInfo (→ users), files (→ file_uploads)</td><td>An individual message; exactly one sender key set; carries translation + read state.</td></tr>
+<tr><td>InquiryLifecycle (<code>inquiry_lifecycle</code>)</td><td>id, threadId, status (<code>pending</code>/<code>approved</code>/<code>rejected</code>/<code>resolved</code>)</td><td>thread (→ chat_threads)</td><td>Triage state for INQUIRY threads.</td></tr>
+<tr><td>FileUploads (<code>file_uploads</code>)</td><td>id, messageId, threadId, file metadata/URL, context</td><td>message (→ chat_messages), thread (→ chat_threads)</td><td>Attachment record pointing at blob storage.</td></tr>
+<tr><td>ServiceClaims (<code>service_claims</code>) — related</td><td>id, uid (<code>CL…</code>), serviceId, victimId, status (<code>pending</code>/<code>approved</code>/<code>rejected</code>/<code>resolved</code>), hasUnseenUpdates</td><td>victimInfo, serviceInfo, stats, latest chat thread</td><td>The case; its approval opens and its resolution archives the SERVICE thread.</td></tr>
+<tr><td>ServiceClaimStats (<code>service_claim_stats</code>) — related</td><td>approved_by/at, rejected_by/at, resolved_by/at</td><td>claim</td><td>Caseworker attribution for the lifecycle events that drive thread creation/archival.</td></tr>
+<tr><td>Services (<code>services</code>) — related</td><td>id, title, categoryId, serviceCenterId</td><td>category, claims, threads</td><td>The offering a thread is about; drives category-based staff routing.</td></tr>
+<tr><td>VictimNotifications / ServiceCenterNotifications — related</td><td>type (<code>SERVICE_NEW_MESSAGE</code>, <code>INQUIRY_NEW_MESSAGE</code>, <code>SERVICE_CLAIM_APPROVED</code>, <code>INQUIRY_APPROVED</code>, …), additionalData (<code>threadUid</code>), isRead</td><td>recipient</td><td>Durable delivery + unread badges backing the live socket emits.</td></tr>
+</tbody></table></div>
+<h2 id="11-api-integration-surface">11. API &amp; Integration Surface</h2>
+<h3 id="111-chat-endpoints">11.1 Chat Endpoints</h3>
+<p>Base <code>/web/chat-services</code> (web, <code>allowOnly(&#x27;VS360&#x27;)</code>) and <code>/mobile/chat-services</code> (mobile). Bucket <code>rateLimiters.chatApi</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>POST</td><td><code>/start-inquiry</code></td><td>Victim starts an inquiry (<code>inquiryData{serviceCenterId, serviceId}</code>)</td><td>mobile (app user)</td></tr>
+<tr><td>POST</td><td><code>/send-message/:threadUid</code></td><td>Send message + up to 5 files (<code>content</code>, <code>files[]</code>)</td><td>participant; web <code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+<tr><td>GET</td><td><code>/get-all-chats/:threadUid</code></td><td>Paginated message history (<code>page</code>, <code>pageSize</code>)</td><td>participant</td></tr>
+<tr><td>GET</td><td><code>/get-all-files/:threadUid</code></td><td>List thread attachments</td><td>participant</td></tr>
+<tr><td>GET</td><td><code>/get-all-threads</code></td><td>All threads for the user</td><td>authenticated</td></tr>
+<tr><td>GET</td><td><code>/get-inquiry-threads</code></td><td>Inquiry threads (paginated, status filter)</td><td>web/mobile</td></tr>
+<tr><td>GET</td><td><code>/get-thread/:threadUid</code></td><td>Single authorized thread</td><td>participant</td></tr>
+<tr><td>PATCH</td><td><code>/read/:threadUid</code></td><td>Mark all thread messages read</td><td>participant</td></tr>
+<tr><td>PATCH</td><td><code>/inquiry/approve/:id</code></td><td>Approve inquiry (assign self, notify victim)</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+<tr><td>PATCH</td><td><code>/inquiry/reject/:id</code></td><td>Reject inquiry (archive thread)</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+<tr><td>PATCH</td><td><code>/inquiry/resolve/:id</code></td><td>Resolve inquiry</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+</tbody></table></div>
+<p>Out-of-scope-but-shared (staff-only) endpoints on the same router: <code>POST /start-internal-chat</code>, <code>POST /start-agency-chat</code>, <code>POST /start-pre-partnership-chat</code>, <code>GET /get-internal-threads</code>, <code>GET /get-agency-threads</code>.</p>
+<h3 id="112-case-endpoints-that-drive-thread-lifecycle-victim-services-m">11.2 Case Endpoints That Drive Thread Lifecycle (victim-services module)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>PATCH</td><td><code>/web/service-claims/approve/:uid</code></td><td>Approve case → open SERVICE thread + notify victim</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+<tr><td>PATCH</td><td><code>/web/service-claims/resolve/:uid</code></td><td>Resolve case → archive SERVICE thread + notify (<code>pmtValues</code>, <code>threadUid</code>)</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+<tr><td>PATCH</td><td><code>/web/service-claims/reject/:uid</code></td><td>Reject case</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td></tr>
+</tbody></table></div>
+<h3 id="113-socketio-events-agency-chat">11.3 Socket.IO Events (Agency Chat)</h3>
+<p>Transport: Socket.IO authenticated via JWT in the connection <code>auth</code> handshake (<code>{ token, refreshToken }</code>); mobile also sends <code>x-mobile-app-secret</code>. Rooms are joined via <code>join-room</code> / <code>leave-room</code> emits.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Event</th><th>Direction</th><th>Room</th><th>Payload</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>message-service</code></td><td>server → both</td><td><code>thread-&lt;threadUid&gt;-&lt;userUid&gt;</code></td><td>graph-fetched message (uid, threadId, content, translatedContent, sender info, files, timestamps)</td><td>New message in a SERVICE (case) thread</td></tr>
+<tr><td><code>message-inquiry</code></td><td>server → both</td><td><code>thread-&lt;threadUid&gt;-&lt;userUid&gt;</code></td><td>as above</td><td>New message in an INQUIRY thread</td></tr>
+<tr><td><code>new-message-*</code></td><td>server → mobile (catch-all <code>onAny</code>)</td><td>thread room</td><td><code>{ additionalData: { threadUid }, … }</code></td><td>Mobile routes any new-message event to the matching thread</td></tr>
+<tr><td><code>thread-creation-inquiry</code></td><td>server → staff</td><td><code>vs360-user-&lt;uid&gt;</code></td><td>thread ref</td><td>New inquiry created (notify category-matched staff)</td></tr>
+<tr><td><code>inquiry-approve-for-&lt;victimUid&gt;</code></td><td>server → victim</td><td>notification-room</td><td><code>{ threadUid, … }</code></td><td>Inquiry approved (victim informed)</td></tr>
+<tr><td><code>service-claim-action-for-&lt;victimUid&gt;</code></td><td>server → victim</td><td><code>app-notification-room</code></td><td><code>{ claimUid, threadUid, action, … }</code></td><td>Case approved/rejected/resolved — signals SERVICE thread open/archive</td></tr>
+<tr><td><code>notification-refetch</code> / <code>notification-update</code></td><td>server → client</td><td>user</td><td>—</td><td>Generic refresh triggers</td></tr>
+</tbody></table></div>
+<p>Rooms of record: <code>thread-&lt;threadUid&gt;-&lt;userUid&gt;</code> (per-thread), <code>vs360-user-&lt;uid&gt;</code> (staff personal), <code>service-center-&lt;id&gt;</code> (agency-wide), <code>app-notification-room</code> (victim), <code>notification-room</code> (general).</p>
+<h3 id="114-external-integrations">11.4 External Integrations</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Integration</th><th>Use in Agency Chat</th></tr></thead>
+<tbody>
+<tr><td>Azure Blob Storage</td><td>Persist message attachments; <code>file_uploads</code> stores the resulting URLs.</td></tr>
+<tr><td>FCM (push)</td><td>Background delivery of <code>SERVICE_NEW_MESSAGE</code> / <code>INQUIRY_NEW_MESSAGE</code> and lifecycle notifications to device tokens.</td></tr>
+<tr><td>Twilio (SMS)</td><td>SMS alerts for select events (new inquiry to agency; login-code / approval flows).</td></tr>
+<tr><td>Email</td><td>Email alerts for select events (new inquiry to agency; approvals).</td></tr>
+<tr><td>AI / Translation provider</td><td><code>translateMessageContent</code> and <code>/mobile/tool/translate</code> produce <code>translatedContent</code>.</td></tr>
+<tr><td>Redis</td><td>Socket.IO scaling / pub-sub and caching for real-time fan-out.</td></tr>
+</tbody></table></div>
+<h2 id="12-rbac-permissions">12. RBAC &amp; Permissions</h2>
+<p>Agency Chat access is layered: platform/context gate (<code>allowOnly</code>), fine-grained module permission (<code>checkPermission</code>), and data-scope enforcement inside services (participant + tenant checks). Roles hold a <code>permission</code> JSON (module → action map) per agency; <code>SUPER_ADMIN</code> bypasses fine-grained checks.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Action</th><th>Gate</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Access the staff chat surface</td><td><code>agency_chat.view</code> (module permission)</td><td>Primary permission flag for the agency chat experience on VS360.</td></tr>
+<tr><td>Use any <code>/web/chat-services/*</code> route</td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td><td>Context gate — staff web app only.</td></tr>
+<tr><td>Use any <code>/mobile/chat-services/*</code> route</td><td>App-user auth (<code>issuer.type = APP</code>) + app-secret header</td><td>Victim app only.</td></tr>
+<tr><td>Read/send within a thread</td><td>Participant check (<code>isAuthorizedForThread</code>)</td><td>Must be the thread&#x27;s victim or an assigned/authorized staff participant.</td></tr>
+<tr><td>See all agency cases (and their SERVICE threads) vs. only self-assigned</td><td><code>claims.view_all</code></td><td>Supervisors/admins see all; advocates without it see pending/self-actioned only.</td></tr>
+<tr><td>Inquiry routing visibility</td><td>Service-category assignment (<code>vsms_user_service_categories</code>) + <code>serviceCenterInfo.id</code></td><td>Inquiry threads are surfaced only to category-matched staff in the agency.</td></tr>
+<tr><td>Victim data scope</td><td><code>issuer.id</code></td><td>Victims only ever see their own threads.</td></tr>
+</tbody></table></div>
+<div class="callout note"><div class="callout-title">ℹ Permission naming</div><div class="callout-body">The <code>agency_chat</code> permission module (and the VS360 &quot;Agency Chat&quot; UI tab) historically also names the staff↔staff cross-agency channel. In this PRD &quot;Agency Chat&quot; refers to advocate↔victim messaging; the permission and any UI labels should be reconciled so victim-facing chat access is unambiguous (see §15).</div></div>
+<h2 id="13-non-functional-requirements">13. Non-Functional Requirements</h2>
+<h3 id="131-security">13.1 Security</h3>
+<ul>
+<li>Transport is TLS; Socket.IO connections are authenticated by JWT in the handshake <code>auth</code> payload (not query strings); the mobile client additionally presents the app-secret header (<code>x-mobile-app-secret</code> / <code>X-Netlify-Secret</code>).</li>
+<li>API responses may be AES-encrypted end-to-server with client-side decryption.</li>
+<li>Every thread access and message send is authorized against thread participation and agency tenancy; non-participants are rejected.</li>
+</ul>
+<h3 id="132-privacy-victim-safety">13.2 Privacy &amp; Victim Safety</h3>
+<ul>
+<li>Conversations are strictly scoped: a victim sees only their own threads; staff see only their agency&#x27;s threads within their permission scope.</li>
+<li>The victim app enforces a second-factor PIN and optional biometric lock, an always-available emergency-exit control to leave the app quickly, and session lock/lockout after inactivity — protecting a conversation on a shared or monitored device.</li>
+<li>Attachments (which may contain sensitive documents/images) inherit the same participant-scoped access and are stored in private blob storage.</li>
+<li>Confidential-location and referral-consent norms from adjacent modules apply; referral chats are gated on explicit consent.</li>
+<li>Notification payloads keep sensitive content minimal; PII is suppressed from client-side debug logging.</li>
+</ul>
+<h3 id="133-performance">13.3 Performance</h3>
+<ul>
+<li>Real-time message delivery to an open peer within 2 s (p95) after commit.</li>
+<li>Message history is paginated (default page size 20 on mobile) to bound payloads.</li>
+<li>The send path performs message insert, file attach, thread touch, and notification creation in a single transaction to guarantee consistency without extra round-trips.</li>
+</ul>
+<h3 id="134-availability-reliability">13.4 Availability &amp; Reliability</h3>
+<ul>
+<li>Socket.IO auto-reconnects (websocket-first with polling fallback) and re-joins rooms; durable DB notifications + FCM guarantee eventual delivery when a client is offline.</li>
+<li>Notification side effects are wrapped defensively so a notification failure never rolls back a committed message.</li>
+<li>Redis backs horizontal scaling of the socket layer.</li>
+</ul>
+<h3 id="135-auditability">13.5 Auditability</h3>
+<ul>
+<li>Inquiry approvals write an action log; case lifecycle transitions record caseworker attribution (<code>approved_by/at</code>, <code>resolved_by/at</code>).</li>
+<li>Full message history and attachments are retained as part of the case record (archival does not delete content).</li>
+</ul>
+<h3 id="136-localization-accessibility">13.6 Localization &amp; Accessibility</h3>
+<ul>
+<li>Message content is translated into the recipient&#x27;s preferred language (<code>translatedContent</code>); the victim app supports dynamic UI translations and a language switcher.</li>
+<li>Clients should meet standard mobile/web accessibility guidance (contrast, screen-reader labels on message and attachment controls).</li>
+</ul>
+<h3 id="137-compliance">13.7 Compliance</h3>
+<ul>
+<li>Conversation records tied to cases support grant/PMT reporting continuity by keeping the service-delivery interaction attached to the claim; resolution captures <code>pmtValues</code>.</li>
+</ul>
+<h2 id="14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</h2>
+<h3 id="141-dashboards-kpis">14.1 Dashboards &amp; KPIs</h3>
+<ul>
+<li>Advocate response time and message read rate (from §4.2), computed over <code>chat_messages</code> timestamps and <code>isRead</code>.</li>
+<li>Unread/attention indicators: the VS360 left nav shows a &quot;Chat&quot; unread badge; the notification slice tracks per-type unread counts (<code>inquiries</code>, and message counts) rendered as sidebar indicators.</li>
+<li>Case throughput context (new/approved/resolved claims) ties conversation volume to casework via the claims dashboards.</li>
+</ul>
+<h3 id="142-notifications">14.2 Notifications</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Channel</th><th>Events</th></tr></thead>
+<tbody>
+<tr><td>In-app (DB + socket)</td><td><code>SERVICE_NEW_MESSAGE</code>, <code>INQUIRY_NEW_MESSAGE</code>, <code>SERVICE_CLAIM_APPROVED</code>, <code>INQUIRY_APPROVED/REJECTED/RESOLVED</code>; <code>thread-creation-inquiry</code>; generic <code>notification-refetch</code>/<code>notification-update</code>.</td></tr>
+<tr><td>Socket (live)</td><td><code>message-service</code>, <code>message-inquiry</code>, <code>new-message-*</code> (mobile), <code>inquiry-approve-for-&lt;victimUid&gt;</code>, <code>service-claim-action-for-&lt;victimUid&gt;</code>.</td></tr>
+<tr><td>Push (FCM)</td><td>New-message and lifecycle notifications to device tokens; tap → <code>NotificationNavigator</code> deep-links to the conversation.</td></tr>
+<tr><td>Email / SMS</td><td>Select high-signal events (new inquiry to agency; approvals).</td></tr>
+</tbody></table></div>
+<h2 id="15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Type</th><th>Impact</th><th>Mitigation / Owner</th></tr></thead>
+<tbody>
+<tr><td>&quot;Agency Chat&quot; naming collision — the term/permission (<code>agency_chat</code>) also denotes staff↔staff cross-agency chat in the codebase/UI, while this PRD scopes it to advocate↔victim</td><td>Risk</td><td>Confusion in RBAC config and UI; wrong permission gating victim chat</td><td>Reconcile permission naming and UI labels; document the mapping explicitly — Product + Backend</td></tr>
+<tr><td>No typing indicators or online/offline presence</td><td>Open Question</td><td>Users cannot tell if the other party is active; may feel &quot;unanswered&quot;</td><td>Confirm whether presence/typing is desired for v2; scope a lightweight presence signal — Product</td></tr>
+<tr><td>No message edit/delete/recall</td><td>Assumption</td><td>A mistaken or unsafe message cannot be retracted</td><td>Confirm policy (immutability may be desirable for auditability); consider staff-side redaction — Product + Legal</td></tr>
+<tr><td>Transport encryption only (no client-side E2E)</td><td>Risk</td><td>Server/operator can read message content</td><td>Document threat model; evaluate E2E for high-risk cohorts — Security</td></tr>
+<tr><td>Attachment type/size limits not explicitly defined here</td><td>Open Question</td><td>Large or unsafe files could be uploaded</td><td>Confirm allowed MIME types and size caps in upload middleware — Backend</td></tr>
+<tr><td>Read receipts are all-or-nothing per thread (mark-all-read); no per-message delivered/read status</td><td>Assumption</td><td>Coarser read semantics than consumer apps</td><td>Confirm acceptable; consider per-message read state if needed — Product</td></tr>
+<tr><td>SERVICE thread creation depends on the case-approval transaction succeeding</td><td>Risk</td><td>A failed side effect could leave a case without a thread</td><td>Ensure thread insert is inside the approval transaction; add reconciliation/monitoring — Backend</td></tr>
+<tr><td>Notification fan-out is best-effort (defensive wrapping)</td><td>Assumption</td><td>A recipient could miss a live signal if socket+FCM both fail</td><td>Rely on durable DB notifications retrieved on next open; monitor FCM deliverability — Backend</td></tr>
+<tr><td>Presence in this PRD means room-join delivery, not a roster</td><td>Assumption</td><td>Stakeholders may expect richer presence</td><td>Set expectations; see typing/presence open question — Product</td></tr>
+</tbody></table></div>
+<h2 id="16-glossary">16. Glossary</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Agency Chat (this PRD)</td><td>Real-time advocate↔victim messaging tied to cases/service threads (SERVICE + INQUIRY thread types).</td></tr>
+<tr><td>Agency Chat (VS360 UI term)</td><td>A distinct staff↔partner-agency chat surface (out of scope here) — note the naming collision (§15).</td></tr>
+<tr><td>Advocate / Caseworker (VSMS)</td><td>Agency staff member serving victims; <code>issuer.type = VSMS</code>.</td></tr>
+<tr><td>Victim / Survivor (app user)</td><td>Person seeking services; <code>issuer.type = APP</code> (<code>app_users</code>).</td></tr>
+<tr><td>Thread</td><td>A <code>chat_threads</code> conversation container; type SERVICE, INQUIRY, INTERNAL, or AGENCY_CHAT.</td></tr>
+<tr><td>SERVICE thread</td><td>Case-bound conversation opened on claim approval, archived on resolution.</td></tr>
+<tr><td>INQUIRY thread</td><td>Victim-initiated intake conversation about a published service, with a lifecycle (pending/approved/rejected/resolved).</td></tr>
+<tr><td>Inquiry Lifecycle</td><td>The <code>inquiry_lifecycle</code> state of an INQUIRY thread.</td></tr>
+<tr><td>Claim / Case</td><td>A <code>service_claims</code> row — a victim&#x27;s request for a service; central case entity (<code>uid</code> like <code>CL…</code>).</td></tr>
+<tr><td>Service Claim</td><td>Synonym for Claim/Case.</td></tr>
+<tr><td>Service</td><td>A concrete offering published by an agency under a service category; a thread is &quot;about&quot; a service.</td></tr>
+<tr><td>Service Center / Agency</td><td>The tenant organization (<code>service_centers</code>) that employs advocates and publishes services.</td></tr>
+<tr><td>VSMS</td><td>Victim Services Management System — the agency-staff identity/context (VS360).</td></tr>
+<tr><td>Read receipt</td><td><code>chat_messages.isRead</code>; set for all thread messages by <code>PATCH /read/:threadUid</code>.</td></tr>
+<tr><td>Attachment</td><td>A file linked to a message and thread via <code>file_uploads</code>, stored in blob storage.</td></tr>
+<tr><td>Thread room</td><td>Socket.IO room <code>thread-&lt;threadUid&gt;-&lt;userUid&gt;</code> used for live per-thread delivery.</td></tr>
+<tr><td>FCM</td><td>Firebase Cloud Messaging — push notification transport.</td></tr>
+<tr><td>Translated content</td><td><code>chat_messages.translatedContent</code>, the message rendered in the receiver&#x27;s preferred language.</td></tr>
+<tr><td>Login Code</td><td>One-time code letting an advocate-created/anonymous case be later claimed by a victim via OTP login (adjacent to chat).</td></tr>
+<tr><td>PMT</td><td>Performance Measurement Tool — grant reporting; <code>pmtValues</code> captured at case resolution.</td></tr>
+<tr><td>Referral</td><td>A case handed to a partner agency; referral chats are consent-gated.</td></tr>
+</tbody></table></div>
+      </div>
+      <nav class="prevnext"><a class="pn prev" href="P09.html"><span>← Previous</span><b>Staff Time Tracking</b></a><a class="pn next" href="P11.html"><span>Next →</span><b>Internal Chat</b></a></nav>
+      <footer class="doc-foot">NECX Inc — Confidential · Generated 2026-07-05 · NECX Agency Chat</footer>
+    </article>
+  </main>
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav class="toc-nav"><a class="toc-1" href="#1-document-control">1. Document Control</a>
+<a class="toc-1" href="#2-executive-summary">2. Executive Summary</a>
+<a class="toc-1" href="#3-product-overview-vision">3. Product Overview &amp; Vision</a>
+<a class="toc-2" href="#31-problem-statement">3.1 Problem Statement</a>
+<a class="toc-2" href="#32-product-vision">3.2 Product Vision</a>
+<a class="toc-2" href="#33-where-this-sits-in-the-necx-ecosystem">3.3 Where This Sits in the NECX Ecosystem</a>
+<a class="toc-1" href="#4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</a>
+<a class="toc-2" href="#41-goals">4.1 Goals</a>
+<a class="toc-2" href="#42-success-metrics">4.2 Success Metrics</a>
+<a class="toc-1" href="#5-scope">5. Scope</a>
+<a class="toc-2" href="#51-in-scope">5.1 In Scope</a>
+<a class="toc-2" href="#52-out-of-scope">5.2 Out of Scope</a>
+<a class="toc-1" href="#6-personas-user-roles">6. Personas &amp; User Roles</a>
+<a class="toc-2" href="#61-persona-narratives">6.1 Persona Narratives</a>
+<a class="toc-1" href="#7-system-context-architecture">7. System Context &amp; Architecture</a>
+<a class="toc-2" href="#71-tech-stack">7.1 Tech Stack</a>
+<a class="toc-2" href="#72-how-clients-talk-to-the-backend">7.2 How Clients Talk to the Backend</a>
+<a class="toc-2" href="#73-real-time-notifications">7.3 Real-Time &amp; Notifications</a>
+<a class="toc-2" href="#74-tenancy">7.4 Tenancy</a>
+<a class="toc-1" href="#8-functional-requirements">8. Functional Requirements</a>
+<a class="toc-2" href="#81-chat-threads">8.1 Chat Threads</a>
+<a class="toc-2" href="#82-messages">8.2 Messages</a>
+<a class="toc-2" href="#83-attachments-media">8.3 Attachments &amp; Media</a>
+<a class="toc-2" href="#84-read-receipts-unseen-counts">8.4 Read Receipts &amp; Unseen Counts</a>
+<a class="toc-2" href="#85-presence-real-time-delivery">8.5 Presence &amp; Real-Time Delivery</a>
+<a class="toc-2" href="#86-inquiry-intake-triage">8.6 Inquiry Intake &amp; Triage</a>
+<a class="toc-2" href="#87-service-thread-lifecycle-case-bound">8.7 SERVICE Thread Lifecycle (Case-Bound)</a>
+<a class="toc-2" href="#88-notifications-chat">8.8 Notifications (Chat)</a>
+<a class="toc-1" href="#9-detailed-user-system-flows">9. Detailed User &amp; System Flows</a>
+<a class="toc-2" href="#91-a-service-thread-opens-when-a-case-is-approved">9.1 A SERVICE thread opens when a case is approved</a>
+<a class="toc-2" href="#92-advocate-and-victim-exchange-messages-in-real-time">9.2 Advocate and victim exchange messages in real time</a>
+<a class="toc-2" href="#93-sending-an-attachment-media">9.3 Sending an attachment / media</a>
+<a class="toc-2" href="#94-marking-a-thread-read-and-unseen-counts">9.4 Marking a thread read and unseen counts</a>
+<a class="toc-2" href="#95-archiving-on-case-resolution">9.5 Archiving on case resolution</a>
+<a class="toc-2" href="#96-inquiry-intake-approval-branch-that-leads-into-a-case">9.6 Inquiry intake → approval (branch that leads into a case)</a>
+<a class="toc-2" href="#97-message-translation">9.7 Message translation</a>
+<a class="toc-2" href="#98-reconnection-offline-and-safety-edge-cases">9.8 Reconnection, offline, and safety edge cases</a>
+<a class="toc-1" href="#10-data-model">10. Data Model</a>
+<a class="toc-1" href="#11-api-integration-surface">11. API &amp; Integration Surface</a>
+<a class="toc-2" href="#111-chat-endpoints">11.1 Chat Endpoints</a>
+<a class="toc-2" href="#112-case-endpoints-that-drive-thread-lifecycle-victim-services-m">11.2 Case Endpoints That Drive Thread Lifecycle (victim-services module)</a>
+<a class="toc-2" href="#113-socketio-events-agency-chat">11.3 Socket.IO Events (Agency Chat)</a>
+<a class="toc-2" href="#114-external-integrations">11.4 External Integrations</a>
+<a class="toc-1" href="#12-rbac-permissions">12. RBAC &amp; Permissions</a>
+<a class="toc-1" href="#13-non-functional-requirements">13. Non-Functional Requirements</a>
+<a class="toc-2" href="#131-security">13.1 Security</a>
+<a class="toc-2" href="#132-privacy-victim-safety">13.2 Privacy &amp; Victim Safety</a>
+<a class="toc-2" href="#133-performance">13.3 Performance</a>
+<a class="toc-2" href="#134-availability-reliability">13.4 Availability &amp; Reliability</a>
+<a class="toc-2" href="#135-auditability">13.5 Auditability</a>
+<a class="toc-2" href="#136-localization-accessibility">13.6 Localization &amp; Accessibility</a>
+<a class="toc-2" href="#137-compliance">13.7 Compliance</a>
+<a class="toc-1" href="#14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</a>
+<a class="toc-2" href="#141-dashboards-kpis">14.1 Dashboards &amp; KPIs</a>
+<a class="toc-2" href="#142-notifications">14.2 Notifications</a>
+<a class="toc-1" href="#15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</a>
+<a class="toc-1" href="#16-glossary">16. Glossary</a>
+</nav>
+  </aside>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

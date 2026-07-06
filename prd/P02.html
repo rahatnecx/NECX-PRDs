@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NECX Workspace — Staff Mobile App · NECX PRD</title>
+<meta name="description" content="The on-the-go companion to VS360 for victim-services agency staff">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="prd-page">
+<header class="topbar">
+  <button class="hamburger" aria-label="Menu" onclick="toggleNav()">&#9776;</button>
+  <a class="brand" href="../index.html"><svg class="logo" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 L35 10 V22 C35 31 28 37 20 39 C12 37 5 31 5 22 V10 Z" fill="var(--brand)"/><path d="M13 27 V14 L20 22 V14 M27 14 V27 L20 19" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="brand-text">NECX<span class="brand-sub">Product Requirements</span></span></a>
+  <div class="topbar-spacer"></div>
+  <a class="top-link" href="../index.html">Home</a>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><span class="ic-sun">☀</span><span class="ic-moon">☾</span></button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-search"><input type="search" id="navSearch" placeholder="Filter documents…" oninput="filterNav(this.value)"></div>
+    <nav class="nav"><div class="nav-group"><div class="nav-group-title">Platform &amp; Applications</div><a class="nav-item " href="P01.html" data-search="necx platform — core system whole-platform prd: unified backend, four clients, multi-tenancy, identity/rbac, and the end-to-end case lifecycle."><span class="nav-num">01</span><span class="nav-text">Platform — Core System</span></a>
+<a class="nav-item active" href="P02.html" data-search="necx workspace — staff mobile app agency staff mobile app (flutter/riverpod) — the on-the-go companion to the vs360 web dashboard."><span class="nav-num">02</span><span class="nav-text">Workspace — Staff Mobile App</span></a>
+<a class="nav-item " href="P03.html" data-search="necx victim app — survivor mobile app victim / survivor mobile app (flutter/getx) — discover services, request help, chat, find shelter, e-sign."><span class="nav-num">03</span><span class="nav-text">Victim App — Survivor Mobile App</span></a>
+<a class="nav-item " href="P04.html" data-search="vs360 — agency web dashboard vs360 — the agency staff web dashboard (react/vite) and primary caseworker workspace."><span class="nav-num">04</span><span class="nav-text">VS360 — Agency Web Dashboard</span></a>
+</div>
+<div class="nav-group"><div class="nav-group-title">VS360 Feature Modules</div><a class="nav-item " href="P05.html" data-search="necx case management service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes."><span class="nav-num">05</span><span class="nav-text">Case Management</span></a>
+<a class="nav-item " href="P06.html" data-search="necx shelter management shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search."><span class="nav-num">06</span><span class="nav-text">Shelter Management</span></a>
+<a class="nav-item " href="P07.html" data-search="necx hotline management twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights."><span class="nav-num">07</span><span class="nav-text">Hotline Management</span></a>
+<a class="nav-item " href="P08.html" data-search="necx calendar &amp; appointments reminders, tasks and case-linked appointments in the vs360 tools calendar."><span class="nav-num">08</span><span class="nav-text">Calendar &amp; Appointments</span></a>
+<a class="nav-item " href="P09.html" data-search="necx staff time tracking staff time tracking: clock in/out, timesheets, and grant/pmt time attribution."><span class="nav-num">09</span><span class="nav-text">Staff Time Tracking</span></a>
+<a class="nav-item " href="P10.html" data-search="necx agency chat real-time advocate↔victim messaging tied to service threads and cases."><span class="nav-num">10</span><span class="nav-text">Agency Chat</span></a>
+<a class="nav-item " href="P11.html" data-search="necx internal chat staff-to-staff messaging within an agency, real-time over socket.io."><span class="nav-num">11</span><span class="nav-text">Internal Chat</span></a>
+<a class="nav-item " href="P12.html" data-search="necx rbac &amp; user management roles, the module/action permission matrix, plan seats, and multi-layer enforcement."><span class="nav-num">12</span><span class="nav-text">RBAC &amp; User Management</span></a>
+<a class="nav-item " href="P13.html" data-search="necx notes center agency-scoped, cross-case view over internal (caseworker-only) case notes."><span class="nav-num">13</span><span class="nav-text">Notes Center</span></a>
+<a class="nav-item " href="P14.html" data-search="necx drive google-drive-style cloud file storage backed by azure blob, with quotas and analytics."><span class="nav-num">14</span><span class="nav-text">Drive</span></a>
+<a class="nav-item " href="P15.html" data-search="necx ai report builder pmt/grant reporting plus ai-assisted custom report generation with accuracy validation."><span class="nav-num">15</span><span class="nav-text">AI Report Builder</span></a>
+<a class="nav-item " href="P16.html" data-search="necx e-sign &amp; document center prepare, request, sign and pdf-stamp case documents with an audit trail."><span class="nav-num">16</span><span class="nav-text">E-Sign &amp; Document Center</span></a>
+<a class="nav-item " href="P17.html" data-search="necx referrals &amp; partnerships inter-agency network: partnerships, invitations, and consent-based case referrals."><span class="nav-num">17</span><span class="nav-text">Referrals &amp; Partnerships</span></a>
+<a class="nav-item " href="P18.html" data-search="necx inquiries management intake and triage of inquiries / requests-to-connect before they become cases."><span class="nav-num">18</span><span class="nav-text">Inquiries Management</span></a>
+<a class="nav-item " href="P19.html" data-search="necx communities agency-run community spaces: joining questions, membership, posts and moderation."><span class="nav-num">19</span><span class="nav-text">Communities</span></a>
+<a class="nav-item " href="P20.html" data-search="necx service management service catalog, categories, and the per-service claim-question (intake) builder."><span class="nav-num">20</span><span class="nav-text">Service Management</span></a>
+</div>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim" onclick="toggleNav()"></div>
+  
+  <main class="content">
+    <article class="doc">
+      <div class="doc-eyebrow">Product Requirements Document · NECX Inc — Confidential</div>
+      <h1 class="doc-title">NECX Workspace — Staff Mobile App</h1>
+      <p class="doc-subtitle">The on-the-go companion to VS360 for victim-services agency staff</p>
+      <div class="doc-meta"><span class="chip">Version: <b>1.0</b></span><span class="chip">Status: <b>Baseline</b></span><span class="chip">Owner: <b>NECX Product Management</b></span><a class="dl-btn" href="../downloads/02_NECX_Workspace_Mobile_App.docx" download>⬇ Download DOCX</a></div>
+      <hr class="doc-rule">
+      <div class="doc-body">
+      <h2 id="1-document-control">1. Document Control</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td>NECX Coordinated Victim Services Platform</td></tr>
+<tr><td>Module</td><td>NECX Workspace — Staff Mobile App (Flutter; mobile companion to VS360 web)</td></tr>
+<tr><td>Version</td><td>1.0</td></tr>
+<tr><td>Status</td><td>Baseline</td></tr>
+<tr><td>Author</td><td>NECX Product Management</td></tr>
+<tr><td>Reviewers</td><td>Engineering (Mobile), Engineering (Backend), Security &amp; Privacy, Agency Success</td></tr>
+<tr><td>Last Updated</td><td>2026-07-05</td></tr>
+<tr><td>Related Documents</td><td>NECX Victim App PRD; VS360 Web PRD; NECX Admin PRD; Backend Platform Core &amp; RBAC Reference; Victim Services Module Reference; Cases (Referrals/Partnerships/Reports/Dashboard) Reference</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>1.0</td><td>2026-07-05</td><td>NECX Product Management</td><td>Baseline PRD covering the shipped <code>develop</code> build of the Workspace mobile app: architecture, OTP-based authentication, the full ~35-screen inventory, case management, AI Custom Report Builder, chat, and the planned-but-absent capability set.</td></tr>
+</tbody></table></div>
+<h2 id="2-executive-summary">2. Executive Summary</h2>
+<p>NECX Inc operates a coordinated platform that serves victims and survivors of crime and the agencies, advocates, and caseworkers who help them. The platform spans four clients over a single unified backend: the Victim mobile app (for survivors), the VS360 web workspace (for agency staff), the NECX Admin console (for platform operators), and the product described here — the <strong>NECX Workspace staff mobile app</strong>.</p>
+<p>The Workspace app is the on-the-go tool for agency staff who normally work in the VS360 web dashboard. It puts the caseworker&#x27;s daily work in their pocket: monitoring agency performance on a dashboard, working the queue of assigned <strong>service claims</strong> (which the app surfaces to users as &quot;<strong>Cases</strong>&quot;), communicating in real time over internal, agency-to-agency, and inquiry chat, handling public inquiries, managing PMT/grant reporting, and generating publication-quality <strong>AI custom reports</strong> with on-device PDF export.</p>
+<p>The app is built with Flutter using a feature-first clean architecture, Riverpod state management, and GoRouter navigation. It authenticates staff with a two-factor email/SMS one-time-passcode (OTP) flow against the shared NECX backend at the <code>/v2/web</code> API surface, and it uses Socket.IO for real-time chat. It is a companion, not a replacement: the full breadth of agency administration remains in VS360 web, while the mobile app concentrates on the tasks staff most need to do away from their desks.</p>
+<p>This document specifies the product as it exists in the documented <code>develop</code> build, and it is explicit about the boundary between what is implemented and what is planned. Several capabilities named in prior product discussions — a case-management AI agent, shelter management, a staff time clock, push notifications (FCM), and biometric/PIN unlock — are <strong>not implemented</strong> in any inspected branch and are called out as out of scope with clear risk flags. Two security caveats surfaced during discovery (hardcoded third-party API keys and on-device large-language-model calls) are documented as high-priority risks with remediation owners.</p>
+<h2 id="3-product-overview-vision">3. Product Overview &amp; Vision</h2>
+<h3 id="31-problem-statement">3.1 Problem Statement</h3>
+<p>Agency caseworkers and advocates are frequently away from their desks — in the field, in court, in shelters, or between appointments — yet the events that drive victim outcomes (a new case, a published update a survivor is waiting on, an urgent chat message, a referral needing action) do not wait for them to return to a browser. Today the full VS360 web workspace is the only way to act on this work, which forces staff to defer time-sensitive actions or work from personal notes. The Workspace app closes that gap by bringing the highest-frequency, highest-urgency slice of VS360 to a phone.</p>
+<h3 id="32-product-vision">3.2 Product Vision</h3>
+<p>NECX Workspace aims to be the trusted mobile extension of the caseworker&#x27;s desk: fast to open, safe by default, and focused on the handful of workflows that matter most in the moment — reviewing and advancing assigned cases, staying in the conversation with clients and partner agencies, keeping an eye on agency health, and producing the reports that keep grants funded. It should feel like VS360, respect the same permissions and multi-tenant boundaries, and never compromise the safety, privacy, and dignity of the survivors whose data it touches.</p>
+<h3 id="33-position-in-the-necx-ecosystem">3.3 Position in the NECX Ecosystem</h3>
+<p>The NECX platform is a single unified backend (Node.js/Express, PostgreSQL via Objection/Knex, Socket.IO, Redis, BullMQ, Azure Blob Storage, Twilio, and OpenAI/Anthropic) serving four clients through a tri-router pattern (<code>/admin</code>, <code>/web</code>, <code>/mobile</code>):</p>
+<ul>
+<li><strong>Victim App</strong> — the survivor-facing mobile app (issuer type <code>APP</code>); requests services, tracks case status, receives published updates.</li>
+<li><strong>Workspace App (this product)</strong> — the agency-staff mobile app (issuer type <code>VSMS</code>, role context <code>VS360</code>); the mobile companion to VS360, consuming the <code>/v2/web</code> surface (with one <code>/v2/mobile</code> call for the richer user profile).</li>
+<li><strong>VS360 Web</strong> — the full agency workspace; the authoritative surface for agency administration.</li>
+<li><strong>NECX Admin</strong> — platform operators (issuer type <code>NECX</code>, context <code>ADMIN</code>).</li>
+</ul>
+<p>The Workspace app is deliberately scoped to a subset of VS360. It shares VS360&#x27;s identity, RBAC, multi-tenancy, and data model, but it implements the mobile-appropriate subset of workflows and defers breadth (e.g., hotline command center, shelter management, notes-center analytics, deep admin) to the web.</p>
+<h2 id="4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</h2>
+<h3 id="41-goals-objectives">4.1 Goals &amp; Objectives</h3>
+<ul>
+<li>Give agency staff secure, authenticated mobile access to their assigned cases and the ability to advance them (approve, reject, resolve, note, update, upload, refer, chat) from a phone.</li>
+<li>Provide an at-a-glance agency dashboard (KPIs, demographics, victim needs, service performance, reminders) that mirrors the VS360 dashboard&#x27;s key signals.</li>
+<li>Keep staff in real-time conversation across internal (staff-to-staff), agency-to-agency, and inquiry chat threads.</li>
+<li>Enable staff to produce grant/PMT and AI custom reports on the go, with PDF export for sharing.</li>
+<li>Enforce the same identity, RBAC, and per-agency (tenant) isolation as VS360, including OTP two-factor authentication.</li>
+<li>Preserve survivor safety and privacy in every mobile surface (never expose internal notes to victims, respect published-update gating, honor referral consent).</li>
+</ul>
+<h3 id="42-success-metrics">4.2 Success Metrics</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Definition</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>Mobile case action rate</td><td>Share of case state transitions (approve/reject/resolve) initiated from the mobile app vs. web</td><td>≥ 25% within 2 quarters of GA</td></tr>
+<tr><td>Time-to-first-action</td><td>Median time from case assignment/notification to first staff action, mobile vs. web baseline</td><td>≥ 30% faster on mobile</td></tr>
+<tr><td>Chat responsiveness</td><td>Median staff reply latency on internal/agency/inquiry threads</td><td>&lt; 15 min during business hours</td></tr>
+<tr><td>Report generation success</td><td>Share of AI custom-report generations that complete and are saved without error</td><td>≥ 95%</td></tr>
+<tr><td>Session security</td><td>Share of sessions authenticated with completed OTP two-factor</td><td>100% (no bypass path)</td></tr>
+<tr><td>Auth reliability</td><td>Successful sign-in completion rate (sign-in → OTP verified)</td><td>≥ 98%</td></tr>
+<tr><td>Crash-free sessions</td><td>Sessions with no fatal error</td><td>≥ 99.5%</td></tr>
+<tr><td>Dashboard freshness</td><td>Successful dashboard data load (all five calls) on open/refresh</td><td>≥ 98%</td></tr>
+</tbody></table></div>
+<div class="callout note"><div class="callout-title">ℹ Instrumentation caveat</div><div class="callout-body">The current build has no analytics SDK wired in. These targets require an analytics/telemetry integration (see Risks). Until then, metrics must be derived from backend logs and audit records (<code>action_logs</code>).</div></div>
+<h2 id="5-scope">5. Scope</h2>
+<h3 id="51-in-scope">5.1 In Scope</h3>
+<p>The following are implemented in the documented <code>develop</code> build and are in scope for this PRD:</p>
+<ul>
+<li><strong>Authentication &amp; session:</strong> email/password sign-in followed by 6-digit OTP two-factor (2FA); OTP resend with countdown; multi-step password reset (channel check → OTP → new password); token storage in secure storage; sliding token refresh; forced sign-out on 401.</li>
+<li><strong>Navigation shell:</strong> a 5-tab bottom-navigation shell (Dashboard, Cases, Chat, Reports, More) plus a Quick Access grid on the &quot;More&quot; screen launching all secondary features.</li>
+<li><strong>Dashboard:</strong> KPI cards, demographics and claim-trend charts, victim needs and trends, service performance and provider insights, reminders preview, and a notification bell with unread badge.</li>
+<li><strong>Case (claim) management:</strong> &quot;My Cases&quot; list with search, status filters, and stats; case detail with six tabs (Overview, Chat, Notes, Updates, Documents/Files, Referrals); approve/reject/resolve; link client; file upload; claim-question answers; per-case referrals (create/accept/decline).</li>
+<li><strong>Chat (real-time, Socket.IO):</strong> internal (staff-to-staff), agency-to-agency, and inquiry threads; thread lists with unread badges; message send with attachments; read tracking; inquiry moderation (approve/reject/resolve).</li>
+<li><strong>Inquiries:</strong> inquiry threads grouped by status with approve/reject/resolve.</li>
+<li><strong>Reports:</strong> PMT reports hub, grants (list/detail/edit and generated reports), PMT/VOCA questionnaires (list/detail/matrix).</li>
+<li><strong>AI Custom Report Builder:</strong> saved custom reports; a 4-step wizard (Type → Details → Content → Generate); a section-based editor with an AI chat panel and per-section improve/edit; save/finalize/draft status; PDF export.</li>
+<li><strong>Users, Roles, Services, My Network, Communities:</strong> staff user CRUD, roles view; victim-services CRUD and activate/deactivate; partnerships and referrals (&quot;My Network&quot;); communities (posts, comments, members, group chat, moderation).</li>
+<li><strong>Tools:</strong> calendar + reminders (month/list views, filters, create/edit/complete/delete).</li>
+<li><strong>Settings/&quot;More&quot;:</strong> profile and agency-profile view/edit; email &amp; SMS notification toggles; support links; feedback submission; sign out.</li>
+<li><strong>In-app notifications:</strong> REST-polled notification list with mark-read / mark-all-read; unread badges derived from the list.</li>
+</ul>
+<h3 id="52-out-of-scope">5.2 Out of Scope</h3>
+<p>The following are named in prior product discussions or implied by dependencies but are <strong>not implemented</strong> in any inspected branch (<code>develop</code>, <code>necx-571</code>, <code>necx-572</code>, <code>staging</code>, <code>main</code>). They are out of scope for this baseline and tracked as risks/open questions:</p>
+<ul>
+<li><strong>Case Management AI Agent</strong> — planned/not implemented. Branch <code>necx-572-implement-case-management-ai-agent</code> contains no agent code (it is an empty merge of the navigation refactor). Treat as a future capability.</li>
+<li><strong>Shelter management</strong> — no shelter locations/floors/rooms/beds/assignments/waitlist/transfers UI or flows exist in the app, though the backend has a full shelter domain and a <code>shelter_overview</code> dashboard permission.</li>
+<li><strong>Staff timer / time clock</strong> — no time-entry UI, despite a backend <code>time</code> module (<code>staff_time_entries</code>) and a <code>time.view</code> permission.</li>
+<li><strong>Push notifications (FCM)</strong> — no Firebase/<code>firebase_messaging</code> dependency or code; <code>flutter_local_notifications</code> is declared but unused. Notifications are REST-polled only. Device-token registration (<code>account/device-token</code>) is not called.</li>
+<li><strong>Biometric / PIN unlock</strong> — <code>local_auth</code> and <code>pin_code_fields</code> are dependencies and a <code>pin_setup</code> storage flag exists, but there is no PIN or biometric screen/flow. (<code>pin_code_fields</code> is used only to render OTP boxes.)</li>
+<li><strong>Offline data cache / connectivity awareness</strong> — <code>hive</code>, <code>hive_flutter</code>, and <code>connectivity_plus</code> are declared but unused; all data is fetched live per screen with pull-to-refresh; connectivity loss surfaces as request errors.</li>
+<li><strong>Real localization</strong> — the language picker (English/Spanish/French) is a no-op dialog; all strings are hardcoded English; text scaling is forced to 1.0.</li>
+<li><strong>Dark theme</strong> — only a single light theme ships.</li>
+<li><strong>Navigation Drawer</strong> — the drawer-based navigation refactor (<code>necx-571</code>) is not on <code>develop</code>.</li>
+<li><strong>In-app subscriptions</strong> — the app-subscription work lives on a separate branch and is out of scope here.</li>
+<li><strong>Hotline / command center, notes-center analytics surface, data-migration, translation-tool UI</strong> — backend endpoints exist (<code>/tool/translate</code>, <code>/tool/translate/file</code>) but no dedicated mobile UI ships.</li>
+</ul>
+<div class="callout warn"><div class="callout-title">⚠ Planned-but-absent</div><div class="callout-body">Any reference elsewhere in the platform to a mobile &quot;Case Management AI Agent,&quot; shelter management, or a staff timer must be read as a roadmap item, not a shipped feature. The Workspace app does not implement them today.</div></div>
+<h2 id="6-personas-user-roles">6. Personas &amp; User Roles</h2>
+<h3 id="61-roles-table">6.1 Roles Table</h3>
+<p>The Workspace app is used exclusively by agency staff — backend identity type <code>VSMS</code> with role context <code>VS360</code>. Fine-grained permissions come from the user&#x27;s role permission JSON (<code>vs360Modules</code>); the app renders and gates features accordingly.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Role</th><th>Description</th><th>Key permissions (module.action)</th></tr></thead>
+<tbody>
+<tr><td>Agency Admin (VSMS_ADMIN)</td><td>Senior agency staff; full agency management</td><td><code>claims.*</code> incl. <code>claims.view_all</code>; <code>user.*</code>; <code>services.*</code>; <code>reports.pmt_reports</code>; <code>communities.*</code>; <code>notes_center.*</code>; <code>role_management.*</code>; <code>inquiries.*</code>; <code>internal_chat.view</code>; <code>agency_chat.view</code>; <code>tools.view</code></td></tr>
+<tr><td>Caseworker / Advocate (VSMS)</td><td>Front-line staff working assigned cases</td><td><code>claims.{view,add,edit}</code> (often without <code>claims.view_all</code> → sees only own/self-actioned cases); <code>internal_chat.view</code>; <code>agency_chat.view</code>; <code>inquiries.view</code>; <code>reports.pmt_reports</code>; <code>tools.view</code></td></tr>
+<tr><td>Read-only / Limited staff</td><td>Staff with view-only access to selected modules</td><td>subset <code>*.view</code> flags only</td></tr>
+<tr><td>Super Admin (platform)</td><td>NECX super-admin; bypasses fine-grained checks</td><td><code>SUPER_ADMIN</code> bypass (rare on this client; primarily an Admin-console role)</td></tr>
+</tbody></table></div>
+<div class="callout note"><div class="callout-title">ℹ Permission gate — case visibility</div><div class="callout-body"><code>claims.view_all</code> is the pivotal flag: with it, a staff user sees all of the agency&#x27;s cases; without it, they see only pending and self-actioned cases. All case data is additionally scoped to the user&#x27;s own agency (<code>issuer.serviceCenterInfo.id</code>) — a VS360 user never sees another agency&#x27;s cases.</div></div>
+<h3 id="62-persona-narratives">6.2 Persona Narratives</h3>
+<p><strong>Maria — Caseworker.</strong> Maria spends most of her day in the field and in court. She opens Workspace between appointments to check her assigned cases, approve a pending intake so the survivor gets access to a chat thread, publish a reassuring update, and answer an internal-chat question from a colleague. She does not have <code>claims.view_all</code>, so her Cases list shows only her own and pending work.</p>
+<p><strong>David — Agency Admin.</strong> David watches the dashboard each morning for KPI movement (new vs. resolved claims, average response time, satisfaction), triages inquiries, accepts a partner-agency request in My Network, and once a month builds an AI custom report for a grant funder and exports it to PDF from his phone before a board call.</p>
+<p><strong>Priya — Advocate handling referrals.</strong> Priya works cross-agency cases. When a partner agency refers a client to her agency, the cloned case appears in her Cases list; she reviews the shared snapshot on the Referrals tab and approves the case, which flips the referral to accepted and opens a service chat thread with the client.</p>
+<h2 id="7-system-context-architecture">7. System Context &amp; Architecture</h2>
+<h3 id="71-technology-stack">7.1 Technology Stack</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Concern</th><th>Choice</th></tr></thead>
+<tbody>
+<tr><td>UI framework</td><td>Flutter, Material 3 (<code>useMaterial3</code>), Poppins font; single light theme (brand teal <code>#24B1B4</code>, secondary <code>#407C92</code>)</td></tr>
+<tr><td>Responsive sizing</td><td><code>flutter_screenutil</code> (design size 375×812); text scaling forced to 1.0</td></tr>
+<tr><td>State management</td><td>Riverpod (<code>flutter_riverpod</code>), <code>StateNotifierProvider</code> per feature controller</td></tr>
+<tr><td>Navigation</td><td>GoRouter with a <code>ShellRoute</code> bottom-nav shell and a root <code>redirect</code> auth guard</td></tr>
+<tr><td>HTTP</td><td>Dio with custom interceptors (<code>ResponseType.plain</code>); hand-written API classes</td></tr>
+<tr><td>Real-time</td><td>Socket.IO (<code>socket_io_client</code>) over websocket transport</td></tr>
+<tr><td>Secure storage</td><td><code>flutter_secure_storage</code> (tokens, user JSON, PIN flag)</td></tr>
+<tr><td>Charts</td><td><code>fl_chart</code> (dashboard)</td></tr>
+<tr><td>PDF</td><td><code>pdf</code> + <code>printing</code> (report export)</td></tr>
+<tr><td>Local notifications</td><td><code>flutter_local_notifications</code> declared but unused</td></tr>
+<tr><td>Offline/cache</td><td><code>hive</code>, <code>connectivity_plus</code>, <code>shared_preferences</code> declared; Hive &amp; connectivity unused; no offline cache</td></tr>
+</tbody></table></div>
+<p><strong>Architecture pattern.</strong> Feature-first clean architecture: each feature lives under <code>lib/features/&lt;feature&gt;/{data/{datasources,repositories,models}, presentation/{screens,controllers,widgets}}</code>. Shared/core code lives in <code>lib/core/</code> (config, constants, network, storage, routing, theme, utils) and <code>lib/shared/widgets/</code>.</p>
+<h3 id="72-environments">7.2 Environments</h3>
+<p>Environment is selected in <code>main.dart</code> (staging is active in the documented build). API base path is <code>/v2/web</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Env</th><th>apiBaseUrl</th><th>socketUrl</th></tr></thead>
+<tbody>
+<tr><td>development</td><td><code>http://192.168.0.103:5000/v2/web</code></td><td><code>http://192.168.0.103:5000</code></td></tr>
+<tr><td>staging (active)</td><td><code>https://necx-proxy-stage.centralus.cloudapp.azure.com/v2/web</code></td><td>same host (no <code>/v2/web</code>)</td></tr>
+<tr><td>production</td><td><code>https://api.necx.org/v2/web</code></td><td><code>https://api.necx.org</code></td></tr>
+</tbody></table></div>
+<p>A <code>/v2/mobile</code> variant is used only for the richer user-profile fetch: <code>AuthController.refreshUserProfile</code> rewrites <code>/v2/web</code>→<code>/v2/mobile</code> and calls <code>/mobile/users/{uid}</code>.</p>
+<h3 id="73-networking-interceptors-response-encryption">7.3 Networking, Interceptors &amp; Response Encryption</h3>
+<p><code>api_client.dart</code> builds a Dio client with three interceptors:</p>
+<ol class="flow">
+<li><strong>ApiLoggingInterceptor</strong> — request/response logging.</li>
+<li><strong>AuthInterceptor</strong> — on request, adds <code>Authorization: Bearer &lt;accessToken&gt;</code>, <code>x-refresh-token</code>, and <code>X-Netlify-Secret</code>. On response, captures a rotated <code>x-refresh-token</code> header and stores it. On <strong>401</strong> (non-<code>/auth/</code> endpoints) it wipes storage and forces unauthenticated (GoRouter then redirects to sign-in); <code>/auth/</code> endpoints pass through to avoid a sign-out→401 loop. On <strong>403</strong> it attempts a token refresh (<code>POST /auth/refresh</code> with <code>x-refresh-token</code>) and retries the original request once.</li>
+<li><strong>Decryption interceptor</strong> — the backend may return AES-encrypted bodies (platform <code>encryption-middleware</code>); <code>_decryptAndParse</code> transparently decrypts and JSON-parses both success and error bodies.</li>
+</ol>
+<p>Endpoint paths are centralized in <code>api_endpoints.dart</code>, except the custom-report paths, which are hardcoded in <code>custom_reports_api.dart</code>.</p>
+<h3 id="74-real-time-notifications">7.4 Real-time &amp; Notifications</h3>
+<ul>
+<li><strong>Sockets:</strong> <code>socket_service.dart</code> connects to <code>socketUrl</code> over websocket with auth <code>{token: &lt;accessToken&gt;}</code> and auto-reconnect (5 attempts, 3–5s). It joins/leaves <code>thread-&lt;uid&gt;</code> rooms on open/close and listens for <code>message-internal</code>, <code>message-inquiry</code>, <code>message-agency-chat</code>, and <code>message-service</code>. On an incoming message for the active thread it appends the message and reloads thread lists to refresh unread counts.</li>
+<li><strong>Push (FCM):</strong> not present. In-app notifications are fetched by REST polling (<code>GET /users/notifications</code>); unread badges derive from that list.</li>
+</ul>
+<h3 id="75-tenancy-identity">7.5 Tenancy &amp; Identity</h3>
+<p>Every request is authenticated to a <code>VSMS</code> issuer with role context <code>VS360</code> and an associated <code>serviceCenterInfo</code> (agency). The backend enforces multi-tenancy: all agency-scoped reads/writes are filtered to the issuer&#x27;s <code>serviceCenterInfo.id</code>, and the <code>allowOnly(&#x27;VS360&#x27;)</code> context gate plus fine-grained <code>checkPermission(module, action)</code> gates protect each endpoint. The app must therefore assume its data is already agency-scoped and must render UI according to the user&#x27;s permission JSON.</p>
+<h3 id="76-security-ai-call-caveats">7.6 Security &amp; AI-Call Caveats</h3>
+<div class="callout warn"><div class="callout-title">⚠ Hardcoded secrets</div><div class="callout-body">Anthropic and OpenAI API keys and the <code>X-Netlify-Secret</code> header value are hardcoded in source (<code>env_config.dart</code>, <code>api_interceptor.dart</code>). Secrets embedded in a shipped mobile binary are extractable and must be treated as compromised; they require rotation and a server-mediated design (see Risks FR/NFR).</div></div>
+<div class="callout warn"><div class="callout-title">⚠ On-device LLM calls</div><div class="callout-body">AI custom-report generation calls Anthropic (<code>claude-haiku-4-5-20251001</code>) — with an OpenAI <code>gpt-4o</code> fallback — directly from the device using the embedded key. This exposes the key, bypasses server-side accuracy validation and rate limiting, and can send agency/case-derived data to a third party from the client. The platform already exposes a server-mediated equivalent (<code>/reports/ai/chat</code>, <code>/reports/custom-reports/generate-chat</code>) that should be adopted.</div></div>
+<h2 id="8-functional-requirements">8. Functional Requirements</h2>
+<p>Requirement IDs follow <code>FR-&lt;AREA&gt;-NN</code>. Priority is P0 (must), P1 (should), P2 (could).</p>
+<h3 id="81-authentication-session">8.1 Authentication &amp; Session</h3>
+<p>The app authenticates staff with email/password followed by a 6-digit OTP (two-factor). <code>AuthController</code> (<code>StateNotifier&lt;AuthStateModel&gt;</code>) tracks statuses <code>initial</code>, <code>tempAuthenticated</code> (signed in, awaiting OTP), <code>authenticated</code>, and <code>unauthenticated</code>. Secure storage keys: <code>access_token</code>, <code>refresh_token</code>, <code>user_data</code> (JSON), <code>pin_setup</code> (flag only). Auth endpoints: <code>sign-in</code>, <code>otp-request</code>, <code>verify-profile</code>, <code>sign-out</code>, <code>refresh</code>, <code>check-reset-channels</code>, <code>reset-password-trigger</code>, <code>verify-reset-password</code>, <code>reset-password</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-AUTH-01</td><td>On launch, <code>checkAuth()</code> restores the session if <code>access_token</code> + <code>user_data</code> exist (→ authenticated), else routes to Sign-In.</td><td>P0</td></tr>
+<tr><td>FR-AUTH-02</td><td>Sign-in posts <code>{identifier, password}</code> to <code>/auth/sign-in</code>; on success the response returns a <code>privateKey</code> and state becomes <code>tempAuthenticated</code>, routing to the OTP screen.</td><td>P0</td></tr>
+<tr><td>FR-AUTH-03</td><td>OTP verification posts <code>{privateKey, otp}</code> to <code>/auth/verify-profile</code>; on success it stores <code>accessToken</code>, <code>refreshToken</code>, <code>user_data</code> and sets state <code>authenticated</code>.</td><td>P0</td></tr>
+<tr><td>FR-AUTH-04</td><td>The OTP screen enforces a 179-second validity countdown and supports <strong>Resend</strong> via <code>/auth/otp-request</code> (new <code>privateKey</code>, timer reset).</td><td>P0</td></tr>
+<tr><td>FR-AUTH-05</td><td>Password reset is a multi-step flow: <code>check-reset-channels</code> → choose channel → <code>reset-password-trigger</code> (returns <code>privateKey</code>) → <code>verify-reset-password</code> → <code>PATCH /auth/reset-password</code>.</td><td>P0</td></tr>
+<tr><td>FR-AUTH-06</td><td>Manual sign-out posts <code>/auth/sign-out</code>, clears all secure storage, and returns to Sign-In.</td><td>P0</td></tr>
+<tr><td>FR-AUTH-07</td><td>Any 401 on a non-auth endpoint clears the session and forces unauthenticated; a 403 triggers a single token-refresh-and-retry.</td><td>P0</td></tr>
+<tr><td>FR-AUTH-08</td><td>The richer staff profile is fetched via the <code>/v2/mobile</code> rewrite (<code>GET /mobile/users/{uid}</code>).</td><td>P1</td></tr>
+<tr><td>FR-AUTH-09</td><td>Biometric/PIN unlock is <strong>not</strong> provided; the <code>pin_setup</code> flag and <code>local_auth</code>/<code>pin_code_fields</code> deps do not back any unlock flow. (Planned/absent.)</td><td>P2</td></tr>
+<tr><td>FR-AUTH-10</td><td>The GoRouter root <code>redirect</code> guard enforces: unauthenticated → Sign-In; <code>tempAuthenticated</code> → OTP; authenticated → app shell.</td><td>P0</td></tr>
+</tbody></table></div>
+<h3 id="82-navigation-shell-quick-access">8.2 Navigation Shell &amp; Quick Access</h3>
+<p>A <code>ShellScreen</code> provides a 5-tab bottom-navigation shell; the &quot;More&quot; screen hosts a Quick Access grid to all secondary features (full-screen routes outside the shell).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-NAV-01</td><td>Bottom nav exposes 5 tabs: Dashboard (<code>/dashboard</code>), Cases (<code>/claims</code>), Chat (<code>/internal-chat</code>, with unread badge), Reports (<code>/reports/pmt-reports</code>), More (<code>/profile/user</code>).</td><td>P0</td></tr>
+<tr><td>FR-NAV-02</td><td>The Chat tab shows an unread badge derived from thread lists.</td><td>P1</td></tr>
+<tr><td>FR-NAV-03</td><td>The More/Settings screen presents a Quick Access grid launching Services, Users, Network, Reports, Communities, Calendar (Tools), and Inquiries.</td><td>P0</td></tr>
+<tr><td>FR-NAV-04</td><td>Features hidden by the user&#x27;s role permissions should not be actionable; the app should respect the permission JSON.</td><td>P1</td></tr>
+</tbody></table></div>
+<h3 id="83-dashboard">8.3 Dashboard</h3>
+<p><code>DashboardController.loadDashboardData</code> pulls, on load and pull-to-refresh: <code>GET /dashboard/kpi-data</code>, <code>/dashboard/demographics-and-claim-trends</code>, <code>/dashboard/victim-needs-and-trends</code>, <code>/dashboard/service-performance-and-provider-insights</code>, plus <code>GET /reminders</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-DASH-01</td><td>Display KPI cards: total/new/completed claims, inquiries (new/closed/total), average response time, service-provider rating, repeat-victim rate.</td><td>P0</td></tr>
+<tr><td>FR-DASH-02</td><td>Render demographic and claim-trend charts (gender/age/race/classification, claims-per-service) with percentages via <code>fl_chart</code>.</td><td>P0</td></tr>
+<tr><td>FR-DASH-03</td><td>Render victim needs &amp; trends (new vs. returning victims, requests by weekday, top-5 services).</td><td>P1</td></tr>
+<tr><td>FR-DASH-04</td><td>Render service performance &amp; provider insights (rating over time, claims by category, response-time-vs-rating, views vs. requests).</td><td>P1</td></tr>
+<tr><td>FR-DASH-05</td><td>Show a reminders preview from <code>GET /reminders</code>.</td><td>P1</td></tr>
+<tr><td>FR-DASH-06</td><td>Provide a notification bell with unread badge linking to the Notifications screen.</td><td>P1</td></tr>
+<tr><td>FR-DASH-07</td><td>Support pull-to-refresh re-fetching all dashboard data.</td><td>P0</td></tr>
+<tr><td>FR-DASH-08</td><td>Optionally consume <code>/dashboard/location-based-claim-trends</code> and <code>/dashboard/additional-insights-and-predictive-analysis</code>.</td><td>P2</td></tr>
+</tbody></table></div>
+<h3 id="84-case-claim-management">8.4 Case (Claim) Management</h3>
+<p>Cases are backend <strong>service claims</strong>. <code>ClaimsController.loadClaims</code> calls <code>GET /service-claims</code>; case detail is <code>GET /service-claims/{uid}</code> with six tabs. Case visibility respects <code>claims.view_all</code> and agency scope.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CASE-01</td><td>&quot;My Cases&quot; list shows cases with search, status filter chips (pending/approved/rejected/resolved), stat chips, unread badges, and a FAB to create a new case.</td><td>P0</td></tr>
+<tr><td>FR-CASE-02</td><td>Create a new service claim/case (<code>/claims/new</code>), including advocate-created cases (which auto-approve on the backend).</td><td>P0</td></tr>
+<tr><td>FR-CASE-03</td><td>Case detail exposes six tabs: Overview, Chat, Notes, Updates, Documents/Files, Referrals.</td><td>P0</td></tr>
+<tr><td>FR-CASE-04</td><td>Overview supports state transitions: approve (<code>/service-claims/approve/{uid}</code>), reject (<code>/service-claims/reject/{uid}</code>), resolve (<code>/service-claims/resolve/{uid}</code>), gated by <code>claims.edit</code>.</td><td>P0</td></tr>
+<tr><td>FR-CASE-05</td><td>Link a client to an anonymous case (<code>/service-claims/link-client/{uid}</code>), issuing a login code to the survivor.</td><td>P1</td></tr>
+<tr><td>FR-CASE-06</td><td>View/edit claim intake questions &amp; answers (<code>/service-claims/claims/{claimId}/questions</code> — full replace).</td><td>P1</td></tr>
+<tr><td>FR-CASE-07</td><td>Notes tab (internal, never shown to victims): list (<code>get-notes/{claimUid}</code>), create (<code>new-note/{claimUid}</code>), update (<code>update-note/{noteUid}</code>), delete (<code>delete-note/{noteUid}</code>); note types per <code>ClaimNotes.NOTE_TYPES</code>.</td><td>P0</td></tr>
+<tr><td>FR-CASE-08</td><td>Updates tab: list (<code>get-updates/{claimUid}</code>), create (<code>new-update/{claimUid}</code>), update, delete; published updates are visible to the victim and trigger a victim notification.</td><td>P0</td></tr>
+<tr><td>FR-CASE-09</td><td>Documents tab: upload via <code>POST /service-claims/upload-files/{uid}</code> (multipart, ≤5 files, ≤50 MB; jpg/png/pdf/xls/doc/csv).</td><td>P0</td></tr>
+<tr><td>FR-CASE-10</td><td>Chat tab: the case (SERVICE) chat thread created on approval; mark case notifications read via <code>/notifications/mark-claim-read/{claimUid}</code>.</td><td>P1</td></tr>
+<tr><td>FR-CASE-11</td><td>Referrals tab: list claim referrals (<code>/partnerships/referrals/claim/{claimUid}</code>), create/accept/decline referrals; enforce single-active-referral rule (backend returns 409 on conflict).</td><td>P1</td></tr>
+<tr><td>FR-CASE-12</td><td>Approving a referred (cloned) case flips its referral to <code>accepted</code>; rejecting flips it to <code>declined</code> (backend side-effect).</td><td>P1</td></tr>
+</tbody></table></div>
+<h3 id="85-chat-internal-agency-inquiry">8.5 Chat (Internal / Agency / Inquiry)</h3>
+<p>Real-time messaging via Socket.IO with three thread types. <code>ChatController.loadAllThreads</code> fetches inquiry, internal, and agency threads in parallel.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CHAT-01</td><td>Load all thread lists in parallel: <code>/chat-services/get-inquiry-threads</code>, <code>/get-internal-threads</code>, <code>/get-agency-threads</code>.</td><td>P0</td></tr>
+<tr><td>FR-CHAT-02</td><td>Start an internal chat (<code>/chat-services/start-internal-chat</code>) or agency chat (<code>/start-agency-chat</code>); handle the existing-thread 400 by resolving the existing thread uid.</td><td>P0</td></tr>
+<tr><td>FR-CHAT-03</td><td>Open a thread: load messages (<code>get-all-chats/{threadUid}</code>), mark read (<code>/read/{threadUid}</code>), and join socket room <code>thread-&lt;uid&gt;</code>.</td><td>P0</td></tr>
+<tr><td>FR-CHAT-04</td><td>Send messages (<code>send-message/{threadUid}</code>) with text and/or file attachments; reload the message list; list files via <code>get-all-files/{threadUid}</code>.</td><td>P0</td></tr>
+<tr><td>FR-CHAT-05</td><td>On an incoming socket message for the active thread, append it live; always reload thread lists to update unread counts.</td><td>P0</td></tr>
+<tr><td>FR-CHAT-06</td><td>Inquiry moderation: approve/reject/resolve (`/chat-services/inquiry/{approve</td><td>reject</td></tr>
+<tr><td>FR-CHAT-07</td><td>Leave the socket room when the thread is closed.</td><td>P1</td></tr>
+</tbody></table></div>
+<h3 id="86-inquiries">8.6 Inquiries</h3>
+<p><code>inquiries_screen</code> groups inquiry threads by status (approved/resolved/rejected) with moderation actions; <code>active_inquiry_screen</code> shows an active inquiry conversation.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-INQ-01</td><td>List inquiry threads grouped by status with counts.</td><td>P1</td></tr>
+<tr><td>FR-INQ-02</td><td>Open and converse in an active inquiry thread (receives <code>InquiryThreadModel</code> via route <code>extra</code>).</td><td>P1</td></tr>
+<tr><td>FR-INQ-03</td><td>Approve/reject/resolve an inquiry (gated by <code>inquiries.edit</code>).</td><td>P1</td></tr>
+</tbody></table></div>
+<h3 id="87-pmt-reports-grants-questionnaires">8.7 PMT Reports, Grants &amp; Questionnaires</h3>
+<p>The Reports tab is the PMT hub. All report endpoints sit under <code>/reports</code> and are VS360-gated with a dedicated PMT rate limiter server-side.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-RPT-01</td><td>Grants: list (<code>/reports/grants</code>), detail (<code>/{id}</code>), edit, download template (<code>/{id}/file</code>, <code>/{id}/template</code>).</td><td>P1</td></tr>
+<tr><td>FR-RPT-02</td><td>Generated reports per grant: list (<code>/reports/grants/{grantId}/generated-reports</code>), create (<code>/reports/generated-reports</code>), set status (<code>/{id}/status</code>), download file (<code>/{id}/file</code>), delete.</td><td>P1</td></tr>
+<tr><td>FR-RPT-03</td><td>PMT/VOCA questionnaires: list (<code>/reports/pmt-questionnaires</code>), detail (<code>/{id}</code>), answer count (<code>/{id}/answer-count</code>), per-claim (<code>/claim/{claimId}</code>, <code>/claim/{claimId}/answers</code>), answers matrix (<code>/reports/questionnaire-answers-matrix</code>).</td><td>P1</td></tr>
+<tr><td>FR-RPT-04</td><td>PMT report rows: <code>/reports/pmt-report</code> (+ <code>/{uid}</code>).</td><td>P2</td></tr>
+</tbody></table></div>
+<h3 id="88-ai-custom-report-builder">8.8 AI Custom Report Builder</h3>
+<p>The flagship AI feature: a landing screen of saved reports, a 4-step wizard, and a section-based editor with an AI chat panel, producing a structured JSON report exportable to PDF. Custom-report paths are hardcoded in <code>custom_reports_api.dart</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-AIR-01</td><td>Landing (<code>custom_report_builder_screen</code>) lists saved custom reports (<code>GET /reports/custom-reports</code>) and explains the flow; provides entry to Grants/Questionnaires/Report Management.</td><td>P1</td></tr>
+<tr><td>FR-AIR-02</td><td>Wizard (<code>report_wizard_screen</code>) is 4 steps: Type → Details (organization, date range, audience) → Content (sections) → Generate.</td><td>P1</td></tr>
+<tr><td>FR-AIR-03</td><td>Generation (<code>report_ai_service.dart</code>) produces JSON <code>{message, reportUpdate, changedSections, detectedDateRange}</code> that becomes the structured report.</td><td>P1</td></tr>
+<tr><td>FR-AIR-04</td><td>Editor (<code>report_editor_screen</code> + <code>ai_chat_panel</code>) supports iterating via AI chat, per-section improve/edit (<code>improveSection</code>, <code>sendChatMessage</code>), and section rendering (<code>section_renderer</code>).</td><td>P1</td></tr>
+<tr><td>FR-AIR-05</td><td>Persist reports: create (<code>POST /reports/custom-reports</code>), update (<code>PUT /{id}</code>), get, duplicate (<code>/{id}/duplicate</code>), set status (<code>PATCH /{id}/status</code>), delete. Save/finalize/markDraft set status (<code>draft</code>/<code>final</code>).</td><td>P1</td></tr>
+<tr><td>FR-AIR-06</td><td>Export a report to PDF via <code>pdf_export_service.dart</code> (<code>pdf</code>/<code>printing</code>) for share/print.</td><td>P1</td></tr>
+<tr><td>FR-AIR-07</td><td><strong>Security (must-fix):</strong> move AI generation to the server-mediated endpoints (<code>/reports/custom-reports/generate-chat</code>, <code>/reports/ai/chat</code>) so keys stay server-side and the server-side accuracy validator runs; retire on-device Anthropic/OpenAI calls with embedded keys.</td><td>P0 (remediation)</td></tr>
+<tr><td>FR-AIR-08</td><td>The server-side accuracy pipeline (verified-metrics table, post-generation numeric validation) should surface conflict/hallucination warnings to the user; today the on-device path bypasses it.</td><td>P1</td></tr>
+</tbody></table></div>
+<h3 id="89-users-roles-services-my-network-communities">8.9 Users, Roles, Services, My Network, Communities</h3>
+<p>CRUD surfaces mirroring VS360, each agency-scoped and permission-gated.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-MGMT-01</td><td>Users: list (<code>/users</code>), create/edit (<code>/users/new</code>, <code>/users/{uid}/edit</code>), status toggle (<code>/users/status/{uid}</code>), mobile profile (<code>/mobile/users/{uid}</code>); gated by <code>user.*</code>.</td><td>P1</td></tr>
+<tr><td>FR-MGMT-02</td><td>Roles: view roles &amp; permissions (<code>/roles</code>, <code>/roles/plan/{planId}</code>).</td><td>P2</td></tr>
+<tr><td>FR-MGMT-03</td><td>Victim services: list (<code>/victim-services</code>), detail (<code>/{uid}</code>), create/edit (<code>/services/create</code>, <code>/services/update/{uid}</code>), activate/deactivate (<code>/deactive-activate/{uid}</code>); categories (<code>/services/categories</code>); gated by <code>services.*</code>.</td><td>P1</td></tr>
+<tr><td>FR-MGMT-04</td><td>My Network: partnerships (<code>/partnerships</code>) with accept/decline; referrals under <code>/partnerships/referrals/...</code>.</td><td>P1</td></tr>
+<tr><td>FR-MGMT-05</td><td>Communities: list/create/detail; posts, comments, members, group chat, and moderation (reports, ban, warnings) under <code>/communities/...</code>; gated by <code>communities.*</code>.</td><td>P1</td></tr>
+</tbody></table></div>
+<h3 id="810-tools-calendar-reminders">8.10 Tools — Calendar &amp; Reminders</h3>
+<p><code>tools_screen</code> provides a month calendar with reminder dots, a list view, filter chips (all/upcoming/completed/overdue), and reminder CRUD.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-TOOL-01</td><td>Load reminders (<code>GET /reminders</code>); toggle calendar/list views; apply filter chips.</td><td>P1</td></tr>
+<tr><td>FR-TOOL-02</td><td>Create/edit reminders (<code>POST /reminders</code>, <code>PATCH /reminders/{uid}</code>) via <code>CreateReminderDialog</code>.</td><td>P1</td></tr>
+<tr><td>FR-TOOL-03</td><td>Complete (<code>/reminders/complete/{uid}</code>) and delete (<code>DELETE /reminders/{uid}</code>) reminders.</td><td>P1</td></tr>
+</tbody></table></div>
+<h3 id="811-settings-profiles-notifications-feedback">8.11 Settings, Profiles, Notifications &amp; Feedback</h3>
+<p>The &quot;More&quot; hub hosts profile/agency cards, Quick Access, notification toggles, support links, and sign out.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SET-01</td><td>View/edit staff user profile (<code>/profile/user/details</code>).</td><td>P1</td></tr>
+<tr><td>FR-SET-02</td><td>View/edit agency (service-center) profile and social links (<code>GET/PATCH /service-centers/profile</code>, <code>/settings/social-links</code>).</td><td>P1</td></tr>
+<tr><td>FR-SET-03</td><td>Toggle email &amp; SMS notifications (<code>PATCH /notifications/email-notifications</code>, <code>/notifications/sms-notifications</code>, <code>{enabled: bool}</code>) with optimistic revert on failure.</td><td>P1</td></tr>
+<tr><td>FR-SET-04</td><td>Submit feedback (<code>POST /feedback</code>).</td><td>P2</td></tr>
+<tr><td>FR-SET-05</td><td>The language picker (English/Spanish/French) is a non-functional dialog (no localization backing). (Planned/absent.)</td><td>P2</td></tr>
+<tr><td>FR-SET-06</td><td>Notifications screen: list (<code>GET /users/notifications</code>), mark read (<code>/users/notifications/read/{uid}</code>), mark all read (<code>/users/notifications/mark-all-read</code>).</td><td>P1</td></tr>
+</tbody></table></div>
+<h2 id="9-detailed-user-system-flows">9. Detailed User &amp; System Flows</h2>
+<h3 id="91-sign-in-two-factor-via-otp">9.1 Sign In (two-factor via OTP)</h3>
+<ol class="flow">
+<li>The user launches the app; <code>main.dart</code> runs <code>checkAuth()</code>. If <code>access_token</code> + <code>user_data</code> exist, state is <code>authenticated</code> (splash → Dashboard); otherwise state is <code>unauthenticated</code> and the router shows the Sign-In screen.</li>
+<li>On Sign-In, the user enters email and password and taps Sign In; <code>AuthController.signIn</code> posts <code>{identifier, password}</code> to <code>POST /auth/sign-in</code>.</li>
+<li>The backend validates credentials against <code>user_credentials</code> (bcrypt), generates an OTP, and delivers it via the user&#x27;s channel (email or SMS/Twilio). The response returns a <code>privateKey</code>; state becomes <code>tempAuthenticated</code> and the router redirects to the OTP screen (<code>/verify-user</code>). A 179-second validity timer starts.</li>
+<li>On the OTP screen, the user enters the 6-digit code; <code>verifyOtp</code> posts <code>{privateKey, otp}</code> to <code>POST /auth/verify-profile</code>.</li>
+<li>On success, the backend issues an access token and refresh token and returns the profile (with <code>roleInfo</code>/<code>serviceCenterInfo</code>); the app stores <code>accessToken</code>, <code>refreshToken</code>, and <code>user_data</code>; state becomes <code>authenticated</code>; the router redirects to <code>/dashboard</code>.</li>
+<li><strong>Branch — resend:</strong> if the timer expires or the code is not received, the user taps Resend; <code>resendOtp</code> posts <code>POST /auth/otp-request</code>, returns a new <code>privateKey</code>, and the timer resets.</li>
+<li><strong>Branch — wrong OTP:</strong> <code>verify-profile</code> returns an error; the app shows an inline error and the user retries (subject to the auth rate limiter).</li>
+<li><strong>Branch — profile enrichment:</strong> after authentication, <code>refreshUserProfile</code> calls <code>GET /mobile/users/{uid}</code> (via the <code>/v2/mobile</code> rewrite) to load the richer staff profile.</li>
+</ol>
+<h3 id="92-password-reset">9.2 Password Reset</h3>
+<ol class="flow">
+<li>From Sign-In, the user taps Forgot Password (<code>/forgot-password</code>) and enters their email; the app calls <code>POST /auth/check-reset-channels</code>.</li>
+<li>The backend returns the channels available for the account (email and/or SMS); the user chooses a channel.</li>
+<li>The app calls <code>POST /auth/reset-password-trigger</code>; the backend sends an OTP and returns a <code>privateKey</code>.</li>
+<li>The user enters the OTP; the app calls <code>POST /auth/verify-reset-password</code>.</li>
+<li>On success, the user enters and confirms a new password; the app calls <code>PATCH /auth/reset-password</code>.</li>
+<li>On success, the user is returned to Sign-In to authenticate with the new password (and OTP). <strong>Branch:</strong> an invalid/expired OTP returns an error and the user may resend/retry.</li>
+</ol>
+<h3 id="93-open-update-a-case">9.3 Open &amp; Update a Case</h3>
+<ol class="flow">
+<li>The user taps the <strong>Cases</strong> tab; <code>ClaimsController.loadClaims</code> calls <code>GET /service-claims</code>. The list renders with search, status filter chips, stat chips, and per-case unread badges. (Visibility respects <code>claims.view_all</code>; without it, only pending/self-actioned cases appear, always within the user&#x27;s agency.)</li>
+<li>The user taps a case; the app calls <code>GET /service-claims/{uid}</code> and renders the detail with six tabs (Overview, Chat, Notes, Updates, Documents/Files, Referrals).</li>
+<li><strong>Approve (Overview):</strong> for a pending case, the user taps Approve; the app calls the approve endpoint (<code>/service-claims/approve/{uid}</code>). The backend transitions pending→approved, creates a published &quot;Approved&quot; update, opens a SERVICE chat thread (victim↔caseworker), records <code>approvedBy/At</code> in stats, flips any referral to <code>accepted</code>, and notifies the victim (notification row + FCM + socket). The Chat tab now has an active thread.</li>
+<li><strong>Add an internal note (Notes):</strong> the user opens the Notes tab (<code>GET /service-claims/get-notes/{claimUid}</code>), taps add, enters a title/description and note type, and saves (<code>POST /service-claims/new-note/{claimUid}</code>). Notes are internal only and never shown to the victim.</li>
+<li><strong>Publish an update (Updates):</strong> the user opens the Updates tab, creates an update (<code>POST /service-claims/new-update/{claimUid}</code>), and marks it published. Published updates become visible to the victim (mobile filters <code>isPublished=true</code>) and trigger a victim notification.</li>
+<li><strong>Upload a document (Documents):</strong> the user taps upload, picks up to 5 files (≤50 MB; jpg/png/pdf/xls/doc/csv); the app posts multipart to <code>POST /service-claims/upload-files/{uid}</code>; the backend stores each file (context <code>SERVICE_CLAIM</code>) and returns the updated list.</li>
+<li><strong>Resolve (Overview):</strong> when work is complete, the user taps Resolve; the app calls <code>/service-claims/resolve/{uid}</code> (optionally with <code>pmtValues</code>, <code>threadUid</code>). The backend transitions approved→resolved, posts a published &quot;Resolved&quot; update, records <code>resolvedBy/At</code>, archives the chat thread, and notifies the victim.</li>
+<li><strong>Branch — reject:</strong> for a pending case, Reject (<code>/service-claims/reject/{uid}</code>) transitions pending→rejected, records <code>rejectedBy/At</code>, deletes the PMT report, flips any referral to <code>declined</code>, and notifies the victim.</li>
+<li><strong>Branch — link client:</strong> for an anonymous/advocate-created case, the user links a client (<code>PATCH /service-claims/link-client/{claimUid}</code>), providing a contact and channel; the backend attaches the contact and issues (or reuses) a login code delivered to the survivor.</li>
+<li><strong>Branch — referral:</strong> on the Referrals tab, the user creates a referral to a partner agency (<code>POST /partnerships/referrals</code>); the backend enforces the single-active-referral rule (409 if one exists), and the referral proceeds through client consent (in the Victim app) before the case is cloned into the partner agency.</li>
+<li><strong>Edge — permission denied / stale data:</strong> actions the user&#x27;s role does not permit return 403 (surfaced as an error); a 401 clears the session and forces sign-in; connectivity loss surfaces as a snackbar (no offline queueing).</li>
+</ol>
+<h3 id="94-generate-an-ai-custom-report">9.4 Generate an AI Custom Report</h3>
+<ol class="flow">
+<li>The user opens <strong>Reports</strong> → <strong>AI Report Builder</strong> (<code>custom_report_builder_screen</code>); the app calls <code>GET /reports/custom-reports</code> and lists saved reports plus a how-it-works panel.</li>
+<li>The user taps New; the wizard (<code>report_wizard_screen</code>) opens. <strong>Step 1 — Type:</strong> the user picks a report type. <strong>Step 2 — Details:</strong> the user enters organization name, date range, and audience. <strong>Step 3 — Content:</strong> the user selects the sections to include. <strong>Step 4 — Generate:</strong> the user taps Generate.</li>
+<li>Generation runs (today) client-side in <code>report_ai_service.dart</code>: the default provider is Anthropic <code>claude-haiku-4-5-20251001</code> via <code>https://api.anthropic.com/v1/messages</code> (fallback OpenAI <code>gpt-4o</code>), using the embedded API key. The model returns JSON <code>{message, reportUpdate, changedSections, detectedDateRange}</code>, which becomes the structured report (typed sections: kpi, charts, tables, narrative, etc.).</li>
+<li>The app opens the <strong>Editor</strong> (<code>report_editor_screen</code>) rendering the sections (<code>section_renderer</code>), with an AI chat panel (<code>ai_chat_panel</code>). The user iterates: chatting to adjust the report (<code>sendChatMessage</code>) or improving a single section (<code>improveSection</code>).</li>
+<li>The user saves the report: create (<code>POST /reports/custom-reports</code>) or update (<code>PUT /reports/custom-reports/{id}</code>). Finalize sets status <code>final</code>; mark-draft sets <code>draft</code>. (A <code>final</code> report locks non-AI edits server-side.)</li>
+<li><strong>Export:</strong> the user taps Export; <code>pdf_export_service.dart</code> builds a PDF (<code>pdf</code>/<code>printing</code>) for share/print.</li>
+<li><strong>Branch — duplicate:</strong> the user duplicates a saved report (<code>POST /reports/custom-reports/{id}/duplicate</code>), which resets it to draft with a &quot;(Copy)&quot; title.</li>
+<li><strong>Edge — generation error / key failure:</strong> an AI provider error (rate limit, network, invalid key) surfaces as an error; the user may retry.</li>
+<li><strong>Target-state (must-fix) variant:</strong> generation is routed through the server (<code>/reports/custom-reports/generate-chat</code>), so keys stay server-side, live agency data and uploaded-file metrics feed the prompt, and the post-generation accuracy validator returns PASS/FAIL and conflict/hallucination warnings alongside the report.</li>
+</ol>
+<h3 id="95-chat-internal-agency-inquiry">9.5 Chat (Internal / Agency / Inquiry)</h3>
+<ol class="flow">
+<li>The user taps the <strong>Chat</strong> tab; <code>ChatController.loadAllThreads</code> fetches, in parallel, <code>GET /chat-services/get-inquiry-threads</code>, <code>/get-internal-threads</code>, and <code>/get-agency-threads</code>. Thread lists render with unread badges; the tab shows an aggregate unread badge.</li>
+<li><strong>Start a chat:</strong> the user taps New chat, picks a colleague (internal) or partner agency; the app calls <code>POST /chat-services/start-internal-chat</code> (or <code>/start-agency-chat</code>). If a thread already exists, the backend returns 400 and the app resolves the existing thread uid and opens it.</li>
+<li><strong>Open a thread:</strong> the app calls <code>GET /chat-services/get-all-chats/{threadUid}</code>, marks it read (<code>/chat-services/read/{threadUid}</code>), and joins the socket room <code>thread-&lt;uid&gt;</code>.</li>
+<li><strong>Send a message:</strong> the user types (and optionally attaches files) and sends; the app posts to <code>POST /chat-services/send-message/{threadUid}</code> and reloads the message list; files are listed via <code>/chat-services/get-all-files/{threadUid}</code>.</li>
+<li><strong>Receive live:</strong> the socket service listens for <code>message-internal</code>/<code>message-agency-chat</code>/<code>message-inquiry</code>/<code>message-service</code>; for the active thread the message is appended immediately; thread lists are reloaded to refresh unread counts.</li>
+<li><strong>Leave:</strong> on closing the thread, the app leaves the socket room.</li>
+<li><strong>Branch — inquiry moderation:</strong> in an inquiry thread the user may approve/reject/resolve the inquiry (<code>/chat-services/inquiry/{approve|reject|resolve}/{id}</code>).</li>
+<li><strong>Edge — reconnect:</strong> on socket disconnect, auto-reconnect retries up to 5 times (3–5s); missed messages are recovered on the next thread/list reload (REST is the source of truth).</li>
+</ol>
+<h3 id="96-dashboard-load-refresh">9.6 Dashboard Load &amp; Refresh</h3>
+<ol class="flow">
+<li>On opening the <strong>Dashboard</strong> tab, <code>DashboardController.loadDashboardData</code> issues <code>GET /dashboard/kpi-data</code>, <code>/demographics-and-claim-trends</code>, <code>/victim-needs-and-trends</code>, <code>/service-performance-and-provider-insights</code>, and <code>GET /reminders</code>.</li>
+<li>KPI cards, charts, victim-needs, service-performance, and a reminders preview render; the notification bell shows an unread badge.</li>
+<li>The user pulls to refresh; all five calls re-fetch and the UI updates.</li>
+<li><strong>Edge — partial failure:</strong> a failed call surfaces an error for that section without blocking the others; a 401 forces sign-in.</li>
+</ol>
+<h3 id="97-session-expiry-forced-sign-out">9.7 Session Expiry &amp; Forced Sign-out</h3>
+<ol class="flow">
+<li>A background or foreground request returns 401 on a non-auth endpoint.</li>
+<li>The AuthInterceptor wipes secure storage and calls <code>forceUnauthenticated()</code>.</li>
+<li>The GoRouter guard redirects to Sign-In; the user must re-authenticate (email/password + OTP).</li>
+<li><strong>Branch — 403:</strong> a 403 first triggers <code>POST /auth/refresh</code> (with <code>x-refresh-token</code>) and one retry of the original request before any user-visible failure.</li>
+</ol>
+<h2 id="10-data-model">10. Data Model</h2>
+<p>The app consumes backend entities (PostgreSQL via Objection/Knex). Key entities relevant to the Workspace app:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Key Fields</th><th>Relationships</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>Users</td><td>id, uid, email, role, serviceCenterInfo</td><td>belongs to ServiceCenters (via VSMSUsers); has Roles</td><td>Agency staff identity (issuer type <code>VSMS</code>)</td></tr>
+<tr><td>Roles</td><td>name, permission (JSON module→action map), context</td><td>assigned to Users; capped by Plans</td><td>Fine-grained RBAC (<code>vs360Modules</code>)</td></tr>
+<tr><td>ServiceCenters</td><td>id, uid, name, profile, acceptingReferrals, social links</td><td>has Services, Users, Partnerships</td><td>The agency (tenant boundary)</td></tr>
+<tr><td>Services</td><td>uid, title, descriptions, categoryId, service_code, isActive, isVerified, isNational</td><td>belongs to ServiceCenter &amp; ServiceCategory; has ClaimQuestions</td><td>Published offerings under a category</td></tr>
+<tr><td>ServiceClaims (Case)</td><td>uid (<code>CL&lt;yy&gt;&lt;month&gt;&lt;uuid6&gt;</code>), serviceId, victimId, status, rating, hasUnseenUpdates, loginCode</td><td>has ClaimNotes, ClaimUpdates, answers, FileUploads, stats, chat thread</td><td>The case — central entity</td></tr>
+<tr><td>ServiceClaimStats</td><td>approvedBy/At, rejectedBy/At, resolvedBy/At</td><td>belongs to ServiceClaim</td><td>Per-case action attribution</td></tr>
+<tr><td>ClaimQuestions / ClaimQuestionAnswers</td><td>question, questionType, options; claimId, questionId, answer</td><td>belong to Service / ServiceClaim</td><td>Intake Q&amp;A</td></tr>
+<tr><td>ClaimNotes</td><td>uid, title, description (HTML), noteType, createdBy, updatedBy</td><td>belongs to ServiceClaim; noteOwner/noteEditor</td><td>Internal caseworker notes (never victim-visible)</td></tr>
+<tr><td>ClaimUpdates</td><td>text, isPublished</td><td>belongs to ServiceClaim</td><td>Progress updates; published ones notify the victim</td></tr>
+<tr><td>FileUploads</td><td>url, context (<code>SERVICE_CLAIM</code>/<code>GRANT</code>/etc.)</td><td>belongs to claim/report</td><td>Uploaded documents</td></tr>
+<tr><td>AgencyPartnerships</td><td>uid, requestingAgencyUid, targetAgencyUid, status</td><td>has AgencyReferrals; auto-creates agency chat on accept</td><td>Bilateral agency network</td></tr>
+<tr><td>AgencyReferrals</td><td>uid, partnershipId, originalCaseId, referredCaseId, targetServiceId, consentStatus, referralStatus, metadata (canShare* + snapshot)</td><td>belongs to Partnership; links two ServiceClaims</td><td>Cross-agency case referral</td></tr>
+<tr><td>ChatThreads / ChatMessages</td><td>type (INTERNAL/AGENCY_CHAT/INQUIRY/SERVICE), status, participants</td><td>messages belong to thread</td><td>Real-time messaging</td></tr>
+<tr><td>InquiryLifecycle</td><td>status (approved/rejected/resolved)</td><td>related to inquiry threads</td><td>Public inquiry handling</td></tr>
+<tr><td>PmtGrants / PmtGeneratedReports</td><td>name, template file, status</td><td>grant links questionnaires; reports link grant + files</td><td>Grant reporting</td></tr>
+<tr><td>PmtQuestionnaires / Questions / Answers</td><td>questionText, type, options; per-claim answers</td><td>linked to grant &amp; service category</td><td>PMT/VOCA data capture</td></tr>
+<tr><td>PmtReports</td><td>demographics, isNew, service fields</td><td>belongs to ServiceClaim</td><td>PMT demographic snapshot per case</td></tr>
+<tr><td>CustomReport</td><td>uid, userId (owner), serviceCenterId, title, reportData (JSON), status (draft/final), dateRange</td><td>has CustomReportChatLog</td><td>AI custom report (owned by creator)</td></tr>
+<tr><td>Reminders</td><td>uid, title, date, status</td><td>belongs to user/agency</td><td>Calendar reminders (Tools)</td></tr>
+<tr><td>ServiceCenterNotifications</td><td>additionalData (claimUid/threadUid), read state</td><td>targets staff user</td><td>In-app staff notifications</td></tr>
+<tr><td>Communities (+Members/Posts/Comments/Reports)</td><td>name, membership, posts, moderation</td><td>belong to agency/community</td><td>Community feature</td></tr>
+<tr><td>UserFeedback</td><td>uid, user_uid, user_type, free-form fields</td><td>—</td><td>Feedback capture</td></tr>
+</tbody></table></div>
+<h2 id="11-api-integration-surface">11. API &amp; Integration Surface</h2>
+<h3 id="111-endpoint-surface-client-consumed-v2web-unless-noted">11.1 Endpoint Surface (client-consumed, <code>/v2/web</code> unless noted)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>POST</td><td><code>/auth/sign-in</code></td><td>Credentials → OTP</td><td>auth rate limiter</td></tr>
+<tr><td>POST</td><td><code>/auth/verify-profile</code></td><td>OTP → tokens + profile</td><td>auth</td></tr>
+<tr><td>POST</td><td><code>/auth/otp-request</code></td><td>Resend OTP</td><td>auth</td></tr>
+<tr><td>POST</td><td><code>/auth/refresh</code></td><td>Rotate tokens</td><td>auth (x-refresh-token)</td></tr>
+<tr><td>POST</td><td><code>/auth/sign-out</code></td><td>End session</td><td>auth</td></tr>
+<tr><td>POST</td><td><code>/auth/check-reset-channels</code> / <code>/auth/reset-password-trigger</code> / <code>/auth/verify-reset-password</code></td><td>Reset flow</td><td>passwordReset</td></tr>
+<tr><td>PATCH</td><td><code>/auth/reset-password</code></td><td>Set new password</td><td>passwordReset</td></tr>
+<tr><td>GET</td><td><code>/mobile/users/{uid}</code></td><td>Rich staff profile (<code>/v2/mobile</code>)</td><td>VS360/auth</td></tr>
+<tr><td>GET</td><td><code>/dashboard/{kpi-data, demographics-and-claim-trends, victim-needs-and-trends, service-performance-and-provider-insights}</code></td><td>Dashboard data</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/service-claims</code></td><td>Case list (scoped; <code>view_all</code>)</td><td>VS360 <code>claims.view</code></td></tr>
+<tr><td>GET</td><td><code>/service-claims/{uid}</code></td><td>Case detail</td><td>VS360 <code>claims.view</code></td></tr>
+<tr><td>PATCH</td><td>`/service-claims/{approve\</td><td>reject\</td><td>resolve}/{uid}`</td></tr>
+<tr><td>PATCH</td><td><code>/service-claims/link-client/{uid}</code></td><td>Link client to anonymous case</td><td>VS360</td></tr>
+<tr><td>POST</td><td><code>/service-claims/upload-files/{uid}</code></td><td>Upload docs (≤5, ≤50MB)</td><td>VS360</td></tr>
+<tr><td>GET/POST/PATCH/DELETE</td><td>`/service-claims/{get-notes\</td><td>new-note\</td><td>update-note\</td></tr>
+<tr><td>GET/POST/PATCH/DELETE</td><td>`/service-claims/{get-updates\</td><td>new-update\</td><td>update-update\</td></tr>
+<tr><td>GET/POST</td><td><code>/chat-services/{get-*-threads, get-all-chats, send-message, read, start-internal-chat, start-agency-chat, get-all-files}</code></td><td>Chat</td><td>VS360 <code>internal_chat</code>/<code>agency_chat</code></td></tr>
+<tr><td>POST</td><td>`/chat-services/inquiry/{approve\</td><td>reject\</td><td>resolve}/{id}`</td></tr>
+<tr><td>GET/POST/PATCH/DELETE</td><td><code>/partnerships</code> (+ accept/decline), <code>/partnerships/referrals/...</code></td><td>Network &amp; referrals</td><td>VS360</td></tr>
+<tr><td>GET/POST/PUT/DELETE</td><td><code>/reports/{grants, generated-reports, pmt-questionnaires, pmt-report, questionnaire-answers-matrix}</code></td><td>PMT/grants</td><td>VS360 (pmtApi limiter)</td></tr>
+<tr><td>GET/POST/PUT/PATCH/DELETE</td><td><code>/reports/custom-reports</code> (+ <code>/{id}</code>, <code>/duplicate</code>, <code>/status</code>)</td><td>Custom reports</td><td>VS360 (owner)</td></tr>
+<tr><td>POST</td><td><code>/reports/{custom-reports/generate-chat, ai/chat}</code></td><td>Server AI (target-state)</td><td>VS360</td></tr>
+<tr><td>GET/POST/PATCH/DELETE</td><td><code>/reminders</code> (+ <code>/complete/{uid}</code>)</td><td>Reminders</td><td>VS360</td></tr>
+<tr><td>GET/POST/PATCH/DELETE</td><td><code>/users</code>, <code>/users/status/{uid}</code>, <code>/roles</code>, <code>/victim-services</code>, <code>/services/categories</code>, <code>/communities/...</code></td><td>Management CRUD</td><td>VS360 per-module</td></tr>
+<tr><td>GET/PATCH</td><td><code>/service-centers/profile</code>, <code>/settings/social-links</code></td><td>Agency profile</td><td>VS360</td></tr>
+<tr><td>GET/PATCH</td><td><code>/users/notifications</code> (+ read/mark-all-read), <code>/notifications/{email,sms}-notifications</code>, <code>/notifications/mark-claim-read/{uid}</code></td><td>Notifications</td><td>VS360</td></tr>
+<tr><td>POST</td><td><code>/feedback</code></td><td>Feedback</td><td>VS360</td></tr>
+</tbody></table></div>
+<h3 id="112-external-integrations">11.2 External Integrations</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Integration</th><th>Use in Workspace</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Socket.IO</td><td>Real-time chat (<code>message-*</code> events, <code>thread-&lt;uid&gt;</code> rooms)</td><td>Auth via <code>{token}</code>; auto-reconnect</td></tr>
+<tr><td>Anthropic (Claude)</td><td>AI custom-report generation (<code>claude-haiku-4-5-20251001</code>)</td><td><strong>On-device today with embedded key — must move server-side</strong></td></tr>
+<tr><td>OpenAI (GPT-4o)</td><td>Fallback AI generation</td><td>Same caveat</td></tr>
+<tr><td>Azure Blob Storage</td><td>Grant/report file storage (server-side)</td><td>Files streamed via backend</td></tr>
+<tr><td>Twilio</td><td>OTP over SMS; SMS notifications</td><td>Server-side (via auth/notifications)</td></tr>
+<tr><td>Email (BullMQ templates)</td><td>OTP over email; notifications</td><td>Server-side</td></tr>
+<tr><td>FCM (push)</td><td><strong>Not integrated</strong> in this app</td><td>Platform supports it; device-token registration not called</td></tr>
+<tr><td><code>X-Netlify-Secret</code></td><td>Proxy header on all requests</td><td><strong>Hardcoded in source — rotate &amp; externalize</strong></td></tr>
+</tbody></table></div>
+<h2 id="12-rbac-permissions">12. RBAC &amp; Permissions</h2>
+<p>The app authenticates <code>VSMS</code> staff with role context <code>VS360</code>; the backend enforces the <code>allowOnly(&#x27;VS360&#x27;)</code> context gate plus fine-grained <code>checkPermission(module, action)</code>. The app should render/enable features per the user&#x27;s role permission JSON.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Action / Feature</th><th>Gating permission</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>See all agency cases</td><td><code>claims.view_all</code></td><td>Without it: only pending/self-actioned; always agency-scoped</td></tr>
+<tr><td>View / create / edit / delete case</td><td><code>claims.{view,add,edit,delete}</code></td><td>Approve/reject/resolve require <code>claims.edit</code></td></tr>
+<tr><td>Case notes</td><td><code>notes_center.{view,add,edit,delete}</code> (typically <code>VSMS_ADMIN</code>)</td><td>Notes are internal; never victim-visible</td></tr>
+<tr><td>Inquiries</td><td><code>inquiries.{view,add,edit,delete}</code></td><td>Moderation requires edit</td></tr>
+<tr><td>Internal chat / agency chat</td><td><code>internal_chat.view</code> / <code>agency_chat.view</code></td><td></td></tr>
+<tr><td>Communities</td><td><code>communities.{view,add,edit,delete}</code></td><td>Includes moderation</td></tr>
+<tr><td>Services</td><td><code>services.{view,add,edit,delete}</code></td><td></td></tr>
+<tr><td>Users</td><td><code>user.{view,add,edit,delete,password_reset_trigger}</code></td><td>Seat-limited by plan</td></tr>
+<tr><td>Roles</td><td><code>role_management.{view,add,edit,delete}</code></td><td><code>necxOnly</code> for some scopes</td></tr>
+<tr><td>Reports (PMT + custom)</td><td><code>reports.pmt_reports</code></td><td>Custom reports also owner-scoped by <code>userId</code></td></tr>
+<tr><td>Tools (calendar/reminders)</td><td><code>tools.view</code></td><td></td></tr>
+<tr><td>Dashboard sub-panels</td><td><code>dashboard.{view, stats, quick_action, ...}</code></td><td>Sub-flags gate individual panels</td></tr>
+<tr><td>Shelters / hotline / time</td><td><code>shelters.*</code> / <code>hotline.*</code> / <code>time.view</code></td><td>Backend permissions exist; <strong>no mobile UI (out of scope)</strong></td></tr>
+</tbody></table></div>
+<p>Multi-tenancy: all agency-scoped data is filtered to <code>issuer.serviceCenterInfo.id</code>. Super-admin bypasses fine-grained checks (rare on this client).</p>
+<h2 id="13-non-functional-requirements">13. Non-Functional Requirements</h2>
+<h3 id="131-security">13.1 Security</h3>
+<ul>
+<li><strong>Transport:</strong> all API traffic over HTTPS to the <code>/v2/web</code> surface; tokens sent as <code>Authorization: Bearer</code> + <code>x-refresh-token</code>; rotated refresh tokens captured from response headers.</li>
+<li><strong>Secrets (must-fix):</strong> Anthropic/OpenAI keys and <code>X-Netlify-Secret</code> are hardcoded in the shipped binary and are therefore extractable — treat as compromised, rotate, and remove from the client. Route AI calls through server endpoints; deliver proxy secrets via secure server mediation, not the client.</li>
+<li><strong>Session:</strong> access + refresh tokens and user JSON in <code>flutter_secure_storage</code>; 401 → full session wipe; 403 → single refresh-and-retry.</li>
+<li><strong>Two-factor:</strong> OTP 2FA is mandatory on every sign-in; there is no bypass path.</li>
+<li><strong>Response encryption:</strong> the app transparently decrypts AES-encrypted response bodies (matching the backend <code>encryption-middleware</code>).</li>
+</ul>
+<h3 id="132-privacy-victim-safety">13.2 Privacy &amp; Victim Safety</h3>
+<ul>
+<li><strong>Internal notes</strong> (<code>claim_notes</code>) are staff-only and must never be surfaced to victims; the app must respect this on the case Notes tab.</li>
+<li><strong>Updates</strong> are victim-visible only when <code>isPublished=true</code>; the app must make the published/unpublished state explicit when authoring.</li>
+<li><strong>Referral consent:</strong> case data is shared cross-agency only per the survivor&#x27;s consent and the <code>canShare*</code> flags; the app must not present a referral as sharing more than granted.</li>
+<li><strong>On-device AI (must-fix):</strong> the current on-device generation path can send case/agency-derived content to a third party from the client; moving to server mediation restores central control, redaction, and audit.</li>
+<li><strong>Login codes:</strong> linking a client issues a login code the app must handle as a sensitive credential.</li>
+</ul>
+<h3 id="133-performance">13.3 Performance</h3>
+<ul>
+<li>Dashboard load issues five parallel calls; the app should render progressively and support pull-to-refresh.</li>
+<li>Chat should render incoming socket messages within perceptible real-time (sub-second on a healthy connection); REST is the source of truth on reconnect.</li>
+<li>Case detail is data-heavy (six tabs); tabs should load lazily where possible.</li>
+<li>No offline cache: every screen fetches live; the app must handle latency and errors gracefully with loaders and snackbars.</li>
+</ul>
+<h3 id="134-availability-resilience">13.4 Availability &amp; Resilience</h3>
+<ul>
+<li>Socket auto-reconnect: 5 attempts at 3–5s; on reconnect, thread/list reloads recover missed messages.</li>
+<li>Connectivity loss surfaces as request errors (no queueing); the app must present clear retry affordances. (Offline support is a future enhancement — see Risks.)</li>
+</ul>
+<h3 id="135-auditability">13.5 Auditability</h3>
+<ul>
+<li>The backend writes <code>action_logs</code> for nearly all create/update/delete operations (with source/ip/url/context). Mobile actions inherit this audit trail; no additional client-side audit is required.</li>
+</ul>
+<h3 id="136-localization-accessibility">13.6 Localization &amp; Accessibility</h3>
+<ul>
+<li><strong>Localization:</strong> not implemented — all strings hardcoded English; the language picker is a no-op; this is a known gap for a survivor-serving platform and a future requirement.</li>
+<li><strong>Text scaling:</strong> currently forced to 1.0 in <code>main.dart</code>, which limits dynamic-type accessibility; this should be revisited to honor system font scaling.</li>
+<li><strong>Theming:</strong> single light theme only; no dark mode.</li>
+</ul>
+<h3 id="137-compliance">13.7 Compliance</h3>
+<ul>
+<li>The app operates within a platform that supports grant/PMT/VOCA reporting; report generation and PMT data capture must preserve the fidelity funders require. The server-side AI accuracy validator (verified-metrics cross-check) should be the source of truth for report numbers — a reason to retire the on-device generation path.</li>
+<li>Cross-agency data isolation (CJIS-style tenant separation) is enforced server-side; the app must never assume access beyond the authenticated agency.</li>
+</ul>
+<h2 id="14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</h2>
+<h3 id="141-dashboards-kpis">14.1 Dashboards &amp; KPIs</h3>
+<p>The in-app Dashboard mirrors VS360&#x27;s key signals: claim KPIs (new/completed/total), inquiry counts, average response time, service-provider rating, repeat-victim rate, demographic and claim trends, victim needs, and service performance. Data comes from the <code>/dashboard/*</code> endpoints and renders via <code>fl_chart</code>. Location-based and predictive-insight endpoints exist and may be surfaced later.</p>
+<h3 id="142-reporting">14.2 Reporting</h3>
+<p>Two report surfaces: (a) <strong>PMT/grants</strong> — grants, generated Excel reports, and PMT/VOCA questionnaires with an answers matrix; and (b) the <strong>AI Custom Report Builder</strong> — structured JSON reports with an AI chat editor and PDF export. The server side additionally offers a stricter PMT Excel AI editor and a post-generation accuracy validator (verified-metrics table, conflict/hallucination flags) that the mobile app should adopt via the server-mediated endpoints.</p>
+<h3 id="143-notifications">14.3 Notifications</h3>
+<ul>
+<li><strong>In-app (implemented):</strong> REST-polled notification list (<code>GET /users/notifications</code>) with mark-read / mark-all-read; unread badges on the Chat tab and dashboard bell derive from fetched lists and thread reloads. Per-claim and per-thread mark-read endpoints keep counts accurate.</li>
+<li><strong>Socket (implemented):</strong> live chat message events update the active thread and refresh unread counts.</li>
+<li><strong>Preferences (implemented):</strong> email &amp; SMS notification toggles (<code>PATCH /notifications/{email,sms}-notifications</code>).</li>
+<li><strong>Push / FCM (not implemented):</strong> the platform sends FCM push for staff notifications, but this app registers no device token and receives no push; background/closed-app delivery is therefore absent. This is a priority gap (see Risks).</li>
+</ul>
+<h2 id="15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Type</th><th>Impact</th><th>Mitigation / Owner</th></tr></thead>
+<tbody>
+<tr><td>Anthropic/OpenAI API keys hardcoded in the client binary</td><td>Risk (Security)</td><td>High — keys extractable; potential abuse/cost/data exposure</td><td>Rotate keys; remove from client; route AI via server endpoints. Owner: Security + Mobile Eng</td></tr>
+<tr><td><code>X-Netlify-Secret</code> hardcoded in source</td><td>Risk (Security)</td><td>High — proxy secret extractable</td><td>Rotate; deliver via secure server mediation. Owner: Security + Backend</td></tr>
+<tr><td>On-device LLM calls bypass server accuracy validator &amp; rate limits</td><td>Risk (Accuracy/Privacy)</td><td>High — potential hallucinated report numbers; client-side data egress</td><td>Adopt <code>/reports/custom-reports/generate-chat</code> (+ validator). Owner: Reports Eng</td></tr>
+<tr><td>No push notifications (FCM)</td><td>Gap</td><td>High — staff miss time-sensitive events when app is backgrounded</td><td>Integrate <code>firebase_messaging</code>; register device token (<code>account/device-token</code>). Owner: Mobile Eng</td></tr>
+<tr><td>No biometric/PIN unlock</td><td>Gap</td><td>Medium — sensitive victim data protected only by OS lock + OTP-per-session</td><td>Implement PIN/biometric using existing <code>local_auth</code>/<code>pin_setup</code>. Owner: Mobile Eng</td></tr>
+<tr><td>No offline cache / connectivity awareness</td><td>Gap</td><td>Medium — unusable offline; errors on flaky connections</td><td>Wire Hive/connectivity; add read cache + queued writes. Owner: Mobile Eng</td></tr>
+<tr><td>No real localization; strings English-only; text scaling forced to 1.0</td><td>Gap (Accessibility/Reach)</td><td>Medium — limits non-English staff &amp; accessibility on a survivor-serving platform</td><td>Adopt platform static translations; honor system font scaling. Owner: Mobile Eng + Product</td></tr>
+<tr><td>Case Management AI Agent named but not implemented</td><td>Open Question</td><td>Medium — roadmap expectation unmet</td><td>Confirm scope/priority; branch <code>necx-572</code> contains no agent code. Owner: Product</td></tr>
+<tr><td>Shelter management absent (backend domain exists)</td><td>Open Question</td><td>Medium — agencies with shelters cannot manage them on mobile</td><td>Decide whether shelter is in mobile scope. Owner: Product</td></tr>
+<tr><td>Staff timer / time clock absent (backend <code>time</code> module exists)</td><td>Open Question</td><td>Low–Medium</td><td>Decide scope. Owner: Product</td></tr>
+<tr><td>No analytics/telemetry SDK</td><td>Gap</td><td>Medium — success metrics not directly measurable</td><td>Add analytics; interim: derive from backend logs/<code>action_logs</code>. Owner: Product + Data</td></tr>
+<tr><td>Some server report data sources are placeholder/zero (hotline, satisfaction, shelter, financial, HR)</td><td>Risk (Reporting)</td><td>Medium — AI reports may present zeros as real</td><td>Wire real sources; label unwired metrics. Owner: Backend/Reports</td></tr>
+<tr><td>Custom-report paths hardcoded in <code>custom_reports_api.dart</code> (outside central endpoint file)</td><td>Risk (Maintainability)</td><td>Low</td><td>Consolidate into <code>api_endpoints.dart</code>. Owner: Mobile Eng</td></tr>
+<tr><td>Legacy/unused screen (<code>chat_threads_screen</code>) not routed</td><td>Assumption</td><td>Low</td><td>Confirm removal. Owner: Mobile Eng</td></tr>
+<tr><td>Navigation Drawer refactor (<code>necx-571</code>) not on <code>develop</code></td><td>Assumption</td><td>Low</td><td>Confirm target release for the drawer UX. Owner: Product</td></tr>
+<tr><td>Staging environment active in <code>main.dart</code></td><td>Assumption</td><td>Medium — must switch to production for GA</td><td>Verify build config gates env per release channel. Owner: Mobile Eng/Release</td></tr>
+</tbody></table></div>
+<p><strong>Assumptions:</strong> the backend <code>/v2/web</code> surface, RBAC, tenancy, and encryption behave as documented in the platform references; the Workspace app is intentionally a subset of VS360; the documented <code>develop</code> build (<code>f1fed9b</code>) is the baseline for this PRD.</p>
+<h2 id="16-glossary">16. Glossary</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Claim / Case</td><td>A victim&#x27;s request for a service — the backend <code>service_claims</code> entity; surfaced to staff as a &quot;Case.&quot; UID format <code>CL&lt;yy&gt;&lt;month&gt;&lt;uuid6&gt;</code>.</td></tr>
+<tr><td>Service Claim</td><td>Synonym for Case (the canonical backend name).</td></tr>
+<tr><td>Service</td><td>A concrete offering an agency publishes under a service category (<code>services</code>).</td></tr>
+<tr><td>Service Category</td><td>Taxonomy grouping services; also routes claim/thread notifications to assigned caseworkers.</td></tr>
+<tr><td>VSMS</td><td>Victim Services Management System — the agency-staff identity type (<code>issuer.type = VSMS</code>); the Workspace app&#x27;s users.</td></tr>
+<tr><td>VS360</td><td>The agency role context and the web workspace this app companions.</td></tr>
+<tr><td>Advocate / Caseworker</td><td>Agency staff who help survivors; may create cases on a victim&#x27;s behalf (auto-approved).</td></tr>
+<tr><td>Login Code</td><td>A one-time code issued to a survivor to claim an advocate-created/anonymous case and establish an account.</td></tr>
+<tr><td>Claim Note</td><td>Internal, staff-only annotation on a case (never shown to the victim); typed (Safety Concern, Court Update, etc.).</td></tr>
+<tr><td>Claim Update</td><td>Progress message on a case; visible to the victim only when published, and then it triggers a victim notification.</td></tr>
+<tr><td>PMT</td><td>Performance Measurement Tool — federal/grant reporting data captured per case (demographics, new-vs-returning).</td></tr>
+<tr><td>Grant</td><td>A funder grant with an Excel template and linked questionnaires; basis for generated reports.</td></tr>
+<tr><td>Generated Report</td><td>An Excel report produced by copying a grant template, editable (with an AI spreadsheet editor server-side).</td></tr>
+<tr><td>Questionnaire (PMT/VOCA)</td><td>A grant-linked question set answered per case; feeds the answers matrix and reports.</td></tr>
+<tr><td>Custom Report</td><td>An AI-generated, structured JSON report (KPIs, charts, tables, narrative) owned by its creator; exportable to PDF.</td></tr>
+<tr><td>Referral</td><td>Cross-agency handoff of a case to a partner agency, requiring survivor consent; single active referral per case.</td></tr>
+<tr><td>Partnership</td><td>A bilateral agency relationship enabling referrals and a shared agency-to-agency chat thread.</td></tr>
+<tr><td>Inquiry</td><td>A public inquiry thread staff can approve/reject/resolve.</td></tr>
+<tr><td>Agency / Service Center</td><td>The tenant organization (<code>service_centers</code>); all agency data is scoped to it.</td></tr>
+<tr><td>Reminder</td><td>A calendar entry in the Tools module.</td></tr>
+<tr><td>Shelter Bed</td><td>A shelter-domain concept in the backend; <strong>no mobile UI (out of scope)</strong>.</td></tr>
+<tr><td>OTP</td><td>One-time passcode used for two-factor sign-in and password reset (email or SMS).</td></tr>
+<tr><td>FCM</td><td>Firebase Cloud Messaging (push); supported by the platform but <strong>not integrated in this app</strong>.</td></tr>
+</tbody></table></div>
+      </div>
+      <nav class="prevnext"><a class="pn prev" href="P01.html"><span>← Previous</span><b>Platform — Core System</b></a><a class="pn next" href="P03.html"><span>Next →</span><b>Victim App — Survivor Mobile App</b></a></nav>
+      <footer class="doc-foot">NECX Inc — Confidential · Generated 2026-07-05 · NECX Workspace — Staff Mobile App</footer>
+    </article>
+  </main>
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav class="toc-nav"><a class="toc-1" href="#1-document-control">1. Document Control</a>
+<a class="toc-1" href="#2-executive-summary">2. Executive Summary</a>
+<a class="toc-1" href="#3-product-overview-vision">3. Product Overview &amp; Vision</a>
+<a class="toc-2" href="#31-problem-statement">3.1 Problem Statement</a>
+<a class="toc-2" href="#32-product-vision">3.2 Product Vision</a>
+<a class="toc-2" href="#33-position-in-the-necx-ecosystem">3.3 Position in the NECX Ecosystem</a>
+<a class="toc-1" href="#4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</a>
+<a class="toc-2" href="#41-goals-objectives">4.1 Goals &amp; Objectives</a>
+<a class="toc-2" href="#42-success-metrics">4.2 Success Metrics</a>
+<a class="toc-1" href="#5-scope">5. Scope</a>
+<a class="toc-2" href="#51-in-scope">5.1 In Scope</a>
+<a class="toc-2" href="#52-out-of-scope">5.2 Out of Scope</a>
+<a class="toc-1" href="#6-personas-user-roles">6. Personas &amp; User Roles</a>
+<a class="toc-2" href="#61-roles-table">6.1 Roles Table</a>
+<a class="toc-2" href="#62-persona-narratives">6.2 Persona Narratives</a>
+<a class="toc-1" href="#7-system-context-architecture">7. System Context &amp; Architecture</a>
+<a class="toc-2" href="#71-technology-stack">7.1 Technology Stack</a>
+<a class="toc-2" href="#72-environments">7.2 Environments</a>
+<a class="toc-2" href="#73-networking-interceptors-response-encryption">7.3 Networking, Interceptors &amp; Response Encryption</a>
+<a class="toc-2" href="#74-real-time-notifications">7.4 Real-time &amp; Notifications</a>
+<a class="toc-2" href="#75-tenancy-identity">7.5 Tenancy &amp; Identity</a>
+<a class="toc-2" href="#76-security-ai-call-caveats">7.6 Security &amp; AI-Call Caveats</a>
+<a class="toc-1" href="#8-functional-requirements">8. Functional Requirements</a>
+<a class="toc-2" href="#81-authentication-session">8.1 Authentication &amp; Session</a>
+<a class="toc-2" href="#82-navigation-shell-quick-access">8.2 Navigation Shell &amp; Quick Access</a>
+<a class="toc-2" href="#83-dashboard">8.3 Dashboard</a>
+<a class="toc-2" href="#84-case-claim-management">8.4 Case (Claim) Management</a>
+<a class="toc-2" href="#85-chat-internal-agency-inquiry">8.5 Chat (Internal / Agency / Inquiry)</a>
+<a class="toc-2" href="#86-inquiries">8.6 Inquiries</a>
+<a class="toc-2" href="#87-pmt-reports-grants-questionnaires">8.7 PMT Reports, Grants &amp; Questionnaires</a>
+<a class="toc-2" href="#88-ai-custom-report-builder">8.8 AI Custom Report Builder</a>
+<a class="toc-2" href="#89-users-roles-services-my-network-communities">8.9 Users, Roles, Services, My Network, Communities</a>
+<a class="toc-2" href="#810-tools-calendar-reminders">8.10 Tools — Calendar &amp; Reminders</a>
+<a class="toc-2" href="#811-settings-profiles-notifications-feedback">8.11 Settings, Profiles, Notifications &amp; Feedback</a>
+<a class="toc-1" href="#9-detailed-user-system-flows">9. Detailed User &amp; System Flows</a>
+<a class="toc-2" href="#91-sign-in-two-factor-via-otp">9.1 Sign In (two-factor via OTP)</a>
+<a class="toc-2" href="#92-password-reset">9.2 Password Reset</a>
+<a class="toc-2" href="#93-open-update-a-case">9.3 Open &amp; Update a Case</a>
+<a class="toc-2" href="#94-generate-an-ai-custom-report">9.4 Generate an AI Custom Report</a>
+<a class="toc-2" href="#95-chat-internal-agency-inquiry">9.5 Chat (Internal / Agency / Inquiry)</a>
+<a class="toc-2" href="#96-dashboard-load-refresh">9.6 Dashboard Load &amp; Refresh</a>
+<a class="toc-2" href="#97-session-expiry-forced-sign-out">9.7 Session Expiry &amp; Forced Sign-out</a>
+<a class="toc-1" href="#10-data-model">10. Data Model</a>
+<a class="toc-1" href="#11-api-integration-surface">11. API &amp; Integration Surface</a>
+<a class="toc-2" href="#111-endpoint-surface-client-consumed-v2web-unless-noted">11.1 Endpoint Surface (client-consumed, `/v2/web` unless noted)</a>
+<a class="toc-2" href="#112-external-integrations">11.2 External Integrations</a>
+<a class="toc-1" href="#12-rbac-permissions">12. RBAC &amp; Permissions</a>
+<a class="toc-1" href="#13-non-functional-requirements">13. Non-Functional Requirements</a>
+<a class="toc-2" href="#131-security">13.1 Security</a>
+<a class="toc-2" href="#132-privacy-victim-safety">13.2 Privacy &amp; Victim Safety</a>
+<a class="toc-2" href="#133-performance">13.3 Performance</a>
+<a class="toc-2" href="#134-availability-resilience">13.4 Availability &amp; Resilience</a>
+<a class="toc-2" href="#135-auditability">13.5 Auditability</a>
+<a class="toc-2" href="#136-localization-accessibility">13.6 Localization &amp; Accessibility</a>
+<a class="toc-2" href="#137-compliance">13.7 Compliance</a>
+<a class="toc-1" href="#14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</a>
+<a class="toc-2" href="#141-dashboards-kpis">14.1 Dashboards &amp; KPIs</a>
+<a class="toc-2" href="#142-reporting">14.2 Reporting</a>
+<a class="toc-2" href="#143-notifications">14.3 Notifications</a>
+<a class="toc-1" href="#15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</a>
+<a class="toc-1" href="#16-glossary">16. Glossary</a>
+</nav>
+  </aside>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NECX Service Management · NECX PRD</title>
+<meta name="description" content="How agencies publish, curate and govern the services victims can request">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="prd-page">
+<header class="topbar">
+  <button class="hamburger" aria-label="Menu" onclick="toggleNav()">&#9776;</button>
+  <a class="brand" href="../index.html"><svg class="logo" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 L35 10 V22 C35 31 28 37 20 39 C12 37 5 31 5 22 V10 Z" fill="var(--brand)"/><path d="M13 27 V14 L20 22 V14 M27 14 V27 L20 19" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="brand-text">NECX<span class="brand-sub">Product Requirements</span></span></a>
+  <div class="topbar-spacer"></div>
+  <a class="top-link" href="../index.html">Home</a>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><span class="ic-sun">☀</span><span class="ic-moon">☾</span></button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-search"><input type="search" id="navSearch" placeholder="Filter documents…" oninput="filterNav(this.value)"></div>
+    <nav class="nav"><div class="nav-group"><div class="nav-group-title">Platform &amp; Applications</div><a class="nav-item " href="P01.html" data-search="necx platform — core system whole-platform prd: unified backend, four clients, multi-tenancy, identity/rbac, and the end-to-end case lifecycle."><span class="nav-num">01</span><span class="nav-text">Platform — Core System</span></a>
+<a class="nav-item " href="P02.html" data-search="necx workspace — staff mobile app agency staff mobile app (flutter/riverpod) — the on-the-go companion to the vs360 web dashboard."><span class="nav-num">02</span><span class="nav-text">Workspace — Staff Mobile App</span></a>
+<a class="nav-item " href="P03.html" data-search="necx victim app — survivor mobile app victim / survivor mobile app (flutter/getx) — discover services, request help, chat, find shelter, e-sign."><span class="nav-num">03</span><span class="nav-text">Victim App — Survivor Mobile App</span></a>
+<a class="nav-item " href="P04.html" data-search="vs360 — agency web dashboard vs360 — the agency staff web dashboard (react/vite) and primary caseworker workspace."><span class="nav-num">04</span><span class="nav-text">VS360 — Agency Web Dashboard</span></a>
+</div>
+<div class="nav-group"><div class="nav-group-title">VS360 Feature Modules</div><a class="nav-item " href="P05.html" data-search="necx case management service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes."><span class="nav-num">05</span><span class="nav-text">Case Management</span></a>
+<a class="nav-item " href="P06.html" data-search="necx shelter management shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search."><span class="nav-num">06</span><span class="nav-text">Shelter Management</span></a>
+<a class="nav-item " href="P07.html" data-search="necx hotline management twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights."><span class="nav-num">07</span><span class="nav-text">Hotline Management</span></a>
+<a class="nav-item " href="P08.html" data-search="necx calendar &amp; appointments reminders, tasks and case-linked appointments in the vs360 tools calendar."><span class="nav-num">08</span><span class="nav-text">Calendar &amp; Appointments</span></a>
+<a class="nav-item " href="P09.html" data-search="necx staff time tracking staff time tracking: clock in/out, timesheets, and grant/pmt time attribution."><span class="nav-num">09</span><span class="nav-text">Staff Time Tracking</span></a>
+<a class="nav-item " href="P10.html" data-search="necx agency chat real-time advocate↔victim messaging tied to service threads and cases."><span class="nav-num">10</span><span class="nav-text">Agency Chat</span></a>
+<a class="nav-item " href="P11.html" data-search="necx internal chat staff-to-staff messaging within an agency, real-time over socket.io."><span class="nav-num">11</span><span class="nav-text">Internal Chat</span></a>
+<a class="nav-item " href="P12.html" data-search="necx rbac &amp; user management roles, the module/action permission matrix, plan seats, and multi-layer enforcement."><span class="nav-num">12</span><span class="nav-text">RBAC &amp; User Management</span></a>
+<a class="nav-item " href="P13.html" data-search="necx notes center agency-scoped, cross-case view over internal (caseworker-only) case notes."><span class="nav-num">13</span><span class="nav-text">Notes Center</span></a>
+<a class="nav-item " href="P14.html" data-search="necx drive google-drive-style cloud file storage backed by azure blob, with quotas and analytics."><span class="nav-num">14</span><span class="nav-text">Drive</span></a>
+<a class="nav-item " href="P15.html" data-search="necx ai report builder pmt/grant reporting plus ai-assisted custom report generation with accuracy validation."><span class="nav-num">15</span><span class="nav-text">AI Report Builder</span></a>
+<a class="nav-item " href="P16.html" data-search="necx e-sign &amp; document center prepare, request, sign and pdf-stamp case documents with an audit trail."><span class="nav-num">16</span><span class="nav-text">E-Sign &amp; Document Center</span></a>
+<a class="nav-item " href="P17.html" data-search="necx referrals &amp; partnerships inter-agency network: partnerships, invitations, and consent-based case referrals."><span class="nav-num">17</span><span class="nav-text">Referrals &amp; Partnerships</span></a>
+<a class="nav-item " href="P18.html" data-search="necx inquiries management intake and triage of inquiries / requests-to-connect before they become cases."><span class="nav-num">18</span><span class="nav-text">Inquiries Management</span></a>
+<a class="nav-item " href="P19.html" data-search="necx communities agency-run community spaces: joining questions, membership, posts and moderation."><span class="nav-num">19</span><span class="nav-text">Communities</span></a>
+<a class="nav-item active" href="P20.html" data-search="necx service management service catalog, categories, and the per-service claim-question (intake) builder."><span class="nav-num">20</span><span class="nav-text">Service Management</span></a>
+</div>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim" onclick="toggleNav()"></div>
+  
+  <main class="content">
+    <article class="doc">
+      <div class="doc-eyebrow">Product Requirements Document · NECX Inc — Confidential</div>
+      <h1 class="doc-title">NECX Service Management</h1>
+      <p class="doc-subtitle">How agencies publish, curate and govern the services victims can request</p>
+      <div class="doc-meta"><span class="chip">Version: <b>1.0</b></span><span class="chip">Status: <b>Baseline</b></span><span class="chip">Owner: <b>NECX Product Management</b></span><a class="dl-btn" href="../downloads/20_VS360_Feature_Service_Management.docx" download>⬇ Download DOCX</a></div>
+      <hr class="doc-rule">
+      <div class="doc-body">
+      <h2 id="1-document-control">1. Document Control</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td>NECX — Coordinated Victim Services Platform</td></tr>
+<tr><td>Module</td><td>Service Management (Service Categories, Services, Claim-Question Builder)</td></tr>
+<tr><td>Version</td><td>1.0</td></tr>
+<tr><td>Status</td><td>Baseline</td></tr>
+<tr><td>Author</td><td>NECX Product Management</td></tr>
+<tr><td>Reviewers</td><td>Backend Engineering, VS360 Web Engineering, Victim App Engineering, Agency Success, Compliance/Privacy</td></tr>
+<tr><td>Last Updated</td><td>2026-07-05</td></tr>
+<tr><td>Related Documents</td><td>NECX Case Management PRD, NECX Service Center &amp; Agency Directory PRD, NECX Reports &amp; PMT Questionnaires PRD, NECX Platform Core / RBAC PRD, NECX Victim App PRD</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>1.0</td><td>2026-07-05</td><td>NECX Product Management</td><td>Baseline PRD for Service Management, extracted from backend victim-services, service-center and VS360 web knowledgebases.</td></tr>
+</tbody></table></div>
+<h2 id="2-executive-summary">2. Executive Summary</h2>
+<p>NECX is a coordinated victim-services platform that connects survivors of crime with the agencies and advocates who help them. Service Management is the module through which agencies (service centers) define and publish the concrete offerings — legal aid, counseling, shelter intake, financial assistance, safety planning, and more — that a victim can discover and request from the Victim mobile app. It is the supply side of the platform: everything a victim can ask for exists because an agency created and activated a <strong>service</strong> here.</p>
+<p>A service belongs to a global <strong>service category</strong> (an admin-governed taxonomy), carries descriptive content (title, short and long descriptions, an optional explainer video), and — critically — owns a <strong>claim-questions questionnaire</strong> that the agency designs to capture exactly the intake information it needs. When a victim requests a service, those questions become the victim&#x27;s answers and seed a <strong>service claim</strong> (a case) for the agency&#x27;s caseworkers to triage. Service Management therefore sits directly upstream of Case Management: the quality, discoverability and intake design of services determines the quality of every case that follows.</p>
+<p>The module serves two audiences. Agency staff (case workers and agency admins) use the VS360 web app to author, edit, activate/deactivate and search their own services and design their intake questionnaires. NECX platform administrators use the Admin console to govern the shared category taxonomy and to create or verify services on an agency&#x27;s behalf. Victims never author anything here; they consume the output — a searchable catalog of active services, filterable by category and geography and resolvable by a human-readable <strong>service code</strong>.</p>
+<p>Because this module shapes what victims see and what they are asked at their most vulnerable, it is governed by NECX&#x27;s mission commitments: safety, privacy and dignity. Visibility rules (geographic filtering, national flags, active/verified flags) ensure victims are shown only relevant, vetted help; the questionnaire builder is constrained to keep intake proportionate; and every mutation is audited.</p>
+<h2 id="3-product-overview-vision">3. Product Overview &amp; Vision</h2>
+<h3 id="31-problem-statement">3.1 Problem Statement</h3>
+<p>Victim-services agencies each offer a distinct mix of programs with distinct eligibility and intake needs, and those offerings change over time. Without a structured catalog, victims cannot discover the right help, agencies cannot present their programs consistently, and intake is ad hoc — leading to incomplete cases, duplicated data entry and poor grant/PMT reporting. Agencies also operate in specific geographies; a survivor should not be shown a service they cannot access, nor be denied a nationally available program because of a location filter.</p>
+<h3 id="32-product-vision">3.2 Product Vision</h3>
+<p>Service Management gives every agency a self-service, governed way to publish its programs as a rich, searchable catalog and to design the exact intake it needs per program — while NECX centrally governs a shared taxonomy so services are comparable and discoverable across the network. A victim opening the app sees a curated, geographically relevant set of active, verified services; requesting one is a single guided flow that captures the agency&#x27;s questions and instantly creates a case.</p>
+<h3 id="33-where-this-sits-in-the-necx-ecosystem">3.3 Where This Sits in the NECX Ecosystem</h3>
+<ul>
+<li><strong>Victim App (mobile, <code>issuer.type = APP</code>)</strong> — consumes the catalog: browse/search services, view detail (increments view count, records visit duration), request-to-connect, and claim a service (which creates a case).</li>
+<li><strong>VS360 Web (caseworker/agency, <code>issuer.type = VSMS</code>, context <code>VS360</code>)</strong> — the primary authoring surface: &quot;My Services&quot; list, create/update service, questionnaire builder, activate/deactivate, delete, service detail.</li>
+<li><strong>NECX Admin (<code>issuer.type = NECX</code>, context <code>ADMIN</code>)</strong> — governs the global service-category taxonomy and can create/verify services and bulk-import them for agencies.</li>
+<li><strong>Unified backend (<code>necx-backend_v2</code>)</strong> — the <code>victim-services</code> module (<code>service/</code>, <code>service-categories/</code>) exposes tri-router endpoints (<code>/admin</code>, <code>/web</code>, <code>/mobile</code>) over PostgreSQL (Objection/Knex), with the <code>service-center</code> module owning the agency↔services relationship.</li>
+</ul>
+<p>Service Management is upstream of <strong>Case Management</strong> (a claim references a <code>serviceId</code>), draws its taxonomy from <strong>NECX Admin</strong>, is scoped by the agency identity from <strong>Service Center</strong>, and feeds intake answers that ultimately support <strong>Reports/PMT</strong>.</p>
+<h2 id="4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</h2>
+<h3 id="41-goals-objectives">4.1 Goals &amp; Objectives</h3>
+<ul>
+<li>Enable agencies to publish, edit and retire their service offerings self-service, without NECX intervention.</li>
+<li>Maintain a single, admin-governed service-category taxonomy so offerings are consistent and comparable across the network.</li>
+<li>Let each agency tailor intake per service via a no-code claim-questions builder (fill-in-the-blank, multiple-choice, true-false; required flags; options).</li>
+<li>Ensure victims discover only relevant, active, verified services through category filtering, geographic filtering and national-visibility rules, plus service-code lookup.</li>
+<li>Guarantee a clean bridge from discovery to intake: requesting a service reliably creates a well-formed case with the victim&#x27;s answers attached.</li>
+<li>Protect data integrity: prevent deletion of services that already have cases, prevent duplicate services, and audit every change.</li>
+</ul>
+<h3 id="42-success-metrics">4.2 Success Metrics</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Definition</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>Catalog activation rate</td><td>Active services ÷ total services created, per agency</td><td>≥ 85%</td></tr>
+<tr><td>Service discoverability</td><td>Share of victim service-detail views that arrive via search or category filter</td><td>≥ 70%</td></tr>
+<tr><td>Intake completeness</td><td>Claims created with all required claim questions answered (or explicitly bypassed)</td><td>≥ 95%</td></tr>
+<tr><td>Discovery-to-claim conversion</td><td>Service detail views that result in a claim or request-to-connect</td><td>≥ 15%</td></tr>
+<tr><td>Questionnaire adoption</td><td>Active services that define at least one claim question</td><td>≥ 90%</td></tr>
+<tr><td>Taxonomy coverage</td><td>Services correctly assigned to an existing category (no &quot;uncategorized&quot;)</td><td>100%</td></tr>
+<tr><td>Verified-service rate</td><td>Active services with <code>isVerified = true</code> visible to victims</td><td>≥ 98%</td></tr>
+<tr><td>Service-code lookup success</td><td>Service-code searches that resolve to exactly one active service</td><td>≥ 99%</td></tr>
+</tbody></table></div>
+<h2 id="5-scope">5. Scope</h2>
+<h3 id="51-in-scope">5.1 In Scope</h3>
+<ul>
+<li><strong>Service categories</strong>: admin-managed taxonomy CRUD (create with name-dedup, list/search with pagination and page-less mode, detail, update); routing of claim/thread notifications to caseworkers assigned to a category.</li>
+<li><strong>Services CRUD</strong>: create, read (list + detail), update, activate/deactivate (soft), delete (guarded). Fields: <code>title</code>, <code>shortDescription</code>, <code>description</code>, <code>videoUrl</code>, <code>categoryId</code>, <code>serviceCenterId</code>, generated <code>service_code</code>, <code>isNational</code>, <code>isActive</code>, <code>isVerified</code>, <code>viewCount</code>, <code>visitDuration</code>.</li>
+<li><strong>Claim-questions / questionnaire builder</strong> per service: question text, <code>questionType</code> (fill-in-the-blank | multiple-choice | true-false), <code>isRequired</code>, <code>options</code> (JSON, for multiple-choice); asked at claim time.</li>
+<li><strong>Visibility &amp; discovery rules</strong>: geographic filtering (city/state), <code>isNational</code> bypass, active/verified gating, category filter, free-text search, service-code lookup, view-count increment and visit-duration capture.</li>
+<li><strong>Victim-facing surfacing</strong>: catalog list/detail on mobile, request-to-connect, and claim creation (case intake) driven by a service and its questions.</li>
+<li>Data model for <code>Services</code>, <code>ServiceCategories</code>, <code>ClaimQuestions</code> (and their relationship to <code>ServiceClaims</code> / <code>ClaimQuestionAnswers</code>).</li>
+<li>RBAC for the <code>services</code> module (<code>view</code>, <code>add</code>, <code>edit</code>, <code>delete</code>) and admin <code>category</code> permissions; endpoint surface and NFRs.</li>
+</ul>
+<h3 id="52-out-of-scope">5.2 Out of Scope</h3>
+<ul>
+<li><strong>Case lifecycle</strong> (approve/reject/resolve, notes, updates, chat, files, ratings, referrals) — owned by the Case Management PRD; only the claim-creation bridge is described here.</li>
+<li><strong>PMT questionnaires / grants / report builder</strong> — a separate questionnaire system under <code>reports/pmt-questionnaires</code>; distinct from per-service claim questions and covered by the Reports PRD.</li>
+<li><strong>Agency / service-center CRUD, directory search, hotline, staff &amp; seat management, partnerships/referrals</strong> — covered by the Service Center PRD. Only the agency↔services ownership relationship is referenced.</li>
+<li><strong>Category-to-caseworker assignment UI</strong> (<code>vsms_user_service_categories</code>) — managed in staff/user management; referenced only for notification routing.</li>
+<li>Pricing/monetization of services, external directory syndication, and versioned change-history of a service&#x27;s questionnaire (see Risks/Open Questions).</li>
+</ul>
+<h2 id="6-personas-user-roles">6. Personas &amp; User Roles</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Role</th><th>Description</th><th>Key permissions</th></tr></thead>
+<tbody>
+<tr><td>NECX Platform Admin</td><td>NECX Inc staff governing the shared taxonomy and cross-agency data (<code>issuer.type = NECX</code>, context <code>ADMIN</code>)</td><td><code>category.{view,add,edit,delete}</code>; <code>agency.{add_service,edit_service}</code>; admin service create/verify + bulk import</td></tr>
+<tr><td>Agency Admin / Super Admin</td><td>Senior agency staff owning their agency&#x27;s catalog (<code>issuer.type = VSMS</code>, context <code>VS360</code>)</td><td><code>services.{view,add,edit,delete}</code>; SUPER_ADMIN bypasses fine-grained checks</td></tr>
+<tr><td>Case Worker / Advocate</td><td>Front-line agency staff who may author/maintain services and design intake (<code>VSMS</code>)</td><td><code>services.{view,add,edit}</code> (delete typically withheld); scoped to own agency</td></tr>
+<tr><td>Victim / Survivor</td><td>End user on the mobile app (<code>issuer.type = APP</code>)</td><td>No authoring; consumes catalog, request-to-connect, claim a service</td></tr>
+</tbody></table></div>
+<h3 id="61-persona-narratives">6.1 Persona Narratives</h3>
+<p><strong>Dana — Agency Admin.</strong> Dana runs a domestic-violence agency. She publishes &quot;Emergency Legal Advocacy&quot; under the Legal category, writes a short and long description, attaches a two-minute explainer video, and builds a five-question intake form (a required true-false safety question, a multiple-choice urgency selector, and three fill-in fields). She keeps a seasonal program deactivated out of season rather than deleting it, so its historical cases stay intact.</p>
+<p><strong>Marcus — Case Worker.</strong> Marcus edits a service&#x27;s wording and adds a new required question after a policy change. He cannot delete services (permission withheld) and can only ever see and edit his own agency&#x27;s services.</p>
+<p><strong>Priya — NECX Admin.</strong> Priya curates the global category list, adds a new &quot;Human Trafficking&quot; category, and — during onboarding — bulk-imports a new agency&#x27;s services on its behalf; services she creates are auto-verified.</p>
+<p><strong>Alex — Victim.</strong> Alex searches the app by keyword and by county, opens a service detail (which quietly increments its view count and records how long Alex reads it), and either taps &quot;request to connect&quot; or claims the service — answering Dana&#x27;s intake questions, which instantly creates a case for the agency.</p>
+<h2 id="7-system-context-architecture">7. System Context &amp; Architecture</h2>
+<h3 id="71-tech-stack">7.1 Tech Stack</h3>
+<ul>
+<li><strong>Backend</strong> (<code>necx-backend_v2</code>, branch <code>develop</code>): Node.js + Express (ESM), Objection/Knex over PostgreSQL, Redis, BullMQ (email/jobs), Socket.IO, Azure Blob Storage (media/files), Twilio (email/SMS for request-to-connect and login codes). Module root <code>src/apps/victim-services/</code> with sub-modules <code>service/</code> and <code>service-categories/</code>.</li>
+<li><strong>VS360 Web</strong> (<code>vs360-webapp</code>): React 18 + Vite, Mantine v7, Redux Toolkit + redux-persist, TanStack React Query v4, react-router-dom v6, TipTap (rich-text descriptions &amp; question editing), <code>@dnd-kit</code>. Service layer: <code>src/services/services.js</code>. Pages under <code>src/pages/ServiceManagement/</code> (<code>ServiceManagement.jsx</code>, <code>CreateService.jsx</code>, <code>UpdateService.jsx</code>, <code>ServiceDetails.jsx</code>) with <code>ServiceForm</code> / <code>QuestionnaireForm</code> / <code>QuestionBuilder</code>.</li>
+<li><strong>Victim App</strong>: mobile client (<code>issuer.type = APP</code>) consuming the <code>/mobile/victim-services</code> routes.</li>
+</ul>
+<h3 id="72-backend-request-model">7.2 Backend Request Model</h3>
+<p>Every route file in <code>victim-services</code> builds three sub-routers by URL prefix + RBAC context, each wrapped with <code>rateLimiter(rateLimiters.standard)</code>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Sub-router</th><th>Prefix</th><th>Guard</th><th>Consumer</th></tr></thead>
+<tbody>
+<tr><td>adminRouter</td><td><code>/admin/*</code></td><td><code>allowOnly(&#x27;ADMIN&#x27;)</code></td><td>NECX Admin console</td></tr>
+<tr><td>webRouter</td><td><code>/web/*</code></td><td><code>allowOnly(&#x27;VS360&#x27;)</code></td><td>VS360 web / caseworker (VSMS staff)</td></tr>
+<tr><td>mobileRouter</td><td><code>/mobile/*</code></td><td>none (auth only)</td><td>Victim mobile app (<code>issuer.type = APP</code>)</td></tr>
+</tbody></table></div>
+<p>The typical chain is rate-limiter → auth (populates <code>req.issuer</code>) → context-middleware → <code>allowOnly(context)</code> → permission-middleware (module.action) → Joi validator → controller → service → model. Service behavior branches heavily on <code>issuer.type</code> (APP vs VSMS vs ADMIN). API version prefix is <code>v2</code> (e.g. <code>/v2/web/victim-services</code>).</p>
+<h3 id="73-talking-to-the-backend-web">7.3 Talking to the Backend (Web)</h3>
+<p>VS360 uses an Axios factory (<code>src/services/axios.js</code>) adding <code>Authorization: Bearer &lt;accessToken&gt;</code>, <code>x-refresh-token</code>, <code>X-Netlify-Secret</code>, <code>X-Environment</code>. Responses are AES-encrypted and decrypted client-side; refresh tokens rotate via response header; 401 logs out, 403 renders <code>UnauthorizedAccess</code>. Server state is cached with React Query; the <code>victim-services</code> and <code>services/categories</code> query keys drive the Service Management screens.</p>
+<h3 id="74-real-time-notifications">7.4 Real-time &amp; Notifications</h3>
+<p>Service Management itself emits no Socket.IO events for CRUD. Its downstream, victim-initiated <strong>claim</strong> creation triggers a <code>claim-request</code> socket event and <code>service_center_notifications</code> to caseworkers assigned to the service&#x27;s category (via <code>vsms_user_service_categories</code>); <strong>request-to-connect</strong> sends an email to the service center. FCM/socket delivery for the case lifecycle is described in Case Management.</p>
+<h3 id="75-tenancy">7.5 Tenancy</h3>
+<p>Services are agency-scoped: a service belongs to a <code>service_centers</code> row via <code>serviceCenterId</code>. VSMS callers are constrained to their own <code>issuer.serviceCenterInfo.id</code> for create/update/delete; the victim (APP) catalog spans all agencies subject to visibility rules; NECX Admin spans all agencies. Categories are a single global taxonomy shared across all agencies.</p>
+<h2 id="8-functional-requirements">8. Functional Requirements</h2>
+<h3 id="81-service-categories-taxonomy">8.1 Service Categories (Taxonomy)</h3>
+<p>Service categories are a global, NECX-admin-governed taxonomy (<code>service_categories</code>: <code>name</code>, <code>description</code>). A category groups comparable services across all agencies and also drives notification routing: caseworkers are linked to categories via <code>vsms_user_service_categories</code>, so a new claim on a service notifies the caseworkers who handle that service&#x27;s category. Categories are read by every client (to filter/label services) but written only by NECX Admin.</p>
+<p>Endpoints (<code>/{admin,web,mobile}/services/categories</code>): GET list (<code>searchKey</code>, <code>page</code>, <code>pageSize</code>, <code>pageLess</code>), GET <code>/:uid</code> (admin/web), POST create (admin only; dedupe by name), PATCH <code>update/:uid</code> (admin only).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CAT-01</td><td>The system shall provide a global service-category taxonomy with <code>name</code> and <code>description</code>.</td><td>Must</td></tr>
+<tr><td>FR-CAT-02</td><td>NECX Admin shall create categories; the system shall reject a create whose <code>name</code> duplicates an existing category.</td><td>Must</td></tr>
+<tr><td>FR-CAT-03</td><td>NECX Admin shall update a category&#x27;s name/description via PATCH <code>update/:uid</code>.</td><td>Must</td></tr>
+<tr><td>FR-CAT-04</td><td>All clients (admin/web/mobile) shall list categories with search (<code>searchKey</code>), pagination (<code>page</code>, <code>pageSize</code>) and a <code>pageLess</code> mode for full lists (used to populate selectors).</td><td>Must</td></tr>
+<tr><td>FR-CAT-05</td><td>Admin and web shall fetch a single category by <code>uid</code>.</td><td>Should</td></tr>
+<tr><td>FR-CAT-06</td><td>Category assignment shall drive claim-notification routing to caseworkers linked via <code>vsms_user_service_categories</code>.</td><td>Must</td></tr>
+<tr><td>FR-CAT-07</td><td>The web/app service-category selector shall present the taxonomy for choosing a service&#x27;s category and for filtering the catalog.</td><td>Must</td></tr>
+<tr><td>FR-CAT-08</td><td>Category create/update shall be gated by the admin <code>category.{add,edit}</code> permission and audited via <code>ActionLogs</code>.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="82-services-creation-publishing">8.2 Services — Creation &amp; Publishing</h3>
+<p>A <strong>service</strong> (<code>services</code>, <code>Services.js</code>) is a concrete offering published by a service center under one category. On create the system generates a human-readable <code>service_code</code>, sets <code>isVerified = true</code> when the creator is VSMS (agency self-publishing is trusted), and defaults <code>isActive</code> so a newly created active service is immediately &quot;published&quot; to victims. Creation is available to VS360 (self, for own agency) and NECX Admin (on an agency&#x27;s behalf). Duplicate services — same <code>(title, categoryId, serviceCenterId)</code> — are blocked.</p>
+<p>Create endpoint: POST <code>/{admin,web}/victim-services</code> with body <code>serviceCenterId</code>, <code>title</code>, <code>shortDescription</code>, <code>description</code>, <code>categoryId</code>, <code>videoUrl</code>, <code>claimQuestions[]</code>. (No mobile create.)</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SVC-01</td><td>The system shall let VS360 (own agency) and NECX Admin create a service with <code>title</code>, <code>shortDescription</code>, <code>description</code>, <code>videoUrl</code>, <code>categoryId</code>, <code>serviceCenterId</code>.</td><td>Must</td></tr>
+<tr><td>FR-SVC-02</td><td>The system shall generate a unique human-readable <code>service_code</code> on create.</td><td>Must</td></tr>
+<tr><td>FR-SVC-03</td><td>A service created by a VSMS user shall be auto-set <code>isVerified = true</code>.</td><td>Must</td></tr>
+<tr><td>FR-SVC-04</td><td>The system shall reject creation of a duplicate service for the same <code>(title, categoryId, serviceCenterId)</code>.</td><td>Must</td></tr>
+<tr><td>FR-SVC-05</td><td>The create payload shall accept an inline <code>claimQuestions[]</code> array persisted as the service&#x27;s intake questionnaire (see 8.4).</td><td>Must</td></tr>
+<tr><td>FR-SVC-06</td><td>VS360 callers shall only create services for their own <code>serviceCenterInfo.id</code>; NECX Admin may create for any agency.</td><td>Must</td></tr>
+<tr><td>FR-SVC-07</td><td>The system shall support NECX Admin bulk import of an agency&#x27;s services (per-agency transaction, <code>ActionLogs</code> per row).</td><td>Should</td></tr>
+<tr><td>FR-SVC-08</td><td><code>videoUrl</code> shall accept an explainer video link (e.g. YouTube) surfaced on the service detail.</td><td>Should</td></tr>
+<tr><td>FR-SVC-09</td><td>A newly created active service shall be immediately discoverable by victims subject to visibility rules (8.5).</td><td>Must</td></tr>
+<tr><td>FR-SVC-10</td><td>Service create/update/delete shall be audited via <code>ActionLogs</code>.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="83-services-editing-activation-deletion">8.3 Services — Editing, Activation &amp; Deletion</h3>
+<p>Services are edited in place (PATCH), soft-toggled between active/inactive (a single activate/deactivate endpoint that flips <code>isActive</code>), and hard-deleted only when safe. Deactivating hides a service from victims without destroying it or its history — the preferred way to retire a seasonal or paused program. Deletion is permitted only when the service has <strong>no cases</strong> (<code>totalCases === 0</code>), preventing loss of case-linked data; VSMS deletes are scoped to the caller&#x27;s own agency.</p>
+<p>Endpoints: PATCH <code>update/:uid</code>; POST <code>deactive-activate/:uid</code> (toggle <code>isActive</code>); DELETE <code>/:serviceUid</code> (only if <code>totalCases === 0</code>; VSMS scoped to own center).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SVC-11</td><td>The system shall let authorized users update a service&#x27;s title, descriptions, <code>videoUrl</code>, category and questionnaire via PATCH <code>update/:uid</code>.</td><td>Must</td></tr>
+<tr><td>FR-SVC-12</td><td>POST <code>deactive-activate/:uid</code> shall toggle <code>isActive</code>; a deactivated service shall be hidden from the victim catalog but retained.</td><td>Must</td></tr>
+<tr><td>FR-SVC-13</td><td>DELETE shall be permitted only when the service has zero associated cases (<code>totalCases === 0</code>); otherwise the system shall reject the deletion.</td><td>Must</td></tr>
+<tr><td>FR-SVC-14</td><td>VSMS delete/update shall be scoped to the caller&#x27;s own <code>serviceCenterId</code>.</td><td>Must</td></tr>
+<tr><td>FR-SVC-15</td><td>Editing a service&#x27;s questionnaire shall not retroactively rewrite answers already captured on existing claims (see Risks).</td><td>Should</td></tr>
+<tr><td>FR-SVC-16</td><td>The web list shall support CSV/XLS export of services (page-less fetch).</td><td>Could</td></tr>
+</tbody></table></div>
+<h3 id="84-claim-questions-questionnaire-builder">8.4 Claim-Questions / Questionnaire Builder</h3>
+<p>Each service owns an intake questionnaire — its <strong>claim questions</strong> (<code>service_claim_questions</code>) — designed by the agency and asked to the victim at claim time. A question has <code>question</code> text, a <code>questionType</code> of <strong>fill-in-the-blank</strong>, <strong>multiple-choice</strong>, or <strong>true-false</strong>, an <code>isRequired</code> flag, and an <code>options</code> JSON array (used by multiple-choice). These questions drive the &quot;Client Answers&quot; shown in the case and are distinct from PMT questionnaires (Reports module). On the web, the builder is <code>QuestionnaireForm</code> + <code>QuestionBuilder</code> embedded in <code>ServiceForm</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-Q-01</td><td>The builder shall let an author add, edit, reorder and remove claim questions on a service.</td><td>Must</td></tr>
+<tr><td>FR-Q-02</td><td>Each question shall have a <code>questionType</code> of fill-in-the-blank, multiple-choice, or true-false.</td><td>Must</td></tr>
+<tr><td>FR-Q-03</td><td>Multiple-choice questions shall carry an <code>options[]</code> list; other types shall not require options.</td><td>Must</td></tr>
+<tr><td>FR-Q-04</td><td>Each question shall have an <code>isRequired</code> flag enforced at claim time (with an advocate-side &quot;Bypass Requirement&quot; allowance during advocate-created intake).</td><td>Must</td></tr>
+<tr><td>FR-Q-05</td><td>Questions shall be persisted inline on service create (<code>claimQuestions[]</code>) and editable on update.</td><td>Must</td></tr>
+<tr><td>FR-Q-06</td><td>At claim read time the service&#x27;s full question list shall be merged with the claim&#x27;s answers so unanswered questions surface with <code>id: null</code>.</td><td>Must</td></tr>
+<tr><td>FR-Q-07</td><td>Claim answers shall be stored per claim in <code>claim_question_answers</code> (<code>claimId</code>, <code>questionId</code>, <code>answer</code>), replaceable as a full set via PATCH <code>claims/:claimId/questions</code>.</td><td>Must</td></tr>
+<tr><td>FR-Q-08</td><td>The builder shall be usable with zero, one, or many questions (a service may have no intake questions).</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="85-visibility-geographic-national-rules">8.5 Visibility, Geographic &amp; National Rules</h3>
+<p>The victim catalog is filtered so survivors see only relevant, vetted help. Geographic filtering matches services against the victim&#x27;s <code>cityId</code>/<code>stateId</code>; the <code>isNational</code> flag on a service bypasses geo filtering so nationwide programs always appear. Only <code>isActive</code> (and, for victims, verified) services surface. Categories, city and state act as additional filters. Agencies themselves are only discoverable when active and plan-enabled (Service Center rules), which further bounds which services appear.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-VIS-01</td><td>The victim catalog shall exclude services where <code>isActive = false</code>.</td><td>Must</td></tr>
+<tr><td>FR-VIS-02</td><td>The victim catalog shall apply geographic filtering by <code>cityId</code>/<code>stateId</code>.</td><td>Must</td></tr>
+<tr><td>FR-VIS-03</td><td>A service with <code>isNational = true</code> shall bypass geographic filtering and appear regardless of victim location.</td><td>Must</td></tr>
+<tr><td>FR-VIS-04</td><td>The list endpoint shall accept <code>categoryId</code>, <code>cityId</code>, <code>stateId</code>, <code>searchKey</code>, <code>page</code>, <code>pageSize</code> filters.</td><td>Must</td></tr>
+<tr><td>FR-VIS-05</td><td>Verified status (<code>isVerified</code>) shall gate victim visibility of services per platform policy.</td><td>Should</td></tr>
+<tr><td>FR-VIS-06</td><td>VSMS &quot;My Services&quot; list shall be scoped to the caller&#x27;s agency (not geo-filtered).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="86-discovery-search-service-code-lookup">8.6 Discovery, Search &amp; Service-Code Lookup</h3>
+<p>Victims and staff find services by free-text search (<code>searchKey</code>), by category, and by geography; a service&#x27;s human-readable <code>service_code</code> provides a precise, shareable lookup key (e.g. an advocate on a hotline can give a victim a code). Viewing a service detail increments <code>viewCount</code>, and the mobile client reports <code>visitDuration</code> (how long the victim spent), feeding engagement analytics.</p>
+<p>Endpoints: GET <code>/{admin,web,mobile}/victim-services</code> (filters <code>page</code>, <code>pageSize</code>, <code>searchKey</code>, <code>categoryId</code>, <code>cityId</code>, <code>stateId</code>); GET <code>/:uid</code> (increments <code>viewCount</code>; for APP returns the victim&#x27;s claim-state for that service); PATCH <code>mark-visit-duration</code> (mobile).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-DISC-01</td><td>The list endpoint shall support free-text <code>searchKey</code> matching service title/description.</td><td>Must</td></tr>
+<tr><td>FR-DISC-02</td><td>Search shall resolve a service by its <code>service_code</code>.</td><td>Must</td></tr>
+<tr><td>FR-DISC-03</td><td>GET <code>/:uid</code> shall increment <code>viewCount</code> on each detail fetch.</td><td>Must</td></tr>
+<tr><td>FR-DISC-04</td><td>For an APP caller, GET <code>/:uid</code> shall also return the victim&#x27;s existing claim-state for the service (so the app can show &quot;already requested&quot;).</td><td>Must</td></tr>
+<tr><td>FR-DISC-05</td><td>Mobile shall report reading time via PATCH <code>mark-visit-duration</code>, persisted to <code>visitDuration</code>.</td><td>Should</td></tr>
+<tr><td>FR-DISC-06</td><td>Results shall be paginated (<code>page</code>, <code>pageSize</code>).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="87-victim-surfacing-request-to-connect-case-intake">8.7 Victim Surfacing, Request-to-Connect &amp; Case Intake</h3>
+<p>Active, visible services surface in the victim app as a browsable/searchable catalog with detail pages (title, descriptions, video, agency). From a detail, the victim can <strong>request to connect</strong> (a lightweight interest signal that emails the service center; deduped — a second request returns 409) or <strong>claim</strong> the service, which answers the service&#x27;s claim questions and creates a case.</p>
+<p>Claim creation (<code>claimService</code>, transactional) resolves the victim, enforces one ongoing claim per <code>(service, victim)</code>, generates the case <code>uid</code> (<code>CL&lt;yy&gt;&lt;month&gt;&lt;uuid6&gt;</code>), inserts the question answers, and hands off to Case Management. Advocate-created claims (from VS360) auto-approve; victim-initiated claims start <code>pending</code> and notify category-assigned caseworkers.</p>
+<p>Endpoints: PUT <code>request-to-connect/:uid</code> (mobile; emails center; 409 if already requested); POST <code>/{web,mobile}/service-claims</code> (<code>claimService</code>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-INT-01</td><td>The victim app shall present active, visible services as a searchable catalog with detail pages including <code>videoUrl</code>.</td><td>Must</td></tr>
+<tr><td>FR-INT-02</td><td>The victim shall be able to request-to-connect on a service (PUT <code>request-to-connect/:uid</code>), emailing the service center; duplicate requests shall return 409.</td><td>Must</td></tr>
+<tr><td>FR-INT-03</td><td>Claiming a service shall create a service claim referencing the <code>serviceId</code> and persist the victim&#x27;s answers to the service&#x27;s claim questions.</td><td>Must</td></tr>
+<tr><td>FR-INT-04</td><td>The system shall block a second ongoing (pending/approved) claim for the same <code>(service, victim)</code>.</td><td>Must</td></tr>
+<tr><td>FR-INT-05</td><td>Victim-initiated claims shall start <code>pending</code> and emit <code>claim-request</code> to caseworkers assigned to the service&#x27;s category.</td><td>Must</td></tr>
+<tr><td>FR-INT-06</td><td>Advocate-created claims (VS360, <code>shouldCreateUser</code>) shall auto-approve.</td><td>Must</td></tr>
+<tr><td>FR-INT-07</td><td>Required claim questions shall be enforced at victim claim time; advocate intake may individually bypass required questions.</td><td>Must</td></tr>
+</tbody></table></div>
+<h2 id="9-detailed-user-system-flows">9. Detailed User &amp; System Flows</h2>
+<h3 id="91-necx-admin-creates-a-service-category">9.1 NECX Admin Creates a Service Category</h3>
+<ol class="flow">
+<li>Admin opens the category management screen in the NECX Admin console (context <code>ADMIN</code>, <code>category.add</code> permission).</li>
+<li>Admin enters a <code>name</code> and optional <code>description</code> and submits.</li>
+<li>Client sends POST <code>/admin/services/categories</code>.</li>
+<li>Backend runs <code>allowOnly(&#x27;ADMIN&#x27;)</code>, permission check, and Joi validation.</li>
+<li>Service dedupes by <code>name</code>; if a category with the same name exists, it returns a conflict error and no row is created.</li>
+<li>On success it inserts the <code>service_categories</code> row and writes an <code>ActionLogs</code> CREATE entry.</li>
+<li>The new category immediately appears in category selectors and catalog filters across web and mobile (via the <code>pageLess</code> list).</li>
+<li>Edge case: to rename, admin uses PATCH <code>update/:uid</code>; existing services keep their <code>categoryId</code> and now display the new name.</li>
+</ol>
+<h3 id="92-agency-creates-a-service-with-claim-questions">9.2 Agency Creates a Service with Claim Questions</h3>
+<ol class="flow">
+<li>Agency admin/case worker opens VS360 → &quot;My Services&quot; → <strong>Create Service</strong> (<code>services.add</code> permission; context <code>VS360</code>).</li>
+<li>In <code>ServiceForm</code> they enter <strong>Title</strong>, optional <strong>YouTube Video URL</strong>, select a <strong>Category</strong> (<code>ServiceCategorySelectField</code>, from <code>/services/categories</code>), and write a <strong>Description</strong> (TipTap rich text); optionally a short description.</li>
+<li>In the <strong>Client Questionnaire</strong> builder (<code>QuestionnaireForm</code> + <code>QuestionBuilder</code>) they add questions, each with <code>question</code> text, a <code>questionType</code> (fill-in-the-blank / multiple-choice / true-false), an <code>isRequired</code> flag, and — for multiple-choice — an <code>options[]</code> list.</li>
+<li>They confirm via the confirmation modal; the client calls <code>CreateService(payload)</code> → POST <code>/web/victim-services</code> with <code>serviceCenterId</code> (the caller&#x27;s agency), <code>categoryId</code>, <code>title</code>, <code>shortDescription</code>, <code>description</code>, <code>videoUrl</code>, and <code>claimQuestions[]</code>.</li>
+<li>Backend runs <code>allowOnly(&#x27;VS360&#x27;)</code>, <code>services.add</code> permission, validation, and a duplicate guard on <code>(title, categoryId, serviceCenterId)</code>.</li>
+<li>It generates a unique <code>service_code</code>, sets <code>isVerified = true</code> (VSMS-created), sets <code>isActive</code>, inserts the <code>services</code> row, and inserts each claim question into <code>service_claim_questions</code>.</li>
+<li>It writes an <code>ActionLogs</code> CREATE entry and returns the created service.</li>
+<li>The service now appears in &quot;My Services&quot; (Active) and, subject to visibility rules, in the victim catalog.</li>
+<li>Edge case: duplicate <code>(title, categoryId, serviceCenterId)</code> → rejected with a duplicate error; the author changes the title or category.</li>
+</ol>
+<h3 id="93-agency-edits-and-then-deactivates-a-service">9.3 Agency Edits and Then Deactivates a Service</h3>
+<ol class="flow">
+<li>From &quot;My Services&quot;, staff choose <strong>Edit</strong> on a service row (<code>services.edit</code>); the update form loads current values including the questionnaire.</li>
+<li>They change wording, swap the category, add a new required question, or edit options, then confirm.</li>
+<li>Client calls <code>UpdateService(uid, {data})</code> → PATCH <code>/web/victim-services/update/:uid</code> (scoped to own agency); backend validates, updates the <code>services</code> row and questionnaire, and audits the change.</li>
+<li>Existing claims retain the answers captured under the prior questionnaire; the read side merges the current question set with stored answers (unanswered → <code>id: null</code>).</li>
+<li>To pause the program, staff click <strong>Deactivate</strong>; client calls <code>DeactivateService(uid)</code> → POST <code>/web/victim-services/deactive-activate/:uid</code>, flipping <code>isActive</code> to false.</li>
+<li>The service disappears from the victim catalog but remains in &quot;My Services&quot; (Inactive) with all history intact; clicking again reactivates it.</li>
+<li>Edge case — <strong>Delete</strong>: staff choose Delete → <code>DeleteService(uid)</code> → DELETE <code>/web/victim-services/:serviceUid</code>. If the service has any cases (<code>totalCases &gt; 0</code>) the backend rejects the delete; staff must deactivate instead. Only a zero-case service is hard-deleted.</li>
+</ol>
+<h3 id="94-victim-discovers-a-service-search-category-code-geonational">9.4 Victim Discovers a Service (Search, Category, Code, Geo/National)</h3>
+<ol class="flow">
+<li>In the victim app the survivor opens the services catalog; the client calls GET <code>/mobile/victim-services</code> with <code>page</code>/<code>pageSize</code> and any <code>categoryId</code>, <code>cityId</code>, <code>stateId</code>, <code>searchKey</code>.</li>
+<li>Backend returns only <code>isActive</code> services; geographic filtering matches the victim&#x27;s <code>cityId</code>/<code>stateId</code>, while services flagged <code>isNational = true</code> are included regardless of location.</li>
+<li>The victim narrows by category or types a keyword; entering a <strong>service code</strong> in search resolves the specific service.</li>
+<li>The victim opens a service; the client calls GET <code>/mobile/victim-services/:uid</code>, which increments <code>viewCount</code> and (for APP) returns the victim&#x27;s claim-state for that service (e.g. already requested).</li>
+<li>The detail page shows title, descriptions and the explainer <code>videoUrl</code>.</li>
+<li>As the victim reads, the app periodically calls PATCH <code>/mobile/victim-services/mark-visit-duration</code> to record <code>visitDuration</code> for engagement analytics.</li>
+<li>Edge case: a victim in a region with no matching local services still sees national services; if none match, an empty state prompts broadening the search.</li>
+</ol>
+<h3 id="95-victim-requests-a-service-creating-a-case">9.5 Victim Requests a Service, Creating a Case</h3>
+<ol class="flow">
+<li>From a service detail the victim taps <strong>Request to Connect</strong> or <strong>Claim/Request Service</strong>.</li>
+<li><strong>Request-to-connect path</strong>: client sends PUT <code>/mobile/victim-services/request-to-connect/:uid</code>; the backend emails the service center and records the request. A repeat request returns 409 (&quot;already requested&quot;). This is a lightweight interest signal, not a case.</li>
+<li><strong>Claim path</strong>: the app presents the service&#x27;s claim questions; the victim answers, respecting <code>isRequired</code>. The client submits POST <code>/mobile/service-claims</code> (<code>claimService</code>) with <code>serviceId</code>, optional <code>statementFromVictim</code>, and <code>questionAnswers[]</code>.</li>
+<li>Backend (transactional) resolves <code>victimId</code> from <code>issuer.id</code>, then runs the duplicate guard: if an ongoing (pending/approved) claim already exists for <code>(service, victim)</code>, it rejects the request.</li>
+<li>It creates the claim with <code>uid = CL&lt;yy&gt;&lt;month&gt;&lt;uuid6&gt;</code> and status <code>pending</code> (victim-initiated), inserts the <code>questionAnswers</code> into <code>claim_question_answers</code>, creates the stats row, computes new-vs-returning client, and creates the PMT report snapshot.</li>
+<li>It emits <code>claim-request</code> to the caseworkers assigned to the service&#x27;s category (via <code>vsms_user_service_categories</code>) and inserts <code>service_center_notifications</code>.</li>
+<li>Control passes to Case Management, where staff triage (approve/reject/resolve); the victim sees the new case and, on approval, gains a chat thread and published updates.</li>
+<li>Edge case — <strong>advocate-created</strong> (VS360): an advocate opens Create Case, selects the service (from their agency&#x27;s categories), fills the intake (may bypass required questions), and submits POST <code>/web/service-claims</code> with <code>shouldCreateUser</code>/<code>userData</code>; the claim <strong>auto-approves</strong>, and if the victim is new a login code is generated for the victim to claim the case on mobile.</li>
+</ol>
+<h2 id="10-data-model">10. Data Model</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Key Fields</th><th>Relationships</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>ServiceCategories (<code>service_categories</code>)</td><td><code>uid</code>, <code>name</code>, <code>description</code></td><td>1—N <code>Services</code>; N—M staff via <code>vsms_user_service_categories</code></td><td>Global admin-governed taxonomy; groups services and routes claim notifications to category-assigned caseworkers.</td></tr>
+<tr><td>Services (<code>services</code>, <code>Services.js</code>)</td><td><code>uid</code>, <code>title</code>, <code>shortDescription</code>, <code>description</code>, <code>videoUrl</code>, <code>service_code</code>, <code>categoryId</code>, <code>serviceCenterId</code>, <code>isNational</code>, <code>isActive</code>, <code>isVerified</code>, <code>viewCount</code>, <code>visitDuration</code></td><td>N—1 <code>ServiceCategories</code>; N—1 <code>ServiceCenters</code>; 1—N <code>ClaimQuestions</code>; 1—N <code>ServiceClaims</code></td><td>A concrete offering an agency publishes; owns the intake questionnaire; the target of a victim&#x27;s claim.</td></tr>
+<tr><td>ClaimQuestions (<code>service_claim_questions</code>)</td><td><code>id</code>, <code>serviceId</code>, <code>question</code>, <code>questionType</code> (fill-in-the-blank \</td><td>multiple-choice \</td><td>true-false), <code>isRequired</code>, <code>options</code> (JSON)</td></tr>
+<tr><td>ClaimQuestionAnswers (<code>claim_question_answers</code>)</td><td><code>id</code>, <code>claimId</code>, <code>questionId</code>, <code>answer</code></td><td>N—1 <code>ServiceClaims</code>; N—1 <code>ClaimQuestions</code></td><td>Victim&#x27;s answers per claim; full-replace on edit; merged with question list on read (unanswered → <code>id: null</code>).</td></tr>
+<tr><td>ServiceClaims (<code>service_claims</code>, <code>ServiceClaims.js</code>)</td><td><code>uid</code> (<code>CL&lt;yy&gt;&lt;month&gt;&lt;uuid6&gt;</code>), <code>serviceId</code>, <code>victimId</code>, <code>status</code>, <code>rating</code></td><td>N—1 <code>Services</code>; N—1 <code>AppUsers</code>; 1—N answers/notes/updates</td><td>The case created when a victim requests a service (owned by Case Management; referenced here as the intake output).</td></tr>
+<tr><td>ServiceCenters (<code>service_centers</code>, <code>ServiceCenters.js</code>)</td><td><code>uid</code>, <code>code</code>, <code>serviceType</code>, <code>status</code>, <code>planId</code>, <code>acceptingReferrals</code></td><td>1—N <code>Services</code>; 1—N <code>VSMSUsers</code></td><td>The agency that owns and publishes services; scopes VSMS access and bounds catalog visibility.</td></tr>
+<tr><td>RequestToConnect</td><td><code>serviceId</code>, <code>victimId</code>, request state</td><td>N—1 <code>Services</code>; N—1 <code>AppUsers</code></td><td>Lightweight victim interest signal surfaced to the agency; deduped.</td></tr>
+<tr><td>ActionLogs</td><td><code>action</code>, <code>referenceType</code>, <code>actionDescription{source,ip,url,context}</code></td><td>references service/category rows</td><td>Audit trail for every service/category create/update/delete.</td></tr>
+</tbody></table></div>
+<h2 id="11-api-integration-surface">11. API &amp; Integration Surface</h2>
+<h3 id="111-service-endpoints-adminwebmobilevictim-services">11.1 Service Endpoints (<code>/{admin,web,mobile}/victim-services</code>)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/victim-services</code></td><td>List/search services (filters: <code>page</code>, <code>pageSize</code>, <code>searchKey</code>, <code>categoryId</code>, <code>cityId</code>, <code>stateId</code>)</td><td>admin/web/mobile per prefix</td></tr>
+<tr><td>GET</td><td><code>/victim-services/:uid</code></td><td>Service detail; increments <code>viewCount</code>; APP also gets claim-state</td><td>admin/web/mobile</td></tr>
+<tr><td>POST</td><td><code>/victim-services</code></td><td>Create service (<code>serviceCenterId</code>, <code>title</code>, <code>shortDescription</code>, <code>description</code>, <code>categoryId</code>, <code>videoUrl</code>, <code>claimQuestions[]</code>)</td><td>web (<code>services.add</code>) / admin</td></tr>
+<tr><td>PATCH</td><td><code>/victim-services/update/:uid</code></td><td>Update service + questionnaire</td><td>web (<code>services.edit</code>) / admin</td></tr>
+<tr><td>POST</td><td><code>/victim-services/deactive-activate/:uid</code></td><td>Toggle <code>isActive</code> (soft publish/retire)</td><td>web / admin</td></tr>
+<tr><td>DELETE</td><td><code>/victim-services/:serviceUid</code></td><td>Delete service (only if <code>totalCases === 0</code>; VSMS own-center)</td><td>web (<code>services.delete</code>) / admin</td></tr>
+<tr><td>PATCH</td><td><code>/victim-services/mark-visit-duration</code></td><td>Record victim reading time (<code>visitDuration</code>)</td><td>mobile</td></tr>
+<tr><td>PUT</td><td><code>/victim-services/request-to-connect/:uid</code></td><td>Victim interest signal; emails center; 409 if duplicate</td><td>mobile</td></tr>
+</tbody></table></div>
+<h3 id="112-service-category-endpoints-adminwebmobileservicescategories">11.2 Service-Category Endpoints (<code>/{admin,web,mobile}/services/categories</code>)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/services/categories</code></td><td>List/search categories (<code>searchKey</code>, <code>page</code>, <code>pageSize</code>, <code>pageLess</code>)</td><td>admin/web/mobile</td></tr>
+<tr><td>GET</td><td><code>/services/categories/:uid</code></td><td>Category detail</td><td>admin/web</td></tr>
+<tr><td>POST</td><td><code>/services/categories</code></td><td>Create category (dedupe by name)</td><td>admin (<code>category.add</code>)</td></tr>
+<tr><td>PATCH</td><td><code>/services/categories/update/:uid</code></td><td>Update category</td><td>admin (<code>category.edit</code>)</td></tr>
+</tbody></table></div>
+<h3 id="113-intake-bridge-case-management-referenced">11.3 Intake Bridge (Case Management, referenced)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>POST</td><td><code>/{web,mobile}/service-claims</code></td><td><code>claimService</code> — create a case from a service + answers</td><td>web (advocate) / mobile (victim)</td></tr>
+<tr><td>PATCH</td><td><code>/service-claims/claims/:claimId/questions</code></td><td>Full-replace a claim&#x27;s answers</td><td>web</td></tr>
+</tbody></table></div>
+<h3 id="114-external-integrations">11.4 External Integrations</h3>
+<ul>
+<li><strong>Email (BullMQ + provider)</strong> — request-to-connect notifies the service center; bulk-import and admin actions are audited/notified as applicable.</li>
+<li><strong>Twilio (SMS) / Email</strong> — login-code delivery for advocate-created cases (downstream of claim creation).</li>
+<li><strong>FCM + Socket.IO</strong> — victim/staff notifications for the resulting case lifecycle (downstream; <code>claim-request</code>, <code>vs360-user-&lt;uid&gt;</code>, <code>app-notification-room</code>).</li>
+<li><strong>Azure Blob Storage</strong> — media/file storage referenced by service content and case files.</li>
+</ul>
+<h2 id="12-rbac-permissions">12. RBAC &amp; Permissions</h2>
+<p>Two layers combine: the <strong>context gate</strong> (<code>allowOnly</code>) enforced by URL prefix, and <strong>fine-grained</strong> module.action permissions. SUPER_ADMIN bypasses fine-grained checks. VS360 callers are always scoped to their own <code>serviceCenterInfo.id</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Action</th><th>Context</th><th>Fine-grained permission</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>List/view services</td><td>ADMIN / VS360 / APP</td><td><code>services.view</code> (VS360)</td><td>APP catalog is visibility-filtered; VS360 scoped to own agency.</td></tr>
+<tr><td>Create service</td><td>VS360 / ADMIN</td><td><code>services.add</code> (VS360); <code>agency.add_service</code> (ADMIN)</td><td>VS360 → own agency only; VSMS-created services auto-verified.</td></tr>
+<tr><td>Edit service / questionnaire</td><td>VS360 / ADMIN</td><td><code>services.edit</code> (VS360); <code>agency.edit_service</code> (ADMIN)</td><td>Scoped to own agency for VS360.</td></tr>
+<tr><td>Activate/deactivate service</td><td>VS360 / ADMIN</td><td><code>services.edit</code></td><td>Soft publish/retire.</td></tr>
+<tr><td>Delete service</td><td>VS360 / ADMIN</td><td><code>services.delete</code></td><td>Only if <code>totalCases === 0</code>; VSMS own-center.</td></tr>
+<tr><td>List/view categories</td><td>ADMIN / VS360 / APP</td><td>(read-open to all clients)</td><td>Shared global taxonomy.</td></tr>
+<tr><td>Create/edit category</td><td>ADMIN only</td><td><code>category.add</code> / <code>category.edit</code></td><td>NECX-governed; not available to agencies.</td></tr>
+<tr><td>Bulk-import services</td><td>ADMIN</td><td><code>agency.add_service</code></td><td>Onboarding tooling; per-row audited.</td></tr>
+<tr><td>Claim a service (create case)</td><td>APP / VS360</td><td><code>claims.add</code> (VS360 advocate)</td><td>Victim-initiated (mobile) needs no VS360 permission; advocate path is VS360.</td></tr>
+</tbody></table></div>
+<h2 id="13-non-functional-requirements">13. Non-Functional Requirements</h2>
+<ul>
+<li><strong>Victim safety &amp; privacy</strong> — the catalog must never leak victim identity; service content is public-facing to authenticated victims only. Claim questions must be designed proportionately; the platform should discourage collecting more sensitive data than needed at intake. Answers are stored per claim and access-controlled by Case Management RBAC.</li>
+<li><strong>Security</strong> — all mutations pass context + permission guards; VS360 tenancy isolation prevents cross-agency service access; responses are AES-encrypted; auth uses bearer + rotating refresh tokens; rate-limited via <code>rateLimiters.standard</code>.</li>
+<li><strong>Auditability</strong> — every service and category create/update/delete writes an <code>ActionLogs</code> row with source/IP/URL/context, supporting compliance and grant reviews.</li>
+<li><strong>Data integrity</strong> — duplicate services and categories are blocked; deletion is prohibited while cases exist; question-answer edits are full-replace and never orphan a claim; question changes must not corrupt historical answers.</li>
+<li><strong>Performance</strong> — list endpoints are paginated and filterable server-side; category lists offer a <code>pageLess</code> mode for selectors; detail fetches increment <code>viewCount</code> cheaply; search (incl. service-code) resolves interactively.</li>
+<li><strong>Availability &amp; resilience</strong> — notification side effects (request-to-connect email, claim notifications) are wrapped defensively so a delivery failure never blocks a create/claim; bulk import runs per-agency transactions.</li>
+<li><strong>Localization &amp; accessibility</strong> — victim-facing catalog strings support the platform&#x27;s multi-language static translations; the web builder and app catalog must meet accessibility standards (keyboard, contrast, screen-reader labels on question controls).</li>
+<li><strong>Compliance / reporting</strong> — service-category assignment and claim-question design must support downstream PMT/grant reporting; category taxonomy stays centrally governed for cross-network comparability.</li>
+</ul>
+<h2 id="14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</h2>
+<h3 id="141-engagement-analytics">14.1 Engagement Analytics</h3>
+<ul>
+<li><strong><code>viewCount</code></strong> — incremented on each service detail fetch; measures interest per service.</li>
+<li><strong><code>visitDuration</code></strong> — victim reading time reported via <code>mark-visit-duration</code>; feeds the VS360 dashboard&#x27;s time-on-service-page vs claim-submission-rate insight.</li>
+<li><strong>Top services / requests</strong> — service and category assignments feed dashboard analytics (Top 5 Services Requested, Claims by Service Category, service-provider rating over time) and grant/PMT reporting.</li>
+<li><strong>Discovery mix</strong> — share of detail views arriving via search vs category filter (product KPI).</li>
+</ul>
+<h3 id="142-notifications">14.2 Notifications</h3>
+<ul>
+<li><strong>Request-to-connect</strong> → email to the service center (deduped; 409 on repeat).</li>
+<li><strong>New victim claim</strong> → <code>claim-request</code> socket event to <code>vs360-user-&lt;uid&gt;</code> for caseworkers assigned to the service&#x27;s category, plus a <code>service_center_notifications</code> row (routing via <code>vsms_user_service_categories</code>).</li>
+<li>Service/category CRUD themselves emit no real-time notifications; downstream case-lifecycle notifications (approve/reject/resolve, updates) are owned by Case Management (FCM + socket + <code>victim_notifications</code>).</li>
+</ul>
+<h2 id="15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Type</th><th>Impact</th><th>Mitigation / Owner</th></tr></thead>
+<tbody>
+<tr><td>Editing a service&#x27;s questionnaire after claims exist could desync historical answers</td><td>Risk</td><td>Medium — case detail could show mismatched questions/answers</td><td>Read side merges question list with answers (unanswered → <code>id: null</code>); consider question versioning. Owner: Backend</td></tr>
+<tr><td>No built-in versioning/change-history for a service&#x27;s questions</td><td>Open Question</td><td>Medium — audit of &quot;what was asked when&quot; is limited to <code>ActionLogs</code></td><td>Evaluate per-question version snapshots. Owner: Product/Backend</td></tr>
+<tr><td>Verified-service gating (<code>isVerified</code>) policy for victim visibility not fully specified</td><td>Open Question</td><td>Medium — could surface unverified services or hide valid ones</td><td>Confirm exact visibility predicate (isActive + isVerified + geo/national). Owner: Backend</td></tr>
+<tr><td>Category deletion behavior when services reference a category</td><td>Open Question</td><td>Medium — orphaned services if a category is removed</td><td>Confirm delete is blocked/soft; taxonomy governed by Admin. Owner: NECX Admin/Backend</td></tr>
+<tr><td>Duplicate service rule keyed on <code>(title, categoryId, serviceCenterId)</code></td><td>Assumption</td><td>Low — near-duplicate titles can still coexist across categories</td><td>Accepted; educate agencies on naming. Owner: Agency Success</td></tr>
+<tr><td>National flag (<code>isNational</code>) bypasses all geo filtering</td><td>Assumption</td><td>Low/Medium — a mis-flagged local service appears nationwide</td><td>Restrict <code>isNational</code> setting to admin/agency-admin; review on create. Owner: Product</td></tr>
+<tr><td>VSMS-created services auto-verified without NECX review</td><td>Assumption</td><td>Low — trust model relies on agency accountability</td><td>Retain audit trail; spot-check via Admin. Owner: Compliance</td></tr>
+<tr><td>Media (<code>videoUrl</code>) is an external link, not validated for safety/availability</td><td>Risk</td><td>Low — broken or inappropriate links reach victims</td><td>Validate URL format; consider allow-listing providers. Owner: Web/Backend</td></tr>
+<tr><td>Service-code collisions or reuse</td><td>Assumption</td><td>Low — codes assumed unique and stable</td><td>Enforce uniqueness at generation; never recycle. Owner: Backend</td></tr>
+<tr><td>Bulk import correctness across agencies</td><td>Risk</td><td>Medium — malformed import creates bad catalog entries</td><td>Per-agency transaction + per-row <code>ActionLogs</code>; validate before commit. Owner: NECX Admin</td></tr>
+</tbody></table></div>
+<h2 id="16-glossary">16. Glossary</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Service</td><td>A concrete offering an agency publishes under a category (<code>services</code>); the thing a victim requests.</td></tr>
+<tr><td>Service Category</td><td>Global admin-governed taxonomy grouping services (<code>service_categories</code>); also routes claim notifications.</td></tr>
+<tr><td>Service Code</td><td>Human-readable unique identifier (<code>service_code</code>) generated per service; used for precise lookup.</td></tr>
+<tr><td>Claim Question</td><td>A per-service intake question (<code>service_claim_questions</code>) asked to the victim at claim time.</td></tr>
+<tr><td>Question Type</td><td>fill-in-the-blank, multiple-choice, or true-false.</td></tr>
+<tr><td>Questionnaire Builder</td><td>The VS360 UI (<code>QuestionnaireForm</code> + <code>QuestionBuilder</code>) for authoring a service&#x27;s claim questions.</td></tr>
+<tr><td>Service Claim / Case / Claim</td><td>A victim&#x27;s request for a service (<code>service_claims</code>, <code>uid = CL&lt;yy&gt;&lt;month&gt;&lt;uuid6&gt;</code>); the case created at intake.</td></tr>
+<tr><td>Request to Connect</td><td>Lightweight victim interest signal on a service; emails the agency; not a case.</td></tr>
+<tr><td>isActive</td><td>Whether a service is published/visible to victims; toggled by deactivate/activate.</td></tr>
+<tr><td>isVerified</td><td>Whether a service is vetted; auto-true when created by VSMS staff.</td></tr>
+<tr><td>isNational</td><td>Flag that makes a service bypass geographic filtering (visible nationwide).</td></tr>
+<tr><td>viewCount / visitDuration</td><td>Engagement metrics: detail views and victim reading time.</td></tr>
+<tr><td>Service Center / Agency</td><td>Organization providing victim services (<code>service_centers</code>) that owns published services.</td></tr>
+<tr><td>VSMS / VSMS User</td><td>Victim Services Management System; agency staff (caseworker/advocate), <code>issuer.type = VSMS</code>.</td></tr>
+<tr><td>APP / Victim</td><td>Survivor using the mobile app, <code>issuer.type = APP</code>.</td></tr>
+<tr><td>VS360</td><td>The agency-facing web application (context <code>VS360</code>).</td></tr>
+<tr><td>NECX Admin</td><td>Platform administration console (context <code>ADMIN</code>, <code>issuer.type = NECX</code>).</td></tr>
+<tr><td>Login Code</td><td>One-time code letting a victim claim an advocate-created/anonymous case on mobile.</td></tr>
+<tr><td>PMT</td><td>Performance Measurement Tool — grant/federal reporting snapshot captured at claim creation.</td></tr>
+<tr><td>Advocate</td><td>Agency staff creating a case on a victim&#x27;s behalf (auto-approving path).</td></tr>
+<tr><td>ActionLogs</td><td>Audit-trail records written on service/category mutations.</td></tr>
+<tr><td>Category Assignment</td><td>Link between a caseworker and a service category (<code>vsms_user_service_categories</code>) used for notification routing.</td></tr>
+</tbody></table></div>
+      </div>
+      <nav class="prevnext"><a class="pn prev" href="P19.html"><span>← Previous</span><b>Communities</b></a></nav>
+      <footer class="doc-foot">NECX Inc — Confidential · Generated 2026-07-05 · NECX Service Management</footer>
+    </article>
+  </main>
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav class="toc-nav"><a class="toc-1" href="#1-document-control">1. Document Control</a>
+<a class="toc-1" href="#2-executive-summary">2. Executive Summary</a>
+<a class="toc-1" href="#3-product-overview-vision">3. Product Overview &amp; Vision</a>
+<a class="toc-2" href="#31-problem-statement">3.1 Problem Statement</a>
+<a class="toc-2" href="#32-product-vision">3.2 Product Vision</a>
+<a class="toc-2" href="#33-where-this-sits-in-the-necx-ecosystem">3.3 Where This Sits in the NECX Ecosystem</a>
+<a class="toc-1" href="#4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</a>
+<a class="toc-2" href="#41-goals-objectives">4.1 Goals &amp; Objectives</a>
+<a class="toc-2" href="#42-success-metrics">4.2 Success Metrics</a>
+<a class="toc-1" href="#5-scope">5. Scope</a>
+<a class="toc-2" href="#51-in-scope">5.1 In Scope</a>
+<a class="toc-2" href="#52-out-of-scope">5.2 Out of Scope</a>
+<a class="toc-1" href="#6-personas-user-roles">6. Personas &amp; User Roles</a>
+<a class="toc-2" href="#61-persona-narratives">6.1 Persona Narratives</a>
+<a class="toc-1" href="#7-system-context-architecture">7. System Context &amp; Architecture</a>
+<a class="toc-2" href="#71-tech-stack">7.1 Tech Stack</a>
+<a class="toc-2" href="#72-backend-request-model">7.2 Backend Request Model</a>
+<a class="toc-2" href="#73-talking-to-the-backend-web">7.3 Talking to the Backend (Web)</a>
+<a class="toc-2" href="#74-real-time-notifications">7.4 Real-time &amp; Notifications</a>
+<a class="toc-2" href="#75-tenancy">7.5 Tenancy</a>
+<a class="toc-1" href="#8-functional-requirements">8. Functional Requirements</a>
+<a class="toc-2" href="#81-service-categories-taxonomy">8.1 Service Categories (Taxonomy)</a>
+<a class="toc-2" href="#82-services-creation-publishing">8.2 Services — Creation &amp; Publishing</a>
+<a class="toc-2" href="#83-services-editing-activation-deletion">8.3 Services — Editing, Activation &amp; Deletion</a>
+<a class="toc-2" href="#84-claim-questions-questionnaire-builder">8.4 Claim-Questions / Questionnaire Builder</a>
+<a class="toc-2" href="#85-visibility-geographic-national-rules">8.5 Visibility, Geographic &amp; National Rules</a>
+<a class="toc-2" href="#86-discovery-search-service-code-lookup">8.6 Discovery, Search &amp; Service-Code Lookup</a>
+<a class="toc-2" href="#87-victim-surfacing-request-to-connect-case-intake">8.7 Victim Surfacing, Request-to-Connect &amp; Case Intake</a>
+<a class="toc-1" href="#9-detailed-user-system-flows">9. Detailed User &amp; System Flows</a>
+<a class="toc-2" href="#91-necx-admin-creates-a-service-category">9.1 NECX Admin Creates a Service Category</a>
+<a class="toc-2" href="#92-agency-creates-a-service-with-claim-questions">9.2 Agency Creates a Service with Claim Questions</a>
+<a class="toc-2" href="#93-agency-edits-and-then-deactivates-a-service">9.3 Agency Edits and Then Deactivates a Service</a>
+<a class="toc-2" href="#94-victim-discovers-a-service-search-category-code-geonational">9.4 Victim Discovers a Service (Search, Category, Code, Geo/National)</a>
+<a class="toc-2" href="#95-victim-requests-a-service-creating-a-case">9.5 Victim Requests a Service, Creating a Case</a>
+<a class="toc-1" href="#10-data-model">10. Data Model</a>
+<a class="toc-1" href="#11-api-integration-surface">11. API &amp; Integration Surface</a>
+<a class="toc-2" href="#111-service-endpoints-adminwebmobilevictim-services">11.1 Service Endpoints (`/{admin,web,mobile}/victim-services`)</a>
+<a class="toc-2" href="#112-service-category-endpoints-adminwebmobileservicescategories">11.2 Service-Category Endpoints (`/{admin,web,mobile}/services/categories`)</a>
+<a class="toc-2" href="#113-intake-bridge-case-management-referenced">11.3 Intake Bridge (Case Management, referenced)</a>
+<a class="toc-2" href="#114-external-integrations">11.4 External Integrations</a>
+<a class="toc-1" href="#12-rbac-permissions">12. RBAC &amp; Permissions</a>
+<a class="toc-1" href="#13-non-functional-requirements">13. Non-Functional Requirements</a>
+<a class="toc-1" href="#14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</a>
+<a class="toc-2" href="#141-engagement-analytics">14.1 Engagement Analytics</a>
+<a class="toc-2" href="#142-notifications">14.2 Notifications</a>
+<a class="toc-1" href="#15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</a>
+<a class="toc-1" href="#16-glossary">16. Glossary</a>
+</nav>
+  </aside>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NECX Platform · Product Requirements Documentation</title>
+<meta name="description" content="Professional PRD suite for the NECX coordinated victim-services platform.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="home">
+<header class="topbar">
+  <a class="brand" href="index.html"><svg class="logo" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 L35 10 V22 C35 31 28 37 20 39 C12 37 5 31 5 22 V10 Z" fill="var(--brand)"/><path d="M13 27 V14 L20 22 V14 M27 14 V27 L20 19" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="brand-text">NECX<span class="brand-sub">Product Requirements</span></span></a>
+  <div class="topbar-spacer"></div>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><span class="ic-sun">☀</span><span class="ic-moon">☾</span></button>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">NECX Inc — Coordinated Victim Services Platform</div>
+    <h1>Product Requirements Documentation</h1>
+    <p class="hero-lead">A complete, source-grounded specification of the NECX platform — a unified backend serving four
+    purpose-built clients that help victims and survivors of crime find, request, and receive services from the agencies and
+    advocates who serve them, safely and with dignity.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="prd/P01.html">Read the Core PRD</a>
+      <a class="btn ghost" href="#catalog">Browse all documents</a>
+    </div>
+    <div class="stats"><div class="stat"><div class="stat-num">20</div><div class="stat-label">PRDs</div></div><div class="stat"><div class="stat-num">4</div><div class="stat-label">Client apps</div></div><div class="stat"><div class="stat-num">5</div><div class="stat-label">Repositories</div></div><div class="stat"><div class="stat-num">81</div><div class="stat-label">Data entities</div></div><div class="stat"><div class="stat-num">16</div><div class="stat-label">Sections / doc</div></div></div>
+  </div>
+</section>
+
+<section class="pillars">
+  <div class="pillar"><h4>Victim App</h4><p>Survivors discover services, request help, chat with agencies &amp; an AI assistant, find shelter, and e-sign — behind a privacy-first lock.</p></div>
+  <div class="pillar"><h4>VS360 &amp; Workspace</h4><p>Agency advocates manage cases, shelters, hotline, scheduling, chat, notes and reports on web and mobile.</p></div>
+  <div class="pillar"><h4>NECX Admin</h4><p>NECX Inc provisions agencies, roles and plans, and governs shared localization, AI and Twilio infrastructure.</p></div>
+  <div class="pillar"><h4>Unified Backend</h4><p>One multi-tenant API — identity, RBAC, the case lifecycle, real-time, notifications and integrations.</p></div>
+</section>
+
+<main class="catalog" id="catalog">
+  <div class="catalog-head">
+    <h2>Document Catalog</h2>
+    <input type="search" id="cardSearch" placeholder="Search documents…" oninput="filterCards(this.value)">
+  </div>
+  <section class="cat"><h2 class="cat-title">Platform &amp; Applications</h2><div class="grid">
+      <a class="card" href="prd/P01.html" data-search="necx platform — core system whole-platform prd: unified backend, four clients, multi-tenancy, identity/rbac, and the end-to-end case lifecycle.">
+        <div class="card-num">01</div>
+        <div class="card-body">
+          <h3>Platform — Core System</h3>
+          <p>Whole-platform PRD: unified backend, four clients, multi-tenancy, identity/RBAC, and the end-to-end case lifecycle.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card" href="prd/P02.html" data-search="necx workspace — staff mobile app agency staff mobile app (flutter/riverpod) — the on-the-go companion to the vs360 web dashboard.">
+        <div class="card-num">02</div>
+        <div class="card-body">
+          <h3>Workspace — Staff Mobile App</h3>
+          <p>Agency staff mobile app (Flutter/Riverpod) — the on-the-go companion to the VS360 web dashboard.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card" href="prd/P03.html" data-search="necx victim app — survivor mobile app victim / survivor mobile app (flutter/getx) — discover services, request help, chat, find shelter, e-sign.">
+        <div class="card-num">03</div>
+        <div class="card-body">
+          <h3>Victim App — Survivor Mobile App</h3>
+          <p>Victim / survivor mobile app (Flutter/GetX) — discover services, request help, chat, find shelter, e-sign.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card" href="prd/P04.html" data-search="vs360 — agency web dashboard vs360 — the agency staff web dashboard (react/vite) and primary caseworker workspace.">
+        <div class="card-num">04</div>
+        <div class="card-body">
+          <h3>VS360 — Agency Web Dashboard</h3>
+          <p>VS360 — the agency staff web dashboard (React/Vite) and primary caseworker workspace.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a></div></section><section class="cat"><h2 class="cat-title">VS360 Feature Modules</h2><div class="grid">
+      <a class="card" href="prd/P05.html" data-search="necx case management service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes.">
+        <div class="card-num">05</div>
+        <div class="card-body">
+          <h3>Case Management</h3>
+          <p>Service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card" href="prd/P06.html" data-search="necx shelter management shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search.">
+        <div class="card-num">06</div>
+        <div class="card-body">
+          <h3>Shelter Management</h3>
+          <p>Shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card" href="prd/P07.html" data-search="necx hotline management twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights.">
+        <div class="card-num">07</div>
+        <div class="card-body">
+          <h3>Hotline Management</h3>
+          <p>Twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card" href="prd/P08.html" data-search="necx calendar &amp; appointments reminders, tasks and case-linked appointments in the vs360 tools calendar.">
+        <div class="card-num">08</div>
+        <div class="card-body">
+          <h3>Calendar &amp; Appointments</h3>
+          <p>Reminders, tasks and case-linked appointments in the VS360 Tools calendar.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card" href="prd/P09.html" data-search="necx staff time tracking staff time tracking: clock in/out, timesheets, and grant/pmt time attribution.">
+        <div class="card-num">09</div>
+        <div class="card-body">
+          <h3>Staff Time Tracking</h3>
+          <p>Staff time tracking: clock in/out, timesheets, and grant/PMT time attribution.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card" href="prd/P10.html" data-search="necx agency chat real-time advocate↔victim messaging tied to service threads and cases.">
+        <div class="card-num">10</div>
+        <div class="card-body">
+          <h3>Agency Chat</h3>
+          <p>Real-time advocate↔victim messaging tied to service threads and cases.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card" href="prd/P11.html" data-search="necx internal chat staff-to-staff messaging within an agency, real-time over socket.io.">
+        <div class="card-num">11</div>
+        <div class="card-body">
+          <h3>Internal Chat</h3>
+          <p>Staff-to-staff messaging within an agency, real-time over Socket.IO.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card" href="prd/P12.html" data-search="necx rbac &amp; user management roles, the module/action permission matrix, plan seats, and multi-layer enforcement.">
+        <div class="card-num">12</div>
+        <div class="card-body">
+          <h3>RBAC &amp; User Management</h3>
+          <p>Roles, the module/action permission matrix, plan seats, and multi-layer enforcement.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card" href="prd/P13.html" data-search="necx notes center agency-scoped, cross-case view over internal (caseworker-only) case notes.">
+        <div class="card-num">13</div>
+        <div class="card-body">
+          <h3>Notes Center</h3>
+          <p>Agency-scoped, cross-case view over internal (caseworker-only) case notes.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card" href="prd/P14.html" data-search="necx drive google-drive-style cloud file storage backed by azure blob, with quotas and analytics.">
+        <div class="card-num">14</div>
+        <div class="card-body">
+          <h3>Drive</h3>
+          <p>Google-Drive-style cloud file storage backed by Azure Blob, with quotas and analytics.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card" href="prd/P15.html" data-search="necx ai report builder pmt/grant reporting plus ai-assisted custom report generation with accuracy validation.">
+        <div class="card-num">15</div>
+        <div class="card-body">
+          <h3>AI Report Builder</h3>
+          <p>PMT/grant reporting plus AI-assisted custom report generation with accuracy validation.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card" href="prd/P16.html" data-search="necx e-sign &amp; document center prepare, request, sign and pdf-stamp case documents with an audit trail.">
+        <div class="card-num">16</div>
+        <div class="card-body">
+          <h3>E-Sign &amp; Document Center</h3>
+          <p>Prepare, request, sign and PDF-stamp case documents with an audit trail.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card" href="prd/P17.html" data-search="necx referrals &amp; partnerships inter-agency network: partnerships, invitations, and consent-based case referrals.">
+        <div class="card-num">17</div>
+        <div class="card-body">
+          <h3>Referrals &amp; Partnerships</h3>
+          <p>Inter-agency network: partnerships, invitations, and consent-based case referrals.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card" href="prd/P18.html" data-search="necx inquiries management intake and triage of inquiries / requests-to-connect before they become cases.">
+        <div class="card-num">18</div>
+        <div class="card-body">
+          <h3>Inquiries Management</h3>
+          <p>Intake and triage of inquiries / requests-to-connect before they become cases.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card" href="prd/P19.html" data-search="necx communities agency-run community spaces: joining questions, membership, posts and moderation.">
+        <div class="card-num">19</div>
+        <div class="card-body">
+          <h3>Communities</h3>
+          <p>Agency-run community spaces: joining questions, membership, posts and moderation.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+      <a class="card" href="prd/P20.html" data-search="necx service management service catalog, categories, and the per-service claim-question (intake) builder.">
+        <div class="card-num">20</div>
+        <div class="card-body">
+          <h3>Service Management</h3>
+          <p>Service catalog, categories, and the per-service claim-question (intake) builder.</p>
+        </div>
+        <div class="card-arrow">→</div>
+      </a></div></section>
+  <p class="noresults" id="noresults" hidden>No documents match your search.</p>
+</main>
+
+<footer class="site-foot">
+  <div>NECX Inc — Confidential · Product Requirements Documentation · Generated 2026-07-05</div>
+  <div class="foot-sub">Static site · rendered from the PRD knowledgebase. Downloadable DOCX available on every document.</div>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

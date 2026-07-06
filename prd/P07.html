@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NECX Hotline Management · NECX PRD</title>
+<meta name="description" content="Twilio-backed victim-services hotline — provisioning, command center, AI-assisted calls, callbacks &amp; analytics">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="prd-page">
+<header class="topbar">
+  <button class="hamburger" aria-label="Menu" onclick="toggleNav()">&#9776;</button>
+  <a class="brand" href="../index.html"><svg class="logo" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 L35 10 V22 C35 31 28 37 20 39 C12 37 5 31 5 22 V10 Z" fill="var(--brand)"/><path d="M13 27 V14 L20 22 V14 M27 14 V27 L20 19" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="brand-text">NECX<span class="brand-sub">Product Requirements</span></span></a>
+  <div class="topbar-spacer"></div>
+  <a class="top-link" href="../index.html">Home</a>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><span class="ic-sun">☀</span><span class="ic-moon">☾</span></button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-search"><input type="search" id="navSearch" placeholder="Filter documents…" oninput="filterNav(this.value)"></div>
+    <nav class="nav"><div class="nav-group"><div class="nav-group-title">Platform &amp; Applications</div><a class="nav-item " href="P01.html" data-search="necx platform — core system whole-platform prd: unified backend, four clients, multi-tenancy, identity/rbac, and the end-to-end case lifecycle."><span class="nav-num">01</span><span class="nav-text">Platform — Core System</span></a>
+<a class="nav-item " href="P02.html" data-search="necx workspace — staff mobile app agency staff mobile app (flutter/riverpod) — the on-the-go companion to the vs360 web dashboard."><span class="nav-num">02</span><span class="nav-text">Workspace — Staff Mobile App</span></a>
+<a class="nav-item " href="P03.html" data-search="necx victim app — survivor mobile app victim / survivor mobile app (flutter/getx) — discover services, request help, chat, find shelter, e-sign."><span class="nav-num">03</span><span class="nav-text">Victim App — Survivor Mobile App</span></a>
+<a class="nav-item " href="P04.html" data-search="vs360 — agency web dashboard vs360 — the agency staff web dashboard (react/vite) and primary caseworker workspace."><span class="nav-num">04</span><span class="nav-text">VS360 — Agency Web Dashboard</span></a>
+</div>
+<div class="nav-group"><div class="nav-group-title">VS360 Feature Modules</div><a class="nav-item " href="P05.html" data-search="necx case management service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes."><span class="nav-num">05</span><span class="nav-text">Case Management</span></a>
+<a class="nav-item " href="P06.html" data-search="necx shelter management shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search."><span class="nav-num">06</span><span class="nav-text">Shelter Management</span></a>
+<a class="nav-item active" href="P07.html" data-search="necx hotline management twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights."><span class="nav-num">07</span><span class="nav-text">Hotline Management</span></a>
+<a class="nav-item " href="P08.html" data-search="necx calendar &amp; appointments reminders, tasks and case-linked appointments in the vs360 tools calendar."><span class="nav-num">08</span><span class="nav-text">Calendar &amp; Appointments</span></a>
+<a class="nav-item " href="P09.html" data-search="necx staff time tracking staff time tracking: clock in/out, timesheets, and grant/pmt time attribution."><span class="nav-num">09</span><span class="nav-text">Staff Time Tracking</span></a>
+<a class="nav-item " href="P10.html" data-search="necx agency chat real-time advocate↔victim messaging tied to service threads and cases."><span class="nav-num">10</span><span class="nav-text">Agency Chat</span></a>
+<a class="nav-item " href="P11.html" data-search="necx internal chat staff-to-staff messaging within an agency, real-time over socket.io."><span class="nav-num">11</span><span class="nav-text">Internal Chat</span></a>
+<a class="nav-item " href="P12.html" data-search="necx rbac &amp; user management roles, the module/action permission matrix, plan seats, and multi-layer enforcement."><span class="nav-num">12</span><span class="nav-text">RBAC &amp; User Management</span></a>
+<a class="nav-item " href="P13.html" data-search="necx notes center agency-scoped, cross-case view over internal (caseworker-only) case notes."><span class="nav-num">13</span><span class="nav-text">Notes Center</span></a>
+<a class="nav-item " href="P14.html" data-search="necx drive google-drive-style cloud file storage backed by azure blob, with quotas and analytics."><span class="nav-num">14</span><span class="nav-text">Drive</span></a>
+<a class="nav-item " href="P15.html" data-search="necx ai report builder pmt/grant reporting plus ai-assisted custom report generation with accuracy validation."><span class="nav-num">15</span><span class="nav-text">AI Report Builder</span></a>
+<a class="nav-item " href="P16.html" data-search="necx e-sign &amp; document center prepare, request, sign and pdf-stamp case documents with an audit trail."><span class="nav-num">16</span><span class="nav-text">E-Sign &amp; Document Center</span></a>
+<a class="nav-item " href="P17.html" data-search="necx referrals &amp; partnerships inter-agency network: partnerships, invitations, and consent-based case referrals."><span class="nav-num">17</span><span class="nav-text">Referrals &amp; Partnerships</span></a>
+<a class="nav-item " href="P18.html" data-search="necx inquiries management intake and triage of inquiries / requests-to-connect before they become cases."><span class="nav-num">18</span><span class="nav-text">Inquiries Management</span></a>
+<a class="nav-item " href="P19.html" data-search="necx communities agency-run community spaces: joining questions, membership, posts and moderation."><span class="nav-num">19</span><span class="nav-text">Communities</span></a>
+<a class="nav-item " href="P20.html" data-search="necx service management service catalog, categories, and the per-service claim-question (intake) builder."><span class="nav-num">20</span><span class="nav-text">Service Management</span></a>
+</div>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim" onclick="toggleNav()"></div>
+  
+  <main class="content">
+    <article class="doc">
+      <div class="doc-eyebrow">Product Requirements Document · NECX Inc — Confidential</div>
+      <h1 class="doc-title">NECX Hotline Management</h1>
+      <p class="doc-subtitle">Twilio-backed victim-services hotline — provisioning, command center, AI-assisted calls, callbacks &amp; analytics</p>
+      <div class="doc-meta"><span class="chip">Version: <b>1.0</b></span><span class="chip">Status: <b>Baseline</b></span><span class="chip">Owner: <b>NECX Product Management</b></span><a class="dl-btn" href="../downloads/07_VS360_Feature_Hotline_Management.docx" download>⬇ Download DOCX</a></div>
+      <hr class="doc-rule">
+      <div class="doc-body">
+      <h2 id="1-document-control">1. Document Control</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td>NECX — Coordinated Victim Services Platform</td></tr>
+<tr><td>Module</td><td>Hotline Management (Twilio)</td></tr>
+<tr><td>Version</td><td>1.0</td></tr>
+<tr><td>Status</td><td>Baseline</td></tr>
+<tr><td>Author</td><td>NECX Product Management</td></tr>
+<tr><td>Reviewers</td><td>Engineering (Backend, VS360 Web, Admin), Telephony/Infrastructure, Security &amp; Privacy, Agency Operations</td></tr>
+<tr><td>Last Updated</td><td>2026-07-05</td></tr>
+<tr><td>Related Documents</td><td>NECX VS360 Web Overview PRD; NECX Admin PRD; NECX Backend Core PRD; NECX Shelter Management PRD; NECX Chat PRD; Twilio Voice / SHAKEN-STIR configuration runbook</td></tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>1.0</td><td>2026-07-05</td><td>NECX Product Management</td><td>Initial baseline covering per-agency provisioning, command center, inbound/outbound call handling, AI transcript/insights, callbacks, call log, analytics, settings, and admin platform controls.</td></tr>
+</tbody></table></div>
+<h2 id="2-executive-summary">2. Executive Summary</h2>
+<p>The NECX Hotline Management module is a full Twilio-backed telephony system that lets each victim-services agency operate a professional crisis and information hotline directly inside the NECX platform. Rather than asking agencies to procure and wire up their own phone system, NECX provisions a dedicated Twilio subaccount, phone number(s), and calling infrastructure per agency, then exposes a browser-based softphone and real-time &quot;command center&quot; so advocates can receive, route, transfer, and document calls without leaving the VS360 web app.</p>
+<p>The module serves three distinct audiences. Agency staff (advocates, hotline coordinators, supervisors) use the VS360 command center to take inbound calls, place outbound callbacks, run live AI-assisted transcription and insight capture, and complete structured wrap-up documentation that ties a call to casework. NECX platform administrators use the Admin app to provision, migrate, connect, and cost-account the underlying Twilio infrastructure across every agency, and to configure platform-wide AI and telephony providers. Twilio itself is a first-class actor, driving the system through signed webhooks and a media-stream WebSocket.</p>
+<p>This matters because the hotline is frequently the first point of contact between a victim/survivor of crime and the agencies that help them. Every design decision — simultaneous ring to all available advocates, conference-anchored calls that allow warm transfer, AI insights that surface safety concerns and immediate-action needs in real time, and disposition codes that flow the call into a case, inquiry, or partner referral — exists to shorten the time to a safe, competent human response and to make sure nothing said on the call is lost.</p>
+<p>Because calls carry acutely sensitive information, the module treats privacy and safety as primary requirements: transcripts and insights are gated by per-agency toggles, socket payloads for hotline events are suppressed from debug logging to avoid leaking PII, confidential-caller handling is preserved, and provisioning supports SHAKEN/STIR verified caller identity so victims can trust that a callback genuinely originates from their agency.</p>
+<h2 id="3-product-overview-vision">3. Product Overview &amp; Vision</h2>
+<h3 id="31-problem-statement">3.1 Problem Statement</h3>
+<p>Victim-services agencies need a hotline but rarely have the telecom expertise or budget to run a resilient, multi-advocate call center. Manual phone trees drop calls, lack documentation, and cannot connect what a caller says to the agency&#x27;s casework. Advocates handling crisis calls must simultaneously listen, de-escalate, take notes, assess safety, and remember to schedule follow-ups — a cognitive load that risks both caller safety and data quality. Supervisors have no unified visibility into call volume, outcomes, or cost.</p>
+<h3 id="32-product-vision">3.2 Product Vision</h3>
+<p>Give every NECX agency a turnkey, AI-assisted hotline that is provisioned in minutes, answered from any browser, documented automatically, and fully accountable. Inbound calls ring every available advocate at once and anchor on a Twilio conference so a second advocate can join or take over mid-call. A live transcript and rolling AI insight panel surface the situation, safety concerns, children involved, and immediate-action needs while the call is still happening, then pre-fill the wrap-up form so structured documentation is a review-and-confirm step rather than a from-scratch chore. Calls end tied to a disposition that pushes them into a case, inquiry, partner referral, or scheduled callback.</p>
+<h3 id="33-position-in-the-necx-ecosystem">3.3 Position in the NECX Ecosystem</h3>
+<p>The hotline spans three of the four NECX clients on top of the single unified backend:</p>
+<ul>
+<li><strong>NECX Admin (platform super-admin)</strong> provisions and operates the shared Twilio estate: master account, per-agency subaccounts, numbers, SHAKEN/STIR trust, cost analytics, and platform AI/telephony provider configuration.</li>
+<li><strong>VS360 web (agency staff)</strong> hosts the command center, softphone, live call screen, callbacks, full call log, analytics, and per-agency hotline settings.</li>
+<li><strong>Unified backend</strong> owns the Twilio webhook and media-stream endpoints, conference orchestration, transcription and insight AI pipelines, persistence, Socket.IO real-time fan-out, and Redis-backed staff availability.</li>
+<li><strong>Twilio</strong> is the telephony provider; the Victim/Workspace mobile apps are not direct hotline clients, though hotline dispositions create cases and inquiries that surface in those apps, and scheduled callbacks overlay the VS360 calendar.</li>
+</ul>
+<h2 id="4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</h2>
+<h3 id="41-goals-objectives">4.1 Goals &amp; Objectives</h3>
+<ul>
+<li>Provision a fully functional per-agency hotline (subaccount, API key, TwiML app, number, line) idempotently and resumably from the Admin app, with an option to connect to an existing/master account instead.</li>
+<li>Let any available advocate answer an inbound call from the browser within seconds, with simultaneous ring, and support warm transfer and multi-advocate conferences.</li>
+<li>Reduce documentation burden and improve data quality by auto-transcribing calls and extracting structured insights that pre-fill the wrap-up form.</li>
+<li>Ensure no follow-up is dropped by capturing callbacks from wrap-up dispositions and surfacing them in the command center and calendar.</li>
+<li>Give supervisors real-time and historical visibility (stats, analytics, full searchable call log with CSV export).</li>
+<li>Give platform admins accurate per-agency and master-account Twilio cost accounting.</li>
+<li>Preserve caller safety and privacy at every layer (verified caller ID via SHAKEN/STIR, gated AI, PII-safe logging).</li>
+</ul>
+<h3 id="42-success-metrics">4.2 Success Metrics</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Definition</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>Provisioning success rate</td><td>Agencies whose <code>setupHotlineForAgency</code> completes all selected steps without manual intervention</td><td>≥ 95% first-attempt; 100% after retry</td></tr>
+<tr><td>Inbound answer rate</td><td>Inbound calls answered by an advocate (browser or phone) vs. total inbound with ≥1 available staff</td><td>≥ 90%</td></tr>
+<tr><td>Time-to-answer</td><td>Median seconds from <code>hotline:incoming</code> to a primary conference join</td><td>&lt; 15 s</td></tr>
+<tr><td>Wrap-up completion</td><td>Browser-answered calls reaching <code>completed</code> with a disposition</td><td>≥ 98%</td></tr>
+<tr><td>AI prefill adoption</td><td>Completed wrap-ups where AI-suggested fields were retained</td><td>≥ 60% (agencies with AI enabled)</td></tr>
+<tr><td>Callback follow-through</td><td>Scheduled callbacks completed (not left overdue)</td><td>≥ 85%</td></tr>
+<tr><td>Transcript accuracy</td><td>Advocate-rated usable transcript segments</td><td>≥ 90%</td></tr>
+<tr><td>Cost accounting accuracy</td><td>Computed Twilio cost vs. actual Twilio invoice</td><td>within 2%</td></tr>
+</tbody></table></div>
+<h2 id="5-scope">5. Scope</h2>
+<h3 id="51-in-scope">5.1 In Scope</h3>
+<ul>
+<li>Per-agency hotline provisioning: <code>setupHotlineForAgency</code> (subaccount, API key pair, TwiML app, phone number, hotline line, optional SHAKEN/STIR), buy/release numbers, connect-to-existing/master, unlink, migrate master→subaccount, clear simulated data.</li>
+<li>Browser softphone bootstrap (Twilio Voice access token) and real-time command center (staff board, call queue, recent calls, today&#x27;s analytics).</li>
+<li>Inbound call intake, simultaneous ring to all available staff, conference-anchored answering, incoming-call dialog, call-taken dismissal.</li>
+<li>Outbound/callback calls from the browser.</li>
+<li>Live AI transcription and rolling insight extraction over a Twilio media stream, with per-agency gating.</li>
+<li>Wrap-up documentation with AI prefill; disposition codes that link calls to cases/inquiries/partners/callbacks.</li>
+<li>Callbacks management (create/complete/cancel; overdue/today/upcoming/recent tabs; calendar overlay).</li>
+<li>Manual call logging.</li>
+<li>Full searchable, filterable, paginated call log with CSV export and a detail drawer.</li>
+<li>Hotline analytics/stats and admin-side Twilio cost analytics (master, all, per-subaccount, per-agency).</li>
+<li>Multi-advocate conference: add/remove participants, transfer primary control.</li>
+<li>Per-agency hotline settings (lines, staff assignments, insight targets, AI toggles) and admin platform hotline settings (AI providers, master account profile, simulate toggles).</li>
+<li>RBAC by <code>hotline.*</code> permission flags; Twilio webhook signature validation.</li>
+</ul>
+<h3 id="52-out-of-scope">5.2 Out of Scope</h3>
+<ul>
+<li>Victim/Workspace mobile app as a direct hotline calling client (no in-app dialer). Mobile surfaces are limited to cases/inquiries created via disposition.</li>
+<li>SMS/text-based hotline conversations (SMS is used elsewhere for OTP and notifications; text hotline is not part of this module).</li>
+<li>IVR/menu trees, skills-based routing, or ACD queue prioritization beyond &quot;ring all available staff.&quot;</li>
+<li>Automated case/inquiry record creation logic itself — the hotline records the disposition and (for callbacks) auto-creates the callback; case/inquiry creation is owned by those modules.</li>
+<li>The <code>created_inquiry</code> disposition from the web wrap-up (disabled — mobile-originated only).</li>
+<li>Direct staff↔staff (<code>client:</code>→<code>client:</code>) bridge is a raw Twilio dial with no call record and no documentation surface.</li>
+<li>Number porting from an agency&#x27;s prior carrier.</li>
+</ul>
+<h2 id="6-personas-user-roles">6. Personas &amp; User Roles</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Role</th><th>Description</th><th>Key permissions</th></tr></thead>
+<tbody>
+<tr><td>Hotline Advocate</td><td>Agency staff who answer/place calls and document them</td><td><code>hotline.view</code>, <code>hotline.command_center</code>, <code>hotline.callbacks</code>; often <code>call_logs</code></td></tr>
+<tr><td>Hotline Coordinator / Supervisor</td><td>Manages lines, staff assignments, AI settings; reviews analytics</td><td><code>hotline.view</code>, <code>command_center</code>, <code>call_logs</code>, <code>callbacks</code>, <code>analytics</code>, <code>settings</code></td></tr>
+<tr><td>Agency Administrator (VS360)</td><td>Configures the agency&#x27;s hotline settings and staff</td><td>all <code>hotline.*</code> gates the plan grants</td></tr>
+<tr><td>NECX Platform Admin</td><td>Provisions/operates Twilio infrastructure, cost, providers</td><td><code>allowOnly(&#x27;ADMIN&#x27;)</code>; agency <code>edit</code> (<code>canManageHotline</code>)</td></tr>
+<tr><td>Twilio (system actor)</td><td>Drives calls via signed webhooks + media stream</td><td>none (signature-validated, no session)</td></tr>
+<tr><td>Victim / Caller</td><td>Dials the agency hotline or receives a callback</td><td>not a NECX user</td></tr>
+</tbody></table></div>
+<h3 id="61-persona-narratives">6.1 Persona Narratives</h3>
+<p><strong>Maria, hotline advocate.</strong> Maria sets her availability to &quot;Available&quot; at the start of her shift. When a call comes in, a floating dialog appears bottom-right with the caller&#x27;s number and line. She clicks Answer; the live call screen opens with a running transcript and an insights panel that quietly fills in &quot;Safety Concern: partner has a firearm&quot; and flags &quot;Immediate Action Required.&quot; She takes a few live notes, then hangs up; the wrap-up form is already pre-filled from the AI insights. She confirms category &quot;crisis,&quot; checks &quot;safety plan,&quot; selects disposition &quot;created_case,&quot; and the call is documented and linked.</p>
+<p><strong>David, hotline coordinator.</strong> David provisions new advocates&#x27; line assignments, configures which insight fields the AI should capture, reviews the &quot;Today&#x27;s Analytics&quot; panel each morning, and exports the prior week&#x27;s call log to CSV for a grant report. He watches the callbacks tabs to make sure nothing goes overdue.</p>
+<p><strong>Priya, NECX platform admin.</strong> When a new agency is onboarded, Priya provisions its hotline — either an isolated Twilio subaccount with its own number pool or a link to the master account — tracks each setup step, buys additional numbers, sets up SHAKEN/STIR for verified caller ID, and reviews master and per-agency Twilio cost analytics monthly. On staging she flips on &quot;Simulate Twilio provisioning&quot; to dry-run the whole flow without incurring charges.</p>
+<h2 id="7-system-context-architecture">7. System Context &amp; Architecture</h2>
+<h3 id="71-tech-stack">7.1 Tech Stack</h3>
+<ul>
+<li><strong>Backend</strong>: Express (ESM) + Objection/Knex over PostgreSQL, Socket.IO, Redis, Twilio, and AI providers (OpenAI Whisper / GPT-4.1-mini, ElevenLabs Scribe) via an <code>ai-provider.factory</code>. Hotline code lives in <code>src/apps/hotline-management/</code> (<code>hotline.{routes,controller,service,validator,constants}.js</code>), <code>twilio/</code> (<code>twilio.webhook.js</code>, <code>twilio.media-stream.js</code>, <code>conference.service.js</code>), <code>ai/</code> (<code>insights.service.js</code>, <code>transcription.service.js</code>), repository <code>src/db/repositories/hotlineRepository.js</code>, config <code>src/config/hotline.config.js</code>, and middleware <code>src/middleware/twilio-signature.middleware.js</code>. All routers mount under global prefix <code>/v2</code>.</li>
+<li><strong>VS360 web</strong>: <code>src/pages/HotlineManagement/</code> (<code>HotlineManagement.jsx</code>, <code>HotlineSettings.jsx</code>, <code>components/</code>, <code>hooks/</code>, <code>modals/</code>, <code>constants/hotline.constants.js</code>), service wrapper <code>src/services/hotlineService.js</code> (base <code>/hotlines</code>), softphone via Twilio Voice SDK (<code>@twilio/voice-sdk</code>, <code>src/services/twilioClient.js</code>, <code>src/hooks/useTwilioDevice.js</code>).</li>
+<li><strong>NECX Admin</strong>: hotline wrappers in <code>services/serviceCenter.js</code>, <code>services/adminSettings.js</code>, <code>services/platformSettings.js</code>; surfaced in <code>ServiceCenterDetails.jsx</code>, <code>CostAnalytics.jsx</code>, and <code>Settings.jsx</code>.</li>
+</ul>
+<h3 id="72-client-backend-communication">7.2 Client-Backend Communication</h3>
+<p>VS360 staff routes are guarded by <code>allowOnly(&#x27;VS360&#x27;)</code> + <code>checkPermission(&#x27;hotline&#x27;,&#x27;view&#x27;)</code> under base <code>/web/hotlines</code>. Admin routes are guarded by <code>allowOnly(&#x27;ADMIN&#x27;)</code> under <code>/admin/hotlines</code> (plus <code>/settings/hotline</code> and <code>/settings/ai-providers</code>). Twilio webhook/media routes under <code>/web/hotlines/twilio</code> carry no session auth and are validated by Twilio signature (<code>validateTwilioSignature</code>). The authenticated principal is <code>req.issuer</code>; VSMS staff carry <code>issuer.type=&#x27;VSMS&#x27;</code>, <code>issuer.serviceCenterInfo.{id,uid}</code>, and <code>issuer.vsmsUserInfo[0].id</code>. Services return <code>{ status, msg?, data? }</code>.</p>
+<h3 id="73-real-time-notifications">7.3 Real-Time &amp; Notifications</h3>
+<p>A single Socket.IO connection (VS360 <code>src/context/SocketContext.jsx</code>) joins per-user room <code>vs360-user-&lt;uid&gt;</code> and agency room <code>service-center-&lt;id&gt;</code>. Hotline events (<code>NOTIFICATION_EVENTS.HOTLINE</code>) are registered on demand by the Hotline page via <code>registerHotlineEvents</code> and torn down on unmount; the debug logger suppresses <code>hotline:*</code> payloads to avoid leaking PII. Live audio flows from Twilio to the backend over the media-stream WebSocket <code>/web/hotlines/twilio/media/:callId</code>. Browser WebRTC audio flows via the Twilio Voice SDK.</p>
+<h3 id="74-tenancy-state">7.4 Tenancy &amp; State</h3>
+<p>Every hotline entity is scoped to a <code>service_center_id</code> (agency). Staff availability (<code>available</code>/<code>break</code>/<code>offline</code>/<code>on_call</code>/<code>wrap_up</code>) is <strong>not</strong> in the database — it lives in Redis (<code>setStaffStatusInRedis</code>/<code>getStaffStatusRaw</code>). <code>hotline_calls.id</code> is a UUID supplied by the caller (pre-generated at intake so the conference name <code>hotline-&lt;callId&gt;</code> and media-stream path can be formed before the DB row exists). On server startup <code>terminateStaleCalls</code> closes orphaned <code>active</code> calls.</p>
+<h2 id="8-functional-requirements">8. Functional Requirements</h2>
+<h3 id="81-per-agency-hotline-provisioning">8.1 Per-Agency Hotline Provisioning</h3>
+<p>Platform admins provision a hotline for an agency via <code>POST /admin/hotlines/setup/:uid</code> (service <code>setupHotlineForAgency</code>). The flow is step-tracked in <code>hotline_configs.setupSteps</code> (per-step <code>{ok/fail, sid, …}</code>), idempotent, and resumable — a retry re-runs only failed/incomplete steps. The admin selects which steps run via a checkbox modal; defaults are subaccount + TwiML app + buy number, with SHAKEN/STIR opt-in. The agency detail page renders a live <code>SetupStepList</code>: Twilio Subaccount → API Key Pair → TwiML App → Phone Number → Hotline Line → SHAKEN/STIR (optional), each showing success/error/pending, SIDs, and errors. Two models exist: <strong>Provision New Subaccount</strong> (isolated Twilio subaccount, own billing/number pool) and <strong>Connect to Existing</strong> (link to an existing profile or the master account via a search modal from <code>GetTwilioAccounts</code>).</p>
+<p>A <strong>simulate</strong> mode (from platform hotline settings) fakes Twilio SIDs (optionally creating DB records) for dry runs without incurring charges; <code>clearSimulatedProvisioning</code> removes them. Agencies started on the master account can later be moved to an isolated subaccount via <code>migrateToSubaccount</code> (numbers change).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-PROV-01</td><td>The system shall provision a per-agency Twilio subaccount, API key pair, TwiML app, phone number, and hotline line via a single step-tracked, idempotent, resumable setup call.</td><td>Must</td></tr>
+<tr><td>FR-PROV-02</td><td>The system shall let the admin select which setup steps to run (<code>createSubaccount</code>, <code>createTwimlApp</code>, <code>buyNumber</code>, <code>setupShakenStir</code>) and re-run only failed/incomplete steps on retry.</td><td>Must</td></tr>
+<tr><td>FR-PROV-03</td><td>The system shall support connecting an agency to an existing Twilio account or the master account (<code>linkToExistingAccount</code>) and unlinking (clears number assignments).</td><td>Must</td></tr>
+<tr><td>FR-PROV-04</td><td>The system shall support migrating a master-account agency to an isolated subaccount, requiring the admin to type &quot;migrate&quot; to confirm.</td><td>Must</td></tr>
+<tr><td>FR-PROV-05</td><td>The system shall persist each step&#x27;s status, SID(s), and error in <code>hotline_configs.setupSteps</code> and surface them in the admin step tracker.</td><td>Must</td></tr>
+<tr><td>FR-PROV-06</td><td>The system shall provide a simulate mode that mocks all Twilio calls (optionally creating DB records) and a <code>clearSimulatedProvisioning</code> action to remove simulated data.</td><td>Must</td></tr>
+<tr><td>FR-PROV-07</td><td>The system shall expose agency hotline detail (status, accountMode master/subaccount, SIDs, phone numbers, balance, console URL, shakenStir, <code>simulated</code> flag) via <code>GET /details/:uid</code>.</td><td>Must</td></tr>
+<tr><td>FR-PROV-08</td><td>All mutating admin hotline actions shall require <code>allowOnly(&#x27;ADMIN&#x27;)</code> and agency <code>edit</code> permission (<code>canManageHotline</code>).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="82-number-management">8.2 Number Management</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-NUM-01</td><td>The system shall search available US local voice numbers and buy an additional number for an agency via <code>POST /numbers/buy/:uid</code>, binding it to the TwiML app + webhooks and creating <code>twilio_phone_numbers</code> + optionally <code>hotline_lines</code>.</td><td>Must</td></tr>
+<tr><td>FR-NUM-02</td><td>Buying a number shall warn if SHAKEN/STIR is not yet configured.</td><td>Should</td></tr>
+<tr><td>FR-NUM-03</td><td>The system shall release a number via <code>DELETE /numbers/:uid/:phoneSid</code>, requiring the admin to type &quot;release&quot; (irreversible).</td><td>Must</td></tr>
+<tr><td>FR-NUM-04</td><td>Staff shall view the agency&#x27;s provisioned numbers via <code>GET /web/hotlines/purchased-numbers</code> (assigned vs. available).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="83-shakenstir-caller-trust">8.3 SHAKEN/STIR Caller Trust</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-STIR-01</td><td>The system shall create a Twilio TrustProduct in the agency subaccount for verified caller ID via <code>POST /shaken-stir/:uid</code> (<code>setupShakenStirForAgency</code> / setup step 6), idempotently — re-calling returns current trust status.</td><td>Should</td></tr>
+<tr><td>FR-STIR-02</td><td>SHAKEN/STIR setup shall use the agency contact email and require <code>TWILIO_TRUST_NOTIFICATIONS_EMAIL</code>; Twilio review takes ~1–3 days.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="84-softphone-bootstrap">8.4 Softphone Bootstrap</h3>
+<p><code>GET /web/hotlines/softphone/token</code> (<code>createAccessToken</code>) resolves the staff member&#x27;s agency → linked Twilio account (subaccount if provisioned, else master), builds a Twilio <code>AccessToken</code> with a <code>VoiceGrant</code> (<code>outgoingApplicationSid=twimlAppSid</code>, <code>incomingAllow=true</code>), sets <code>identity = String(userId)</code> (matching <code>&lt;Dial&gt;&lt;Client&gt;</code> routing), and returns <code>{ token, identity, ttl }</code> with a 1-hour TTL. The Voice SDK device is managed by <code>useTwilioDevice</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SOFT-01</td><td>The system shall issue a scoped 1-hour Twilio Voice access token whose identity equals the numeric user id and whose grant targets the agency&#x27;s TwiML app.</td><td>Must</td></tr>
+<tr><td>FR-SOFT-02</td><td>The browser softphone must be &quot;ready&quot; before outbound/callback calls can be placed.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="85-command-center">8.5 Command Center</h3>
+<p>The command center (<code>HotlineManagement.jsx</code>) is the advocate&#x27;s home screen. The top bar shows an availability pulse dot; a <strong>My availability</strong> SegmentedControl (Available / Break / Offline — display-locked to &quot;available&quot; while <code>on_call</code>/<code>wrap_up</code>; disabled while <code>on_call</code>) posting to <code>PATCH /staff/my-status</code>; today&#x27;s Calls/Active counters; Refresh; a permission-gated <strong>Simulate</strong> button; <strong>Log Call</strong>; and <strong>Settings</strong>. <code>useHotlineData</code> loads <code>GetHotlineStaff</code>, <code>GetActiveCalls</code>, <code>GetCallLog</code> (today), <code>GetCallStats</code>, and <code>GetCallbacks</code> (today) in parallel. The layout is three columns — <strong>StaffBoard</strong> (staff + statuses), <strong>CallQueue</strong> (active calls + today&#x27;s/overdue callbacks), <strong>RecentCallsList</strong> (today) — plus a collapsible &quot;Today&#x27;s Analytics&quot; panel.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CC-01</td><td>The command center shall display agency staff with live availability, active calls, today&#x27;s/overdue callbacks, and today&#x27;s recent calls.</td><td>Must</td></tr>
+<tr><td>FR-CC-02</td><td>Staff shall set their own availability (<code>available</code>/<code>break</code>/<code>offline</code>) via <code>PATCH /staff/my-status</code>, which emits <code>hotline:staff-status</code> to the agency room.</td><td>Must</td></tr>
+<tr><td>FR-CC-03</td><td>The availability control shall lock to &quot;available&quot; display while <code>on_call</code>/<code>wrap_up</code> and be disabled while <code>on_call</code>.</td><td>Must</td></tr>
+<tr><td>FR-CC-04</td><td>The command center shall show today&#x27;s call and active-call counters and a Refresh action.</td><td>Should</td></tr>
+<tr><td>FR-CC-05</td><td>Tabs/sections shall render only for the corresponding <code>hotline.*</code> permission; <code>?tab=</code> deep links shall respect the same gates.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="86-inbound-call-handling">8.6 Inbound Call Handling</h3>
+<p>Twilio hits <code>POST /web/hotlines/twilio/voice</code>; <code>handleVoice</code> routes by From/To shape to <code>handleVictimToHotlineCall</code>. The active <code>hotline_lines</code> row is resolved by the dialed number; if none, TwiML answers &quot;not active.&quot; All assigned staff who are Redis-<code>available</code> are collected (fallback: first assigned); if none, TwiML answers &quot;all unavailable, recorded.&quot; A <code>callId</code> (UUID) and conference name <code>hotline-&lt;callId&gt;</code> are pre-generated; <code>startCall</code> creates the <code>hotline_calls</code> row (<code>active</code>, <code>answeredByUserId</code> = first available) and sets that staff Redis→<code>on_call</code>. For <strong>every</strong> available staff a browser leg (<code>callClientIntoConference</code> → <code>client:userId</code>) and, if configured, a phone leg (<code>callPhoneIntoConference</code>) is placed, each recorded as a <code>hotline_call_participants</code> row (<code>primary</code>, <code>ringing</code>) — all ring simultaneously. <code>hotline:incoming</code> is emitted to <code>service-center-&lt;id&gt;</code>. TwiML returns <code>&lt;Start&gt;&lt;Stream&gt;</code> (both tracks, to the media WS) + <code>&lt;Dial&gt;&lt;Conference&gt;</code> (<code>startConferenceOnEnter=false, endConferenceOnExit=true</code>) so the victim waits until staff join.</p>
+<p>On the client, only staff with status <code>available</code> see the floating <code>IncomingCallDialog</code> (caller name/phone/line, pulsing, OS notification if tab hidden, auto-reject after 30 s). Answer accepts the WebRTC leg and opens <code>LiveCallScreen</code>; Reject calls <code>PATCH /calls/:id/reject</code>. When another staff answers first, <code>hotline:call-taken</code> closes all other dialogs.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-IN-01</td><td>An inbound call to a provisioned number shall resolve the active hotline line and ring all available assigned staff simultaneously (browser + phone legs).</td><td>Must</td></tr>
+<tr><td>FR-IN-02</td><td>If the line is inactive or no staff is available, Twilio shall respond with an appropriate TwiML message (inactive / recorded).</td><td>Must</td></tr>
+<tr><td>FR-IN-03</td><td>The system shall pre-generate a UUID <code>callId</code>, create the call row, anchor a Twilio conference <code>hotline-&lt;callId&gt;</code>, and start a media stream for transcription.</td><td>Must</td></tr>
+<tr><td>FR-IN-04</td><td>The incoming-call dialog shall appear only for <code>available</code> staff, auto-reject after 30 s, and fire an OS notification when the tab is hidden.</td><td>Must</td></tr>
+<tr><td>FR-IN-05</td><td>When one staff answers, all other ringing legs and dialogs shall be cancelled/dismissed (<code>hotline:call-taken</code>).</td><td>Must</td></tr>
+<tr><td>FR-IN-06</td><td>Answering via a registered personal phone shall present a read-only browser UI with no wrap-up screen; the call is auto-logged.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="87-answering-conference">8.7 Answering &amp; Conference</h3>
+<p><code>handleConference</code> (<code>POST /web/hotlines/twilio/conference</code>) processes participant join/leave. The first join stores <code>twilioConferenceSid</code>. When a <strong>primary</strong> leg joins, all other ringing legs (sibling browser/phone + other staff) are cancelled, <code>callAnsweredVia</code> is set, and <code>answeredByUserId</code>/Redis are corrected if a different staff answered; for inbound, <code>hotline:call-taken</code> (agency) + <code>hotline:call-answered-browser|phone</code> (user) fire. A <strong>secondary</strong> join sets Redis <code>on_call</code> and emits <code>hotline:participant-joined</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CONF-01</td><td>Calls shall anchor on a Twilio conference so additional staff can join/transfer.</td><td>Must</td></tr>
+<tr><td>FR-CONF-02</td><td>Staff shall add a participant (<code>POST /calls/:id/participants</code> → rings target browser+phone as <code>secondary</code>), remove one (<code>DELETE /calls/:id/participants/:userId</code> via Twilio REST kick), and view active participants (<code>GET /calls/:id/participants</code>).</td><td>Must</td></tr>
+<tr><td>FR-CONF-03</td><td>Staff shall transfer primary control (<code>POST /calls/:id/transfer</code>): demote current primaries→secondary, promote target→primary, update <code>answeredByUserId</code>, emit <code>hotline:call-transferred</code>.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="88-outbound-callback-calls">8.8 Outbound &amp; Callback Calls</h3>
+<p><code>handleStaffToVictimCall</code> (<code>From:client:X, To:+Y</code>) finds the staff&#x27;s active line, runs <code>startCall</code> (<code>ringing</code>), dials the victim into the conference (<code>endConferenceOnExit=true</code>, victim status callback <code>/status?callId=…</code>), records the staff browser leg, stores <code>callerCallSid</code>, and emits <code>hotline:outbound</code>. Victim answer → <code>/status</code> <code>in-progress</code> (or conference-join backup) flips ringing→active + <code>hotline:call-answered</code>. No-answer/busy/failed/completed-while-ringing → <code>cancelUnansweredCall</code> (<code>completed</code>, &quot;No answer&quot;) + <code>hotline:call-not-answered</code>. On the client, the outbound/callback flow opens a ringing screen immediately (sentinel id <code>-1</code>), calls <code>connectOutbound(phone)</code>, then reconciles the real DB call id from <code>hotline:outbound</code>; cancelling before connect disconnects the orphan. A direct staff↔staff (<code>client:</code>→<code>client:</code>) call is a raw <code>&lt;Dial&gt;&lt;Client&gt;</code> bridge with no call record.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-OUT-01</td><td>Staff shall place outbound/callback calls from the browser (softphone must be ready); a ringing screen shows immediately and reconciles the DB call id via <code>hotline:outbound</code>.</td><td>Must</td></tr>
+<tr><td>FR-OUT-02</td><td>Victim answer shall flip ringing→active and emit <code>hotline:call-answered</code>; no-answer/busy/failed shall complete the call as &quot;No answer&quot; and emit <code>hotline:call-not-answered</code>.</td><td>Must</td></tr>
+<tr><td>FR-OUT-03</td><td>Cancelling an outbound call before connect shall disconnect the orphaned call leg.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="89-live-transcription-ai-insights">8.9 Live Transcription &amp; AI Insights</h3>
+<p>Over the media WS, Twilio streams base64 mulaw 8kHz audio; the handler buffers ~1s (<code>CHUNK_BUFFER_TARGET=50</code> × 20ms) per track. <code>transcription.service.js</code> decodes G.711 μ-law → PCM16 WAV in-process, skips sub-0.5s and silent chunks (<code>SILENCE_RMS_THRESHOLD</code>), drops Whisper prompt hallucinations, and delegates STT to a provider (OpenAI Whisper / ElevenLabs Scribe). Each segment persists to <code>hotline_call_transcripts</code> (<code>appendTranscriptSegment</code>) and emits <code>hotline:transcript</code> to the answering user. Every <code>INSIGHTS_EXTRACTION_INTERVAL=5</code> segments a GPT-4.1-mini pass (<code>extractInsightsFromTranscript</code>) runs against the agency&#x27;s configured <code>insightTargets</code> (or defaults: Situation, Safety Concern, Children Involved, Location, Services Needed, Perpetrator Info, Prior History, Emotional State, Immediate Action Required), upserts per target (<code>other</code> always appended) via <code>upsertCallInsight</code>, and emits <code>hotline:insights</code>. On <code>audio_end</code> a final pass runs, then <code>hotline:insights-resolved</code> <code>{callId, filled, total}</code>. All AI runs only when <code>hotline_settings.transcriptEnabled</code>/<code>aiInsightsEnabled</code> are on (insights require transcript).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-AI-01</td><td>The system shall transcribe live call audio segment-by-segment and stream segments to the answering user, persisting them to <code>hotline_call_transcripts</code>.</td><td>Must</td></tr>
+<tr><td>FR-AI-02</td><td>The system shall extract structured insights against the agency&#x27;s insight targets on a rolling interval, upsert per target, and stream updates via <code>hotline:insights</code>, with a final resolved pass on call end.</td><td>Must</td></tr>
+<tr><td>FR-AI-03</td><td>Transcription and insights shall be independently gated by per-agency toggles; insights require transcript to be enabled.</td><td>Must</td></tr>
+<tr><td>FR-AI-04</td><td>Staff shall view a call&#x27;s transcript (<code>GET /calls/:id/transcript</code>) and insights (<code>GET /calls/:id/insights</code>), dismiss an insight (<code>PATCH /calls/:id/insights/:insightId/dismiss</code>), and bulk-save insights from the active screen (<code>PUT /calls/:id/insights</code>).</td><td>Must</td></tr>
+<tr><td>FR-AI-05</td><td>The system shall support one-shot insight extraction from a manual transcript block (<code>POST /ai/extract-insights</code>).</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="810-ending-wrap-up">8.10 Ending &amp; Wrap-Up</h3>
+<p><code>endCall</code> (<code>PATCH /calls/:id/end</code> or Twilio status callback) is idempotent: ringing→<code>cancelUnansweredCall</code>; phone-answered→<code>completed</code> (&quot;Answered on staff phone&quot;, staff→available); browser-answered→<code>wrap_up</code> (staff→<code>wrap_up</code>). It terminates the Twilio conference (disconnecting the victim) and returns <code>performed</code> to dedupe concurrent end emits; <code>hotline:ended</code> fires to the agency room. <code>completeCall</code> (<code>PATCH /calls/:id/complete</code>) sets the wrap-up fields + <code>completed</code>, returns staff→available, and — when <code>disposition=&#x27;callback_scheduled&#x27;</code> with a <code>callbackDate</code> — auto-creates a <code>hotline_callbacks</code> row (controller emits <code>hotline:callback-updated</code>). <code>getWrapUpPrefill</code> (<code>GET /calls/:id/wrapup-prefill</code>) re-runs <code>extractWrapUpData</code> over the full transcript to pre-fill the modal and returns collected insights.</p>
+<p>Wrap-up fields: <code>disposition</code>, <code>callCategory</code>, <code>callerMood</code>, <code>callSummary</code>, <code>servicesDiscussed</code>, safety-plan + immediate-action flags, <code>callbackDate/Time/Notes</code>, <code>quickTags</code>. Disposition enum: <code>created_case</code>, <code>created_inquiry</code> (mobile-only, disabled on web), <code>linked_to_existing_case</code>, <code>referred_to_partner</code>, <code>callback_scheduled</code>, <code>informational_only</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-WRAP-01</td><td>Ending a browser-answered call shall move it to <code>wrap_up</code> and require the primary advocate to complete a structured wrap-up; phone-answered calls complete automatically with no wrap-up.</td><td>Must</td></tr>
+<tr><td>FR-WRAP-02</td><td>Ending a call shall terminate the Twilio conference and be idempotent across concurrent end signals.</td><td>Must</td></tr>
+<tr><td>FR-WRAP-03</td><td>The wrap-up shall support AI prefill from the transcript/insights via <code>GET /calls/:id/wrapup-prefill</code>.</td><td>Should</td></tr>
+<tr><td>FR-WRAP-04</td><td>Completing with <code>disposition=&#x27;callback_scheduled&#x27;</code> + <code>callbackDate</code> shall auto-create a callback and emit <code>hotline:callback-updated</code>.</td><td>Must</td></tr>
+<tr><td>FR-WRAP-05</td><td>Disposition <code>created_case</code>/<code>linked_to_existing_case</code>/<code>referred_to_partner</code> shall link the call to the relevant casework record (<code>linkedCaseId</code>), with <code>created_case</code> opening the case-create modal.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="811-manual-call-logging">8.11 Manual Call Logging</h3>
+<p><code>ManualCallLogModal</code> lets staff record a call not handled through the softphone: select an active line, direction (Inbound/Outbound), caller phone/name, duration minutes, category, caller mood, summary, services discussed, safety-plan/immediate-action flags, and disposition. Submit posts <code>POST /calls</code> (<code>callMode:&quot;manual&quot;</code>, computed startTime) then <code>PATCH /calls/:id/complete</code>; <code>created_case</code> opens <code>CreateCaseModal</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-MAN-01</td><td>Staff shall log a completed call manually with full documentation fields and a disposition.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="812-callbacks-management">8.12 Callbacks Management</h3>
+<p><code>CallbacksManagement</code> has Overdue / Today / Upcoming / Recent tabs (<code>GET /callbacks?tab=&amp;page=&amp;limit=</code>, badge counts via <code>GetCallbackCounts</code>). Cards show client, phone, scheduled date/time, assignee, reason, and an optional link to the original call. Actions: <strong>Call</strong> (outbound), <strong>Complete</strong> (<code>PATCH /callbacks/:id/complete</code>), <strong>Cancel</strong> (<code>PATCH /callbacks/:id/cancel</code>); create via <code>POST /callbacks</code>. <code>hotline:callback-updated</code> refreshes the tab across the agency. Callbacks also overlay the VS360 calendar (Tools) as read-only teal phone-icon events (<code>CallbackEventModal</code>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CB-01</td><td>Staff shall create, complete, and cancel callbacks, organized into overdue/today/upcoming/recent tabs with badge counts.</td><td>Must</td></tr>
+<tr><td>FR-CB-02</td><td>Callback changes shall emit <code>hotline:callback-updated</code> to refresh the agency&#x27;s tab in real time.</td><td>Must</td></tr>
+<tr><td>FR-CB-03</td><td>Scheduled callbacks shall overlay the VS360 calendar as read-only events linking back to the callback.</td><td>Should</td></tr>
+<tr><td>FR-CB-04</td><td>Calling a callback shall start an outbound call to the client; completing may reference the completing call (<code>completedCallId</code>).</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="813-full-call-log">8.13 Full Call Log</h3>
+<p><code>FullCallLog</code> is a bi-directional infinite-scroll table (<code>GET /calls</code> paginated) with filters (date range, staff multi, category multi, disposition multi, line, free-text search), column show/hide, sortable headers, and CSV export of visible columns. Row click opens a right drawer with full detail (overview, caller/staff, assessment, outcome incl. linked case with &quot;View Case&quot; → <code>/claims/{id}</code>, summary, live notes). Rejected calls show a Rejected badge.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-LOG-01</td><td>Staff shall browse a paginated, filterable, sortable, searchable call log with per-column visibility and CSV export.</td><td>Must</td></tr>
+<tr><td>FR-LOG-02</td><td>A call detail drawer shall show overview, participants, assessment, outcome/linked case, summary, and live notes.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="814-analytics-stats">8.14 Analytics &amp; Stats</h3>
+<p>The command center&#x27;s collapsible &quot;Today&#x27;s Analytics&quot; panel shows stat cards (Total, Active, Avg Duration, Crisis, Cases, Safety Plans, Callbacks Today), a calls-by-hour bar chart, and category/disposition pie charts (<code>GET /calls/stats</code>). Admin-side Twilio cost analytics compute number rental + inbound/outbound per-minute costs (rates <code>PHONE_NUMBER_RATE=1.15/mo</code>, <code>INBOUND=0.0085/min</code>, <code>OUTBOUND=0.013/min</code>) plus Twilio usage records, for master, all, per-subaccount, and per-agency.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-AN-01</td><td>Staff shall see today&#x27;s operational stats and charts (volume by hour, category/disposition breakdown).</td><td>Must</td></tr>
+<tr><td>FR-AN-02</td><td>Admins shall see Twilio cost breakdowns (master invoice, all, per-subaccount, per-agency) over a date range.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="815-hotline-settings-agency">8.15 Hotline Settings (Agency)</h3>
+<p><code>HotlineSettings.jsx</code> (route <code>/hotline/settings</code>) provides: <strong>Your NECX Numbers</strong> (<code>GET /purchased-numbers</code>); <strong>Phone Lines</strong> (cards with active toggle <code>PATCH /lines/:id/toggle</code>, edit, delete; add/edit modal: name, type NECX browser-calling/External, language, NECX number E.164 required, external carrier number for external, operating hours 24/7/Business/After hours/Custom; CRUD <code>POST/PATCH/DELETE /lines</code>); <strong>Staff Assignments</strong> (per-staff line assignment via MultiSelect → <code>POST /staff/assignments {userId, lineIds}</code>); <strong>Call Documentation</strong> (insight target labels shown in the active-call panel); and <strong>AI Features</strong> (AI Transcript + AI Insight Fill toggles, insights require transcript, <code>GET/PUT /ai-settings</code>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SET-01</td><td>Agency staff shall CRUD hotline lines (twilio/external), toggle active state, and set language + operating hours.</td><td>Must</td></tr>
+<tr><td>FR-SET-02</td><td>Agency staff shall assign staff members to one or more lines.</td><td>Must</td></tr>
+<tr><td>FR-SET-03</td><td>Agency staff shall configure insight target labels and toggle AI transcript / insight-fill (insights depend on transcript).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="816-admin-platform-hotline-controls">8.16 Admin Platform Hotline Controls</h3>
+<p>Under Admin <strong>Settings</strong>: <strong>AI Settings</strong> (platform-wide provider credentials for Anthropic / OpenAI / ElevenLabs — capabilities, models, masked keys, &quot;Test connection&quot;; <code>GET/PUT/DELETE /settings/ai-providers[/:provider]</code>, <code>POST /settings/ai-providers/:provider/check</code>); <strong>Hotline Settings</strong> with <strong>AI Providers</strong> pickers (Transcription + AI Insights provider, connectivity check <code>POST /settings/hotline/check-provider</code> before save, <code>GET/PUT /settings/hotline</code>); <strong>Master Twilio Account Profile</strong> (accountSid/authToken/apiKeySid/apiKeySecret/twimlAppSid, secrets masked, blank keeps existing, <code>GET/PUT /hotlines/master-account</code>, saving can re-sync purchased numbers to the new TwiML app); and <strong>Developer Tools (non-production only)</strong> — &quot;Simulate Twilio provisioning&quot; + &quot;Create DB records&quot; sub-toggle (<code>PUT /settings/hotline {simulate, simulateCreateRecords}</code>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-ADM-01</td><td>Admins shall configure platform-wide AI providers (transcription/completion) with masked keys and connectivity checks.</td><td>Must</td></tr>
+<tr><td>FR-ADM-02</td><td>Admins shall maintain the master Twilio account profile; saving may re-sync purchased numbers to the new TwiML app.</td><td>Must</td></tr>
+<tr><td>FR-ADM-03</td><td>Admins shall toggle simulate mode (and DB-record creation) in non-production only.</td><td>Must</td></tr>
+<tr><td>FR-ADM-04</td><td>Admins shall pick and connectivity-check the transcription and AI-insights providers used by the hotline.</td><td>Must</td></tr>
+</tbody></table></div>
+<h2 id="9-detailed-user-system-flows">9. Detailed User &amp; System Flows</h2>
+<h3 id="91-provision-an-agency-hotline-admin">9.1 Provision an Agency Hotline (Admin)</h3>
+<ol class="flow">
+<li>Admin opens the agency detail page (<code>ServiceCenterDetails.jsx</code>) and clicks <strong>Provision New Subaccount</strong> (or <strong>Connect to Existing</strong> to link the master/another account).</li>
+<li>A checkbox modal presents the steps: subaccount, TwiML app, buy number, SHAKEN/STIR.</li>
+<li>Admin confirms; the client posts <code>POST /admin/hotlines/setup/:uid { steps }</code>; provisioning runs in the background.</li>
+<li>Server (<code>setupHotlineForAgency</code>), step-tracked in <code>hotline_configs.setupSteps</code>: (1) create subaccount via master <code>api.accounts.create</code> → store <code>twilio_accounts</code> row, link on <code>hotline_configs.twilio_account_id</code>; (2) <code>subClient.newKeys.create</code> → store apiKeySid/secret; (3) <code>applications.create</code> (voiceUrl <code>/v2/web/hotlines/twilio/voice</code>, statusCallback <code>/status</code>); (4) search a US local voice number → <code>incomingPhoneNumbers.create</code> bound to the TwiML app + webhooks; (5) create <code>twilio_phone_numbers</code> + <code>hotline_lines</code> (24/7, active); (6) optional non-blocking <code>createShakenStirTrustProduct</code>.</li>
+<li>If simulate mode is on, all Twilio calls are mocked (SIDs faked; DB records optional).</li>
+<li>The <code>SetupStepList</code> and status badge update on refetch, each step showing ok/fail + SID/error.</li>
+<li>If a step failed, the admin clicks <strong>Retry</strong>, which re-sends the same steps; completed steps are skipped server-side.</li>
+<li>Admin optionally buys more numbers (<code>POST /numbers/buy/:uid</code>), sets up SHAKEN/STIR (<code>POST /shaken-stir/:uid</code>), or later migrates master→subaccount (<code>POST /migrate/:uid</code>, typing &quot;migrate&quot;).</li>
+</ol>
+<h3 id="92-receive-handle-an-inbound-call-advocate">9.2 Receive &amp; Handle an Inbound Call (Advocate)</h3>
+<ol class="flow">
+<li>Advocate sets availability to <strong>Available</strong> (<code>PATCH /staff/my-status</code>, stored in Redis, <code>hotline:staff-status</code> to the agency).</li>
+<li>Victim dials the agency number; Twilio POSTs <code>/web/hotlines/twilio/voice</code>; <code>handleVoice</code>→<code>handleVictimToHotlineCall</code> resolves the active line.</li>
+<li>Server collects Redis-<code>available</code> assigned staff (fallback first assigned); pre-generates <code>callId</code> + conference <code>hotline-&lt;callId&gt;</code>; <code>startCall</code> creates the <code>hotline_calls</code> row (<code>active</code>, first available as <code>answeredByUserId</code>, that staff Redis→<code>on_call</code>).</li>
+<li>Server places a browser leg (and phone leg if configured) for <strong>every</strong> available staff as <code>primary</code>/<code>ringing</code> participants; emits <code>hotline:incoming</code> to <code>service-center-&lt;id&gt;</code>.</li>
+<li>TwiML returns <code>&lt;Start&gt;&lt;Stream&gt;</code> (media WS, both tracks) + <code>&lt;Dial&gt;&lt;Conference&gt;</code> (<code>startConferenceOnEnter=false, endConferenceOnExit=true</code>); the victim waits.</li>
+<li>Each available advocate&#x27;s browser shows the <code>IncomingCallDialog</code> (auto-reject 30 s; OS notification if hidden).</li>
+<li>Advocate clicks <strong>Answer</strong> → Voice SDK accepts the WebRTC leg → conference join → <code>handleConference</code> sets <code>twilioConferenceSid</code>, cancels all other ringing legs, sets <code>callAnsweredVia</code>, corrects <code>answeredByUserId</code>/Redis; emits <code>hotline:call-taken</code> (agency) + <code>hotline:call-answered-browser</code> (user). Other advocates&#x27; dialogs close.</li>
+<li><code>LiveCallScreen</code> opens: elapsed timer, mute/hold, audio-device select, live transcript (<code>hotline:transcript</code>), rolling AI insights (<code>hotline:insights</code>), live notes (<code>PATCH /calls/:id/notes</code>), quick tags.</li>
+<li>If needed, advocate adds a participant (<code>POST /calls/:id/participants</code>) or transfers primary control (<code>POST /calls/:id/transfer</code>).</li>
+<li>Advocate hangs up → <code>PATCH /calls/:id/end</code>: browser-answered → <code>wrap_up</code>, conference terminated (victim disconnected), <code>hotline:ended</code> emitted, final insight pass → <code>hotline:insights-resolved</code>.</li>
+<li>Wrap-up modal (pre-filled via <code>GET /calls/:id/wrapup-prefill</code>): advocate confirms category, mood, summary, services, safety-plan/immediate-action flags, disposition.</li>
+<li><strong>Complete</strong> (<code>PATCH /calls/:id/complete</code>) → <code>completed</code>, staff→available. If disposition is <code>callback_scheduled</code> + date, a callback is auto-created (<code>hotline:callback-updated</code>); <code>created_case</code> opens the case-create modal and links <code>linkedCaseId</code>.</li>
+<li>Edge cases: no available staff → TwiML &quot;all unavailable, recorded&quot;; inactive line → TwiML &quot;not active&quot;; advocate rejects → <code>PATCH /calls/:id/reject</code> (<code>hotline:ended</code>); answered on personal phone → read-only UI, auto-completed with no wrap-up.</li>
+</ol>
+<h3 id="93-create-resolve-a-callback-advocate">9.3 Create &amp; Resolve a Callback (Advocate)</h3>
+<ol class="flow">
+<li>A callback is created either from a wrap-up (<code>disposition=&#x27;callback_scheduled&#x27;</code> + <code>callbackDate/Time/Notes</code>, auto-created on <code>completeCall</code>) or manually via <code>POST /callbacks</code> (clientName, clientPhone, scheduledDate/Time, reason, assignedToUserId, originalCallId).</li>
+<li><code>hotline:callback-updated</code> refreshes the agency&#x27;s callbacks tab; the callback also appears in the command-center CallQueue (today/overdue) and as a read-only teal event on the VS360 calendar.</li>
+<li>At the scheduled time the assignee opens <strong>Callbacks</strong> (Overdue/Today/Upcoming/Recent) and clicks <strong>Call</strong> — the softphone (must be ready) opens a ringing screen (sentinel <code>-1</code>), <code>connectOutbound(clientPhone)</code> runs, and the real call id arrives via <code>hotline:outbound</code>.</li>
+<li>On victim answer (<code>hotline:call-answered</code>) the advocate documents the call as usual.</li>
+<li>Advocate clicks <strong>Complete</strong> (<code>PATCH /callbacks/:id/complete</code>, optionally <code>completedCallId</code>) — or <strong>Cancel</strong> (<code>PATCH /callbacks/:id/cancel</code>); either emits <code>hotline:callback-updated</code>.</li>
+<li>Edge case: victim no-answer → <code>hotline:call-not-answered</code>; the callback remains open for a later attempt.</li>
+</ol>
+<h3 id="94-review-analytics-call-log-supervisor">9.4 Review Analytics &amp; Call Log (Supervisor)</h3>
+<ol class="flow">
+<li>Supervisor opens the command center; the &quot;Today&#x27;s Analytics&quot; panel loads <code>GET /calls/stats</code>: stat cards (Total, Active, Avg Duration, Crisis, Cases, Safety Plans, Callbacks Today), calls-by-hour bar, category/disposition pies.</li>
+<li>For history, the supervisor opens <strong>Full Call Log</strong> (<code>GET /calls</code> paginated), applies filters (date range, staff, category, disposition, line, search), sorts, and toggles columns.</li>
+<li>Row click opens the detail drawer (overview, caller/staff, assessment, outcome incl. linked case → &quot;View Case&quot; <code>/claims/{id}</code>, summary, live notes).</li>
+<li>Supervisor exports visible columns to CSV for grant/PMT reporting.</li>
+<li>Admin (platform) opens <strong>Cost Analytics → Hotline</strong>: filters by account status, picks all vs. a single subaccount and a month; views the Master Account Invoice + selected breakdown (<code>GET /hotlines/cost/{master,all,subaccount/:sid}</code>, <code>GET /hotlines/agencies?status=</code>).</li>
+</ol>
+<h3 id="95-simulate-a-call-provisioning-staging">9.5 Simulate a Call / Provisioning (Staging)</h3>
+<ol class="flow">
+<li>Platform admin (non-production) enables &quot;Simulate Twilio provisioning&quot; in Admin Settings → Hotline (<code>PUT /settings/hotline {simulate:true, simulateCreateRecords}</code>).</li>
+<li>Provisioning (<code>POST /admin/hotlines/setup/:uid</code>) now mocks all Twilio calls with fake SIDs; with <code>simulateCreateRecords</code> on, DB records (<code>twilio_accounts</code>, <code>twilio_phone_numbers</code>, <code>hotline_lines</code>) are created for UI testing.</li>
+<li>On the agency detail page the hotline detail shows a <code>simulated</code> flag; <code>POST /clear-simulation/:uid</code> removes the fake records afterward.</li>
+<li>To exercise the advocate UI without a real inbound call, an advocate with <code>hotline.show_simulate_button</code> clicks <strong>Simulate</strong> in the command center → <code>POST /dev/simulate-inbound {lineId?, callerName?, callerPhone?}</code> (dev-only; 404 in production) → a fake <code>hotline:incoming</code> drives the <code>IncomingCallDialog</code> and downstream flow.</li>
+<li>Edge case: in production the simulate button is hidden by RBAC and the dev endpoints return 404.</li>
+</ol>
+<h2 id="10-data-model">10. Data Model</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Key Fields</th><th>Relationships</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td><code>hotline_configs</code> (<code>HotlineConfig</code>)</td><td>service_center_id, twilio_account_id, setupSteps(json — per-step <code>{ok/fail, sid,…}</code>)</td><td>belongsTo serviceCenter, twilioAccount</td><td>Per-agency provisioning state / step tracker</td></tr>
+<tr><td><code>twilio_accounts</code> (<code>TwilioAccount</code>)</td><td>accountSid, authToken, apiKeySid, apiKeySecret, twimlAppSid, isMaster, friendlyName</td><td>hasMany configs, purchasedNumbers</td><td>Twilio master/subaccount credentials</td></tr>
+<tr><td><code>twilio_phone_numbers</code> (<code>HotlinePurchasedNumber</code>)</td><td>twilio_account_id, twilioNumber, twilioPhoneSid, friendlyName, isSimulated</td><td>belongsTo twilioAccount</td><td>Provisioned DIDs (real or simulated)</td></tr>
+<tr><td><code>hotline_lines</code> (<code>HotlineLines</code>)</td><td>serviceCenterId, name, phoneNumber, purchased_number_id, lineType(<code>twilio</code>/<code>external</code>), language, operatingHours, isActive, isArchived</td><td>belongsTo purchasedNumber; hasMany staffAssignments, calls</td><td>A dialable hotline line for an agency</td></tr>
+<tr><td><code>hotline_staff_assignments</code> (<code>HotlineStaffAssignments</code>)</td><td>hotlineLineId, userId</td><td>belongsTo line, user</td><td>Line↔staff many-to-many</td></tr>
+<tr><td><code>hotline_calls</code> (<code>HotlineCalls</code>)</td><td>id(UUID, caller-supplied), hotlineLineId, serviceCenterId, callType(<code>inbound</code>/<code>outbound</code>), callMode(<code>twilio</code>/<code>manual</code>/<code>external</code>), twilioCallSid, callerCallSid, twilioConferenceSid, callerPhone, callerName, answeredByUserId, callAnsweredVia(<code>browser</code>/<code>phone</code>), status(<code>ringing</code>/<code>active</code>/<code>wrap_up</code>/<code>completed</code>/<code>rejected</code>), startTime, endTime, durationSeconds, liveNotes, callSummary, callCategory, callerMood, disposition, servicesDiscussed(json)</td><td>belongsTo line, answeredBy(users); hasMany transcripts, insights, participants</td><td>The call record + wrap-up documentation</td></tr>
+<tr><td><code>hotline_call_participants</code> (<code>HotlineCallParticipants</code>)</td><td>hotline_call_id, user_id, twilioCallSid, source(<code>browser</code>/<code>phone</code>), role(<code>primary</code>/<code>secondary</code>), status(<code>ringing</code>/<code>active</code>/<code>completed</code>/<code>cancelled</code>), joinedAt, leftAt</td><td>belongsTo call, user</td><td>Conference legs (ringing/joined staff)</td></tr>
+<tr><td><code>hotline_call_transcripts</code> (<code>HotlineCallTranscripts</code>)</td><td>hotlineCallId, speaker(<code>caller</code>/<code>staff</code>), text, startOffsetMs, endOffsetMs, confidence</td><td>belongsTo call</td><td>Persisted live-transcript segments</td></tr>
+<tr><td><code>hotline_call_insights</code> (<code>HotlineCallInsights</code>)</td><td>hotlineCallId, category(target label or <code>other</code>), label, value, sourceText, confidence, dismissed</td><td>belongsTo call</td><td>AI-extracted structured insights</td></tr>
+<tr><td><code>hotline_callbacks</code> (<code>HotlineCallbacks</code>)</td><td>originalCallId, assignedToUserId (agency derived from this), clientName, clientPhone, scheduledDate, scheduledTime, reason, status(<code>scheduled</code>/<code>completed</code>/<code>cancelled</code>), completedCallId</td><td>belongsTo user, originalCall, completedCall</td><td>Scheduled follow-up callbacks</td></tr>
+<tr><td><code>hotline_settings</code> (<code>HotlineSettings</code>)</td><td>service_center_id, transcriptEnabled, aiInsightsEnabled, insightTargets(json)</td><td>belongsTo serviceCenter</td><td>Per-agency AI/documentation config</td></tr>
+</tbody></table></div>
+<p>Staff availability (<code>available</code>/<code>break</code>/<code>offline</code>/<code>on_call</code>/<code>wrap_up</code>) is stored in <strong>Redis</strong>, not the DB. Platform-wide AI provider config, master Twilio account, and simulate toggles live in <code>admin_settings</code>/<code>platform_settings</code>.</p>
+<h2 id="11-api-integration-surface">11. API &amp; Integration Surface</h2>
+<h3 id="111-staff-routes-base-webhotlines-allowonlyvs360-checkpermission">11.1 Staff Routes — base <code>/web/hotlines</code> (<code>allowOnly(&#x27;VS360&#x27;)</code> + <code>checkPermission(&#x27;hotline&#x27;,&#x27;view&#x27;)</code>)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard/Notes</th></tr></thead>
+<tbody>
+<tr><td>GET</td><td><code>/purchased-numbers</code></td><td>Agency&#x27;s provisioned numbers</td><td>hotline.view</td></tr>
+<tr><td>GET</td><td><code>/lines</code></td><td>List hotline lines</td><td></td></tr>
+<tr><td>POST</td><td><code>/lines</code></td><td>Create line (<code>validateCreateLine</code>)</td><td>settings</td></tr>
+<tr><td>PATCH/DELETE</td><td><code>/lines/:id</code></td><td>Update / delete line</td><td>settings</td></tr>
+<tr><td>PATCH</td><td><code>/lines/:id/toggle</code></td><td>Enable/disable line</td><td>settings</td></tr>
+<tr><td>GET</td><td><code>/staff</code></td><td>Hotline staff + Redis availability (<code>includeUnassigned</code>)</td><td></td></tr>
+<tr><td>PATCH</td><td><code>/staff/my-status</code></td><td>Set own availability; emits <code>hotline:staff-status</code></td><td></td></tr>
+<tr><td>POST</td><td><code>/staff/assignments</code></td><td>Assign staff to line(s)</td><td>settings</td></tr>
+<tr><td>GET</td><td><code>/softphone/token</code></td><td>Twilio Voice access token <code>{token, identity, ttl}</code></td><td></td></tr>
+<tr><td>GET</td><td><code>/calls/active</code></td><td>Active calls for agency</td><td></td></tr>
+<tr><td>GET</td><td><code>/calls/stats</code></td><td>Today&#x27;s stats</td><td>analytics</td></tr>
+<tr><td>GET</td><td><code>/calls</code></td><td>Paginated/filtered call log</td><td>call_logs</td></tr>
+<tr><td>POST</td><td><code>/calls</code></td><td>Start/log a call (<code>validateStartCall</code>)</td><td></td></tr>
+<tr><td>GET</td><td><code>/calls/:id/wrapup-prefill</code></td><td>AI wrap-up prefill</td><td></td></tr>
+<tr><td>GET</td><td><code>/calls/:id/transcript</code></td><td>Transcript segments</td><td></td></tr>
+<tr><td>GET</td><td><code>/calls/:id/insights</code></td><td>AI insights</td><td></td></tr>
+<tr><td>PATCH</td><td><code>/calls/:id/insights/:insightId/dismiss</code></td><td>Dismiss insight</td><td></td></tr>
+<tr><td>PUT</td><td><code>/calls/:id/insights</code></td><td>Bulk-save insights</td><td></td></tr>
+<tr><td>PATCH</td><td><code>/calls/:id/notes</code></td><td>Update live notes</td><td></td></tr>
+<tr><td>PATCH</td><td><code>/calls/:id/reject</code></td><td>Reject inbound (→<code>rejected</code>); emits <code>hotline:ended</code></td><td></td></tr>
+<tr><td>PATCH</td><td><code>/calls/:id/end</code></td><td>Hang up; emits <code>hotline:ended</code></td><td></td></tr>
+<tr><td>PATCH</td><td><code>/calls/:id/complete</code></td><td>Submit wrap-up (→<code>completed</code>)</td><td></td></tr>
+<tr><td>GET</td><td><code>/calls/:id/participants</code></td><td>Active conference participants</td><td></td></tr>
+<tr><td>POST</td><td><code>/calls/:id/participants</code></td><td>Add staff to conference</td><td>command_center</td></tr>
+<tr><td>DELETE</td><td><code>/calls/:id/participants/:userId</code></td><td>Remove participant</td><td></td></tr>
+<tr><td>POST</td><td><code>/calls/:id/transfer</code></td><td>Transfer primary; emits <code>hotline:call-transferred</code></td><td></td></tr>
+<tr><td>POST</td><td><code>/ai/extract-insights</code></td><td>One-shot insight extraction</td><td></td></tr>
+<tr><td>GET</td><td><code>/callbacks</code></td><td>Callback list (tabs)</td><td>callbacks</td></tr>
+<tr><td>POST</td><td><code>/callbacks</code></td><td>Schedule callback; emits <code>hotline:callback-updated</code></td><td>callbacks</td></tr>
+<tr><td>PATCH</td><td><code>/callbacks/:id/complete</code></td><td>Complete callback</td><td>callbacks</td></tr>
+<tr><td>PATCH</td><td><code>/callbacks/:id/cancel</code></td><td>Cancel callback</td><td>callbacks</td></tr>
+<tr><td>GET/PUT</td><td><code>/ai-settings</code></td><td>Read/update per-agency AI config</td><td>settings</td></tr>
+<tr><td>POST</td><td><code>/dev/simulate-inbound</code></td><td>Dev-only fake inbound (404 in prod)</td><td>show_simulate_button</td></tr>
+</tbody></table></div>
+<h3 id="112-admin-routes-base-adminhotlines-allowonlyadmin-agency-edit">11.2 Admin Routes — base <code>/admin/hotlines</code> (<code>allowOnly(&#x27;ADMIN&#x27;)</code>, agency <code>edit</code>)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>POST</td><td><code>/setup/:uid</code></td><td>Provision hotline (<code>validateSetupHotline</code>, body <code>steps</code>)</td></tr>
+<tr><td>GET</td><td><code>/twilio-accounts</code></td><td>List Twilio accounts</td></tr>
+<tr><td>POST/DELETE</td><td><code>/link-account/:uid</code></td><td>Link / unlink to existing account (<code>accountId</code>)</td></tr>
+<tr><td>GET/PUT</td><td><code>/master-account</code></td><td>Master Twilio account profile</td></tr>
+<tr><td>POST</td><td><code>/clear-simulation/:uid</code></td><td>Clear simulated provisioning</td></tr>
+<tr><td>POST</td><td><code>/migrate/:uid</code></td><td>Migrate master→subaccount</td></tr>
+<tr><td>GET</td><td><code>/details/:uid</code></td><td>Provisioning detail/status</td></tr>
+<tr><td>POST</td><td><code>/numbers/buy/:uid</code></td><td>Buy a number</td></tr>
+<tr><td>DELETE</td><td><code>/numbers/:uid/:phoneSid</code></td><td>Release a number</td></tr>
+<tr><td>POST</td><td><code>/shaken-stir/:uid</code></td><td>Create SHAKEN/STIR TrustProduct (idempotent)</td></tr>
+<tr><td>GET</td><td><code>/agencies</code></td><td>Agencies with hotline (<code>status</code>)</td></tr>
+<tr><td>GET</td><td><code>/cost/master</code>, <code>/cost/all</code>, <code>/cost/subaccount/:sid</code>, <code>/cost/:uid</code></td><td>Twilio cost breakdowns (date range)</td></tr>
+</tbody></table></div>
+<p>Admin platform settings: <code>GET/PUT /settings/hotline</code>, <code>POST /settings/hotline/check-provider</code>, <code>GET/PUT/DELETE /settings/ai-providers[/:provider]</code>, <code>POST /settings/ai-providers/:provider/check</code>.</p>
+<h3 id="113-twilio-webhook-routes-base-webhotlinestwilio-no-session-auth">11.3 Twilio Webhook Routes — base <code>/web/hotlines/twilio</code> (no session auth; <code>validateTwilioSignature</code>)</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>POST</td><td><code>/voice</code></td><td>TwiML Voice entry point — routes by From/To shape</td></tr>
+<tr><td>POST</td><td><code>/status</code></td><td>Call status callback (answered/completed/no-answer/busy/failed)</td></tr>
+<tr><td>POST</td><td><code>/conference</code></td><td>Conference participant join/leave events</td></tr>
+<tr><td>POST</td><td><code>/error</code></td><td>Twilio account error debug events</td></tr>
+<tr><td>WS</td><td><code>/media/:callId</code></td><td>Twilio Media Streams WebSocket (mulaw 8kHz)</td></tr>
+</tbody></table></div>
+<h3 id="114-socketio-events-all-hotline">11.4 Socket.IO Events (all <code>hotline:*</code>)</h3>
+<p>Rooms: <code>SOCKET_ROOMS.SERVICE_CENTER(id)</code> = <code>service-center-&lt;id&gt;</code>; <code>SOCKET_ROOMS.USER(uid)</code> = <code>vs360-user-&lt;uid&gt;</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Event</th><th>Direction</th><th>Room</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>hotline:incoming</code></td><td>server→web</td><td>service-center</td><td>New inbound call ringing</td></tr>
+<tr><td><code>hotline:ended</code></td><td>server→web</td><td>service-center</td><td>Active call ended</td></tr>
+<tr><td><code>hotline:transcript</code></td><td>server→web</td><td>user</td><td>Live transcript segment</td></tr>
+<tr><td><code>hotline:insights</code></td><td>server→web</td><td>user</td><td>AI insight update during call</td></tr>
+<tr><td><code>hotline:insights-resolved</code></td><td>server→web</td><td>user</td><td>Final insight pass <code>{callId, filled, total}</code></td></tr>
+<tr><td><code>hotline:staff-status</code></td><td>server→web</td><td>service-center</td><td>Staff availability changed</td></tr>
+<tr><td><code>hotline:outbound</code></td><td>server→web</td><td>user</td><td>Outbound call started (ringing)</td></tr>
+<tr><td><code>hotline:call-answered</code></td><td>server→web</td><td>user</td><td>Victim answered outbound (ringing→active)</td></tr>
+<tr><td><code>hotline:call-answered-browser</code></td><td>server→web</td><td>user</td><td>Inbound answered via browser (normal audio)</td></tr>
+<tr><td><code>hotline:call-answered-phone</code></td><td>server→web</td><td>user</td><td>Inbound answered via registered phone (read-only UI)</td></tr>
+<tr><td><code>hotline:call-not-answered</code></td><td>server→web</td><td>user</td><td>Outbound no-answer</td></tr>
+<tr><td><code>hotline:call-taken</code></td><td>server→web</td><td>service-center</td><td>Inbound taken by another staff (close dialogs)</td></tr>
+<tr><td><code>hotline:participant-joined</code></td><td>server→web</td><td>service-center</td><td>Secondary staff joined conference</td></tr>
+<tr><td><code>hotline:participant-left</code></td><td>server→web</td><td>service-center</td><td>Participant left conference</td></tr>
+<tr><td><code>hotline:call-transferred</code></td><td>server→web</td><td>service-center</td><td>Primary control transferred</td></tr>
+<tr><td><code>hotline:callback-updated</code></td><td>server→web</td><td>service-center</td><td>Callbacks tab refresh</td></tr>
+</tbody></table></div>
+<h3 id="115-external-integrations">11.5 External Integrations</h3>
+<ul>
+<li><strong>Twilio Voice</strong>: subaccounts, API keys, TwiML apps, incoming phone numbers, Voice access tokens (browser SDK), conferences, Media Streams, status callbacks, TrustProducts (SHAKEN/STIR), usage/cost records. Webhooks validated via <code>validateTwilioSignature</code>.</li>
+<li><strong>AI providers</strong> via <code>ai-provider.factory</code>: OpenAI Whisper / ElevenLabs Scribe (STT); GPT-4.1-mini (insight extraction + wrap-up prefill). Anthropic/OpenAI/ElevenLabs credentials configured platform-side.</li>
+<li><strong>Redis</strong>: staff availability state, scaling/pub-sub.</li>
+<li><strong>Socket.IO</strong>: real-time UI fan-out.</li>
+</ul>
+<h2 id="12-rbac-permissions">12. RBAC &amp; Permissions</h2>
+<p>The <code>hotline</code> permission module (<code>src/config</code> permission catalog) defines the flags below. NECX super-admin bypasses <code>checkPermission</code> inside the middleware. All staff routes additionally require <code>allowOnly(&#x27;VS360&#x27;)</code>; all admin routes require <code>allowOnly(&#x27;ADMIN&#x27;)</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Permission flag</th><th>Gated actions</th></tr></thead>
+<tbody>
+<tr><td><code>hotline.view</code></td><td>Access the Hotline module at all (base guard on every <code>/web/hotlines/*</code> route)</td></tr>
+<tr><td><code>hotline.command_center</code></td><td>Command center screen, live call screen, conference add/remove/transfer participants</td></tr>
+<tr><td><code>hotline.call_logs</code></td><td>Full call log, filters, CSV export, call detail drawer</td></tr>
+<tr><td><code>hotline.callbacks</code></td><td>Callbacks tabs, create/complete/cancel callbacks</td></tr>
+<tr><td><code>hotline.analytics</code></td><td>Today&#x27;s Analytics panel and call stats</td></tr>
+<tr><td><code>hotline.settings</code></td><td>Hotline Settings (lines, staff assignments, insight targets, AI toggles)</td></tr>
+<tr><td><code>hotline.show_simulate_button</code></td><td>The dev-only Simulate button / <code>POST /dev/simulate-inbound</code></td></tr>
+</tbody></table></div>
+<p>Tabs and sections render only for the corresponding flag, and <code>?tab=</code> deep links respect the same gates. Admin-side provisioning is additionally gated on the agency <code>edit</code> permission (<code>canManageHotline</code>) backed by server <code>allowOnly(&#x27;ADMIN&#x27;)</code>. The <code>dashboard.hotline</code> flag controls the hotline widget on the VS360 dashboard.</p>
+<h2 id="13-non-functional-requirements">13. Non-Functional Requirements</h2>
+<ul>
+<li><strong>Security</strong>: Twilio webhooks are validated by signature (<code>twilio-signature.middleware.js</code>); the media WS is keyed by pre-generated <code>callId</code>. Softphone tokens are scoped, short-lived (1 h), and identity-bound. Twilio secrets (authToken, apiKeySecret) and AI provider keys are stored server-side and masked in all UIs (blank input keeps existing). Dev/simulate endpoints return 404 in production.</li>
+<li><strong>Privacy &amp; victim safety</strong>: Hotline socket payloads are suppressed from debug logging to avoid PII leakage. Transcription and AI insights are opt-in per agency (<code>transcriptEnabled</code>/<code>aiInsightsEnabled</code>). SHAKEN/STIR provides verified caller ID so victims can trust callbacks. Confidential-caller conventions from the wider platform are preserved. Insight extraction runs against a controlled target set; insights can be dismissed. Access is least-privilege via <code>hotline.*</code> flags.</li>
+<li><strong>Performance</strong>: Command-center data loads in parallel. Media is buffered ~1s per track; sub-0.5s and silent chunks are skipped; insight passes run every 5 segments (not per segment) to bound AI cost/latency. The call log uses bi-directional infinite scroll with server pagination.</li>
+<li><strong>Availability &amp; resilience</strong>: Provisioning is idempotent/resumable with per-step retry. Call ending is idempotent across concurrent Twilio/user signals (returns <code>performed</code>). <code>terminateStaleCalls</code> closes orphaned active calls on startup. <code>cancelUnansweredCall</code> handles no-answer/busy/failed uniformly.</li>
+<li><strong>Auditability</strong>: Every call persists status transitions, participants, transcripts, insights, disposition, and linked casework; callbacks record <code>originalCallId</code>/<code>completedCallId</code>; provisioning steps persist SIDs and errors.</li>
+<li><strong>Cost governance</strong>: Per-agency and master cost analytics compute number rental + per-minute inbound/outbound + Twilio usage; buying a number warns if SHAKEN/STIR is unconfigured; release requires explicit &quot;release&quot; confirmation.</li>
+<li><strong>Localization</strong>: Lines carry a <code>language</code>; caller-facing TwiML and staff routing can be language-aware.</li>
+<li><strong>Accessibility</strong>: Command center and dialogs follow the VS360 web accessibility baseline (keyboard-operable controls, OS notifications for hidden tabs).</li>
+<li><strong>Compliance</strong>: Documentation fields (category, disposition, services discussed, safety plan) and CSV export support grant/PMT reporting; cost accounting supports platform financial reconciliation.</li>
+</ul>
+<h2 id="14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</h2>
+<h3 id="141-dashboards-kpis">14.1 Dashboards &amp; KPIs</h3>
+<ul>
+<li><strong>Command center (agency)</strong>: today&#x27;s Total / Active / Avg Duration / Crisis / Cases / Safety Plans / Callbacks Today stat cards; calls-by-hour bar; category and disposition pie charts (<code>GET /calls/stats</code>).</li>
+<li><strong>Full call log (agency)</strong>: filterable/sortable/searchable history with CSV export for reporting.</li>
+<li><strong>Cost analytics (admin)</strong>: Master Account Invoice plus per-account/per-agency Twilio cost breakdowns over a date range (<code>/cost/master</code>, <code>/cost/all</code>, <code>/cost/subaccount/:sid</code>, <code>/cost/:uid</code>).</li>
+</ul>
+<h3 id="142-notifications-real-time">14.2 Notifications &amp; Real-Time</h3>
+<ul>
+<li><strong>In-app / socket</strong>: the full <code>hotline:*</code> event set (§11.4) drives incoming-call dialogs, call-taken dismissal, live transcript/insights, participant/transfer updates, outbound/answer states, staff-status, and callback refreshes. The sidebar shows a live hotline active-call count.</li>
+<li><strong>OS notification</strong>: fired for an incoming call when the browser tab is hidden.</li>
+<li><strong>Calendar overlay</strong>: scheduled callbacks appear read-only on the VS360 calendar (Tools) with a phone icon.</li>
+<li><strong>Email</strong>: SHAKEN/STIR trust notifications go to <code>TWILIO_TRUST_NOTIFICATIONS_EMAIL</code>; the agency contact email is used for trust setup.</li>
+</ul>
+<h2 id="15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Type</th><th>Impact</th><th>Mitigation / Owner</th></tr></thead>
+<tbody>
+<tr><td>Twilio provisioning partially fails mid-flow</td><td>Risk</td><td>Agency left without a working hotline</td><td>Step-tracked idempotent setup with per-step Retry (re-runs only failed steps); Admin/Backend</td></tr>
+<tr><td>AI transcription/insight cost or latency at scale</td><td>Risk</td><td>Cost overrun, delayed insights</td><td>Buffering, silence-skipping, 5-segment insight interval, per-agency opt-in; Backend/Product</td></tr>
+<tr><td>Transcript/insight PII exposure</td><td>Risk</td><td>Victim safety/privacy breach</td><td>Debug-log suppression of <code>hotline:*</code>, per-agency gating, least-privilege RBAC, dismissible insights; Security</td></tr>
+<tr><td>Concurrent end/answer signals (user + Twilio)</td><td>Risk</td><td>Double state transitions</td><td>Idempotent <code>endCall</code> returns <code>performed</code>; conference-leave/status handlers converge; Backend</td></tr>
+<tr><td>Orphaned active calls after crash/restart</td><td>Risk</td><td>Stuck &quot;active&quot; calls</td><td><code>terminateStaleCalls</code> on startup; Backend</td></tr>
+<tr><td>SHAKEN/STIR review delay (1–3 days)</td><td>Assumption</td><td>Callbacks may show unverified caller ID initially</td><td>Warn on number buy; set up early in onboarding; Admin</td></tr>
+<tr><td>Number release / migration are destructive</td><td>Risk</td><td>Lost number / caller confusion</td><td>Typed confirmation (&quot;release&quot;/&quot;migrate&quot;); Admin UX</td></tr>
+<tr><td>Advocate personal-phone answers lack wrap-up</td><td>Assumption</td><td>Reduced documentation for phone-answered calls</td><td>Auto-log with disposition-less record; encourage browser answering; Product</td></tr>
+<tr><td>Simulate mode data leaking into prod</td><td>Risk</td><td>Fake calls/records in production</td><td>Dev endpoints 404 in prod; simulate toggle non-production only; <code>clearSimulatedProvisioning</code>; Backend</td></tr>
+<tr><td>Worktree branch lags <code>develop</code> for hotline files</td><td>Open Question</td><td>Divergent implementations</td><td>Treat <code>develop</code> (commit <code>20d7de2</code>, NECX-552) as authoritative; Engineering</td></tr>
+<tr><td><code>created_inquiry</code> disposition disabled on web</td><td>Open Question</td><td>Inquiries only from mobile</td><td>Confirm intended; document as mobile-only; Product</td></tr>
+<tr><td>Duplicate Hotline/Shelters nav entries in VS360</td><td>Open Question</td><td>Minor UX confusion</td><td>In-progress nav cleanup; gating still applies; Frontend</td></tr>
+</tbody></table></div>
+<h2 id="16-glossary">16. Glossary</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Hotline line</td><td>An agency&#x27;s dialable phone line (<code>hotline_lines</code>), backed by a Twilio number (<code>twilio</code>) or an external carrier (<code>external</code>)</td></tr>
+<tr><td>Command center</td><td>The VS360 real-time hotline screen (staff board, call queue, recent calls, analytics)</td></tr>
+<tr><td>Softphone</td><td>Browser-based calling via the Twilio Voice SDK, bootstrapped by a Voice access token</td></tr>
+<tr><td>Subaccount</td><td>An isolated Twilio account provisioned per agency (own billing/number pool)</td></tr>
+<tr><td>Master account</td><td>The shared Twilio account agencies may connect to instead of an isolated subaccount</td></tr>
+<tr><td>TwiML app</td><td>A Twilio application whose voiceUrl points at <code>/v2/web/hotlines/twilio/voice</code>, tying numbers to NECX call handling</td></tr>
+<tr><td>Conference</td><td>The Twilio conference (<code>hotline-&lt;callId&gt;</code>) that anchors a call so staff can join/transfer</td></tr>
+<tr><td>Primary / Secondary</td><td>Roles of conference participants; primary controls wrap-up, secondaries are additional staff</td></tr>
+<tr><td>SHAKEN/STIR</td><td>Twilio TrustProduct that provides verified caller ID for outbound calls</td></tr>
+<tr><td>Media stream</td><td>The Twilio WebSocket (<code>/media/:callId</code>) delivering mulaw 8kHz audio for transcription</td></tr>
+<tr><td>Transcript segment</td><td>A persisted chunk of speech-to-text (<code>hotline_call_transcripts</code>) with speaker + offsets</td></tr>
+<tr><td>Insight</td><td>An AI-extracted structured field (e.g., Safety Concern) captured against an insight target</td></tr>
+<tr><td>Insight target</td><td>A configurable label the AI attempts to fill during a call</td></tr>
+<tr><td>Wrap-up</td><td>The post-call documentation step (category, mood, summary, services, disposition)</td></tr>
+<tr><td>Disposition</td><td>The call outcome code that links a call to casework (case/inquiry/referral/callback/informational)</td></tr>
+<tr><td>Callback</td><td>A scheduled follow-up call (<code>hotline_callbacks</code>), created manually or from a wrap-up</td></tr>
+<tr><td>Availability</td><td>A staff member&#x27;s live state (available/break/offline/on_call/wrap_up), stored in Redis</td></tr>
+<tr><td>Simulate mode</td><td>A non-production mode that mocks Twilio provisioning (optionally creating DB records)</td></tr>
+<tr><td>Agency / Service Center</td><td>A tenant victim-services provider (<code>service_centers</code>) that operates a hotline</td></tr>
+<tr><td>Advocate</td><td>Agency staff member who answers/places and documents hotline calls</td></tr>
+<tr><td>Victim / Survivor</td><td>The person a NECX agency serves; the caller on a hotline call</td></tr>
+</tbody></table></div>
+      </div>
+      <nav class="prevnext"><a class="pn prev" href="P06.html"><span>← Previous</span><b>Shelter Management</b></a><a class="pn next" href="P08.html"><span>Next →</span><b>Calendar &amp; Appointments</b></a></nav>
+      <footer class="doc-foot">NECX Inc — Confidential · Generated 2026-07-05 · NECX Hotline Management</footer>
+    </article>
+  </main>
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav class="toc-nav"><a class="toc-1" href="#1-document-control">1. Document Control</a>
+<a class="toc-1" href="#2-executive-summary">2. Executive Summary</a>
+<a class="toc-1" href="#3-product-overview-vision">3. Product Overview &amp; Vision</a>
+<a class="toc-2" href="#31-problem-statement">3.1 Problem Statement</a>
+<a class="toc-2" href="#32-product-vision">3.2 Product Vision</a>
+<a class="toc-2" href="#33-position-in-the-necx-ecosystem">3.3 Position in the NECX Ecosystem</a>
+<a class="toc-1" href="#4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</a>
+<a class="toc-2" href="#41-goals-objectives">4.1 Goals &amp; Objectives</a>
+<a class="toc-2" href="#42-success-metrics">4.2 Success Metrics</a>
+<a class="toc-1" href="#5-scope">5. Scope</a>
+<a class="toc-2" href="#51-in-scope">5.1 In Scope</a>
+<a class="toc-2" href="#52-out-of-scope">5.2 Out of Scope</a>
+<a class="toc-1" href="#6-personas-user-roles">6. Personas &amp; User Roles</a>
+<a class="toc-2" href="#61-persona-narratives">6.1 Persona Narratives</a>
+<a class="toc-1" href="#7-system-context-architecture">7. System Context &amp; Architecture</a>
+<a class="toc-2" href="#71-tech-stack">7.1 Tech Stack</a>
+<a class="toc-2" href="#72-client-backend-communication">7.2 Client-Backend Communication</a>
+<a class="toc-2" href="#73-real-time-notifications">7.3 Real-Time &amp; Notifications</a>
+<a class="toc-2" href="#74-tenancy-state">7.4 Tenancy &amp; State</a>
+<a class="toc-1" href="#8-functional-requirements">8. Functional Requirements</a>
+<a class="toc-2" href="#81-per-agency-hotline-provisioning">8.1 Per-Agency Hotline Provisioning</a>
+<a class="toc-2" href="#82-number-management">8.2 Number Management</a>
+<a class="toc-2" href="#83-shakenstir-caller-trust">8.3 SHAKEN/STIR Caller Trust</a>
+<a class="toc-2" href="#84-softphone-bootstrap">8.4 Softphone Bootstrap</a>
+<a class="toc-2" href="#85-command-center">8.5 Command Center</a>
+<a class="toc-2" href="#86-inbound-call-handling">8.6 Inbound Call Handling</a>
+<a class="toc-2" href="#87-answering-conference">8.7 Answering &amp; Conference</a>
+<a class="toc-2" href="#88-outbound-callback-calls">8.8 Outbound &amp; Callback Calls</a>
+<a class="toc-2" href="#89-live-transcription-ai-insights">8.9 Live Transcription &amp; AI Insights</a>
+<a class="toc-2" href="#810-ending-wrap-up">8.10 Ending &amp; Wrap-Up</a>
+<a class="toc-2" href="#811-manual-call-logging">8.11 Manual Call Logging</a>
+<a class="toc-2" href="#812-callbacks-management">8.12 Callbacks Management</a>
+<a class="toc-2" href="#813-full-call-log">8.13 Full Call Log</a>
+<a class="toc-2" href="#814-analytics-stats">8.14 Analytics &amp; Stats</a>
+<a class="toc-2" href="#815-hotline-settings-agency">8.15 Hotline Settings (Agency)</a>
+<a class="toc-2" href="#816-admin-platform-hotline-controls">8.16 Admin Platform Hotline Controls</a>
+<a class="toc-1" href="#9-detailed-user-system-flows">9. Detailed User &amp; System Flows</a>
+<a class="toc-2" href="#91-provision-an-agency-hotline-admin">9.1 Provision an Agency Hotline (Admin)</a>
+<a class="toc-2" href="#92-receive-handle-an-inbound-call-advocate">9.2 Receive &amp; Handle an Inbound Call (Advocate)</a>
+<a class="toc-2" href="#93-create-resolve-a-callback-advocate">9.3 Create &amp; Resolve a Callback (Advocate)</a>
+<a class="toc-2" href="#94-review-analytics-call-log-supervisor">9.4 Review Analytics &amp; Call Log (Supervisor)</a>
+<a class="toc-2" href="#95-simulate-a-call-provisioning-staging">9.5 Simulate a Call / Provisioning (Staging)</a>
+<a class="toc-1" href="#10-data-model">10. Data Model</a>
+<a class="toc-1" href="#11-api-integration-surface">11. API &amp; Integration Surface</a>
+<a class="toc-2" href="#111-staff-routes-base-webhotlines-allowonlyvs360-checkpermission">11.1 Staff Routes — base `/web/hotlines` (`allowOnly(&#x27;VS360&#x27;)` + `checkPermission(&#x27;hotline&#x27;,&#x27;view&#x27;)`)</a>
+<a class="toc-2" href="#112-admin-routes-base-adminhotlines-allowonlyadmin-agency-edit">11.2 Admin Routes — base `/admin/hotlines` (`allowOnly(&#x27;ADMIN&#x27;)`, agency `edit`)</a>
+<a class="toc-2" href="#113-twilio-webhook-routes-base-webhotlinestwilio-no-session-auth">11.3 Twilio Webhook Routes — base `/web/hotlines/twilio` (no session auth; `validateTwilioSignature`)</a>
+<a class="toc-2" href="#114-socketio-events-all-hotline">11.4 Socket.IO Events (all `hotline:*`)</a>
+<a class="toc-2" href="#115-external-integrations">11.5 External Integrations</a>
+<a class="toc-1" href="#12-rbac-permissions">12. RBAC &amp; Permissions</a>
+<a class="toc-1" href="#13-non-functional-requirements">13. Non-Functional Requirements</a>
+<a class="toc-1" href="#14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</a>
+<a class="toc-2" href="#141-dashboards-kpis">14.1 Dashboards &amp; KPIs</a>
+<a class="toc-2" href="#142-notifications-real-time">14.2 Notifications &amp; Real-Time</a>
+<a class="toc-1" href="#15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</a>
+<a class="toc-1" href="#16-glossary">16. Glossary</a>
+</nav>
+  </aside>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

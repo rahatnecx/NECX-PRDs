@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NECX Platform — Core System · NECX PRD</title>
+<meta name="description" content="System-wide product requirements for the unified NECX coordinated victim-services platform">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="prd-page">
+<header class="topbar">
+  <button class="hamburger" aria-label="Menu" onclick="toggleNav()">&#9776;</button>
+  <a class="brand" href="../index.html"><svg class="logo" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 L35 10 V22 C35 31 28 37 20 39 C12 37 5 31 5 22 V10 Z" fill="var(--brand)"/><path d="M13 27 V14 L20 22 V14 M27 14 V27 L20 19" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="brand-text">NECX<span class="brand-sub">Product Requirements</span></span></a>
+  <div class="topbar-spacer"></div>
+  <a class="top-link" href="../index.html">Home</a>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><span class="ic-sun">☀</span><span class="ic-moon">☾</span></button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-search"><input type="search" id="navSearch" placeholder="Filter documents…" oninput="filterNav(this.value)"></div>
+    <nav class="nav"><div class="nav-group"><div class="nav-group-title">Platform &amp; Applications</div><a class="nav-item active" href="P01.html" data-search="necx platform — core system whole-platform prd: unified backend, four clients, multi-tenancy, identity/rbac, and the end-to-end case lifecycle."><span class="nav-num">01</span><span class="nav-text">Platform — Core System</span></a>
+<a class="nav-item " href="P02.html" data-search="necx workspace — staff mobile app agency staff mobile app (flutter/riverpod) — the on-the-go companion to the vs360 web dashboard."><span class="nav-num">02</span><span class="nav-text">Workspace — Staff Mobile App</span></a>
+<a class="nav-item " href="P03.html" data-search="necx victim app — survivor mobile app victim / survivor mobile app (flutter/getx) — discover services, request help, chat, find shelter, e-sign."><span class="nav-num">03</span><span class="nav-text">Victim App — Survivor Mobile App</span></a>
+<a class="nav-item " href="P04.html" data-search="vs360 — agency web dashboard vs360 — the agency staff web dashboard (react/vite) and primary caseworker workspace."><span class="nav-num">04</span><span class="nav-text">VS360 — Agency Web Dashboard</span></a>
+</div>
+<div class="nav-group"><div class="nav-group-title">VS360 Feature Modules</div><a class="nav-item " href="P05.html" data-search="necx case management service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes."><span class="nav-num">05</span><span class="nav-text">Case Management</span></a>
+<a class="nav-item " href="P06.html" data-search="necx shelter management shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search."><span class="nav-num">06</span><span class="nav-text">Shelter Management</span></a>
+<a class="nav-item " href="P07.html" data-search="necx hotline management twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights."><span class="nav-num">07</span><span class="nav-text">Hotline Management</span></a>
+<a class="nav-item " href="P08.html" data-search="necx calendar &amp; appointments reminders, tasks and case-linked appointments in the vs360 tools calendar."><span class="nav-num">08</span><span class="nav-text">Calendar &amp; Appointments</span></a>
+<a class="nav-item " href="P09.html" data-search="necx staff time tracking staff time tracking: clock in/out, timesheets, and grant/pmt time attribution."><span class="nav-num">09</span><span class="nav-text">Staff Time Tracking</span></a>
+<a class="nav-item " href="P10.html" data-search="necx agency chat real-time advocate↔victim messaging tied to service threads and cases."><span class="nav-num">10</span><span class="nav-text">Agency Chat</span></a>
+<a class="nav-item " href="P11.html" data-search="necx internal chat staff-to-staff messaging within an agency, real-time over socket.io."><span class="nav-num">11</span><span class="nav-text">Internal Chat</span></a>
+<a class="nav-item " href="P12.html" data-search="necx rbac &amp; user management roles, the module/action permission matrix, plan seats, and multi-layer enforcement."><span class="nav-num">12</span><span class="nav-text">RBAC &amp; User Management</span></a>
+<a class="nav-item " href="P13.html" data-search="necx notes center agency-scoped, cross-case view over internal (caseworker-only) case notes."><span class="nav-num">13</span><span class="nav-text">Notes Center</span></a>
+<a class="nav-item " href="P14.html" data-search="necx drive google-drive-style cloud file storage backed by azure blob, with quotas and analytics."><span class="nav-num">14</span><span class="nav-text">Drive</span></a>
+<a class="nav-item " href="P15.html" data-search="necx ai report builder pmt/grant reporting plus ai-assisted custom report generation with accuracy validation."><span class="nav-num">15</span><span class="nav-text">AI Report Builder</span></a>
+<a class="nav-item " href="P16.html" data-search="necx e-sign &amp; document center prepare, request, sign and pdf-stamp case documents with an audit trail."><span class="nav-num">16</span><span class="nav-text">E-Sign &amp; Document Center</span></a>
+<a class="nav-item " href="P17.html" data-search="necx referrals &amp; partnerships inter-agency network: partnerships, invitations, and consent-based case referrals."><span class="nav-num">17</span><span class="nav-text">Referrals &amp; Partnerships</span></a>
+<a class="nav-item " href="P18.html" data-search="necx inquiries management intake and triage of inquiries / requests-to-connect before they become cases."><span class="nav-num">18</span><span class="nav-text">Inquiries Management</span></a>
+<a class="nav-item " href="P19.html" data-search="necx communities agency-run community spaces: joining questions, membership, posts and moderation."><span class="nav-num">19</span><span class="nav-text">Communities</span></a>
+<a class="nav-item " href="P20.html" data-search="necx service management service catalog, categories, and the per-service claim-question (intake) builder."><span class="nav-num">20</span><span class="nav-text">Service Management</span></a>
+</div>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim" onclick="toggleNav()"></div>
+  
+  <main class="content">
+    <article class="doc">
+      <div class="doc-eyebrow">Product Requirements Document · NECX Inc — Confidential</div>
+      <h1 class="doc-title">NECX Platform — Core System</h1>
+      <p class="doc-subtitle">System-wide product requirements for the unified NECX coordinated victim-services platform</p>
+      <div class="doc-meta"><span class="chip">Version: <b>1.0</b></span><span class="chip">Status: <b>Baseline</b></span><span class="chip">Owner: <b>NECX Product Management</b></span><a class="dl-btn" href="../downloads/01_NECX_Platform_Core.docx" download>⬇ Download DOCX</a></div>
+      <hr class="doc-rule">
+      <div class="doc-body">
+      <h2 id="1-document-control">1. Document Control</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td>NECX Platform (Coordinated Victim Services Platform)</td></tr>
+<tr><td>Module</td><td>Core System — unified backend + four clients (Victim App, Workspace App, VS360 web, NECX Admin)</td></tr>
+<tr><td>Version</td><td>1.0</td></tr>
+<tr><td>Status</td><td>Baseline</td></tr>
+<tr><td>Author</td><td>NECX Product Management</td></tr>
+<tr><td>Reviewers</td><td>Engineering (Backend, VS360, Mobile), Security &amp; Privacy, Compliance (VOCA/PMT), Platform Operations</td></tr>
+<tr><td>Last Updated</td><td>2026-07-05</td></tr>
+<tr><td>Related Documents</td><td>NECX Workspace Mobile App PRD; NECX Victim App PRD; VS360 Web Dashboard PRD; Feature PRDs — Shelters, Hotline, Case Management, Calendar &amp; Appointments, Staff Timer, Agency Chat, Internal Chat, RBAC, Notes Center, NECX Drive, NECX AI Report Builder, E-Sign &amp; Document Center</td></tr>
+</tbody></table></div>
+<p>Revision History</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>1.0</td><td>2026-07-05</td><td>NECX Product Management</td><td>Initial baseline of the system-wide Core PRD covering the unified backend, all four clients, multi-tenancy, identity/RBAC, the case/service-delivery lifecycle, and every major subsystem with pointers to dedicated feature PRDs.</td></tr>
+</tbody></table></div>
+<h2 id="2-executive-summary">2. Executive Summary</h2>
+<p>NECX is a coordinated victim-services platform operated by NECX Inc. It exists to help victims and survivors of crime find, request, and receive services from the agencies and advocates who serve them — safely, privately, and with dignity. The platform connects three constituencies on one shared backbone: victims/survivors, the agencies (service centers) that deliver services, and NECX Inc as the platform operator that provisions and governs the network.</p>
+<p>The platform is delivered as a single unified backend serving four purpose-built clients. Victims use the <strong>NECX Victim App</strong> (Flutter/GetX mobile) to discover services, request help, chat with agencies and an AI assistant, find emergency shelter, complete intake forms, and e-sign documents — all behind a privacy-first PIN/biometric lock with an emergency exit. Agency staff use <strong>VS360</strong> (React web dashboard) as their primary caseworker workspace and the <strong>NECX Workspace App</strong> (Flutter/Riverpod mobile) as its on-the-go companion. NECX Inc super-admins use the <strong>NECX Admin</strong> console (React web) to onboard agencies, define roles and subscription plans, configure platform-wide localization and AI/telephony providers, and manage shared Twilio hotline infrastructure.</p>
+<p>The system is <strong>multi-tenant</strong>: each agency (&quot;service center&quot;) is an isolated tenant. Agency-scoped data is filtered by the caller&#x27;s service center on virtually every query, and cross-tenant access surfaces as &quot;not found&quot; to avoid existence leaks. Identity separates platform/staff users (<code>users</code>) from victims (<code>app_users</code>), and a fine-grained RBAC layer (context gate + module/action permission map, capped by subscription plan) governs every privileged action. The heart of the domain is the <strong>service claim (case)</strong> — a victim&#x27;s request for a specific service — around which the platform coordinates intake questions, caseworker notes, victim-facing updates, chat, referrals between agencies, PMT/grant reporting, documents, and e-signature.</p>
+<p>This document specifies the system as a whole: shared architecture, identity and access control, the end-to-end case/service-delivery lifecycle, cross-cutting flows (agency provisioning, victim registration and service request, advocate-created cases with login-code claiming, and notification delivery), and a high-level summary of every major subsystem. Each subsystem also has a dedicated feature PRD; this Core PRD is the authoritative map of how they fit together.</p>
+<h2 id="3-product-overview-vision">3. Product Overview &amp; Vision</h2>
+<h3 id="31-problem-statement">3.1 Problem Statement</h3>
+<p>Victims of crime navigate a fragmented landscape of agencies, hotlines, shelters, and grant-funded programs, often at their most vulnerable. Agencies, in turn, operate siloed systems that make it hard to coordinate care, refer clients safely across organizations, and produce the demographic and performance reporting that funders (e.g., VOCA/OAG Performance Measurement Tool grants) require. Victims frequently cannot see the status of their own requests; advocates cannot easily hand a case to a partner agency with the victim&#x27;s consent; and platform operators lack a single control plane to onboard and govern the network.</p>
+<h3 id="32-product-vision">3.2 Product Vision</h3>
+<p>NECX unifies the victim, the advocate, and the platform operator on one coordinated system. A victim can discover and request a service in minutes, track it to resolution, and communicate with a real advocate in real time — while remaining anonymous until they choose otherwise. An agency can run its entire caseload, hotline, shelter capacity, communities, and grant reporting from one workspace, and can refer a client to a partner agency with the victim&#x27;s explicit, per-item consent. NECX Inc can stand up a new agency — with its staff seats, roles, mobile-facing services, and a dedicated hotline number — from a single record, cascading configuration down to every client automatically. Safety and privacy are first-class: victim-safe defaults, encrypted transport, app-level PIN/biometric locks, an emergency exit, and a full audit trail.</p>
+<h3 id="33-where-this-sits-in-the-necx-ecosystem">3.3 Where This Sits in the NECX Ecosystem</h3>
+<p>The platform is one unified backend and four clients:</p>
+<ul>
+<li><strong>NECX Victim App</strong> — Flutter (GetX) mobile client for victims/survivors. Consumes <code>/v2/mobile/*</code> routes (issuer type <code>APP</code>).</li>
+<li><strong>NECX Workspace App</strong> — Flutter (Riverpod) mobile client for agency staff, a companion to VS360. Consumes <code>/v2/web/*</code> (issuer type <code>VSMS</code>).</li>
+<li><strong>VS360 Web Dashboard</strong> — React (Vite) web client, the primary agency-staff workspace. Consumes <code>/v2/web/*</code> (issuer type <code>VSMS</code>).</li>
+<li><strong>NECX Admin</strong> — React (Vite) web console for NECX Inc super-admins, the platform control plane. Consumes <code>/v2/admin/*</code> (issuer type <code>NECX</code>).</li>
+<li><strong>Unified Backend</strong> — Node.js/Express (ESM), Objection/Knex over PostgreSQL, Socket.IO, Redis, BullMQ, Azure Blob Storage, Twilio, FCM, and AI providers (OpenAI/Anthropic/ElevenLabs).</li>
+</ul>
+<div class="callout note"><div class="callout-title">ℹ Naming</div><div class="callout-body">In code and routes an &quot;Agency&quot; is a &quot;Service Center&quot; (<code>service_centers</code>, <code>/service-centers</code>). The two terms are used interchangeably throughout this document; the client UIs generally say &quot;Agency.&quot;</div></div>
+<h2 id="4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</h2>
+<h3 id="41-goals-objectives">4.1 Goals &amp; Objectives</h3>
+<ul>
+<li>Provide victims a safe, private, low-friction path to discover and request victim services and track them to resolution.</li>
+<li>Give agency staff a single, coordinated workspace (web + mobile) for the full case lifecycle, hotline, shelter, communities, and grant reporting.</li>
+<li>Enable a NECX Inc operator to onboard and govern a multi-tenant network of agencies from one control plane, cascading roles, plans, services, and hotline infrastructure to every client.</li>
+<li>Enforce strict tenant isolation, fine-grained RBAC, and a complete audit trail across every privileged action.</li>
+<li>Support cross-agency coordination (partnerships and consent-gated referrals) without compromising victim consent or privacy.</li>
+<li>Produce accurate, funder-grade PMT/grant reporting, augmented (but never fabricated) by AI assistance.</li>
+<li>Keep victim safety and privacy paramount: victim-safe defaults, PIN/biometric app locks, emergency exit, confidential shelters, and encrypted transport.</li>
+</ul>
+<h3 id="42-success-metrics">4.2 Success Metrics</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Definition</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>Case completion rate</td><td>Resolved claims ÷ total non-rejected claims per agency</td><td>≥ 70%</td></tr>
+<tr><td>Time-to-first-response</td><td>Median time from claim creation to <code>approved</code> (from <code>service_claim_stats.approvedAt</code>)</td><td>≤ 24 hours</td></tr>
+<tr><td>Victim self-service adoption</td><td>Share of claims created by victims (mobile) vs advocate-created</td><td>≥ 60% victim-initiated</td></tr>
+<tr><td>Login-code activation rate</td><td>Advocate-created/anonymous cases claimed by a victim via login code</td><td>≥ 50% within 7 days</td></tr>
+<tr><td>Referral acceptance rate</td><td>Referred cases accepted by target agency ÷ consent-granted referrals</td><td>≥ 65%</td></tr>
+<tr><td>Notification deliverability</td><td>Notifications delivered via ≥1 channel (socket/FCM/email) without unhandled failure</td><td>≥ 99%</td></tr>
+<tr><td>PMT report accuracy</td><td>Generated reports passing the programmatic accuracy validator with zero high-severity conflicts</td><td>100% before finalize</td></tr>
+<tr><td>Agency onboarding time</td><td>Time from agency creation to first VS360 user login-ready</td><td>≤ 1 business day</td></tr>
+<tr><td>Tenant isolation defects</td><td>Confirmed cross-tenant data exposure incidents</td><td>0</td></tr>
+<tr><td>Platform availability</td><td>Backend API monthly uptime</td><td>≥ 99.5%</td></tr>
+</tbody></table></div>
+<h2 id="5-scope">5. Scope</h2>
+<h3 id="51-in-scope">5.1 In Scope</h3>
+<ul>
+<li>The unified backend API (tri-router <code>admin</code>/<code>web</code>/<code>mobile</code> pattern under <code>/v2</code>) and its cross-cutting middleware, real-time, jobs, and storage.</li>
+<li>All four clients at a system level: Victim App, Workspace App, VS360 web, NECX Admin.</li>
+<li>Multi-tenant agency model, identity (<code>users</code> vs <code>app_users</code>, <code>vsms_users</code> membership), authentication (OTP, refresh, login-code, PIN/step-up), and RBAC (context gate + permission map + plan caps).</li>
+<li>The case/service-delivery lifecycle end to end: services &amp; categories, service claims (cases), intake questions/answers, notes, updates, files, ratings, PMT snapshots, and statistics.</li>
+<li>Every major subsystem at a high level (see Section 8): Case Management, Services, Referrals/Partnerships, Inquiries, Shelters, Hotline, Chat, Notes Center, Staff Time, Calendar/Reminders/Appointments, Communities, Reports/AI, NECX Drive, E-Sign/Document Center, and Admin provisioning.</li>
+<li>Cross-cutting flows (Section 9): agency onboarding/provisioning cascade, victim registration &amp; service request, advocate-created case + login-code claiming, and notification delivery.</li>
+<li>Notification delivery across DB + Socket.IO + FCM + email/SMS.</li>
+</ul>
+<h3 id="52-out-of-scope">5.2 Out of Scope</h3>
+<ul>
+<li>Detailed screen-by-screen UX and per-field specifications of each client and feature (covered by the client and feature PRDs).</li>
+<li>Non-victim-services verticals present as legacy code (e.g., sales-representative and delivery-man endpoints in Admin) — not part of the victim-services product.</li>
+<li>The community feature on the Victim App (implemented but currently hidden/commented out) is treated as planned-but-disabled.</li>
+<li>Features flagged as planned/absent in the knowledgebase (see Risks &amp; Open Questions): Workspace-app shelter, staff timer, FCM push, and PIN/biometric on the Workspace app; the &quot;Case Management AI agent&quot;; NECX Drive on mobile; the Victim App&#x27;s older simulated e-sign path.</li>
+<li>Hard storage quota enforcement for NECX Drive (a usage counter is tracked but not enforced).</li>
+<li>Infrastructure provisioning, billing/collections, and Twilio commercial contracting beyond the in-product cost analytics.</li>
+</ul>
+<h2 id="6-personas-user-roles">6. Personas &amp; User Roles</h2>
+<h3 id="61-roles">6.1 Roles</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Role</th><th>Description</th><th>Key permissions</th></tr></thead>
+<tbody>
+<tr><td>NECX Super-Admin (<code>NECX</code>, <code>SUPER_ADMIN</code>)</td><td>NECX Inc platform staff operating the Admin console</td><td>Bypasses fine-grained checks; full platform control: agencies, users (NECX/VSMS/App), roles, plans, categories, localization, AI/telephony config, hotline provisioning</td></tr>
+<tr><td>NECX Platform Staff (<code>NECX</code>)</td><td>NECX Inc staff with scoped admin permissions</td><td>Admin modules gated by <code>modules</code> permission map (dashboard, necx_user/vsms_user/app_user, role_management, agency, plans, category)</td></tr>
+<tr><td>Agency Admin (<code>VSMS</code>, <code>VSMS_ADMIN</code>)</td><td>Senior agency staff who administer their agency in VS360/Workspace</td><td>Agency (<code>vs360Modules</code>) permissions incl. <code>claims.view_all</code>, <code>notes_center.*</code>, <code>shelters.manage_transfers</code>, <code>role_management</code>, user management within plan seats</td></tr>
+<tr><td>Agency Caseworker / Advocate (<code>VSMS</code>)</td><td>Front-line agency staff delivering services</td><td>Scoped to own agency; case/claim actions, chat, inquiries, notes, updates, hotline, communities per role permissions; may be limited to own/self-actioned cases without <code>claims.view_all</code></td></tr>
+<tr><td>Victim / Survivor (<code>APP</code>)</td><td>End-user of the Victim App</td><td>Own account and cases only; discover/request services, chat, shelters, intake, e-sign, consent to referrals; no context guard (auth-only) on mobile routes</td></tr>
+</tbody></table></div>
+<h3 id="62-persona-narratives">6.2 Persona Narratives</h3>
+<p><strong>Maria, a survivor</strong> downloads the NECX Victim App after a crisis. She registers with demographic/eligibility details, sets a PIN, and enables Face ID. She browses services filtered to her city, opens a domestic-violence advocacy service, answers its pre-assessment questions, and submits a claim. She chats with the assigned advocate in real time, finds an emergency shelter on the map, and requests a bed. Later she e-signs an intake document from within the app. The emergency-exit button is always one tap away.</p>
+<p><strong>David, an advocate</strong> at a partner agency, works cases all day in VS360 and checks in from the Workspace app between site visits. He creates a case on a walk-in victim&#x27;s behalf (auto-approved), which mints a login code the victim can later use to claim their account. He adds internal notes (invisible to the victim), publishes victim-facing updates, refers the client to a partner agency after obtaining consent, and takes hotline calls through the browser softphone with live AI transcription.</p>
+<p><strong>Priya, a NECX Inc super-admin</strong> onboards a new agency: she defines the VS360 roles, bundles them into a subscription plan, creates the agency with a seat count and a plan, provisions the agency&#x27;s staff logins (roles constrained by the plan), attaches services and pre-assessment questionnaires that surface in the mobile app, and provisions a dedicated Twilio hotline number with SHAKEN/STIR caller trust — all from the Admin console.</p>
+<h2 id="7-system-context-architecture">7. System Context &amp; Architecture</h2>
+<h3 id="71-tech-stack">7.1 Tech Stack</h3>
+<ul>
+<li><strong>Backend</strong> (<code>necx-backend_v2</code>): Node.js + Express (ESM), Objection.js/Knex over PostgreSQL, Socket.IO, Redis (scaling/pub-sub/cache and hotline staff availability), BullMQ (email and background jobs), Azure Blob Storage (MinIO/Azurite in dev), Twilio (hotline + OTP-SMS), FCM (push), and AI providers OpenAI/Anthropic/ElevenLabs. Single unified API under version prefix <code>/v2</code>.</li>
+<li><strong>VS360 web</strong> (<code>vs360-webapp</code>): React 18 + Vite, Mantine 7, Redux Toolkit + redux-persist, TanStack React Query, Axios, socket.io-client, Twilio Voice SDK, PostHog.</li>
+<li><strong>NECX Admin</strong> (<code>necx-admin</code>): React 18 + Vite, Mantine 7, Redux Toolkit + redux-persist, React Query, Axios.</li>
+<li><strong>Workspace App</strong> (<code>necx-workspace-mobile-app</code>): Flutter, Riverpod, GoRouter, Dio, socket.io-client, flutter_secure_storage.</li>
+<li><strong>Victim App</strong> (<code>necx-app_v2</code>): Flutter, GetX, Dio, socket.io-client, Firebase (Crashlytics + FCM), local_auth (biometric), google_maps_flutter, secure storage, PostHog.</li>
+</ul>
+<h3 id="72-request-model-middleware">7.2 Request Model &amp; Middleware</h3>
+<p>The backend uses a <strong>tri-router pattern</strong>: nearly every feature module exports <code>adminRouter</code> (<code>/admin/*</code>), <code>webRouter</code> (<code>/web/*</code>), and <code>mobileRouter</code> (<code>/mobile/*</code>), mounted by a loader under <code>/v2</code>. The URL prefix declares the intended client; <code>allowOnly(...contexts)</code> enforces it. A typical middleware chain is: rate-limiter → auth (populates <code>req.issuer</code>) → context-middleware → <code>allowOnly(context)</code> → permission-middleware (fine-grained) → Joi validator → controller → service → repository/model. Cross-cutting middleware includes <code>encryption-middleware</code> (AES response encryption that clients decrypt), <code>file-middleware</code> (multer uploads), <code>twilio-signature.middleware</code> (validates Twilio webhooks), and <code>global-error-middleware</code>.</p>
+<h3 id="73-talking-to-the-backend">7.3 Talking to the Backend</h3>
+<p>All clients send <code>Authorization: Bearer &lt;access&gt;</code> plus <code>x-refresh-token</code>, and gate at the edge with an <code>X-Netlify-Secret</code> shared secret (nginx/edge proxy) and <code>X-Environment</code>. Sliding token refresh occurs by rotating the <code>x-refresh-token</code> response header (web clients) or via <code>POST /auth/refresh</code> (mobile). In non-development environments, response bodies are AES-encrypted and decrypted client-side (<code>crypto-js</code> on web, <code>encrypt</code> on mobile). Web clients target <code>/v2/web</code> (VS360) or <code>/v2/admin</code> (Admin); mobile targets <code>/v2/mobile</code> (Victim) or <code>/v2/web</code> (Workspace, with a <code>/v2/mobile</code> variant for the richer user profile).</p>
+<h3 id="74-real-time-notifications">7.4 Real-Time &amp; Notifications</h3>
+<p>Socket.IO (<code>src/utils/socket.js</code>) provides per-user rooms (<code>vs360-user-&lt;uid&gt;</code>), a victim room (<code>app-notification-room</code>), agency rooms (<code>service-center-&lt;id&gt;</code>), per-thread rooms (<code>thread-&lt;threadUid&gt;-&lt;userUid&gt;</code>), and dedicated shelter namespaces (<code>/shelters</code>, <code>/me</code>). Redis backs scaling and pub/sub. Notification delivery is multi-channel: a DB row (<code>service_center_notifications</code> for staff / <code>victim_notifications</code> for victims) + a Socket.IO emit + an FCM push + an optional templated email (BullMQ). All notification calls are wrapped defensively so a delivery failure never breaks the main transaction.</p>
+<h3 id="75-tenancy">7.5 Tenancy</h3>
+<p>Two identity tables — <code>users</code> (platform/staff/admin) and <code>app_users</code> (victims) — plus <code>vsms_users</code>, which joins a <code>users</code> row to a <code>service_centers</code> (agency) row to represent staff membership. The authenticated principal <code>req.issuer</code> carries <code>id</code>, <code>uid</code>, <code>type</code> (<code>NECX</code>/<code>VSMS</code>/<code>APP</code>), <code>roleInfo</code> (with <code>context</code> + <code>permission</code>), and, for staff, <code>serviceCenterInfo</code>. Agency-scoped data is filtered by <code>issuer.serviceCenterInfo.id</code>; a VS360 user only ever sees/edits their own agency, and cross-tenant rows surface as &quot;not found.&quot;</p>
+<h3 id="76-async-jobs-storage">7.6 Async Jobs &amp; Storage</h3>
+<p>BullMQ queues handle templated email delivery (Handlebars + provider) and other background jobs. File storage uses Azure Blob in staging/prod (MinIO/Azurite in dev). NECX Drive uses a dedicated Azure adapter with direct-to-blob SAS upload/download; E-Sign and case/claim files proxy bytes through a shared <code>fileService</code>.</p>
+<h2 id="8-functional-requirements">8. Functional Requirements</h2>
+<p>This section summarizes each subsystem at the system level, with requirement IDs and pointers to the dedicated feature PRDs. Endpoint, socket, and status detail is drawn from the backend and client knowledgebases.</p>
+<h3 id="81-identity-authentication-session">8.1 Identity, Authentication &amp; Session</h3>
+<p>Authentication is a two-step OTP flow shared by all clients (admin/web/mobile variants), rate-limited (<code>auth</code>, <code>authStrict</code>, <code>passwordReset</code>). Credentials validate against <code>user_credentials</code> (bcrypt); OTP is delivered over the user&#x27;s channel (email or SMS/Twilio); verification issues JWT access + refresh tokens and returns the profile with <code>roleInfo</code>/<code>serviceCenterInfo</code>. Password reset is a channel-check → OTP-trigger → verify → set-new sequence. Mobile adds a <strong>login-code</strong> flow (advocate-created/anonymous case claiming), <strong>PIN</strong> lifecycle, biometric unlock, <strong>step-up</strong> re-auth, and device-token registration for FCM.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-AUTH-01</td><td>The system shall authenticate all clients via a two-step OTP flow: <code>sign-in</code> (credentials → OTP) then <code>verify-profile</code> (OTP → access + refresh tokens + profile).</td><td>Must</td></tr>
+<tr><td>FR-AUTH-02</td><td>The system shall support sliding token refresh via rotated <code>x-refresh-token</code> header and <code>POST /auth/refresh</code>.</td><td>Must</td></tr>
+<tr><td>FR-AUTH-03</td><td>The system shall provide password reset via <code>check-reset-channels</code> → <code>reset-password-trigger</code> → <code>verify-reset-password</code> → <code>reset-password</code>.</td><td>Must</td></tr>
+<tr><td>FR-AUTH-04</td><td>The system shall support victim login-code activation: <code>send-otp-for-code</code> → <code>verify-otp-for-login-code</code> → <code>login-with-code</code>/<code>set-password-first-login</code>, linking an anonymous case to a real account.</td><td>Must</td></tr>
+<tr><td>FR-AUTH-05</td><td>The Victim App shall enforce a 4–6 digit NECX PIN and optional biometric unlock, with PIN verify rotating tokens and lockout (403 <code>PIN/LOCKOUT</code>)/session-lock (423) handling.</td><td>Must</td></tr>
+<tr><td>FR-AUTH-06</td><td>The system shall register device tokens (<code>PATCH /account/device-token</code>) for FCM push.</td><td>Must</td></tr>
+<tr><td>FR-AUTH-07</td><td>The system shall rate-limit auth endpoints and encrypt response bodies in non-development environments.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="82-case-management-service-claims">8.2 Case Management (Service Claims)</h3>
+<p>The service claim is the central entity (&quot;claim&quot;/&quot;case&quot;). Its human-readable <code>uid</code> is <code>CL&lt;yy&gt;&lt;month&gt;&lt;uuid6&gt;</code>. It carries <code>serviceId</code>, <code>victimId</code>, <code>status</code> (state machine: pending → approved → resolved; pending → rejected), <code>rating</code>, <code>hasUnseenUpdates</code>, and login-code fields. Around it: intake question answers, caseworker-only notes, victim-facing updates, file uploads, a PMT snapshot, and per-claim statistics. See the Case Management feature PRD.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CASE-01</td><td>The system shall create a claim on victim request (mobile) or advocate creation (web); advocate-created claims (<code>shouldCreateUser</code>) auto-approve, victim-initiated start <code>pending</code>.</td><td>Must</td></tr>
+<tr><td>FR-CASE-02</td><td>The system shall enforce one ongoing (pending/approved) claim per (service, victim) for non-advocate claims.</td><td>Must</td></tr>
+<tr><td>FR-CASE-03</td><td>The system shall support the state machine approve/reject/resolve, each with caseworker attribution in <code>service_claim_stats</code> and appropriate notifications.</td><td>Must</td></tr>
+<tr><td>FR-CASE-04</td><td>On approve, the system shall open a SERVICE chat thread (victim↔caseworker), publish an &quot;Approved&quot; update, and (for referred cases) set the referral to <code>accepted</code>.</td><td>Must</td></tr>
+<tr><td>FR-CASE-05</td><td>On reject, the system shall delete the PMT report and (for referred cases) set the referral to <code>declined</code>; on resolve, publish a &quot;Resolved&quot; update and archive the chat thread.</td><td>Must</td></tr>
+<tr><td>FR-CASE-06</td><td>The system shall support claim file uploads (≤5 files, context <code>SERVICE_CLAIM</code>) and full-replace of question answers.</td><td>Must</td></tr>
+<tr><td>FR-CASE-07</td><td>The system shall provide caseworker-only notes (never shown to victims) with note types and rich HTML, and victim-facing updates with an <code>isPublished</code> gate.</td><td>Must</td></tr>
+<tr><td>FR-CASE-08</td><td>The system shall link contact info to an anonymous case (<code>link-client</code>) and issue/reuse a login code.</td><td>Must</td></tr>
+<tr><td>FR-CASE-09</td><td>The system shall gate agency-wide case visibility on <code>claims.view_all</code>; without it, VSMS users see only pending/self-actioned cases, scoped to their service center.</td><td>Must</td></tr>
+<tr><td>FR-CASE-10</td><td>The system shall support victim ratings and per-claim/agency KPI statistics (completion rate, unique/new/returning clients, top services, avg rating).</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="83-services-service-categories">8.3 Services &amp; Service Categories</h3>
+<p>Agencies publish <strong>services</strong> grouped under <strong>service categories</strong>. A service has a generated <code>service_code</code>, <code>isNational</code> (bypasses geo filter), <code>isActive</code>, <code>isVerified</code> (auto-true when created by VSMS), <code>viewCount</code>, and owns its claim (intake) questions. Categories also route claim/thread notifications to caseworkers assigned to that category. See Case Management / Services feature PRD.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SVC-01</td><td>The system shall let agencies (VS360) and admins CRUD services and admins CRUD categories, with duplicate guards per (title, category, service center) and per category name.</td><td>Must</td></tr>
+<tr><td>FR-SVC-02</td><td>The system shall attach per-service intake questions (<code>fill-in-the-blank</code>/<code>multiple-choice</code>/<code>true-false</code>, <code>isRequired</code>, options).</td><td>Must</td></tr>
+<tr><td>FR-SVC-03</td><td>The system shall expose service discovery to victims with filters (search, category, city, state) and hide plan-less/inactive/police-station agencies from directory search.</td><td>Must</td></tr>
+<tr><td>FR-SVC-04</td><td>The system shall block service deletion while <code>totalCases &gt; 0</code> and increment <code>viewCount</code> on detail fetch.</td><td>Must</td></tr>
+<tr><td>FR-SVC-05</td><td>The system shall support victim &quot;request to connect&quot; (emails the center, dedupes, 409 if already requested) and visit-duration tracking.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="84-inquiries-chat">8.4 Inquiries &amp; Chat</h3>
+<p>Chat is the messaging backbone with four thread types: <strong>INQUIRY</strong> (victim↔agency about a service, with a lifecycle pending→approved/rejected/resolved), <strong>SERVICE</strong> (victim↔agency for an approved case), <strong>INTERNAL</strong> (staff↔staff 1:1), and <strong>AGENCY_CHAT</strong> (agency↔agency, all users of both agencies participate). Supports attachments (≤5), message translation to the receiver&#x27;s language, read receipts, real-time delivery, and multi-channel notifications. See Agency Chat, Internal Chat, and Inquiries feature PRDs.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CHAT-01</td><td>The system shall support four thread types (INQUIRY, SERVICE, INTERNAL, AGENCY_CHAT) with per-type authorization and notification.</td><td>Must</td></tr>
+<tr><td>FR-CHAT-02</td><td>The system shall let victims start an inquiry about a service (dedup active inquiry per (victim, service)) and route it to category-matched agency staff.</td><td>Must</td></tr>
+<tr><td>FR-CHAT-03</td><td>The system shall let staff triage inquiries (approve/reject/resolve) with lifecycle transitions and victim notification.</td><td>Must</td></tr>
+<tr><td>FR-CHAT-04</td><td>The system shall translate message content to the receiver&#x27;s preferred language and store <code>translatedContent</code>.</td><td>Should</td></tr>
+<tr><td>FR-CHAT-05</td><td>The system shall deliver messages in real time via per-thread rooms and notify offline recipients via FCM (and email/SMS for some types).</td><td>Must</td></tr>
+<tr><td>FR-CHAT-06</td><td>The system shall support internal 1:1 chat (dedup), agency↔agency chat (dedup by agency pair), and pre-partnership agency chat.</td><td>Must</td></tr>
+<tr><td>FR-CHAT-07</td><td>The system shall support read receipts and unread counts per user/type, and attachment listing per thread.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="85-referrals-partnerships">8.5 Referrals &amp; Partnerships</h3>
+<p><strong>Partnerships</strong> are bilateral agency relationships (request → accept/decline; accepted enables referrals and auto-creates a shared agency chat). <strong>Referrals</strong> move a case to a partner agency for a specific service, gated by explicit per-item victim consent; on consent the case is cloned (with a sanitized snapshot per <code>canShare*</code> flags) into the target agency, which then accepts or declines it. There is a single-active-referral-per-case rule. See Referrals/Partnerships feature PRDs.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-REF-01</td><td>The system shall let an agency create a referral only against an existing case, an <code>accepted</code> partnership, with both agencies <code>acceptingReferrals=true</code>.</td><td>Must</td></tr>
+<tr><td>FR-REF-02</td><td>The system shall enforce a single active referral per case (409 on conflict).</td><td>Must</td></tr>
+<tr><td>FR-REF-03</td><td>The system shall require victim consent (mobile decision <code>approve</code>/<code>reject</code>) before any case data is shared; consent expires after 2 days by default.</td><td>Must</td></tr>
+<tr><td>FR-REF-04</td><td>On consent, the system shall build a sanitized case snapshot per the six <code>canShare*</code> flags and clone the case (+PMT +stats) into the target agency with status <code>pending</code>.</td><td>Must</td></tr>
+<tr><td>FR-REF-05</td><td>The target agency&#x27;s approve/reject of the cloned claim shall flip <code>referralStatus</code> to <code>accepted</code>/<code>declined</code>.</td><td>Must</td></tr>
+<tr><td>FR-REF-06</td><td>The system shall support resend of denied referrals, soft-delete by the originating agency, the <code>acceptingReferrals</code> toggle, and referral-options listing.</td><td>Should</td></tr>
+<tr><td>FR-PART-01</td><td>The system shall support partnership request/accept/decline (only the target may accept/decline), reactivation of declined partnerships (role swap), and auto-creation of a shared AGENCY_CHAT thread on accept.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="86-shelters">8.6 Shelters</h3>
+<p>Agency-run emergency shelter capacity management: a physical hierarchy (location → floor → room → bed), availability/occupancy, check-in/out, waitlist, inter-agency transfers, maintenance, and audit history. A mobile surface lets victims search shelters (with distance/filters), view layouts, request beds/join waitlists, and track requests. Confidential shelters hide their coordinates/address until intake. Staff and mobile actions cross-notify via dedicated Socket.IO namespaces + FCM. See Shelters feature PRD.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-SHL-01</td><td>The system shall model shelter location→floor→room→bed with capacity governed by actual bed rows and location-unique bed numbers.</td><td>Must</td></tr>
+<tr><td>FR-SHL-02</td><td>The system shall support check-in (may create an app_user + issue a login code + approved shelter claim), check-out, and transfer, updating bed status and writing history.</td><td>Must</td></tr>
+<tr><td>FR-SHL-03</td><td>The system shall support a waitlist (staff walk-in and mobile-originated), promotion to a bed, and inter-agency transfer requests (accept/decline with auto check-in).</td><td>Must</td></tr>
+<tr><td>FR-SHL-04</td><td>The system shall let victims search/discover shelters (filters, Haversine distance, sort, pagination) and hide confidential-shelter coordinates until intake.</td><td>Must</td></tr>
+<tr><td>FR-SHL-05</td><td>The system shall support mobile bed requests (<code>waiting</code>/<code>waitlisted</code>) with staff triage (accept/reject/cancel/waitlist), notifying the app user each transition.</td><td>Must</td></tr>
+<tr><td>FR-SHL-06</td><td>The system shall emit real-time bed/availability/layout/directory events on the <code>/shelters</code> and <code>/me</code> namespaces and FCM notifications for status changes.</td><td>Must</td></tr>
+<tr><td>FR-SHL-07</td><td>The system shall support maintenance items, a maintenance PDF report, per-location/system stats, and full shelter history.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="87-hotline">8.7 Hotline</h3>
+<p>A full Twilio-backed victim-services hotline: admins provision per-agency Twilio subaccounts (numbers, TwiML app, API key, optional SHAKEN/STIR); staff manage lines and availability and take/place calls via a browser softphone anchored to Twilio Conferences (multi-staff join/transfer). Live calls are transcribed and mined for AI insights; wrap-up records disposition/category/mood and can auto-create callbacks. Call logs, stats, analytics, and cost reporting are included. Staff availability is stored in Redis. See Hotline feature PRD.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-HOT-01</td><td>The system shall provision per-agency hotline infrastructure (subaccount, API key, TwiML app, phone number, hotline line, optional SHAKEN/STIR) as idempotent, resumable, step-tracked setup, with a simulate mode for dry runs.</td><td>Must</td></tr>
+<tr><td>FR-HOT-02</td><td>The system shall bootstrap a browser softphone via a Twilio Voice access token and route inbound/outbound calls through Twilio Conferences with multi-staff ring, take, transfer, and participant add/remove.</td><td>Must</td></tr>
+<tr><td>FR-HOT-03</td><td>The system shall transcribe live calls (Whisper/Scribe) and extract AI insights against configurable targets when enabled per agency.</td><td>Should</td></tr>
+<tr><td>FR-HOT-04</td><td>The system shall support call wrap-up (disposition, category, mood, summary, services) that can auto-create callbacks and ties dispositions to casework.</td><td>Must</td></tr>
+<tr><td>FR-HOT-05</td><td>The system shall validate Twilio webhooks by signature and expose call logs, stats, analytics, and Twilio cost breakdowns (master/all/subaccount/agency).</td><td>Must</td></tr>
+<tr><td>FR-HOT-06</td><td>The system shall emit hotline real-time events (incoming, answered, ended, transcript, insights, staff-status, transfer, callback-updated) to agency/user rooms.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="88-notes-center">8.8 Notes Center</h3>
+<p>A cross-case, agency-scoped surface over case notes (<code>claim_notes</code>) with filtering, staff attribution, and stat cards. Same storage as case-detail notes; a different management surface. Gated by <code>allowOnly(&#x27;VS360&#x27;)</code> + <code>notes_center</code> permission. See Notes Center feature PRD.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-NOTE-01</td><td>The system shall list agency notes with paging, filters (date, types, staff, search, highlight), sorting, and stat cards, scoped to the agency via the claim→service→service_center chain.</td><td>Must</td></tr>
+<tr><td>FR-NOTE-02</td><td>The system shall create/update/delete notes with agency-scope verification (cross-agency isolation), staff attribution (<code>createdBy</code>/<code>updatedBy</code>), and note-type enum.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="89-staff-time">8.9 Staff Time</h3>
+<p>Per-staff time tracking against projects/grants: a start/stop timer (one active timer per user) plus manual entries, used for PMT grant reporting and general project accounting. See Staff Timer feature PRD.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-TIME-01</td><td>The system shall support a single active timer per user (starting auto-stops any existing active entry) and manual completed entries.</td><td>Must</td></tr>
+<tr><td>FR-TIME-02</td><td>The system shall associate entries with a grant when <code>projectType=&#x27;PMT_GRANT&#x27;</code> and report completed entries scoped to user + service center with optional date range.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="810-calendar-reminders-appointments">8.10 Calendar, Reminders &amp; Appointments</h3>
+<p>Staff reminders/lightweight scheduling, optionally tied to a case and optionally broadcast to the whole agency; reminders carry start/end datetimes and priority and are the scheduling primitive (no separate calendar table). The Victim App surfaces case appointments in case detail. See Calendar &amp; Appointments feature PRD.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-CAL-01</td><td>The system shall support reminder CRUD with combined date+time, priority, status, optional case linkage (<code>claimId</code>), and agency broadcast (<code>isBroadcast</code>).</td><td>Must</td></tr>
+<tr><td>FR-CAL-02</td><td>The system shall return the union of a user&#x27;s own reminders and agency broadcast reminders, with case/victim context for case-linked reminders.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="811-communities">8.11 Communities</h3>
+<p>Moderated peer-support communities for victims, created and moderated by agency staff. Two types: GROUP_CHAT (real-time group messaging) and POST (feed of posts + comments). Includes join flows (open vs private with approval + mandatory joining questions), moderator management, banning, content moderation (auto text sanitization + report/warning workflow), and cross-platform notifications. See Communities feature PRD. (Note: the Victim App community surface is currently hidden.)</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-COM-01</td><td>The system shall support community creation with type, privacy, member limit, mandatory joining questions, and moderator assignment.</td><td>Must</td></tr>
+<tr><td>FR-COM-02</td><td>The system shall support join flows (open = immediate; private = approval), member/moderator management, and banning.</td><td>Must</td></tr>
+<tr><td>FR-COM-03</td><td>The system shall auto-moderate group-chat/post/comment text and support a report → deactivate/(ban)/warning workflow.</td><td>Must</td></tr>
+<tr><td>FR-COM-04</td><td>The system shall notify members of posts/comments/messages/moderation actions via app notifications + FCM.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="812-reports-pmt-ai">8.12 Reports, PMT &amp; AI</h3>
+<p>The reporting subsystem covers (a) the OAG/PMT data pipeline (grants ↔ questionnaires ↔ per-claim answers ↔ PMT demographic rows), (b) Excel-template-based generated grant reports with an AI-assisted spreadsheet editor, and (c) the NECX AI Report Builder — a JSON-schema-driven custom report generator with an LLM chat, file-upload ingestion, and a programmatic accuracy validator. See NECX AI Report Builder feature PRD.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-RPT-01</td><td>The system shall auto-create a PMT report (demographics + new/returning classification) on claim creation and on referral clone; delete it on reject.</td><td>Must</td></tr>
+<tr><td>FR-RPT-02</td><td>The system shall support agency-scoped CRUD of grants (with Excel template), questionnaires (category-linked, smart upsert preserving answers), and per-claim answers, with a question×case answer matrix.</td><td>Must</td></tr>
+<tr><td>FR-RPT-03</td><td>The system shall generate grant reports by copying the grant template and support an AI spreadsheet editor that returns surgical, revertible cell edits under an 80–100% confidence + human-approval policy.</td><td>Must</td></tr>
+<tr><td>FR-RPT-04</td><td>The NECX AI Report Builder shall generate structured JSON reports from live agency data + uploaded files, keep AI keys server-side, and run a post-generation accuracy validator flagging conflicts/hallucinations.</td><td>Must</td></tr>
+<tr><td>FR-RPT-05</td><td>The system shall render reports to PDF and enforce that file-extracted metric values override system data with provenance tracking.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="813-dashboards-analytics">8.13 Dashboards &amp; Analytics</h3>
+<p>Agency analytics: KPI cards, demographic/claim trends, victim needs, service performance, location trends, and predictive insights, plus a quick case-status update. One route serves a public service catalog to the NECX AI assistant.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-DASH-01</td><td>The system shall compute agency KPIs (new/completed/total claims, inquiries, avg response time, provider rating, repeat-victim rate) with month-over-month trends, scoped to the agency.</td><td>Must</td></tr>
+<tr><td>FR-DASH-02</td><td>The system shall provide demographic/claim trends, victim needs, service performance, location trends, and predictive insights with optional date filters.</td><td>Should</td></tr>
+<tr><td>FR-DASH-03</td><td>The system shall support a quick case-status update from the dashboard (whitelisted statuses, agency-scope verified, <code>claims.edit</code> gated).</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="814-necx-drive">8.14 NECX Drive</h3>
+<p>A Google-Drive-style, agency-scoped cloud file store (VS360 web only): folders, direct-to-Azure SAS upload, multiple views (My Drive / Shared with me / Agency / Starred / Trash), move/rename/star, soft-delete + restore + empty-trash, per-user and agency-wide sharing, revocable share links, copy-to-my-drive, filename search, and storage-usage analytics. Strict tenant isolation; MIME anti-spoofing; 250 MB size cap; SAS rate-limit (30/min/user). No hard quota (usage counter tracked, not enforced). See NECX Drive feature PRD.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-DRV-01</td><td>The system shall provide folder/file CRUD with two-phase direct-to-Azure upload (write-SAS then commit with size + magic-byte MIME verification).</td><td>Must</td></tr>
+<tr><td>FR-DRV-02</td><td>The system shall enforce tenant isolation (foreign rows surface as not-found), owner-only mutation, and read paths honoring user/agency shares and share links (cascading folder shares).</td><td>Must</td></tr>
+<tr><td>FR-DRV-03</td><td>The system shall support soft-delete/restore/empty-trash, star, move (with circular-move guard), rename (unique-name resolution), copy-to-my-drive (server-side blob copy), and filename search (escaped LIKE).</td><td>Must</td></tr>
+<tr><td>FR-DRV-04</td><td>The system shall track per-agency storage usage and expose per-MIME breakdown; share-link tokens are stored only as SHA-256 with single plaintext reveal, expiry, and revocation.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="815-e-sign-document-center">8.15 E-Sign &amp; Document Center</h3>
+<p>Case-scoped document center (VS360 web + Victim mobile): staff upload documents onto a case, place signature fields, and send for in-house electronic signature by the victim and/or staff. Each signature re-stamps a signed PDF incrementally; status is tracked; parties are notified via socket + in-app + FCM (+ email to victim). A companion &quot;My signature&quot; module stores one reusable signature per user. See E-Sign &amp; Document Center feature PRD.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-ESN-01</td><td>The system shall let staff upload case documents, place positioned or fallback signature fields, and send for signature (deleting prior pending rows on resend).</td><td>Must</td></tr>
+<tr><td>FR-ESN-02</td><td>The system shall let the victim (own signer row only) and staff sign via drawn/typed/saved signature, capturing signer identity, type, timestamp, and IP address.</td><td>Must</td></tr>
+<tr><td>FR-ESN-03</td><td>The system shall re-stamp the signed PDF from the pristine original on every signature (idempotent), showing collected signatures and placeholders for pending ones.</td><td>Must</td></tr>
+<tr><td>FR-ESN-04</td><td>The system shall track document status (draft → pending_signature → partially_signed → signed; declined/cancelled) and notify parties on request/partial/full completion and on cancel.</td><td>Must</td></tr>
+<tr><td>FR-ESN-05</td><td>The system shall let each user save, replace, and remove one reusable signature image.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="816-tool-ai-assistant-utilities">8.16 Tool / AI Assistant &amp; Utilities</h3>
+<p>A shared set of AI/utility endpoints: text/file translation, an external-service health check, and the <strong>NECX AI assistant</strong> (victim self-service): greeting → chat → service/video recommendations, plus text-moderation/PII utilities reused by Communities.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-TOOL-01</td><td>The system shall provide a victim AI assistant session (create → greeting → send/get messages → service/video recommendations → end).</td><td>Must</td></tr>
+<tr><td>FR-TOOL-02</td><td>The system shall provide text and file translation and text moderation/PII utilities.</td><td>Should</td></tr>
+</tbody></table></div>
+<h3 id="817-admin-provisioning-platform-configuration">8.17 Admin Provisioning &amp; Platform Configuration</h3>
+<p>The Admin console is the platform control plane: agency (tenant) CRUD + bulk import, user management (NECX/VSMS/App), RBAC role editor (VS360 + Admin panels), subscription plans (role bundles + seats), service categories, mobile localization/supported languages, AI/telephony provider config, master Twilio account, hotline provisioning + cost analytics, and VS360 data migration. See RBAC and Hotline feature PRDs.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-ADM-01</td><td>The system shall let super-admins create/edit agencies (name, contact, address, seats <code>numberOfUsers</code>, plan, optional hotline + SHAKEN/STIR) and bulk-import agencies + services.</td><td>Must</td></tr>
+<tr><td>FR-ADM-02</td><td>The system shall let super-admins define roles for the VS360 and Admin contexts and bundle VS360 roles into subscription plans that cap an agency&#x27;s assignable roles.</td><td>Must</td></tr>
+<tr><td>FR-ADM-03</td><td>The system shall enforce agency seat limits when provisioning VS360 users, constrain assignable roles by the agency&#x27;s plan, and support onboarding-email dispatch.</td><td>Must</td></tr>
+<tr><td>FR-ADM-04</td><td>The system shall let super-admins manage service categories, mobile supported languages, platform AI/telephony providers, the master Twilio account, and per-agency hotline provisioning + cost analytics.</td><td>Must</td></tr>
+<tr><td>FR-ADM-05</td><td>The system shall support VS360 data migration (import clients + grant questionnaire data) atomically and rate-limited.</td><td>Should</td></tr>
+</tbody></table></div>
+<h2 id="9-detailed-user-system-flows">9. Detailed User &amp; System Flows</h2>
+<h3 id="91-agency-onboarding-provisioning-cascade-admin-agency-vs360-use">9.1 Agency Onboarding &amp; Provisioning Cascade (Admin → Agency → VS360 users → Mobile services)</h3>
+<ol class="flow">
+<li>A NECX super-admin defines RBAC <strong>roles</strong> for the <code>VS360</code> context (and <code>ADMIN</code> context) in Admin → Users → Roles &amp; Permissions (<code>POST /roles</code>), toggling per-module/action permissions (e.g., <code>claims.view_all</code> is only enabled when <code>claims.view</code> is on).</li>
+<li>The super-admin creates <strong>subscription plans</strong> (<code>POST /plans</code>) that bundle a set of VS360 roles; a plan effectively defines the agency&#x27;s tier and which roles its users may hold.</li>
+<li>The super-admin creates an <strong>agency</strong> (<code>POST /admin/service-centers</code>) with name, contact, address (country/state/city), a <strong>seat count</strong> (<code>numberOfUsers</code>, NECX-privileged), a <strong>plan</strong> (<code>planId</code>), <code>serviceType=VICTIM_SERVICE_PROVIDER</code>, and optional Twilio switches (<code>setupHotline</code>, nested <code>setupShakenStir</code>). The server generates a unique 4-char code and <code>uid</code>, writes an <code>ActionLogs</code> row, and — if <code>setupHotline</code> — fires fire-and-forget hotline provisioning (Twilio failure is logged, non-blocking).</li>
+<li>If hotline provisioning is requested, <code>setupHotlineForAgency</code> runs step-tracked and idempotent: Twilio subaccount → API key → TwiML app (voice URL <code>/v2/web/hotlines/twilio/voice</code>) → search + buy a US number → create <code>hotline_lines</code> → optional SHAKEN/STIR TrustProduct. A simulate mode can fake SIDs for dry runs.</li>
+<li>The super-admin provisions <strong>VS360 users</strong> for the agency (from the agency detail page or the VS360 Users tab). Assignable roles are fetched by the agency&#x27;s plan (<code>GET /roles/plan/:planId</code>); service categories and OTP channel are assigned; &quot;Add User&quot; is disabled once <code>users.length &gt;= numberOfUsers</code>. <code>POST /users</code> with <code>type=VSMS</code> creates the login and the <code>vsms_users</code> membership.</li>
+<li>The super-admin attaches <strong>services + pre-assessment questionnaires</strong> to the agency (<code>POST /victim-services</code>), each service carrying intake questions. These become the offerings and pre-assessments that surface to victims in the mobile app (auto-<code>isVerified</code> when created by staff).</li>
+<li>The super-admin sends an <strong>onboarding email</strong> (<code>POST /users/send-onboarding-email/:uid</code>) with credentials.</li>
+<li>Result: one agency record fans out into a VS360 tenant with seats/roles, mobile-app services/questionnaires, and (optionally) a dedicated Twilio hotline — all keyed to the agency <code>uid</code>. Edge case: <code>planId = &quot;-1&quot;</code> maps to no plan; agencies without a plan are hidden from directory search.</li>
+<li>Bulk path: <code>POST /admin/service-centers/batch</code> imports agencies + services per-agency-transaction, resolving state/city and logging each row.</li>
+</ol>
+<h3 id="92-victim-registration-service-request-end-to-end">9.2 Victim Registration &amp; Service Request (End to End)</h3>
+<ol class="flow">
+<li>The victim installs the Victim App and completes the <strong>4-step registration wizard</strong>: personal info + preferred OTP channel (EMAIL/SMS) → location (state→city cascading) → demographics/eligibility (race/ethnicity, gender, age, special classification) → set password + accept terms. Submit calls <code>POST /mobile/users</code>.</li>
+<li>On success the app resets registration data and <strong>auto-logs in</strong> (<code>POST /mobile/auth/sign-in</code>), navigating to the OTP screen.</li>
+<li>The victim enters the OTP; <code>POST /mobile/auth/verify-profile</code> (<code>type=APP</code>, includes <code>deviceToken</code>) returns <code>{user, accessToken, refreshToken, hasPin, settings.isPinEnabled}</code>. The app persists tokens/user, identifies analytics/crash reporting, initializes the socket, and routes through <strong>PIN setup/verify</strong> (mandatory on relaunch).</li>
+<li>The victim <strong>discovers services</strong>: the Services tab lists services with filters (category, state, city, debounced search, paginated) via <code>GET /mobile/victim-services</code>. National services bypass geo filtering.</li>
+<li>The victim opens a service (<code>GET /mobile/victim-services/{uid}</code>, increments <code>viewCount</code>, adds <code>language</code> when non-English), which returns the per-service <strong>claim questions</strong> (pre-assessment).</li>
+<li>The victim answers questions and submits a claim: <code>POST /mobile/service-claims { serviceId, questionAnswers }</code>. The server (in a transaction) resolves <code>victimId=issuer.id</code>, applies the duplicate guard (rejects an existing ongoing claim for the (service, victim)), creates the claim <code>uid=CL&lt;yy&gt;&lt;month&gt;&lt;uuid6&gt;</code> with status <strong><code>pending</code></strong>, inserts answers, creates a stats row, computes new-vs-returning client, creates the PMT report with demographics, and emits <code>claim-request</code> to category-assigned caseworkers.</li>
+<li>Agency staff (VS360/Workspace) see the new claim, review it, and <strong>approve</strong> it (<code>PATCH /service-claims/approve/:uid</code>): status → approved, a published &quot;Approved&quot; update is created, a <strong>SERVICE chat thread</strong> is opened, stats record <code>approved_by/at</code>, and the victim is notified (<code>victim_notifications</code> SERVICE_CLAIM_APPROVED + FCM + socket).</li>
+<li>The victim and advocate <strong>chat in real time</strong> on the SERVICE thread; the victim can view published <strong>updates</strong>, receive/complete <strong>intake forms</strong>, <strong>e-sign</strong> case documents, and (if referred) consent to referrals.</li>
+<li>On completion the advocate <strong>resolves</strong> the case (<code>PATCH /service-claims/resolve/:uid</code>): status → resolved, a &quot;Resolved&quot; update is published, the chat thread is archived, and the victim may <strong>rate</strong> the service (<code>PATCH /service-claims/rating/:uid</code>).</li>
+<li>Alternative branches: the victim may <strong>request to connect</strong> (<code>PUT /mobile/victim-services/{uid}/request-to-connect</code>, emails the center, 409 if already requested) or <strong>start an inquiry</strong> chat before claiming; staff may <strong>reject</strong> a claim (status → rejected, PMT deleted, victim notified).</li>
+</ol>
+<h3 id="93-advocate-created-case-login-code-claiming">9.3 Advocate-Created Case + Login-Code Claiming</h3>
+<ol class="flow">
+<li>An advocate creates a case on a victim&#x27;s behalf in VS360/Workspace: <code>POST /service-claims</code> with <code>shouldCreateUser=true</code> and <code>userData</code> (and/or an existing <code>victimId</code>).</li>
+<li>The service finds the user by email/phone or creates a <strong>temporary app_user</strong> (<code>anonymousUserCode</code>, <code>isVerified=false</code>), then creates the claim with status <strong><code>approved</code></strong> (advocate-created cases auto-approve) and records <code>approved_by/at</code>.</li>
+<li>If the new user has an OTP channel (<code>otpChannel ≠ NONE</code>), the system generates a one-time <strong>login code</strong> (<code>loginCodeService</code>), stores it on the claim (<code>loginCode</code>, <code>codeSentAt</code>), and delivers it to the victim via email/SMS.</li>
+<li>Separately, a <strong>shelter check-in</strong> for an unlinked walk-in can also mint a login code (find-or-create app_user → approved shelter claim → generate + send code), handed to the client by staff.</li>
+<li>The advocate may later attach contact info to an anonymous case via <code>PATCH /service-claims/link-client/:claimUid</code>, which validates the channel/contact and issues/reuses a login code (<code>ADVOCATE_LINKED_CLIENT</code> audit).</li>
+<li>The victim claims the account in the app: <code>POST /mobile/auth/send-otp-for-code</code> (if needed) → <code>POST /mobile/auth/verify-otp-for-login-code</code> (activates the account).</li>
+<li>If the account has no password yet, the victim sets one via <code>POST /mobile/auth/set-password-first-login</code> (with <code>preAuthToken</code>); otherwise <code>POST /mobile/auth/login-with-code</code> completes login.</li>
+<li>The now-verified victim is logged in (tokens issued), routed through PIN setup, and sees the previously anonymous case linked to their real account with full case detail, chat, updates, and documents.</li>
+</ol>
+<h3 id="94-cross-agency-referral-with-victim-consent">9.4 Cross-Agency Referral with Victim Consent</h3>
+<ol class="flow">
+<li>Agency A and Agency B establish a <strong>partnership</strong> (A requests via <code>POST /web/partnerships</code>; only B may <code>accept</code>). On accept, a shared AGENCY_CHAT thread is auto-created and both agencies are notified.</li>
+<li>Both agencies set <code>acceptingReferrals=true</code> (toggle). Agency A, owning an existing case, lists eligible targets (<code>GET /referral-options</code> — accepted partnerships where both accept referrals, enriched with services).</li>
+<li>Agency A creates a <strong>referral</strong> (<code>POST /web/partnerships/referrals</code>) selecting a partner service and setting the six <code>canShare*</code> sharing flags (all default false) and an optional message. Guards: valid partnership (<code>accepted</code>), issuer is a party, original case exists, and no active referral already exists for the case (else 409). The referral is created with <code>consentStatus=pending</code>, <code>referralStatus=pending</code>, <code>consentExpiresAt=now+2d</code>.</li>
+<li>The victim is prompted in the app and makes a <strong>consent decision</strong> (<code>POST /mobile/partnerships/referrals/:uid/decision</code>). Reject → <code>consentStatus=denied</code> (terminal). Approve → <code>consentStatus=granted</code>.</li>
+<li>On approve, the system builds a <strong>sanitized case snapshot</strong> limited to the enabled <code>canShare*</code> subsets (notes, files, published updates only, chat, victim answers, PMT demographics), then <strong>clones the case</strong> into the target agency (new <code>service_claims</code> uid, status <code>pending</code>, mirrored PMT + stats) and sets <code>referredCaseId</code>. <code>referralStatus</code> stays <code>pending</code> until the target agency acts.</li>
+<li>Agency B <strong>approves or rejects</strong> the cloned claim in its normal case workflow, which flips <code>referralStatus</code> to <code>accepted</code>/<code>declined</code>.</li>
+<li>The victim&#x27;s app gates chat on the referred case (consent granted + agency accepted). Agency A can resend a denied referral (<code>resend</code>), soft-delete its own referral, and see referral stats.</li>
+</ol>
+<h3 id="95-notification-delivery-cross-cutting">9.5 Notification Delivery (Cross-Cutting)</h3>
+<ol class="flow">
+<li>A domain event fires (claim approved, new message, referral, shelter update, document signature request, community action, etc.).</li>
+<li>The owning service inserts a <strong>DB notification row</strong> — <code>service_center_notifications</code> for staff or <code>victim_notifications</code> for victims — with <code>additionalData</code> (e.g., <code>claimUid</code>, <code>threadUid</code>).</li>
+<li><strong>Socket.IO</strong> emits to the target room so open clients update live: <code>vs360-user-&lt;uid&gt;</code> / <code>service-center-&lt;id&gt;</code> for staff; <code>app-notification-room</code> (and event names like <code>service-claim-action-for-&lt;victimUid&gt;</code>, <code>update-&lt;receiverUid&gt;</code>, <code>inquiry-approve-for-&lt;victimUid&gt;</code>) for victims; per-thread rooms for chat; and <code>/shelters</code>/<code>/me</code> namespaces for shelter events.</li>
+<li><strong>FCM push</strong> is sent to the recipient&#x27;s registered <code>deviceToken</code>(s) for background delivery (Victim App). The Workspace app currently has no FCM and instead polls notifications via REST.</li>
+<li>An <strong>optional templated email</strong> (BullMQ Handlebars queue) and/or SMS is sent for select events (e.g., login-code delivery, inquiry/partnership emails, document-signature request to the victim).</li>
+<li>Read-state is cleared via helpers (<code>markClaimNotificationsAsRead</code>, <code>markThreadNotificationsAsRead</code>) and per-notification/thread mark-read endpoints.</li>
+<li>All notification calls are wrapped defensively: a failure in any channel is logged and never breaks the main transaction. Edge case: a recipient with no device token still receives the DB row + socket event + (where configured) email.</li>
+</ol>
+<h3 id="96-hotline-inbound-call-summary-flow">9.6 Hotline Inbound Call (Summary Flow)</h3>
+<ol class="flow">
+<li>A victim dials the agency&#x27;s hotline number; Twilio hits <code>POST /web/hotlines/twilio/voice</code> (signature-validated). The backend resolves the active <code>hotline_lines</code> by the dialed number.</li>
+<li>It collects assigned staff who are Redis-<code>available</code>; if none, it returns TwiML indicating unavailability (recorded). Otherwise it pre-generates a <code>callId</code> + conference name, creates the <code>hotline_calls</code> row (<code>active</code>), and sets the first available staff to <code>on_call</code>.</li>
+<li>Every available staff&#x27;s browser (and phone, if any) is rung into the conference simultaneously; <code>hotline:incoming</code> is emitted to <code>service-center-&lt;id&gt;</code> so all browsers show the incoming dialog. TwiML starts a media stream + <code>&lt;Dial&gt;&lt;Conference&gt;</code>; the victim waits until staff joins.</li>
+<li>When a primary staff leg joins (<code>POST /web/hotlines/twilio/conference</code>), all other ringing legs are cancelled, <code>answeredByUserId</code>/<code>callAnsweredVia</code> are fixed, and the answering user is notified. Secondary staff can be added/transferred.</li>
+<li>Live audio streams over the media WebSocket → transcription → periodic AI insight extraction (when enabled), emitting <code>hotline:transcript</code>/<code>hotline:insights</code> to the answering user.</li>
+<li>Ending moves the call to <code>wrap_up</code> (browser-answered) or <code>completed</code>; wrap-up records disposition/category/mood/summary/services and can auto-create a callback. Dispositions tie the call to casework (created_case, created_inquiry, linked_to_existing_case, referred_to_partner, callback_scheduled, informational_only).</li>
+</ol>
+<h3 id="97-e-sign-a-case-document-summary-flow">9.7 E-Sign a Case Document (Summary Flow)</h3>
+<ol class="flow">
+<li>Staff upload a document to a case (<code>POST /web/case-documents/claim/:claimUid</code>), status <code>draft</code>.</li>
+<li>Staff <strong>send for signature</strong> (<code>POST /:uid/send</code>) with positioned <code>fields[]</code> (role, page, normalized x/y/w/h) or fallback <code>requireVictim</code>/<code>requireStaff</code>; prior pending signature rows are cleared; status → <code>pending_signature</code>; a preview PDF shows dashed placeholders.</li>
+<li>The victim is notified (socket + in-app + FCM + email) and views the document in-app; staff sign in VS360.</li>
+<li>Each signer signs (<code>POST /:uid/sign</code>) with a drawn/typed/saved signature (victim restricted to their own <code>signer_app_user_id</code>), capturing identity, type, timestamp, and <strong>IP address</strong>.</li>
+<li>The signed PDF is re-stamped from the pristine original on every signature; status transitions to <code>partially_signed</code> then <code>signed</code> (sets <code>completed_at</code>); parties are notified. Cancel soft-deletes the document and drops it from the victim&#x27;s list.</li>
+</ol>
+<h2 id="10-data-model">10. Data Model</h2>
+<p>The backend defines ~81 Objection/Knex models under <code>src/model/v2/</code>. Selected core entities:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Key Fields</th><th>Relationships</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>Users</td><td>id, uid, type, roleInfo</td><td>HasMany VSMSUsers; HasOne UserCredential/UserSettings</td><td>Platform/staff/admin identity</td></tr>
+<tr><td>AppUsers</td><td>id, uid, contact, otpChannel, demographics, isVerified, signature</td><td>HasMany ServiceClaims</td><td>Victim/survivor identity</td></tr>
+<tr><td>UserCredential</td><td>userId, bcrypt hash</td><td>BelongsTo Users</td><td>Credential store</td></tr>
+<tr><td>Roles</td><td>name, permission (JSON), context</td><td>BelongsToMany Plans (via PlanRoles)</td><td>RBAC role definitions</td></tr>
+<tr><td>Plans / PlanRoles</td><td>name; role bundle</td><td>HasMany ServiceCenters</td><td>Subscription tier + role caps</td></tr>
+<tr><td>VSMSUsers</td><td>userId, serviceCenterId</td><td>BelongsTo Users, ServiceCenters</td><td>Agency staff membership</td></tr>
+<tr><td>ServiceCenters</td><td>uid, code, serviceType, address (JSONB), planId, numberOfUsers, status, acceptingReferrals</td><td>HasMany Services, VSMSUsers</td><td>Agency (tenant)</td></tr>
+<tr><td>Services</td><td>uid, service_code, categoryId, isNational, isActive, isVerified, viewCount</td><td>BelongsTo ServiceCenters, ServiceCategories; HasMany ClaimQuestions</td><td>Published offering</td></tr>
+<tr><td>ServiceCategories</td><td>name, description</td><td>HasMany Services</td><td>Service taxonomy</td></tr>
+<tr><td>ServiceClaims</td><td>uid (CL…), serviceId, victimId, status, rating, loginCode fields</td><td>BelongsTo Services, AppUsers; HasMany Notes/Updates/Answers/Files</td><td>Case (central entity)</td></tr>
+<tr><td>ClaimQuestions / ClaimQuestionAnswers</td><td>question, type, options; answer</td><td>BelongsTo Services / ServiceClaims</td><td>Intake</td></tr>
+<tr><td>ClaimNotes</td><td>title, description (HTML), noteType, createdBy/updatedBy</td><td>BelongsTo ServiceClaims, Users</td><td>Caseworker-only notes</td></tr>
+<tr><td>ClaimUpdates</td><td>text, isPublished</td><td>BelongsTo ServiceClaims</td><td>Victim-facing progress</td></tr>
+<tr><td>ServiceClaimStats</td><td>approved/rejected/resolved by/at</td><td>BelongsTo ServiceClaims</td><td>Attribution/KPIs</td></tr>
+<tr><td>AgencyPartnerships</td><td>requesting/target agency uid, status</td><td>HasMany AgencyReferrals</td><td>Bilateral agency relationship</td></tr>
+<tr><td>AgencyReferrals</td><td>partnershipId, originalCaseId, referredCaseId, consentStatus, referralStatus, metadata (snapshot)</td><td>BelongsTo AgencyPartnerships</td><td>Consent-gated cross-agency referral</td></tr>
+<tr><td>ChatThreads / ChatMessages</td><td>type, victimId, vsmsId/vsmsId2, serviceId, status; content, translatedContent, isRead</td><td>HasMany messages/files</td><td>Messaging</td></tr>
+<tr><td>InquiryLifecycle</td><td>threadId, status</td><td>BelongsTo ChatThreads</td><td>Inquiry state</td></tr>
+<tr><td>Communities + members/questions/requests/posts/comments/reports</td><td>type, isPrivate, memberLimit, status</td><td>HasMany members/content</td><td>Peer-support communities</td></tr>
+<tr><td>Shelter* (Locations/Floors/Rooms/Beds/Assignments/Waitlist/Transfer/Maintenance/History)</td><td>hierarchy, status, confidentialLocation</td><td>tree + assignments</td><td>Shelter capacity</td></tr>
+<tr><td>Hotline* (Config/Settings/Lines/PurchasedNumber/Calls/Callbacks/Participants/Transcripts/Insights/StaffAssignments) + TwilioAccount</td><td>Twilio SIDs, status, disposition</td><td>per-agency</td><td>Hotline</td></tr>
+<tr><td>StaffTimeEntries</td><td>userId, serviceCenterId, grantId, status, durationMinutes</td><td>BelongsTo Users/ServiceCenters/PmtGrants</td><td>Time tracking</td></tr>
+<tr><td>Reminders</td><td>title, priority, status, startDate/endDate, isBroadcast, claimId</td><td>BelongsTo Users, ServiceClaims</td><td>Scheduling</td></tr>
+<tr><td>Pmt* (Report/Grants/Questionnaires/Categories/Questions/Answers/GeneratedReports) + CustomReport/ChatLog/DataSourceMap</td><td>demographics; template; report JSON</td><td>grant→questionnaire→answers→PMT</td><td>Reporting/AI</td></tr>
+<tr><td>DriveFolders/Files/Shares/ShareLinks/StorageUsage</td><td>uid, blob_name, deleted_at, token_hash</td><td>agency-scoped tree</td><td>NECX Drive</td></tr>
+<tr><td>CaseDocuments / DocumentSignatures</td><td>status, file/signed URLs; signer, position, ip_address</td><td>BelongsTo ServiceClaims</td><td>E-Sign</td></tr>
+<tr><td>ServiceCenterNotifications / VictimNotifications</td><td>additionalData (JSONB), read-state</td><td>per recipient</td><td>Notifications</td></tr>
+<tr><td>ActionLogs</td><td>action, referenceType, actionDescription{source,ip,url,context}</td><td>polymorphic</td><td>Audit trail</td></tr>
+<tr><td>PlatformSettings / AdminSettings / AiProviderConfig / PlatformStaticTranslations / States / Cities / UserFeedback</td><td>config + reference</td><td>—</td><td>Platform config/reference</td></tr>
+</tbody></table></div>
+<h2 id="11-api-integration-surface">11. API &amp; Integration Surface</h2>
+<h3 id="111-representative-endpoints">11.1 Representative Endpoints</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>POST</td><td><code>/v2/{admin,web,mobile}/auth/sign-in</code></td><td>Credentials → OTP</td><td>rate-limited</td></tr>
+<tr><td>POST</td><td><code>/v2/{admin,web,mobile}/auth/verify-profile</code></td><td>OTP → tokens + profile</td><td>rate-limited</td></tr>
+<tr><td>POST</td><td><code>/v2/mobile/auth/login-with-code</code></td><td>Claim advocate-created case</td><td>auth-only</td></tr>
+<tr><td>POST</td><td><code>/v2/admin/service-centers</code></td><td>Create agency (+optional hotline)</td><td>allowOnly(ADMIN)</td></tr>
+<tr><td>POST</td><td><code>/v2/{web,mobile}/service-claims</code></td><td>Create case (advocate/victim)</td><td>context</td></tr>
+<tr><td>PATCH</td><td><code>/v2/web/service-claims/{approve,reject,resolve}/:uid</code></td><td>Case state machine</td><td>allowOnly(VS360)</td></tr>
+<tr><td>POST</td><td><code>/v2/web/partnerships</code> / <code>.../referrals</code></td><td>Partnership / referral create</td><td>allowOnly(VS360)</td></tr>
+<tr><td>POST</td><td><code>/v2/mobile/partnerships/referrals/:uid/decision</code></td><td>Victim consent</td><td>issuer APP</td></tr>
+<tr><td>POST</td><td><code>/v2/{web,mobile}/chat-services/send-message/:threadUid</code></td><td>Send message (+files)</td><td>context</td></tr>
+<tr><td>GET/POST</td><td><code>/v2/web/shelters/*</code>, <code>/v2/mobile/shelters*</code></td><td>Shelter mgmt / discovery</td><td>VS360 / auth</td></tr>
+<tr><td>POST</td><td><code>/v2/web/hotlines/twilio/voice</code></td><td>Twilio voice webhook</td><td>Twilio signature</td></tr>
+<tr><td>GET/PUT</td><td><code>/v2/web/reports/*</code></td><td>PMT/grants/AI reports</td><td>allowOnly(VS360) + pmtApi</td></tr>
+<tr><td>GET/POST</td><td><code>/v2/web/drive/*</code></td><td>NECX Drive</td><td>allowOnly(VS360)</td></tr>
+<tr><td>POST</td><td><code>/v2/{web,mobile}/case-documents/.../sign</code></td><td>E-Sign</td><td>VS360 / signer=APP</td></tr>
+<tr><td>GET/POST/PATCH</td><td><code>/v2/admin/{roles,plans,service-centers,users,hotlines,settings}</code></td><td>Platform provisioning/config</td><td>allowOnly(ADMIN)</td></tr>
+</tbody></table></div>
+<h3 id="112-external-integrations">11.2 External Integrations</h3>
+<ul>
+<li><strong>Twilio</strong> — hotline provisioning (subaccounts, numbers, TwiML apps, SHAKEN/STIR), browser softphone (Voice SDK), conferences, media streams, and OTP SMS. Webhooks validated by signature.</li>
+<li><strong>FCM</strong> — push notifications to the Victim App (device tokens registered via <code>PATCH /account/device-token</code>).</li>
+<li><strong>Azure Blob Storage</strong> (MinIO/Azurite in dev) — NECX Drive (direct SAS) and shared file storage (Drive analytics, claim files, grant templates, case documents, signatures).</li>
+<li><strong>OpenAI / Anthropic / ElevenLabs</strong> — AI report builder (gpt-4o / claude-haiku), PMT spreadsheet editor (gpt-4o), hotline transcription (Whisper/Scribe) + insights (gpt-4.1-mini), and the victim AI assistant. Keys are held server-side for the web pipeline; the Workspace app currently calls providers directly with embedded keys (flagged as a risk).</li>
+<li><strong>Email (BullMQ + Handlebars)</strong> — templated transactional email (onboarding, invitations, partnership, login-code, document-signature request).</li>
+<li><strong>PostHog</strong> — product analytics (web + mobile). <strong>Firebase Crashlytics</strong> — Victim App crash reporting.</li>
+</ul>
+<h2 id="12-rbac-permissions">12. RBAC &amp; Permissions</h2>
+<p>Two coarse layers combine. First, the <strong>context gate</strong> (<code>allowOnly</code>) reads <code>req.issuer.roleInfo.context</code> and returns 403 if absent/not allow-listed: <code>ADMIN</code> (NECX), <code>VS360</code> (agency); mobile victim routes are auth-only. Second, <strong>fine-grained permissions</strong>: a role&#x27;s <code>permission</code> object is a module→action boolean map checked in services/<code>permission-middleware</code>. <code>SUPER_ADMIN</code> bypasses fine-grained checks. <strong>Plans</strong> cap which roles/seats an agency may use.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Area</th><th>Gating</th></tr></thead>
+<tbody>
+<tr><td>Admin console (context <code>ADMIN</code>)</td><td><code>modules</code> map (all <code>necxOnly</code>): dashboard.view; necx_user/vsms_user/app_user {view,add,edit,delete,password_reset_trigger}; role_management {view,add,edit,delete}; agency {view,add,edit,delete,add_service,edit_service,add_user}; plans {…}; category {…}</td></tr>
+<tr><td>Agency case visibility</td><td><code>claims.view_all</code> gates seeing all agency cases vs only own/self-actioned; <code>claims.{view,add,edit,delete}</code> for actions</td></tr>
+<tr><td>Services</td><td><code>services.{view,add,edit,delete}</code></td></tr>
+<tr><td>Inquiries / Communities</td><td><code>inquiries.{…}</code>, <code>communities.{…}</code></td></tr>
+<tr><td>Chat</td><td><code>internal_chat.view</code>, <code>agency_chat.view</code></td></tr>
+<tr><td>Notes Center</td><td><code>notes_center.{view,add,edit,delete}</code> (granted on VSMS_ADMIN)</td></tr>
+<tr><td>Reports</td><td><code>reports.pmt_reports</code>; custom reports owned by creating <code>userId</code></td></tr>
+<tr><td>Shelters</td><td><code>shelters.{view,add,edit,delete,manage_transfers}</code></td></tr>
+<tr><td>Hotline</td><td><code>hotline.{view,command_center,call_logs,callbacks,analytics,settings,show_simulate_button}</code></td></tr>
+<tr><td>Staff Time / Tools</td><td><code>time.view</code>, <code>tools.view</code></td></tr>
+<tr><td>Role management (agency)</td><td><code>role_management</code> (necxOnly flag)</td></tr>
+<tr><td>Tenant scope</td><td>All agency data filtered by <code>issuer.serviceCenterInfo.id</code>; victim data by <code>issuer.id</code>; cross-tenant rows surface as not-found</td></tr>
+</tbody></table></div>
+<p>Front-end mirrors these via <code>hasPermission(user, module, action)</code> and <code>isSuperAdmin(...)</code> across three layers (route guard, nav visibility, in-page actions).</p>
+<h2 id="13-non-functional-requirements">13. Non-Functional Requirements</h2>
+<ul>
+<li><strong>Security &amp; transport</strong> — Bearer JWT with sliding refresh; edge gate via <code>X-Netlify-Secret</code>; AES-encrypted response bodies (non-dev) decrypted client-side; Twilio webhook signature validation; rate limiters (<code>standard</code>, <code>auth</code>, <code>authStrict</code>, <code>passwordReset</code>, <code>chatApi</code>, <code>pmtApi</code>, <code>shelter</code>, <code>tool</code>); Drive MIME anti-spoofing (whitelist + magic-byte sniff), SHA-256 share-link tokens, path-traversal-proof blob paths, and SAS rate limits.</li>
+<li><strong>Privacy &amp; victim safety</strong> — victim-safe defaults; NECX PIN + biometric lock on the Victim App; emergency exit button; session lock (423) and lockout (403); confidential shelters hide coordinates/address until intake; anonymous cases and consent-gated referrals; case-detail screens verify ownership before rendering; sharing preferences default to all-false; referral snapshots share only sanitized, per-flag subsets.</li>
+<li><strong>Multi-tenancy &amp; isolation</strong> — strict <code>service_center_id</code> scoping; cross-tenant existence hidden as not-found. (Open item: E-Sign read paths rely on route guard + signer check rather than an explicit tenant re-check — flagged for security review.)</li>
+<li><strong>Performance</strong> — server-side pagination and filtering; Redis caching; direct-to-Azure SAS uploads (bytes bypass the app tier for Drive); React Query caching (5-min stale/10-min cache) on web; debounced search on mobile.</li>
+<li><strong>Availability &amp; resilience</strong> — Socket.IO auto-reconnect with room re-join; defensive notification wrapping; idempotent, resumable hotline provisioning; <code>terminateStaleCalls</code> on startup; fire-and-forget side effects that never block core transactions.</li>
+<li><strong>Auditability</strong> — nearly all create/update/delete operations write <code>ActionLogs</code> with action, reference type, and <code>actionDescription{source, ip, url, context}</code>; E-Sign captures per-signature IP address.</li>
+<li><strong>Localization &amp; accessibility</strong> — platform-managed mobile supported languages and static translations; Victim App supports en/es/bn/fr/ar (RTL for Arabic) with runtime-fetched dynamic translations and message translation. VS360/Admin/Workspace are English-only today (no global i18n). Accessibility to follow WCAG 2.1 AA as clients mature.</li>
+<li><strong>Compliance</strong> — PMT/OAG grant reporting pipeline with demographic snapshots and a programmatic accuracy validator (no fabrication; file values override system data; human approval for AI edits); full audit trail for compliance review.</li>
+</ul>
+<h2 id="14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</h2>
+<h3 id="141-dashboards-kpis">14.1 Dashboards &amp; KPIs</h3>
+<p>Agencies get a KPI dashboard (new/completed/total claims, inquiries, avg response time from <code>approvedAt − createdAt</code>, provider rating, repeat-victim rate, service-detail views) with month-over-month trends, plus demographic/claim trends, victim needs, service performance, location trends, and predictive insights — all agency-scoped with optional date filters. The Admin dashboard is currently a stub.</p>
+<h3 id="142-reporting">14.2 Reporting</h3>
+<p>The PMT/grants pipeline links grants ↔ questionnaires (by service category) ↔ per-claim answers ↔ PMT demographic rows, feeding both an Excel AI spreadsheet editor (conservative, approval-gated, revertible edits) and the NECX AI Report Builder (structured JSON, live agency data + uploaded files, server-side keys, post-generation accuracy validator with conflict/hallucination flags, PDF export). Staff-time entries feed grant/project accounting.</p>
+<h3 id="143-notifications">14.3 Notifications</h3>
+<p>Multi-channel delivery combines a DB row (<code>service_center_notifications</code>/<code>victim_notifications</code>) + Socket.IO emit + FCM push + optional email/SMS. Staff clients show unread badges (claims, inquiries, internal chat, agency messages, communities, plus live hotline/shelter counts). The Victim App receives FCM push and an in-app overlay; the Workspace app polls notifications via REST (no FCM today). Read-state is managed per notification/claim/thread.</p>
+<h2 id="15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Type</th><th>Impact</th><th>Mitigation/Owner</th></tr></thead>
+<tbody>
+<tr><td>Workspace app hardcodes Claude/OpenAI keys and <code>X-Netlify-Secret</code> in source; AI calls go direct from device</td><td>Risk (security)</td><td>High — key exposure/abuse</td><td>Move AI report generation server-side; rotate secrets; Engineering (Mobile) + Security</td></tr>
+<tr><td>E-Sign read paths (<code>getDocument</code>, <code>streamFile</code>, <code>sign</code>) lack explicit tenant/claim-ownership re-check</td><td>Risk (security)</td><td>Medium — potential cross-tenant access</td><td>Add tenant/claim ownership check; security review; Backend + Security</td></tr>
+<tr><td>NECX Drive has no hard storage quota (usage counter tracked, not enforced)</td><td>Risk</td><td>Medium — unbounded growth</td><td>Add quota + cleanup worker (planned Phase 6); Backend</td></tr>
+<tr><td>Some AI-report data sources are placeholders/zero (hotline calls, satisfaction, shelter, financial, HR)</td><td>Open Question</td><td>Medium — misleading report metrics</td><td>Wire real data sources or clearly label; Reports team</td></tr>
+<tr><td>Workspace app lacks FCM push, PIN/biometric, shelter, and staff timer</td><td>Assumption (planned/absent)</td><td>Medium — parity gap with VS360</td><td>Roadmap for parity; Product</td></tr>
+<tr><td>&quot;Case Management AI agent&quot; not implemented in any branch</td><td>Open Question</td><td>Low — expectation mgmt</td><td>Treat as planned; Product</td></tr>
+<tr><td>Victim App community feature implemented but hidden</td><td>Assumption</td><td>Low</td><td>Enable when moderation/readiness confirmed; Product</td></tr>
+<tr><td>Victim App older simulated e-sign path (<code>e_sign_controller</code>) coexists with live path</td><td>Risk</td><td>Low — confusion/dead code</td><td>Remove simulated path; Mobile</td></tr>
+<tr><td>vs360 overview KB references &quot;NestJS&quot;; backend KB is Express/Objection/Knex</td><td>Assumption</td><td>Low — doc accuracy</td><td>Backend KB is authoritative (Express); reconcile docs; Product</td></tr>
+<tr><td>Dashboard SQL interpolates dates directly in some aggregations</td><td>Risk (security)</td><td>Medium — injection surface</td><td>Parameterize queries; Backend + Security</td></tr>
+<tr><td>Encryption-at-rest and DR/backup posture not specified in KB</td><td>Open Question</td><td>Medium — compliance</td><td>Confirm infra controls; Platform Ops</td></tr>
+</tbody></table></div>
+<p><strong>Assumptions:</strong> all four clients target the same unified backend under <code>/v2</code>; multi-tenancy is enforced server-side; the knowledgebase reflects the <code>develop</code> branches at the recorded commits; features on merged branches are live on <code>develop</code>.</p>
+<h2 id="16-glossary">16. Glossary</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Agency / Service Center</td><td>An organization (tenant) providing victim services; code/routes say &quot;service center&quot; (<code>service_centers</code>), UI says &quot;Agency&quot;</td></tr>
+<tr><td>Advocate / Caseworker</td><td>Agency staff member (issuer type <code>VSMS</code>) who delivers services and manages cases</td></tr>
+<tr><td>App User</td><td>A victim/survivor account (<code>app_users</code>), issuer type <code>APP</code></td></tr>
+<tr><td>Claim / Case / Service Claim</td><td>A victim&#x27;s request for a specific service — the central domain entity (<code>service_claims</code>, uid <code>CL…</code>)</td></tr>
+<tr><td>Claim Question / Answer</td><td>Per-service intake (pre-assessment) question and the victim&#x27;s answer</td></tr>
+<tr><td>Claim Note</td><td>Caseworker-only annotation on a case (never shown to the victim)</td></tr>
+<tr><td>Claim Update</td><td>Progress message on a case; <code>isPublished</code> ones are visible to the victim</td></tr>
+<tr><td>Context (RBAC)</td><td>The gate value on a role: <code>ADMIN</code> (NECX) or <code>VS360</code> (agency); mobile victim routes are auth-only</td></tr>
+<tr><td>Inquiry</td><td>Pre-claim victim↔agency chat about a service, with a lifecycle (pending→approved/rejected/resolved)</td></tr>
+<tr><td>Issuer</td><td>The authenticated principal on <code>req.issuer</code> (id, uid, type, roleInfo, serviceCenterInfo)</td></tr>
+<tr><td>Login Code</td><td>One-time code that lets a victim claim an advocate-created/anonymous case (or a shelter walk-in)</td></tr>
+<tr><td>NECX Admin</td><td>Platform super-admin console operated by NECX Inc</td></tr>
+<tr><td>Partnership</td><td>A bilateral relationship between two agencies enabling referrals and shared chat</td></tr>
+<tr><td>PIN / Step-up</td><td>Victim App second-factor app lock (4–6 digits) and re-auth for sensitive actions</td></tr>
+<tr><td>Plan</td><td>A subscription tier bundling VS360 roles and seat count for an agency</td></tr>
+<tr><td>PMT</td><td>Performance Measurement Tool — OAG/VOCA grant demographic/performance reporting</td></tr>
+<tr><td>Referral</td><td>Consent-gated transfer of a case to a partner agency; clones the case on consent</td></tr>
+<tr><td>Service</td><td>A concrete offering published by an agency under a category</td></tr>
+<tr><td>Service Category</td><td>Taxonomy grouping for services; also routes notifications to assigned caseworkers</td></tr>
+<tr><td>Shelter Bed / Assignment / Waitlist</td><td>Emergency shelter capacity units and the records tracking occupancy and requests</td></tr>
+<tr><td>VSMS</td><td>Victim Services Management System — agency staff membership (<code>vsms_users</code>), issuer type <code>VSMS</code></td></tr>
+<tr><td>VS360</td><td>The agency-staff web dashboard (Victim Services 360)</td></tr>
+<tr><td>Workspace App</td><td>The agency-staff mobile companion to VS360</td></tr>
+</tbody></table></div>
+      </div>
+      <nav class="prevnext"><a class="pn next" href="P02.html"><span>Next →</span><b>Workspace — Staff Mobile App</b></a></nav>
+      <footer class="doc-foot">NECX Inc — Confidential · Generated 2026-07-05 · NECX Platform — Core System</footer>
+    </article>
+  </main>
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav class="toc-nav"><a class="toc-1" href="#1-document-control">1. Document Control</a>
+<a class="toc-1" href="#2-executive-summary">2. Executive Summary</a>
+<a class="toc-1" href="#3-product-overview-vision">3. Product Overview &amp; Vision</a>
+<a class="toc-2" href="#31-problem-statement">3.1 Problem Statement</a>
+<a class="toc-2" href="#32-product-vision">3.2 Product Vision</a>
+<a class="toc-2" href="#33-where-this-sits-in-the-necx-ecosystem">3.3 Where This Sits in the NECX Ecosystem</a>
+<a class="toc-1" href="#4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</a>
+<a class="toc-2" href="#41-goals-objectives">4.1 Goals &amp; Objectives</a>
+<a class="toc-2" href="#42-success-metrics">4.2 Success Metrics</a>
+<a class="toc-1" href="#5-scope">5. Scope</a>
+<a class="toc-2" href="#51-in-scope">5.1 In Scope</a>
+<a class="toc-2" href="#52-out-of-scope">5.2 Out of Scope</a>
+<a class="toc-1" href="#6-personas-user-roles">6. Personas &amp; User Roles</a>
+<a class="toc-2" href="#61-roles">6.1 Roles</a>
+<a class="toc-2" href="#62-persona-narratives">6.2 Persona Narratives</a>
+<a class="toc-1" href="#7-system-context-architecture">7. System Context &amp; Architecture</a>
+<a class="toc-2" href="#71-tech-stack">7.1 Tech Stack</a>
+<a class="toc-2" href="#72-request-model-middleware">7.2 Request Model &amp; Middleware</a>
+<a class="toc-2" href="#73-talking-to-the-backend">7.3 Talking to the Backend</a>
+<a class="toc-2" href="#74-real-time-notifications">7.4 Real-Time &amp; Notifications</a>
+<a class="toc-2" href="#75-tenancy">7.5 Tenancy</a>
+<a class="toc-2" href="#76-async-jobs-storage">7.6 Async Jobs &amp; Storage</a>
+<a class="toc-1" href="#8-functional-requirements">8. Functional Requirements</a>
+<a class="toc-2" href="#81-identity-authentication-session">8.1 Identity, Authentication &amp; Session</a>
+<a class="toc-2" href="#82-case-management-service-claims">8.2 Case Management (Service Claims)</a>
+<a class="toc-2" href="#83-services-service-categories">8.3 Services &amp; Service Categories</a>
+<a class="toc-2" href="#84-inquiries-chat">8.4 Inquiries &amp; Chat</a>
+<a class="toc-2" href="#85-referrals-partnerships">8.5 Referrals &amp; Partnerships</a>
+<a class="toc-2" href="#86-shelters">8.6 Shelters</a>
+<a class="toc-2" href="#87-hotline">8.7 Hotline</a>
+<a class="toc-2" href="#88-notes-center">8.8 Notes Center</a>
+<a class="toc-2" href="#89-staff-time">8.9 Staff Time</a>
+<a class="toc-2" href="#810-calendar-reminders-appointments">8.10 Calendar, Reminders &amp; Appointments</a>
+<a class="toc-2" href="#811-communities">8.11 Communities</a>
+<a class="toc-2" href="#812-reports-pmt-ai">8.12 Reports, PMT &amp; AI</a>
+<a class="toc-2" href="#813-dashboards-analytics">8.13 Dashboards &amp; Analytics</a>
+<a class="toc-2" href="#814-necx-drive">8.14 NECX Drive</a>
+<a class="toc-2" href="#815-e-sign-document-center">8.15 E-Sign &amp; Document Center</a>
+<a class="toc-2" href="#816-tool-ai-assistant-utilities">8.16 Tool / AI Assistant &amp; Utilities</a>
+<a class="toc-2" href="#817-admin-provisioning-platform-configuration">8.17 Admin Provisioning &amp; Platform Configuration</a>
+<a class="toc-1" href="#9-detailed-user-system-flows">9. Detailed User &amp; System Flows</a>
+<a class="toc-2" href="#91-agency-onboarding-provisioning-cascade-admin-agency-vs360-use">9.1 Agency Onboarding &amp; Provisioning Cascade (Admin → Agency → VS360 users → Mobile services)</a>
+<a class="toc-2" href="#92-victim-registration-service-request-end-to-end">9.2 Victim Registration &amp; Service Request (End to End)</a>
+<a class="toc-2" href="#93-advocate-created-case-login-code-claiming">9.3 Advocate-Created Case + Login-Code Claiming</a>
+<a class="toc-2" href="#94-cross-agency-referral-with-victim-consent">9.4 Cross-Agency Referral with Victim Consent</a>
+<a class="toc-2" href="#95-notification-delivery-cross-cutting">9.5 Notification Delivery (Cross-Cutting)</a>
+<a class="toc-2" href="#96-hotline-inbound-call-summary-flow">9.6 Hotline Inbound Call (Summary Flow)</a>
+<a class="toc-2" href="#97-e-sign-a-case-document-summary-flow">9.7 E-Sign a Case Document (Summary Flow)</a>
+<a class="toc-1" href="#10-data-model">10. Data Model</a>
+<a class="toc-1" href="#11-api-integration-surface">11. API &amp; Integration Surface</a>
+<a class="toc-2" href="#111-representative-endpoints">11.1 Representative Endpoints</a>
+<a class="toc-2" href="#112-external-integrations">11.2 External Integrations</a>
+<a class="toc-1" href="#12-rbac-permissions">12. RBAC &amp; Permissions</a>
+<a class="toc-1" href="#13-non-functional-requirements">13. Non-Functional Requirements</a>
+<a class="toc-1" href="#14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</a>
+<a class="toc-2" href="#141-dashboards-kpis">14.1 Dashboards &amp; KPIs</a>
+<a class="toc-2" href="#142-reporting">14.2 Reporting</a>
+<a class="toc-2" href="#143-notifications">14.3 Notifications</a>
+<a class="toc-1" href="#15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</a>
+<a class="toc-1" href="#16-glossary">16. Glossary</a>
+</nav>
+  </aside>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

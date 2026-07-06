@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NECX Inquiries Management · NECX PRD</title>
+<meta name="description" content="Intake and triage of incoming inquiries and requests-to-connect before they become cases">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="prd-page">
+<header class="topbar">
+  <button class="hamburger" aria-label="Menu" onclick="toggleNav()">&#9776;</button>
+  <a class="brand" href="../index.html"><svg class="logo" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 L35 10 V22 C35 31 28 37 20 39 C12 37 5 31 5 22 V10 Z" fill="var(--brand)"/><path d="M13 27 V14 L20 22 V14 M27 14 V27 L20 19" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="brand-text">NECX<span class="brand-sub">Product Requirements</span></span></a>
+  <div class="topbar-spacer"></div>
+  <a class="top-link" href="../index.html">Home</a>
+  <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><span class="ic-sun">☀</span><span class="ic-moon">☾</span></button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-search"><input type="search" id="navSearch" placeholder="Filter documents…" oninput="filterNav(this.value)"></div>
+    <nav class="nav"><div class="nav-group"><div class="nav-group-title">Platform &amp; Applications</div><a class="nav-item " href="P01.html" data-search="necx platform — core system whole-platform prd: unified backend, four clients, multi-tenancy, identity/rbac, and the end-to-end case lifecycle."><span class="nav-num">01</span><span class="nav-text">Platform — Core System</span></a>
+<a class="nav-item " href="P02.html" data-search="necx workspace — staff mobile app agency staff mobile app (flutter/riverpod) — the on-the-go companion to the vs360 web dashboard."><span class="nav-num">02</span><span class="nav-text">Workspace — Staff Mobile App</span></a>
+<a class="nav-item " href="P03.html" data-search="necx victim app — survivor mobile app victim / survivor mobile app (flutter/getx) — discover services, request help, chat, find shelter, e-sign."><span class="nav-num">03</span><span class="nav-text">Victim App — Survivor Mobile App</span></a>
+<a class="nav-item " href="P04.html" data-search="vs360 — agency web dashboard vs360 — the agency staff web dashboard (react/vite) and primary caseworker workspace."><span class="nav-num">04</span><span class="nav-text">VS360 — Agency Web Dashboard</span></a>
+</div>
+<div class="nav-group"><div class="nav-group-title">VS360 Feature Modules</div><a class="nav-item " href="P05.html" data-search="necx case management service-claim (case) lifecycle, detail tabs, approve/reject/resolve, link-client &amp; login codes."><span class="nav-num">05</span><span class="nav-text">Case Management</span></a>
+<a class="nav-item " href="P06.html" data-search="necx shelter management shelter hierarchy (location→floor→room→bed), assignment, waitlist, transfers, victim search."><span class="nav-num">06</span><span class="nav-text">Shelter Management</span></a>
+<a class="nav-item " href="P07.html" data-search="necx hotline management twilio-based hotline: provisioning, call queue, callbacks, analytics, transcripts &amp; insights."><span class="nav-num">07</span><span class="nav-text">Hotline Management</span></a>
+<a class="nav-item " href="P08.html" data-search="necx calendar &amp; appointments reminders, tasks and case-linked appointments in the vs360 tools calendar."><span class="nav-num">08</span><span class="nav-text">Calendar &amp; Appointments</span></a>
+<a class="nav-item " href="P09.html" data-search="necx staff time tracking staff time tracking: clock in/out, timesheets, and grant/pmt time attribution."><span class="nav-num">09</span><span class="nav-text">Staff Time Tracking</span></a>
+<a class="nav-item " href="P10.html" data-search="necx agency chat real-time advocate↔victim messaging tied to service threads and cases."><span class="nav-num">10</span><span class="nav-text">Agency Chat</span></a>
+<a class="nav-item " href="P11.html" data-search="necx internal chat staff-to-staff messaging within an agency, real-time over socket.io."><span class="nav-num">11</span><span class="nav-text">Internal Chat</span></a>
+<a class="nav-item " href="P12.html" data-search="necx rbac &amp; user management roles, the module/action permission matrix, plan seats, and multi-layer enforcement."><span class="nav-num">12</span><span class="nav-text">RBAC &amp; User Management</span></a>
+<a class="nav-item " href="P13.html" data-search="necx notes center agency-scoped, cross-case view over internal (caseworker-only) case notes."><span class="nav-num">13</span><span class="nav-text">Notes Center</span></a>
+<a class="nav-item " href="P14.html" data-search="necx drive google-drive-style cloud file storage backed by azure blob, with quotas and analytics."><span class="nav-num">14</span><span class="nav-text">Drive</span></a>
+<a class="nav-item " href="P15.html" data-search="necx ai report builder pmt/grant reporting plus ai-assisted custom report generation with accuracy validation."><span class="nav-num">15</span><span class="nav-text">AI Report Builder</span></a>
+<a class="nav-item " href="P16.html" data-search="necx e-sign &amp; document center prepare, request, sign and pdf-stamp case documents with an audit trail."><span class="nav-num">16</span><span class="nav-text">E-Sign &amp; Document Center</span></a>
+<a class="nav-item " href="P17.html" data-search="necx referrals &amp; partnerships inter-agency network: partnerships, invitations, and consent-based case referrals."><span class="nav-num">17</span><span class="nav-text">Referrals &amp; Partnerships</span></a>
+<a class="nav-item active" href="P18.html" data-search="necx inquiries management intake and triage of inquiries / requests-to-connect before they become cases."><span class="nav-num">18</span><span class="nav-text">Inquiries Management</span></a>
+<a class="nav-item " href="P19.html" data-search="necx communities agency-run community spaces: joining questions, membership, posts and moderation."><span class="nav-num">19</span><span class="nav-text">Communities</span></a>
+<a class="nav-item " href="P20.html" data-search="necx service management service catalog, categories, and the per-service claim-question (intake) builder."><span class="nav-num">20</span><span class="nav-text">Service Management</span></a>
+</div>
+</nav>
+  </aside>
+  <div class="scrim" id="scrim" onclick="toggleNav()"></div>
+  
+  <main class="content">
+    <article class="doc">
+      <div class="doc-eyebrow">Product Requirements Document · NECX Inc — Confidential</div>
+      <h1 class="doc-title">NECX Inquiries Management</h1>
+      <p class="doc-subtitle">Intake and triage of incoming inquiries and requests-to-connect before they become cases</p>
+      <div class="doc-meta"><span class="chip">Version: <b>1.0</b></span><span class="chip">Status: <b>Baseline</b></span><span class="chip">Owner: <b>NECX Product Management</b></span><a class="dl-btn" href="../downloads/18_VS360_Feature_Inquiries_Management.docx" download>⬇ Download DOCX</a></div>
+      <hr class="doc-rule">
+      <div class="doc-body">
+      <h2 id="1-document-control">1. Document Control</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Product</td><td>NECX — Coordinated Victim Services Platform</td></tr>
+<tr><td>Module</td><td>Inquiries Management (intake and triage)</td></tr>
+<tr><td>Version</td><td>1.0</td></tr>
+<tr><td>Status</td><td>Baseline</td></tr>
+<tr><td>Author</td><td>NECX Product Management</td></tr>
+<tr><td>Reviewers</td><td>VS360 Engineering, Backend Engineering, Victim App Engineering, Agency Operations, Privacy &amp; Compliance</td></tr>
+<tr><td>Last Updated</td><td>2026-07-05</td></tr>
+<tr><td>Related Documents</td><td>Case Management (Service Claims) PRD, Victim Services &amp; Services PRD, Chat &amp; Messaging PRD, Hotline PRD, Dashboard &amp; Analytics PRD, Reports &amp; PMT PRD, Platform Core / RBAC PRD</td></tr>
+</tbody></table></div>
+<p>Revision history:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Summary</th></tr></thead>
+<tbody>
+<tr><td>1.0</td><td>2026-07-05</td><td>NECX Product Management</td><td>Initial baseline covering inquiry sources, inquiry lifecycle/triage, the manual (prefill-seeded) path to a case, and the relationship between inquiries and service claims.</td></tr>
+</tbody></table></div>
+<h2 id="2-executive-summary">2. Executive Summary</h2>
+<p>NECX serves victims and survivors of crime and the agencies, advocates, and caseworkers who help them. Before a victim ever becomes a formal &quot;case,&quot; they typically reach out — asking a question about a published service, tapping &quot;request to connect,&quot; calling a hotline, or walking into an agency office. Inquiries Management is the intake-and-triage layer that receives those first contacts, keeps them safe and anonymous, routes them to the right staff, and lets an advocate decide whether to engage, decline, or close the conversation.</p>
+<p>An inquiry in NECX is a lightweight, victim-initiated contact that exists <strong>before</strong> a service claim (case). The system models it primarily as an anonymous <strong>inquiry thread</strong> — an <code>INQUIRY</code>-type chat thread paired with an <code>InquiryLifecycle</code> state row (<code>pending → approved / rejected / resolved</code>). A second, lighter intake signal — a <strong>request-to-connect</strong> — lets a victim express interest in a specific service without opening a chat; it surfaces to staff as a synthetic &quot;requested&quot; item alongside their cases. Offline contacts (hotline calls, walk-ins) are captured by staff and seeded directly into case creation.</p>
+<p>This PRD documents Inquiries Management end to end: where inquiries come from, how staff triage them (approve/self-assign, reject, or close/resolve), how they are routed and notified, and — importantly — how an inquiry becomes a case. NECX deliberately has <strong>no one-click &quot;convert inquiry to case&quot;</strong> action. When an advocate decides an inquiry warrants formal service delivery, they open <strong>Create Case</strong> and seed the form from the inquiry&#x27;s known details (name, phone, email carried through a <code>prefill</code>). The inquiry and the resulting service claim remain <strong>separate records</strong>, linked only implicitly once the client&#x27;s contact information is linked to an account.</p>
+<p>The goal is a fast, safe, low-friction front door: victims can ask for help anonymously; advocates can respond quickly and only escalate real cases into the case-management workflow; and the agency retains a clean audit trail and privacy posture throughout.</p>
+<h2 id="3-product-overview-vision">3. Product Overview &amp; Vision</h2>
+<h3 id="31-problem-statement">3.1 Problem Statement</h3>
+<p>Victims rarely arrive as fully-formed cases. They send tentative first messages, ask whether an agency can help, or request a callback — often anonymously and often at high emotional stakes. Without a dedicated intake surface, these first contacts either get lost in a general inbox, get prematurely turned into formal cases (polluting case metrics and PMT/grant data), or force victims to disclose identifying information before they are ready. Agencies need a way to receive, route, and triage these contacts safely, and to promote only the genuine ones into case management.</p>
+<h3 id="32-product-vision">3.2 Product Vision</h3>
+<p>Inquiries Management is NECX&#x27;s safe front door. It accepts anonymous, victim-initiated contact about a specific service or agency; routes each inquiry to the caseworkers responsible for that service category; and gives staff a simple triage decision — engage (approve and open a real-time chat), decline (reject and archive), or wrap up (resolve/close). It preserves victim anonymity by default, keeps inquiries out of formal case and reporting pipelines until an advocate consciously promotes them, and provides a clean, prefill-assisted bridge into Create Case when escalation is warranted.</p>
+<h3 id="33-where-this-sits-in-the-necx-ecosystem">3.3 Where This Sits in the NECX Ecosystem</h3>
+<p>Inquiries Management spans several NECX surfaces that share one unified backend:</p>
+<ul>
+<li><strong>Victim App</strong> (Flutter mobile) — where most inquiries originate: victims start an inquiry chat about a service or send a request-to-connect.</li>
+<li><strong>VS360 Web</strong> (React 18 + Vite + Mantine) — the primary staff triage surface: the &quot;My Inquiries&quot; screen (two-pane master/detail) where advocates approve, reject, close, and chat.</li>
+<li><strong>Workspace App</strong> (Flutter mobile, staff) — a mobile companion where caseworkers can view inquiry threads and perform the same approve/reject/resolve moderation.</li>
+<li><strong>NECX Admin</strong> — platform administration; not a routine inquiry surface.</li>
+<li><strong>Unified Backend</strong> (Node.js + Express, Objection/Knex over PostgreSQL, Socket.IO, Redis, BullMQ, FCM, Twilio) — owns the <code>chat_threads</code>, <code>inquiry_lifecycle</code>, <code>chat_messages</code>, and <code>request_to_connect</code> data and the triage endpoints.</li>
+</ul>
+<p>Inquiries Management is upstream of <strong>Case Management (Service Claims)</strong>: an inquiry may lead a staff member to create a case, but the two are distinct records. It shares the <strong>Chat &amp; Messaging</strong> backbone (the inquiry conversation is an <code>INQUIRY</code> thread) and feeds the <strong>Dashboard</strong> inquiry KPIs (new/closed/total inquiries, open-inquiries count).</p>
+<h2 id="4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</h2>
+<h3 id="41-goals-objectives">4.1 Goals &amp; Objectives</h3>
+<ul>
+<li>Provide a safe, anonymous front door for victim-initiated first contact, with no requirement to disclose identity to start an inquiry.</li>
+<li>Route every new inquiry to the caseworkers responsible for the relevant service category within the correct agency.</li>
+<li>Give staff a fast, unambiguous triage decision: approve (engage), reject (decline), or resolve/close (wrap up).</li>
+<li>Keep inquiries out of formal case metrics and PMT/grant reporting until an advocate consciously promotes them to a case.</li>
+<li>Support a clean, low-friction bridge from an inquiry to a new case via prefill-seeded Create Case, while keeping the two records distinct.</li>
+<li>Notify both parties reliably and in real time (in-app socket, FCM push, email/SMS) at each lifecycle transition.</li>
+<li>Preserve a complete audit trail of triage actions for compliance and cross-agency isolation.</li>
+</ul>
+<h3 id="42-success-metrics">4.2 Success Metrics</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>Definition</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>Inquiry first-response time</td><td>Median time from inquiry creation (<code>pending</code>) to first staff action (approve/reject)</td><td>&lt; 4 business hours</td></tr>
+<tr><td>Triage completion rate</td><td>Share of inquiries reaching a terminal state (approved+resolved, or rejected) vs. those left <code>pending</code></td><td>&gt; 95% within 7 days</td></tr>
+<tr><td>Inquiry-to-case conversion</td><td>Share of approved inquiries that result in an advocate opening Create Case</td><td>Tracked; establish baseline</td></tr>
+<tr><td>Abandoned/stale inquiries</td><td>Inquiries <code>pending</code> with no staff action for &gt; 72 hours</td><td>&lt; 5% of open inquiries</td></tr>
+<tr><td>Routing accuracy</td><td>Share of inquiries surfaced to at least one correctly category-assigned caseworker</td><td>&gt; 99%</td></tr>
+<tr><td>Notification delivery</td><td>Share of lifecycle transitions that generate the expected socket + FCM/email/SMS notifications</td><td>&gt; 99%</td></tr>
+<tr><td>Open inquiries (operational)</td><td>Live count of non-terminal inquiries shown on the agency dashboard</td><td>Monitored, no target</td></tr>
+</tbody></table></div>
+<h2 id="5-scope">5. Scope</h2>
+<h3 id="51-in-scope">5.1 In Scope</h3>
+<ul>
+<li><strong>Inquiry sources / intake</strong>: victim-initiated inquiry chat (<code>start-inquiry</code>), victim request-to-connect from a published service, and staff-captured offline contacts (hotline call wrap-up, walk-in) seeded into Create Case.</li>
+<li><strong>Inquiry lifecycle &amp; triage</strong>: the <code>InquiryLifecycle</code> state machine (<code>pending → approved / rejected / resolved</code>) and the staff actions Approve (self-assign + open chat), Reject (archive), and Close/Resolve.</li>
+<li><strong>VS360 &quot;My Inquiries&quot; surface</strong>: two-pane list/detail, status filtering (All / Pending / Approved / Resolved / Rejected), unread-message-first sorting, and the triage/chat detail panes.</li>
+<li><strong>Inquiry chat</strong>: real-time messaging on approved/resolved inquiry threads, file attachments, read receipts, message translation (shared chat backbone).</li>
+<li><strong>The manual path to a case</strong>: opening Create Case with <code>prefill</code> seeded from an inquiry&#x27;s known details, and the explicit fact that there is <strong>no one-click convert-to-case</strong>.</li>
+<li><strong>Inquiry↔service-claim relationship</strong>: how a request-to-connect surfaces alongside service claims, and how an inquiry and any resulting case remain separate records linked only via the client.</li>
+<li><strong>Routing, RBAC, notifications, data model, endpoints, NFRs, and risks</strong> for the above.</li>
+</ul>
+<h3 id="52-out-of-scope">5.2 Out of Scope</h3>
+<ul>
+<li><strong>Case Management / Service Claims</strong> internals (approve/reject/resolve of cases, notes, updates, files, referrals, PMT questionnaire capture) — covered by the Case Management PRD; referenced here only where an inquiry hands off to it.</li>
+<li><strong>Hotline call handling and telephony</strong> (Twilio call flows, callbacks, transcripts) — covered by the Hotline PRD; only the wrap-up-to-Create-Case seam is referenced.</li>
+<li><strong>General chat</strong> thread types other than <code>INQUIRY</code> (<code>SERVICE</code>, <code>INTERNAL</code>, <code>AGENCY_CHAT</code>) — covered by the Chat &amp; Messaging PRD.</li>
+<li><strong>Referrals and partnerships</strong> — covered by their own PRD.</li>
+<li><strong>Reporting/PMT/grants</strong> beyond the inquiry KPIs surfaced on the dashboard.</li>
+<li><strong>An automated &quot;convert inquiry → case&quot; feature</strong> — explicitly not built today; noted as an Open Question / future enhancement.</li>
+<li><strong>A dedicated <code>request_to_connect</code> triage screen</strong> — request-to-connect items currently surface within the cases/claims list as synthetic &quot;requested&quot; entries, not on the Inquiries screen.</li>
+</ul>
+<h2 id="6-personas-user-roles">6. Personas &amp; User Roles</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Role</th><th>Description</th><th>Key permissions</th></tr></thead>
+<tbody>
+<tr><td>Agency Admin / Super Admin</td><td>Agency leader or platform super-admin; oversees all agency inquiries and can triage any of them.</td><td><code>inquiries.view/add/edit/delete</code>; <code>SUPER_ADMIN</code> bypasses fine-grained checks</td></tr>
+<tr><td>Case Worker / Advocate</td><td>Front-line staff assigned to service categories; triages and responds to inquiries for their categories.</td><td><code>inquiries.view</code> (+ <code>edit</code> to triage); scoped by assigned service categories and agency</td></tr>
+<tr><td>Victim / Survivor (mobile)</td><td>Anonymous or registered mobile user who initiates inquiries and requests-to-connect.</td><td>No web role; acts via the Victim App (<code>issuer.type = APP</code>)</td></tr>
+<tr><td>NECX Platform Staff</td><td>NECX Inc administrators.</td><td>Not a routine inquiry-triage role; platform oversight only</td></tr>
+</tbody></table></div>
+<h3 id="61-persona-narratives">6.1 Persona Narratives</h3>
+<p><strong>Maya, Advocate.</strong> Maya is assigned to the &quot;Domestic Violence&quot; and &quot;Legal Assistance&quot; service categories at her agency. When she opens VS360, the Inquiries screen shows new anonymous inquiries about those services first (unread messages float to the top). She reads the victim&#x27;s opening message, and if it looks like a genuine request she taps <strong>Approve Inquiry</strong> — which self-assigns it to her and opens a live chat. If it is spam or clearly misdirected, she taps <strong>Reject Inquiry</strong>. When she and the victim have resolved the question, she taps <strong>Close Inquiry</strong>.</p>
+<p><strong>David, Agency Admin.</strong> David monitors the agency&#x27;s overall intake health from the dashboard&#x27;s inquiry KPIs (new, closed, total, and open inquiries). He can triage any inquiry regardless of category and steps in when an inquiry has been sitting <code>pending</code> too long.</p>
+<p><strong>A victim (mobile).</strong> From a service detail screen, a victim taps to start an inquiry (&quot;Can you help with an emergency protective order?&quot;) without creating an account or disclosing identity, or taps &quot;request to connect&quot; to signal interest and receive outreach. They remain identified only by an anonymous code until they choose to share contact details.</p>
+<h2 id="7-system-context-architecture">7. System Context &amp; Architecture</h2>
+<h3 id="71-tech-stack">7.1 Tech Stack</h3>
+<ul>
+<li><strong>VS360 Web (staff triage)</strong>: React 18 + Vite, Mantine v7, Redux Toolkit + redux-persist (auth/user, notifications, refetch triggers, <code>threads.inquiryThreads</code>), TanStack React Query v4, react-router-dom v6, socket.io-client for realtime. Inquiry services live in <code>src/services/threads.js</code>, <code>src/services/chat.js</code>, <code>src/services/notification.js</code>.</li>
+<li><strong>Victim App (intake)</strong>: Flutter; <code>InquiryChatController</code> / <code>InboxController</code> over a REST + Socket.IO chat service; request-to-connect via the victim-services API.</li>
+<li><strong>Workspace App (staff mobile)</strong>: Flutter; inquiry moderation via the same chat-services endpoints.</li>
+<li><strong>Backend</strong>: Node.js + Express (ESM), Objection/Knex over PostgreSQL, Socket.IO, Redis, BullMQ (email/SMS jobs), FCM (push), Twilio (SMS/hotline). Inquiry logic lives in the chat app (<code>src/apps/chat/chat-{routes,controllers,services}.js</code>) and the victim-services module (request-to-connect).</li>
+</ul>
+<h3 id="72-how-the-frontend-talks-to-the-backend">7.2 How the Frontend Talks to the Backend</h3>
+<ul>
+<li>Axios factory (<code>src/services/axios.js</code>), base URL from <code>VITE_APP_BACKEND_BASE_URL</code>. Every request carries <code>Authorization: Bearer &lt;accessToken&gt;</code>, <code>x-refresh-token</code>, <code>X-Netlify-Secret</code>, <code>X-Environment</code>.</li>
+<li>Responses are <strong>AES-encrypted</strong>; the response interceptor decrypts string payloads. Refresh tokens rotate via the <code>x-refresh-token</code> response header. A <code>401</code> triggers logout; a <code>403</code> renders <code>UnauthorizedAccess</code>.</li>
+<li>API version prefix <code>v2</code>; staff web routes are mounted under <code>/web/*</code> and gated by <code>allowOnly(&#x27;VS360&#x27;)</code>; victim routes under <code>/mobile/*</code> (auth-only, no context guard).</li>
+</ul>
+<h3 id="73-real-time-notifications">7.3 Real-Time &amp; Notifications</h3>
+<ul>
+<li>Socket.IO rooms: per-user <code>vs360-user-&lt;uid&gt;</code>, victim <code>app-notification-room</code> / <code>notification-room</code>, and per-thread <code>thread-&lt;threadUid&gt;-&lt;userUid&gt;</code>.</li>
+<li>New-inquiry creation emits <code>thread-creation-inquiry</code>; new messages emit <code>message-inquiry</code> with DB notification type <code>INQUIRY_NEW_MESSAGE</code>. Approval emits <code>inquiry-approve-for-&lt;victimUid&gt;</code> and an app-side <code>INQUIRY_APPROVED</code> notification (FCM). VS360 uses Redux <code>refetch.chatRefetch</code> / <code>specificChatRefetch</code> and <code>setInquiryThreadsRefetch</code> triggers, fed by these socket events, to re-fetch live.</li>
+<li>Notification delivery combines a DB row (<code>service_center_notifications</code> for staff, <code>victim_notifications</code> for victims) + socket emit + FCM push + optional templated email/SMS via BullMQ. All notification calls are wrapped defensively (failures are logged, never break the main transaction).</li>
+</ul>
+<h3 id="74-tenancy-isolation">7.4 Tenancy &amp; Isolation</h3>
+<p>Every agency-scoped read is filtered by <code>issuer.serviceCenterInfo.id</code>; a VS360 user only ever sees their own agency&#x27;s inquiries. Inquiry routing further narrows by the staff member&#x27;s assigned service categories (<code>getInquiryThreadsForVSMSUser</code>). CJIS-style cross-agency isolation is enforced server-side.</p>
+<h2 id="8-functional-requirements">8. Functional Requirements</h2>
+<h3 id="81-inquiry-sources-intake-channels">8.1 Inquiry Sources (Intake Channels)</h3>
+<p>An inquiry is any victim-initiated first contact that exists before a formal case. NECX has three intake paths, of which the first is the canonical &quot;inquiry.&quot;</p>
+<p><strong>(a) Victim inquiry chat (canonical inquiry).</strong> From a service detail screen in the Victim App, a victim starts an inquiry via <code>POST /mobile/chat-services/start-inquiry</code> with <code>inquiryData { serviceCenterId, serviceId }</code>. The backend <strong>dedups</strong> an existing <code>ACTIVE</code> <code>INQUIRY</code> thread on <code>(victimId, serviceId)</code>; if none exists it creates a new <code>chat_threads</code> row (<code>type=&#x27;INQUIRY&#x27;</code>, <code>status=&#x27;ACTIVE&#x27;</code>) and inserts an <code>inquiry_lifecycle</code> row with <code>status=&#x27;pending&#x27;</code>. Victims may be anonymous (identified by a code) at this stage.</p>
+<p><strong>(b) Request-to-connect (lightweight interest signal).</strong> From a service, a victim can express interest without opening a chat via <code>PUT /mobile/victim-services/:uid/request-to-connect</code>. This creates a <code>RequestToConnect</code> record, emails the service center, <strong>dedupes</strong> (returns <code>409</code> if the victim has already requested to connect for that service), and surfaces to staff as a synthetic <strong>&quot;requested&quot;</strong> item in the service-claims list response (<code>requestsToConnect[]</code>) rather than on the Inquiries screen.</p>
+<p><strong>(c) Offline contacts (hotline call, walk-in).</strong> Inquiries also arrive by phone or in person. These are captured by staff at the point of contact. There is no server-side &quot;offline inquiry&quot; record; instead the caller/visitor details are carried into <strong>Create Case</strong> via the <code>prefill</code> mechanism (e.g., the hotline wrap-up flow seeds caller name/email/phone into the Create Case modal).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-INQ-SRC-01</td><td>The Victim App shall let a victim start an inquiry about a service via <code>POST /mobile/chat-services/start-inquiry</code> with <code>{ serviceCenterId, serviceId }</code>.</td><td>Must</td></tr>
+<tr><td>FR-INQ-SRC-02</td><td>The backend shall dedup active inquiry threads on <code>(victimId, serviceId)</code> and return the existing thread rather than creating a duplicate.</td><td>Must</td></tr>
+<tr><td>FR-INQ-SRC-03</td><td>On new inquiry creation the backend shall insert an <code>inquiry_lifecycle</code> row with <code>status=&#x27;pending&#x27;</code>.</td><td>Must</td></tr>
+<tr><td>FR-INQ-SRC-04</td><td>The Victim App shall let a victim send a request-to-connect via <code>PUT /mobile/victim-services/:uid/request-to-connect</code>, emailing the service center and deduping (409 if already requested).</td><td>Must</td></tr>
+<tr><td>FR-INQ-SRC-05</td><td>Request-to-connect items shall surface to staff as synthetic &quot;requested&quot; entries in the service-claims list (<code>requestsToConnect[]</code>), not on the Inquiries screen.</td><td>Must</td></tr>
+<tr><td>FR-INQ-SRC-06</td><td>Offline contacts (hotline, walk-in) shall be captured by staff and seeded into Create Case via <code>prefill</code>; no standalone inquiry record is created for them.</td><td>Must</td></tr>
+<tr><td>FR-INQ-SRC-07</td><td>Victims shall be able to initiate an inquiry anonymously, identified only by an anonymous code, without disclosing contact details.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="82-inquiry-lifecycle-triage">8.2 Inquiry Lifecycle &amp; Triage</h3>
+<p>An inquiry&#x27;s state lives in <code>inquiry_lifecycle.status</code>, one of <code>pending</code>, <code>approved</code>, <code>rejected</code>, <code>resolved</code>. The lifecycle is driven by staff triage actions on VS360 (or the Workspace app), all mounted under <code>/web/chat-services</code>:</p>
+<ul>
+<li><strong>Approve</strong> — <code>PATCH /web/chat-services/inquiry/approve/:id</code>. Sets lifecycle <code>approved</code>, <strong>self-assigns</strong> the inquiry to the acting staff member (<code>vsmsId = issuer.id</code>), marks thread notifications read, sends the victim an <code>INQUIRY_APPROVED</code> FCM notification and socket <code>inquiry-approve-for-&lt;victimUid&gt;</code>, and writes an <code>ActionLogs</code> entry. The inquiry thread becomes a live chat.</li>
+<li><strong>Reject</strong> — <code>PATCH /web/chat-services/inquiry/reject/:id</code>. Sets lifecycle <code>rejected</code> and archives the thread (<code>chat_threads.status=&#x27;ARCHIVED&#x27;</code>). Notifies the victim (<code>INQUIRY_REJECTED</code>).</li>
+<li><strong>Resolve / Close</strong> — <code>PATCH /web/chat-services/inquiry/resolve/:id</code>. Sets lifecycle <code>resolved</code> (the VS360 &quot;Close Inquiry&quot; button maps to this). Notifies the victim (<code>INQUIRY_RESOLVED</code>).</li>
+</ul>
+<p>The VS360 detail pane switches on the inquiry&#x27;s status: <strong>pending</strong> shows a triage card (last message + Approve/Reject); <strong>rejected</strong> shows a read-only &quot;This inquiry is rejected&quot; card; <strong>approved/resolved</strong> shows the active inquiry chat.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-INQ-LC-01</td><td>The system shall model inquiry state as <code>inquiry_lifecycle.status ∈ {pending, approved, rejected, resolved}</code>.</td><td>Must</td></tr>
+<tr><td>FR-INQ-LC-02</td><td>Staff shall approve a pending inquiry via <code>PATCH /web/chat-services/inquiry/approve/:id</code>, which sets <code>approved</code>, self-assigns (<code>vsmsId=issuer.id</code>), and opens the chat.</td><td>Must</td></tr>
+<tr><td>FR-INQ-LC-03</td><td>Staff shall reject a pending inquiry via <code>PATCH /web/chat-services/inquiry/reject/:id</code>, which sets <code>rejected</code> and archives the thread.</td><td>Must</td></tr>
+<tr><td>FR-INQ-LC-04</td><td>Staff shall resolve/close an inquiry via <code>PATCH /web/chat-services/inquiry/resolve/:id</code>, which sets <code>resolved</code>.</td><td>Must</td></tr>
+<tr><td>FR-INQ-LC-05</td><td>Each triage action shall emit the victim-facing notification and socket event appropriate to the transition and write an <code>ActionLogs</code> audit row.</td><td>Must</td></tr>
+<tr><td>FR-INQ-LC-06</td><td>On approve/reject, the acting user&#x27;s thread notifications shall be marked read and VS360&#x27;s inquiry list shall refetch (targeted).</td><td>Must</td></tr>
+<tr><td>FR-INQ-LC-07</td><td>The detail pane shall render triage controls for <code>pending</code>, a read-only card for <code>rejected</code>, and the chat for <code>approved</code>/<code>resolved</code>.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="83-vs360-my-inquiries-screen">8.3 VS360 &quot;My Inquiries&quot; Screen</h3>
+<p>The staff triage surface is <code>src/pages/InquiriesManagement/InquiriesManagement.jsx</code> (title &quot;My Inquiries&quot;), a two-pane master/detail layout (single pane on mobile).</p>
+<ul>
+<li><strong>List query</strong>: <code>GetInquiryThreads()</code> → <code>GET /web/chat-services/get-inquiry-threads</code> (paginated, supports status filter), stored in Redux <code>threads.inquiryThreads</code>.</li>
+<li><strong>Status filter</strong>: All / Pending / Approved / Resolved / Rejected, plus a refresh button.</li>
+<li><strong>List sorting</strong> (<code>InquiriesList.jsx</code> / <code>InquirylistSingle.jsx</code>): threads sorted by unread messages first (matched against <code>INQUIRY_NEW_MESSAGE</code> notifications in Redux), then status priority, then recency. Each row shows the anonymous user code + last message preview.</li>
+<li><strong>Routing scope</strong>: <code>getInquiryThreadsForVSMSUser</code> returns only inquiries within the staff member&#x27;s service center and matching their assigned service categories.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-INQ-UI-01</td><td>VS360 shall present a two-pane &quot;My Inquiries&quot; screen listing the agency&#x27;s inquiry threads scoped to the user&#x27;s categories.</td><td>Must</td></tr>
+<tr><td>FR-INQ-UI-02</td><td>The list shall support a status filter (All/Pending/Approved/Resolved/Rejected) and manual refresh.</td><td>Must</td></tr>
+<tr><td>FR-INQ-UI-03</td><td>The list shall sort unread-message inquiries first, then by status priority, then recency.</td><td>Must</td></tr>
+<tr><td>FR-INQ-UI-04</td><td>Each list row shall display the victim&#x27;s anonymous code and the last message preview.</td><td>Should</td></tr>
+<tr><td>FR-INQ-UI-05</td><td>The list shall live-update from socket-fed refetch triggers (<code>setInquiryThreadsRefetch</code>, <code>chatRefetch</code>).</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="84-active-inquiry-chat">8.4 Active Inquiry Chat</h3>
+<p>Once approved (or resolved), the inquiry becomes a live conversation rendered by <code>ActiveInquiry.jsx</code>.</p>
+<ul>
+<li>Infinite-scroll message history via <code>useInfiniteQuery</code> + <code>GetAllChats</code> → <code>GET /chat-services/get-all-chats/:threadUid</code>.</li>
+<li>Reuses the Case (Claims) chat components (<code>Chat</code> + <code>ChatInput</code>); supports file attachments (multer, up to 5 files) sent via <code>POST /chat-services/send-message/:threadUid</code> (multipart).</li>
+<li>Header shows the anonymous code + the linked service. A <strong>Close Inquiry</strong> button calls <code>closeInquiry(id)</code> → resolve endpoint.</li>
+<li>Realtime refetch driven by Redux <code>refetch.chatRefetch</code> / <code>specificChatRefetch</code> (socket-fed by <code>message-inquiry</code>). Messages support translation to the recipient&#x27;s preferred language and read receipts (<code>PATCH /chat-services/read/:threadUid</code>).</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-INQ-CHAT-01</td><td>Approved/resolved inquiries shall present a real-time chat with paginated history via <code>GET /chat-services/get-all-chats/:threadUid</code>.</td><td>Must</td></tr>
+<tr><td>FR-INQ-CHAT-02</td><td>Staff and victims shall exchange messages with file attachments via <code>POST /chat-services/send-message/:threadUid</code> (multipart, ≤5 files).</td><td>Must</td></tr>
+<tr><td>FR-INQ-CHAT-03</td><td>Message content shall be translated to the recipient&#x27;s preferred language where configured.</td><td>Should</td></tr>
+<tr><td>FR-INQ-CHAT-04</td><td>Read state shall be maintained via <code>PATCH /chat-services/read/:threadUid</code> and unread counts computed per user.</td><td>Must</td></tr>
+<tr><td>FR-INQ-CHAT-05</td><td>The chat shall live-update from <code>message-inquiry</code> socket events.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="85-promoting-an-inquiry-to-a-case-no-one-click-convert">8.5 Promoting an Inquiry to a Case (No One-Click Convert)</h3>
+<p>NECX intentionally provides <strong>no one-click &quot;convert inquiry → case&quot;</strong> action. When an advocate determines that an inquiry warrants formal service delivery, they open the <strong>Create Case</strong> flow (<code>CreateCaseModal</code>, submitting <code>POST /service-claims</code>) and seed it via the <code>prefill</code> prop — carrying the victim&#x27;s name/phone/email as known from the inquiry (or hotline/walk-in). The advocate selects the service, completes required intake, and submits.</p>
+<p>Because Create Case is a separate action, the inquiry and the resulting service claim are <strong>distinct records</strong>. They are not linked by a foreign key at creation. They become associated only implicitly, once the client&#x27;s contact information is linked to a user account (via the Case Management &quot;Link Client Contact&quot; flow / login-code activation), so that the client&#x27;s app shows both their inquiry thread and their case.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-INQ-CASE-01</td><td>The system shall not provide a one-click convert-to-case action; case creation from an inquiry shall be a deliberate Create Case action.</td><td>Must</td></tr>
+<tr><td>FR-INQ-CASE-02</td><td>Create Case shall accept a <code>prefill</code> payload seeding client name/phone/email from the originating inquiry or offline contact.</td><td>Must</td></tr>
+<tr><td>FR-INQ-CASE-03</td><td>An inquiry and a case created from it shall remain separate records, associated only via the client account once contact is linked.</td><td>Must</td></tr>
+<tr><td>FR-INQ-CASE-04</td><td>Approving an inquiry shall not create a case; it only opens the inquiry chat.</td><td>Must</td></tr>
+</tbody></table></div>
+<h3 id="86-routing-assignment">8.6 Routing &amp; Assignment</h3>
+<ul>
+<li>New inquiries notify the agency&#x27;s staff <strong>whose assigned service categories match the inquiry&#x27;s service</strong> (<code>emitThreadCreationNotification</code>), plus an email and SMS to the agency.</li>
+<li>Inquiries are <strong>unassigned</strong> while <code>pending</code>; <strong>Approve</strong> self-assigns the inquiry to the acting staff member (<code>vsmsId = issuer.id</code>). There is no manual reassignment endpoint documented for inquiries (unlike Notes Center); assignment happens implicitly at approval.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Requirement</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>FR-INQ-ROUTE-01</td><td>New inquiries shall notify staff whose service categories match the inquiry&#x27;s service, plus an agency email + SMS.</td><td>Must</td></tr>
+<tr><td>FR-INQ-ROUTE-02</td><td>Approving an inquiry shall assign it to the approving staff member (<code>vsmsId=issuer.id</code>).</td><td>Must</td></tr>
+<tr><td>FR-INQ-ROUTE-03</td><td>Inquiries shall be agency-scoped; staff shall never see other agencies&#x27; inquiries.</td><td>Must</td></tr>
+</tbody></table></div>
+<h2 id="9-detailed-user-system-flows">9. Detailed User &amp; System Flows</h2>
+<h3 id="91-an-inquiry-arrives-victim-starts-an-inquiry-chat">9.1 An Inquiry Arrives (Victim Starts an Inquiry Chat)</h3>
+<ol class="flow">
+<li>In the Victim App, the victim opens a service detail screen and taps to start an inquiry (<code>InquiryChatController.handleChat()</code>).</li>
+<li>The app calls <code>POST /mobile/chat-services/start-inquiry</code> with <code>inquiryData { serviceCenterId, serviceId }</code>.</li>
+<li>The backend checks for an existing <code>ACTIVE</code> <code>INQUIRY</code> thread on <code>(victimId, serviceId)</code>; if one exists it returns that thread (dedup) and opens it — no new record.</li>
+<li>Otherwise it creates a <code>chat_threads</code> row (<code>type=&#x27;INQUIRY&#x27;</code>, <code>status=&#x27;ACTIVE&#x27;</code>, <code>victimId</code>, <code>serviceId</code>) and an <code>inquiry_lifecycle</code> row with <code>status=&#x27;pending&#x27;</code>.</li>
+<li>The backend routes the new inquiry: it emits <code>thread-creation-inquiry</code> to the agency&#x27;s staff whose service categories match the service, sends an agency email + SMS, and creates staff notification rows.</li>
+<li>VS360 receives the socket event, fires <code>setInquiryThreadsRefetch</code>, and the new <code>pending</code> inquiry appears at (or near) the top of the &quot;My Inquiries&quot; list (unread-first sort).</li>
+<li>The victim can send an opening message immediately; it is delivered via <code>message-inquiry</code> / <code>INQUIRY_NEW_MESSAGE</code> and previewed in the staff list row.</li>
+</ol>
+<h3 id="92-triage-it-approve-engage-happy-path">9.2 Triage It — Approve &amp; Engage (Happy Path)</h3>
+<ol class="flow">
+<li>Maya opens VS360 → &quot;My Inquiries&quot;; the pending inquiry is surfaced (unread badge).</li>
+<li>She selects it; the detail pane shows the triage card with the victim&#x27;s last message and <strong>Approve Inquiry</strong> / <strong>Reject Inquiry</strong> buttons.</li>
+<li>She taps <strong>Approve Inquiry</strong> → <code>approveInquiry(id)</code> → <code>PATCH /web/chat-services/inquiry/approve/:id</code>.</li>
+<li>The backend sets <code>inquiry_lifecycle.status=&#x27;approved&#x27;</code>, assigns <code>vsmsId = issuer.id</code> (self-assign), marks thread notifications read, and writes an <code>ActionLogs</code> row.</li>
+<li>The backend notifies the victim: <code>INQUIRY_APPROVED</code> FCM push + socket <code>inquiry-approve-for-&lt;victimUid&gt;</code> (to <code>notification-room</code>).</li>
+<li>On success, VS360 marks thread notifications read (<code>MarkThreadNotificationsRead</code>) and triggers a targeted refetch; the detail pane switches to the <strong>ActiveInquiry</strong> chat.</li>
+<li>Maya and the victim exchange messages in real time (<code>POST /chat-services/send-message/:threadUid</code>, live via <code>message-inquiry</code>), with file attachments and translation as needed.</li>
+</ol>
+<h3 id="93-triage-it-reject-spam-misdirected">9.3 Triage It — Reject (Spam / Misdirected)</h3>
+<ol class="flow">
+<li>In the pending triage card, Maya taps <strong>Reject Inquiry</strong> → <code>rejectInquiry(id)</code> → <code>PATCH /web/chat-services/inquiry/reject/:id</code>.</li>
+<li>The backend sets <code>inquiry_lifecycle.status=&#x27;rejected&#x27;</code> and archives the thread (<code>chat_threads.status=&#x27;ARCHIVED&#x27;</code>).</li>
+<li>The victim is notified (<code>INQUIRY_REJECTED</code>); an <code>ActionLogs</code> row is written.</li>
+<li>VS360 marks thread notifications read and refetches; the detail pane now shows the read-only &quot;This inquiry is rejected&quot; card. No further messaging is possible on the archived thread.</li>
+</ol>
+<h3 id="94-close-resolve-an-active-inquiry">9.4 Close / Resolve an Active Inquiry</h3>
+<ol class="flow">
+<li>After the conversation has served its purpose, Maya opens the active inquiry chat and taps <strong>Close Inquiry</strong> → <code>closeInquiry(id)</code> → <code>PATCH /web/chat-services/inquiry/resolve/:id</code>.</li>
+<li>The backend sets <code>inquiry_lifecycle.status=&#x27;resolved&#x27;</code> and notifies the victim (<code>INQUIRY_RESOLVED</code>).</li>
+<li>The inquiry moves under the &quot;Resolved&quot; filter; the chat history remains viewable read-only/archived per thread rules. The inquiry KPI &quot;closed inquiries&quot; increments.</li>
+</ol>
+<h3 id="95-open-create-case-prefilled-from-the-inquiry-promotion-to-a-ca">9.5 Open Create Case Prefilled From the Inquiry (Promotion to a Case)</h3>
+<ol class="flow">
+<li>During or after an approved inquiry, Maya decides the victim needs formal service delivery.</li>
+<li>She opens <strong>Create Case</strong> (<code>CreateCaseModal</code>), which receives a <code>prefill</code> seeded from the inquiry&#x27;s known details (name/phone/email).</li>
+<li>She selects the <strong>Service</strong> (limited to her assigned categories), confirms/edits the prefilled contact fields, completes optional demographics and any required service intake questions.</li>
+<li>She submits → <code>POST /service-claims</code> (<code>CreateCaseWithUser</code>). Because she is an advocate creating the case, the claim may auto-approve and, if the client is new with an OTP channel, a <strong>login code</strong> is generated and displayed for the client to activate on the mobile app.</li>
+<li>The new case appears in Case Management as a distinct record. The inquiry remains in Inquiries Management (typically resolved/closed by Maya separately). The two are linked only once the client&#x27;s contact is linked to an account, after which the client&#x27;s app shows both.</li>
+</ol>
+<h3 id="96-request-to-connect-intake-lightweight-signal">9.6 Request-to-Connect Intake (Lightweight Signal)</h3>
+<ol class="flow">
+<li>From a service in the Victim App, the victim taps &quot;request to connect&quot; → <code>PUT /mobile/victim-services/:uid/request-to-connect</code>.</li>
+<li>The backend creates a <code>RequestToConnect</code> record, emails the service center, and dedups — returning <code>409</code> if the victim has already requested to connect for that service.</li>
+<li>The request surfaces to staff as a synthetic <strong>&quot;requested&quot;</strong> entry in the service-claims list response (<code>requestsToConnect[]</code>) — on the cases/claims surface, not the Inquiries screen.</li>
+<li>A staff member follows up (e.g., by opening Create Case with prefill, or reaching out), converting interest into a case or a conversation as appropriate.</li>
+</ol>
+<h3 id="97-offline-contact-hotline-walk-in-triage">9.7 Offline Contact (Hotline / Walk-In) Triage</h3>
+<ol class="flow">
+<li>A victim calls the hotline or walks into the agency office.</li>
+<li>Staff capture the caller/visitor details during the interaction (hotline wrap-up flow, or manual entry).</li>
+<li>There is no server-side standalone inquiry record; staff open <strong>Create Case</strong> with <code>prefill</code> carrying the captured name/email/phone.</li>
+<li>Staff select the service, complete intake, and submit — creating the case directly. (If the victim only wanted information, staff may instead answer inline with no record, or start an inquiry on the victim&#x27;s behalf where the victim has the app.)</li>
+</ol>
+<h3 id="98-edge-cases-branches">9.8 Edge Cases &amp; Branches</h3>
+<ol class="flow">
+<li><strong>Duplicate inquiry</strong>: a victim starting a second inquiry for the same <code>(victimId, serviceId)</code> while one is <code>ACTIVE</code> is returned the existing thread (no duplicate).</li>
+<li><strong>Duplicate request-to-connect</strong>: a repeated request for the same service returns <code>409</code> and creates no new record.</li>
+<li><strong>Anonymous throughout</strong>: an inquiry can complete its entire lifecycle without the victim ever disclosing identity; only an anonymous code is shown to staff.</li>
+<li><strong>Category mismatch</strong>: an inquiry whose service maps to no assigned caseworker still belongs to the agency; an Agency Admin/Super Admin can triage it (they are not restricted by category).</li>
+<li><strong>Rejected then re-contact</strong>: after a rejection the thread is archived; a victim who reaches out again starts a fresh inquiry (subject to the active-thread dedup rule).</li>
+<li><strong>Notification failure</strong>: if socket/FCM/email delivery fails, the triage transaction still commits (notifications are best-effort, wrapped defensively).</li>
+</ol>
+<h2 id="10-data-model">10. Data Model</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Entity</th><th>Key Fields</th><th>Relationships</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>InquiryLifecycle (<code>inquiry_lifecycle</code>)</td><td><code>id</code>, <code>threadId</code>, <code>status</code> (<code>pending</code>/<code>approved</code>/<code>rejected</code>/<code>resolved</code>), timestamps</td><td>belongs to <code>ChatThreads</code> (<code>threadId</code>); exposed as <code>chat_threads.statusInfo</code></td><td>The inquiry&#x27;s triage state machine — the defining record of &quot;an inquiry.&quot;</td></tr>
+<tr><td>ChatThreads (<code>chat_threads</code>)</td><td><code>id</code>, <code>uid</code>, <code>type</code> (<code>INQUIRY</code>/<code>SERVICE</code>/<code>INTERNAL</code>/<code>AGENCY_CHAT</code>), <code>victimId</code>, <code>vsmsId</code>, <code>vsmsId2</code>, <code>serviceId</code>, <code>status</code> (<code>ACTIVE</code>/<code>ARCHIVED</code>)</td><td><code>victimInfo</code> (AppUsers), <code>vsmsUser1Info</code>/<code>vsmsUser2Info</code> (Users), <code>serviceInfo</code> (Services), <code>lastMessage</code>, <code>chatFiles</code>, <code>statusInfo</code> (InquiryLifecycle)</td><td>The inquiry conversation container; <code>type=&#x27;INQUIRY&#x27;</code> for inquiries. <code>vsmsId</code> set on approval (self-assign).</td></tr>
+<tr><td>ChatMessages (<code>chat_messages</code>)</td><td><code>id</code>, <code>uid</code>, <code>threadId</code>, <code>victimSenderId</code>, <code>vsmsSenderId</code>, <code>content</code>, <code>translatedContent</code>, <code>isRead</code>, timestamps</td><td>belongs to <code>ChatThreads</code>; <code>victimSenderInfo</code>, <code>vsmsSenderInfo</code>, <code>files</code></td><td>Individual inquiry messages with translation + read state.</td></tr>
+<tr><td>RequestToConnect (<code>request_to_connect</code>)</td><td>victim, service references; timestamps</td><td>relates victim (AppUsers) ↔ service (Services)</td><td>Lightweight interest signal; surfaced to staff as synthetic &quot;requested&quot; items alongside service claims.</td></tr>
+<tr><td>FileUploads (<code>file_uploads</code>)</td><td><code>messageId</code>, <code>threadId</code>, file metadata/URL</td><td>belongs to a message + thread</td><td>Attachments exchanged in an inquiry chat.</td></tr>
+<tr><td>ServiceClaims (<code>service_claims</code>)</td><td><code>uid</code> (<code>CL&lt;yy&gt;&lt;month&gt;&lt;uuid6&gt;</code>), <code>serviceId</code>, <code>victimId</code>, <code>status</code></td><td>belongs to Services; belongs to AppUsers (<code>victimId</code>)</td><td>The <strong>case</strong> created from an inquiry via prefill — a separate record, not FK-linked to the inquiry.</td></tr>
+<tr><td>AppUsers (<code>app_users</code>)</td><td>victim identity, anonymous code, contact</td><td>subject of inquiries and cases</td><td>The victim; anonymous by default, becomes the implicit link between an inquiry and a case once contact is linked.</td></tr>
+<tr><td>ServiceCenterNotifications (<code>service_center_notifications</code>)</td><td>recipient staff, type (<code>INQUIRY_NEW_MESSAGE</code>, thread-creation variants), <code>additionalData</code> (<code>threadUid</code>)</td><td>belongs to staff Users / agency</td><td>Staff-facing inquiry notifications.</td></tr>
+<tr><td>VictimNotifications (<code>victim_notifications</code>)</td><td>recipient victim, type (<code>INQUIRY_APPROVED</code>/<code>REJECTED</code>/<code>RESOLVED</code>, <code>INQUIRY_NEW_MESSAGE</code>)</td><td>belongs to AppUsers</td><td>Victim-facing inquiry notifications.</td></tr>
+<tr><td>ActionLogs (<code>action_logs</code>)</td><td><code>action</code>, <code>referenceId</code>, <code>referenceType</code>, <code>actionDescription</code></td><td>issuer (staff/app)</td><td>Audit trail of triage actions.</td></tr>
+</tbody></table></div>
+<h2 id="11-api-integration-surface">11. API &amp; Integration Surface</h2>
+<h3 id="111-inquiry-endpoints">11.1 Inquiry Endpoints</h3>
+<p>Web mount <code>/web/chat-services</code> (<code>allowOnly(&#x27;VS360&#x27;)</code>); mobile mount <code>/mobile/chat-services</code> (auth-only). Rate limiter: <code>rateLimiters.chatApi</code>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>POST</td><td><code>/mobile/chat-services/start-inquiry</code></td><td>Victim starts an inquiry about a service (<code>{serviceCenterId, serviceId}</code>); dedups active thread; creates <code>pending</code> lifecycle</td><td>Auth (APP)</td></tr>
+<tr><td>GET</td><td><code>/web/chat-services/get-inquiry-threads</code></td><td>List inquiry threads (paginated, status filter), scoped to agency + staff categories</td><td>VS360</td></tr>
+<tr><td>GET</td><td><code>/mobile/chat-services/get-inquiry-threads</code></td><td>Victim&#x27;s inquiry threads</td><td>Auth (APP)</td></tr>
+<tr><td>PATCH</td><td><code>/web/chat-services/inquiry/approve/:id</code></td><td>Approve inquiry — set <code>approved</code>, self-assign, open chat, notify victim</td><td>VS360 (<code>inquiries.edit</code>)</td></tr>
+<tr><td>PATCH</td><td><code>/web/chat-services/inquiry/reject/:id</code></td><td>Reject inquiry — set <code>rejected</code>, archive thread, notify victim</td><td>VS360 (<code>inquiries.edit</code>)</td></tr>
+<tr><td>PATCH</td><td><code>/web/chat-services/inquiry/resolve/:id</code></td><td>Resolve/close inquiry — set <code>resolved</code>, notify victim</td><td>VS360 (<code>inquiries.edit</code>)</td></tr>
+<tr><td>GET</td><td><code>/chat-services/get-all-chats/:threadUid</code></td><td>Paginated inquiry messages</td><td>VS360 / APP</td></tr>
+<tr><td>POST</td><td><code>/chat-services/send-message/:threadUid</code></td><td>Send message (multipart, ≤5 files)</td><td>VS360 / APP</td></tr>
+<tr><td>GET</td><td><code>/chat-services/get-all-files/:threadUid</code></td><td>Files in the inquiry thread</td><td>VS360 / APP</td></tr>
+<tr><td>GET</td><td><code>/chat-services/get-thread/:threadUid</code></td><td>Single authorized thread</td><td>VS360 / APP</td></tr>
+<tr><td>PATCH</td><td><code>/chat-services/read/:threadUid</code></td><td>Mark all thread messages read</td><td>VS360 / APP</td></tr>
+</tbody></table></div>
+<h3 id="112-request-to-connect-case-promotion-endpoints">11.2 Request-to-Connect &amp; Case-Promotion Endpoints</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Method</th><th>Path</th><th>Purpose</th><th>Guard</th></tr></thead>
+<tbody>
+<tr><td>PUT</td><td><code>/mobile/victim-services/:uid/request-to-connect</code></td><td>Victim expresses interest in a service; emails center; dedupes (409 if already requested)</td><td>Auth (APP)</td></tr>
+<tr><td>GET</td><td><code>/web/service-claims</code></td><td>Service-claims list; response includes <code>requestsToConnect[]</code> synthetic &quot;requested&quot; items</td><td>VS360 (<code>claims.view</code>)</td></tr>
+<tr><td>POST</td><td><code>/web/service-claims</code></td><td>Create Case (advocate-created, <code>prefill</code>-seeded from inquiry/offline contact)</td><td>VS360 (<code>claims.add</code>)</td></tr>
+<tr><td>PATCH</td><td><code>/web/service-claims/link-client/:claimUid</code></td><td>Link client contact to a case (implicit inquiry↔case association)</td><td>VS360 (<code>claims.edit</code>)</td></tr>
+</tbody></table></div>
+<h3 id="113-frontend-service-functions-vs360">11.3 Frontend Service Functions (VS360)</h3>
+<ul>
+<li><code>GetInquiryThreads()</code> (<code>src/services/threads.js</code>) — inquiry list.</li>
+<li><code>approveInquiry(id)</code> / <code>rejectInquiry(id)</code> / <code>closeInquiry(id)</code> (<code>src/services/chat.js</code>) — triage actions.</li>
+<li><code>GetAllChats(uid, {page, pageSize})</code>, <code>SendMessage</code> — inquiry chat.</li>
+<li><code>MarkThreadNotificationsRead</code> (<code>src/services/notification.js</code>) — clear thread notifications on triage.</li>
+</ul>
+<h3 id="114-external-integrations">11.4 External Integrations</h3>
+<ul>
+<li><strong>FCM</strong> — push notifications to victims on inquiry approve/reject/resolve and new messages.</li>
+<li><strong>Email + SMS (Twilio, via BullMQ)</strong> — new-inquiry alert to the agency; login-code delivery when a case is later created.</li>
+<li><strong>Azure Blob Storage / MinIO</strong> — storage for inquiry chat file attachments (<code>file_uploads</code>).</li>
+<li><strong>Socket.IO</strong> — real-time thread creation, message, and approval events.</li>
+</ul>
+<h2 id="12-rbac-permissions">12. RBAC &amp; Permissions</h2>
+<p>Two layers combine: the <strong>context gate</strong> <code>allowOnly(&#x27;VS360&#x27;)</code> (staff web) and <strong>fine-grained</strong> <code>inquiries.{view,add,edit,delete}</code> from the agency (VS360) permission template. <code>SUPER_ADMIN</code> bypasses fine-grained checks. Mobile victim routes are auth-only (<code>issuer.type = APP</code>), with no context guard.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Action</th><th>Route(s)</th><th>Required permission</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>View inquiries list / detail</td><td><code>GET /web/chat-services/get-inquiry-threads</code>, <code>get-all-chats</code></td><td><code>inquiries.view</code> (+ VS360)</td><td>Scoped to agency + staff&#x27;s assigned service categories</td></tr>
+<tr><td>Approve inquiry</td><td><code>PATCH .../inquiry/approve/:id</code></td><td><code>inquiries.edit</code> (+ VS360)</td><td>Self-assigns to acting user</td></tr>
+<tr><td>Reject inquiry</td><td><code>PATCH .../inquiry/reject/:id</code></td><td><code>inquiries.edit</code> (+ VS360)</td><td>Archives thread</td></tr>
+<tr><td>Resolve/close inquiry</td><td><code>PATCH .../inquiry/resolve/:id</code></td><td><code>inquiries.edit</code> (+ VS360)</td><td>Sets resolved</td></tr>
+<tr><td>Send inquiry message</td><td><code>POST .../send-message/:threadUid</code></td><td><code>inquiries.view</code>/<code>edit</code> (+ VS360)</td><td>On approved/resolved threads</td></tr>
+<tr><td>Create inquiry (victim)</td><td><code>POST /mobile/chat-services/start-inquiry</code></td><td>Auth (APP)</td><td>No VS360 context guard</td></tr>
+<tr><td>Request-to-connect (victim)</td><td><code>PUT /mobile/victim-services/:uid/request-to-connect</code></td><td>Auth (APP)</td><td>Dedupes; emails center</td></tr>
+<tr><td>Promote to case</td><td><code>POST /web/service-claims</code></td><td><code>claims.add</code> (+ VS360)</td><td>Separate module permission; not gated by <code>inquiries.*</code></td></tr>
+<tr><td>Full agency oversight</td><td>all above</td><td><code>SUPER_ADMIN</code> / Agency Admin</td><td>Bypasses category scoping and fine-grained checks</td></tr>
+</tbody></table></div>
+<div class="callout note"><div class="callout-title">ℹ Category scoping</div><div class="callout-body">Beyond the <code>inquiries.*</code> flags, front-line caseworkers only see inquiries whose service maps to their <strong>assigned service categories</strong> (<code>getInquiryThreadsForVSMSUser</code>). Agency Admins and Super Admins are not category-restricted.</div></div>
+<div class="callout note"><div class="callout-title">ℹ Cross-module permission</div><div class="callout-body">Promoting an inquiry to a case is governed by the <strong><code>claims</code></strong> permission module, not <code>inquiries</code>. A user may be able to triage inquiries yet lack <code>claims.add</code> — in which case they cannot open Create Case.</div></div>
+<h2 id="13-non-functional-requirements">13. Non-Functional Requirements</h2>
+<h3 id="131-security-privacy-victim-safety">13.1 Security &amp; Privacy (Victim Safety)</h3>
+<ul>
+<li><strong>Anonymity by default</strong>: inquiries can be created and triaged without the victim disclosing identity; staff see only an anonymous code until contact is linked. Identity minimization is a first-class requirement.</li>
+<li><strong>Encrypted transport &amp; payloads</strong>: all API responses are AES-encrypted and decrypted client-side; mobile access is additionally gated by the app-secret header (<code>X-Netlify-Secret</code> / <code>x-mobile-app-secret</code>).</li>
+<li><strong>Cross-agency isolation (CJIS-style)</strong>: every inquiry read/write is scoped to <code>issuer.serviceCenterInfo.id</code>; staff can never see or act on another agency&#x27;s inquiries.</li>
+<li><strong>Authorization on every thread</strong>: message send/read is authorized per thread (<code>isAuthorizedForThread</code>).</li>
+<li><strong>Auditability</strong>: triage actions (approve/reject/resolve) write <code>ActionLogs</code> rows (<code>action</code>, <code>referenceId</code>, <code>referenceType</code>, source/IP/URL/context) for a complete compliance trail.</li>
+</ul>
+<h3 id="132-performance-scalability">13.2 Performance &amp; Scalability</h3>
+<ul>
+<li>Inquiry list and message history are paginated; VS360 uses infinite-scroll for chat.</li>
+<li>Real-time updates ride Socket.IO with Redis pub/sub for horizontal scaling; email/SMS are offloaded to BullMQ queues so triage responses are not blocked by delivery latency.</li>
+<li>Rate limiting: <code>rateLimiters.chatApi</code> on the chat/inquiry tree; <code>standard</code> on victim-services routes.</li>
+</ul>
+<h3 id="133-availability-reliability">13.3 Availability &amp; Reliability</h3>
+<ul>
+<li>Notification delivery is best-effort and defensively wrapped: a failed socket/FCM/email send is logged and never rolls back or blocks the triage transaction.</li>
+<li>Dedup guards (active-thread, request-to-connect 409) prevent duplicate intake records under retries or double-taps.</li>
+</ul>
+<h3 id="134-localization-accessibility">13.4 Localization &amp; Accessibility</h3>
+<ul>
+<li>Inquiry messages support server-side translation to the recipient&#x27;s preferred language (<code>translatedContent</code>).</li>
+<li>Victim App static strings are localized (platform static translations); the emergency-exit affordance remains available over inquiry screens for victim safety.</li>
+<li>VS360 uses Mantine components with standard keyboard/focus semantics.</li>
+</ul>
+<h3 id="135-compliance-reporting">13.5 Compliance &amp; Reporting</h3>
+<ul>
+<li>Inquiries are deliberately kept <strong>out of</strong> case metrics and PMT/grant reporting until promoted to a case, preventing intake noise from distorting funded-service reporting.</li>
+<li>Inquiry KPIs (new/closed/total, open inquiries) are reported at the aggregate/dashboard level only.</li>
+</ul>
+<h2 id="14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</h2>
+<h3 id="141-dashboards-kpis">14.1 Dashboards &amp; KPIs</h3>
+<ul>
+<li>The VS360 dashboard KPI feed (<code>GET /dashboard/kpi-data</code>) includes <strong>new inquiries</strong>, <strong>closed inquiries</strong>, and <strong>total inquiries</strong>; the admin dashboard variant surfaces an <strong>open inquiries</strong> count. These are computed by the backend <code>Dashboard</code> model (<code>getInquiriesCountByStatus</code>) from <code>inquiry_lifecycle</code>.</li>
+<li>Inquiries are excluded from case/claim counts and from PMT demographic aggregations, which draw from <code>pmt_report</code> (created only when a case is created).</li>
+</ul>
+<h3 id="142-notifications">14.2 Notifications</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Trigger</th><th>Recipient</th><th>Channels</th><th>Type / Event</th></tr></thead>
+<tbody>
+<tr><td>New inquiry created</td><td>Category-matched agency staff + agency</td><td>Socket <code>thread-creation-inquiry</code>, in-app, email, SMS</td><td>thread-creation-inquiry</td></tr>
+<tr><td>New inquiry message</td><td>Counterpart (staff or victim)</td><td>Socket <code>message-inquiry</code>, in-app, FCM</td><td><code>INQUIRY_NEW_MESSAGE</code></td></tr>
+<tr><td>Inquiry approved</td><td>Victim</td><td>FCM + socket <code>inquiry-approve-for-&lt;victimUid&gt;</code></td><td><code>INQUIRY_APPROVED</code></td></tr>
+<tr><td>Inquiry rejected</td><td>Victim</td><td>FCM + in-app</td><td><code>INQUIRY_REJECTED</code></td></tr>
+<tr><td>Inquiry resolved/closed</td><td>Victim</td><td>FCM + in-app</td><td><code>INQUIRY_RESOLVED</code></td></tr>
+<tr><td>Request-to-connect</td><td>Agency (service center)</td><td>Email</td><td>(email notification)</td></tr>
+</tbody></table></div>
+<h3 id="143-vs360-refetch-behavior">14.3 VS360 Refetch Behavior</h3>
+<p>VS360 keeps the inquiry list and chat fresh via Redux socket-fed triggers: <code>setInquiryThreadsRefetch</code> (list), <code>refetch.chatRefetch</code> / <code>specificChatRefetch</code> (open chat), plus <code>MarkThreadNotificationsRead</code> after a triage action to clear the unread badge.</p>
+<h2 id="15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Type</th><th>Impact</th><th>Mitigation / Owner</th></tr></thead>
+<tbody>
+<tr><td>No one-click convert-to-case; advocates must re-enter details into Create Case (prefill assists but is manual)</td><td>Risk</td><td>Duplicate data entry; potential for inquiry and case to drift out of sync; lost context</td><td>Rely on <code>prefill</code> today; consider a future &quot;Create case from inquiry&quot; action that pre-populates and cross-links records — Product/Eng</td></tr>
+<tr><td>Inquiry ↔ case are not FK-linked; association is implicit via the client account only after contact is linked</td><td>Risk</td><td>Hard to report inquiry→case conversion accurately; orphaned inquiries</td><td>Track conversion via client linkage; evaluate an explicit <code>sourceInquiryId</code> on <code>service_claims</code> — Backend</td></tr>
+<tr><td>Two distinct intake channels (inquiry threads vs. request-to-connect) with different surfaces (Inquiries screen vs. cases list)</td><td>Risk</td><td>Staff may miss request-to-connect items that don&#x27;t appear on the Inquiries screen</td><td>Surface <code>requestsToConnect[]</code> prominently; consider unifying intake into one triage inbox — Product</td></tr>
+<tr><td>Request-to-connect &quot;requested&quot; is a synthetic status, not a lifecycle-managed inquiry (no approve/reject/resolve)</td><td>Open Question</td><td>Inconsistent triage model across intake types</td><td>Decide whether request-to-connect should gain a lifecycle or be folded into inquiries — Product</td></tr>
+<tr><td>Offline contacts (hotline/walk-in) have no standalone inquiry record</td><td>Assumption</td><td>Offline demand not measured as &quot;inquiries&quot;; only appears once a case is created</td><td>Accept for now; consider a lightweight manual-inquiry capture — Product</td></tr>
+<tr><td>Inquiry assignment happens only implicitly at approval (<code>vsmsId=issuer.id</code>); no reassignment endpoint</td><td>Open Question</td><td>An approved inquiry cannot be handed to another advocate</td><td>Evaluate a reassign action mirroring Notes Center — Eng</td></tr>
+<tr><td>Notifications are best-effort; a delivery failure is logged but silent to the user</td><td>Risk</td><td>A victim/staff member may miss a triage transition</td><td>Monitor delivery metrics; add retry/dead-letter on BullMQ — Backend</td></tr>
+<tr><td>Category-scoped visibility may hide inquiries with no matching caseworker from front-line staff</td><td>Risk</td><td>Uncovered service categories leave inquiries un-triaged unless an admin acts</td><td>Ensure category coverage; admins monitor unassigned/pending — Agency Ops</td></tr>
+<tr><td>Victim anonymity means staff triage with limited context</td><td>Assumption</td><td>Harder to assess legitimacy of an inquiry</td><td>Preserve anonymity by design; rely on message content + service context — Product</td></tr>
+</tbody></table></div>
+<h2 id="16-glossary">16. Glossary</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Inquiry</td><td>A victim-initiated first contact about a service that exists before a formal case; modeled as an <code>INQUIRY</code> chat thread + an <code>InquiryLifecycle</code> state row.</td></tr>
+<tr><td>InquiryLifecycle</td><td>The DB record (<code>inquiry_lifecycle</code>) holding an inquiry&#x27;s triage <code>status</code> (<code>pending</code>/<code>approved</code>/<code>rejected</code>/<code>resolved</code>).</td></tr>
+<tr><td>Inquiry Thread</td><td>The <code>chat_threads</code> row of <code>type=&#x27;INQUIRY&#x27;</code> carrying the inquiry conversation; <code>status</code> is <code>ACTIVE</code> or <code>ARCHIVED</code>.</td></tr>
+<tr><td>Triage</td><td>The staff act of deciding an inquiry&#x27;s fate: approve, reject, or resolve/close.</td></tr>
+<tr><td>Request-to-Connect</td><td>A lightweight victim signal of interest in a service (<code>RequestToConnect</code>), surfaced to staff as a synthetic &quot;requested&quot; item, distinct from an inquiry thread.</td></tr>
+<tr><td>Requested (status)</td><td>Synthetic status applied to request-to-connect entries shown alongside service claims (<code>requestsToConnect[]</code>).</td></tr>
+<tr><td>Case / Service Claim</td><td>A formal request for a service (<code>service_claims</code>, <code>uid</code> = <code>CL&lt;yy&gt;&lt;month&gt;&lt;uuid6&gt;</code>); the entity an inquiry may be promoted into.</td></tr>
+<tr><td>Prefill</td><td>Data (name/phone/email) carried from an inquiry or offline contact into the Create Case modal to seed a new case.</td></tr>
+<tr><td>Convert-to-Case</td><td>The (deliberately manual) act of creating a case from an inquiry via prefill; NECX has no one-click convert action.</td></tr>
+<tr><td>Self-Assign</td><td>On approval, an inquiry is assigned to the approving staff member (<code>vsmsId = issuer.id</code>).</td></tr>
+<tr><td>Anonymous Code</td><td>The non-identifying code by which a victim appears to staff until contact info is linked.</td></tr>
+<tr><td>Advocate / Case Worker</td><td>Front-line agency staff (<code>issuer.type = VSMS</code>) who triage inquiries and manage cases.</td></tr>
+<tr><td>Service Center / Agency</td><td>An organization (<code>service_centers</code>) publishing services and triaging its own inquiries; the tenancy boundary.</td></tr>
+<tr><td>VSMS</td><td>Victim Services Management System — the staff identity/context (<code>issuer.type = VSMS</code>, <code>roleInfo.context = VS360</code>).</td></tr>
+<tr><td>Login Code</td><td>A one-time code issued when an advocate creates a case for a victim, letting the victim claim the case on the mobile app.</td></tr>
+<tr><td>Service Category</td><td>Taxonomy grouping services; also the routing key that decides which caseworkers see a given inquiry.</td></tr>
+<tr><td>PMT</td><td>Performance Measurement Tool — grant/federal reporting data created with a case (not with an inquiry).</td></tr>
+</tbody></table></div>
+      </div>
+      <nav class="prevnext"><a class="pn prev" href="P17.html"><span>← Previous</span><b>Referrals &amp; Partnerships</b></a><a class="pn next" href="P19.html"><span>Next →</span><b>Communities</b></a></nav>
+      <footer class="doc-foot">NECX Inc — Confidential · Generated 2026-07-05 · NECX Inquiries Management</footer>
+    </article>
+  </main>
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <nav class="toc-nav"><a class="toc-1" href="#1-document-control">1. Document Control</a>
+<a class="toc-1" href="#2-executive-summary">2. Executive Summary</a>
+<a class="toc-1" href="#3-product-overview-vision">3. Product Overview &amp; Vision</a>
+<a class="toc-2" href="#31-problem-statement">3.1 Problem Statement</a>
+<a class="toc-2" href="#32-product-vision">3.2 Product Vision</a>
+<a class="toc-2" href="#33-where-this-sits-in-the-necx-ecosystem">3.3 Where This Sits in the NECX Ecosystem</a>
+<a class="toc-1" href="#4-goals-objectives-success-metrics">4. Goals, Objectives &amp; Success Metrics</a>
+<a class="toc-2" href="#41-goals-objectives">4.1 Goals &amp; Objectives</a>
+<a class="toc-2" href="#42-success-metrics">4.2 Success Metrics</a>
+<a class="toc-1" href="#5-scope">5. Scope</a>
+<a class="toc-2" href="#51-in-scope">5.1 In Scope</a>
+<a class="toc-2" href="#52-out-of-scope">5.2 Out of Scope</a>
+<a class="toc-1" href="#6-personas-user-roles">6. Personas &amp; User Roles</a>
+<a class="toc-2" href="#61-persona-narratives">6.1 Persona Narratives</a>
+<a class="toc-1" href="#7-system-context-architecture">7. System Context &amp; Architecture</a>
+<a class="toc-2" href="#71-tech-stack">7.1 Tech Stack</a>
+<a class="toc-2" href="#72-how-the-frontend-talks-to-the-backend">7.2 How the Frontend Talks to the Backend</a>
+<a class="toc-2" href="#73-real-time-notifications">7.3 Real-Time &amp; Notifications</a>
+<a class="toc-2" href="#74-tenancy-isolation">7.4 Tenancy &amp; Isolation</a>
+<a class="toc-1" href="#8-functional-requirements">8. Functional Requirements</a>
+<a class="toc-2" href="#81-inquiry-sources-intake-channels">8.1 Inquiry Sources (Intake Channels)</a>
+<a class="toc-2" href="#82-inquiry-lifecycle-triage">8.2 Inquiry Lifecycle &amp; Triage</a>
+<a class="toc-2" href="#83-vs360-my-inquiries-screen">8.3 VS360 &quot;My Inquiries&quot; Screen</a>
+<a class="toc-2" href="#84-active-inquiry-chat">8.4 Active Inquiry Chat</a>
+<a class="toc-2" href="#85-promoting-an-inquiry-to-a-case-no-one-click-convert">8.5 Promoting an Inquiry to a Case (No One-Click Convert)</a>
+<a class="toc-2" href="#86-routing-assignment">8.6 Routing &amp; Assignment</a>
+<a class="toc-1" href="#9-detailed-user-system-flows">9. Detailed User &amp; System Flows</a>
+<a class="toc-2" href="#91-an-inquiry-arrives-victim-starts-an-inquiry-chat">9.1 An Inquiry Arrives (Victim Starts an Inquiry Chat)</a>
+<a class="toc-2" href="#92-triage-it-approve-engage-happy-path">9.2 Triage It — Approve &amp; Engage (Happy Path)</a>
+<a class="toc-2" href="#93-triage-it-reject-spam-misdirected">9.3 Triage It — Reject (Spam / Misdirected)</a>
+<a class="toc-2" href="#94-close-resolve-an-active-inquiry">9.4 Close / Resolve an Active Inquiry</a>
+<a class="toc-2" href="#95-open-create-case-prefilled-from-the-inquiry-promotion-to-a-ca">9.5 Open Create Case Prefilled From the Inquiry (Promotion to a Case)</a>
+<a class="toc-2" href="#96-request-to-connect-intake-lightweight-signal">9.6 Request-to-Connect Intake (Lightweight Signal)</a>
+<a class="toc-2" href="#97-offline-contact-hotline-walk-in-triage">9.7 Offline Contact (Hotline / Walk-In) Triage</a>
+<a class="toc-2" href="#98-edge-cases-branches">9.8 Edge Cases &amp; Branches</a>
+<a class="toc-1" href="#10-data-model">10. Data Model</a>
+<a class="toc-1" href="#11-api-integration-surface">11. API &amp; Integration Surface</a>
+<a class="toc-2" href="#111-inquiry-endpoints">11.1 Inquiry Endpoints</a>
+<a class="toc-2" href="#112-request-to-connect-case-promotion-endpoints">11.2 Request-to-Connect &amp; Case-Promotion Endpoints</a>
+<a class="toc-2" href="#113-frontend-service-functions-vs360">11.3 Frontend Service Functions (VS360)</a>
+<a class="toc-2" href="#114-external-integrations">11.4 External Integrations</a>
+<a class="toc-1" href="#12-rbac-permissions">12. RBAC &amp; Permissions</a>
+<a class="toc-1" href="#13-non-functional-requirements">13. Non-Functional Requirements</a>
+<a class="toc-2" href="#131-security-privacy-victim-safety">13.1 Security &amp; Privacy (Victim Safety)</a>
+<a class="toc-2" href="#132-performance-scalability">13.2 Performance &amp; Scalability</a>
+<a class="toc-2" href="#133-availability-reliability">13.3 Availability &amp; Reliability</a>
+<a class="toc-2" href="#134-localization-accessibility">13.4 Localization &amp; Accessibility</a>
+<a class="toc-2" href="#135-compliance-reporting">13.5 Compliance &amp; Reporting</a>
+<a class="toc-1" href="#14-analytics-reporting-notifications">14. Analytics, Reporting &amp; Notifications</a>
+<a class="toc-2" href="#141-dashboards-kpis">14.1 Dashboards &amp; KPIs</a>
+<a class="toc-2" href="#142-notifications">14.2 Notifications</a>
+<a class="toc-2" href="#143-vs360-refetch-behavior">14.3 VS360 Refetch Behavior</a>
+<a class="toc-1" href="#15-risks-assumptions-open-questions">15. Risks, Assumptions &amp; Open Questions</a>
+<a class="toc-1" href="#16-glossary">16. Glossary</a>
+</nav>
+  </aside>
+
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>
